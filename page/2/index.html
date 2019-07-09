@@ -34,63 +34,6 @@
         <main id='container'>
           
   
-    <article id="post-git_question" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/git_question/" class="article-date">
-  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/git_question/">Git 遇到的一些问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Error-GH007"><a href="#Error-GH007" class="headerlink" title="Error: GH007"></a>Error: GH007</h2><p>推送本地库的内容到远程库上报 <code>error: GH007</code> 时，在 <code>Setting</code> 里把 <b>Email</b> 的 <code>Keep my email address private</code> 勾选去掉即可<br><img src="../src/img_9.png"></p>
-<h2 id="不能退出、终止当前命令？"><a href="#不能退出、终止当前命令？" class="headerlink" title="不能退出、终止当前命令？"></a>不能退出、终止当前命令？</h2><p>尝试按下 Q 键</p>
-<h2 id="想要删除提交的历史-Commit"><a href="#想要删除提交的历史-Commit" class="headerlink" title="想要删除提交的历史 Commit?"></a>想要删除提交的历史 Commit?</h2><h3 id="1-上一次提交的-Commit-有错误需要修改？-详细"><a href="#1-上一次提交的-Commit-有错误需要修改？-详细" class="headerlink" title="1. 上一次提交的 Commit 有错误需要修改？ 详细"></a>1. 上一次提交的 Commit 有错误需要修改？ <a href="./git_commit--amend.md">详细</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend        // 撤销上一次提交  并将暂存区文件重新提交</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-合并与删除历史提交的-Commit-详细"><a href="#2-合并与删除历史提交的-Commit-详细" class="headerlink" title="2. 合并与删除历史提交的 Commit ? 详细"></a>2. 合并与删除历史提交的 Commit ? <a href="./git_rebase.md">详细</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~n</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>常用指令：<ul>
-<li>p,pick - 保留</li>
-<li>r,reword - 修改注释</li>
-<li>e,edit - 停下来修改注释</li>
-<li>s,squash - 合并到上一个 commit 并且合并注释</li>
-<li>f,fixup - 丢掉备注并且合并到上一个 commit</li>
-<li>d,drop - 删除 commit</li>
-</ul>
-</li>
-</ul>
-<h2 id="操作失误，退回操作之前的版本库"><a href="#操作失误，退回操作之前的版本库" class="headerlink" title="操作失误，退回操作之前的版本库"></a>操作失误，退回操作之前的版本库</h2><p>使用 <code>git reflog</code> 查看操作日志，找到误操之前的版本号</p>
-<p>再使用 <code>git reset --hard &lt;commit_id&gt;</code> 退回版本</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/git_question/" data-id="cjxvn9gd4000howu748obj3od" class="article-share-link">share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-git_rebase" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/07/09/git_rebase/" class="article-date">
@@ -138,7 +81,64 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/git_rebase/" data-id="cjxvn9gd7000jowu7x1pbfso4" class="article-share-link">share</a>
+      <a data-url="http://yogwang.github.io/2019/07/09/git_rebase/" data-id="cjxvnb9hs000hawu7hf67vsiu" class="article-share-link">share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git_question" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/09/git_question/" class="article-date">
+  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/09/git_question/">Git 遇到的一些问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Error-GH007"><a href="#Error-GH007" class="headerlink" title="Error: GH007"></a>Error: GH007</h2><p>推送本地库的内容到远程库上报 <code>error: GH007</code> 时，在 <code>Setting</code> 里把 <b>Email</b> 的 <code>Keep my email address private</code> 勾选去掉即可<br><img src="../src/img_9.png"></p>
+<h2 id="不能退出、终止当前命令？"><a href="#不能退出、终止当前命令？" class="headerlink" title="不能退出、终止当前命令？"></a>不能退出、终止当前命令？</h2><p>尝试按下 Q 键</p>
+<h2 id="想要删除提交的历史-Commit"><a href="#想要删除提交的历史-Commit" class="headerlink" title="想要删除提交的历史 Commit?"></a>想要删除提交的历史 Commit?</h2><h3 id="1-上一次提交的-Commit-有错误需要修改？-详细"><a href="#1-上一次提交的-Commit-有错误需要修改？-详细" class="headerlink" title="1. 上一次提交的 Commit 有错误需要修改？ 详细"></a>1. 上一次提交的 Commit 有错误需要修改？ <a href="./git_commit--amend.md">详细</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend        // 撤销上一次提交  并将暂存区文件重新提交</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-合并与删除历史提交的-Commit-详细"><a href="#2-合并与删除历史提交的-Commit-详细" class="headerlink" title="2. 合并与删除历史提交的 Commit ? 详细"></a>2. 合并与删除历史提交的 Commit ? <a href="./git_rebase.md">详细</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~n</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>常用指令：<ul>
+<li>p,pick - 保留</li>
+<li>r,reword - 修改注释</li>
+<li>e,edit - 停下来修改注释</li>
+<li>s,squash - 合并到上一个 commit 并且合并注释</li>
+<li>f,fixup - 丢掉备注并且合并到上一个 commit</li>
+<li>d,drop - 删除 commit</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作失误，退回操作之前的版本库"><a href="#操作失误，退回操作之前的版本库" class="headerlink" title="操作失误，退回操作之前的版本库"></a>操作失误，退回操作之前的版本库</h2><p>使用 <code>git reflog</code> 查看操作日志，找到误操之前的版本号</p>
+<p>再使用 <code>git reset --hard &lt;commit_id&gt;</code> 退回版本</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yogwang.github.io/2019/07/09/git_question/" data-id="cjxvnb9hu000jawu7u5pb7qsd" class="article-share-link">share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -176,7 +176,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/hello you/" data-id="cjxvn9gdj000zowu7z5y32edr" class="article-share-link">share</a>
+      <a data-url="http://yogwang.github.io/2019/07/09/hello you/" data-id="cjxvnb9hw000lawu7tmadoonr" class="article-share-link">share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -223,7 +223,7 @@
       <ul>
         
           <li>
-            <a href="/2019/07/09/git_create/">Git 创建版本库</a>
+            <a href="/2019/07/09/git_connectToGitHub/">关联到 GigHub</a>
           </li>
         
           <li>
@@ -231,7 +231,7 @@
           </li>
         
           <li>
-            <a href="/2019/07/09/Electron：2 - Electron-parkager/">Electron:02 Electron-packager</a>
+            <a href="/2019/07/09/Electron：1 - Electron Js/">Electron:01 自己创建 Electron 应用</a>
           </li>
         
           <li>

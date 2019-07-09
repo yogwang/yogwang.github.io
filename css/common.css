@@ -154,6 +154,7 @@ div#wrap main#container figure {
   border-radius: 5px;
 }
 div#wrap main#container figure pre {
+  word-wrap: break-word;
   margin: 0 5px;
 }
 div#wrap aside#sidebar {
