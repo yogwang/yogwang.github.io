@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>
+    Electron:01 自己创建 Electron 应用 | YOG WANG
+  </title>
+  
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.svg" alt="sign">
+    <span>YOG<br/>WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/">主页</a>
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+        <main id='container'>
+          <article id="post-Electron：1 - Electron Js" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/09/Electron：1 - Electron Js/" class="article-date">
+  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Electron:01 自己创建 Electron 应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir my-app</span><br><span class="line"></span><br><span class="line">$ cd my-app</span><br><span class="line"></span><br><span class="line">$ npm init --y</span><br><span class="line">Wrote to E:\WWW\my-app\package.json:</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;my-app&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [],</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改入口文件为 <code>main.js</code> 并且添加 <code>start</code> 脚本引导 <strong>Node</strong> 来执行 Electron</p>
+<h3 id="2-安装-Electron"><a href="#2-安装-Electron" class="headerlink" title="2. 安装 Electron"></a>2. 安装 Electron</h3><blockquote>
+<p>官方推荐的安装方法是把它作为应用中的开发依赖项，以在不同的应用中使用不同的 Electron 版本。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install electron --save-dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-简易的-Electron-主进程"><a href="#3-简易的-Electron-主进程" class="headerlink" title="3. 简易的 Electron 主进程"></a>3. 简易的 Electron 主进程</h3><p>1.在 <code>min.js</code> 中引入 <strong>Electron</strong></p>
+<ul>
+<li>使用所有 API 和功能</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const electron = require(&apos;electron&apos;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>按需引入</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; app, BrowserWindow &#125; = require(&apos;electron&apos;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Electron 模块所提供的功能都是通过命名空间暴露出来的</p>
+</blockquote>
+<p>在应用程序准备就绪后打开一个窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function createWindow () &#123;</span><br><span class="line">  // 创建浏览器窗口</span><br><span class="line">  let win = new BrowserWindow(&#123;</span><br><span class="line">    width: 800,</span><br><span class="line">    height: 600,</span><br><span class="line">    webPreferences: &#123;</span><br><span class="line">      nodeIntegration: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 加载index.html文件</span><br><span class="line">  win.loadFile(&apos;index.html&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.on(&apos;ready&apos;, createWindow)</span><br></pre></td></tr></table></figure>
+
+<p>完善上述例子，完善应用可能遇到的所有系统事件，那么一个简单的 <code>main.js</code> 就像下面这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">const &#123; app, BrowserWindow &#125; = require(&apos;electron&apos;)</span><br><span class="line"></span><br><span class="line">// 保持对window对象的全局引用，如果不这么做的话，当JavaScript对象被</span><br><span class="line">// 垃圾回收的时候，window对象将会自动的关闭</span><br><span class="line">let win</span><br><span class="line"></span><br><span class="line">function createWindow () &#123;</span><br><span class="line">  // 创建浏览器窗口。</span><br><span class="line">  win = new BrowserWindow(&#123;</span><br><span class="line">    width: 800,</span><br><span class="line">    height: 600,</span><br><span class="line">    webPreferences: &#123;</span><br><span class="line">      nodeIntegration: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 加载index.html文件</span><br><span class="line">  win.loadFile(&apos;index.html&apos;)</span><br><span class="line"></span><br><span class="line">  // 打开开发者工具</span><br><span class="line">  win.webContents.openDevTools()</span><br><span class="line"></span><br><span class="line">  // 当 window 被关闭，这个事件会被触发。</span><br><span class="line">  win.on(&apos;closed&apos;, () =&gt; &#123;</span><br><span class="line">    // 取消引用 window 对象，如果你的应用支持多窗口的话，</span><br><span class="line">    // 通常会把多个 window 对象存放在一个数组里面，</span><br><span class="line">    // 与此同时，你应该删除相应的元素。</span><br><span class="line">    win = null</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Electron 会在初始化后并准备</span><br><span class="line">// 创建浏览器窗口时，调用这个函数。</span><br><span class="line">// 部分 API 在 ready 事件触发后才能使用。</span><br><span class="line">app.on(&apos;ready&apos;, createWindow)</span><br><span class="line"></span><br><span class="line">// 当全部窗口关闭时退出。</span><br><span class="line">app.on(&apos;window-all-closed&apos;, () =&gt; &#123;</span><br><span class="line">  // 在 macOS 上，除非用户用 Cmd + Q 确定地退出，</span><br><span class="line">  // 否则绝大部分应用及其菜单栏会保持激活。</span><br><span class="line">  if (process.platform !== &apos;darwin&apos;) &#123;</span><br><span class="line">    app.quit()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.on(&apos;activate&apos;, () =&gt; &#123;</span><br><span class="line">  // 在macOS上，当单击dock图标并且没有其他窗口打开时，</span><br><span class="line">  // 通常在应用程序中重新创建一个窗口。</span><br><span class="line">  if (win === null) &#123;</span><br><span class="line">    createWindow()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 在这个文件中，你可以续写应用剩下主进程代码。</span><br><span class="line">// 也可以拆分成几个文件，然后用 require 导入。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-创建想展示的-index-html"><a href="#4-创建想展示的-index-html" class="headerlink" title="4. 创建想展示的 index.html"></a>4. 创建想展示的 index.html</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Hello World!&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Hello World!&lt;/h1&gt;</span><br><span class="line">    We are using node &lt;script&gt;document.write(process.versions.node)&lt;/script&gt;,</span><br><span class="line">    Chrome &lt;script&gt;document.write(process.versions.chrome)&lt;/script&gt;,</span><br><span class="line">    and Electron &lt;script&gt;document.write(process.versions.electron)&lt;/script&gt;.</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-启动应用"><a href="#5-启动应用" class="headerlink" title="5. 启动应用"></a>5. 启动应用</h3><p>创建并初始化完成 <code>main.js</code> 、 <code>index.html</code> 和 <code>package.json</code> 之后，<br>就可以在当前工程的根目录执行 <code>npm start</code> 命令来启动刚刚编写好的 <strong>Electron</strong> 应用了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ npm start</span><br><span class="line"></span><br><span class="line">&gt; my-app@1.0.0 start E:\WWW\my-app</span><br><span class="line">&gt; electron .</span><br></pre></td></tr></table></figure>
+
+<h3 id="基础结构"><a href="#基础结构" class="headerlink" title="基础结构"></a>基础结构</h3><p>所以一个最基础的 <strong>Electron</strong> 应用 应有以下目录结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my-app/</span><br><span class="line">├── package.json</span><br><span class="line">├── main.js</span><br><span class="line">└── index.html</span><br></pre></td></tr></table></figure>
+
+<h2 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h2><h3 id="官方-DEMO-Electron-quick-start"><a href="#官方-DEMO-Electron-quick-start" class="headerlink" title="官方 DEMO Electron-quick-start"></a>官方 DEMO <a href="https://github.com/electron/electron-quick-start" target="_blank" rel="noopener"><code>Electron-quick-start</code></a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 克隆示例项目的仓库</span><br><span class="line">$ git clone https://github.com/electron/electron-quick-start</span><br><span class="line"></span><br><span class="line"># 进入这个仓库</span><br><span class="line">$ cd electron-quick-start</span><br><span class="line"></span><br><span class="line"># 安装依赖并运行</span><br><span class="line">$ npm install &amp;&amp; npm start</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-Electron-forge-创建项目"><a href="#使用-Electron-forge-创建项目" class="headerlink" title="使用 Electron-forge 创建项目"></a>使用 <a href="https://www.electronforge.io/" target="_blank" rel="noopener">Electron-forge</a> 创建项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -g @electron-forge/cli</span><br><span class="line"></span><br><span class="line">$ electron-forge init my-app</span><br><span class="line"></span><br><span class="line">$ cd my-app</span><br><span class="line"></span><br><span class="line">$ npm start</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yogwang.github.io/2019/07/09/Electron：1 - Electron Js/" data-id="cjxvn9gcj0001owu7tb046xbw" class="article-share-link">share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electron/">Electron</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/09/git_common/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          Git 操作命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/09/git_connectToGitHub/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">关联到 GigHub</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+        </main>
+        <aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="Yog Wang">
+    <h2>Yog Wang</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/09/git_create/">Git 创建版本库</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/Electron：2 - Electron-parkager/">Electron:02 Electron-packager</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/Electron：3 - Electron-builder/">Electron:03 - Electron-builder</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/git_commit--amend/">Git 撤销上一次提交 并将暂存区文件重新提交</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive_a</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  &copy; 2019 
+  YogWang
+  powered_by 
+  <a href="http://hexo.io/" target="_blank">Hexo</a>
+</footer>
+  </body>
+</html>

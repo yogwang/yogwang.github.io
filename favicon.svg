@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="520" viewBox="0 0 520 520">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-width: 8.013px;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="圆角矩形_1" data-name="圆角矩形 1" class="cls-1" d="M264.716,53.329L507.575,317.7a7.723,7.723,0,0,1,0,10.267L264.716,466.671a6.293,6.293,0,0,1-9.432,0L12.425,327.962a7.722,7.722,0,0,1,0-10.267L255.284,53.329A6.293,6.293,0,0,1,264.716,53.329Z"/>
+  <path id="形状_1" data-name="形状 1" class="cls-2" d="M258,51h4V469h-4V51Z"/>
+</svg>

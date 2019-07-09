@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>
+    Git 遇到的一些问题 | YOG WANG
+  </title>
+  
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.svg" alt="sign">
+    <span>YOG<br/>WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/">主页</a>
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+        <main id='container'>
+          <article id="post-git_question" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/09/git_question/" class="article-date">
+  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git 遇到的一些问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Error-GH007"><a href="#Error-GH007" class="headerlink" title="Error: GH007"></a>Error: GH007</h2><p>推送本地库的内容到远程库上报 <code>error: GH007</code> 时，在 <code>Setting</code> 里把 <b>Email</b> 的 <code>Keep my email address private</code> 勾选去掉即可<br><img src="../src/img_9.png"></p>
+<h2 id="不能退出、终止当前命令？"><a href="#不能退出、终止当前命令？" class="headerlink" title="不能退出、终止当前命令？"></a>不能退出、终止当前命令？</h2><p>尝试按下 Q 键</p>
+<h2 id="想要删除提交的历史-Commit"><a href="#想要删除提交的历史-Commit" class="headerlink" title="想要删除提交的历史 Commit?"></a>想要删除提交的历史 Commit?</h2><h3 id="1-上一次提交的-Commit-有错误需要修改？-详细"><a href="#1-上一次提交的-Commit-有错误需要修改？-详细" class="headerlink" title="1. 上一次提交的 Commit 有错误需要修改？ 详细"></a>1. 上一次提交的 Commit 有错误需要修改？ <a href="./git_commit--amend.md">详细</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend        // 撤销上一次提交  并将暂存区文件重新提交</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-合并与删除历史提交的-Commit-详细"><a href="#2-合并与删除历史提交的-Commit-详细" class="headerlink" title="2. 合并与删除历史提交的 Commit ? 详细"></a>2. 合并与删除历史提交的 Commit ? <a href="./git_rebase.md">详细</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~n</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>常用指令：<ul>
+<li>p,pick - 保留</li>
+<li>r,reword - 修改注释</li>
+<li>e,edit - 停下来修改注释</li>
+<li>s,squash - 合并到上一个 commit 并且合并注释</li>
+<li>f,fixup - 丢掉备注并且合并到上一个 commit</li>
+<li>d,drop - 删除 commit</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作失误，退回操作之前的版本库"><a href="#操作失误，退回操作之前的版本库" class="headerlink" title="操作失误，退回操作之前的版本库"></a>操作失误，退回操作之前的版本库</h2><p>使用 <code>git reflog</code> 查看操作日志，找到误操之前的版本号</p>
+<p>再使用 <code>git reset --hard &lt;commit_id&gt;</code> 退回版本</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yogwang.github.io/2019/07/09/git_question/" data-id="cjxvn9gd4000howu748obj3od" class="article-share-link">share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/09/git_log/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          Git 查看提交日志
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/09/git_rebase/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">Git 编辑历史提交的 Commit</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+        </main>
+        <aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="Yog Wang">
+    <h2>Yog Wang</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/09/git_create/">Git 创建版本库</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/Electron：2 - Electron-parkager/">Electron:02 Electron-packager</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/Electron：3 - Electron-builder/">Electron:03 - Electron-builder</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/git_commit--amend/">Git 撤销上一次提交 并将暂存区文件重新提交</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive_a</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  &copy; 2019 
+  YogWang
+  powered_by 
+  <a href="http://hexo.io/" target="_blank">Hexo</a>
+</footer>
+  </body>
+</html>
