@@ -25,8 +25,6 @@
     
     <a class="nav-link" href="/archives">文章</a>
     
-    <a class="nav-link" href="/about">我</a>
-    
   </nav>
 </header>
 
@@ -34,641 +32,208 @@
         <main id='container'>
           
   
-    <article id="post-git_connectToGitHub" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/git_connectToGitHub/" class="article-date">
-  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
+  
     
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          Timeline：
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/hello you/">Hello Hexo</a>
+    </h2>
+  
+
+      <p class="archive-article-date">
+  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">Jul 9</time>
+</p>
+    </header>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/git_connectToGitHub/">关联到 GigHub</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="创建-SSH-Keygen"><a href="#创建-SSH-Keygen" class="headerlink" title="创建 SSH Keygen"></a>创建 SSH Keygen</h2><p>使用<code>ssh-keygen</code>生成私钥和公钥</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br><span class="line"></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/c/Users/yog/.ssh/id_rsa):</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in /c/Users/yog/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/yog/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:0ZYdnPILyMbV9xpgRE/hWf1MayqhoEYquZTuOMr8EcE yog@YOG-DESKTOP</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 3072]----+</span><br><span class="line">|           =+.o.o|</span><br><span class="line">|  .      .oo*=.oo|</span><br><span class="line">|   E   o.o++.o++o|</span><br><span class="line">|    .. .=o... .o+|</span><br><span class="line">|  o.o ..S ....oo |</span><br><span class="line">| = ..o   . ....  |</span><br><span class="line">|o o..       .    |</span><br><span class="line">|=o  .            |</span><br><span class="line">|==..             |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
-
-<p>找到 SSH 公钥输出内容，也可以用资源管理器打开复制</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.ssh</span><br><span class="line">$ pwd</span><br><span class="line">/c/Users/yog/.ssh</span><br><span class="line">$ cat id_rsa.pub</span><br><span class="line"></span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDb9FSAEzrtUG9bJFt5oaDieFo6FeqBWB9ppX4VCqBnNxKvpnAZbJMjUjxHAIQEFSK2sD9NUXgyuKguilX6kRVGoTq15Lcf12nfqfjoGMUm3qAgNdZlkHPFk7WxBFquaalWV8OOOZNe45W2YcbzPucQMt54iiGSYzuAQLbMW/5rn2uF4HPrQNeMmduIvNZ8BxK4gS60IyjnEPTZbyG3RfJ0K5FQBN6wudoSWZZCU4UTcOjFhLRQ3I/p5OQTSKXnbBhpoX7nD42Xohijt2xB5GhdLrh42E28AEORchaMJ7OxqenT4U+BDdhQPk87ZBpB254Cv5RCvj60dJv5VjE/kTx4bCKslv9kgtV4INyUNPWlDAPhe6dmW1L+9Cl5QUYPvhjlXLLpcXoqne3OlPcS33UwJE0H/6++TusANaMTAXxPofD9XCgK/ipCNtT+YPxiyWIVJKgVUJ7NKAoieNOqXVN5d09ts/hSM5CtBXFbKnFGrPEr9zGiUhfe7HM0gRpWMV0= yog@YOG-DESKTOP</span><br></pre></td></tr></table></figure>
-
-<p>复制输出的全部公钥内容</p>
-<h4 id="开坑多个-SSH-Key-多个-GitHub-账户"><a href="#开坑多个-SSH-Key-多个-GitHub-账户" class="headerlink" title="开坑多个 SSH_Key 多个 GitHub 账户"></a>开坑多个 SSH_Key 多个 GitHub 账户</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;Exam@email.com&quot; -f ~/.ssh/id_rsa_for_Exam</span><br></pre></td></tr></table></figure>
-
-<h2 id="在-GitHub-上添加-SSH-key"><a href="#在-GitHub-上添加-SSH-key" class="headerlink" title="在 GitHub 上添加 SSH key"></a>在 GitHub 上添加 SSH key</h2><p>登陆 <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> ,点击右上角头像，在弹出的菜单中选择 <code>Settings</code> 进入设置页</p>
-<img src="https://raw.githubusercontent.com/yogwang/doc_md/master/Git/src/img_1.png">
-
-<p>在右侧 <b>Personal settings</b> 中选择 <code>SSH and GPG keys</code></p>
-<img src="https://raw.githubusercontent.com/yogwang/doc_md/master/Git/src/img_2.png">
-
-<p>点击 <b>New SSH key</b>，在 Key 中粘贴复制的公钥内容,然后 <b>Add SSH key</b> 完成 <code>SSH key</code> 添加<br><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/Git/src/img_3.png"></p>
-<h2 id="创建-GitHub-仓库"><a href="#创建-GitHub-仓库" class="headerlink" title="创建 GitHub 仓库"></a>创建 GitHub 仓库</h2><p>同样点击右上角头像，在弹出的菜单中选择 <code>Your repositories</code> 进入资源库页</p>
-<img src="https://raw.githubusercontent.com/yogwang/doc_md/master/Git/src/img_4.png">
-<br>
-
-<p>在页面中间靠右点击 <b>New</b> 按钮</p>
-<img src="https://raw.githubusercontent.com/yogwang/doc_md/master/Git/src/img_5.png">
-
-<p>输入 <code>Repository name</code> 然后点击 <b>Create repository</b> 按钮</p>
-<img src="https://raw.githubusercontent.com/yogwang/doc_md/master/Git/src/img_6.png">
-
-<blockquote>
-<p>Description:可选输入一段描述，仓库选择 Public 和 Private 都可以。</p>
-</blockquote>
-<p>资源库创建完成后，复制页面中的 <code>git remote add</code> 命令，回到 <code>Git Bash</code><br><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/Git/src/img_7.png"></p>
-<p>回创建的本地 Git 库中，运行复制的 <code>git remote add</code> 命令，关联本地库到 GitHub 远程库上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd E:/GitLibrary/git_demo</span><br><span class="line"></span><br><span class="line">$ git remote add origin git@github.com:yogwang/demo_repositories.git</span><br></pre></td></tr></table></figure>
-
-<p>使用 <code>git push</code> 命令把本地库的所有内容推送到远程库上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<p>然后刷新 GitHub 库页面就可以看到上传的本地库文件了<br><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/Git/src/img_8.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/git_connectToGitHub/" data-id="cjxvnb9hh0009awu762ck3v35" class="article-share-link">share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
-
-
   
-    <article id="post-Chrome-VerticalCentering" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/Chrome-VerticalCentering/" class="article-date">
-  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
     
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/git_commit--amend/">Git 撤销上一次提交 并将暂存区文件重新提交</a>
+    </h2>
+  
+
+      <p class="archive-article-date">
+  <time datetime="2019-07-03T09:29:11.000Z" itemprop="datePublished">Jul 3</time>
+</p>
+    </header>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前景"><a href="#前景" class="headerlink" title="前景"></a>前景</h2><p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/img_1.png" alt="场景"></p>
-<h4 id="要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容"><a href="#要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容" class="headerlink" title="要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容"></a>要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容</h4><p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/gif_1.gif" alt="场景Gif"></p>
-<h2 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h2><p>👉 <a href="https://codepen.io/yogwang/pen/MPNGpY" target="_blank" rel="noopener">CodePen</a></p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在 Chrome 中，使用 transform 或者 flex 垂直居中内容块，当视窗滚动到容器一半时再经过第一个内容块（之后的都正常），整个容器块都会被移动</p>
-<ul>
-<li>内容块高度已经大于文本块高度</li>
-<li>内容块垂直居中</li>
-<li>视窗滚动到容器一半时</li>
-<li>改变文本块高度</li>
-<li>Firefox 同样遇到该问题</li>
-<li>Edge 正常</li>
-<li>IE11 正常</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/gif_2.gif" alt="问题Gif"></p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>在第一个 li 前创建一个与之等高的伪类就可以解决</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ul:before&#123;</span><br><span class="line">	content : &quot;&quot;;</span><br><span class="line">	width : 1px;</span><br><span class="line">	height : 520px</span><br><span class="line">	display : blcok;</span><br><span class="line">	position : absolute;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/gif_fix.gif" alt="解决GIF"></p>
-<h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><ul>
-<li>CodePen - <a href="https://codepen.io/yogwang/pen/MPNGpY" target="_blank" rel="noopener">https://codepen.io/yooooge/pen/MPNGpY</a></li>
-</ul>
-<ul>
-<li><p>Chrome 版本</p>
-<p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/version_chrome.png" alt="chrome"></p>
-</li>
-<li><p>Firefox 版本</p>
-<p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/version_firefox.png" alt="Firefox"></p>
-</li>
-<li><p>Edge 版本</p>
-<p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/version_edge.png" alt="Edge"></p>
-</li>
-<li><p>IE 版本</p>
-<p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/version_ie.png" alt="ie11"></p>
-</li>
-</ul>
-<p>yogWang 2019/07/03</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/Chrome-VerticalCentering/" data-id="cjxvnb9gz0000awu7212d2xev" class="article-share-link">share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
-
-
   
-    <article id="post-Electron：1 - Electron Js" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/Electron：1 - Electron Js/" class="article-date">
-  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
     
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/git_rebase/">Git 编辑历史提交的 Commit</a>
+    </h2>
+  
+
+      <p class="archive-article-date">
+  <time datetime="2019-07-03T08:28:25.000Z" itemprop="datePublished">Jul 3</time>
+</p>
+    </header>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/Electron：1 - Electron Js/">Electron:01 自己创建 Electron 应用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir my-app</span><br><span class="line"></span><br><span class="line">$ cd my-app</span><br><span class="line"></span><br><span class="line">$ npm init --y</span><br><span class="line">Wrote to E:\WWW\my-app\package.json:</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;my-app&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [],</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>修改入口文件为 <code>main.js</code> 并且添加 <code>start</code> 脚本引导 <strong>Node</strong> 来执行 Electron</p>
-<h3 id="2-安装-Electron"><a href="#2-安装-Electron" class="headerlink" title="2. 安装 Electron"></a>2. 安装 Electron</h3><blockquote>
-<p>官方推荐的安装方法是把它作为应用中的开发依赖项，以在不同的应用中使用不同的 Electron 版本。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install electron --save-dev</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-简易的-Electron-主进程"><a href="#3-简易的-Electron-主进程" class="headerlink" title="3. 简易的 Electron 主进程"></a>3. 简易的 Electron 主进程</h3><p>1.在 <code>min.js</code> 中引入 <strong>Electron</strong></p>
-<ul>
-<li>使用所有 API 和功能</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const electron = require(&apos;electron&apos;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>按需引入</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; app, BrowserWindow &#125; = require(&apos;electron&apos;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Electron 模块所提供的功能都是通过命名空间暴露出来的</p>
-</blockquote>
-<p>在应用程序准备就绪后打开一个窗口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function createWindow () &#123;</span><br><span class="line">  // 创建浏览器窗口</span><br><span class="line">  let win = new BrowserWindow(&#123;</span><br><span class="line">    width: 800,</span><br><span class="line">    height: 600,</span><br><span class="line">    webPreferences: &#123;</span><br><span class="line">      nodeIntegration: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 加载index.html文件</span><br><span class="line">  win.loadFile(&apos;index.html&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.on(&apos;ready&apos;, createWindow)</span><br></pre></td></tr></table></figure>
-
-<p>完善上述例子，完善应用可能遇到的所有系统事件，那么一个简单的 <code>main.js</code> 就像下面这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">const &#123; app, BrowserWindow &#125; = require(&apos;electron&apos;)</span><br><span class="line"></span><br><span class="line">// 保持对window对象的全局引用，如果不这么做的话，当JavaScript对象被</span><br><span class="line">// 垃圾回收的时候，window对象将会自动的关闭</span><br><span class="line">let win</span><br><span class="line"></span><br><span class="line">function createWindow () &#123;</span><br><span class="line">  // 创建浏览器窗口。</span><br><span class="line">  win = new BrowserWindow(&#123;</span><br><span class="line">    width: 800,</span><br><span class="line">    height: 600,</span><br><span class="line">    webPreferences: &#123;</span><br><span class="line">      nodeIntegration: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 加载index.html文件</span><br><span class="line">  win.loadFile(&apos;index.html&apos;)</span><br><span class="line"></span><br><span class="line">  // 打开开发者工具</span><br><span class="line">  win.webContents.openDevTools()</span><br><span class="line"></span><br><span class="line">  // 当 window 被关闭，这个事件会被触发。</span><br><span class="line">  win.on(&apos;closed&apos;, () =&gt; &#123;</span><br><span class="line">    // 取消引用 window 对象，如果你的应用支持多窗口的话，</span><br><span class="line">    // 通常会把多个 window 对象存放在一个数组里面，</span><br><span class="line">    // 与此同时，你应该删除相应的元素。</span><br><span class="line">    win = null</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Electron 会在初始化后并准备</span><br><span class="line">// 创建浏览器窗口时，调用这个函数。</span><br><span class="line">// 部分 API 在 ready 事件触发后才能使用。</span><br><span class="line">app.on(&apos;ready&apos;, createWindow)</span><br><span class="line"></span><br><span class="line">// 当全部窗口关闭时退出。</span><br><span class="line">app.on(&apos;window-all-closed&apos;, () =&gt; &#123;</span><br><span class="line">  // 在 macOS 上，除非用户用 Cmd + Q 确定地退出，</span><br><span class="line">  // 否则绝大部分应用及其菜单栏会保持激活。</span><br><span class="line">  if (process.platform !== &apos;darwin&apos;) &#123;</span><br><span class="line">    app.quit()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.on(&apos;activate&apos;, () =&gt; &#123;</span><br><span class="line">  // 在macOS上，当单击dock图标并且没有其他窗口打开时，</span><br><span class="line">  // 通常在应用程序中重新创建一个窗口。</span><br><span class="line">  if (win === null) &#123;</span><br><span class="line">    createWindow()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 在这个文件中，你可以续写应用剩下主进程代码。</span><br><span class="line">// 也可以拆分成几个文件，然后用 require 导入。</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-创建想展示的-index-html"><a href="#4-创建想展示的-index-html" class="headerlink" title="4. 创建想展示的 index.html"></a>4. 创建想展示的 index.html</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Hello World!&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Hello World!&lt;/h1&gt;</span><br><span class="line">    We are using node &lt;script&gt;document.write(process.versions.node)&lt;/script&gt;,</span><br><span class="line">    Chrome &lt;script&gt;document.write(process.versions.chrome)&lt;/script&gt;,</span><br><span class="line">    and Electron &lt;script&gt;document.write(process.versions.electron)&lt;/script&gt;.</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-启动应用"><a href="#5-启动应用" class="headerlink" title="5. 启动应用"></a>5. 启动应用</h3><p>创建并初始化完成 <code>main.js</code> 、 <code>index.html</code> 和 <code>package.json</code> 之后，<br>就可以在当前工程的根目录执行 <code>npm start</code> 命令来启动刚刚编写好的 <strong>Electron</strong> 应用了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ npm start</span><br><span class="line"></span><br><span class="line">&gt; my-app@1.0.0 start E:\WWW\my-app</span><br><span class="line">&gt; electron .</span><br></pre></td></tr></table></figure>
-
-<h3 id="基础结构"><a href="#基础结构" class="headerlink" title="基础结构"></a>基础结构</h3><p>所以一个最基础的 <strong>Electron</strong> 应用 应有以下目录结构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my-app/</span><br><span class="line">├── package.json</span><br><span class="line">├── main.js</span><br><span class="line">└── index.html</span><br></pre></td></tr></table></figure>
-
-<h2 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h2><h3 id="官方-DEMO-Electron-quick-start"><a href="#官方-DEMO-Electron-quick-start" class="headerlink" title="官方 DEMO Electron-quick-start"></a>官方 DEMO <a href="https://github.com/electron/electron-quick-start" target="_blank" rel="noopener"><code>Electron-quick-start</code></a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 克隆示例项目的仓库</span><br><span class="line">$ git clone https://github.com/electron/electron-quick-start</span><br><span class="line"></span><br><span class="line"># 进入这个仓库</span><br><span class="line">$ cd electron-quick-start</span><br><span class="line"></span><br><span class="line"># 安装依赖并运行</span><br><span class="line">$ npm install &amp;&amp; npm start</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用-Electron-forge-创建项目"><a href="#使用-Electron-forge-创建项目" class="headerlink" title="使用 Electron-forge 创建项目"></a>使用 <a href="https://www.electronforge.io/" target="_blank" rel="noopener">Electron-forge</a> 创建项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -g @electron-forge/cli</span><br><span class="line"></span><br><span class="line">$ electron-forge init my-app</span><br><span class="line"></span><br><span class="line">$ cd my-app</span><br><span class="line"></span><br><span class="line">$ npm start</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/Electron：1 - Electron Js/" data-id="cjxvnb9hb0003awu7pzj1byk9" class="article-share-link">share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electron/">Electron</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
-
-
   
-    <article id="post-Electron：3 - Electron-builder" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/Electron：3 - Electron-builder/" class="article-date">
-  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
     
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
+    </h2>
+  
+
+      <p class="archive-article-date">
+  <time datetime="2019-07-03T07:37:00.000Z" itemprop="datePublished">Jul 3</time>
+</p>
+    </header>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/Electron：3 - Electron-builder/">Electron:03 - Electron-builder</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装-Electron-builder"><a href="#安装-Electron-builder" class="headerlink" title="安装 Electron-builder"></a>安装 Electron-builder</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/electron/electron-quick-start</span><br><span class="line"></span><br><span class="line">$ cd electron-quick-start</span><br><span class="line"></span><br><span class="line">$ yarn add electron-builder --dev // 官方推荐</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line">$ npm install elctron-builder --save-dev</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置-Electron-builder"><a href="#配置-Electron-builder" class="headerlink" title="配置 Electron-builder"></a>配置 Electron-builder</h2><p>在 <code>config.json</code> 配置 <strong>build</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&quot;build&quot;: &#123;</span><br><span class="line">    &quot;productName&quot;:&quot;xxxx&quot;, //  项目名 这也是生成的exe文件的前缀名</span><br><span class="line">    &quot;appId&quot;: &quot;com.xxx.xxxxx&quot;, //  包名</span><br><span class="line">    &quot;copyright&quot;:&quot;xxxx&quot;, //  版权信息</span><br><span class="line">    &quot;directories&quot;: &#123;  // 输出文件夹</span><br><span class="line">      &quot;output&quot;: &quot;build&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    // windows相关的配置</span><br><span class="line">    &quot;win&quot;: &#123;</span><br><span class="line">      &quot;icon&quot;: &quot;xxx/icon.ico&quot;  //  图标路径</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;nsis&quot;: &#123; //nsis安装脚本</span><br><span class="line">      &quot;oneClick&quot;: false, // 是否一键安装</span><br><span class="line">      &quot;allowElevation&quot;: true, // 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。</span><br><span class="line">      &quot;allowToChangeInstallationDirectory&quot;: true, // 允许修改安装目录</span><br><span class="line">      &quot;installerIcon&quot;: &quot;./build/icons/aaa.ico&quot;,// 安装图标</span><br><span class="line">      &quot;uninstallerIcon&quot;: &quot;./build/icons/bbb.ico&quot;,//卸载图标</span><br><span class="line">      &quot;installerHeaderIcon&quot;: &quot;./build/icons/aaa.ico&quot;, // 安装时头部图标</span><br><span class="line">      &quot;createDesktopShortcut&quot;: true, // 创建桌面图标</span><br><span class="line">      &quot;createStartMenuShortcut&quot;: true,// 创建开始菜单图标</span><br><span class="line">      &quot;shortcutName&quot;: &quot;xxxx&quot;, // 图标名称</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>增加 <strong>scripts</strong> 脚本到 <code>config.json</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;pack&quot;: &quot;electron-builder --dir&quot;,</span><br><span class="line">  &quot;dist&quot;: &quot;electron-builder&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.electron.build/configuration/configuration#configuration" target="_blank" rel="noopener">其他平台</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// mac</span><br><span class="line">&quot;mac&quot;: &#123;</span><br><span class="line">  &quot;category&quot;: &quot;your.app.category.type&quot;</span><br><span class="line">&#125;</span><br><span class="line">// linux</span><br><span class="line">&quot;linux&quot;: &#123;</span><br><span class="line">  &quot;category&quot;: &quot;your.app.category.type&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>…..待完成</p>
-<h2 id="与-Electron-parkager-的差异"><a href="#与-Electron-parkager-的差异" class="headerlink" title="与 Electron-parkager 的差异"></a>与 Electron-parkager 的差异</h2><p>…..待完成<br>2019/6/20</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/Electron：3 - Electron-builder/" data-id="cjxvnb9hd0004awu7q724bnhx" class="article-share-link">share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electron/">Electron</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
-
-
   
-    <article id="post-git_commit--amend" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/git_commit--amend/" class="article-date">
-  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
     
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/git_question/">Git 遇到的一些问题</a>
+    </h2>
+  
+
+      <p class="archive-article-date">
+  <time datetime="2019-07-03T06:27:56.000Z" itemprop="datePublished">Jul 3</time>
+</p>
+    </header>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/git_commit--amend/">Git 撤销上一次提交 并将暂存区文件重新提交</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>把刚刚提交到的版本库的操作撤销掉,并将正确的版本提交 这时我们就需要用到 <code>git commit –-amend</code> 命令</p>
-<p>我们把文件修改为正确的，然后 <code>git add</code> 到暂存区 再使用 <code>git commit -–amend</code> 命令<br>这时 Bash 会提示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git commit --amend</span><br><span class="line">hint: Waiting for your editor to close the file...</span><br></pre></td></tr></table></figure>
-
-<p>并在编辑器弹出 COMMIT_EDITMSG</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">version 0.1.6</span><br><span class="line"></span><br><span class="line"># Please enter the commit message for your changes. Lines starting</span><br><span class="line"># with &apos;#&apos; will be ignored, and an empty message aborts the commit.</span><br><span class="line">#</span><br><span class="line"># Date:      Wed Jul 3 11:00:38 2019 +0800</span><br><span class="line">#</span><br><span class="line"># On branch master</span><br><span class="line"># Your branch and &apos;origin/master&apos; have diverged,</span><br><span class="line"># and have 1 and 1 different commits each, respectively.</span><br><span class="line">#   (use &quot;git pull&quot; to merge the remote branch into yours)</span><br><span class="line">#</span><br><span class="line"># Changes to be committed:</span><br><span class="line">#	modified:   readme.md</span><br><span class="line">#</span><br></pre></td></tr></table></figure>
-
-<p>最上面的 version 0.1.6 是我们上次提交是的备注<br>下面的 modified: readme.md 则表明我们这次重修提交修改了 readme.md 文件<br>如果需要修改备注则修改最上边的备注并保存，不需要直接退出关闭即可<br>提交成功：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[master 5df6a16] version 0.1.6</span><br><span class="line"> Date: Wed Jul 3 11:00:38 2019 +0800</span><br><span class="line"> 1 files changed, 1 insertions(+), 1 deletions(-)</span><br></pre></td></tr></table></figure>
-
-<p>再次查看日志 <code>git log --oneline</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline</span><br><span class="line">7475748 (HEAD -&gt; master) version 0.1.6</span><br><span class="line">9750475 version 0.1.5</span><br><span class="line">c1dd820 version 0.1.4</span><br><span class="line">b3d104c version 0.1.3</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>发现只有 1 次 version 0.1.6 提交说明我们刚刚是在修改而不是再次提交</p>
-<h4 id="如果需要再-push-到远程库需要加上-force-f-参数"><a href="#如果需要再-push-到远程库需要加上-force-f-参数" class="headerlink" title="如果需要再 push 到远程库需要加上 --force/-f 参数"></a>如果需要再 push 到远程库需要加上 <code>--force/-f</code> 参数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --force</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/git_commit--amend/" data-id="cjxvnb9he0005awu7pymwej92" class="article-share-link">share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
-
-
   
-    <article id="post-git_common" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/git_common/" class="article-date">
-  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
     
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/Electron：3 - Electron-builder/">Electron_03 - Electron-builder</a>
+    </h2>
+  
+
+      <p class="archive-article-date">
+  <time datetime="2019-06-21T08:41:29.000Z" itemprop="datePublished">Jun 21</time>
+</p>
+    </header>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/git_common/">Git 操作命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="添加文件到仓库-git-add"><a href="#添加文件到仓库-git-add" class="headerlink" title="添加文件到仓库 git add"></a>添加文件到仓库 <code>git add</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
-
-<h2 id="提交文件到仓库-git-commit"><a href="#提交文件到仓库-git-commit" class="headerlink" title="提交文件到仓库 git commit"></a>提交文件到仓库 <code>git commit</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;Here is the message&quot;</span><br></pre></td></tr></table></figure>
-
-<p><code>commit</code> 命令可以提交多个之前 add 的文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add file1.txt</span><br><span class="line">$ git add file2.txt file3.txt</span><br><span class="line">$ git commit -m &quot;add 3 files.&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看当前仓库状态-git-status"><a href="#查看当前仓库状态-git-status" class="headerlink" title="查看当前仓库状态 git status"></a>查看当前仓库状态 <code>git status</code></h2><p>没有需要提交的修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
-
-<p>文件有修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">	modified:   readme.txt</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看差异-git-diff"><a href="#查看差异-git-diff" class="headerlink" title="查看差异 git diff"></a>查看差异 <code>git diff</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git diff readme.txt</span><br><span class="line"></span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">index 46d49bf..9247db6 100644</span><br><span class="line">--- a/readme.txt</span><br><span class="line">+++ b/readme.txt</span><br><span class="line">@@ -1,2 +1,2 @@</span><br><span class="line">-Git is a version control system.</span><br><span class="line">+Git is a distributed version control system.</span><br><span class="line"> Git is free software.</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看日志-git-log-详细"><a href="#查看日志-git-log-详细" class="headerlink" title="查看日志 git log 详细"></a>查看日志 <code>git log</code> <sub><a href="./detail/git_log.md">详细</a></sub></h2><ul>
-<li><code>git log</code> 查看提交日志</li>
-<li><code>git log --oneline</code> 精简模式显示</li>
-<li><code>git log --pretty=oneline</code> 精简模式并显示完整版本号</li>
-<li><code>git log --graph</code> 图形模式显示</li>
-<li><code>git log --stat</code> 显示文件更改列表</li>
-<li><code>git log --author=_name</code> 根据作者筛选</li>
-<li><code>git log -p file_name</code> 查看某个文件的详细修改</li>
-<li><code>git log -L start,end:file_name</code> 查看文件某行范围内的修改记录</li>
-<li><code>git log --stat commit_id</code> 根本版本号查看提交修改列表</li>
-</ul>
-<h2 id="版本退回-git-reset-详细未填坑"><a href="#版本退回-git-reset-详细未填坑" class="headerlink" title="版本退回 git reset 详细未填坑"></a>版本退回 <code>git reset</code> <sub><a href="##">详细</a>未填坑</sub></h2><p>在 Git 中，用 HEAD 表示当前版本，也就是最新的提交版本</p>
-<p>上一个版本就是 HEAD^</p>
-<p>上上一个版本就是 HEAD^^</p>
-<p>当然往上 n 个版本写 n 个^比较容易数不过来，所以写成 HEAD~n</p>
-<p>~n 相当于连续的 n 个”^”</p>
-<h2 id="git-reset-hard-HEAD"><a href="#git-reset-hard-HEAD" class="headerlink" title="git reset --hard HEAD^"></a><code>git reset --hard HEAD^</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br><span class="line"></span><br><span class="line">HEAD is now at e475afc add distributed</span><br></pre></td></tr></table></figure>
-
-<h2 id="git-reset-hard-commit-id"><a href="#git-reset-hard-commit-id" class="headerlink" title="git reset --hard commit_id"></a><code>git reset --hard commit_id</code></h2><p>也可以直接切换到某个版本，版本号可以不写全，前 4 位就可以了，Git 会自动去找，也可以 Tab 补全</p>
-<h2 id="查看操作日志-git-reflog"><a href="#查看操作日志-git-reflog" class="headerlink" title="查看操作日志 git reflog"></a>查看操作日志 <code>git reflog</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line"></span><br><span class="line">77ac955 (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to HEAD~2</span><br><span class="line">2c8fcc8 (origin/master) HEAD@&#123;1&#125;: commit: wrote a readme file</span><br><span class="line">87c9d12 HEAD@&#123;2&#125;: commit: add distributed</span><br><span class="line">77ac955 (HEAD -&gt; master) HEAD@&#123;3&#125;: commit (initial): wrote a readme file</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/git_common/" data-id="cjxvnb9hg0008awu7qzbllcjk" class="article-share-link">share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
-
-
   
-    <article id="post-Electron：2 - Electron-parkager" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/Electron：2 - Electron-parkager/" class="article-date">
-  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
     
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/Electron：2 - Electron-parkager/">Electron_02 - Electron-packager</a>
+    </h2>
+  
+
+      <p class="archive-article-date">
+  <time datetime="2019-06-18T02:58:51.000Z" itemprop="datePublished">Jun 18</time>
+</p>
+    </header>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/Electron：2 - Electron-parkager/">Electron:02 Electron-packager</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装-Electron-packager"><a href="#安装-Electron-packager" class="headerlink" title="安装 Electron-packager"></a>安装 <a href="https://github.com/electron-userland/electron-packager" target="_blank" rel="noopener">Electron-packager</a></h2><blockquote>
-<p>需要 Node.js 6.0 或更高版本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install electron-packager --save-dev</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://github.com/electron-userland/electron-packager/blob/master/docs/api.md" target="_blank" rel="noopener">electron-packager API</a></p>
-<h2 id="使用命令行打包"><a href="#使用命令行打包" class="headerlink" title="使用命令行打包"></a>使用命令行打包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">electron-packager &lt;sourcedir&gt; &lt;appname&gt; --platform=&lt;platform&gt; --arch=&lt;arch&gt; [optional flags...]</span><br></pre></td></tr></table></figure>
-
-<p>必需参数</p>
-<ul>
-<li>sourcedir - 应用程序源</li>
-</ul>
-<p>选项</p>
-<ul>
-<li>appname - 应用名称</li>
-<li>electron-version - Electron 版本号 (electron –version)</li>
-<li>platform - 要构建的平台 all,或者 darwin, linux, mas, win32</li>
-<li>arch - 要使用的架构 all,或者 ia32, x64, armv7l, arm64, mips64el</li>
-<li>out - 输出目录</li>
-<li>icon - 自定义图标路径</li>
-<li>app-copyright 应用版权</li>
-<li>app-version 应用版本</li>
-</ul>
-<p><a href="https://github.com/electron-userland/electron-packager/blob/master/usage.txt" target="_blank" rel="noopener">更多选项</a></p>
-<p>添加 <code>packager</code> 脚本方便项目打包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;packager&quot;: &quot;electron-packager ./ --platform=win32 --electron-version 5.0.3  --out ./dist&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-<p>极简打包</p>
-<blockquote>
-<p>创建目标平台/体系结构的所有有效组合的捆绑包</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">electron-packager ./ --all</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/Electron：2 - Electron-parkager/" data-id="cjxvnb9h60001awu7b88d2tya" class="article-share-link">share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electron/">Electron</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
-
-
   
-    <article id="post-git_create" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/git_create/" class="article-date">
-  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
     
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/git_connectToGitHub/">Git 关联到GigHub</a>
+    </h2>
+  
+
+      <p class="archive-article-date">
+  <time datetime="2019-06-17T07:36:06.000Z" itemprop="datePublished">Jun 17</time>
+</p>
+    </header>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/git_create/">Git 创建版本库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="创建一个空目录"><a href="#创建一个空目录" class="headerlink" title="创建一个空目录"></a>创建一个空目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir git_demo</span><br><span class="line">$ cd git_demo</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建-Git-仓库"><a href="#创建-Git-仓库" class="headerlink" title="创建 Git 仓库"></a>创建 Git 仓库</h2><p>进入目录后通过<code>git init</code>命令创建 Git 仓库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line"></span><br><span class="line">Initialized empty Git repository in E:/GitLibrary/git_demo/.git/</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/git_create/" data-id="cjxvnb9hk000bawu7vvifydbg" class="article-share-link">share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
-
-
   
-    <article id="post-git_install" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/git_install/" class="article-date">
-  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
     
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/git_log/">Git 查看提交日志</a>
+    </h2>
+  
+
+      <p class="archive-article-date">
+  <time datetime="2019-06-17T07:33:26.000Z" itemprop="datePublished">Jun 17</time>
+</p>
+    </header>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/git_install/">安装 Git in windows</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><br>Git 官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a><br><br></p>
-</blockquote>
-<h2 id="设置提交时的-NAME-和-EMAIL："><a href="#设置提交时的-NAME-和-EMAIL：" class="headerlink" title="设置提交时的 NAME 和 EMAIL："></a>设置提交时的 NAME 和 EMAIL：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;nikename&quot;</span><br><span class="line"></span><br><span class="line">$ git config --global user.email &quot;example@example.com&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看设置的-NAME-和-EMAIL："><a href="#查看设置的-NAME-和-EMAIL：" class="headerlink" title="查看设置的 NAME 和 EMAIL："></a>查看设置的 NAME 和 EMAIL：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name</span><br><span class="line"></span><br><span class="line">$ git config user.email</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/git_install/" data-id="cjxvnb9hm000dawu7v9a1ndn0" class="article-share-link">share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
-
-
   
-    <article id="post-git_log" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/09/git_log/" class="article-date">
-  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
     
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/git_common/">Git 操作命令</a>
+    </h2>
+  
+
+      <p class="archive-article-date">
+  <time datetime="2019-06-17T07:16:51.000Z" itemprop="datePublished">Jun 17</time>
+</p>
+    </header>
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/09/git_log/">Git 查看提交日志</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a><code>git log</code></h3><p>基础查看提交日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 12:10:01 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line">commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<h3 id="git-log-oneline"><a href="#git-log-oneline" class="headerlink" title="git log --oneline"></a><code>git log --oneline</code></h3><p>精简模式显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline</span><br><span class="line"></span><br><span class="line">2c8fcc8 (HEAD -&gt; master, origin/master) wrote a readme file</span><br><span class="line">87c9d12 add distributed</span><br><span class="line">77ac955 wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<h3 id="git-log-pretty-oneline"><a href="#git-log-pretty-oneline" class="headerlink" title="git log --pretty=oneline"></a><code>git log --pretty=oneline</code></h3><p>精简模式并显示完整版本号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br><span class="line"></span><br><span class="line">2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master) wrote a readme file</span><br><span class="line">87c9d12bdd979859811fc224c7f9ade7b97b0d13 add distributed</span><br><span class="line">77ac9552a7fb2e8d1f57d324d991de11efa897f2 wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<h3 id="git-log-graph"><a href="#git-log-graph" class="headerlink" title="git log --graph"></a><code>git log --graph</code></h3><p>图形模式显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ git log --graph</span><br><span class="line">* commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)</span><br><span class="line">| Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">| Date:   Mon Jun 17 12:10:01 2019 +0800</span><br><span class="line">|</span><br><span class="line">|     wrote a readme file</span><br><span class="line">|</span><br><span class="line">* commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">| Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">| Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line">|</span><br><span class="line">|     add distributed</span><br><span class="line">|</span><br><span class="line">* commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">  Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">  Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">      wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<h3 id="git-log-stat"><a href="#git-log-stat" class="headerlink" title="git log --stat"></a><code>git log --stat</code></h3><p>显示文件更改列表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ git log --stat</span><br><span class="line">commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 12:10:01 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line"> demo/reademe.txt | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br><span class="line"></span><br><span class="line">commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line"> readme.txt | 2 +-</span><br><span class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</span><br><span class="line"></span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line"> readme.txt | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
-
-<h3 id="git-log-author-name"><a href="#git-log-author-name" class="headerlink" title="git log --author=_name"></a><code>git log --author=_name</code></h3><p>根据作者筛选</p>
-<p>_name：作者名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ git log --author=yogwang</span><br><span class="line"></span><br><span class="line">commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 12:10:01 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line">commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<h3 id="git-log-p-file-name"><a href="#git-log-p-file-name" class="headerlink" title="git log -p file_name"></a><code>git log -p file_name</code></h3><p>查看某个文件的详细修改   有详细内容</p>
-<p>file_name：文件名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">$ git log -p readme.txt</span><br><span class="line"></span><br><span class="line">commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">index d8036c1..013b5bc 100644</span><br><span class="line">--- a/readme.txt</span><br><span class="line">+++ b/readme.txt</span><br><span class="line">@@ -1,2 +1,2 @@</span><br><span class="line">-Git is a version control system.</span><br><span class="line">+Git is a distributed version control system.</span><br><span class="line"> Git is free software.</span><br><span class="line">\ No newline at end of file</span><br><span class="line"></span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">new file mode 100644</span><br><span class="line">index 0000000..d8036c1</span><br><span class="line">--- /dev/null</span><br><span class="line">+++ b/readme.txt</span><br><span class="line">@@ -0,0 +1,2 @@</span><br><span class="line">+Git is a version control system.</span><br><span class="line">+Git is free software.</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
-
-<h3 id="git-log-L-start-end-file-name"><a href="#git-log-L-start-end-file-name" class="headerlink" title="git log -L start,end:file_name"></a><code>git log -L start,end:file_name</code></h3><p>查看某个文件某几行范围内的修改记录</p>
-<p>start:开始行号</p>
-<p>end:结束行号</p>
-<p>file_name:文件名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">$ git log -L 1,2:readme.txt</span><br><span class="line"></span><br><span class="line">commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">--- a/readme.txt</span><br><span class="line">+++ b/readme.txt</span><br><span class="line">@@ -1,2 +1,2 @@</span><br><span class="line">-Git is a version control system.</span><br><span class="line">+Git is a distributed version control system.</span><br><span class="line"> Git is free software.</span><br><span class="line">\ No newline at end of file</span><br><span class="line"></span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">--- /dev/null</span><br><span class="line">+++ b/readme.txt</span><br><span class="line">@@ -0,0 +1,2 @@</span><br><span class="line">+Git is a version control system.</span><br><span class="line">+Git is free software.</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
-
-<h3 id="git-log-stat-commit-id"><a href="#git-log-stat-commit-id" class="headerlink" title="git log --stat commit_id"></a><code>git log --stat commit_id</code></h3><p>根本版本号查看提交修改列表</p>
-<p>commit_id：提交版本号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git log --stat 77ac</span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line"> readme.txt | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yogwang.github.io/2019/07/09/git_log/" data-id="cjxvnb9ho000fawu7928y4b8i" class="article-share-link">share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
-
-
+  
+  
+    </div></section>
   
 
 
@@ -690,9 +255,9 @@
     <p>Jiaxing,China</p>
     <div>
       
-      <a class='fa fa-github' href="https://github.com/yogwang"></a>
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
       
-      <a class='fa fa-weibo' href="http://weibo.com/yooooooge"></a>
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
       
     </div>
 </section>
@@ -705,23 +270,23 @@
       <ul>
         
           <li>
-            <a href="/2019/07/09/git_connectToGitHub/">关联到 GigHub</a>
+            <a href="/2019/hello you/">Hello Hexo</a>
           </li>
         
           <li>
-            <a href="/2019/07/09/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
+            <a href="/2019/git_commit--amend/">Git 撤销上一次提交 并将暂存区文件重新提交</a>
           </li>
         
           <li>
-            <a href="/2019/07/09/Electron：1 - Electron Js/">Electron:01 自己创建 Electron 应用</a>
+            <a href="/2019/git_rebase/">Git 编辑历史提交的 Commit</a>
           </li>
         
           <li>
-            <a href="/2019/07/09/Electron：3 - Electron-builder/">Electron:03 - Electron-builder</a>
+            <a href="/2019/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
           </li>
         
           <li>
-            <a href="/2019/07/09/git_commit--amend/">Git 撤销上一次提交 并将暂存区文件重新提交</a>
+            <a href="/2019/git_question/">Git 遇到的一些问题</a>
           </li>
         
       </ul>
@@ -734,9 +299,9 @@
   
     
   <section class="widget-wrap">
-    <h3 class="widget-title">tags</h3>
+    <h3 class="widget-title">archive</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
     </div>
   </section>
 
@@ -744,9 +309,9 @@
   
     
   <section class="widget-wrap">
-    <h3 class="widget-title">archive_a</h3>
+    <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
     </div>
   </section>
 

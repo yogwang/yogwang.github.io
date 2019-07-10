@@ -2,7 +2,7 @@
  * @Author: yogwang 
  * @Date: 2019-07-09 16:41:04 
  * @Last Modified by: yogwang
- * @Last Modified time: 2019-07-09 17:15:18
+ * @Last Modified time: 2019-07-10 14:51:28
  */
 
 *, :after, :before { box-sizing: border-box }
@@ -18,7 +18,6 @@ a:active, a:hover { outline: 0 }
 a, ins { text-decoration: none }
 abbr[title] { border-bottom: 1px dotted }
 b, strong { font-weight: 700 }
-pre { white-space: pre-wrap }
 q { quotes: "\201C" "\201D" "\2018" "\2019" }
 small { font-size: 80% }
 sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline }
