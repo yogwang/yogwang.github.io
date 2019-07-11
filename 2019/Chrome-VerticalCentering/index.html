@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Chrome下垂直居中容器内区块改变高度使外层容器被移动 | YOG WANG
+    Chrome下垂直居中容器内区块改变高度使外层容器被移动 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -21,24 +21,26 @@
   </a>
   <nav class="header-navbar">
     
-    <a class="nav-link" href="/">主页</a>
-    
     <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
     
   </nav>
 </header>
 
     <div id="wrap">
-        <main id='container'>
-          <article id="post-Chrome-VerticalCentering" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <p class="article-date">
+      <main id="container">
+  <div id="post-Chrome-VerticalCentering" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
   <time datetime="2019-07-03T07:37:00.000Z" itemprop="datePublished">2019-07-03</time>
 </p>
-    
-  </div>
-  <div class="article-inner">
-    
+      
+    </div>
+    <!--  -->
     
       <header class="article-header">
         
@@ -51,11 +53,9 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前景"><a href="#前景" class="headerlink" title="前景"></a>前景</h2><p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/img_1.png" alt="场景"></p>
-<h4 id="要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容"><a href="#要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容" class="headerlink" title="要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容"></a>要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容</h4><p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/gif_1.gif" alt="场景Gif"></p>
-<h2 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h2><p>👉 <a href="https://codepen.io/yogwang/pen/MPNGpY" target="_blank" rel="noopener">CodePen</a></p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在 Chrome 中，使用 transform 或者 flex 垂直居中内容块，当视窗滚动到容器一半时再经过第一个内容块（之后的都正常），整个容器块都会被移动</p>
+       
+  <article class="article-content">
+    <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在 Chrome 中，使用 transform 或者 flex 垂直居中内容块，当视窗滚动到容器一半时再经过第一个内容块（之后的都正常），整个容器块都会被移动</p>
 <ul>
 <li>内容块高度已经大于文本块高度</li>
 <li>内容块垂直居中</li>
@@ -66,6 +66,11 @@
 <li>IE11 正常</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/gif_2.gif" alt="问题Gif"></p>
+<a id="more"></a>
+
+<h2 id="前景"><a href="#前景" class="headerlink" title="前景"></a>前景</h2><p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/img_1.png" alt="场景"></p>
+<h4 id="要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容"><a href="#要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容" class="headerlink" title="要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容"></a>要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容</h4><p><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/my_trouble/Chrome-VerticalCentering/img/gif_1.gif" alt="场景Gif"></p>
+<h2 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h2><p>👉 <a href="https://codepen.io/yogwang/pen/MPNGpY" target="_blank" rel="noopener">CodePen</a></p>
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>在第一个 li 前创建一个与之等高的伪类就可以解决</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ul:before&#123;</span><br><span class="line">	content : &quot;&quot;;</span><br><span class="line">	width : 1px;</span><br><span class="line">	height : 520px</span><br><span class="line">	display : blcok;</span><br><span class="line">	position : absolute;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -88,8 +93,10 @@
 </li>
 </ul>
 <p>yogWang 2019/07/03</p>
+ 
+  </article>
 
-      
+
     </div>
   </div>
   
@@ -114,16 +121,16 @@
 </nav>
 
   
-</article>
+</div>
 
 
-        </main>
-        <aside id="sidebar">
+</main>
+<aside id="sidebar">
   
     
 <section class="userinfo">
-    <img src="/img/userimg.jpg" alt="Yog Wang">
-    <h2>Yog Wang</h2>
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
     <span>久之须自见得</span>
     <p>ODIN.INC</p>
     <p>Jiaxing,China</p>
@@ -144,6 +151,14 @@
       <ul>
         
           <li>
+            <a href="/2019/Hexo-start/">Hexo 模板制作</a>
+          </li>
+        
+          <li>
+            <a href="/2019/CSS3-WaterFull/">纯CSS 完成瀑布流布局</a>
+          </li>
+        
+          <li>
             <a href="/2019/hello you/">Hello Hexo</a>
           </li>
         
@@ -153,14 +168,6 @@
         
           <li>
             <a href="/2019/git_rebase/">Git 编辑历史提交的 Commit</a>
-          </li>
-        
-          <li>
-            <a href="/2019/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
-          </li>
-        
-          <li>
-            <a href="/2019/git_question/">Git 遇到的一些问题</a>
           </li>
         
       </ul>
@@ -185,7 +192,7 @@
   <section class="widget-wrap">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
     </div>
   </section>
 

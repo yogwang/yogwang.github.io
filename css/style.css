@@ -143,88 +143,52 @@ div#wrap {
   justify-content: space-between;
 }
 div#wrap a {
-  color: #333;
+  color: inherit;
 }
 div#wrap a:hover {
   color: #f00;
   text-decoration: underline;
 }
-div#wrap main#container {
+main#container {
   width: calc(100% - 300px);
 }
-div#wrap aside#sidebar {
-  width: 250px;
+main#container article a {
+  color: #0e90d2;
 }
-div#wrap aside#sidebar section {
-  margin-bottom: 25px;
+main#container article blockquote {
+  font-family: inherit;
+  background: #f1f1f1;
+  padding: 15px;
+  border-left: 2px solid #009a61;
 }
-div#wrap aside#sidebar section h3 {
-  font-size: 15px;
-  color: #000;
-  font-weight: normal;
-  text-transform: capitalize;
+main#container article figure {
+  width: 100%;
+  background: #f1f1f1;
+  padding: 20px 10px;
+  border-radius: 5px;
+  overflow-y: hidden;
 }
-div#wrap aside#sidebar section ul,
-div#wrap aside#sidebar section li {
-  line-height: 25px;
-  padding-right: 0.3rem;
+main#container article figure .gutter {
+  color: #999;
 }
-div#wrap aside#sidebar section ul a,
-div#wrap aside#sidebar section li a {
-  color: #666;
-}
-div#wrap aside#sidebar section.userinfo {
-  color: #333;
-  text-align: center;
-}
-div#wrap aside#sidebar section.userinfo img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  margin: 0 auto;
-  display: block;
-}
-div#wrap aside#sidebar section.userinfo h2 {
-  font-size: 22px;
-  font-weight: normal;
-  margin: 10px 0 15px;
-}
-div#wrap aside#sidebar section.userinfo span {
-  color: #666;
-}
-div#wrap aside#sidebar section.userinfo p {
-  font-size: 15px;
-  margin: 5px 0;
-}
-div#wrap aside#sidebar section.userinfo div {
-  margin-top: 10px;
-}
-div#wrap aside#sidebar section.userinfo div a {
-  line-height: ;
-  font-size: 24px;
-  color: #000;
+main#container article figure pre {
   margin: 0 5px;
+}
+main#container article code {
+  line-height: 20px;
+  color: #c7254e;
+  background: #f9f2f4;
+  padding: 0 8px;
+  border-radius: 2px;
   display: inline-block;
 }
-div#wrap aside#sidebar section.userinfo~section {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #dedede;
-  box-shadow: 3px 3px 5px #dedede;
-}
-div#wrap aside#sidebar section.userinfo~section a {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-div#wrap nav#page-nav {
+main#container nav#page-nav {
   font-size: 18px;
   text-transform: uppercase;
   text-align: center;
   margin: 50px auto 5vh;
 }
-div#wrap nav#page-nav >* {
+main#container nav#page-nav >* {
   min-width: 35px;
   height: 35px;
   line-height: 33px;
@@ -235,34 +199,40 @@ div#wrap nav#page-nav >* {
   display: inline-block;
   vertical-align: middle;
 }
-div#wrap nav#page-nav >*.current {
+main#container nav#page-nav >*.current {
   color: #fff;
   background: #0e90d2;
   border-color: #0e90d2;
   box-shadow: 2px 2px 4px #0e90d2;
 }
-div#wrap nav#page-nav >*.extend {
+main#container nav#page-nav >*.extend {
   font-size: 12px;
 }
-div#wrap nav#article-nav {
+main#container nav#article-nav {
   font-size: 18px;
   margin-top: 5vh;
-  display: flex;
-  justify-content: space-between;
 }
-div#wrap nav#article-nav a:hover {
+main#container nav#article-nav::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+main#container nav#article-nav a {
+  display: inline-block;
+}
+main#container nav#article-nav a:hover {
   text-decoration: none;
 }
-div#wrap nav#article-nav a:hover div {
+main#container nav#article-nav a:hover div {
   transform: scale(1.2);
 }
-div#wrap nav#article-nav strong {
+main#container nav#article-nav strong {
   font-size: 16px;
   color: #008000;
   font-weight: normal;
   text-transform: uppercase;
 }
-div#wrap nav#article-nav strong::after {
+main#container nav#article-nav strong::after {
   content: "";
   width: 100%;
   height: 1px;
@@ -270,14 +240,81 @@ div#wrap nav#article-nav strong::after {
   margin: 5px 0;
   display: block;
 }
-div#wrap nav#article-nav div {
+main#container nav#article-nav div {
   transition: transform 0.3s;
 }
-div#wrap nav#article-nav #article-nav-older {
+main#container nav#article-nav #article-nav-older {
+  float: right;
   text-align: right;
 }
-div#wrap nav#article-nav #article-nav-older strong {
+main#container nav#article-nav #article-nav-older strong {
   color: #808080;
+}
+aside#sidebar {
+  width: 250px;
+}
+aside#sidebar section {
+  margin-bottom: 25px;
+}
+aside#sidebar section h3 {
+  font-size: 15px;
+  color: #000;
+  font-weight: normal;
+  text-transform: capitalize;
+}
+aside#sidebar section ul,
+aside#sidebar section li {
+  line-height: 25px;
+  padding-right: 0.3rem;
+}
+aside#sidebar section ul a,
+aside#sidebar section li a {
+  color: #666;
+}
+aside#sidebar section.widget-wrap {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #dedede;
+  box-shadow: 3px 3px 5px #dedede;
+}
+aside#sidebar section.widget-wrap a {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+aside#sidebar section.userinfo {
+  color: #333;
+  text-align: center;
+}
+aside#sidebar section.userinfo img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+}
+aside#sidebar section.userinfo h2 {
+  font-size: 22px;
+  font-weight: normal;
+  margin: 10px 0 15px;
+}
+aside#sidebar section.userinfo span {
+  color: #666;
+}
+aside#sidebar section.userinfo p {
+  font-size: 15px;
+  margin: 5px 0;
+}
+aside#sidebar section.userinfo div {
+  margin-top: 10px;
+}
+aside#sidebar section.userinfo div a {
+  line-height: ;
+  font-size: 24px;
+  color: #000;
+  margin: 0 5px;
+  display: inline-block;
 }
 footer#footer {
   width: 100%;
@@ -288,61 +325,171 @@ footer#footer {
   left: 0;
   bottom: 0;
 }
+html::-webkit-scrollbar {
+  width: 10px;
+}
+html::-webkit-scrollbar-track-piece {
+  border: none;
+  background-color: #f1f1f1;
+}
+html::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #4a4e50;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: #313131;
+}
+html::-moz-selection {
+  background: #313131;
+  color: #f1f1f1;
+  text-shadow: none;
+}
+html::selection {
+  background: #348fff;
+  color: #f1f1f1;
+  text-shadow: none;
+}
+@media (max-width: 800px) {
+  div#wrap {
+    padding: 5vh 2vw 120px;
+    flex-wrap: wrap;
+  }
+  div#wrap main#container,
+  div#wrap aside#sidebar {
+    width: 100%;
+  }
+  div#wrap aside#sidebar section.widget-wrap {
+    border: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+  }
+  div#wrap aside#sidebar section.widget-wrap h3 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+  }
+  div#wrap aside#sidebar img {
+    width: 100px;
+    height: 100px;
+    grid-row-start: 1;
+    grid-row-end: 5;
+  }
+  div#wrap aside#sidebar h2 {
+    margin-bottom: 5px;
+  }
+  div#wrap aside#sidebar span {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  div#wrap aside#sidebar p {
+    line-height: 18px;
+    font-size: 13px;
+    margin: 0;
+  }
+  div#wrap aside#sidebar div {
+    grid-column-start: 2;
+  }
+  div#wrap aside#sidebar section.userinfo {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+  }
+}
+main#container >div.article-type-post article.article-content,
 main#container section.archives-wrap {
   min-height: 50vh;
 }
-main#container section.archives-wrap div.archives article.archive-article {
-  padding: 3vh 2vw 1vh 1.5vw;
+main#container div.archives div.archive-article {
+  padding: 15px 15px 5px;
   border: 1px solid #ddd;
   border-radius: 12px;
   margin: 2vh 0 3vh;
   box-shadow: 2px 2px 6px #ddd;
 }
-main#container section.archives-wrap div.archives article.archive-article h2[itemprop='name'] {
-  font-size: 18px;
-  font-weight: normal;
+main#container div.archives div.archive-article ul.article-tag-list {
+  font-size: 12px;
+  color: #999;
+  list-style-type: none;
+  padding: 0;
 }
-main#container section.archives-wrap div.archives article.archive-article p.archive-article-date {
+main#container div.archives div.archive-article ul.article-tag-list::before {
+  content: "Tags: ";
+  display: inline;
+}
+main#container div.archives div.archive-article ul.article-tag-list li {
+  display: inline;
+}
+main#container div.archives div.archive-article ul.article-tag-list li+li::before {
+  content: ",";
+  margin: 0 3px;
+  display: inline-block;
+}
+main#container div.archives div.archive-article h2[itemprop='name'] {
+  font-size: 22px;
+  font-weight: normal;
+  margin: 5px 0 25px;
+}
+main#container div.archives div.archive-article p.archive-article-date {
   text-align: right;
 }
-main#container article.article header.article-header {
+main#container div.archives div.article-more-link {
+  text-align: center;
+}
+main#container div.archives div.article-more-link a {
+  line-height: 40px;
+  text-decoration: none;
+  padding: 5px 0;
+  border-bottom: 1px solid currentColor;
+  transition: padding 0.4s;
+}
+main#container div.archives div.article-more-link a:hover {
+  padding: 5px 15px;
+}
+main#container div[class*='article-inner'] {
+  font-size: 15px;
+}
+main#container div[class*='article-inner'] li {
+  margin: 5px 0;
+}
+main#container div[class*='article-inner'] header.article-header {
+  color: #333;
   border-bottom: 1px solid #ddd;
   margin-bottom: 5vh;
 }
-main#container article.article header.article-header h1 {
+main#container div[class*='article-inner'] header.article-header h1 {
   font-size: 24px;
   font-weight: normal;
 }
-main#container article.article div.article-entry {
-  min-height: 50vh;
-}
-main#container article.article div.article-entry a {
-  color: #0e90d2;
-}
-main#container article.article blockquote {
-  font-family: inherit;
-  background: #f1f1f1;
-  padding: 15px;
-  border-left: 2px solid #009a61;
-}
-main#container article.article figure {
+div#about {
   width: 100%;
-  background: #f1f1f1;
-  padding: 20px 10px;
-  border-radius: 5px;
-  overflow-y: hidden;
+  padding: 5vh 0;
 }
-main#container article.article figure .gutter {
+div#about div.about-header h1,
+div#about div.about-header h3 {
+  font-size: 25px;
+  font-weight: normal;
+}
+div#about div.about-header h2 {
+  font-size: 35px;
+  font-weight: normal;
+  margin: 15px 0;
+}
+div#about div.about-header h3 {
   color: #999;
+  margin: 0 0 15px;
 }
-main#container article.article figure pre {
-  margin: 0 5px;
+div#about article.article-content {
+  line-height: 35px;
+  font-size: 18px;
 }
-main#container article.article code {
-  line-height: 20px;
-  color: #c7254e;
-  background: #f9f2f4;
-  padding: 0 8px;
-  border-radius: 2px;
-  display: inline-block;
+div#about article.article-content code {
+  color: #d14;
+  font-family: 'Micorsofe Yahei';
+}
+div#about article.article-content sub {
+  color: #666;
+}
+div#about article.article-content a {
+  color: #0e90d2;
 }

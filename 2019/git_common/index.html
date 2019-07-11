@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Git 操作命令 | YOG WANG
+    Git 操作命令 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -21,24 +21,26 @@
   </a>
   <nav class="header-navbar">
     
-    <a class="nav-link" href="/">主页</a>
-    
     <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
     
   </nav>
 </header>
 
     <div id="wrap">
-        <main id='container'>
-          <article id="post-git_common" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <p class="article-date">
+      <main id="container">
+  <div id="post-git_common" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
   <time datetime="2019-06-17T07:16:51.000Z" itemprop="datePublished">2019-06-17</time>
 </p>
-    
-  </div>
-  <div class="article-inner">
-    
+      
+    </div>
+    <!--  -->
     
       <header class="article-header">
         
@@ -51,14 +53,16 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="添加文件到仓库-git-add"><a href="#添加文件到仓库-git-add" class="headerlink" title="添加文件到仓库 git add"></a>添加文件到仓库 <code>git add</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
+       
+  <article class="article-content">
+    <h2 id="添加文件到仓库-git-add"><a href="#添加文件到仓库-git-add" class="headerlink" title="添加文件到仓库 git add"></a>添加文件到仓库 <code>git add</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add *</span><br></pre></td></tr></table></figure>
 
 <h2 id="提交文件到仓库-git-commit"><a href="#提交文件到仓库-git-commit" class="headerlink" title="提交文件到仓库 git commit"></a>提交文件到仓库 <code>git commit</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;Here is the message&quot;</span><br></pre></td></tr></table></figure>
 
 <p><code>commit</code> 命令可以提交多个之前 add 的文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add file1.txt</span><br><span class="line">$ git add file2.txt file3.txt</span><br><span class="line">$ git commit -m &quot;add 3 files.&quot;</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
 <h2 id="查看当前仓库状态-git-status"><a href="#查看当前仓库状态-git-status" class="headerlink" title="查看当前仓库状态 git status"></a>查看当前仓库状态 <code>git status</code></h2><p>没有需要提交的修改</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
 
@@ -88,8 +92,10 @@
 <h2 id="git-reset-hard-commit-id"><a href="#git-reset-hard-commit-id" class="headerlink" title="git reset --hard commit_id"></a><code>git reset --hard commit_id</code></h2><p>也可以直接切换到某个版本，版本号可以不写全，前 4 位就可以了，Git 会自动去找，也可以 Tab 补全</p>
 <h2 id="查看操作日志-git-reflog"><a href="#查看操作日志-git-reflog" class="headerlink" title="查看操作日志 git reflog"></a>查看操作日志 <code>git reflog</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line"></span><br><span class="line">77ac955 (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to HEAD~2</span><br><span class="line">2c8fcc8 (origin/master) HEAD@&#123;1&#125;: commit: wrote a readme file</span><br><span class="line">87c9d12 HEAD@&#123;2&#125;: commit: add distributed</span><br><span class="line">77ac955 (HEAD -&gt; master) HEAD@&#123;3&#125;: commit (initial): wrote a readme file</span><br></pre></td></tr></table></figure>
 
+ 
+  </article>
 
-      
+
     </div>
   </div>
   
@@ -114,16 +120,16 @@
 </nav>
 
   
-</article>
+</div>
 
 
-        </main>
-        <aside id="sidebar">
+</main>
+<aside id="sidebar">
   
     
 <section class="userinfo">
-    <img src="/img/userimg.jpg" alt="Yog Wang">
-    <h2>Yog Wang</h2>
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
     <span>久之须自见得</span>
     <p>ODIN.INC</p>
     <p>Jiaxing,China</p>
@@ -144,6 +150,14 @@
       <ul>
         
           <li>
+            <a href="/2019/Hexo-start/">Hexo 模板制作</a>
+          </li>
+        
+          <li>
+            <a href="/2019/CSS3-WaterFull/">纯CSS 完成瀑布流布局</a>
+          </li>
+        
+          <li>
             <a href="/2019/hello you/">Hello Hexo</a>
           </li>
         
@@ -153,14 +167,6 @@
         
           <li>
             <a href="/2019/git_rebase/">Git 编辑历史提交的 Commit</a>
-          </li>
-        
-          <li>
-            <a href="/2019/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
-          </li>
-        
-          <li>
-            <a href="/2019/git_question/">Git 遇到的一些问题</a>
           </li>
         
       </ul>
@@ -185,7 +191,7 @@
   <section class="widget-wrap">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
     </div>
   </section>
 

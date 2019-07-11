@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Git 关联到GigHub | YOG WANG
+    Git 关联到GigHub | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -21,24 +21,26 @@
   </a>
   <nav class="header-navbar">
     
-    <a class="nav-link" href="/">主页</a>
-    
     <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
     
   </nav>
 </header>
 
     <div id="wrap">
-        <main id='container'>
-          <article id="post-git_connectToGitHub" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <p class="article-date">
+      <main id="container">
+  <div id="post-git_connectToGitHub" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
   <time datetime="2019-06-17T07:36:06.000Z" itemprop="datePublished">2019-06-17</time>
 </p>
-    
-  </div>
-  <div class="article-inner">
-    
+      
+    </div>
+    <!--  -->
     
       <header class="article-header">
         
@@ -51,10 +53,12 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="创建-SSH-Keygen"><a href="#创建-SSH-Keygen" class="headerlink" title="创建 SSH Keygen"></a>创建 SSH Keygen</h2><p>使用<code>ssh-keygen</code>生成私钥和公钥</p>
+       
+  <article class="article-content">
+    <h2 id="创建-SSH-Keygen"><a href="#创建-SSH-Keygen" class="headerlink" title="创建 SSH Keygen"></a>创建 SSH Keygen</h2><p>使用<code>ssh-keygen</code>生成私钥和公钥</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br><span class="line"></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/c/Users/yog/.ssh/id_rsa):</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in /c/Users/yog/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/yog/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:0ZYdnPILyMbV9xpgRE/hWf1MayqhoEYquZTuOMr8EcE yog@YOG-DESKTOP</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 3072]----+</span><br><span class="line">|           =+.o.o|</span><br><span class="line">|  .      .oo*=.oo|</span><br><span class="line">|   E   o.o++.o++o|</span><br><span class="line">|    .. .=o... .o+|</span><br><span class="line">|  o.o ..S ....oo |</span><br><span class="line">| = ..o   . ....  |</span><br><span class="line">|o o..       .    |</span><br><span class="line">|=o  .            |</span><br><span class="line">|==..             |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
 <p>找到 SSH 公钥输出内容，也可以用资源管理器打开复制</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.ssh</span><br><span class="line">$ pwd</span><br><span class="line">/c/Users/yog/.ssh</span><br><span class="line">$ cat id_rsa.pub</span><br><span class="line"></span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDb9FSAEzrtUG9bJFt5oaDieFo6FeqBWB9ppX4VCqBnNxKvpnAZbJMjUjxHAIQEFSK2sD9NUXgyuKguilX6kRVGoTq15Lcf12nfqfjoGMUm3qAgNdZlkHPFk7WxBFquaalWV8OOOZNe45W2YcbzPucQMt54iiGSYzuAQLbMW/5rn2uF4HPrQNeMmduIvNZ8BxK4gS60IyjnEPTZbyG3RfJ0K5FQBN6wudoSWZZCU4UTcOjFhLRQ3I/p5OQTSKXnbBhpoX7nD42Xohijt2xB5GhdLrh42E28AEORchaMJ7OxqenT4U+BDdhQPk87ZBpB254Cv5RCvj60dJv5VjE/kTx4bCKslv9kgtV4INyUNPWlDAPhe6dmW1L+9Cl5QUYPvhjlXLLpcXoqne3OlPcS33UwJE0H/6++TusANaMTAXxPofD9XCgK/ipCNtT+YPxiyWIVJKgVUJ7NKAoieNOqXVN5d09ts/hSM5CtBXFbKnFGrPEr9zGiUhfe7HM0gRpWMV0= yog@YOG-DESKTOP</span><br></pre></td></tr></table></figure>
 
@@ -89,8 +93,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
 
 <p>然后刷新 GitHub 库页面就可以看到上传的本地库文件了<br><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/Git/src/img_8.png"></p>
+ 
+  </article>
 
-      
+
     </div>
   </div>
   
@@ -115,16 +121,16 @@
 </nav>
 
   
-</article>
+</div>
 
 
-        </main>
-        <aside id="sidebar">
+</main>
+<aside id="sidebar">
   
     
 <section class="userinfo">
-    <img src="/img/userimg.jpg" alt="Yog Wang">
-    <h2>Yog Wang</h2>
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
     <span>久之须自见得</span>
     <p>ODIN.INC</p>
     <p>Jiaxing,China</p>
@@ -145,6 +151,14 @@
       <ul>
         
           <li>
+            <a href="/2019/Hexo-start/">Hexo 模板制作</a>
+          </li>
+        
+          <li>
+            <a href="/2019/CSS3-WaterFull/">纯CSS 完成瀑布流布局</a>
+          </li>
+        
+          <li>
             <a href="/2019/hello you/">Hello Hexo</a>
           </li>
         
@@ -154,14 +168,6 @@
         
           <li>
             <a href="/2019/git_rebase/">Git 编辑历史提交的 Commit</a>
-          </li>
-        
-          <li>
-            <a href="/2019/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
-          </li>
-        
-          <li>
-            <a href="/2019/git_question/">Git 遇到的一些问题</a>
           </li>
         
       </ul>
@@ -186,7 +192,7 @@
   <section class="widget-wrap">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
     </div>
   </section>
 

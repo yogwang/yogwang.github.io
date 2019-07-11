@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Git 查看提交日志 | YOG WANG
+    Git 查看提交日志 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -21,24 +21,26 @@
   </a>
   <nav class="header-navbar">
     
-    <a class="nav-link" href="/">主页</a>
-    
     <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
     
   </nav>
 </header>
 
     <div id="wrap">
-        <main id='container'>
-          <article id="post-git_log" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <p class="article-date">
+      <main id="container">
+  <div id="post-git_log" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
   <time datetime="2019-06-17T07:33:26.000Z" itemprop="datePublished">2019-06-17</time>
 </p>
-    
-  </div>
-  <div class="article-inner">
-    
+      
+    </div>
+    <!--  -->
     
       <header class="article-header">
         
@@ -51,10 +53,12 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a><code>git log</code></h3><p>基础查看提交日志</p>
+       
+  <article class="article-content">
+    <h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a><code>git log</code></h3><p>基础查看提交日志</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 12:10:01 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line">commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
 <h3 id="git-log-oneline"><a href="#git-log-oneline" class="headerlink" title="git log --oneline"></a><code>git log --oneline</code></h3><p>精简模式显示</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline</span><br><span class="line"></span><br><span class="line">2c8fcc8 (HEAD -&gt; master, origin/master) wrote a readme file</span><br><span class="line">87c9d12 add distributed</span><br><span class="line">77ac955 wrote a readme file</span><br></pre></td></tr></table></figure>
 
@@ -85,8 +89,10 @@
 <p>commit_id：提交版本号</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git log --stat 77ac</span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line"> readme.txt | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
 
+ 
+  </article>
 
-      
+
     </div>
   </div>
   
@@ -111,16 +117,16 @@
 </nav>
 
   
-</article>
+</div>
 
 
-        </main>
-        <aside id="sidebar">
+</main>
+<aside id="sidebar">
   
     
 <section class="userinfo">
-    <img src="/img/userimg.jpg" alt="Yog Wang">
-    <h2>Yog Wang</h2>
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
     <span>久之须自见得</span>
     <p>ODIN.INC</p>
     <p>Jiaxing,China</p>
@@ -141,6 +147,14 @@
       <ul>
         
           <li>
+            <a href="/2019/Hexo-start/">Hexo 模板制作</a>
+          </li>
+        
+          <li>
+            <a href="/2019/CSS3-WaterFull/">纯CSS 完成瀑布流布局</a>
+          </li>
+        
+          <li>
             <a href="/2019/hello you/">Hello Hexo</a>
           </li>
         
@@ -150,14 +164,6 @@
         
           <li>
             <a href="/2019/git_rebase/">Git 编辑历史提交的 Commit</a>
-          </li>
-        
-          <li>
-            <a href="/2019/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
-          </li>
-        
-          <li>
-            <a href="/2019/git_question/">Git 遇到的一些问题</a>
           </li>
         
       </ul>
@@ -182,7 +188,7 @@
   <section class="widget-wrap">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
     </div>
   </section>
 

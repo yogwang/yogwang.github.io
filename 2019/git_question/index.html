@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Git 遇到的一些问题 | YOG WANG
+    Git 遇到的一些问题 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -21,24 +21,26 @@
   </a>
   <nav class="header-navbar">
     
-    <a class="nav-link" href="/">主页</a>
-    
     <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
     
   </nav>
 </header>
 
     <div id="wrap">
-        <main id='container'>
-          <article id="post-git_question" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <p class="article-date">
+      <main id="container">
+  <div id="post-git_question" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
   <time datetime="2019-07-03T06:27:56.000Z" itemprop="datePublished">2019-07-03</time>
 </p>
-    
-  </div>
-  <div class="article-inner">
-    
+      
+    </div>
+    <!--  -->
     
       <header class="article-header">
         
@@ -51,8 +53,18 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Error-GH007"><a href="#Error-GH007" class="headerlink" title="Error: GH007"></a>Error: GH007</h2><p>推送本地库的内容到远程库上报 <code>error: GH007</code> 时，在 <code>Setting</code> 里把 <b>Email</b> 的 <code>Keep my email address private</code> 勾选去掉即可<br><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/Git/src/img_9.png"></p>
+       
+  <article class="article-content">
+    <h2 id="这里是我在日常中遇到的一些Git方面的问题。"><a href="#这里是我在日常中遇到的一些Git方面的问题。" class="headerlink" title="这里是我在日常中遇到的一些Git方面的问题。"></a>这里是我在日常中遇到的一些Git方面的问题。</h2><ul>
+<li>Error: GH007</li>
+<li>不能退出、终止当前命令？</li>
+<li>想要删除提交的历史 Commit?</li>
+<li>合并与删除历史提交的 Commit ?</li>
+<li>操作失误，退回操作之前的版本库<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="Error-GH007"><a href="#Error-GH007" class="headerlink" title="Error: GH007"></a>Error: GH007</h2><p>推送本地库的内容到远程库上报 <code>error: GH007</code> 时，在 <code>Setting</code> 里把 <b>Email</b> 的 <code>Keep my email address private</code> 勾选去掉即可<br><img src="https://raw.githubusercontent.com/yogwang/doc_md/master/Git/src/img_9.png"></p>
 <h2 id="不能退出、终止当前命令？"><a href="#不能退出、终止当前命令？" class="headerlink" title="不能退出、终止当前命令？"></a>不能退出、终止当前命令？</h2><p>尝试按下 Q 键</p>
 <h2 id="想要删除提交的历史-Commit"><a href="#想要删除提交的历史-Commit" class="headerlink" title="想要删除提交的历史 Commit?"></a>想要删除提交的历史 Commit?</h2><h3 id="1-上一次提交的-Commit-有错误需要修改？-详细"><a href="#1-上一次提交的-Commit-有错误需要修改？-详细" class="headerlink" title="1. 上一次提交的 Commit 有错误需要修改？ 详细"></a>1. 上一次提交的 Commit 有错误需要修改？ <a href="http://yogwang.github.io/2019/git_commit--amend">详细</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend        // 撤销上一次提交  并将暂存区文件重新提交</span><br></pre></td></tr></table></figure>
 
@@ -71,8 +83,10 @@
 </ul>
 <h2 id="操作失误，退回操作之前的版本库"><a href="#操作失误，退回操作之前的版本库" class="headerlink" title="操作失误，退回操作之前的版本库"></a>操作失误，退回操作之前的版本库</h2><p>使用 <code>git reflog</code> 查看操作日志，找到误操之前的版本号</p>
 <p>再使用 <code>git reset --hard &lt;commit_id&gt;</code> 退回版本</p>
+ 
+  </article>
 
-      
+
     </div>
   </div>
   
@@ -97,16 +111,16 @@
 </nav>
 
   
-</article>
+</div>
 
 
-        </main>
-        <aside id="sidebar">
+</main>
+<aside id="sidebar">
   
     
 <section class="userinfo">
-    <img src="/img/userimg.jpg" alt="Yog Wang">
-    <h2>Yog Wang</h2>
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
     <span>久之须自见得</span>
     <p>ODIN.INC</p>
     <p>Jiaxing,China</p>
@@ -127,6 +141,14 @@
       <ul>
         
           <li>
+            <a href="/2019/Hexo-start/">Hexo 模板制作</a>
+          </li>
+        
+          <li>
+            <a href="/2019/CSS3-WaterFull/">纯CSS 完成瀑布流布局</a>
+          </li>
+        
+          <li>
             <a href="/2019/hello you/">Hello Hexo</a>
           </li>
         
@@ -136,14 +158,6 @@
         
           <li>
             <a href="/2019/git_rebase/">Git 编辑历史提交的 Commit</a>
-          </li>
-        
-          <li>
-            <a href="/2019/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
-          </li>
-        
-          <li>
-            <a href="/2019/git_question/">Git 遇到的一些问题</a>
           </li>
         
       </ul>
@@ -168,7 +182,7 @@
   <section class="widget-wrap">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
     </div>
   </section>
 
