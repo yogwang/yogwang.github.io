@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Electron_01 - 自己创建 Electron 应用 | blog [ YOG WANG ]
+    Electron_01 - 快速启动 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-Electron-Electron Js"
+  id="post-Electron01-Electron-quick-start"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -53,7 +53,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      Electron_01 - 自己创建 Electron 应用
+      Electron_01 - 快速启动
     </h1>
   
 
@@ -62,7 +62,7 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir my-app</span><br><span class="line"></span><br><span class="line">$ cd my-app</span><br><span class="line"></span><br><span class="line">$ npm init --y</span><br><span class="line">Wrote to E:\WWW\my-app\package.json:</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;my-app&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [],</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir my-app</span><br><span class="line"></span><br><span class="line">$ cd my-app</span><br><span class="line"></span><br><span class="line">$ npm init --y</span><br><span class="line">Wrote to E:\my-app\package.json:</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;my-app&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [],</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>修改入口文件为 <code>main.js</code> 并且添加 <code>start</code> 脚本引导 <strong>Node</strong> 来执行 Electron</p>
 <a id="more"></a>
@@ -95,7 +95,7 @@
 <h3 id="4-创建想展示的-index-html"><a href="#4-创建想展示的-index-html" class="headerlink" title="4. 创建想展示的 index.html"></a>4. 创建想展示的 index.html</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Hello World!&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Hello World!&lt;/h1&gt;</span><br><span class="line">    We are using node &lt;script&gt;document.write(process.versions.node)&lt;/script&gt;,</span><br><span class="line">    Chrome &lt;script&gt;document.write(process.versions.chrome)&lt;/script&gt;,</span><br><span class="line">    and Electron &lt;script&gt;document.write(process.versions.electron)&lt;/script&gt;.</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="5-启动应用"><a href="#5-启动应用" class="headerlink" title="5. 启动应用"></a>5. 启动应用</h3><p>创建并初始化完成 <code>main.js</code> 、 <code>index.html</code> 和 <code>package.json</code> 之后，<br>就可以在当前工程的根目录执行 <code>npm start</code> 命令来启动刚刚编写好的 <strong>Electron</strong> 应用了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ npm start</span><br><span class="line"></span><br><span class="line">&gt; my-app@1.0.0 start E:\WWW\my-app</span><br><span class="line">&gt; electron .</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ npm start</span><br><span class="line"></span><br><span class="line">&gt; my-app@1.0.0 start E:\my-app</span><br><span class="line">&gt; electron .</span><br></pre></td></tr></table></figure>
 
 <h3 id="基础结构"><a href="#基础结构" class="headerlink" title="基础结构"></a>基础结构</h3><p>所以一个最基础的 <strong>Electron</strong> 应用 应有以下目录结构：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my-app/</span><br><span class="line">├── package.json</span><br><span class="line">├── main.js</span><br><span class="line">└── index.html</span><br></pre></td></tr></table></figure>
@@ -156,7 +156,7 @@
       <ul>
         
           <li>
-            <a href="/2019/Electron-ElectronBuilder&ElectronUpdater/">Electron:Electron-builder+Electron-updater 完成Electron自升级</a>
+            <a href="/2019/Electron04-ElectronBuilder&ElectronUpdater/">Electron:Electron-builder+Electron-updater 完成Electron自升级</a>
           </li>
         
           <li>
@@ -203,10 +203,14 @@
 </aside>
     </div>
     <footer id="footer">
-  &copy; 2019 
-  YogWang
-  powered_by 
+  &copy; 2019 YogWang
+  powered_by
   <a href="http://hexo.io/" target="_blank">Hexo</a>
 </footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
   </body>
 </html>

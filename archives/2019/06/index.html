@@ -51,7 +51,7 @@
       
   
     <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/Electron-Electron-builder/">Electron_03 - Electron-builder</a>
+      <a class="archive-article-title" href="/2019/Electron03-Electron-builder/">Electron_03 - Electron-builder</a>
     </h2>
   
 
@@ -62,7 +62,7 @@
   </article>
   
     <div class="article-more-link">
-      <a href="/2019/Electron-Electron-builder/#more">阅读全文</a>
+      <a href="/2019/Electron03-Electron-builder/#more">阅读全文</a>
     </div>
    
 
@@ -84,7 +84,7 @@
       
   
     <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/Electron-Electron-parkager/">Electron_02 - Electron-packager</a>
+      <a class="archive-article-title" href="/2019/Electron02-Electron-parkager/">Electron_02 - Electron-packager</a>
     </h2>
   
 
@@ -105,7 +105,7 @@
   </article>
   
     <div class="article-more-link">
-      <a href="/2019/Electron-Electron-parkager/#more">阅读全文</a>
+      <a href="/2019/Electron02-Electron-parkager/#more">阅读全文</a>
     </div>
    
 
@@ -304,20 +304,20 @@
       
   
     <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/Electron-Electron Js/">Electron_01 - 自己创建 Electron 应用</a>
+      <a class="archive-article-title" href="/2019/Electron01-Electron-quick-start/">Electron_01 - 快速启动</a>
     </h2>
   
 
     </header>
      
   <article class="article-excerpt">
-    <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir my-app</span><br><span class="line"></span><br><span class="line">$ cd my-app</span><br><span class="line"></span><br><span class="line">$ npm init --y</span><br><span class="line">Wrote to E:\WWW\my-app\package.json:</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;my-app&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [],</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir my-app</span><br><span class="line"></span><br><span class="line">$ cd my-app</span><br><span class="line"></span><br><span class="line">$ npm init --y</span><br><span class="line">Wrote to E:\my-app\package.json:</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;my-app&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [],</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>修改入口文件为 <code>main.js</code> 并且添加 <code>start</code> 脚本引导 <strong>Node</strong> 来执行 Electron</p>
   </article>
   
     <div class="article-more-link">
-      <a href="/2019/Electron-Electron Js/#more">阅读全文</a>
+      <a href="/2019/Electron01-Electron-quick-start/#more">阅读全文</a>
     </div>
    
 
@@ -361,7 +361,7 @@
       <ul>
         
           <li>
-            <a href="/2019/Electron-ElectronBuilder&ElectronUpdater/">Electron:Electron-builder+Electron-updater 完成Electron自升级</a>
+            <a href="/2019/Electron04-ElectronBuilder&ElectronUpdater/">Electron:Electron-builder+Electron-updater 完成Electron自升级</a>
           </li>
         
           <li>
@@ -408,10 +408,14 @@
 </aside>
     </div>
     <footer id="footer">
-  &copy; 2019 
-  YogWang
-  powered_by 
+  &copy; 2019 YogWang
+  powered_by
   <a href="http://hexo.io/" target="_blank">Hexo</a>
 </footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
   </body>
 </html>

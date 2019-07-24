@@ -317,6 +317,21 @@ footer#footer {
   left: 0;
   bottom: 0;
 }
+#gotop {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 25px;
+  color: #333;
+  text-align: center;
+  background: #dedede;
+  border-radius: 50%;
+  display: block;
+  cursor: pointer;
+  position: fixed;
+  right: 12vh;
+  bottom: 8vw;
+}
 html::-webkit-scrollbar {
   width: 10px;
 }
@@ -386,6 +401,9 @@ html::selection {
     text-align: left;
     display: grid;
     grid-template-columns: 1fr 1.5fr;
+  }
+  #gotop {
+    right: 5vh;
   }
 }
 main#container >div.article-type-post article.article-content,
