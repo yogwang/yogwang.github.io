@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Git 创建版本库 | blog [ YOG WANG ]
+    Apache 配置虚拟域名 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-git_create"
+  id="post-php-VirtualHost"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -41,7 +41,7 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-06-17T03:22:11.000Z" itemprop="datePublished">2019-06-17</time>
+  <time datetime="2019-07-30T07:13:41.000Z" itemprop="datePublished">2019-07-30</time>
 </p> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/笔记/">笔记</a>
@@ -53,7 +53,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      Git 创建版本库
+      Apache 配置虚拟域名
     </h1>
   
 
@@ -62,12 +62,27 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <h2 id="创建一个空目录"><a href="#创建一个空目录" class="headerlink" title="创建一个空目录"></a>创建一个空目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir git_demo</span><br><span class="line">$ cd git_demo</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建-Git-仓库"><a href="#创建-Git-仓库" class="headerlink" title="创建 Git 仓库"></a>创建 Git 仓库</h2><p>进入目录后通过<code>git init</code>命令创建 Git 仓库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line"></span><br><span class="line">Initialized empty Git repository in E:/GitLibrary/git_demo/.git/</span><br></pre></td></tr></table></figure>
-
+    <p>在本地调试后端项目时候经常会用到虚拟域名的功能；</p>
+<p>毕竟项目都放在 WWW 目录下，如果不使用虚拟域名，URL 实在太长，实在不方便调试。</p>
+<blockquote>
+<p>例如：<a href="http://localhost/project/public/index.php/sample/test/hello" target="_blank" rel="noopener">http://localhost/project/public/index.php/sample/test/hello</a></p>
+</blockquote>
+<p>如果使用虚拟域名就可以简化为 <code>http://p.loc/sample/test/hello</code> 着实方便很多。</p>
+<p>但我总是记不住怎么去添加虚拟域名，总不可能一直百度吧,所以就记下笔记了。</p>
 <a id="more"></a>
+
+<p>本地使用的 <a href="http://phpstudy.php.cn/" target="_blank" rel="noopener">phpStudy 集成环境</a>，所以步骤都是按照 phpStudy 的来，实际也相差不大。</p>
+<h2 id="方法-1：针对项目添加虚拟域名"><a href="#方法-1：针对项目添加虚拟域名" class="headerlink" title="方法 1：针对项目添加虚拟域名"></a>方法 1：针对项目添加虚拟域名</h2><h3 id="Step1：-打开-vhosts-ini-配置文件"><a href="#Step1：-打开-vhosts-ini-配置文件" class="headerlink" title="Step1： 打开 vhosts-ini 配置文件"></a>Step1： 打开 <code>vhosts-ini</code> 配置文件</h3><p><img src="/.io//f1step1.png" alt="f1Step1:vhosts.conf"></p>
+<p>或者使用路径打开 <code>..\phpStudy\PHPTutorial\Apache\conf\vhosts.conf</code></p>
+<h3 id="Step2：-添加新-VirtualHost"><a href="#Step2：-添加新-VirtualHost" class="headerlink" title="Step2： 添加新 VirtualHost"></a>Step2： 添加新 VirtualHost</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost _default_:80&gt;</span><br><span class="line">ServerName &quot;p.loc&quot;</span><br><span class="line">DocumentRoot &quot;E:/WWW/project/public&quot;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step3：-修改-hosts-文件"><a href="#Step3：-修改-hosts-文件" class="headerlink" title="Step3： 修改 hosts 文件"></a>Step3： 修改 <code>hosts</code> 文件</h3><p><img src="/.io//f1step3.png" alt="f1Step3:hosts"></p>
+<p>或者使用路径打开 <code>C:\Windows\System32\drivers\etc</code></p>
+<h3 id="Step3：-重启-ALache-服务"><a href="#Step3：-重启-ALache-服务" class="headerlink" title="Step3： 重启 ALache 服务"></a>Step3： 重启 ALache 服务</h3><p><img src="/.io//f1step4.png" alt="f1Step4:重启ALache"></p>
+<blockquote>
+<p>不用修改其他，因为 phpStudy 启用了 <code>conf/vhosts.conf</code> 在 httpd.conf:486</p>
+</blockquote>
+<h2 id="更加偷懒的方式？"><a href="#更加偷懒的方式？" class="headerlink" title="更加偷懒的方式？"></a>更加偷懒的方式？</h2><p>想到了一种泛域名解析的方式去配置虚拟域名，然后根据二级域名来指向不同目录。但是在只修改 <code>vhosts-ini</code> 情况还不能办到。可能需要启动 <code>htttpd.conf</code> 里的扩展功能，暂时不研究了，记一下先。</p>
  
   </article>
 
@@ -77,19 +92,10 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/git_common/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Git 操作命令
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/git_install/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/html5-set_videoSpeed/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">安装 Git in windows</div>
+      <div class="article-nav-title">简单设置Video标签的播放倍速</div>
     </a>
   
 </nav>
