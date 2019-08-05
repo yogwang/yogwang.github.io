@@ -170,6 +170,7 @@ main#container article figure pre {
 main#container article code {
   line-height: 20px;
   color: #c7254e;
+  word-break: break-word;
   background: #f9f2f4;
   padding: 0 8px;
   border-radius: 2px;
