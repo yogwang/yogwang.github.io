@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    万能的 :checked + label | blog [ YOG WANG ]
+    JavaScript for(let..){setTimeout...} | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-CSS-checked+label"
+  id="post-JS-let"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -41,7 +41,7 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-07-18T06:06:44.000Z" itemprop="datePublished">2019-07-18</time>
+  <time datetime="2019-08-06T03:06:47.000Z" itemprop="datePublished">2019-08-06</time>
 </p> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/笔记/">笔记</a>
@@ -53,7 +53,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      万能的 :checked + label
+      JavaScript for(let..){setTimeout...}
     </h1>
   
 
@@ -63,24 +63,27 @@
        
   <article class="article-content">
     <blockquote>
-<p>Meathill：纯 CSS 组件顾名思义，只改变外观，不改变行为。所以它的功能不会因为浏览器变化而变化，即使浏览器支持不完善，即使因为加载速度或者网络关系，导致 CSS、JS 加载失败，它最多样式回归到原始样式，功能是完全一致的。在非标准浏览器环境下，如读屏器，也是如此</p>
+<p>今天在 Segmentfault 看一篇文章。 里边举例了一个经典的面试题，异步、单线程的问题。<br>我也只是了解，知道执行结果是什么，但并不是门清。<br>但看到把 <code>var</code> 换成 <code>let</code> 声明之后就是另外一个结果了，就有点懵。<br>所以准备写一篇笔记梳理一下 <code>块级作用域</code>。</p>
 </blockquote>
-<p>前年看肉大直播的时候听到：万能的 <code>:checked + label</code> 当时没有体会到有啥万能，不就是自定义 <code>input</code> 样式吗，直到前段时间看到一个 <a href="https://codepen.io/dipanjanb/pen/GaOvmG" target="_blank" rel="noopener">Demo</a> 虽然不是使用的这种方法，但是我突然就明白了，这个就可以用 <code>:checked + label</code> 来实现。</p>
-<p>…</p>
-<p>原来很多需要 <code>Js</code> 配合的一些效果点击效果只需要 <code>:checked + label</code> 就可以完成。</p>
+<p>首先来看下这道面试题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 1; i &lt;= 5; i++) &#123;</span><br><span class="line">   setTimeout(function test() &#123;</span><br><span class="line">        console.log(i) // 依次输出：6 6 6 6 6</span><br><span class="line">    &#125;, i * 1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
 
-<h2 id="1-按钮交互"><a href="#1-按钮交互" class="headerlink" title="1. 按钮交互"></a>1. 按钮交互</h2><iframe id="cp_embed_GVOWXy" src="//codepen.io/yogwang/embed/GVOWXy?height=400&theme-id=dark&slug-hash=GVOWXy&default-tab=result" scrolling="no" frameborder="no" height="400" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<p>造成这个现象的原因是等到 <code>setTimeout</code> 异步执行时, <code>i</code> 已经变成 <em>6</em> 了。</p>
+<p>如果使用 <code>let</code> 声明就是另外一个结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (let i = 1; i &lt;= 5; i++) &#123;</span><br><span class="line">   setTimeout(function test() &#123;</span><br><span class="line">        console.log(i) // 依次输出：1 2 3 4 5</span><br><span class="line">    &#125;, i * 1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-下拉菜单"><a href="#2-下拉菜单" class="headerlink" title="2. 下拉菜单"></a>2. 下拉菜单</h2><iframe id="cp_embed_LwjgLB" src="//codepen.io/yogwang/embed/LwjgLB?height=400&theme-id=dark&slug-hash=LwjgLB&default-tab=result" scrolling="no" frameborder="no" height="400" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<h2 id="WHY"><a href="#WHY" class="headerlink" title="WHY ?"></a>WHY ?</h2><blockquote>
+<p>快速解释：因为 let 是块级作用域，当前的 i 只在本轮循环有效，所以每一次循环的 i 其实都是一个新的变量，所以 setTimeout 每次读的值都是不同的。</p>
+</blockquote>
+<p>那为什么使用 <code>let</code>申明 <strong>每一次循环都是一个新的变量</strong> ???</p>
+<p>使用 <code>babel</code> 编译成 ES5 版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;</span><br><span class="line"></span><br><span class="line">var _loop = function _loop(i) &#123;</span><br><span class="line">  setTimeout(function test() &#123;</span><br><span class="line">    console.log(i)</span><br><span class="line">  &#125;, i * 1000)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for (var i = 1; i &lt;= 5; i++) &#123;</span><br><span class="line">  _loop(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-折叠面板"><a href="#3-折叠面板" class="headerlink" title="3. 折叠面板"></a>3. 折叠面板</h2><iframe id="cp_embed_pMdRzR" src="//codepen.io/yogwang/embed/pMdRzR?height=600&theme-id=dark&slug-hash=pMdRzR&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
-
-<h2 id="4-选项卡"><a href="#4-选项卡" class="headerlink" title="4. 选项卡"></a>4. 选项卡</h2><iframe id="cp_embed_pMdePQ" src="//codepen.io/yogwang/embed/pMdePQ?height=600&theme-id=dark&slug-hash=pMdePQ&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
-
-<h2 id="5-模拟弹出窗口"><a href="#5-模拟弹出窗口" class="headerlink" title="5. 模拟弹出窗口"></a>5. 模拟弹出窗口</h2><iframe id="cp_embed_gVXmjo" src="//codepen.io/yogwang/embed/gVXmjo?height=600&theme-id=dark&slug-hash=gVXmjo&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
-
-<h3 id="应该还有其他我没有想到的，以后想到了，再慢慢补全起来。"><a href="#应该还有其他我没有想到的，以后想到了，再慢慢补全起来。" class="headerlink" title="应该还有其他我没有想到的，以后想到了，再慢慢补全起来。"></a>应该还有其他我没有想到的，以后想到了，再慢慢补全起来。</h3> 
+<p>闭包？</p>
+<p>– 未完 –<br>08-06</p>
+ 
   </article>
 
 
@@ -89,19 +92,19 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/Electron04-ElectronBuilder&ElectronUpdater/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/CSS-placeholder-shown/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">newer</strong>
       <div class="article-nav-title">
         
-          Electron:Electron-builder+Electron-updater 完成Electron自升级
+          CSS 判断 input 是否为空
         
       </div>
     </a>
   
   
-    <a href="/2019/BetterScrol-mouse-wheel/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/JS-call&apply&bind/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">BetterScrol 2.x Mouse-whell 没效果</div>
+      <div class="article-nav-title">如何理解 Call, Apply, Bind?</div>
     </a>
   
 </nav>
