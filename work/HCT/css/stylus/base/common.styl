@@ -1,0 +1,185 @@
+/*
+ * @Author: yogwang
+ * @Date: 2019-08-11 14:08:43
+ * @Last Modified by: yogwang
+ * @Last Modified time: 2019-08-11 15:47:56
+ */
+body
+  min-height 100vh
+  display flex
+  flex-direction column
+  justify-content space-between
+header
+  width 100%
+  height 30px
+  background $mainColor
+  position relative
+  .container
+    height @height
+    display flex
+    align-self flex-start
+    align-items center
+    justify-content space-between
+  .header-logo
+    max-height 22px
+    img
+      max-height inherit
+      vertical-align top
+  .header-lang
+    font-size 13px
+    color white
+    display flex
+    a
+      line-height 20px
+      color white
+      display block
+      &:hover
+        text-decoration underline
+      img
+        width 25px
+        height @line-height
+        margin 0 5px 0 10px
+        display inline-block
+        vertical-align top
+  .header-navbar
+    width 100%
+    background-color #fff3
+    position absolute
+    z-index 10
+    top 100%
+    left 0
+    nav
+      width 100%
+      height 40px
+      max-width $maxWidth
+      font-size 16px
+      padding 0 15px
+      margin 0 auto
+      display flex
+      justify-content flex-end
+      align-items center
+      a
+        color #333
+        text-shadow 0 0 0 transparent
+        filter drop-shadow(white 1px 1px)
+        display block
+        transition all 0.3s
+        &+a
+          margin-left 10px
+        &:hover
+          text-shadow 5px 3px 2px rgba($mainColor, 0.7)
+          transform translate(-2px, -2px)
+#main
+  width 100%
+  .banner
+    width 100%
+    background white
+    img
+      width 100%
+      max-width 100%
+  #breadcrumb
+    padding 4vh 0
+    ul
+      display flex
+      li
+        line-height 18px
+        color #a4a2a3
+        &:before
+          content ''
+          width @line-height
+          height @width
+          background url('../images/icon/ico_right.svg') center no-repeat
+          background-size @width
+          margin 0 3px
+          display inline-block
+          vertical-align top
+        &:first-child:before
+          background-image url('../images/icon/ico_mapmark.svg')
+          margin-left 0
+  .main-title
+    text-align center
+    h2
+      font-size 30px
+      font-weight normal
+      order 2
+      &:after
+        content ''
+        width 30px
+        height 4px
+        background $mainColor
+        margin 15px auto
+        display block
+    h4
+      font-size 40px
+      text-transform uppercase
+      margin 15px auto
+      &:before, &:after
+        content '/'
+        margin 0 25px
+        display inline-block
+footer
+  width 100%
+  line-height 35px
+  color #999
+  text-align center
+  background #282828
+  a
+    color inherit
+    &+a
+      margin-left 5px
+    &:hover
+      color red
+  .container
+    .row
+      justify-content space-between
+      align-items center
+      padding 5vh 0
+      .footer-contact
+        text-align left
+        h2
+          font-size 2.5vh
+          color $mainColor
+          font-family 'FZLTCHJW'
+          padding-left calc(3.5vh + 15px)
+          margin-bottom 15px
+          position relative
+          &:before
+            content ''
+            width 4vh
+            height @width
+            background url('../images/icon/ico_phone.png') center no-repeat
+            background-size contain
+            display block
+            position absolute
+            left 0
+            top 50%
+            transform translateY(-50%)
+          &:after
+            content attr(alt)
+            font-size 1vh
+            text-transform uppercase
+            display block
+        ul
+          font-size 15px
+          line-height 20px
+      .footer-nav
+        ul
+          font-size 18px
+          font-weight bold
+          display flex
+          justify-content space-between
+          ol
+            line-height 25px
+            font-size 15px
+            font-weight normal
+      .footer-follow
+        ul
+          display flex
+          justify-content center
+          li
+            padding 5px
+            img
+              width 90px
+              height @width
+  .copyright
+    background #0d0c0c
