@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    万能的 :checked + label | blog [ YOG WANG ]
+    CSS 中的文字截断 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-CSS-checked+label"
+  id="post-CSS-text_truncation"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -41,7 +41,7 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-07-18T06:06:44.000Z" itemprop="datePublished">2019-07-18</time>
+  <time datetime="2019-08-13T01:54:39.000Z" itemprop="datePublished">2019-08-13</time>
 </p> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/笔记/">笔记</a>
@@ -53,7 +53,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      万能的 :checked + label
+      CSS 中的文字截断
     </h1>
   
 
@@ -62,25 +62,24 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <blockquote>
-<p>Meathill：纯 CSS 组件顾名思义，只改变外观，不改变行为。所以它的功能不会因为浏览器变化而变化，即使浏览器支持不完善，即使因为加载速度或者网络关系，导致 CSS、JS 加载失败，它最多样式回归到原始样式，功能是完全一致的。在非标准浏览器环境下，如读屏器，也是如此</p>
-</blockquote>
-<p>前年看肉大直播的时候听到：万能的 <code>:checked + label</code> 当时没有体会到有啥万能，不就是自定义 <code>input</code> 样式吗，直到前段时间看到一个 <a href="https://codepen.io/dipanjanb/pen/GaOvmG" target="_blank" rel="noopener">Demo</a> 虽然不是使用的这种方法，但是我突然就明白了，这个就可以用 <code>:checked + label</code> 来实现。</p>
-<p>…</p>
-<p>原来很多需要 <code>Js</code> 配合的一些效果点击效果只需要 <code>:checked + label</code> 就可以完成。</p>
+    <p>单行文字的截断非常简单，但多行文字的截断就很麻烦了，<br>经常要配合 JavaScript 或者 其他的脚本语言，进行字符串截断然后加上 ‘…’，</p>
+<p>突然发现 <code>line-clamp</code> 它可以完成以纯 CSS 的多行文本截断<br>并且配合 <code>text-overflow: ellipsis</code> 就可以在尾部加上省略号，<br>当然 <code>overflow: hidden;</code> 并不可缺少</p>
 <a id="more"></a>
 
-<h2 id="1-按钮交互"><a href="#1-按钮交互" class="headerlink" title="1. 按钮交互"></a>1. 按钮交互</h2><iframe id="cp_embed_GVOWXy" src="//codepen.io/yogwang/embed/GVOWXy?height=400&theme-id=dark&slug-hash=GVOWXy&default-tab=result" scrolling="no" frameborder="no" height="400" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<h2 id="单行文字的截断"><a href="#单行文字的截断" class="headerlink" title="单行文字的截断"></a>单行文字的截断</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">text-truncate</span> &#123;</span><br><span class="line">  <span class="attribute">word-wrap</span>: normal;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-下拉菜单"><a href="#2-下拉菜单" class="headerlink" title="2. 下拉菜单"></a>2. 下拉菜单</h2><iframe id="cp_embed_LwjgLB" src="//codepen.io/yogwang/embed/LwjgLB?height=400&theme-id=dark&slug-hash=LwjgLB&default-tab=result" scrolling="no" frameborder="no" height="400" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<h2 id="多行文字的截断"><a href="#多行文字的截断" class="headerlink" title="多行文字的截断"></a>多行文字的截断</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">text-truncate</span> &#123;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">  <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">  <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-折叠面板"><a href="#3-折叠面板" class="headerlink" title="3. 折叠面板"></a>3. 折叠面板</h2><iframe id="cp_embed_pMdRzR" src="//codepen.io/yogwang/embed/pMdRzR?height=600&theme-id=dark&slug-hash=pMdRzR&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
-
-<h2 id="4-选项卡"><a href="#4-选项卡" class="headerlink" title="4. 选项卡"></a>4. 选项卡</h2><iframe id="cp_embed_pMdePQ" src="//codepen.io/yogwang/embed/pMdePQ?height=600&theme-id=dark&slug-hash=pMdePQ&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
-
-<h2 id="5-模拟弹出窗口"><a href="#5-模拟弹出窗口" class="headerlink" title="5. 模拟弹出窗口"></a>5. 模拟弹出窗口</h2><iframe id="cp_embed_gVXmjo" src="//codepen.io/yogwang/embed/gVXmjo?height=600&theme-id=dark&slug-hash=gVXmjo&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
-
-<h3 id="应该还有其他我没有想到的，以后想到了，再慢慢补全起来。"><a href="#应该还有其他我没有想到的，以后想到了，再慢慢补全起来。" class="headerlink" title="应该还有其他我没有想到的，以后想到了，再慢慢补全起来。"></a>应该还有其他我没有想到的，以后想到了，再慢慢补全起来。</h3> 
+<p>在 <a href="https://codepen.io/yogwang/pen/ExYVvYE" target="_blank" rel="noopener">CodePen</a> 中查看 <em>DEMO</em></p>
+<p><a href="https://caniuse.com/#feat=css-line-clamp" target="_blank" rel="noopener">Can I use</a> 中查看 <strong>兼容性</strong></p>
+<p>在本地测试中，Chrome, Firefox 和 Edge 都是没问题的，就是不知道国产的那些奇葩有没有问题。</p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充:"></a>补充:</h3><p>不同行数，修改 <code>-webkit-line-clamp</code> 即可</p>
+<p>它仅与 <code>display</code> 设置为 <code>-webkit-box</code> 或 <code>-webkit-inline-box</code> 的容器，</p>
+<p>并且 <code>-webkit-box-orient</code> 属性为 <code>vertical</code>。</p>
+<h4 id="Specifications"><a href="#Specifications" class="headerlink" title="Specifications:"></a>Specifications:</h4><p><a href="https://www.w3.org/TR/css-overflow-3/#propdef--webkit-line-clamp" target="_blank" rel="noopener">CSS Overflow Module Level 3 ( Working Draft )</a></p>
+<p>以上</p>
+<p>2019-08-13</p>
+ 
   </article>
 
 
@@ -89,19 +88,19 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/Electron04-ElectronBuilder&ElectronUpdater/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/CSS-border_radius-semicircle/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">newer</strong>
       <div class="article-nav-title">
         
-          Electron:Electron-builder+Electron-updater 完成Electron自升级
+          CSS border-radius 制作特殊圆
         
       </div>
     </a>
   
   
-    <a href="/2019/BetterScrol-mouse-wheel/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/CSS-placeholder-shown/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">BetterScrol 2.x Mouse-whell 没效果</div>
+      <div class="article-nav-title">CSS 判断 input 是否为空</div>
     </a>
   
 </nav>
