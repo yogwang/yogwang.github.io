@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>网站标题</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css"
+    />
+    <link rel="stylesheet" href="plugin/animate.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!--[if lte IE 9]>
+      <p
+        class="browsehappy"
+        style="background:red;line-height: 85px;color: #fff;font-size: 22pxtext-align: center;"
+      >
+        你正在使用过时的浏览器，影响您的浏览体验。
+        <a
+          href="http://chrome.360.cn/"
+          target="_blank"
+          style="color: #fff;font-weight: bold;text-decoration: underline;"
+          >请点击下载新的浏览器</a
+        >
+        以获得更好的体验！
+      </p>
+    <![endif]-->
+
+    <header>
+      <div class="container">
+        <div class="row">
+          <a herf="index.html" class="col col-4 header-logo">
+            <img src="images/logo.png" alt="岁礼派对" />
+          </a>
+          <ul class="col col-6 header-navbar">
+            <li><a href="#home">首页</a></li>
+            <li class="down">
+              <a href="#party">派对类型</a>
+              <ol>
+                <li>
+                  <a href="#party" onclick="changeTypes()" types="type1"
+                    >生日派对</a
+                  >
+                </li>
+                <li>
+                  <a href="#party" onclick="changeTypes()" types="type2"
+                    >婚庆装饰</a
+                  >
+                </li>
+                <li>
+                  <a href="#party" onclick="changeTypes()" types="type3"
+                    >节庆活动</a
+                  >
+                </li>
+              </ol>
+            </li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#contact">联系我们</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div id="main">
+      <div id="wrap-slider" class="swiper-container">
+        <div id="banner" class="swiper-wrapper">
+          <div class="swiper-slide slider-box" data-hash="home">
+            <div id="banner-slider" class="swiper-container">
+              <div class="swiper-wrapper">
+                <div id="banner-video" class="swiper-slide">
+                  <video
+                    poster="./videos/banner.jpg"
+                    x5-playsinline=""
+                    playsinline=""
+                    webkit-playsinline=""
+                    autoplay
+                    loop
+                    muted
+                  >
+                    <source src="./videos/banner.mp4" type="video/mp4" />
+                    <p>
+                      您的浏览器好像不支持VIDEO功能，立即更新到<a
+                        href="http://chrome.360.cn/"
+                        target="_blank"
+                        >最新版</a
+                      >吧！
+                    </p>
+                  </video>
+                </div>
+                <div class="swiper-slide">
+                  <img src="./videos/banner.jpg" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="./videos/banner.jpg" />
+                </div>
+              </div>
+              <div class="swiper-pagination banner-pagination"></div>
+            </div>
+          </div>
+          <div id="party" class="swiper-slide slider-box" data-hash="party">
+            <ul class="ani change-views" swiper-animate-effect="fadeInLeft">
+              <li onclick="changeTypes()" types="type1" class="active">
+                <span>生日派对</span>
+              </li>
+              <li onclick="changeTypes()" types="type2">
+                <span>婚庆装饰</span>
+              </li>
+              <li onclick="changeTypes()" types="type3">
+                <span>节庆活动</span>
+              </li>
+            </ul>
+            <div class="container">
+              <div class="ani title" swiper-animate-effect="fadeInDown">
+                <h2>气球派对</h2>
+              </div>
+              <div
+                id="party-views"
+                class="swiper-container ani"
+                swiper-animate-effect="fadeInUp"
+              >
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide views-type type1">
+                    <div
+                      class="view-box"
+                      data-fancybox="gallery"
+                      href="images/lay1_img1.jpg"
+                    >
+                      <img src="images/lay1_img1.jpg" alt="主题名称" />
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Commodi architecto iure est accusamus animi
+                        maxime, quidem iste aspernatur ipsum earum id, incidunt
+                        delectus ut aliquam rerum consequatur, alias culpa
+                        necessitatibus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide views-type type2">
+                    <div
+                      class="view-box"
+                      data-fancybox="gallery"
+                      href="images/lay1_img2.jpg"
+                    >
+                      <img src="images/lay1_img2.jpg" alt="主题名称" />
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Commodi architecto iure est accusamus animi
+                        maxime, quidem iste aspernatur ipsum earum id, incidunt
+                        delectus ut aliquam rerum consequatur, alias culpa
+                        necessitatibus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide views-type type3">
+                    <div
+                      class="view-box"
+                      data-fancybox="gallery"
+                      href="images/lay1_img3.jpg"
+                    >
+                      <img src="images/lay1_img3.jpg" alt="主题名称" />
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Commodi architecto iure est accusamus animi
+                        maxime, quidem iste aspernatur ipsum earum id, incidunt
+                        delectus ut aliquam rerum consequatur, alias culpa
+                        necessitatibus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide views-type type1">
+                    <div
+                      class="view-box"
+                      data-fancybox="gallery"
+                      href="images/lay1_img1.jpg"
+                    >
+                      <img src="images/lay1_img1.jpg" alt="主题名称" />
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Commodi architecto iure est accusamus animi
+                        maxime, quidem iste aspernatur ipsum earum id, incidunt
+                        delectus ut aliquam rerum consequatur, alias culpa
+                        necessitatibus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide views-type type2">
+                    <div
+                      class="view-box"
+                      data-fancybox="gallery"
+                      href="images/lay1_img2.jpg"
+                    >
+                      <img src="images/lay1_img2.jpg" alt="主题名称" />
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Commodi architecto iure est accusamus animi
+                        maxime, quidem iste aspernatur ipsum earum id, incidunt
+                        delectus ut aliquam rerum consequatur, alias culpa
+                        necessitatibus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide views-type type3">
+                    <div
+                      class="view-box"
+                      data-fancybox="gallery"
+                      href="images/lay1_img3.jpg"
+                    >
+                      <img src="images/lay1_img3.jpg" alt="主题名称" />
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Commodi architecto iure est accusamus animi
+                        maxime, quidem iste aspernatur ipsum earum id, incidunt
+                        delectus ut aliquam rerum consequatur, alias culpa
+                        necessitatibus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide views-type type1">
+                    <div
+                      class="view-box"
+                      data-fancybox="gallery"
+                      href="images/lay1_img1.jpg"
+                    >
+                      <img src="images/lay1_img1.jpg" alt="主题名称" />
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Commodi architecto iure est accusamus animi
+                        maxime, quidem iste aspernatur ipsum earum id, incidunt
+                        delectus ut aliquam rerum consequatur, alias culpa
+                        necessitatibus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide views-type type2">
+                    <div
+                      class="view-box"
+                      data-fancybox="gallery"
+                      href="images/lay1_img2.jpg"
+                    >
+                      <img src="images/lay1_img2.jpg" alt="主题名称" />
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Commodi architecto iure est accusamus animi
+                        maxime, quidem iste aspernatur ipsum earum id, incidunt
+                        delectus ut aliquam rerum consequatur, alias culpa
+                        necessitatibus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide views-type type3">
+                    <div
+                      class="view-box"
+                      data-fancybox="gallery"
+                      href="images/lay1_img3.jpg"
+                    >
+                      <img src="images/lay1_img3.jpg" alt="主题名称" />
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Commodi architecto iure est accusamus animi
+                        maxime, quidem iste aspernatur ipsum earum id, incidunt
+                        delectus ut aliquam rerum consequatur, alias culpa
+                        necessitatibus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide views-type type1">
+                    <div
+                      class="view-box"
+                      data-fancybox="gallery"
+                      href="images/lay1_img1.jpg"
+                    >
+                      <img src="images/lay1_img1.jpg" alt="主题名称" />
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Commodi architecto iure est accusamus animi
+                        maxime, quidem iste aspernatur ipsum earum id, incidunt
+                        delectus ut aliquam rerum consequatur, alias culpa
+                        necessitatibus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide views-type type2">
+                    <div
+                      class="view-box"
+                      data-fancybox="gallery"
+                      href="images/lay1_img2.jpg"
+                    >
+                      <img src="images/lay1_img2.jpg" alt="主题名称" />
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Commodi architecto iure est accusamus animi
+                        maxime, quidem iste aspernatur ipsum earum id, incidunt
+                        delectus ut aliquam rerum consequatur, alias culpa
+                        necessitatibus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide views-type type3">
+                    <div
+                      class="view-box"
+                      data-fancybox="gallery"
+                      href="images/lay1_img3.jpg"
+                    >
+                      <img src="images/lay1_img3.jpg" alt="主题名称" />
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Commodi architecto iure est accusamus animi
+                        maxime, quidem iste aspernatur ipsum earum id, incidunt
+                        delectus ut aliquam rerum consequatur, alias culpa
+                        necessitatibus.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-button-prev views-prev"></div>
+                <div class="swiper-button-next views-next"></div>
+              </div>
+            </div>
+          </div>
+          <div id="about" class="swiper-slide slider-box" data-hash="about">
+            <div
+              class="ani flag"
+              swiper-animate-effect="fadeInDown"
+              swiper-animate-delay="2s"
+            ></div>
+            <div class="container">
+              <div class="ani title" swiper-animate-effect="rubberBand">
+                <h2>关于我们</h2>
+              </div>
+            </div>
+            <div class="row content">
+              <div
+                class="col col-7 ani detail"
+                swiper-animate-duration="1.2s"
+                swiper-animate-effect="fadeInLeft"
+              >
+                <img src="images/logo_big.png" alt="岁礼派对" />
+                <article>
+                  <p>你好：</p>
+                  <p style="text-indent: 32px">
+                    我们是岁礼气球派对，重庆专业的艺术气球派对策划公司。我们致力于为您提供，品质、安全、专业、充满创意的气球单品以及气球造型设计，为您妆点每一个值得纪念的日子。我们用想象力与创造力赋予每颗气球生命，让每个人都可以享受专属定制服务带来的欢乐与美好。
+                  </p>
+                </article>
+                <img src="images/logo_text.png" alt="岁礼气球派对" />
+              </div>
+              <div
+                class="col col-5 ani pig"
+                swiper-animate-effect="rotateInUpRight"
+                swiper-animate-duration="2s"
+                swiper-animate-delay="0.8s"
+              >
+                <img src="images/pig.png" alt="气球猪" />
+              </div>
+            </div>
+          </div>
+          <div id="contact" class="swiper-slide slider-box" data-hash="contact">
+            <div class="container">
+              <div class="ani title" swiper-animate-effect="fadeInDown">
+                <h2>联系我们</h2>
+              </div>
+              <div class="row content">
+                <div
+                  class="col col-6 ani"
+                  swiper-animate-effect="fadeInLeft"
+                  swiper-animate-duration="2s"
+                  swiper-animate-delay="0.3s"
+                >
+                  <div id="baidu_map"><!--百度地图容器--></div>
+                </div>
+                <div
+                  class="col col-6 ani detail"
+                  swiper-animate-effect="zoomInUp"
+                  swiper-animate-delay="1.5s"
+                >
+                  <p>联系电话：18717009008 18523117010</p>
+                  <p>公司地址：黄泥磅紫荆商业广场2栋4-3</p>
+                  <h4>微信二维码</h4>
+                  <ul>
+                    <li><img src="images/wechat.jpg" alt="公众号" /></li>
+                    <li><img src="images/wechat2.jpg" alt="私人定制" /></li>
+                  </ul>
+                </div>
+              </div>
+              <img
+                class="ani logo"
+                swiper-animate-effect="fadeInUp"
+                swiper-animate-duration="1s"
+                swiper-animate-delay="2.5s"
+                src="images/logo_footer.png"
+              />
+            </div>
+            <div
+              class="ani balloon-left"
+              swiper-animate-effect="fadeIn"
+              swiper-animate-duration="1s"
+            ></div>
+            <div class="balloon-bottom"></div>
+          </div>
+          <div id="footer" class="swiper-slide slider-box" data-hash="footer">
+            <div class="container">
+              copyright © 岁礼派对
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination wrap-pagination"></div>
+      </div>
+    </div>
+
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+      <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+    <script src="plugin/swiper.animate.min.js"></script>
+    <script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script src="js/common.js"></script>
+    <script type="text/javascript">
+      var swiperWrap, swiperBanner, swiperParty
+      $(function() {
+        // 整屏幕滚动Swiper
+        swiperWrap = new Swiper('#wrap-slider', {
+          direction: 'vertical',
+          simulateTouch: false,
+          mousewheel: true,
+          slidesPerView: 'auto',
+          pagination: {
+            el: '.wrap-pagination',
+            clickable: true
+          },
+          hashNavigation: {
+            watchState: true
+          },
+          on: {
+            init: function() {
+              swiperAnimateCache(this)
+              swiperAnimate(this)
+            },
+            slideChangeTransitionEnd: function() {
+              swiperAnimate(this)
+            }
+          }
+        })
+        // 轮播图Swiper
+        swiperBanner = new Swiper('#banner-slider', {
+          simulateTouch: false,
+          pagination: {
+            el: '.banner-pagination',
+            clickable: true
+          }
+        })
+        // 派对图集Swiper
+        swiperParty = new Swiper('#party-views', {
+          slidesPerView: 3,
+          navigation: {
+            nextEl: '.views-next',
+            prevEl: '.views-prev'
+          }
+        })
+      })
+      function changeTypes() {
+        let types = $(event.target).attr('types')
+        $(`.change-views li[types='${types}']`)
+          .addClass('active')
+          .siblings()
+          .removeClass('active')
+        $(`.views-type`)
+          .siblings()
+          .addClass('hide')
+        $(`.views-type.${types}`).removeClass('hide')
+        swiperParty.update()
+      }
+    </script>
+    <!--引用百度地图API-->
+    <script
+      type="text/javascript"
+      src="http://api.map.baidu.com/api?v=2.0&ak=BFfb1XU5DRKOilS9AsiUcfuq"
+    ></script>
+    <script type="text/javascript">
+      //创建和初始化地图函数：
+      function initMap() {
+        createMap() //创建地图
+        setMapEvent() //设置地图事件
+        addMapControl() //向地图添加控件
+        addMapOverlay() //向地图添加覆盖物
+      }
+      function createMap() {
+        map = new BMap.Map('baidu_map')
+        map.centerAndZoom(new BMap.Point(106.540381, 29.595223), 17)
+      }
+      function setMapEvent() {
+        map.enableDragging()
+        map.enableDoubleClickZoom()
+      }
+      function addClickHandler(target, window) {
+        target.addEventListener('click', function() {
+          target.openInfoWindow(window)
+        })
+      }
+      function addMapOverlay() {
+        var markers = [
+          {
+            content: '',
+            title: '',
+            imageOffset: { width: 0, height: 3 },
+            position: { lat: 29.595223, lng: 106.540381 }
+          }
+        ]
+        for (var index = 0; index < markers.length; index++) {
+          var point = new BMap.Point(
+            markers[index].position.lng,
+            markers[index].position.lat
+          )
+          var marker = new BMap.Marker(point, {
+            icon: new BMap.Icon(
+              'images/map-marker.svg',
+              new BMap.Size(30, 35),
+              {
+                imageOffset: new BMap.Size(
+                  markers[index].imageOffset.width,
+                  markers[index].imageOffset.height
+                )
+              }
+            )
+          })
+          var label = new BMap.Label(markers[index].title, {
+            offset: new BMap.Size(25, 5)
+          })
+          var opts = {
+            width: 200,
+            title: markers[index].title,
+            enableMessage: false
+          }
+          var infoWindow = new BMap.InfoWindow(markers[index].content, opts)
+          // marker.setLabel(label)
+          addClickHandler(marker)
+          map.addOverlay(marker)
+        }
+      }
+      //向地图添加控件
+      function addMapControl() {
+        var scaleControl = new BMap.ScaleControl({
+          anchor: BMAP_ANCHOR_BOTTOM_LEFT
+        })
+        scaleControl.setUnit(BMAP_UNIT_IMPERIAL)
+        map.addControl(scaleControl)
+        var navControl = new BMap.NavigationControl({
+          anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+          type: 3
+        })
+        map.addControl(navControl)
+      }
+      var map
+      initMap()
+    </script>
+    <!--<![endif]-->
+  </body>
+</html>

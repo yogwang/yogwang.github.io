@@ -1,0 +1,116 @@
+/*
+ * @File Name: common.styl
+ * @Description: 主题通用样式表
+ * @Author: yogwang
+ * @Date: 2019-09-29 23:41:59
+ * @Last Modified by: yogwang
+ * @Last Modified time: 2019-09-30 19:45:04
+ */
+@import './variables'
+@import './mixins'
+/*
+ * html,body
+ */
+html, body
+  font-family 'SF Pro Text', 'Source Han Sans CN', 'Microsoft YaHei', Arial
+  font-size 14px
+/*
+ * header
+ */
+header
+  width 100%
+  height $header
+  background $bg-linear
+  position absolute
+  left 0
+  top 0
+  z-index 10
+  .container
+    max-width 1600px
+    .row
+      justify-content space-between
+    .col
+      height $header
+.header-logo
+  padding 10px 0
+  display block
+  animation yg-fadedown 0.5s forwards
+  img
+    max-width 100%
+    max-height 100%
+.header-navbar
+  color white
+  text-align center
+  display flex
+  justify-content flex-end
+  animation yg-fadedown 0.8s forwards
+  >li
+    min-width 85px
+    height 100%
+    font-size 18px
+    padding 10px 1vw
+    margin 0 1vw
+    display flex
+    justify-content center
+    align-items center
+    position relative
+    cursor pointer
+    transition background 0.3s
+    &.down
+      &:after
+        content ''
+        width 0
+        height 0
+        border-width 5px 5px 0
+        border-style solid
+        border-color white transparent transparent
+        position absolute
+        right 0.2vw
+        top 50%
+        transform translateY(-50%)
+    a
+      color inherit
+      text-decoration none
+    &:hover
+      background rgba(white, 0.2)
+      &>ol
+        transform translateX(0)
+        opacity 1
+        pointer-events auto
+    ol
+      width 100%
+      background rgba(black, 0.2)
+      position absolute
+      top 100%
+      left 0
+      transform translateX(20%)
+      opacity 0
+      pointer-events none
+      transition all 0.4s
+      li
+        line-height 35px
+        font-size 15px
+        display block
+        a
+          text-shadow 1px 1px 1px $bg-pink
+        &:hover
+          background $bg-pink
+/*
+ * main
+ */
+.container
+  max-width 1400px
+.title
+  text-align center
+  h2
+    width auto
+    color white
+    background $bg-linear
+    padding 10px 30px
+    margin-bottom 3vh
+    display inline-block
+@keyframes yg-fadedown
+  from
+    transform translateY(-80%)
+  to
+    transform translateY(0)
