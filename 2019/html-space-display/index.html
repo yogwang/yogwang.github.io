@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    如何理解 Call, Apply, Bind? | blog [ YOG WANG ]
+    文本开头空格不显示问题 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-JS-call&amp;apply&amp;bind"
+  id="post-html-space-display"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -41,19 +41,15 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-08-06T01:37:07.000Z" itemprop="datePublished">2019-08-06</time>
+  <time datetime="2019-10-17T03:27:28.000Z" itemprop="datePublished">2019-10-17</time>
 </p> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </div>
-
     </div>
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      如何理解 Call, Apply, Bind?
+      文本开头空格不显示问题
     </h1>
   
 
@@ -62,16 +58,13 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>今天，介绍这两个方法的区别以及一些妙用，还有用法相似的 bind 的方法。</p>
-<p>它们最主要的作用，是改变 <code>this</code> 的指向。在平时的工作中，除了在写一些基础类，或者公用库方法的时候会用到它们，其他时候应用场景并不多。</p>
+    <p>在 html 中手动输入多个空格，在页面解析的时候都会变成一个空格，<br>如果在开头甚至一个空格都不会显示</p>
+<p>但就是一定要求在开头/中间显示多个空格，这个问题怎么解决呢？</p>
 <a id="more"></a>
 
-<h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func.call( thisArg, arg1, arg2, ... )</span><br><span class="line"></span><br><span class="line">func.apply(thisArg, [argsArray])</span><br><span class="line"></span><br><span class="line">func.bind(thisArg[, arg1[, arg2[, ...]]])</span><br></pre></td></tr></table></figure>
-
-<p>详细： <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Func/call" target="_blank" rel="noopener">call()</a> - <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Func/apply" target="_blank" rel="noopener">apply()</a> - <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Func/bind" target="_blank" rel="noopener">bind()</a></p>
-<h1 id="未完成"><a href="#未完成" class="headerlink" title="未完成"></a>未完成</h1><h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://segmentfault.com/a/1190000019970715" target="_blank" rel="noopener">OBKoro1 - js 面试官想了解你有多理解 call,apply,bind?</a></p>
-<p><a href="https://juejin.im/post/5c493086f265da6115111ce4" target="_blank" rel="noopener">Micherwa - 「干货」细说 call、apply 以及 bind 的区别和用法</a></p>
-<p><a href="https://segmentfault.com/q/1010000002508005/a-1020000002508116" target="_blank" rel="noopener">公子 - 如何理解，javascript bind</a></p>
+<h3 id="1-使用字符实体"><a href="#1-使用字符实体" class="headerlink" title="1.使用字符实体"></a>1.使用字符实体</h3><p>实体名称 <code>&amp;nbsp;</code> 或者实体编号 <code>&amp;#160;</code></p>
+<h3 id="2-使用全角文字"><a href="#2-使用全角文字" class="headerlink" title="2.使用全角文字"></a>2.使用全角文字</h3><h3 id="3-使用-CSS-样式控制"><a href="#3-使用-CSS-样式控制" class="headerlink" title="3.使用 CSS 样式控制"></a>3.使用 CSS 样式控制</h3><p>在容器上添加 <code>white-space:pre</code> CSS 属性</p>
+<h3 id="4-使用-lt-pre-gt-标签"><a href="#4-使用-lt-pre-gt-标签" class="headerlink" title="4.使用 &lt;pre&gt; 标签"></a>4.使用 <code>&lt;pre&gt;</code> 标签</h3><iframe id="cp_embed_MWWeRor" src="//codepen.io/yogwang/embed/MWWeRor?height=600&theme-id=dark&slug-hash=MWWeRor&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
  
   </article>
 
@@ -81,19 +74,10 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/JS-let/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          JavaScript for(let..){setTimeout...}
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/phpok-Guestbook/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/wordpress-themeDevelop-lesson01/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">PHPOK 5.x 多站点共享留言板</div>
+      <div class="article-nav-title">[ WordPress 主题开发 ] 从入门到自闭 - 01</div>
     </a>
   
 </nav>
