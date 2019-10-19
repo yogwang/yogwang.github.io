@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    phpok | blog [ YOG WANG ]
+    怎么知道依赖包需要安装到生产还是开发环境或者是安装到全局 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -32,57 +32,86 @@
 
     <div id="wrap">
       <main id="container">
-  
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/phpok/">phpok</a></li></ul>
+  <div
+  id="post-nodejs-npm-save-dev-global"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2019-10-19T05:48:39.000Z" itemprop="datePublished">2019-10-19</time>
+</p> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
 
+    </div>
+    
+    <header class="article-header">
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/phpok-Guestbook/">PHPOK 5.x 多站点共享留言板</a>
-    </h2>
+    <h1 class="article-title" itemprop="name">
+      怎么知道依赖包需要安装到生产还是开发环境或者是安装到全局
+    </h1>
   
 
     </header>
-     
-  <article class="article-excerpt">
-    <p>前景：</p>
-<p>要求 <strong>中文站</strong> 和 <strong>英文站</strong> 提交的留言内容都收集在中文站的留言板中，方便查看。</p>
-<p>之前 <code>3.x</code> 版本直接使用 <code>CateID</code> 就可以了，但是在 <code>5.x</code> 版本中不行。</p>
-<p>文档里也没有，所以在尝试多次之后，憋不住就在群里问了作者团队，</p>
-<p>答：</p>
-<blockquote>
-<p>在 <code>Ajax</code> 请求地址上加上 <code>SiteID</code> 就可以了。</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <blockquote>
+<p>刚开始接触 <code>Node.js</code> 的时候很多人都会疑惑哪些依赖是可以装在全局的，哪些依赖是安装在项目里的，安装在项目里的依赖又是怎么分辨是否是要安装在开发环境中？</p>
 </blockquote>
+<p>小白得时候还不知道怎么搜索关键词。然后就只能看着文档</p>
+<p>上边写的是 <code>npm install vue</code> 就 <code>npm install</code>,<br>如果写的是 <code>npm install -g @vue/cli</code> 那么就 <code>npm install -g</code>,<br>如果是 <code>npm install --save-dev @babel/core</code> 那么就 <code>npm install --save-dev</code></p>
+<a id="more"></a>
+
+<p>其实很简单</p>
+<ul>
+<li><p>如果是你编辑代码的时候用到的辅助工具类依赖就安装到 devDependencies 下，也就是 <code>npm install 包名 --save-dev</code>(注意中间没有空格哦)</p>
+<ul>
+<li>例如一些 CSS 预处理器：Less,Sass,Stylus，他们会在你打包项目的时候编译成为正常的 CSS 文件。</li>
+<li>ESlint 这样的语法规则检查工具，帮助你检查你语法是否规范，代码风格是否良好，然后提示你需要修改或者直接把代码格式化成未预设的规范格式。</li>
+<li>Webpack 这样的打包工具等等</li>
+</ul>
+</li>
+</ul>
+<p>这些帮助你快速开发的工具类依赖包，它们在开发完成之后是不需要存在你项目里边的，所以是安装在开发环境中，在项目打包时就可以忽略这些依赖来达到压缩项目大小的目的。</p>
+<ul>
+<li>如果是你项目运行需要的依赖，就安装到 dependencies 下 就是<code>npm install 包名 --save</code><ul>
+<li>例如 React、Angular、Vue.js 这样的前端框架</li>
+<li>axios 这样的 http 请求库</li>
+<li>或者 BootStrap,ElemntUI 这样的 UI 组件库</li>
+</ul>
+</li>
+</ul>
+<p>这些必须一直存在在项目里边的依赖包，你的项目运行就依靠这些依赖运行，如果缺少项目就会功能缺失|报错或者直接运行不起来。</p>
+<p>比如你的项目是基于 Vue.js 的，那么你的项目运行时 Vue.js 就是必须的，如果缺少了 Vue 项目就运行不起来展示成空白页，所以时安装在生产环境中。</p>
+<h2 id="那哪些依赖可以安装在全局呢？"><a href="#那哪些依赖可以安装在全局呢？" class="headerlink" title="那哪些依赖可以安装在全局呢？"></a>那哪些依赖可以安装在全局呢？</h2><p>像一些快速开发完整系统的项目脚手架。例如: Vue.js 的 Vue CLI,Hexo 的 hexo-cli；对标 npm 的包管理工具 yarn 和一些服务型工具依赖，比如 http-server，npm-check-updates 之类。</p>
+<p>不需要在项目里就可能会使用的工具依赖，或者你想写静态 html 文件的时也可以使用 CSS 预处理器那么也可以把它安装在全局（但是如果是基于包管理的项目还是安装在开发环境）</p>
+<h2 id="什么？你问-npm-和-yarn-的区别用哪个好？？"><a href="#什么？你问-npm-和-yarn-的区别用哪个好？？" class="headerlink" title="什么？你问 npm 和 yarn 的区别用哪个好？？"></a>什么？你问 npm 和 yarn 的区别用哪个好？？</h2><p>等下次我什么时候想起来吧，挖个坑先，</p>
+<p>简单说下现在 npm 和 yarn 已经没有什么区别了只是命令行的差异 yarn 的某些命令行会精简一些，和安装依赖的时候是不是并行下载的区别了，另外 npm 还有一个叫做 npx 的臭弟弟可是很厉害的。</p>
+ 
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/phpok-Guestbook/#more">阅读全文</a>
+
+
     </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-08-03T03:06:49.000Z" itemprop="datePublished">Aug 3</time>
-</p>
   </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2019/hexo-theme-development-codeblock/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">Hexo 主题开发 -- 代码块颜色高亮</div>
+    </a>
+  
+</nav>
+ 
 </div>
-  
-  
-    </div></section>
-  
 
 
 
