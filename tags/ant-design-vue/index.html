@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    CSS 中的文字截断 | blog [ YOG WANG ]
+    ant-design-vue | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -32,77 +32,56 @@
 
     <div id="wrap">
       <main id="container">
-  <div
-  id="post-CSS-text_truncation"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
->
-  <div class="article-inner">
-    <div class="article-meta">
-      <p class="article-date">
-  <time datetime="2019-08-13T01:54:39.000Z" itemprop="datePublished">2019-08-13</time>
-</p> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </div>
-
-    </div>
+  
+  
+  
     
-    <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archives">
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-design-vue/">ant-design-vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jeccg-boot/">jeccg-boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
       
   
-    <h1 class="article-title" itemprop="name">
-      CSS 中的文字截断
-    </h1>
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/jeecg-boot-digging-lesson02/">jeecg-boot 中台开发挖坑记02 用户头像上传 / AntD-Vue 上传组件</a>
+    </h2>
   
 
     </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-       
-  <article class="article-content">
-    <p>单行文字的截断非常简单，但多行文字的截断就很麻烦了，<br>经常要配合 JavaScript 或者 其他语言进行字符串截断，然后拼接上 “…”</p>
-<p>突然发现 <code>line-clamp</code> 它可以完成以纯 CSS 的多行文本截断，<br>并且配合 <code>text-overflow: ellipsis</code> 就可以在尾部加上省略号，<br>当然 <code>overflow: hidden</code> 并不可缺少</p>
-<a id="more"></a>
-
-<h2 id="单行文字的截断"><a href="#单行文字的截断" class="headerlink" title="单行文字的截断"></a>单行文字的截断</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">text-truncate</span> &#123;</span><br><span class="line">  <span class="attribute">word-wrap</span>: normal;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="多行文字的截断"><a href="#多行文字的截断" class="headerlink" title="多行文字的截断"></a>多行文字的截断</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">text-truncate</span> &#123;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">  <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">  <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在 <a href="https://codepen.io/yogwang/pen/ExYVvYE" target="_blank" rel="noopener">CodePen</a> 中查看 <em>DEMO</em></p>
-<p><a href="https://caniuse.com/#feat=css-line-clamp" target="_blank" rel="noopener">Can I use</a> 中查看 <strong>兼容性</strong></p>
-<p>在本地测试中，Chrome, Firefox 和 Edge 都是没问题的，就是不知道国产的那些奇葩有没有问题。</p>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充:"></a>补充:</h3><p>不同行数，修改 <code>-webkit-line-clamp</code> 即可<br>它仅与 <code>display</code> 设置为 <code>-webkit-box</code> 或 <code>-webkit-inline-box</code> 的容器，<br>并且 <code>-webkit-box-orient</code> 属性为 <code>vertical</code>。</p>
-<h4 id="Specifications"><a href="#Specifications" class="headerlink" title="Specifications:"></a>Specifications:</h4><p><a href="https://www.w3.org/TR/css-overflow-3/#propdef--webkit-line-clamp" target="_blank" rel="noopener">CSS Overflow Module Level 3 ( Working Draft )</a></p>
-<p>以上<br>2019-08-13</p>
- 
+     
+  <article class="article-excerpt">
+    <blockquote>
+<p>项目正式开始，第一个功能模块的用户信息编辑就把我卡住了，特别是头像上传组件。</p>
+</blockquote>
+<h2 id="第二篇内容：使用-ant-design-vue-上传组件的头像上传。"><a href="#第二篇内容：使用-ant-design-vue-上传组件的头像上传。" class="headerlink" title="第二篇内容：使用 ant-design-vue 上传组件的头像上传。"></a>第二篇内容：使用 ant-design-vue 上传组件的头像上传。</h2><h3 id="Day1：开坑-2019-年-10-月-17-日-16-点-46-分"><a href="#Day1：开坑-2019-年-10-月-17-日-16-点-46-分" class="headerlink" title="Day1：开坑 2019 年 10 月 17 日 16 点 46 分"></a>Day1：开坑 2019 年 10 月 17 日 16 点 46 分</h3><blockquote>
+<p>@&amp;!(<em>#!</em>@(&amp;# 这特么是啥？？！！ ，怎么拿到 a-modal 组件里数据？</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">demo...</span><br></pre></td></tr></table></figure>
   </article>
-
-
+  
+    <div class="article-more-link">
+      <a href="/2019/jeecg-boot-digging-lesson02/#more">阅读全文</a>
     </div>
-  </div>
    
-<nav id="article-nav">
-  
-    <a href="/2019/CSS-border_radius-semicircle/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          CSS border-radius 制作特殊圆
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/CSS-placeholder-shown/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">CSS 判断 input 是否为空</div>
-    </a>
-  
-</nav>
- 
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-10-17T09:07:24.000Z" itemprop="datePublished">Oct 17</time>
+</p>
+  </div>
 </div>
+  
+  
+    </div></section>
+  
 
 
 
