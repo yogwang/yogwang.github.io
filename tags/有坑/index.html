@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    html | blog [ YOG WANG ]
+    有坑 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -46,30 +46,37 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ant-design-vue/">ant-design-vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jeccg-boot/">jeccg-boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/有坑/">有坑</a></li></ul>
 
       
   
     <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/html-space-display/">文本开头空格不显示问题</a>
+      <a class="archive-article-title" href="/2019/jeecg-boot-devDiary02/">jeecg-boot 中台挖坑日记02 用户头像上传 / AntD-Vue 上传组件</a>
     </h2>
   
 
     </header>
      
   <article class="article-excerpt">
-    <p>在 html 中手动输入多个空格，在页面解析的时候都会变成一个空格，<br>如果在开头甚至一个空格都不会显示</p>
-<p>但就是一定要求在开头/中间显示多个空格，这个问题怎么解决呢？</p>
+    <blockquote>
+<p>项目正式开始，第一个功能模块的用户信息编辑就开始卡壳，特别是头像上传组件。</p>
+</blockquote>
+<h2 id="弹出框的表单值是怎么设置的？"><a href="#弹出框的表单值是怎么设置的？" class="headerlink" title="弹出框的表单值是怎么设置的？"></a>弹出框的表单值是怎么设置的？</h2><p>在 <code>edit()</code> 方法中传入了当前对象 <code>record</code>。</p>
+<p>AntD 封装了表单域 <code>&lt;Form.Item /&gt;</code> ，需要使用 <code>Form.create</code> 来创建表单实例，<br>而且设置表单的值要用 <code>form.setFieldsValue</code> （有些时候需要确保子组件完成渲染 <code>$nextTick()</code> 后才执行赋值操作）</p>
+<p>且使用 <code>pick()</code><sup><a href="#1">[1]</a></sup> 函数从指定的对象中挑选出需要的任意 <code>key</code> 属性。</p>
+<p>特殊控件(select,radio,checkbox)需要使用 <code>v-decorator</code> 来绑定数据 <sup><a href="#2">[2]</a></sup></p>
+<h2 id="使用-ant-design-vue-上传组件的头像上传。"><a href="#使用-ant-design-vue-上传组件的头像上传。" class="headerlink" title="使用 ant-design-vue 上传组件的头像上传。"></a>使用 <code>ant-design-vue</code> 上传组件的头像上传。</h2><p>在 Jeecg-boot 中头像上传是 antD 的上传组件 <code>listType=&quot;picture-card&quot;</code>，<br>在教程里是直接使用 <code>upload</code> 组件的 <code>defaultFileList</code> API，<br>但他们 DEMO 是 <code>listType=&quot;text&quot;</code>，或 <code>listType=&quot;picture-card&quot;</code> 但绑定的是 <code>fileList</code>，<br>并不是 <code>defaultFileList</code>，就和 ant-design-vue 的文档是一摸一样的照着读了一遍，</p>
+<p>然后我直接复制的官方用户头像 DEMO,就出现了问题。</p>
   </article>
   
     <div class="article-more-link">
-      <a href="/2019/html-space-display/#more">阅读全文</a>
+      <a href="/2019/jeecg-boot-devDiary02/#more">阅读全文</a>
     </div>
    
 
 
     <p class="archive-article-date">
-  <time datetime="2019-10-17T03:27:28.000Z" itemprop="datePublished">Oct 17</time>
+  <time datetime="2019-10-17T09:07:24.000Z" itemprop="datePublished">Oct 17</time>
 </p>
   </div>
 </div>
