@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    怎么知道依赖包需要安装到生产还是开发环境或者是安装到全局 | blog [ YOG WANG ]
+    Jeecg-boot 中台挖坑日记03 动态路由传参 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-nodejs-npm-save-dev-global"
+  id="post-jeecg-boot-devDiary03"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -41,7 +41,7 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-09-22T05:48:39.000Z" itemprop="datePublished">2019-09-22</time>
+  <time datetime="2019-10-24T05:39:50.000Z" itemprop="datePublished">2019-10-24</time>
 </p> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/笔记/">笔记</a>
@@ -53,7 +53,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      怎么知道依赖包需要安装到生产还是开发环境或者是安装到全局
+      Jeecg-boot 中台挖坑日记03 动态路由传参
     </h1>
   
 
@@ -63,45 +63,26 @@
        
   <article class="article-content">
     <blockquote>
-<p>刚开始接触 <code>Node.js</code> (包管理项目) 的时候很多人都会疑惑哪些依赖是可以装在全局的，哪些依赖是安装在项目里的，安装在项目里的依赖又是怎么分辨是否是要安装在开发环境中还是生产环境中？</p>
+<p>坑！ #_YogWang 2019/10/24</p>
 </blockquote>
-<p>小白的时候还不知道怎么搜索关键词，然后就只能看着文档，他们怎么说自己就怎么敲，</p>
-<p>上边写的是 <code>npm install vue</code> 就 <code>npm install</code>,<br>如果写的是 <code>npm install -g @vue/cli</code> 那么就 <code>npm install -g</code>,<br>如果是 <code>npm install --save-dev @babel/core</code> 那么就 <code>npm install --save-dev</code></p>
-<p>比如 4 个月前的我就是这样，最近有一些人在群里问，那我就整理了下（原来这不是我笨理解不了，别人也是这样觉得的！）</p>
+<p>今天写一个带参数页面的时候，怎么样都是</p>
+<ul>
+<li><code>404</code> 然后跳转到 <code>localhost:8080/#/</code>;</li>
+<li>显示空白;</li>
+</ul>
+<p>看了 Jeecg-Boot 的技术手册完全按照上边来的写也是不行，还是跳转到 <code>/</code>，在 Vue DevTools 中检查又没有问题。<br>就又折腾了好久，又是查文档又是看官方的教学视频。<br>最后真的是烦了，就偷懒了一把，结果成了….原因是啥呢??? -&gt; READMORE</p>
 <a id="more"></a>
 
-<p>其实很简单</p>
-<p>先了解下什么是 <code>开发环境</code> 和 <code>生产环境</code>:</p>
-<ul>
-<li>开发环境：项目尚且在编码阶段，为了开发调试方便，配置可以比较随意，一般打开全部错误报告。</li>
-<li>生产环境: 是指正式提供对外服务了，一般会关掉错误报告，打开错误日志。比如开发企业网站，开发完成之后放在阿里云的服务器上了交付给客户了的时候。</li>
-</ul>
-<p><em>PS: 其实还有一个测试环境，但是现在用不着，就不说了。</em></p>
-<h2 id="怎么分辨依赖安装在开发环境中还是生产环境中？"><a href="#怎么分辨依赖安装在开发环境中还是生产环境中？" class="headerlink" title="怎么分辨依赖安装在开发环境中还是生产环境中？"></a>怎么分辨依赖安装在开发环境中还是生产环境中？</h2><ul>
-<li><p>如果是你编辑代码的时候用到的辅助工具依赖就安装到 devDependencies 下，也就是 <code>npm install 包名 --save-dev</code>(注意 –save-dev 中间没有空格哦)</p>
-<ul>
-<li>例如一些 CSS 预处理器：Less,Sass,Stylus，他们会在你打包项目的时候编译成为正常的 CSS 文件。</li>
-<li>ESlint 这样的语法规则检查工具，帮助你检查你语法是否规范，代码风格是否良好，然后提示你需要修改或者直接把代码格式化成未预设的规范格式。</li>
-<li>Webpack 这样的打包工具等等</li>
-</ul>
-</li>
-</ul>
-<p>这些帮助你快速开发的工具类依赖包，它们在开发完成之后是不需要存在你项目里边的，所以是安装在开发环境中，在项目打包时就可以忽略这些依赖来达到压缩项目大小的目的。</p>
-<ul>
-<li>如果是你项目运行需要的依赖，就安装到 dependencies 下 就是<code>npm install 包名 --save</code><ul>
-<li>例如 React、Angular、Vue.js 这样的前端框架</li>
-<li>axios 这样的 http 请求库</li>
-<li>或者 BootStrap,ElemntUI 这样的 UI 组件库</li>
-<li>多了去了不写了</li>
-</ul>
-</li>
-</ul>
-<p>这些必须一直存在在项目里边的依赖包，你的项目运行就依靠这些依赖运行，如果缺少项目就会功能缺失|报错或者直接运行不起来。</p>
-<p>比如你的项目是基于 Vue.js 的，那么你的项目运行时 Vue.js 就是必须的，如果缺少了 Vue 项目就运行不起来展示成空白页，所以时安装在生产环境中。</p>
-<h2 id="那哪些依赖可以安装在全局呢？"><a href="#那哪些依赖可以安装在全局呢？" class="headerlink" title="那哪些依赖可以安装在全局呢？"></a>那哪些依赖可以安装在全局呢？</h2><p>像一些快速开发完整系统的项目脚手架。例如: Vue.js 的 Vue CLI,Hexo 的 hexo-cli；对标 npm 的包管理工具 yarn 和一些服务型工具依赖，比如 http-server，npm-check-updates 之类。</p>
-<p>不需要在项目里就可能会使用的工具依赖，或者你想写静态 html 文件的时也可以使用 CSS 预处理器那么也可以把它安装在全局（但是如果是基于包管理的项目还是安装在开发环境）</p>
-<h2 id="什么？你问-npm-和-yarn-的区别用哪个好？？"><a href="#什么？你问-npm-和-yarn-的区别用哪个好？？" class="headerlink" title="什么？你问 npm 和 yarn 的区别用哪个好？？"></a>什么？你问 npm 和 yarn 的区别用哪个好？？</h2><p>等下次我什么时候想起来吧，挖个坑先，</p>
-<p>简单说下现在 npm 和 yarn 已经没有什么区别了只是命令行的差异 yarn 的某些命令行会精简一些，和安装依赖的时候是不是并行下载的区别了，另外 npm 有一个叫做 npx 的臭弟弟可是很厉害的。</p>
+<h3 id="WHY"><a href="#WHY" class="headerlink" title="WHY?"></a>WHY?</h3><p>先来看官方文档：<br><img src="https://yogwang.github.io/2019/jeecg-boot-devDiary03/1.jpg" alt="文档截图"></p>
+<p>在菜单管理中如技术文档里边所说，填写 <code>/UserInfo/:id</code> ，<br>并在页面中使用 <code>&lt;router-link :to=&quot;{name:&#39;UserInfo&#39;, params: {id:1}}&quot;&gt;查看&lt;/router-link&gt;</code></p>
+<p>使用 <code>&lt;router-link :to=&quot;{name:&#39;UserInfo&#39;, params: {id:1}}&quot;&gt;查看&lt;/router-link&gt;</code></p>
+<p>点击按钮跳转会到 <code>/</code> ，并不会跳转到 <code>/UserInfo/123456</code> ，提示 <code>[vue-router] Route with name &#39;UserInfo&#39; does not exist</code> 。</p>
+<p><img src="https://user-images.githubusercontent.com/51895542/67458015-b6c5ee00-f667-11e9-9556-315945c7822e.jpg" alt="3"></p>
+<p>使用 <code>&lt;router-link :to=&quot;</code>UserInfo/${id}<code>&quot; /&gt;查看&lt;/router-link&gt;</code> 就可以。<br>在 Vue DevTools 中检查发现，<code>UserInfo</code> 对应的是 Name 是 <code>UserInfo-@id</code></p>
+<p><img src="https://user-images.githubusercontent.com/51895542/67458016-b75e8480-f667-11e9-9268-9dd6bbc8d0c1.jpg" alt="4"></p>
+<p>今天提交了一个 Issues 👉 <a href="https://github.com/zhangdaiscott/jeecg-boot/issues/669" target="_blank" rel="noopener">动态路由的带参 #669</a>，看官方怎么说吧。</p>
+<p>先使用偷懒的方法吧</p>
+<h5 id="附"><a href="#附" class="headerlink" title="附"></a>附</h5><p><a href="mailto:Jeecg-boot@2.1.0" target="_blank" rel="noopener">Jeecg-boot@2.1.0</a>（发布日期：20190826）<br>vue@^2.6.10<br>@vue/cli@^3.8.0<br>vue-router@^3.0.1</p>
  
   </article>
 
@@ -111,19 +92,10 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/jeecg-boot-devDiary01/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Jeecg-boot 中台挖坑日记01 Jeecg-Boot是个什么鬼?
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/wordpress-themeDevelop-lesson01/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/hexo-theme-development-codeblock/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">[ WordPress 主题开发 ] 从入门到自闭 - 01</div>
+      <div class="article-nav-title">Hexo 主题开发 -- 代码块颜色高亮</div>
     </a>
   
 </nav>
