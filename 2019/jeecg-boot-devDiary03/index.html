@@ -74,14 +74,16 @@
 <a id="more"></a>
 
 <h3 id="WHY"><a href="#WHY" class="headerlink" title="WHY?"></a>WHY?</h3><p>先来看官方文档：<br><img src="https://yogwang.github.io/2019/jeecg-boot-devDiary03/1.jpg" alt="文档截图"></p>
-<p>在菜单管理中如技术文档里边所说，填写 <code>/UserInfo/:id</code> ，<br>并在页面中使用 <code>&lt;router-link :to=&quot;{name:&#39;UserInfo&#39;, params: {id:1}}&quot;&gt;查看&lt;/router-link&gt;</code></p>
-<p>使用 <code>&lt;router-link :to=&quot;{name:&#39;UserInfo&#39;, params: {id:1}}&quot;&gt;查看&lt;/router-link&gt;</code></p>
-<p>点击按钮跳转会到 <code>/</code> ，并不会跳转到 <code>/UserInfo/123456</code> ，提示 <code>[vue-router] Route with name &#39;UserInfo&#39; does not exist</code> 。</p>
-<p><img src="https://user-images.githubusercontent.com/51895542/67458015-b6c5ee00-f667-11e9-9556-315945c7822e.jpg" alt="3"></p>
-<p>使用 <code>&lt;router-link :to=&quot;</code>UserInfo/${id}<code>&quot; /&gt;查看&lt;/router-link&gt;</code> 就可以。<br>在 Vue DevTools 中检查发现，<code>UserInfo</code> 对应的是 Name 是 <code>UserInfo-@id</code></p>
-<p><img src="https://user-images.githubusercontent.com/51895542/67458016-b75e8480-f667-11e9-9268-9dd6bbc8d0c1.jpg" alt="4"></p>
+<p>在菜单管理中如技术文档里边所说，填写 <code>/UserInfo/:id</code> ，<br>并在页面中使用 <code>&lt;router-link :to=&quot;{name:&#39;UserInfo&#39;, params: {id:id}}&quot;&gt;查看&lt;/router-link&gt;</code></p>
+<p>点击按钮跳转会到 <code>/</code> ，不会跳转到 <code>/UserInfo/123456</code> ，<br>并提示 <code>[vue-router] Route with name &#39;UserInfo&#39; does not exist</code> 。</p>
+<p><img src="https://yogwang.github.io/2019/jeecg-boot-devDiary03/3.jpg" alt="截图1:使用name路由"></p>
+<p>使用 <code>&lt;router-link :to=&quot;&#39;UserInfo/&#39;+id&quot; /&gt;查看&lt;/router-link&gt;</code> 就可以。<br>在 Vue DevTools 中检查发现，<code>UserInfo</code> 对应的是 Name 是 <code>UserInfo-@id</code></p>
+<p><img src="https://yogwang.github.io/2019/jeecg-boot-devDiary03/4.jpg" alt="截图2:使用path路由"></p>
 <p>今天提交了一个 Issues 👉 <a href="https://github.com/zhangdaiscott/jeecg-boot/issues/669" target="_blank" rel="noopener">动态路由的带参 #669</a>，看官方怎么说吧。</p>
 <p>先使用偷懒的方法吧</p>
+<h3 id="2019-年-10-月-25-日更新"><a href="#2019-年-10-月-25-日更新" class="headerlink" title="2019 年 10 月 25 日更新"></a>2019 年 10 月 25 日更新</h3><p>使用 <code>:to=&quot;&#39;UserInfo/&#39;+id&quot;</code> 点击多个查看用户后，会创建多个用户资料标签，并且没有激活的方法，来重新获取用户 ID。</p>
+<p>👉 修改 : 菜单管理中，最后不添加 <code>/:id</code> ,<br>使用 <code>:to=&quot;{name:&#39;UserInfo&#39;, params: {id:id}}&quot;</code> 直接传参，打开的新标签页可以获得 userID，<br>之后再点击其他用户信息也不会再创建一个新标签，而是直接使用已创建的标签页。</p>
+<p>最后 Issues 还没被回复。</p>
 <h5 id="附"><a href="#附" class="headerlink" title="附"></a>附</h5><p><a href="mailto:Jeecg-boot@2.1.0" target="_blank" rel="noopener">Jeecg-boot@2.1.0</a>（发布日期：20190826）<br>vue@^2.6.10<br>@vue/cli@^3.8.0<br>vue-router@^3.0.1</p>
  
   </article>
