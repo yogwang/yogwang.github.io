@@ -65,6 +65,13 @@
     <blockquote>
 <p>坑！ #_YogWang 2019/10/24</p>
 </blockquote>
+<blockquote>
+<p>jeecgboot 针对路由组件的名字做了规则处理，所以默认不是 UserInfo</p>
+<ul>
+<li>如果自定义了路由组件名，则采用自定义名；</li>
+<li>未定义路由 name (通过 URL 生成路由 name,路由 name 供前端开发，页面跳转使用)<br>@zhangdaiscott_2019/10/27</li>
+</ul>
+</blockquote>
 <p>今天写一个带参数页面的时候，怎么样都是</p>
 <ul>
 <li><code>404</code> 然后跳转到 <code>localhost:8080/#/</code>;</li>
@@ -86,7 +93,7 @@
 <h3 id="2019-年-10-月-25-日更新"><a href="#2019-年-10-月-25-日更新" class="headerlink" title="2019 年 10 月 25 日更新"></a>2019 年 10 月 25 日更新</h3><p>使用 <code>:to=&quot;&#39;UserInfo/&#39;+id&quot;</code> 点击多个查看用户后，会创建多个用户资料标签，并且没有激活的方法，来重新获取用户 ID。</p>
 <p>👉 修改 : 菜单管理中，最后不添加 <code>/:id</code> ,<br>使用 <code>:to=&quot;{name:&#39;UserInfo&#39;, params: {id:id}}&quot;</code> 直接传参，打开的新标签页可以获得 userID，<br>之后再点击其他用户信息也不会再创建一个新标签，而是直接使用已创建的标签页。</p>
 <p>最后 Issues 还没被回复。</p>
-<h3 id="2019-年-10-月-27-日更行"><a href="#2019-年-10-月-27-日更行" class="headerlink" title="2019 年 10 月 27 日更行"></a>2019 年 10 月 27 日更行</h3><blockquote>
+<h3 id="2019-年-10-月-27-日更新"><a href="#2019-年-10-月-27-日更新" class="headerlink" title="2019 年 10 月 27 日更新"></a>2019 年 10 月 27 日更新</h3><blockquote>
 <p>zhangdaiscott：jeecgboot 针对路由组件的名字做了规则处理，所以默认不是 UserInfo</p>
 <ul>
 <li>如果自定义了路由组件名，则采用自定义名；</li>
