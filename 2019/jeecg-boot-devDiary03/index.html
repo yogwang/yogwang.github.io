@@ -70,7 +70,7 @@
 <li><code>404</code> 然后跳转到 <code>localhost:8080/#/</code>;</li>
 <li>显示空白;</li>
 </ul>
-<p>看了 Jeecg-Boot 的技术手册完全按照上边来的写也是不行，还是跳转到 <code>/</code>，在 Vue DevTools 中检查又没有问题。<br>就又折腾了好久，又是查文档又是看官方的教学视频。<br>最后真的是烦了，就偷懒了一把，结果成了….原因是啥呢??? -&gt; READMORE</p>
+<p>看了 Jeecg-Boot 的技术手册完全按照上边来的写也是不行，还是跳转到 <code>/</code>，在 Vue DevTools 中检查又没有问题。<br>就又折腾了好久，又是查文档又是看官方的教学视频。<br>最后真的是烦了，就偷懒了一把，结果成了….原因是啥呢???</p>
 <a id="more"></a>
 
 <h3 id="WHY"><a href="#WHY" class="headerlink" title="WHY?"></a>WHY?</h3><p>先来看官方文档：<br><img src="https://yogwang.github.io/2019/jeecg-boot-devDiary03/1.jpg" alt="文档截图"></p>
@@ -81,10 +81,19 @@
 <p><img src="https://yogwang.github.io/2019/jeecg-boot-devDiary03/4.jpg" alt="截图2:使用path路由"></p>
 <p>今天提交了一个 Issues 👉 <a href="https://github.com/zhangdaiscott/jeecg-boot/issues/669" target="_blank" rel="noopener">动态路由的带参 #669</a>，看官方怎么说吧。</p>
 <p>先使用偷懒的方法吧</p>
+<p>↓ 2019 年 10 月 25 日已更新<br>↓ 2019 年 10 月 27 日已更新</p>
+<h5 id="附"><a href="#附" class="headerlink" title="附"></a>附</h5><p><a href="mailto:Jeecg-boot@2.1.0" target="_blank" rel="noopener">Jeecg-boot@2.1.0</a>（发布日期：20190826）<br>vue@^2.6.10<br>@vue/cli@^3.8.0<br>vue-router@^3.0.1</p>
 <h3 id="2019-年-10-月-25-日更新"><a href="#2019-年-10-月-25-日更新" class="headerlink" title="2019 年 10 月 25 日更新"></a>2019 年 10 月 25 日更新</h3><p>使用 <code>:to=&quot;&#39;UserInfo/&#39;+id&quot;</code> 点击多个查看用户后，会创建多个用户资料标签，并且没有激活的方法，来重新获取用户 ID。</p>
 <p>👉 修改 : 菜单管理中，最后不添加 <code>/:id</code> ,<br>使用 <code>:to=&quot;{name:&#39;UserInfo&#39;, params: {id:id}}&quot;</code> 直接传参，打开的新标签页可以获得 userID，<br>之后再点击其他用户信息也不会再创建一个新标签，而是直接使用已创建的标签页。</p>
 <p>最后 Issues 还没被回复。</p>
-<h5 id="附"><a href="#附" class="headerlink" title="附"></a>附</h5><p><a href="mailto:Jeecg-boot@2.1.0" target="_blank" rel="noopener">Jeecg-boot@2.1.0</a>（发布日期：20190826）<br>vue@^2.6.10<br>@vue/cli@^3.8.0<br>vue-router@^3.0.1</p>
+<h3 id="2019-年-10-月-27-日更行"><a href="#2019-年-10-月-27-日更行" class="headerlink" title="2019 年 10 月 27 日更行"></a>2019 年 10 月 27 日更行</h3><blockquote>
+<p>zhangdaiscott：jeecgboot 针对路由组件的名字做了规则处理，所以默认不是 UserInfo</p>
+<ul>
+<li>如果自定义了路由组件名，则采用自定义名；</li>
+<li>未定义路由 name (通过 URL 生成路由 name,路由 name 供前端开发，页面跳转使用)</li>
+</ul>
+</blockquote>
+<p><img src="https://yogwang.github.io/2019/jeecg-boot-devDiary03/re.png" alt="截图3:GitReply"></p>
  
   </article>
 
