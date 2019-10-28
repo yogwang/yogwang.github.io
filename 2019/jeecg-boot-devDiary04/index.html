@@ -67,7 +67,6 @@
 <a id="more"></a>
 
 <p><a href="https://vue.ant.design/components/tabs-cn/" target="_blank" rel="noopener">Vue-AntD Tabs</a></p>
-<blockquote>
 <table>
 <thead>
 <tr>
@@ -82,7 +81,6 @@
 <td>(targetKey, action): void</td>
 </tr>
 </tbody></table>
-</blockquote>
 <p>移除 Tab 方法在: <code>@/components/layouts/TabLaytou.vue =&gt; remove:117</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">editPage(key, action) &#123;</span><br><span class="line">  <span class="keyword">this</span>[action](key)</span><br><span class="line">&#125;,</span><br><span class="line">remove(key) &#123;</span><br><span class="line">  <span class="keyword">if</span> (key == indexKey) &#123;</span><br><span class="line">    <span class="keyword">this</span>.$message.warning(<span class="string">'首页不能关闭!'</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.pageList.length === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.$message.warning(<span class="string">'这是最后一页，不能再关闭了啦'</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.pageList = <span class="keyword">this</span>.pageList.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.fullPath !== key)</span><br><span class="line">  <span class="keyword">let</span> index = <span class="keyword">this</span>.linkList.indexOf(key)</span><br><span class="line">  <span class="keyword">this</span>.linkList = <span class="keyword">this</span>.linkList.filter(<span class="function"><span class="params">item</span> =&gt;</span> item !== key)</span><br><span class="line">  index = index &gt;= <span class="keyword">this</span>.linkList.length ? <span class="keyword">this</span>.linkList.length - <span class="number">1</span> : index</span><br><span class="line">  <span class="keyword">this</span>.activePage = <span class="keyword">this</span>.linkList[index]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
@@ -98,7 +96,7 @@
   
     <a href="/2019/CSS-pseudo-elements-content/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">CSS-pseudo_elements:content</div>
+      <div class="article-nav-title">CSS 伪类的 content 用法</div>
     </a>
   
 </nav>
@@ -138,11 +136,7 @@
           </li>
         
           <li>
-            <a href="/2019/CSS-pseudo-elements-content/">CSS-pseudo_elements:content</a>
-          </li>
-        
-          <li>
-            <a href="/2019/CSS-pseudo_elements_content/">CSS 伪类的 content 用法</a>
+            <a href="/2019/CSS-pseudo-elements-content/">CSS 伪类的 content 用法</a>
           </li>
         
           <li>
@@ -151,6 +145,10 @@
         
           <li>
             <a href="/2019/hexo-theme-development-codeblock/">Hexo 主题开发 -- 代码块颜色高亮</a>
+          </li>
+        
+          <li>
+            <a href="/2019/jeecg-boot-devDiary02/">Jeecg-boot 中台挖坑日记02 用户头像上传 / Vue-AntD上传组件</a>
           </li>
         
       </ul>
