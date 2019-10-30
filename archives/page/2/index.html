@@ -51,6 +51,47 @@
       
   
     <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/CSS-border_radius-semicircle/">CSS border-radius 制作特殊圆</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>以前只知道 <code>border-radius</code> 有一个圆角半径，今天在做一个半圆的时候突然发现，它还有 x 轴和 y 轴属性。</p>
+<h2 id="先来看一下-MDN-中-border-radius-说明："><a href="#先来看一下-MDN-中-border-radius-说明：" class="headerlink" title="先来看一下 MDN 中 border-radius 说明："></a>先来看一下 MDN 中 <code>border-radius</code> 说明：</h2><blockquote>
+<p>CSS 属性 border-radius 允许你设置元素的外边框圆角。当使用一个半径时确定一个圆形，当使用两个半径时确定一个椭圆。这个(椭)圆与边框的交集形成圆角效果。</p>
+</blockquote>
+<blockquote>
+<p>该属性是一个 简写属性，是为了将这四个属性 border-top-left-radius、border-top-right-radius、border-bottom-right-radius，和 border-bottom-left-radius 简写为一个属性。</p>
+</blockquote>
+<p>也就是说，每个圆角都有 <code>圆角半径</code>、 <code>水平半长轴</code> 和 <code>垂直半长轴</code> 属性值:</p>
+<p><img src="https://yogwang.github.io/2019/CSS-border_radius-semicircle/border-radius.png" alt="border-radius示例"></p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/CSS-border_radius-semicircle/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-08-23T02:24:35.000Z" itemprop="datePublished">Aug 23</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
       <a class="archive-article-title" href="/2019/CSS-text_truncation/">CSS 中的文字截断</a>
     </h2>
   
@@ -358,38 +399,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/问题/">问题</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/BetterScrol-mouse-wheel/">BetterScrol 2.x Mouse-whell 没效果</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-content">
-    <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>yarn add @better-scroll/mouse-wheel@next</code></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import BScroll from &apos;@better-scroll/core&apos;</span><br><span class="line">import MouseWheel from &apos;@better-scroll/mouse-wheel&apos;</span><br><span class="line">BScroll.use(MouseWheel)</span><br><span class="line"></span><br><span class="line">new BScroll(&apos;.bs-wrap&apos;, &#123;</span><br><span class="line">  //...</span><br><span class="line">  mouseWheel: &#123;</span><br><span class="line">    speed: 20,</span><br><span class="line">    invert: false,</span><br><span class="line">    easeTime: 300</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="但是为什么在原有的基础上这样写没有用呢。官方-Demo"><a href="#但是为什么在原有的基础上这样写没有用呢。官方-Demo" class="headerlink" title="但是为什么在原有的基础上这样写没有用呢。官方 Demo"></a>但是为什么在原有的基础上这样写没有用呢。<a href="https://better-scroll.github.io/docs/zh-CN/plugins/mouse-wheel.html#%E7%A4%BA%E4%BE%8B" target="_blank" rel="noopener">官方 Demo</a></h2><p>查看 <code>Demo</code> 源码在 <code>scroll-wrapper</code> 外多了一层 <code>core-mouse-wheel</code> 套上就可以了。</p>
-<h3 id="😂-没仔细看-Demo-源码"><a href="#😂-没仔细看-Demo-源码" class="headerlink" title="😂 没仔细看 Demo 源码"></a>😂 没仔细看 <code>Demo</code> 源码</h3> 
-  </article>
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-07-15T03:13:04.000Z" itemprop="datePublished">Jul 15</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -428,6 +437,10 @@
       <ul>
         
           <li>
+            <a href="/2019/jeecg-boot-devDiary05/">jeecg-boot-devDiary05</a>
+          </li>
+        
+          <li>
             <a href="/2019/jeecg-boot-devDiary04/">Jeecg-boot 中台挖坑日记04 全局 Vue-AntD 标签页的控制</a>
           </li>
         
@@ -441,10 +454,6 @@
         
           <li>
             <a href="/2019/hexo-theme-development-codeblock/">Hexo 主题开发 -- 代码块颜色高亮</a>
-          </li>
-        
-          <li>
-            <a href="/2019/jeecg-boot-devDiary02/">Jeecg-boot 中台挖坑日记02 用户头像上传 / Vue-AntD上传组件</a>
           </li>
         
       </ul>
