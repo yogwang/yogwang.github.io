@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    CSS 伪类的 content 用法 | blog [ YOG WANG ]
+    记一个 CSS 伪类的 content 用法 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -53,7 +53,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      CSS 伪类的 content 用法
+      记一个 CSS 伪类的 content 用法
     </h1>
   
 
@@ -62,8 +62,26 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>一些关于 CSS 伪类的用法。<br>2019 年 10 月 28 日开坑</p>
-<!-- https://www.cnblogs.com/zccst/p/3655069.html -->
+    <blockquote>
+<p><code>content: url(&#39;...&#39;);</code></p>
+</blockquote>
+<p>最近在群里看到一种写伪类 <code>content</code> 的用法，觉得很新奇，</p>
+<p>群友一开始使用伪类来显示一个小图标，但是这个小图标比较大，<br>所以他就像设置宽高来显示这个伪类，但是他怎么都设置不了这个伪类的宽高，</p>
+<p>我就和他说你设置伪类的宽高不就好了嘛？（我一直以来都是用伪类设置背景图片的形式来做 icon）<br>他说不行，我就看到了这个独特的写法…</p>
+<p>他是直接在 <code>content</code> 里边写了图片的 <code>url</code>，然后神奇的是居然可以显示 <code>content</code> 里填写的图片！！！</p>
+<a id="more"></a>
+
+<p>我都没有用过,就查阅了一下 MDN 👉 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/content" target="_blank" rel="noopener">[ content - CSS ]</a></p>
+<blockquote>
+<p>URI 值会指定一个外部资源（比如图片）。如果该资源或图片不能显示，它就会被忽略或显示一些占位（比如无图片标志）。</p>
+</blockquote>
+<p>先来看一下 DEMO</p>
+<iframe id="cp_embed_oNNoZKj" src="//codepen.io/yogwang/embed/oNNoZKj?height=400&theme-id=dark&slug-hash=oNNoZKj&default-tab=css,result" scrolling="no" frameborder="no" height="400" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+<p>虽然这个方式存在很多问题，但是可以方便很多时候处理图片小图标。</p>
+<p>就不需要先设置 <code>content:&#39;&#39;</code> 然后 <code>display:inline-block</code> 再设置宽高在设置背景图片，<br>直接把图片地址放在 <code>content</code> 里边就可以解决问题。很方便，但是这个方式显示的小图标并不能控制它的宽高。<br>不过把图片裁剪成合适大小就可以解决这个问题，而且兼容性还不错。 👉 <a href="https://caniuse.com/#feat=css-gencontent" target="_blank" rel="noopener">Can I use</a></p>
+<p><img src="https://yogwang.github.io/2019/CSS-pseudo-elements-content/caniuse.jpg" alt="兼容性"></p>
+<p>你敢信 IE8 都兼容！</p>
  
   </article>
 
@@ -133,7 +151,7 @@
           </li>
         
           <li>
-            <a href="/2019/CSS-pseudo-elements-content/">CSS 伪类的 content 用法</a>
+            <a href="/2019/CSS-pseudo-elements-content/">记一个 CSS 伪类的 content 用法</a>
           </li>
         
           <li>

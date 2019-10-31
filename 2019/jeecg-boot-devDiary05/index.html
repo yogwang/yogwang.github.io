@@ -62,7 +62,32 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <h3 id="Jeecg-boot-gt-Axios-异步请求部分，待填坑。"><a href="#Jeecg-boot-gt-Axios-异步请求部分，待填坑。" class="headerlink" title="Jeecg-boot -&gt; Axios 异步请求部分，待填坑。"></a>Jeecg-boot -&gt; Axios 异步请求部分，待填坑。</h3> 
+    <blockquote>
+<p>一开始以为这里坑很大，结果坑其实并不大，而且内置了很多常用函数，<br>可能是我带有偏见了，所以这篇文章就简短的介绍了一下。</p>
+</blockquote>
+<p>在 <code>@/utils/request.js</code> 中创建了 Axios 实例，<br>并且在 <code>@/api/manage.js</code> 中封装了常用函数<br>只需要在组件内按需导入即可。</p>
+<a id="more"></a>
+
+<hr>
+<p>Jeecg-boot 封装好了 Axios 的实例，<br>并且导出了可能会用到的一些常用函数：</p>
+<ul>
+<li><code>httpAction()</code></li>
+<li><code>putAction()</code></li>
+<li><code>getAction()</code>,</li>
+</ul>
+<p>而且内置了一些简单的内置的函数：</p>
+<ul>
+<li><code>deleteAction()</code></li>
+<li><code>getUserList()</code></li>
+<li><code>getRoleList()</code></li>
+<li><code>getServiceList()</code></li>
+<li><code>getPermissions()</code></li>
+<li><code>saveService()</code></li>
+<li><code>downFile()</code></li>
+</ul>
+<p>只需要在需要使用的组件内 <code>import</code> 即可，</p>
+<p>但是封装好了的 Axios 实例默认是 <code>JSON</code> 传输的，<br>所以需要使用 <code>form-data</code> 传输时，需要用 <code>new FormData()</code> 然后 <code>.append()</code> 来传递数据</p>
+ 
   </article>
 
 
@@ -131,7 +156,7 @@
           </li>
         
           <li>
-            <a href="/2019/CSS-pseudo-elements-content/">CSS 伪类的 content 用法</a>
+            <a href="/2019/CSS-pseudo-elements-content/">记一个 CSS 伪类的 content 用法</a>
           </li>
         
           <li>
