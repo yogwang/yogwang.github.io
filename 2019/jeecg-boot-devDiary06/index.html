@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Jeecg-boot 中台挖坑日记06 富文本编辑器tinyMCE 文图编辑 | blog [ YOG WANG ]
+    Jeecg-boot 中台挖坑日记06 富文本编辑器tinyMCE 图片附件上传 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -53,7 +53,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      Jeecg-boot 中台挖坑日记06 富文本编辑器tinyMCE 文图编辑
+      Jeecg-boot 中台挖坑日记06 富文本编辑器tinyMCE 图片附件上传
     </h1>
   
 
@@ -62,12 +62,34 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <blockquote>
-<p>这个富文本组件本质是 TinyMCE (<a href="https://github.com/tinymce/tinymce)，" target="_blank" rel="noopener">https://github.com/tinymce/tinymce)，</a><br>在 vue 项目中使用的封装库 <a href="https://github.com/tinymce/tinymce-vue" target="_blank" rel="noopener">https://github.com/tinymce/tinymce-vue</a></p>
+    <h3 id="Jeecg-boot-gt-富文本编辑器-tinyMCE-部分，待填坑。"><a href="#Jeecg-boot-gt-富文本编辑器-tinyMCE-部分，待填坑。" class="headerlink" title="Jeecg-boot -&gt; 富文本编辑器 tinyMCE 部分，待填坑。"></a>Jeecg-boot -&gt; 富文本编辑器 <code>tinyMCE</code> 部分，待填坑。</h3><blockquote>
+<p>这个富文本组件本质是 <code>TinyMCE</code> <a href="https://github.com/tinymce/tinymce" target="_blank" rel="noopener">github.com/tinymce/tinymce</a>，<br>在 Vue 项目中使用的封装库 <a href="https://github.com/tinymce/tinymce-vue" target="_blank" rel="noopener">github.com/tinymce/tinymce-vue</a></p>
 </blockquote>
-<h3 id="Jeecg-boot-gt-富文本编辑器-tinyMCE-部分，待填坑。"><a href="#Jeecg-boot-gt-富文本编辑器-tinyMCE-部分，待填坑。" class="headerlink" title="Jeecg-boot -&gt; 富文本编辑器 tinyMCE 部分，待填坑。"></a>Jeecg-boot -&gt; 富文本编辑器 <code>tinyMCE</code> 部分，待填坑。</h3><p>Jeecg-boot 开发手册里并没有详细说明，先提交了一个 Issues 上去，看团队怎么回复。</p>
-<h3 id="Committed-Issue"><a href="#Committed-Issue" class="headerlink" title="Committed Issue"></a>Committed Issue</h3><ul>
-<li><a href="https://github.com/zhangdaiscott/jeecg-boot/issues/685" target="_blank" rel="noopener">富文本组件使用方法 #685</a></li>
+<p>Jeecg-boot 开发手册里并没有详细说明，先提交了一个 Issues 上去，看团队怎么回复。</p>
+<a id="more"></a>
+
+<ul>
+<li>2019-10</li>
+</ul>
+<p>Github 上有一个人回复了，框架是使用的 <a href="https://www.tiny.cloud/" target="_blank" rel="noopener"><code>TinyMCE</code></a> 这个富文本编辑器的 <a href="https://github.com/tinymce/tinymce-vue" target="_blank" rel="noopener">封装库</a>，<br>所以在其手册里找到了，修改上传方式的部分 <a href="https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_handler" target="_blank" rel="noopener">#file-image-upload</a></p>
+<blockquote>
+<h3 id="images-upload-handler"><a href="#images-upload-handler" class="headerlink" title="#images_upload_handler"></a>#images_upload_handler</h3><p>The images_upload_handler option allows you to specify a function that is used to replace TinyMCE’s default JavaScript upload handler function with custom logic.<br>The upload handler function takes three arguments: blobInfo, a success callback, and a failure callback. When this option is not set, TinyMCE utilizes an XMLHttpRequest to upload images one at a time to the server and calls the success callback with the location of the remote image.</p>
+</blockquote>
+<blockquote>
+<p>Note: Please note that when using this option, no other image uploader options are necessary. Additionally, if you would like TinyMCE to replace the <image> tag’s src attribute with the remote location, please use the success callback defined in the images_upload_handler function with the returned JSON object’s location property.</image></p>
+</blockquote>
+<h4 id="在文档中附带了例子："><a href="#在文档中附带了例子：" class="headerlink" title="在文档中附带了例子："></a>在文档中附带了例子：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">tinymce.init(&#123;</span><br><span class="line">  selector: <span class="string">'textarea'</span>, <span class="comment">// change this value according to your HTML</span></span><br><span class="line">  images_upload_handler: <span class="function"><span class="keyword">function</span>(<span class="params">blobInfo, success, failure</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> xhr, formData</span><br><span class="line">    xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">    xhr.withCredentials = <span class="literal">false</span></span><br><span class="line">    xhr.open(<span class="string">'POST'</span>, <span class="string">'postAcceptor.php'</span>)</span><br><span class="line">    xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> json</span><br><span class="line">      <span class="keyword">if</span> (xhr.status != <span class="number">200</span>) &#123;</span><br><span class="line">        failure(<span class="string">'HTTP Error: '</span> + xhr.status)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      json = <span class="built_in">JSON</span>.parse(xhr.responseText)</span><br><span class="line">      <span class="keyword">if</span> (!json || <span class="keyword">typeof</span> json.location != <span class="string">'string'</span>) &#123;</span><br><span class="line">        failure(<span class="string">'Invalid JSON: '</span> + xhr.responseText)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      success(json.location)</span><br><span class="line">    &#125;</span><br><span class="line">    formData = <span class="keyword">new</span> FormData()</span><br><span class="line">    formData.append(<span class="string">'file'</span>, blobInfo.blob(), blobInfo.filename())</span><br><span class="line">    xhr.send(formData)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="并且可以使用-images-upload-url-指定上传的-URL"><a href="#并且可以使用-images-upload-url-指定上传的-URL" class="headerlink" title="并且可以使用 images_upload_url 指定上传的 URL"></a>并且可以使用 <code>images_upload_url</code> 指定上传的 <code>URL</code></h4><blockquote>
+<h3 id="images-upload-url"><a href="#images-upload-url" class="headerlink" title="#images_upload_url"></a>#images_upload_url</h3><p>This option lets you specify a URL for the server-side upload handler. Upload will get triggered whenever you call editor.uploadImages() or - automatically, if automatic_uploads option is enabled. Upload handler should return a new location for the uploaded file in the following format:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; &#123; &quot;location&quot;: &quot;folder/sub-folder/new-location.png&quot; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tinymce.init(&#123;</span><br><span class="line">  selector: <span class="string">'textarea'</span>, <span class="comment">// change this value according to your HTML</span></span><br><span class="line">  images_upload_url: <span class="string">'postAcceptor.php'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
+<li><a href="https://github.com/zhangdaiscott/jeecg-boot/issues/685" target="_blank" rel="noopener">ISSUES_富文本组件使用方法 #685</a></li>
+<li><a href="https://www.tiny.cloud/" target="_blank" rel="noopener">TinyMCE</a></li>
+<li><a href="https://github.com/tinymce/tinymce-vue" target="_blank" rel="noopener">github.com/tinymce/tinymce-vue</a></li>
 </ul>
  
   </article>
@@ -117,7 +139,7 @@
       <ul>
         
           <li>
-            <a href="/2019/jeecg-boot-devDiary06/">Jeecg-boot 中台挖坑日记06 富文本编辑器tinyMCE 文图编辑</a>
+            <a href="/2019/jeecg-boot-devDiary06/">Jeecg-boot 中台挖坑日记06 富文本编辑器tinyMCE 图片附件上传</a>
           </li>
         
           <li>
