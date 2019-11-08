@@ -1,0 +1,21 @@
+
+/* FONTS */
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900,700italic,300italic');
+@import url('font-awesome.min.css');
+
+/* PLUGIN CSS */
+@import url('../assets/bxslider/jquery.bxslider.css');
+@import url('../assets/owl-carousel/owl.carousel.css');
+@import url('../assets/owl-carousel/owl.theme.css');
+@import url('../assets/fancybox/jquery.fancybox.css');
+
+/* MAIN CSS */
+@import url('bootstrap.css');
+@import url('theme.css');
+@import url('blog.css');
+@import url('page.css');
+@import url('shop.css');
+@import url('responsive.css');
+@import url('animate.css');
+@import url('colors.css');
+@import url('custom.css');

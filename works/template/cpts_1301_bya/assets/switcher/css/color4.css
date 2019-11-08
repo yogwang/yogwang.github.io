@@ -1,0 +1,108 @@
+.square:hover,
+.main-nav__search,
+.line__first,
+.button--red,
+.anons__color-block,
+.line--title .line__second,
+.services__info-block--active .square--toggle,
+.button--active,
+.button.button--grey:hover,
+.listing-anons__hidden,
+.anons__block--center,
+.navbar-toggle,
+.home-reviews__quote,
+.blog--home,
+.biker-club__main--home2,
+.info-block .button--transparent:hover,
+.button--transparent:hover,
+.pagination__cell:hover,
+.citation,
+.article-comment__action:hover,
+.anons--about .anons__block:hover .anons__title,
+.numbers.numbers--about .line .line__second,
+.ui-slider-handle,
+.ui-widget-header,
+.button--dark:hover,
+.item-cell:hover .add-to-cart,
+.customBgColor,
+.pagination .pagination__cell.pagination__cell--active,
+.demo_changer .demo-icon
+{
+    background-color: #ff8300;
+}
+
+.square:hover,
+.line-down,
+.offer__img,
+.button--active,
+.button--main.button.button--active,
+.button.button--grey:hover,
+.info-block .button--transparent:hover,
+.button--transparent:hover,
+.listings--home2 .button--transparent:hover,
+.article__img:after,
+.pagination__cell:hover,
+.article-comment__action:hover,
+.woker-hidden__social .social__one:hover,
+.button--dark:hover,
+.item-cell:hover .add-to-cart,
+.pagination .pagination__cell.pagination__cell--active,
+.list__circle
+{
+    border-color:#ff8300;
+}
+
+.aside-tabs__links .aside-tabs__active-link,
+.aside-tabs--about .aside-tabs__links a.aside-tabs__active-link,
+.sale.triangle-sale:after
+{
+    border-top-color:#ff8300;
+}
+
+.main-nav li a:hover,
+.offer__price span,
+.featured  .technical a:hover span.fa,
+.signup__desc span.fa,
+.link__square span.fa,
+.numbers--home .numbers__num,
+.categories__head > h5 a:hover,
+.aside-tabs__date,
+.article__comments-author span.fa,
+.article-comment__action span.fa,
+.article-comment__date,
+.about-us h1 span,
+.item-price,
+.numbers__head span.fa,
+.list__circle span.fa,
+.services__title a:first-child:hover,
+.services__info-block--active .services__title a:first-child,
+.title-space,
+.logo__title span
+{
+    color:#ff8300;
+}
+
+.triangle--block:after,
+.triangle--services:after,
+.listing-anons.triangle:after,
+.blog-anons__hidden.triangle:after,
+.biker-club__main.triangle:after,
+.listing-anons.line-down.triangle:hover:after,
+.event-num.triangle:after,
+.signup--home2 .button--sign.triangle:hover:after,
+.blog-date.triangle:after,
+.triangle-list__one.triangle:after,
+.worker.triangle:after,
+.worker.triangle:hover:after,
+.triangle-list--shop .triangle-list__one.triangle:hover:after,
+ul.triangle-list .triangle-list__one--active.triangle:after,
+.triangle-sale:after,
+.sale.triangle-sale:after
+{
+    border-bottom-color:#ff8300;
+}
+
+.reviews:after
+{
+    background-color: rgba(255,131,0,0.9);
+}

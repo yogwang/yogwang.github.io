@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>
+    Jeecg-boot 中台挖坑日记08 Vue 中使用百度地图获取坐标点 | blog [ YOG WANG ]
+  </title>
+  
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="sign" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <main id="container">
+  <div
+  id="post-jeecg-boot-devDiary08"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2019-11-07T08:22:53.000Z" itemprop="datePublished">2019-11-07</time>
+</p> 
+    </div>
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Jeecg-boot 中台挖坑日记08 Vue 中使用百度地图获取坐标点
+    </h1>
+  
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>突然想起来项目里边的一个需求，在用户申请称为公司账户的时候需要附加公司地址的百度地图坐标点，以便在 APP 中显示。<br>所以需要用到百度地图的坐标拾取，<br>反正总不可能让用户自己去拾取然后输入到 <code>&lt;input&gt;</code> 中去。</p>
+<p>这篇文章就是简单说一下如何在 Vue 项目中使用百度地图。</p>
+<blockquote>
+<p>使用到的组件: <a href="https://github.com/Dafrok/vue-baidu-map" target="_blank" rel="noopener">Vue-baidu-map</a></p>
+</blockquote>
+<p>👉 <a href="https://dafrok.github.io/vue-baidu-map/#/zh/start/usage" target="_blank" rel="noopener">开发手册</a></p>
+<a id="more"></a>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装依赖总不用说了把，不管你用那种，反正包名没错就对了。</p>
+<h4 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install vue-baidu-map --save</span><br></pre></td></tr></table></figure>
+
+<h4 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://unpkg.com/vue-baidu-map&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><h3 id="全局注册"><a href="#全局注册" class="headerlink" title="全局注册"></a>全局注册</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> BaiduMap <span class="keyword">from</span> <span class="string">'vue-baidu-map'</span></span><br><span class="line"></span><br><span class="line">Vue.use(BaiduMap, &#123;</span><br><span class="line">  ak: <span class="string">'YOUR_APP_KEY'</span> <span class="comment">// ak 是在百度地图开发者平台申请的密钥</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">baidu-map</span> <span class="attr">class</span>=<span class="string">"bm-view"</span>&gt;</span> <span class="tag">&lt;/<span class="name">baidu-map</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.bm-view</span> &#123;</span></span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 300px;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="局部调用"><a href="#局部调用" class="headerlink" title="局部调用"></a>局部调用</h3><blockquote>
+<p>如果有按需引入组件的需要，可以选择局部注册百度地图组件，这将减少工程打包后的容量尺寸。<br>局部注册的 BaiduMap 组件必须声明 ak 属性。<br>所有的独立组件均存放在 vue-baidu-map/components 文件夹下，按需引用即可。</p>
+</blockquote>
+<blockquote>
+<p>由于未编译的 ES 模块不能在大多数浏览器中直接运行，如果引入组件时发生运行时错误，请检查 webpack 的 loader 配置，确认 include 和 exclude 选项命中了组件库。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">baidu-map</span> <span class="attr">class</span>=<span class="string">"bm-view"</span> <span class="attr">ak</span>=<span class="string">"YOUR_APP_KEY"</span>&gt;</span> <span class="tag">&lt;/<span class="name">baidu-map</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> BaiduMap <span class="keyword">from</span> <span class="string">'vue-baidu-map/components/map/Map.vue'</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    components: &#123;</span><br><span class="line">      BaiduMap</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.bm-view</span> &#123;</span></span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 300px;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="好，安装完成，让我们-Run-起来。"><a href="#好，安装完成，让我们-Run-起来。" class="headerlink" title="好，安装完成，让我们 Run 起来。"></a>好，安装完成，让我们 Run 起来。</h2><p>卧槽，怎么是白的？地图呢？</p>
+<p>👇</p>
+<p><img src="https://yogwang.github.io/2019/jeecg-boot-devDiary08/run1.jpg" alt="初次运行"></p>
+<p>好，继续查看文档….</p>
+<blockquote>
+<p>没有设置 <code>center</code> 和 <code>zoom</code> 属性的地图组件是不进行地图渲染的。<br>当 center 属性为合法地名字符串时例外，因为百度地图会根据地名自动调整 zoom 的值。</p>
+</blockquote>
+<p>所以按照例子，在 <code>&lt;baidu-map&gt;</code> 加上 <code>center=&quot;北京&quot;</code> ：</p>
+<p><img src="https://yogwang.github.io/2019/jeecg-boot-devDiary08/demo1.jpg" alt="center=&quot;北京&quot;"><br>ok，跑起来了，</p>
+<p>让我们试试另外一种方法，单独设置 <code>center</code> 和 <code>zoom</code> ：</p>
+<p><img src="https://yogwang.github.io/2019/jeecg-boot-devDiary08/demo2.jpg" alt="@ready=&quot;handler&quot;"></p>
+<p>好，快速启动已经没有问题了。</p>
+<h2 id="扩展应用"><a href="#扩展应用" class="headerlink" title="扩展应用"></a>扩展应用</h2><p>时间有限，先把链接放上来，不能同步测试写文档的了。<br>项目完成之后开始写</p>
+<h4 id="自动定位"><a href="#自动定位" class="headerlink" title="自动定位"></a>自动定位</h4><p><a href="https://dafrok.github.io/vue-baidu-map/#/zh/control/geolocation" target="_blank" rel="noopener">https://dafrok.github.io/vue-baidu-map/#/zh/control/geolocation</a></p>
+<h4 id="地区检索"><a href="#地区检索" class="headerlink" title="地区检索"></a>地区检索</h4><p><a href="https://dafrok.github.io/vue-baidu-map/#/zh/search/local-search" target="_blank" rel="noopener">https://dafrok.github.io/vue-baidu-map/#/zh/search/local-search</a></p>
+<h4 id="跟随中心点自动赋值"><a href="#跟随中心点自动赋值" class="headerlink" title="跟随中心点自动赋值"></a>跟随中心点自动赋值</h4><p><a href="https://dafrok.github.io/vue-baidu-map/#/zh/map/baidu-map" target="_blank" rel="noopener">https://dafrok.github.io/vue-baidu-map/#/zh/map/baidu-map</a></p>
+<h4 id="自动填充"><a href="#自动填充" class="headerlink" title="自动填充"></a>自动填充</h4><p><a href="https://dafrok.github.io/vue-baidu-map/#/zh/other/auto-complete" target="_blank" rel="noopener">https://dafrok.github.io/vue-baidu-map/#/zh/other/auto-complete</a></p>
+<p>需要配合 <code>&lt;bm-local-search&gt;</code> ,如果需要点选自动切换到对应地区 <code>:auto-viewport=&quot;true&quot;</code></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2019/jeecg-boot-devDiary07/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">Jeecg-boot 中台挖坑日记07 多登陆入口</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+
+
+</main>
+<aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/jeecg-boot-devDiary08/">Jeecg-boot 中台挖坑日记08 Vue 中使用百度地图获取坐标点</a>
+          </li>
+        
+          <li>
+            <a href="/2019/jeecg-boot-devDiary07/">Jeecg-boot 中台挖坑日记07 多登陆入口</a>
+          </li>
+        
+          <li>
+            <a href="/2019/Terminator-Dark-Fate/">Terminator: Dark Fate</a>
+          </li>
+        
+          <li>
+            <a href="/2019/jeecg-boot-devDiary06/">Jeecg-boot 中台挖坑日记06 富文本编辑器tinyMCE 图片附件上传</a>
+          </li>
+        
+          <li>
+            <a href="/2019/jeecg-boot-devDiary05/">Jeecg-boot 中台挖坑日记05 Axios 异步请求</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/phpok/">phpok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  &copy; 2019 YogWang
+  powered_by
+  <a href="http://hexo.io/" target="_blank">Hexo</a>
+</footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
+  </body>
+</html>
