@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Terminator: Dark Fate | blog [ YOG WANG ]
+    一直以来记错的CSS属性：Position 元素定位 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-Terminator-Dark-Fate"
+  id="post-CSS-position"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -41,10 +41,10 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-11-01T15:28:37.000Z" itemprop="datePublished">2019-11-01</time>
+  <time datetime="2019-11-20T03:40:09.000Z" itemprop="datePublished">2019-11-20</time>
 </p> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Daily/">Daily</a>
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
   </div>
 
     </div>
@@ -53,7 +53,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      Terminator: Dark Fate
+      一直以来记错的CSS属性：Position 元素定位
     </h1>
   
 
@@ -62,33 +62,28 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>不知道怎么，就是想写一篇…<br>但是最近要加班，不知道什么时候能写完。先放着</p>
-<p>很零碎的一些文字。等待之后整理出来吧</p>
-<a id="more"></a>
+    <blockquote>
+<p>我一直记忆的是 <code>position:relative</code> 是相对未定位前的元素自身来定位的，今天才发现原来自己记错了。<br>也想明白了绝对定位的元素使用 <code>margin:auto</code> 为什么可以实现垂直居中</p>
+</blockquote>
+<p>今天早上心有点静不下来，就去 SegmentFault 上看了看文章，有一篇文章 <a href="https://segmentfault.com/a/1190000020966360" target="_blank" rel="noopener">“寒冬”三年经验前端面试总结之 CSS 篇</a>，<br>里边的 <code>垂直居中的方法四</code> 我觉得挺奇怪的。</p>
+<!-- readmore -->
 
-<p>从小就一直觉得州长和我爸在眉眼之间很相似，感觉气质也很类似，</p>
-<p>可能是因为第一次接触州长是因为在和少年约翰相仿的年纪看的 <strong>终结者 2：审判日</strong>，所以感受到更多父亲的感觉。</p>
-<p>还模仿了好久州长走路的样子，和最后竖起的大拇指</p>
-<p>然后就一直等啊等啊，等到了 04 年，哥哥家买了 <strong>终结者 3：机器的觉醒</strong> 的光盘，然后就反反复复看了不知道多少次，还把 ED 录在了磁带里反复的听。</p>
-<hr>
-<blockquote>
-<p>“ I’m old, but I’m not obsolete. “</p>
-</blockquote>
-<p>15 年创世纪的时候，恰好也是 Pops 的形象。</p>
-<p>那满头的白发，彻底刺痛了我的神经，州长老了，同样 我的终结者也老了…</p>
-<p>…</p>
-<p>这是我从来没有想过的，也是不敢想的，我的终结者也有老去的那一天…</p>
-<hr>
-<p>这次 11 月 1，下班之后就骑着车直奔了电影院</p>
-<p>一直等着 T800 说</p>
-<blockquote>
-<p>“I’ll be back”，</p>
-</blockquote>
-<p>但是这次听到州长说的是</p>
-<blockquote>
-<p>“I won’t be back”</p>
-</blockquote>
-<p>突然就好难受，对啊，我已经从 10 岁的小孩变成了要结婚生子的年纪。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.inner</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为什么在 <code>position:absolute</code> 时，<code>top,right,bottom,left</code> 都为 <code>0</code> 时，使用 <code>margin:auto</code> 可以实现垂直居中。</p>
+<p>是因为脱离文档流了还是因为别的？然后在群里讨论了下。</p>
+<p>有些人说，<code>absolute</code> 之后变成行内块元素了，有些人说因为 <code>margin</code>。</p>
+<p>然后我又试了下 <code>relative</code> 、 <code>fixed</code> 和 <code>sticky</code>。</p>
+<p>只有 <code>absolute</code> 和 <code>fixed</code> 这种脱离文档流的可以使用 <code>margin:auto</code>来居中。</p>
+<p>因为设置了 <code>left</code>,<code>right</code>为 <code>0</code> 所以可以水平居中，<code>top</code>,<code>bottom</code>为 <code>0</code> 可以使其垂直居中。</p>
+<p>归根结底是因为 <code>margin:auto</code> 填充了外部空间，然后定位是按照合模型最边界开始定位，即从 <code>margin</code> 开始。</p>
+<p>另外还把自己一直以来记错的给掰了回来：</p>
+<ul>
+<li><code>position:relative</code> 是相对未定位前的元素自身来定位的。</li>
+</ul>
+<p>我一直记忆的是相对于父级做定位。</p>
+<p>以上</p>
+<p>2019 年 11 月 20 日</p>
  
   </article>
 
@@ -98,19 +93,10 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/jeecg-boot-devDiary07/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Jeecg-boot 中台挖坑日记07 多登陆入口
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/jeecg-boot-devDiary06/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/jeecg-boot-devDiary08/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">Jeecg-boot 中台挖坑日记06 富文本编辑器tinyMCE 图片附件上传</div>
+      <div class="article-nav-title">Jeecg-boot 中台挖坑日记08 Vue 中使用百度地图获取坐标点</div>
     </a>
   
 </nav>

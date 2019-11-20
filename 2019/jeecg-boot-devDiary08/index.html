@@ -71,7 +71,7 @@
 
 <h4 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://unpkg.com/vue-baidu-map&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><h3 id="全局注册"><a href="#全局注册" class="headerlink" title="全局注册"></a>全局注册</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> BaiduMap <span class="keyword">from</span> <span class="string">'vue-baidu-map'</span></span><br><span class="line"></span><br><span class="line">Vue.use(BaiduMap, &#123;</span><br><span class="line">  ak: <span class="string">'YOUR_APP_KEY'</span> <span class="comment">// ak 是在百度地图开发者平台申请的密钥</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><h3 id="全局注册"><a href="#全局注册" class="headerlink" title="全局注册"></a>全局注册</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"><span class="keyword">import</span> BaiduMap <span class="keyword">from</span> <span class="string">"vue-baidu-map"</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(BaiduMap, &#123;</span><br><span class="line">  ak: <span class="string">"YOUR_APP_KEY"</span> <span class="comment">// ak 是在百度地图开发者平台申请的密钥</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">baidu-map</span> <span class="attr">class</span>=<span class="string">"bm-view"</span>&gt;</span> <span class="tag">&lt;/<span class="name">baidu-map</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.bm-view</span> &#123;</span></span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 300px;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -81,7 +81,7 @@
 <blockquote>
 <p>由于未编译的 ES 模块不能在大多数浏览器中直接运行，如果引入组件时发生运行时错误，请检查 webpack 的 loader 配置，确认 include 和 exclude 选项命中了组件库。</p>
 </blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">baidu-map</span> <span class="attr">class</span>=<span class="string">"bm-view"</span> <span class="attr">ak</span>=<span class="string">"YOUR_APP_KEY"</span>&gt;</span> <span class="tag">&lt;/<span class="name">baidu-map</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> BaiduMap <span class="keyword">from</span> <span class="string">'vue-baidu-map/components/map/Map.vue'</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    components: &#123;</span><br><span class="line">      BaiduMap</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.bm-view</span> &#123;</span></span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 300px;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">baidu-map</span> <span class="attr">class</span>=<span class="string">"bm-view"</span> <span class="attr">ak</span>=<span class="string">"YOUR_APP_KEY"</span>&gt;</span> <span class="tag">&lt;/<span class="name">baidu-map</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> BaiduMap <span class="keyword">from</span> <span class="string">"vue-baidu-map/components/map/Map.vue"</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    components: &#123;</span><br><span class="line">      BaiduMap</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.bm-view</span> &#123;</span></span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 300px;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="好，安装完成，让我们-Run-起来。"><a href="#好，安装完成，让我们-Run-起来。" class="headerlink" title="好，安装完成，让我们 Run 起来。"></a>好，安装完成，让我们 Run 起来。</h2><p>卧槽，怎么是白的？地图呢？</p>
 <p>👇</p>
@@ -101,6 +101,9 @@
 <h4 id="跟随中心点自动赋值"><a href="#跟随中心点自动赋值" class="headerlink" title="跟随中心点自动赋值"></a>跟随中心点自动赋值</h4><p><a href="https://dafrok.github.io/vue-baidu-map/#/zh/map/baidu-map" target="_blank" rel="noopener">https://dafrok.github.io/vue-baidu-map/#/zh/map/baidu-map</a></p>
 <h4 id="自动填充"><a href="#自动填充" class="headerlink" title="自动填充"></a>自动填充</h4><p><a href="https://dafrok.github.io/vue-baidu-map/#/zh/other/auto-complete" target="_blank" rel="noopener">https://dafrok.github.io/vue-baidu-map/#/zh/other/auto-complete</a></p>
 <p>需要配合 <code>&lt;bm-local-search&gt;</code> ,如果需要点选自动切换到对应地区 <code>:auto-viewport=&quot;true&quot;</code></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h4 id="1-组件化的时候会造成死循环"><a href="#1-组件化的时候会造成死循环" class="headerlink" title="1. 组件化的时候会造成死循环"></a>1. 组件化的时候会造成死循环</h4><ul>
+<li>组件化的时候 name 和 Vue-baidu-map 的组件重了，换一个就是了。</li>
+</ul>
  
   </article>
 
@@ -109,6 +112,15 @@
   </div>
    
 <nav id="article-nav">
+  
+    <a href="/2019/CSS-position/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          一直以来记错的CSS属性：Position 元素定位
+        
+      </div>
+    </a>
   
   
     <a href="/2019/jeecg-boot-devDiary07/" id="article-nav-older" class="article-nav-link-wrap">
@@ -149,6 +161,10 @@
       <ul>
         
           <li>
+            <a href="/2019/CSS-position/">一直以来记错的CSS属性：Position 元素定位</a>
+          </li>
+        
+          <li>
             <a href="/2019/jeecg-boot-devDiary08/">Jeecg-boot 中台挖坑日记08 Vue 中使用百度地图获取坐标点</a>
           </li>
         
@@ -162,10 +178,6 @@
         
           <li>
             <a href="/2019/jeecg-boot-devDiary06/">Jeecg-boot 中台挖坑日记06 富文本编辑器tinyMCE 图片附件上传</a>
-          </li>
-        
-          <li>
-            <a href="/2019/jeecg-boot-devDiary05/">Jeecg-boot 中台挖坑日记05 Axios 异步请求</a>
           </li>
         
       </ul>

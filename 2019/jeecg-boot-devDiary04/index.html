@@ -84,6 +84,7 @@
 <p>移除 Tab 方法在: <code>@/components/layouts/TabLaytou.vue =&gt; remove:117</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">editPage(key, action) &#123;</span><br><span class="line">  <span class="keyword">this</span>[action](key)</span><br><span class="line">&#125;,</span><br><span class="line">remove(key) &#123;</span><br><span class="line">  <span class="keyword">if</span> (key == indexKey) &#123;</span><br><span class="line">    <span class="keyword">this</span>.$message.warning(<span class="string">'首页不能关闭!'</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.pageList.length === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.$message.warning(<span class="string">'这是最后一页，不能再关闭了啦'</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.pageList = <span class="keyword">this</span>.pageList.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.fullPath !== key)</span><br><span class="line">  <span class="keyword">let</span> index = <span class="keyword">this</span>.linkList.indexOf(key)</span><br><span class="line">  <span class="keyword">this</span>.linkList = <span class="keyword">this</span>.linkList.filter(<span class="function"><span class="params">item</span> =&gt;</span> item !== key)</span><br><span class="line">  index = index &gt;= <span class="keyword">this</span>.linkList.length ? <span class="keyword">this</span>.linkList.length - <span class="number">1</span> : index</span><br><span class="line">  <span class="keyword">this</span>.activePage = <span class="keyword">this</span>.linkList[index]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
+<p>没找到好的解决办法，在考虑直接用 vuex 重写了…</p>
  
   </article>
 
@@ -141,6 +142,10 @@
       <ul>
         
           <li>
+            <a href="/2019/CSS-position/">一直以来记错的CSS属性：Position 元素定位</a>
+          </li>
+        
+          <li>
             <a href="/2019/jeecg-boot-devDiary08/">Jeecg-boot 中台挖坑日记08 Vue 中使用百度地图获取坐标点</a>
           </li>
         
@@ -154,10 +159,6 @@
         
           <li>
             <a href="/2019/jeecg-boot-devDiary06/">Jeecg-boot 中台挖坑日记06 富文本编辑器tinyMCE 图片附件上传</a>
-          </li>
-        
-          <li>
-            <a href="/2019/jeecg-boot-devDiary05/">Jeecg-boot 中台挖坑日记05 Axios 异步请求</a>
           </li>
         
       </ul>

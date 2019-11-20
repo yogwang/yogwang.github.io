@@ -51,6 +51,56 @@
       
   
     <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/CSS-position/">一直以来记错的CSS属性：Position 元素定位</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-content">
+    <blockquote>
+<p>我一直记忆的是 <code>position:relative</code> 是相对未定位前的元素自身来定位的，今天才发现原来自己记错了。<br>也想明白了绝对定位的元素使用 <code>margin:auto</code> 为什么可以实现垂直居中</p>
+</blockquote>
+<p>今天早上心有点静不下来，就去 SegmentFault 上看了看文章，有一篇文章 <a href="https://segmentfault.com/a/1190000020966360" target="_blank" rel="noopener">“寒冬”三年经验前端面试总结之 CSS 篇</a>，<br>里边的 <code>垂直居中的方法四</code> 我觉得挺奇怪的。</p>
+<!-- readmore -->
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.inner</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为什么在 <code>position:absolute</code> 时，<code>top,right,bottom,left</code> 都为 <code>0</code> 时，使用 <code>margin:auto</code> 可以实现垂直居中。</p>
+<p>是因为脱离文档流了还是因为别的？然后在群里讨论了下。</p>
+<p>有些人说，<code>absolute</code> 之后变成行内块元素了，有些人说因为 <code>margin</code>。</p>
+<p>然后我又试了下 <code>relative</code> 、 <code>fixed</code> 和 <code>sticky</code>。</p>
+<p>只有 <code>absolute</code> 和 <code>fixed</code> 这种脱离文档流的可以使用 <code>margin:auto</code>来居中。</p>
+<p>因为设置了 <code>left</code>,<code>right</code>为 <code>0</code> 所以可以水平居中，<code>top</code>,<code>bottom</code>为 <code>0</code> 可以使其垂直居中。</p>
+<p>归根结底是因为 <code>margin:auto</code> 填充了外部空间，然后定位是按照合模型最边界开始定位，即从 <code>margin</code> 开始。</p>
+<p>另外还把自己一直以来记错的给掰了回来：</p>
+<ul>
+<li><code>position:relative</code> 是相对未定位前的元素自身来定位的。</li>
+</ul>
+<p>我一直记忆的是相对于父级做定位。</p>
+<p>以上</p>
+<p>2019 年 11 月 20 日</p>
+ 
+  </article>
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-11-20T03:40:09.000Z" itemprop="datePublished">Nov 20</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
       <a class="archive-article-title" href="/2019/CSS-pseudo-elements-content/">记一个 CSS 伪类的 content 用法</a>
     </h2>
   
@@ -383,6 +433,10 @@
       <ul>
         
           <li>
+            <a href="/2019/CSS-position/">一直以来记错的CSS属性：Position 元素定位</a>
+          </li>
+        
+          <li>
             <a href="/2019/jeecg-boot-devDiary08/">Jeecg-boot 中台挖坑日记08 Vue 中使用百度地图获取坐标点</a>
           </li>
         
@@ -396,10 +450,6 @@
         
           <li>
             <a href="/2019/jeecg-boot-devDiary06/">Jeecg-boot 中台挖坑日记06 富文本编辑器tinyMCE 图片附件上传</a>
-          </li>
-        
-          <li>
-            <a href="/2019/jeecg-boot-devDiary05/">Jeecg-boot 中台挖坑日记05 Axios 异步请求</a>
           </li>
         
       </ul>
