@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Daily | blog [ YOG WANG ]
+    记Web端唤起QQ聊天的两种方法 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -32,49 +32,59 @@
 
     <div id="wrap">
       <main id="container">
-  
-  
-  
+  <div
+  id="post-web-arouse-qq"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2019-11-28T01:26:56.000Z" itemprop="datePublished">2019-11-28</time>
+</p> 
+    </div>
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
+    <header class="article-header">
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/Terminator-Dark-Fate/">Terminator: Dark Fate</a>
-    </h2>
+    <h1 class="article-title" itemprop="name">
+      记Web端唤起QQ聊天的两种方法
+    </h1>
   
 
     </header>
-     
-  <article class="article-excerpt">
-    <p>不知道怎么，就是想写一篇…<br>但是最近要加班，不知道什么时候能写完。先放着</p>
-<p>很零碎的一些文字。等待之后整理出来吧</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>以前一直使用的 <code>tencent://message/?Menu=yes&amp;uin={YourQQCode}&amp;Site={SiteDomain}</code> 来做的 web 端唤起 QQ 在线聊天。<br>这次接了一个外包是自适应的 Web 页面，在手机端点击会提示 <strong>Safari 浏览器打不开该网页，应为网址无效。</strong></p>
+<p>👇</p>
+<p><img src="https://yogwang.github.io/2019/web-arouse-qq/error.jpg" alt="alert"></p>
+<a id="more"></a>
+
+<p>搜了搜。<br>腾讯的 <code>Tencent://Message</code> 协议，借助的是注册表 （ Windows 操作系统允许我们为自己的应用程序注册为一个协议处理者 <sub><a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa767914(v=vs.85)?redirectedfrom=MSDN" target="_blank" rel="noopener">详情</a></sub> ），所以在手机端并不能使用。</p>
+<h3 id="手机端唤起-QQ"><a href="#手机端唤起-QQ" class="headerlink" title="手机端唤起 QQ"></a>手机端唤起 QQ</h3><p>在手机端唤起 QQ，腾讯给了另外一种链接：<br><code>mqqwpa://im/chat?chat_type=wpa&amp;uin={YourQQCode}&amp;version=1&amp;src_type=web&amp;web_src={SiteDomain}</code></p>
+<p>使用的 <code>URL Scheme</code> 的方式来在不同 App 之间传递消息。</p>
+<p>然后搭配 Js 来控制不同的设备之间输出不同的链接，就可以。<br>电脑端使用<code>Tencent://Message</code>，手机端使用 <code>mqqwpa://</code></p>
+ 
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/Terminator-Dark-Fate/#more">阅读全文</a>
+
+
     </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-11-01T15:28:37.000Z" itemprop="datePublished">Nov 1</time>
-</p>
   </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2019/CSS-position/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">一直以来记错的CSS属性：Position 元素定位</div>
+    </a>
+  
+</nav>
+ 
 </div>
-  
-  
-    </div></section>
-  
 
 
 
