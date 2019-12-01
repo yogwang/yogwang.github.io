@@ -1,0 +1,657 @@
+/*------------------------------------------------------------------
+[Table of contents]
+
+ - Background 1
+ - Borders
+ - Colors
+
+- Author:  Andrey Sokoltsov
+- Profile:	http://themeforest.net/user/andreysokoltsov
+
+-------------------------------------------------------------------*/
+
+/* Background 1 */
+body,
+.top-header,
+.top-nav,
+.top-nav__main,
+.line__second,
+.anons__img,
+.we-are,
+.numbers > .container > div,
+.offer__info,
+.offers .owl-theme .owl-controls .owl-page span,
+.services,
+.numbers > .container > div,
+.review__quote,
+.review__text .line .line__first,
+.after:after,
+.listings,
+.partners,
+.signup,
+.link__square,
+.sign-input,
+.navbar-toggle .icon-bar,
+.top-nav,
+.biker-club,
+.info-blocks,
+.home-reviews .owl-theme .owl-controls .owl-page span,
+.numbers--home2 .line .line__first,
+.brands,
+.blog-page,
+.aside-tabs__links .aside-tabs__active-link,
+.blog-date,
+.about-us,
+.team,
+.worker,
+.contacts,
+.shop,
+.ui-slider-handle:after,
+.shop-item
+{
+    background-color: #fff;
+}
+
+a.square:hover > span.fa,
+.main-nav__search,.main-nav__search:hover,.main-nav__search:visited,.main-nav__search:active,.main-nav__search:focus,
+.bx-wrapper .bx-controls-direction a,
+.sliders__text h2,
+.sliders__text h3,
+.sliders__text p,
+.button,.button:hover,.button:focus,.button:visited,.button:active,
+.anons__color-block h2 a.title,
+.anons__color-block p.text,
+.numbers,
+.offers h2.title,
+a.square.square--toggle,
+.review__text .review__main-text,
+.review__author,
+.featured h2.title,
+.featured__info > h4 a,
+.featured__info > p.text,
+.technical > h5,
+.technical__title,
+.technical__val,
+.featured  .technical > a,
+.button--main.button.button--active,
+.button.button--grey:hover,
+.listing-anons__hidden,
+.blog__info h2.title,
+.blog__info p.text,
+.blog-anons__hidden,
+.quick-form .title,
+.copyright span,
+.logo--home .logo__title,
+.logo--home .logo__title span,
+.logo--home .logo__moto svg > g,
+.main-nav.main-nav--home li a,
+.event__title,
+.home-reviews__quote span.fa,
+.home-reviews__text > p,
+.home-reviews__author,
+.home-reviews__position,
+.social--footer-home .social__one span.fa,
+.footer-main-home__title,
+.event-num,
+.phone,
+.we-are--home2 .title,
+.we-are--home2 p.text,
+.biker-club__main--home2 .title,
+.biker-club__main--home2 .text,
+.biker-club__main--home2 .title-space,
+.info-blocks--home2 .title span.title__bold,
+.info-block .button--transparent:hover,
+.numbers.numbers--home2 .numbers__head span.fa,
+.services--home2 .title,
+.services--home2 p.text,
+.services--home2 .services__title a:first-child,
+.listings--home2 .title,
+.listings--home2 p.text,
+.partners--home2 .title,
+.partners--home2 .text--small,
+.signup--home2 .title,
+.breadcumb__page,.breadcumb__page:hover,.breadcumb__page:active,.breadcumb__page:focus,.breadcumb__page:visited,
+.breadcumb__del,
+.title.title--page,
+.social-blocks__logo span.fa,
+.social-blocks__action,.social-blocks__action:hover,.social-blocks__action:focus,.social-blocks__action:active,.social-blocks__action:visited,
+.pagination .pagination__cell:hover,
+.citation,
+.article-comment__action:hover span.fa,
+.anons--about .anons__block:hover .anons__title h2 a,
+.numbers.numbers--about .numbers__num,
+.numbers.numbers--about .number__desc,
+.woker-hidden .worker__info > h2,
+.woker-hidden .worker__info .text,
+.contacts-form .comment-form .button:hover,
+a.add-to-cart,
+.triangle-sale span,
+.pagination .pagination__cell.pagination__cell--active
+{
+    color:#fff;
+    fill:#fff;
+}
+
+.button--transparent,
+.biker-club__main--home2.line-down,
+.social-blocks__one.social-blocks__logo,
+.woker-hidden__social .social__one.square,
+.blog--home .blog__info .button,
+.reviews .bx-wrapper .bx-controls-direction a
+{
+    border-color:#fff;
+}
+
+.home-reviews__quote.triangle:after,
+.blog--home .blog-anons__hidden.triangle:after,
+.biker-club__main.biker-club__main--home2.triangle:after,
+.signup--home2 .button--sign.triangle:after,
+.aside-tabs__links .aside-tabs__active-link,
+.aside-tabs--about .aside-tabs__links a.aside-tabs__active-link
+{
+    border-bottom-color:#fff;
+}
+
+.anons__block,
+.button--red:hover,
+.we-are__block,
+.reviews .bx-wrapper .bx-controls-direction a:hover,
+.button--grey,
+.listing-anons,
+.link,
+.biker-club__main,
+.biker-club__main--home2 .button--transparent:hover,
+.aside-tabs__links a,
+.blog-aside__block .bx-controls-direction > a:hover,
+.article-comment--to,
+.anons__title,
+.shop-aside__block,
+.item-cell:hover .item-cell__bottom
+{
+    background-color: #f4f4f4;
+}
+
+.triangle:after
+{
+    border-bottom-color:#000;
+}
+
+.button--red:hover,
+.reviews .bx-wrapper .bx-controls-direction a:hover,
+.contacts-form .comment-form .button,
+.shop-title,
+.triangle-list--shop .triangle-list__one a:hover,
+ul.triangle-list .triangle-list__one--active a,
+.item-title a
+{
+    color:#000;
+}
+
+.review__text .line .line__first,
+.line.line--blog-title .line__first,
+.citation:before,
+.about-us__mission .line .line__first,
+.line.line--shop .line__first
+{
+    background-color: #000;
+}
+
+.list li,
+.services__text,
+.text--small,
+.search-input,
+.categories__head > h5 a,
+.about-tab > p,
+.triangle-list--shop .triangle-list__one a,
+.shop-main__head > h4
+{
+    color:#666;    
+}
+
+.event-num
+{
+    background-color: #363636;
+}
+
+.header-contacts__link,.header-contacts__link:hover,.header-contacts__link:focus,.header-contacts__link:visited,.header-contacts__link:active,
+.logo__title,
+.main-nav li a,
+.title,a.title:hover,a.title:focus,a.title:active,a.title:visited,
+.text.text--anons,
+.anons__img svg g,
+.numbers__num,
+.offer__price,
+.services__title a:first-child,
+.button.button--grey,
+.listing-anons__title > h4,
+.signup__desc > h2,
+.link__phone h3,
+.logo__moto svg > g,
+.numbers--home .numbers__head span.fa,
+.numbers--home .number__desc,
+.biker-club__main--home2 .button--transparent:hover,
+.yellow a.square:hover span.fa,
+.yellow a.square:hover a,
+.yellow .main-nav__search,
+.yellow .button,
+.search-input + button[type='submit'],
+.aside-tabs__links .aside-tabs__active-link,
+.latest-model__info h5 a,
+.blog-aside__block .bx-controls-direction > a span.fa,
+.blog-date__num,
+.article-title,
+.share__social a,
+.article-comment__name,
+.about-us h1,
+.about-us__mission h2,
+.triangle-list__one,
+.worker__info > h2,
+.team .owl-buttons > div span.fa,
+.shop-item-desc__head > h1
+{
+    color:#333;
+    fill:#333
+}
+
+.line--title .line__first,
+.square--toggle,
+.blog,
+.footer-contacts,
+.quick-input input,
+.quick-input textarea,
+.event,
+.top-nav__main--home .dropdown-menu,
+.listing-anons--home .listing-anons__hidden,
+.line.line--article .line__first,
+.woker-hidden .worker__info,
+.button--dark
+{
+    background-color:#333 ;
+}
+
+.triangle--big:after,
+.button--active:after,
+.listing-anons.line-down.triangle:hover:after,
+.button--sign.triangle:after,
+.link__square.triangle:after,
+.listing-anons--home:hover,
+.reviews--yellow .review__quote.triangle:after,
+.article-comment__action.triangle:after,
+.anons--about .anons__block:hover,
+.anons--about .anons__block.triangle:hover:after,
+.shop-item-desc__body .button.triangle:after
+{
+    border-bottom-color: #333;
+}
+
+.worker:hover
+{
+    border-color:#333;
+}
+
+.quick-input,
+.social--footer .square
+{
+    border-color:#555;
+}
+
+.triangle-quick-input
+{
+    border-bottom-color:#555;
+}
+
+.footer-main-home__event
+{
+    border-color:#444;
+}
+
+.footer-bottom,
+.footer-logo
+{
+    background-color: #222;
+}
+
+
+.number__desc{
+    color:#545454;
+}
+
+.square:hover,
+.main-nav__search,
+.line__first,
+.button--red,
+.anons__color-block,
+.line--title .line__second,
+.services__info-block--active .square--toggle,
+.button--active,
+.button.button--grey:hover,
+.listing-anons__hidden,
+.anons__block--center,
+.navbar-toggle,
+.home-reviews__quote,
+.blog--home,
+.biker-club__main--home2,
+.info-block .button--transparent:hover,
+.button--transparent:hover,
+.pagination__cell:hover,
+.citation,
+.article-comment__action:hover,
+.anons--about .anons__block:hover .anons__title,
+.numbers.numbers--about .line .line__second,
+.ui-slider-handle,
+.ui-widget-header,
+.button--dark:hover,
+.item-cell:hover .add-to-cart,
+.customBgColor,
+.pagination .pagination__cell.pagination__cell--active
+{
+    background-color: #ce0000;
+}
+
+/* Borders */
+.square:hover,
+.line-down,
+.offer__img,
+.button--active,
+.button--main.button.button--active,
+.button.button--grey:hover,
+.info-block .button--transparent:hover,
+.button--transparent:hover,
+.listings--home2 .button--transparent:hover,
+.article__img:after,
+.pagination__cell:hover,
+.article-comment__action:hover,
+.woker-hidden__social .social__one:hover,
+.button--dark:hover,
+.item-cell:hover .add-to-cart,
+.pagination .pagination__cell.pagination__cell--active,
+.list__circle
+{
+    border-color:#ce0000;
+}
+
+.aside-tabs__links .aside-tabs__active-link,
+.aside-tabs--about .aside-tabs__links a.aside-tabs__active-link,
+.sale.triangle-sale:after
+{
+    border-top-color:#ce0000;
+}
+
+.main-nav li a:hover,
+.offer__price span,
+.featured  .technical a:hover span.fa,
+.signup__desc span.fa,
+.link__square span.fa,
+.numbers--home .numbers__num,
+.categories__head > h5 a:hover,
+.aside-tabs__date,
+.article__comments-author span.fa,
+.article-comment__action span.fa,
+.article-comment__date,
+.about-us h1 span,
+.item-price,
+.numbers__head span.fa,
+.list__circle span.fa,
+.services__title a:first-child:hover,
+.services__info-block--active .services__title a:first-child,
+.title-space,
+.logo__title span
+{
+    color:#ce0000;
+}
+
+
+/* Colors */
+.triangle--block:after,
+.triangle--services:after,
+.listing-anons.triangle:after,
+.blog-anons__hidden.triangle:after,
+.biker-club__main.triangle:after,
+.listing-anons.line-down.triangle:hover:after,
+.event-num.triangle:after,
+.signup--home2 .button--sign.triangle:hover:after,
+.blog-date.triangle:after,
+.triangle-list__one.triangle:after,
+.worker.triangle:after,
+.worker.triangle:hover:after,
+.triangle-list--shop .triangle-list__one.triangle:hover:after,
+ul.triangle-list .triangle-list__one--active.triangle:after,
+.triangle-sale:after,
+.sale.triangle-sale:after
+{
+    border-bottom-color:#ce0000;
+}
+
+.top-header__main,
+.services__info,
+.partners,
+.sign-input,
+.search-input,
+.categories__one,
+.aside-tabs__links,
+.aside-tabs__links a,
+.aside-tabs__blocks,
+.share,
+.article-comment,
+.article-comment__action,
+.aside-tabs--about .aside-tabs__links a,
+.shop-aside__search input[type='text'],
+.shop-aside__desc,
+.item-cell__bottom,
+.item-cell,
+.shop-item-desc__head,
+.shop-item-desc__body input[type='number'],
+.shop-item-main
+{
+    border-color:#eee;
+}
+
+.input-triangle
+{
+    border-bottom-color:#eee;
+}
+
+.square,
+.button--red:hover,
+.reviews .bx-wrapper .bx-controls-direction a:hover,
+.button--grey,
+.blog-aside__block .bx-controls-direction > a,
+.pagination__cell,
+.team .owl-buttons  > div,
+.item-cell__top,
+.see-detail,
+.gallery__small a
+{
+    border-color:#ddd;
+}
+
+a.square,
+a.square:active,
+a.square:focus,
+a.square:visited,
+.event__time,
+.event__addr-date,
+.footer-main-home__event-text > h3 a,
+.footer-main-home__address-title,
+.email span,
+.info-blocks--home2 .title,
+.numbers--home2 .number__desc,
+.services--home2 .services__text,
+.listings--home2 .listing-anons__title > h4,
+.signup--home2 .text--small,
+.item-price--old
+{
+    color:#ccc;
+}
+
+.main-nav__separator > span,
+.price-slider
+{
+    background-color: #ccc;
+}
+
+.shop-aside__search button,
+.shop-aside__search input[type='text'],
+a.shop-item-desc__review,
+.shop-item-desc__cat
+{
+    color:#aaa;
+}
+
+.text,
+.link__phone > p,
+.aside-tabs__anons p a,
+.blog-text,
+.blog-date__month-year,
+.about-us__text,
+.price-num,
+.shop-aside__desc > h4 a,
+.shop-item-desc__cat > a
+{
+    color:#666;
+}
+
+.social--footer a.social__one
+{
+    color:#777;
+}
+
+.quick-input input,
+.quick-input textarea,
+.text--footer-main-home,
+.email,
+.categories__count,
+.aside-tabs__links a,
+.article__comments-author,
+.pagination,
+.pagination__cell,.pagination__cell:hover,.pagination__cell:focus,.pagination__cell:visited,.pagination__cell:active,
+a.see-detail
+{
+    color:#888;
+}
+
+.add-to-cart
+{
+    background-color: #888;
+}
+
+.triangle-list--shop .triangle-list__one.triangle:after
+{
+    border-bottom-color:#888;
+}
+
+.add-to-cart,
+.item-cell:hover .item-cell__bottom
+{
+    border-color:#888;
+}
+
+.copyright
+{
+    color:#868686;    
+}
+
+.share > h6
+{
+    color:#bbb;
+}
+
+.footer-bottom-home,
+.biker-club-we,
+.info-blocks--home2,
+.numbers--home2,
+.numbers--home2 > .container > div,
+.services--home2,
+.partners--home2,
+.signup--home2
+{
+    background-color: #1b1b1b;
+}
+
+.numbers--home2 .line .line__second
+{
+    background-color: #959595;
+}
+
+.services--home2 .services__info,
+.services--home2 .services__title:before,
+.signup--home2 .sign-input
+{
+    border-color: #454545;
+}
+
+.signup--home2 .input-triangle
+{
+    border-bottom-color:#454545;
+}
+
+.listings--home2 .button--transparent
+{
+    border-color:#464543;
+}
+
+.partners--home2
+{
+    border-color:#313131;
+}
+
+.reviews--yellow .bx-wrapper .bx-controls-direction a
+{
+    border-color:#eecd6f;
+}
+
+.social-blocks__one--fb
+{
+    background-color: #0253a2;
+}
+
+.social-blocks__one--twitter
+{
+    background-color:#2daae4 ;
+}
+
+.social-blocks__one--google{
+    background-color: #d6492f;
+}
+
+.social-blocks__one--vimeo{
+    background-color: #1bb7ea;
+}
+
+.social-blocks__one--rss{
+    background-color: #ff8a00;
+}
+
+.social-blocks__one--p{
+    background-color: #cc2127;
+}
+
+.star,
+.star:after
+{
+    color:#707070;
+}
+
+.star,
+.star:after,
+.star:before
+{
+    border-bottom-color:#707070;
+}
+
+.star--none,
+.star--none:after
+{
+    color:#d8d6d6;
+}
+
+.star--none,
+.star--none:after,
+.star--none:before
+{
+    border-bottom-color:#d8d6d6;
+}
+
+.reviews:after{
+    background-color: rgba(206,0,0,0.9);
+}

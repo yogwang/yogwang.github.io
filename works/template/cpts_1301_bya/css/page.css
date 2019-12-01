@@ -1,0 +1,346 @@
+/*------------------------------------------------------------------
+[Table of contents]
+
+ - About Us
+ - Contacts
+
+
+- Author:  Andrey Sokoltsov
+- Profile:	http://themeforest.net/user/andreysokoltsov
+
+-------------------------------------------------------------------*/
+
+/* About Us */
+.status--dark{
+    background-image: url(../images/backgrounds/status-dark.jpg);
+}
+
+.dark-bg--about:after{
+    background: rgba(0,0,0,0.6);
+}
+
+.about-us{
+    padding: 110px 0 105px 0;
+}
+
+.about-us h1{
+    margin: 0 0 65px 0;
+    font:300 40px 'Lato',sans-serif;
+    text-align: center;
+}
+
+.about-us__mission{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.about-us__mission span.fa{
+    font-size:30px;
+    margin-bottom: 30px;
+}
+
+.about-us__mission h2{
+    font:700 16px 'Lato',sans-serif;
+    margin: 0;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.about-us__text{
+    text-align: center;
+    margin: 0;
+    font:italic 700 20px 'Lato',sans-serif;
+    line-height:1.7;
+}
+
+.anons--about .anons__main{
+    padding-bottom: 115px;
+}
+
+.anons--about .anons__block{
+    margin-top: 0;
+    height: auto;
+    background: transparent!important;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.anons__title{
+    padding: 40px 0 20px 0;
+}
+
+.anons__text{
+    padding: 40px 25px; 
+}
+
+.anons__text p{
+    text-align: left;
+}
+
+.numbers--about{
+    padding: 70px 0;
+    background-image: url(../images/backgrounds/number.jpg);
+    background-size: cover;
+}
+
+.numbers--about > .container > div{
+    padding: 0;
+    background: none!important;
+}
+
+.about-info{
+    padding: 110px 0;
+}
+
+.about-info .services__info-block .services__title:before,.about-info .services__info-block:first-child .services__title:before{
+    margin-left: 0;
+}
+
+.about-info .services__title{
+    margin-left: 0;
+    padding-left: 20px;
+}
+
+.aside-tabs--about{
+    margin-left: 40px;
+}
+
+.aside-tabs--about .aside-tabs__blocks{
+    padding: 45px 30px 40px 30px;
+}
+
+.aside-tabs--about .aside-tabs__links a{
+    font:700 12px 'Lato',sans-serif;
+    padding-left: 32px;
+    padding-right: 32px;
+    border-left: 1px solid #eee;
+    border-top: 1px solid #eee;
+}
+
+.aside-tabs--about .aside-tabs__links a.aside-tabs__active-link{
+    border-top: 3px solid #ce0000;
+}
+
+.aside-tabs--about .aside-tabs__links a:last-child{
+    border-right: 1px solid #eee;
+}
+
+.aside-tabs--about .aside-tabs__blocks{
+    border-left:1px solid #eee;
+    border-right:1px solid #eee;
+}
+
+.about-tab__img{
+    margin-bottom: 40px;
+}
+
+.about-tab > p{
+    margin: 0 0 35px 0;
+    font: 300 14px 'Lato',sans-serif;
+    line-height: 1.5;
+}
+
+.triangle-list{
+    padding: 0;
+    list-style:none;
+    margin: 0;
+}
+
+.triangle-list__one{
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font: 400 14px 'Lato',sans-serif;
+}
+
+.triangle-list__one:last-child{
+    margin-bottom: 0;
+}
+
+.triangle-list__one.triangle:after{
+    border-bottom:8px solid #ce0000;
+    border-right:8px solid transparent;
+    bottom:3px;
+    left:0;
+}
+
+#info2,#info3{
+    display: none;
+}
+
+.team{
+    padding: 95px 0 110px 0;
+    background: -moz-linear-gradient(-45deg, #f6f6f6 0%, #fbfbfb 38%, #f7f7f7 39%, #ffffff 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#f6f6f6), color-stop(38%,#fbfbfb), color-stop(39%,#f7f7f7), color-stop(100%,#ffffff));
+    background: -webkit-linear-gradient(-45deg, #f6f6f6 0%,#fbfbfb 38%,#f7f7f7 39%,#ffffff 100%);
+    background: -o-linear-gradient(-45deg, #f6f6f6 0%,#fbfbfb 38%,#f7f7f7 39%,#ffffff 100%);
+    background: -ms-linear-gradient(-45deg, #f6f6f6 0%,#fbfbfb 38%,#f7f7f7 39%,#ffffff 100%);
+    background: linear-gradient(135deg, #f6f6f6 0%,#fbfbfb 38%,#f7f7f7 39%,#ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=1 );
+}
+
+.team .text--anons{
+    margin-bottom: 65px;
+}
+
+.slider-item{
+    padding: 0 15px;
+}
+
+.worker{
+    cursor:pointer;
+    border-width:3px;
+}
+
+.worker__photo img{
+    margin: 0 auto;
+}
+
+.worker__info{
+    text-align: center;
+    padding: 25px 0 30px 0;
+}
+
+.worker__info > h2{
+    text-transform: uppercase;
+    margin: 0 0 5px 0;
+    font: 700 16px 'Lato',sans-serif;
+}
+
+.worker__info .text{
+    font-size:14px;
+}
+
+.worker__info .text:last-of-type{
+    margin-top: 10px;
+}
+
+.worker.triangle:hover:after{
+    bottom: -3px;
+    border-bottom:15px solid #ce0000;
+    border-right:15px solid transparent;
+}
+
+.worker:hover .woker-hidden{
+    display: block;
+}
+
+.woker-hidden{
+    position: absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background: rgba(0,0,0,0.7);
+    display: none;
+}
+
+.woker-hidden__social{
+    text-align: center;
+    padding-top: 80px;
+}
+
+.woker-hidden__social .social__one{
+    display: inline-block;
+    float:none;
+}
+
+.woker-hidden .worker__info{
+    position: absolute;
+    padding-top:35px ;
+    width:100%;
+    bottom:0;
+    left:0;
+}
+
+.woker-hidden .worker__info .text:last-of-type{
+    margin-top: 20px;
+}
+
+.team .js-personal-slider{
+
+}
+
+.team .owl-prev{
+    background: none;
+    border-radius: 0!important;
+    width:40px!important;
+    height:40px!important;
+    right:120px;
+    left: auto;
+    top:100px;
+    text-align: center;
+    padding-top: 10px!important;
+    position: absolute;
+}
+
+.team .owl-next{
+    background: none;
+    border-radius: 0!important;
+    width:40px!important;
+    height:40px!important;
+    right:120px;
+    text-align: center;
+    padding-top: 10px!important;
+    top:150px;
+    position: absolute;
+}
+
+.team .owl-buttons  > div{
+    margin: 0!important;
+    text-indent: 0;
+    border:1px solid #cf6f6f;
+    text-align: center;
+    display: inline-block;
+    left:calc(100% + 55px);
+    background: transparent!important;
+}
+
+.team .owl-buttons > div span.fa{
+    font-size:16px;
+}
+
+/* Contacts */
+.status--contacts{
+    background-image: url(../images/backgrounds/status-contacts.jpg);
+}
+
+.contacts{
+   padding: 110px 0 180px 0; 
+}
+
+.contacts .blog-title .line .line__second{
+    width:110px;
+}
+
+.contacts .blog-text{
+    margin-bottom: 50px;
+}
+
+.contacts-form input,.contacts-form textarea{
+    padding-left: 5px;
+}
+
+.contacts-form .comment-textarea{
+    height:186px;
+}
+
+.contacts-form .comment-form .button{
+    font: 400 14px 'Lato',sans-serif;
+    margin-top: 20px;
+}
+
+.social-blocks--contacts{
+    margin: 120px 0 0 0;
+    max-width: none;
+}
+
+.social-blocks--contacts .social-blocks__logo{
+    border-bottom:none;
+    height:65px;
+    display: block;
+}
+
+.social-blocks--contacts .social-blocks__logo span.fa{
+    font-size:40px;
+}

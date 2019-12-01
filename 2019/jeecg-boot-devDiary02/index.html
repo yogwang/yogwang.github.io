@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>
+    Jeecg-boot 中台挖坑日记02 用户头像上传 / Vue-AntD上传组件 | blog [ YOG WANG ]
+  </title>
+  
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="sign" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <main id="container">
+  <div
+  id="post-jeecg-boot-devDiary02"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2019-10-17T09:07:24.000Z" itemprop="datePublished">2019-10-17</time>
+</p> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+    </div>
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Jeecg-boot 中台挖坑日记02 用户头像上传 / Vue-AntD上传组件
+    </h1>
+  
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <blockquote>
+<p>项目正式开始，第一个功能模块的用户信息编辑就开始卡壳，特别是头像上传组件。</p>
+</blockquote>
+<ul>
+<li>弹出框 <code>a-mdal</code> 的表单值怎么获取到的</li>
+<li><code>ant-design-vue</code> 上传组件的头像上传</li>
+</ul>
+<h2 id="使用-ant-design-vue-上传组件的头像上传。"><a href="#使用-ant-design-vue-上传组件的头像上传。" class="headerlink" title="使用 ant-design-vue 上传组件的头像上传。"></a>使用 <code>ant-design-vue</code> 上传组件的头像上传。</h2><p>在 Jeecg-boot 中头像上传是 antD 的上传组件 <code>listType=&quot;picture-card&quot;</code>，<br>在教程里是直接使用 <code>upload</code> 组件的 <code>defaultFileList</code> API，<br>但他们 DEMO 是 <code>listType=&quot;text&quot;</code>，或 <code>listType=&quot;picture-card&quot;</code> 但绑定的是 <code>fileList</code>，<br>并不是 <code>defaultFileList</code>，就和 ant-design-vue 的文档是一摸一样的照着读了一遍，</p>
+<p>然后我直接复制的官方用户头像 DEMO,就出现了问题。</p>
+<a id="more"></a>
+
+<h3 id="AntD-官方-DEMO"><a href="#AntD-官方-DEMO" class="headerlink" title="AntD 官方 DEMO"></a>AntD 官方 DEMO</h3><blockquote>
+<p>点击上传用户头像，并使用 beforeUpload 限制用户上传的图片格式和大小。beforeUpload 的返回值可以是一个 Promise 以支持异步处理，如服务端校验等</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a-upload</span></span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">"avatar"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">listType</span>=<span class="string">"picture-card"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">class</span>=<span class="string">"avatar-uploader"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">:showUploadList</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">action</span>=<span class="string">"https://www.mocky.io/v2/5cc8019d300000980a055e76"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">:beforeUpload</span>=<span class="string">"beforeUpload"</span></span></span><br><span class="line"><span class="tag">    @<span class="attr">change</span>=<span class="string">"handleChange"</span></span></span><br><span class="line"><span class="tag">  &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">v-if</span>=<span class="string">"imageUrl"</span> <span class="attr">:src</span>=<span class="string">"imageUrl"</span> <span class="attr">alt</span>=<span class="string">"avatar"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a-icon</span> <span class="attr">:type</span>=<span class="string">"loading ? 'loading' : 'plus'"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ant-upload-text"</span>&gt;</span>Upload<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">a-upload</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="function"><span class="keyword">function</span> <span class="title">getBase64</span>(<span class="params">img, callback</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader()</span></span><br><span class="line"><span class="javascript">    reader.addEventListener(<span class="string">'load'</span>, () =&gt; callback(reader.result))</span></span><br><span class="line">    reader.readAsDataURL(img)</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    data() &#123;</span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">        loading: <span class="literal">false</span>,</span></span><br><span class="line"><span class="javascript">        imageUrl: <span class="string">''</span></span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      handleChange(info) &#123;</span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (info.file.status === <span class="string">'uploading'</span>) &#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">this</span>.loading = <span class="literal">true</span></span></span><br><span class="line"><span class="javascript">          <span class="keyword">return</span></span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (info.file.status === <span class="string">'done'</span>) &#123;</span></span><br><span class="line"><span class="javascript">          <span class="comment">// Get this url from response in real world.</span></span></span><br><span class="line">          getBase64(info.file.originFileObj, imageUrl =&gt; &#123;</span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.imageUrl = imageUrl</span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.loading = <span class="literal">false</span></span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      beforeUpload(file) &#123;</span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> isJPG = file.type === <span class="string">'image/jpeg'</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (!isJPG) &#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">this</span>.$message.error(<span class="string">'You can only upload JPG file!'</span>)</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> isLt2M = file.size / <span class="number">1024</span> / <span class="number">1024</span> &lt; <span class="number">2</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (!isLt2M) &#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">this</span>.$message.error(<span class="string">'Image must smaller than 2MB!'</span>)</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> isJPG &amp;&amp; isLt2M</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">  // css style...</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>第一天的时候，我直接复制的 <a href="https://vue.ant.design/components/upload-cn/#%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F" target="_blank" rel="noopener">用户头像 DEMO</a>，然后直接使用了 <code>defaultFileList</code> 设置默认头像但是没效果，依然是空白。</p>
+<p>找啊找啊找，发现 DEMO 上设置了 <code>:showUploadList=&quot;false&quot;</code>，删之…🙄 还是不行，继续查问题。</p>
+<p>发现 <code>defaultFileList</code> 是不能异步设置的，要在组件初始化完成之前就设置好，或者使用 <code>fileList</code> 来设置默认头像 🙃，</p>
+<p>emmm….怎么还有一个空白头像，原来还有一个 <code>img</code> 标签，删之。</p>
+<p>现在的 <code>upload</code> 组件是这样的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;a-upload</span><br><span class="line">  action=<span class="string">"https://www.mocky.io/v2/5cc8019d300000980a055e76"</span></span><br><span class="line">  listType=<span class="string">"picture-card"</span></span><br><span class="line">  :defaultFileList=<span class="string">"fileList"</span></span><br><span class="line">  @change=<span class="string">"handleChange"</span></span><br><span class="line">&gt;</span><br><span class="line">  &lt;div v-<span class="keyword">if</span>=<span class="string">"fileList.length &lt; 1"</span>&gt;</span><br><span class="line">    &lt;a-icon :type=<span class="string">"loading ? 'loading' : 'plus'"</span> /&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ant-upload-text"</span>&gt;Upload&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/a-upload&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>好，现在基本显示没问题了，但是先要删除原先的头像再上传</p>
+<p>等等..删除了头像怎么没出现上传头像按钮？handleChange 事件要修改成：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handleChange(&#123; fileList &#125;) &#123;</span><br><span class="line">  <span class="keyword">this</span>.fileList = fileList;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>完事，基本完成。<br>但是…</p>
+<blockquote>
+<p>需求：点击头像就能修改，而不是先要删除原先的头像再上传</p>
+</blockquote>
+<p>所以结合两个官方 DEMO，最后修改如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="comment">// 上下文...</span></span><br><span class="line">  &lt;a-upload</span><br><span class="line">    listType=<span class="string">"picture-card"</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span></span>=<span class="string">"avatar-uploader"</span></span><br><span class="line">    :showUploadList=<span class="string">"false"</span></span><br><span class="line">    :action=<span class="string">"uploadURL"</span></span><br><span class="line">    :beforeUpload=<span class="string">"beforeUpload"</span></span><br><span class="line">    @change=<span class="string">"handleChange"</span></span><br><span class="line">  &gt;</span><br><span class="line">    &lt;img v-<span class="keyword">if</span>=<span class="string">"imageUrl"</span> :src=<span class="string">"imageUrl"</span> alt=<span class="string">"avatar"</span> style=<span class="string">"width:100%;"</span> /&gt;</span><br><span class="line">    &lt;div v-<span class="keyword">else</span>&gt;</span><br><span class="line">      &lt;a-icon :type=<span class="string">"loading ? 'loading' : 'plus'"</span> /&gt;</span><br><span class="line">      &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ant-upload-text"</span>&gt;Upload&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  &lt;<span class="regexp">/a-upload&gt;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ 上下文...</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span>()&#123;</span><br><span class="line">      url:&#123;</span><br><span class="line">        upload: <span class="string">'/project/upload'</span></span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      imageUrl: <span class="string">''</span>,</span><br><span class="line">      loading: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    uploadURL() &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="built_in">window</span>._CONFIG[<span class="string">'domianURL'</span>]&#125;</span><span class="subst">$&#123;<span class="keyword">this</span>.url.upload&#125;</span>`</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    handleChange(info) &#123;</span><br><span class="line">      <span class="keyword">if</span> (info.file.status === <span class="string">'uploading'</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.loading = <span class="literal">true</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (info.file.status === <span class="string">'done'</span>) &#123;</span><br><span class="line">        getBase64(info.file.originFileObj, imageUrl =&gt; &#123;</span><br><span class="line">          <span class="keyword">this</span>.imageUrl = imageUrl</span><br><span class="line">          <span class="keyword">this</span>.loading = <span class="literal">false</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">// 这里可以放上传成功后台返回的图片url的表单赋值，使用 form.setFieldsValue 给表单赋值</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    beforeUpload(file) &#123;</span><br><span class="line">      <span class="keyword">const</span> isJPG = file.type === <span class="string">'image/jpeg'</span></span><br><span class="line">      <span class="keyword">if</span> (!isJPG) &#123;</span><br><span class="line">        <span class="keyword">this</span>.$message.error(<span class="string">'You can only upload JPG file!'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> isLt2M = file.size / <span class="number">1024</span> / <span class="number">1024</span> &lt; <span class="number">2</span></span><br><span class="line">      <span class="keyword">if</span> (!isLt2M) &#123;</span><br><span class="line">        <span class="keyword">this</span>.$message.error(<span class="string">'Image must smaller than 2MB!'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> isJPG &amp;&amp; isLt2M</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 初始图片赋值等方法</span></span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;style&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ css style...</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="弹出框的表单值是怎么设置的？"><a href="#弹出框的表单值是怎么设置的？" class="headerlink" title="弹出框的表单值是怎么设置的？"></a>弹出框的表单值是怎么设置的？</h2><p>在 <code>edit()</code> 方法中传入了当前对象 <code>record</code>。</p>
+<p>AntD 封装了表单域 <code>&lt;Form.Item /&gt;</code> ，需要使用 <code>Form.create</code> 来创建表单实例，<br>而且设置表单的值要用 <code>form.setFieldsValue</code> （有些时候需要确保子组件完成渲染 <code>$nextTick()</code> 后才执行赋值操作）</p>
+<p>且使用 <code>pick()</code><sup><a href="#1">[1]</a></sup> 函数从指定的对象中挑选出需要的任意 <code>key</code> 属性。</p>
+<p>特殊控件(select,radio,checkbox)需要使用 <code>v-decorator</code> 来绑定数据 <sup><a href="#2">[2]</a></sup></p>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><ul>
+<li>1,官方 DEMO 的代码差异比较大，特别是 <code>handleChange</code> 部分，需要细看。</li>
+<li>2,对后台返回的数据有要求。</li>
+<li>3,表单修改需要使用 <code>setFieldsValue</code> 来动态设置其他控件的值。</li>
+</ul>
+<hr>
+<p><per id="1"> [ 注 1 ]: <code>pick()</code> 的坑待填，用的 lodash.pick 函数</per></p>
+<p><per id="2"> [ 注 2 ]: 这里的 <code>v-decorator</code> 挖坑，看后边什么时候填上</per></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a href="/2019/hexo-theme-development-codeblock/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          Hexo 主题开发 -- 代码块颜色高亮
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/html-space-display/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">文本开头空格不显示问题</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+
+
+</main>
+<aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/html5-canvas-identify-content/">Canvas识别图片内容并使用用户头像拼接</a>
+          </li>
+        
+          <li>
+            <a href="/2019/web-arouse-qq/">记Web端唤起QQ聊天的两种方法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/CSS-position/">一直以来记错的CSS属性：Position 元素定位</a>
+          </li>
+        
+          <li>
+            <a href="/2019/jeecg-boot-devDiary08/">Jeecg-boot 中台挖坑日记08 Vue 中使用百度地图获取坐标点</a>
+          </li>
+        
+          <li>
+            <a href="/2019/jeecg-boot-devDiary07/">Jeecg-boot 中台挖坑日记07 多登陆入口</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  &copy; 2019 YogWang
+  powered_by
+  <a href="http://hexo.io/" target="_blank">Hexo</a>
+</footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
+  </body>
+</html>
