@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Git 遇到的一些问题 | blog [ YOG WANG ]
+    forEach() 与 Promise() | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-git_question"
+  id="post-JS-foreach-promise"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -41,19 +41,15 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-07-03T06:27:56.000Z" itemprop="datePublished">2019-07-03</time>
+  <time datetime="2019-12-02T07:13:38.000Z" itemprop="datePublished">2019-12-02</time>
 </p> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </div>
-
     </div>
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      Git 遇到的一些问题
+      forEach() 与 Promise()
     </h1>
   
 
@@ -62,34 +58,10 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <h2 id="这里是我在日常中遇到的一些-Git-方面的问题。"><a href="#这里是我在日常中遇到的一些-Git-方面的问题。" class="headerlink" title="这里是我在日常中遇到的一些 Git 方面的问题。"></a>这里是我在日常中遇到的一些 Git 方面的问题。</h2><ul>
-<li>Error: GH007</li>
-<li>不能退出、终止当前命令？</li>
-<li>想要删除提交的历史 Commit?</li>
-<li>合并与删除历史提交的 Commit ?</li>
-<li>操作失误，退回操作之前的版本库<a id="more"></a>
-
-</li>
-</ul>
-<h2 id="Error-GH007"><a href="#Error-GH007" class="headerlink" title="Error: GH007"></a>Error: GH007</h2><p>推送本地库的内容到远程库上报 <code>error: GH007</code> 时，在 <code>Setting</code> 里把 <b>Email</b> 的 <code>Keep my email address private</code> 勾选去掉即可<br><img src="https://yogwang.github.io/2019/git_question/GH007.png"></p>
-<h2 id="不能退出、终止当前命令？"><a href="#不能退出、终止当前命令？" class="headerlink" title="不能退出、终止当前命令？"></a>不能退出、终止当前命令？</h2><p>尝试按下 Q 键</p>
-<h2 id="想要删除提交的历史-Commit"><a href="#想要删除提交的历史-Commit" class="headerlink" title="想要删除提交的历史 Commit?"></a>想要删除提交的历史 Commit?</h2><h3 id="1-上一次提交的-Commit-有错误需要修改？-详细"><a href="#1-上一次提交的-Commit-有错误需要修改？-详细" class="headerlink" title="1. 上一次提交的 Commit 有错误需要修改？ 详细"></a>1. 上一次提交的 Commit 有错误需要修改？ <a href="http://yogwang.github.io/2019/git_commit--amend">详细</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend        // 撤销上一次提交  并将暂存区文件重新提交</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-合并与删除历史提交的-Commit-详细"><a href="#2-合并与删除历史提交的-Commit-详细" class="headerlink" title="2. 合并与删除历史提交的 Commit ? 详细"></a>2. 合并与删除历史提交的 Commit ? <a href="http://yogwang.github.io/2019/git_rebase">详细</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~n</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>常用指令：<ul>
-<li>p,pick - 保留</li>
-<li>r,reword - 修改注释</li>
-<li>e,edit - 停下来修改注释</li>
-<li>s,squash - 合并到上一个 commit 并且合并注释</li>
-<li>f,fixup - 丢掉备注并且合并到上一个 commit</li>
-<li>d,drop - 删除 commit</li>
-</ul>
-</li>
-</ul>
-<h2 id="操作失误，退回操作之前的版本库"><a href="#操作失误，退回操作之前的版本库" class="headerlink" title="操作失误，退回操作之前的版本库"></a>操作失误，退回操作之前的版本库</h2><p>使用 <code>git reflog</code> 查看操作日志，找到误操之前的版本号</p>
-<p>再使用 <code>git reset --hard &lt;commit_id&gt;</code> 退回版本</p>
+    <p>今天写年会活动页的时候用到了异步记载数组里边的图片，然后按照数组的下标顺序做不同的操作，<br>所以想循环里边用 <code>await</code>，那就要 <code>Promise</code> 化图片的加载。</p>
+<p>可是我问了下群友，好像不能在 <code>forEach</code> 中使用 <code>async/await</code> ，<br>但在 <code>for</code> 替换则可以。</p>
+<p>所以像探究下为什么 <code>forEach</code> 中不能使用 <code>async/await</code></p>
+<p>开坑未填<br>2019-12-02</p>
  
   </article>
 
@@ -99,19 +71,19 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/Chrome-VerticalCentering/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/html5-canvas-threejs/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">newer</strong>
       <div class="article-nav-title">
         
-          Chrome下垂直居中容器内区块改变高度使外层容器被移动
+          Canvas 和 Threejs
         
       </div>
     </a>
   
   
-    <a href="/2019/Electron03-Electron-builder/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/html5-canvas-identify-content/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">Electron_03 - Electron-builder</div>
+      <div class="article-nav-title">Canvas识别图片内容并使用用户头像拼接</div>
     </a>
   
 </nav>
