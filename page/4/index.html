@@ -46,6 +46,38 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/问题/">问题</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/BetterScrol-mouse-wheel/">BetterScrol 2.x Mouse-whell 没效果</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-content">
+    <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>yarn add @better-scroll/mouse-wheel@next</code></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import BScroll from &apos;@better-scroll/core&apos;</span><br><span class="line">import MouseWheel from &apos;@better-scroll/mouse-wheel&apos;</span><br><span class="line">BScroll.use(MouseWheel)</span><br><span class="line"></span><br><span class="line">new BScroll(&apos;.bs-wrap&apos;, &#123;</span><br><span class="line">  //...</span><br><span class="line">  mouseWheel: &#123;</span><br><span class="line">    speed: 20,</span><br><span class="line">    invert: false,</span><br><span class="line">    easeTime: 300</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="但是为什么在原有的基础上这样写没有用呢。官方-Demo"><a href="#但是为什么在原有的基础上这样写没有用呢。官方-Demo" class="headerlink" title="但是为什么在原有的基础上这样写没有用呢。官方 Demo"></a>但是为什么在原有的基础上这样写没有用呢。<a href="https://better-scroll.github.io/docs/zh-CN/plugins/mouse-wheel.html#%E7%A4%BA%E4%BE%8B" target="_blank" rel="noopener">官方 Demo</a></h2><p>查看 <code>Demo</code> 源码在 <code>scroll-wrapper</code> 外多了一层 <code>core-mouse-wheel</code> 套上就可以了。</p>
+<h3 id="😂-没仔细看-Demo-源码"><a href="#😂-没仔细看-Demo-源码" class="headerlink" title="😂 没仔细看 Demo 源码"></a>😂 没仔细看 <code>Demo</code> 源码</h3> 
+  </article>
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-15T03:13:04.000Z" itemprop="datePublished">Jul 15</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
 
       
@@ -383,40 +415,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/git_connectToGitHub/">Git 关联到GigHub</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <h2 id="创建-SSH-Keygen"><a href="#创建-SSH-Keygen" class="headerlink" title="创建 SSH Keygen"></a>创建 SSH Keygen</h2><p>使用<code>ssh-keygen</code>生成私钥和公钥</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br><span class="line"></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/c/Users/yog/.ssh/id_rsa):</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in /c/Users/yog/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/yog/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:0ZYdnPILyMbV9xpgRE/hWf1MayqhoEYquZTuOMr8EcE yog@YOG-DESKTOP</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 3072]----+</span><br><span class="line">|           =+.o.o|</span><br><span class="line">|  .      .oo*=.oo|</span><br><span class="line">|   E   o.o++.o++o|</span><br><span class="line">|    .. .=o... .o+|</span><br><span class="line">|  o.o ..S ....oo |</span><br><span class="line">| = ..o   . ....  |</span><br><span class="line">|o o..       .    |</span><br><span class="line">|=o  .            |</span><br><span class="line">|==..             |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/git_connectToGitHub/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-06-17T07:36:06.000Z" itemprop="datePublished">Jun 17</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -455,6 +453,10 @@
       <ul>
         
           <li>
+            <a href="/2019/phpok-create-project-failed/">PHPOK 不能创建项目和修改项目信息</a>
+          </li>
+        
+          <li>
             <a href="/2019/html5-canvas-threejs/">Canvas 和 Threejs</a>
           </li>
         
@@ -468,10 +470,6 @@
         
           <li>
             <a href="/2019/web-arouse-qq/">记Web端唤起QQ聊天的两种方法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/CSS-position/">一直以来记错的CSS属性：Position 元素定位</a>
           </li>
         
       </ul>
