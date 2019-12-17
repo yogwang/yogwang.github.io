@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Canvas 和 Threejs | blog [ YOG WANG ]
+    Javascript 滚动侦测导航 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-html5-canvas-threejs"
+  id="post-JS-navigation-detection"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -41,7 +41,7 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-12-03T02:01:35.000Z" itemprop="datePublished">2019-12-03</time>
+  <time datetime="2019-12-09T15:40:07.000Z" itemprop="datePublished">2019-12-09</time>
 </p> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/笔记/">笔记</a>
@@ -53,7 +53,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      Canvas 和 Threejs
+      Javascript 滚动侦测导航
     </h1>
   
 
@@ -62,9 +62,21 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>年会签到做到最后特效实现的部分，使用 Js 来不断绘制 Canvas 会出现擦除背景图的情况，而且并不流畅，<br>所以又考虑了下 CSS3 的动画属性，可是 Javascript 并不能控制 CSS3 动画。</p>
-<p>昨天折腾到晚上 10 点还没怎么好的思路，今天看到一个开源 WebGL Js 库 👉 <a href="https://threejs.org/" target="_blank" rel="noopener">ThreeJs.org</a> / <a href="https://github.com/mrdoob/three.js" target="_blank" rel="noopener">GitHub</a><br>用这个第三方的库试一试看能不能实现效果。</p>
-<p>开坑完成<br>2019-12-03</p>
+    <p>今天一个以前的小项目要改，新增一个根据时间线显示不同月份绩效的需求。<br>没有设计稿，想了下怎么做出来好看。就有了以下这个想法</p>
+<p>左侧显示时间线，滑动会显示不同的年份和月份，<br>右侧显示不同月份的统计数据。</p>
+<a id="more"></a>
+
+<p><img src="https://yogwang.github.io/2019/JS-navigation-detection/view.jpg" alt="view"></p>
+<p>为了显示这个想法不是很蠢，所以需要做的很 <em>酷炫</em> ，<br>其实就是交互友好些，左右块都有相应的交互动作。</p>
+<p>所以设想的是，点击左侧月份之后右侧会快速滚动到相应的月份，方便用户操作。<br>当然右侧下滑操作的时候左侧的时间线也会对应的滚动。</p>
+<p>那么就要用到滚动侦测了，以前都是用的 UI 框架里边的，所以这次也是直接去翻阅了这个项目所用到的 UI，<a href="https://muse-ui.org/#/zh-CN" target="_blank" rel="noopener">MuseUI</a> 的文档。</p>
+<p>当然里边没有这个组件，不然我也不会些这篇文了</p>
+<p>去翻阅了一下 <code>BootStrap</code> 的 <code>Scrollspy</code> 源码，其实就是用到了内容元素的 <code>offsetTop</code> 和滚动条的监听</p>
+<p>所以我存储了右侧每月数据部分的 <code>offsetTop</code> ，左侧时间线我没有存储，<br>因为左侧没有做滚动月份右侧相应的也滑动到对应的月份，只做了点击控制右侧的内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">computedOffset() &#123;</span><br><span class="line">  <span class="comment">// 计算每月距离顶部的距离</span></span><br><span class="line">  <span class="keyword">let</span> list = [];</span><br><span class="line">  <span class="keyword">const</span> timeline = <span class="keyword">this</span>.timeline;</span><br><span class="line">  <span class="keyword">const</span> refs = <span class="keyword">this</span>.$refs;</span><br><span class="line">  <span class="keyword">this</span>.$nextTick(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> timeline) &#123;</span><br><span class="line">      timeline[i].forEach(<span class="function"><span class="params">month</span> =&gt;</span> &#123;</span><br><span class="line">        list.push(&#123;</span><br><span class="line">          time: <span class="string">`<span class="subst">$&#123;i&#125;</span>-<span class="subst">$&#123;month&#125;</span>`</span>,</span><br><span class="line">          offset: refs[<span class="string">`d<span class="subst">$&#123;i&#125;</span>-<span class="subst">$&#123;month&#125;</span>`</span>].offsetTop</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">this</span>.offsetList = list;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>对，我使用的 Vue 作为框架。</p>
+<p>有事要忙了，等空了再补。</p>
  
   </article>
 
@@ -74,19 +86,19 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/phpok-create-project-failed/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/AnnualParty-devDiay02/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">newer</strong>
       <div class="article-nav-title">
         
-          PHPOK 不能创建项目和修改项目信息
+          年会开发日记02 - 红包雨活动
         
       </div>
     </a>
   
   
-    <a href="/2019/JS-foreach-promise/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/CSS-svg-img-bridle/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">forEach() 与 Promise()</div>
+      <div class="article-nav-title">如何使用CSS控制SVG图片？</div>
     </a>
   
 </nav>
@@ -122,7 +134,11 @@
       <ul>
         
           <li>
-            <a href="/2019/javascript-navigation-detection/">Javascript 滚动侦测导航</a>
+            <a href="/2019/AnnualParty-devDiay02/">年会开发日记02 - 红包雨活动</a>
+          </li>
+        
+          <li>
+            <a href="/2019/JS-navigation-detection/">Javascript 滚动侦测导航</a>
           </li>
         
           <li>
@@ -134,11 +150,7 @@
           </li>
         
           <li>
-            <a href="/2019/html5-canvas-threejs/">Canvas 和 Threejs</a>
-          </li>
-        
-          <li>
-            <a href="/2019/JS-foreach-promise/">forEach() 与 Promise()</a>
+            <a href="/2019/AnnualParty-devDiay01-canvas-threejs/">年会开发日记01 - 3D签到墙</a>
           </li>
         
       </ul>
