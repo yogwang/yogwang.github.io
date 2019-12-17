@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    记一个 CSS 伪类的 content 用法 | blog [ YOG WANG ]
+    年会开发日记 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -32,83 +32,77 @@
 
     <div id="wrap">
       <main id="container">
-  <div
-  id="post-CSS-pseudo-elements-content"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
->
-  <div class="article-inner">
-    <div class="article-meta">
-      <p class="article-date">
-  <time datetime="2019-10-28T05:24:26.000Z" itemprop="datePublished">2019-10-28</time>
-</p> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </div>
-
-    </div>
+  
+  
+  
     
-    <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archives">
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
+
       
   
-    <h1 class="article-title" itemprop="name">
-      记一个 CSS 伪类的 content 用法
-    </h1>
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/AnnualParty-devDiay02/">年会开发日记02 - 红包雨</a>
+    </h2>
   
 
     </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-       
+     
   <article class="article-content">
-    <blockquote>
-<p><code>content: url(&#39;...&#39;);</code></p>
-</blockquote>
-<p>最近在群里看到一种写伪类 <code>content</code> 的用法，觉得很新奇，</p>
-<p>群友一开始使用伪类来显示一个小图标，但是这个小图标比较大，<br>所以他就像设置宽高来显示这个伪类，但是他怎么都设置不了这个伪类的宽高，</p>
-<p>我就和他说你设置伪类的宽高不就好了嘛？（我一直以来都是用伪类设置背景图片的形式来做 icon）<br>他说不行，我就看到了这个独特的写法…</p>
-<p>他是直接在 <code>content</code> 里边写了图片的 <code>url</code>，然后神奇的是居然可以显示 <code>content</code> 里填写的图片！！！</p>
-<a id="more"></a>
-
-<p>我都没有用过,就查阅了一下 MDN 👉 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/content" target="_blank" rel="noopener">[ content - CSS ]</a></p>
-<blockquote>
-<p>URI 值会指定一个外部资源（比如图片）。如果该资源或图片不能显示，它就会被忽略或显示一些占位（比如无图片标志）。</p>
-</blockquote>
-<p>先来看一下 DEMO</p>
-<iframe id="cp_embed_oNNoZKj" src="//codepen.io/yogwang/embed/oNNoZKj?height=400&theme-id=dark&slug-hash=oNNoZKj&default-tab=css,result" scrolling="no" frameborder="no" height="400" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
-
-<p>虽然这个方式存在很多问题，但是可以方便很多时候处理图片小图标。</p>
-<p>就不需要先设置 <code>content:&#39;&#39;</code> 然后 <code>display:inline-block</code> 再设置宽高在设置背景图片，<br>直接把图片地址放在 <code>content</code> 里边就可以解决问题。很方便，但是这个方式显示的小图标并不能控制它的宽高。<br>不过把图片裁剪成合适大小就可以解决这个问题，而且兼容性还不错。 👉 <a href="https://caniuse.com/#feat=css-gencontent" target="_blank" rel="noopener">Can I use</a></p>
-<p><img src="https://yogwang.github.io/2019/CSS-pseudo-elements-content/caniuse.jpg" alt="兼容性"></p>
-<p>你敢信 IE8 都兼容！</p>
+    <p>本来想写的，但是手机摔了，X 的后玻璃碎了，看了官网保修 <code>RMB 4,269</code>，<br>有点烦，算了! 不写了，今天晚上咸鱼。</p>
  
   </article>
 
 
-    </div>
+    <p class="archive-article-date">
+  <time datetime="2019-12-17T13:12:50.000Z" itemprop="datePublished">Dec 17</time>
+</p>
   </div>
-   
-<nav id="article-nav">
-  
-    <a href="/2019/jeecg-boot-devDiary04/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Jeecg-boot 中台挖坑日记04 全局 Vue-AntD 标签页的控制
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/jeecg-boot-devDiary03/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">Jeecg-boot 中台挖坑日记03 动态路由传参</div>
-    </a>
-  
-</nav>
- 
 </div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Threejs/">Threejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/AnnualParty-devDiay01-canvas-threejs/">年会开发日记01 - 3D签到墙</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-content">
+    <p>年会签到做到最后特效实现的部分，使用 Js 来不断绘制 Canvas 会出现擦除背景图的情况，而且并不流畅，<br>所以又考虑了下 CSS3 的动画属性，可是 Javascript 并不能控制 CSS3 动画。</p>
+<p>昨天折腾到晚上 10 点还没怎么好的思路，今天看到一个开源 WebGL Js 库 👉 <a href="https://threejs.org/" target="_blank" rel="noopener">ThreeJs.org</a> / <a href="https://github.com/mrdoob/three.js" target="_blank" rel="noopener">GitHub</a><br>用这个第三方的库试一试看能不能实现效果。</p>
+<p>开坑完成<br>2019-12-03</p>
+ 
+  </article>
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-12-03T02:01:35.000Z" itemprop="datePublished">Dec 3</time>
+</p>
+  </div>
+</div>
+  
+  
+    </div></section>
+  
 
 
 
