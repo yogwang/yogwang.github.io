@@ -67,16 +67,19 @@
 <a id="more"></a>
 
 <p><img src="https://yogwang.github.io/2019/JS-navigation-detection/view.jpg" alt="view"></p>
-<p>为了显示这个想法不是很蠢，所以需要做的很 <em>酷炫</em> ，<br>其实就是交互友好些，左右块都有相应的交互动作。</p>
-<p>所以设想的是，点击左侧月份之后右侧会快速滚动到相应的月份，方便用户操作。<br>当然右侧下滑操作的时候左侧的时间线也会对应的滚动。</p>
-<p>那么就要用到滚动侦测了，以前都是用的 UI 框架里边的，所以这次也是直接去翻阅了这个项目所用到的 UI，<a href="https://muse-ui.org/#/zh-CN" target="_blank" rel="noopener">MuseUI</a> 的文档。</p>
-<p>当然里边没有这个组件，不然我也不会些这篇文了</p>
+<p>为了显示这个想法不是很蠢，所以需要做的很 <em><strong>酷炫</strong></em> ，<br>其实就是交互友好些，左右块都有相应的交互动作。</p>
+<hr>
+<h3 id="预想的效果"><a href="#预想的效果" class="headerlink" title="预想的效果"></a>预想的效果</h3><p>设想的是，点击左侧月份之后右侧会快速滚动到相应的月份，方便用户操作。<br>当然右侧下滑操作的时候左侧的时间线也会对应的滚动。</p>
+<p>那么就要用到滚动侦测了，以前都是用的 UI 框架里边的，<br>所以这次也是直接去翻阅了这个项目所用到的 UI，<a href="https://muse-ui.org/#/zh-CN" target="_blank" rel="noopener">MuseUI</a> 的文档，<br>当然里边没有这个组件，不然也不会有这篇笔记了</p>
 <p>去翻阅了一下 <code>BootStrap</code> 的 <code>Scrollspy</code> 源码，其实就是用到了内容元素的 <code>offsetTop</code> 和滚动条的监听</p>
-<p>所以我存储了右侧每月数据部分的 <code>offsetTop</code> ，左侧时间线我没有存储，<br>因为左侧没有做滚动月份右侧相应的也滑动到对应的月份，只做了点击控制右侧的内容</p>
+<p>所以我存储了右侧每月数据部分的 <code>offsetTop</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">computedOffset() &#123;</span><br><span class="line">  <span class="comment">// 计算每月距离顶部的距离</span></span><br><span class="line">  <span class="keyword">let</span> list = [];</span><br><span class="line">  <span class="keyword">const</span> timeline = <span class="keyword">this</span>.timeline;</span><br><span class="line">  <span class="keyword">const</span> refs = <span class="keyword">this</span>.$refs;</span><br><span class="line">  <span class="keyword">this</span>.$nextTick(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> timeline) &#123;</span><br><span class="line">      timeline[i].forEach(<span class="function"><span class="params">month</span> =&gt;</span> &#123;</span><br><span class="line">        list.push(&#123;</span><br><span class="line">          time: <span class="string">`<span class="subst">$&#123;i&#125;</span>-<span class="subst">$&#123;month&#125;</span>`</span>,</span><br><span class="line">          offset: refs[<span class="string">`d<span class="subst">$&#123;i&#125;</span>-<span class="subst">$&#123;month&#125;</span>`</span>].offsetTop</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">this</span>.offsetList = list;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
 <p>对，我使用的 Vue 作为框架。</p>
-<p>有事要忙了，等空了再补。</p>
+<p>后端给的数据格式是类似这样的</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  date:'2020-01',</span><br><span class="line">  detail:&#123;</span><br><span class="line">    a:100,</span><br><span class="line">    b:78,</span><br><span class="line">    total:178,</span><br><span class="line">    machines:967</span><br><span class="line">  &#125;,</span><br><span class="line">  note:'some text of 2020-01'</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="举个-🌰"><a href="#举个-🌰" class="headerlink" title="举个 🌰"></a>举个 🌰</h3><iframe id="cp_embed_GRgMzxV" src="//codepen.io/yogwang/embed/GRgMzxV?height=600&theme-id=dark&slug-hash=GRgMzxV&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
  
   </article>
 
@@ -181,7 +184,7 @@
 </aside>
     </div>
     <footer id="footer">
-  &copy; 2019 YogWang
+  &copy; 2020 YogWang
   powered_by
   <a href="http://hexo.io/" target="_blank">Hexo</a>
 </footer>
