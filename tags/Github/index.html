@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    JavaScript for(let..){setTimeout...} | blog [ YOG WANG ]
+    Github | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -32,84 +32,51 @@
 
     <div id="wrap">
       <main id="container">
-  <div
-  id="post-JS-let"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
->
-  <div class="article-inner">
-    <div class="article-meta">
-      <p class="article-date">
-  <time datetime="2019-08-06T03:06:47.000Z" itemprop="datePublished">2019-08-06</time>
-</p> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </div>
-
-    </div>
+  
+  
+  
     
-    <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archives">
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SEO/">SEO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
+
       
   
-    <h1 class="article-title" itemprop="name">
-      JavaScript for(let..){setTimeout...}
-    </h1>
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/How-to-make-GithubPage-included-by-Baidu/">如何让百度收录自己的Github Page</a>
+    </h2>
   
 
     </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-       
+     
   <article class="article-content">
-    <blockquote>
-<p>今天在 Segmentfault 看一篇文章。 里边举例了一个经典的面试题，异步、单线程的问题。<br>我也只是了解，知道执行结果是什么，但并不是门清。<br>但看到把 <code>var</code> 换成 <code>let</code> 声明之后就是另外一个结果了，就有点懵。<br>所以准备写一篇笔记梳理一下 <code>块级作用域</code>。</p>
-</blockquote>
-<p>首先来看下这道面试题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 1; i &lt;= 5; i++) &#123;</span><br><span class="line">   setTimeout(function test() &#123;</span><br><span class="line">        console.log(i) // 依次输出：6 6 6 6 6</span><br><span class="line">    &#125;, i * 1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<p>造成这个现象的原因是等到 <code>setTimeout</code> 异步执行时, <code>i</code> 已经变成 <em>6</em> 了。</p>
-<p>如果使用 <code>let</code> 声明就是另外一个结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (let i = 1; i &lt;= 5; i++) &#123;</span><br><span class="line">   setTimeout(function test() &#123;</span><br><span class="line">        console.log(i) // 依次输出：1 2 3 4 5</span><br><span class="line">    &#125;, i * 1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="WHY"><a href="#WHY" class="headerlink" title="WHY ?"></a>WHY ?</h2><blockquote>
-<p>快速解释：因为 let 是块级作用域，当前的 i 只在本轮循环有效，所以每一次循环的 i 其实都是一个新的变量，所以 setTimeout 每次读的值都是不同的。</p>
-</blockquote>
-<p>那为什么使用 <code>let</code>申明 <strong>每一次循环都是一个新的变量</strong> ???</p>
-<p>使用 <code>babel</code> 编译成 ES5 版本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;</span><br><span class="line"></span><br><span class="line">var _loop = function _loop(i) &#123;</span><br><span class="line">  setTimeout(function test() &#123;</span><br><span class="line">    console.log(i)</span><br><span class="line">  &#125;, i * 1000)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for (var i = 1; i &lt;= 5; i++) &#123;</span><br><span class="line">  _loop(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>闭包？</p>
-<h1 id="–-未完成-–"><a href="#–-未完成-–" class="headerlink" title="– 未完成 –"></a>– 未完成 –</h1><p>08-06</p>
+    <p>又开一坑 23333</p>
+<p>让百度收录自己的 Github Page 站点之前，先弄明白为何百度不收录 Github Page</p>
+<p>bcz</p>
+<p>百度蜘蛛爬的太狠了….对很多 Github 用户造成了可用性的问题，然后被 Github Ban 掉了，对百度蜘蛛直接 403。</p>
+<p>所以只能靠自己来做一些工作让百度蜘蛛可以收录自己的 Github Page 镜像</p>
+<p>具体方式有几种，我还没有好好研究，等好了再补全上来。</p>
  
   </article>
 
 
-    </div>
+    <p class="archive-article-date">
+  <time datetime="2020-01-03T05:59:53.000Z" itemprop="datePublished">Jan 3</time>
+</p>
   </div>
-   
-<nav id="article-nav">
-  
-    <a href="/2019/CSS-placeholder-shown/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          CSS 判断 input 是否为空
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/JS-call&apply&bind/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">如何理解 Call, Apply, Bind?</div>
-    </a>
-  
-</nav>
- 
 </div>
+  
+  
+    </div></section>
+  
 
 
 
