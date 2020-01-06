@@ -67,7 +67,10 @@
 <p>感觉像是有设置路由守卫全部都跳转回了 <code>#/user/login</code></p>
 <a id="more"></a>
 
-<p>一坑未平一坑又起，又来一项目，不知道什么时候才能有时间写了。<br>自己还接了好几个外包项目，南啊!</p>
+<p>在交流群里询问了很久，终于有人回答了，让我去看一下 <code>@/permission.js</code></p>
+<p>一打开我就看到了硕大的几个字 <code>whiteList</code> ….</p>
+<p>好吧，原来有设置了白名单，如果不在白名单之内，如果没有权限会直接跳转到 <code>/user/login</code> 然后跳转之前的路径会保存在 <code>query</code> 内的 <code>redirect</code> 中，就出现了路由没有效果的情况</p>
+<p>把我们自定义的登陆页 path 放进白名单就好了…..</p>
  
   </article>
 
