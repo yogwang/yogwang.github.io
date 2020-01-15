@@ -70,13 +70,13 @@
 <a id="more"></a>
 
 <p>本地使用的 <a href="http://phpstudy.php.cn/" target="_blank" rel="noopener">phpStudy 集成环境</a>，所以步骤都是按照 phpStudy 的来，实际也相差不大。</p>
-<h2 id="方法-1：针对项目添加虚拟域名"><a href="#方法-1：针对项目添加虚拟域名" class="headerlink" title="方法 1：针对项目添加虚拟域名"></a>方法 1：针对项目添加虚拟域名</h2><h3 id="Step1：-打开-vhosts-ini-配置文件"><a href="#Step1：-打开-vhosts-ini-配置文件" class="headerlink" title="Step1： 打开 vhosts-ini 配置文件"></a>Step1： 打开 <code>vhosts-ini</code> 配置文件</h3><p><img src="https://yogwang.github.io/2019/php-VirtualHost/f1step1.png" alt="f1Step1:vhosts.conf"></p>
+<h2 id="方法-1：针对项目添加虚拟域名"><a href="#方法-1：针对项目添加虚拟域名" class="headerlink" title="方法 1：针对项目添加虚拟域名"></a>方法 1：针对项目添加虚拟域名</h2><h3 id="Step1：-打开-vhosts-ini-配置文件"><a href="#Step1：-打开-vhosts-ini-配置文件" class="headerlink" title="Step1： 打开 vhosts-ini 配置文件"></a>Step1： 打开 <code>vhosts-ini</code> 配置文件</h3><p><img src="/.io//f1step1.png" alt="f1Step1:vhosts.conf"></p>
 <p>或者使用路径打开 <code>..\phpStudy\PHPTutorial\Apache\conf\vhosts.conf</code></p>
 <h3 id="Step2：-添加新-VirtualHost"><a href="#Step2：-添加新-VirtualHost" class="headerlink" title="Step2： 添加新 VirtualHost"></a>Step2： 添加新 VirtualHost</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost _default_:80&gt;</span><br><span class="line">ServerName &quot;p.loc&quot;</span><br><span class="line">DocumentRoot &quot;E:/WWW/project/public&quot;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Step3：-修改-hosts-文件"><a href="#Step3：-修改-hosts-文件" class="headerlink" title="Step3： 修改 hosts 文件"></a>Step3： 修改 <code>hosts</code> 文件</h3><p><img src="https://yogwang.github.io/2019/php-VirtualHost/f1step3.png" alt="f1Step3:hosts"></p>
+<h3 id="Step3：-修改-hosts-文件"><a href="#Step3：-修改-hosts-文件" class="headerlink" title="Step3： 修改 hosts 文件"></a>Step3： 修改 <code>hosts</code> 文件</h3><p><img src="/.io//f1step3.png" alt="f1Step3:hosts"></p>
 <p>或者使用路径打开 <code>C:\Windows\System32\drivers\etc</code></p>
-<h3 id="Step3：-重启-ALache-服务"><a href="#Step3：-重启-ALache-服务" class="headerlink" title="Step3： 重启 ALache 服务"></a>Step3： 重启 ALache 服务</h3><p><img src="https://yogwang.github.io/2019/php-VirtualHost/f1step4.png" alt="f1Step4:重启ALache"></p>
+<h3 id="Step3：-重启-ALache-服务"><a href="#Step3：-重启-ALache-服务" class="headerlink" title="Step3： 重启 ALache 服务"></a>Step3： 重启 ALache 服务</h3><p><img src="/.io//f1step4.png" alt="f1Step4:重启ALache"></p>
 <blockquote>
 <p>不用修改其他，因为 phpStudy 启用了 <code>conf/vhosts.conf</code> 在 httpd.conf:486</p>
 </blockquote>
