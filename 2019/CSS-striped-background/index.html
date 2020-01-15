@@ -62,7 +62,7 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p><img src="/.site//preview.jpg" alt="preview"></p>
+    <p><img src="https://yogwang.site/2019/CSS-striped-background/preview.jpg" alt="preview"></p>
 <p>刚刚写年会红包雨的时候用到了 <code>linear-gradient</code> 来实现条纹背景，但是突然卡壳想不起来怎么写了。<br>就去百度一下，所以现在把它记下来，方便以后查阅。</p>
 <a id="more"></a>
 
@@ -76,16 +76,16 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.stripe</span> &#123;</span><br><span class="line">  // 向右填色 如果是 'to left' 就是向左填色</span><br><span class="line">  <span class="selector-tag">background</span>: <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">to</span> <span class="selector-tag">right</span>, <span class="selector-id">#c498bc</span> 50%, <span class="selector-id">#81a2cf</span> 0);</span><br><span class="line">  background-size: 30px 100%; // 宽度30px, 高度100%</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="倾斜条纹"><a href="#倾斜条纹" class="headerlink" title="倾斜条纹"></a>倾斜条纹</h3><p>倾斜条纹的话就相对麻烦一点了，如果只修改 <code>linear-gradient</code> 的朝向为角度那么就会出现下边这个情况：</p>
-<p><img src="/.site//q1.jpg" alt="q1"></p>
+<p><img src="https://yogwang.site/2019/CSS-striped-background/q1.jpg" alt="q1"></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.stripe1</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(45deg, #c498bc 50%, #81a2cf 0);</span><br><span class="line">  background-size 30px 100%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>所以要修改 <code>background-size</code> ,但是只是这样也会有问题：</p>
-<p><img src="/.site//q2.jpg" alt="q2"></p>
+<p><img src="https://yogwang.site/2019/CSS-striped-background/q2.jpg" alt="q2"></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.stripe2</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(45deg, #c498bc 50%, #81a2cf 0);</span><br><span class="line">  background-size 30px 30px</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>结果是会形成一小块一小块的斜线色块，而不是整个倾斜条纹</p>
 <p>所以按照现象修改 <code>linear-gradient</code> 之后为：</p>
-<p><img src="/.site//q3.jpg" alt="q3"></p>
+<p><img src="https://yogwang.site/2019/CSS-striped-background/q3.jpg" alt="q3"></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.stripe3</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(45deg,</span><br><span class="line">      #c498bc 25%,</span><br><span class="line">      #81a2cf 0,</span><br><span class="line">      #81a2cf 50%,</span><br><span class="line">      #c498bc 0,</span><br><span class="line">      #c498bc 75%,</span><br><span class="line">      #81a2cf 0</span><br><span class="line">  );</span><br><span class="line">  background-size 30px 30px</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>简单的实现时没问题了，但是感觉太长了。<br>如果要简化的话，需要使用的是 <code>repeating-linear-gradient</code></p>

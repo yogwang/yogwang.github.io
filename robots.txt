@@ -11,5 +11,5 @@ Disallow: /img/
 Disallow: /fonts/
 Disallow: /works/
 
-Sitemap: http://yogwang.site/sitemap.xml
-Sitemap: http://yogwang.site/baidusitemap.xml
+Sitemap: https://yogwang.site/sitemap.xml
+Sitemap: https://yogwang.site/baidusitemap.xml
