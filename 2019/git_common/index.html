@@ -79,7 +79,7 @@
 
 <h2 id="查看差异-git-diff"><a href="#查看差异-git-diff" class="headerlink" title="查看差异 git diff"></a>查看差异 <code>git diff</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git diff readme.txt</span><br><span class="line"></span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">index 46d49bf..9247db6 100644</span><br><span class="line">--- a/readme.txt</span><br><span class="line">+++ b/readme.txt</span><br><span class="line">@@ -1,2 +1,2 @@</span><br><span class="line">-Git is a version control system.</span><br><span class="line">+Git is a distributed version control system.</span><br><span class="line"> Git is free software.</span><br></pre></td></tr></table></figure>
 
-<h2 id="查看日志-git-log-详细"><a href="#查看日志-git-log-详细" class="headerlink" title="查看日志 git log 详细"></a>查看日志 <code>git log</code> <sub><a href="http://yogwang.github.io/2019/git_log/">详细</a></sub></h2><ul>
+<h2 id="查看日志-git-log-详细"><a href="#查看日志-git-log-详细" class="headerlink" title="查看日志 git log 详细"></a>查看日志 <code>git log</code> <sub><a href="http://yogwang.github.io/2019/git_log/" target="_blank" rel="noopener">详细</a></sub></h2><ul>
 <li><code>git log</code> 查看提交日志</li>
 <li><code>git log --oneline</code> 精简模式显示</li>
 <li><code>git log --pretty=oneline</code> 精简模式并显示完整版本号</li>
@@ -90,7 +90,7 @@
 <li><code>git log -L start,end:file_name</code> 查看文件某行范围内的修改记录</li>
 <li><code>git log --stat commit_id</code> 根本版本号查看提交修改列表</li>
 </ul>
-<h2 id="版本退回-git-reset-详细"><a href="#版本退回-git-reset-详细" class="headerlink" title="版本退回 git reset 详细"></a>版本退回 <code>git reset</code> <sub><a href="http://yogwang.github.io/2019/git_rebase/">详细</a></sub></h2><p>在 Git 中，用 HEAD 表示当前版本，也就是最新的提交版本</p>
+<h2 id="版本退回-git-reset-详细"><a href="#版本退回-git-reset-详细" class="headerlink" title="版本退回 git reset 详细"></a>版本退回 <code>git reset</code> <sub><a href="http://yogwang.github.io/2019/git_rebase/" target="_blank" rel="noopener">详细</a></sub></h2><p>在 Git 中，用 HEAD 表示当前版本，也就是最新的提交版本</p>
 <p>上一个版本就是 HEAD^</p>
 <p>上上一个版本就是 HEAD^^</p>
 <p>当然往上 n 个版本写 n 个^比较容易数不过来，所以写成 HEAD~n</p>

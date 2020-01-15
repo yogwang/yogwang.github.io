@@ -1,0 +1,15 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+Allow: /about/ 
+Allow: /archives/ 
+Allow: /categories/ 
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /img/
+Disallow: /fonts/
+Disallow: /works/
+
+Sitemap: http://yogwang.site/sitemap.xml
+Sitemap: http://yogwang.site/baidusitemap.xml

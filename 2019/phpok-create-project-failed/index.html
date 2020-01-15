@@ -69,12 +69,12 @@
 <p>好吧，自己动手丰衣足食，自己改吧。</p>
 <a id="more"></a>
 
-<p>打开控制台查看 Network 请求，发现 <code>Response</code> 里边直接提示了 <strong>SQL 执行失败，请检查。</strong><br><img src="/.io//sql_error.png" alt="SQL执行失败，请检查"></p>
+<p>打开控制台查看 Network 请求，发现 <code>Response</code> 里边直接提示了 <strong>SQL 执行失败，请检查。</strong><br><img src="/.site//sql_error.png" alt="SQL执行失败，请检查"></p>
 <p>打开 SQL 的调试模式后，<br>详细的报错信息是：</p>
-<p><img src="/.io//sql_error_detail.jpg" alt="详细报错信息"></p>
+<p><img src="/.site//sql_error_detail.jpg" alt="详细报错信息"></p>
 <p>随即找到 control 文件， <code>framework\admin\project_control.php</code> 并且在第 <code>326</code> 行找到了 <code>is_api</code> 的赋值语句，把它注释掉。</p>
-<p><img src="/.io//modify.jpg" alt="注释第326行"></p>
-<p>返回项目管理界面，提交保存<br><img src="/.io//success.jpg" alt="提交成功"></p>
+<p><img src="/.site//modify.jpg" alt="注释第326行"></p>
+<p>返回项目管理界面，提交保存<br><img src="/.site//success.jpg" alt="提交成功"></p>
 <p>完事，顺便在群里又提了一下，也在论坛发了<a href="https://www.phpok.com/29676.html" target="_blank" rel="noopener">帖子</a>，这次应该会解决这个问题了吧…</p>
  
   </article>

@@ -81,12 +81,12 @@
 <p>看了 Jeecg-Boot 的技术手册完全按照上边来的写也是不行，还是跳转到 <code>/</code>，在 Vue DevTools 中检查又没有问题。<br>就又折腾了好久，又是查文档又是看官方的教学视频。<br>最后真的是烦了，就偷懒了一把，结果成了….原因是啥呢???</p>
 <a id="more"></a>
 
-<h3 id="WHY"><a href="#WHY" class="headerlink" title="WHY?"></a>WHY?</h3><p>先来看官方文档：<br><img src="/.io//1.jpg" alt="文档截图"></p>
+<h3 id="WHY"><a href="#WHY" class="headerlink" title="WHY?"></a>WHY?</h3><p>先来看官方文档：<br><img src="/.site//1.jpg" alt="文档截图"></p>
 <p>在菜单管理中如技术文档里边所说，填写 <code>/UserInfo/:id</code> ，<br>并在页面中使用 <code>&lt;router-link :to=&quot;{name:&#39;UserInfo&#39;, params: {id:id}}&quot;&gt;查看&lt;/router-link&gt;</code></p>
 <p>点击按钮跳转会到 <code>/</code> ，不会跳转到 <code>/UserInfo/123456</code> ，<br>并提示 <code>[vue-router] Route with name &#39;UserInfo&#39; does not exist</code> 。</p>
-<p><img src="/.io//3.jpg" alt="截图1:使用name路由"></p>
+<p><img src="/.site//3.jpg" alt="截图1:使用name路由"></p>
 <p>使用 <code>&lt;router-link :to=&quot;&#39;UserInfo/&#39;+id&quot; /&gt;查看&lt;/router-link&gt;</code> 就可以。<br>在 Vue DevTools 中检查发现，<code>UserInfo</code> 对应的是 Name 是 <code>UserInfo-@id</code></p>
-<p><img src="/.io//4.jpg" alt="截图2:使用path路由"></p>
+<p><img src="/.site//4.jpg" alt="截图2:使用path路由"></p>
 <p>今天提交了一个 Issues 👉 <a href="https://github.com/zhangdaiscott/jeecg-boot/issues/669" target="_blank" rel="noopener">动态路由的带参 #669</a>，看官方怎么说吧。</p>
 <p>先使用偷懒的方法吧</p>
 <p>↓ 2019 年 10 月 25 日已更新<br>↓ 2019 年 10 月 27 日已更新</p>
@@ -101,7 +101,7 @@
 <li>未定义路由 name (通过 URL 生成路由 name,路由 name 供前端开发，页面跳转使用)</li>
 </ul>
 </blockquote>
-<p><img src="/.io//re.png" alt="截图3:GitReply"></p>
+<p><img src="/.site//re.png" alt="截图3:GitReply"></p>
  
   </article>
 
