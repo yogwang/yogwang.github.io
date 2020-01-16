@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary09/</loc>
+    
+    <lastmod>2020-01-16T15:20:33.410Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/webpack-ignore-comments-logs/</loc>
+    
+    <lastmod>2020-01-16T15:20:20.234Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/</loc>
     
-    <lastmod>2020-01-16T09:08:20.625Z</lastmod>
+    <lastmod>2020-01-16T15:19:34.235Z</lastmod>
     
   </url>
   
@@ -51,23 +65,9 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/2020/webpack-ignore-comments-logs/</loc>
-    
-    <lastmod>2020-01-13T04:38:28.259Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://yogwang.site/about/index.html</loc>
     
     <lastmod>2020-01-09T14:01:18.766Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary09/</loc>
-    
-    <lastmod>2020-01-09T03:25:44.181Z</lastmod>
     
   </url>
   
