@@ -102,7 +102,11 @@
 <p>要注意的是如果只是想让百度蜘蛛爬取 Coding Pages，正常访问还是走的 Github Pages 的话，解析线路要设置成 <strong>百度</strong>。<br>（如果想要国内访问 Coding Pages，海外 Github Pages 的话，Coding 的解析路径设置成<strong>默认</strong>，Github 设置成<strong>海外</strong>）<br><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step6.jpg" alt="添加解析记录"></p>
 <p>等待解析生效就可以在百度的 <a href="https://ziyuan.baidu.com/" target="_blank" rel="noopener">站长平台</a> 提交 <code>sitemap</code> 让百度收录了</p>
 <h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><hr>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="部署失败-EvilType-21000：综合"><a href="#部署失败-EvilType-21000：综合" class="headerlink" title="部署失败 EvilType: 21000：综合"></a>部署失败 <code>EvilType: 21000：综合</code></h3><p>在最初的 Coding Pages 部署成功之后我在百度站长平台提交了 <code>sitemap.xml</code>，</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="申请-SSL-TLS-证书失败"><a href="#申请-SSL-TLS-证书失败" class="headerlink" title="申请 SSL/TLS 证书失败"></a>申请 SSL/TLS 证书失败</h3><blockquote>
+<p>Coding Pages 是免费提供 ssl/tls 证书的，这样以来部署的博客就支持 https 访问，证书到期前一周，系统自动续签。</p>
+</blockquote>
+<p>但是按照我的这个流程下来申请证书会失败，原因是域名解析的问题，<br>我的默认解析是到 Coding Pages 的，但是海外线路是解析到 Github Pages 上，<br>先停用 Github Pages 的解析再申请，等证书申请成功后再恢复解析即可。</p>
+<h3 id="部署失败-EvilType-21000：综合"><a href="#部署失败-EvilType-21000：综合" class="headerlink" title="部署失败 EvilType: 21000：综合"></a>部署失败 <code>EvilType: 21000：综合</code></h3><p>在最初的 Coding Pages 部署成功之后我在百度站长平台提交了 <code>sitemap.xml</code>，</p>
 <p>但是我重新提交了新的文章之后，部署就出现了问题，<br>原因是 Coding Pages 部署接入了腾讯云的 TMS 文本内容安全系统，<br>TMS 识别到我的文章内有违规内容，从而部署失败，导致百度蜘蛛爬取 404（站点都没起来怎么爬取…）</p>
 <p>但是我检查了好几遍并没有发现违规的内容,所以邮件联系了 Coding.net，<br>官方回复是：</p>
 <blockquote>
@@ -117,7 +121,14 @@
 </blockquote>
 <p>头疼，等一段时间再看吧。如果可以我应该会在之后更新文章，实在不行的话，在看看其它的代码托管平台。</p>
 <ul>
-<li>2020.01.16</li>
+<li>2020.01.16 15:52</li>
+</ul>
+<blockquote>
+<p>尊敬的 CODING 用户：关于 pages 部署时提示文件内容违规问题，我们这边已经联系开发进行定位，目前为了不影响用户使用，我们暂时下线该审查功能，您只需要重新部署一下 pages 即可。</p>
+</blockquote>
+<p>23333，刚刚把文章编辑完，就收到 Coding.net 的通知，现在可以正常部署了，百度收录完成。但是不知道等审查重新上线还会不会被提示违规。</p>
+<ul>
+<li>2020.01.16 16:47</li>
 </ul>
 <hr>
 <h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
