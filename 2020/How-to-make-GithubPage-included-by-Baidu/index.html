@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    如何让百度收录自己的Github Page | blog [ YOG WANG ]
+    如何让百度收录自己的Github Pages | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -49,7 +49,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      如何让百度收录自己的Github Page
+      如何让百度收录自己的Github Pages
     </h1>
   
 
@@ -58,19 +58,73 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>又开一坑 23333</p>
-<p>让百度收录自己的 Github Page 站点之前，先弄明白为何百度不收录 Github Page</p>
-<p>bcz</p>
-<p>百度蜘蛛爬的太狠了….对很多 Github 用户造成了可用性的问题，然后被 Github Ban 掉了，对百度蜘蛛直接 403。</p>
-<p>所以只能靠自己来做一些工作让百度蜘蛛可以收录自己的 Github Page 镜像</p>
-<p>具体方式有几种，我还没有好好研究，等好了再补全上来。</p>
+    <p>为何百度不收录 Github Pages ???<br>起初还以为是应为自己写的文章很少关键词检索量不够所以没有被百度收录。<br>等了有几个月，Google 和 Bing 都收录了，百度还是没有动静，就查了下为啥不会被收录…</p>
+<p>结果最后发现因为早些年<br>百度统计被劫持然后 <code>DDos</code> 攻击了 Github…<br>对 Github 用户造成了可用性的问题，然后被 Github <code>Ban</code> 掉了，对百度 UA 直接 403。</p>
+<p>所以只能靠自己来做一些工作让百度蜘蛛可以收录自己的 Github Pages</p>
+<p>具体方式有几种，我选择在国内搭建一个镜像（成本最低，Hexo 支持多个 Git 地址）<br>针对百度蜘蛛，解析到镜像服务器上以此来达到收录 Github Pages 的效果</p>
 <a id="more"></a>
 
-<p>国内代码托管平台有很多，这次尝试了两个，一个是码云，一个是 Coding.net</p>
+<p>国内代码托管平台有很多，这次尝试了两个，一个是 <a href="https://gitee.com/" target="_blank" rel="noopener">码云</a>，一个是 <a href="https://coding.net/" target="_blank" rel="noopener">Coding.net</a><br>别问我为什么不用 vps，没钱！！！</p>
 <p>码云操作一同之后发现自定义域名需要会员，Coding 不需要。</p>
 <p>就选择了 Coding，但是需要实名认证</p>
-<p>途中也遇到了 <code>Permission denied (publickey).</code> 这个问题</p>
-<p>忘记自己用的哪个 Keygen 了，尴尬一直在反复添加错的那个。</p>
+<h2 id="1、注册"><a href="#1、注册" class="headerlink" title="1、注册"></a>1、注册</h2><hr>
+<p>这个都不需要多说了吧….直接上链接吧。<a href="https://e.coding.net/signup" target="_blank" rel="noopener">Coding.net SignUp</a></p>
+<h2 id="2、创建代码托管仓库"><a href="#2、创建代码托管仓库" class="headerlink" title="2、创建代码托管仓库"></a>2、创建代码托管仓库</h2><hr>
+<p>注册好了之后和使用 Github 一样，创建一个项目，选择 <code>代码托管项目</code> 。</p>
+<p><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step1.jpg" alt="选择项目模板"></p>
+<p>项目名称随便填写，我直接填写的用户名因为 Github Pages 是这样要求的，但是 Coding 并没有这个要求；<br>项目标识是你的 Git 仓库标识，起一个自己好记得就行。我输入的 <code>blog</code>，其实填写了项目名称会自动填写进去的。（这个是可以修改的，相应的也要修改本地 Git 的 <code>Origin Url</code>）</p>
+<p>然后选择 <code>Git仓库</code><br>项目描述就随便填咯，反正也就自己用，后边不满意了也可以在项目设置里边修改。<br><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step2.jpg" alt="创建项目"></p>
+<h2 id="3、绑定-SSH-公钥"><a href="#3、绑定-SSH-公钥" class="headerlink" title="3、绑定 SSH 公钥"></a>3、绑定 SSH 公钥</h2><hr>
+<p>创建完成之后在个人设置里边添加自己的 SSH 公钥，如果已经配置 Github Pages 的话这个也不用多说了吧</p>
+<ul>
+<li>Coding.net 官方的 <a href="https://help.coding.net/docs/project/features/ssh.html" target="_blank" rel="noopener">配置文档</a></li>
+<li>我之前写的 <a href="http://localhost:4000/2019/git_connectToGitHub/" target="_blank" rel="noopener">Git 关联到 GigHub</a></li>
+</ul>
+<p>配置完成之后在本地的 Git Bash 内执行 <code>ssh -T git@e.coding.net</code>，加入信任主机</p>
+<h3 id="途中遇到了-Permission-denied-publickey-这个问题-😂"><a href="#途中遇到了-Permission-denied-publickey-这个问题-😂" class="headerlink" title="途中遇到了 Permission denied (publickey). 这个问题 😂"></a>途中遇到了 <code>Permission denied (publickey).</code> 这个问题 😂</h3><p>原因是自己本地 Git 配置的默认 Keygen 是另外一个，然后忘记自己用的是哪个 Keygen 了，尴尬一直在反复添加我觉得对的那个到 Coding 上，我说怎么一直被拒绝…</p>
+<h2 id="4、在-Hexo-内添加-Coding-net-上的仓库"><a href="#4、在-Hexo-内添加-Coding-net-上的仓库" class="headerlink" title="4、在 Hexo 内添加 Coding.net 上的仓库"></a>4、在 Hexo 内添加 <code>Coding.net</code> 上的仓库</h2><hr>
+<p>打开自己本地的 Hexo 项目目录，找到根目录下的 <code>_config.yml</code> 文件，在最底部找到 <code>deploy</code> 项，<br>修改 <code>repo</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span></span><br><span class="line"><span class="attr">    github:</span> <span class="attr">https://github.com/&#123;username&#125;/&#123;repositoryname&#125;.github.io</span></span><br><span class="line"><span class="attr">    coding:</span> <span class="attr">https://e.coding.net//&#123;repositoryname&#125;/&#123;gitname&#125;.git</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Hexo 提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。</p>
+</blockquote>
+<p>然后直接使用 <code>hexo deploy</code>/<code>hexo d</code> 就可以自动部署到两个远程仓库中了。</p>
+<h2 id="5、部署-Coding-Pages"><a href="#5、部署-Coding-Pages" class="headerlink" title="5、部署 Coding Pages"></a>5、部署 Coding Pages</h2><hr>
+<p>回到 Coding.net 项目中 找到项目左侧菜单中的 <code>构建与部署</code> 下的 <code>静态网站</code>项</p>
+<p>点击立即发布静态网站<br><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step3.jpg" alt="部署Coding Pages"></p>
+<p>网站名称不重要，随便填自己能看明白就好；<br>部署来源选择 <code>本项目仓库</code>；<br>触发机制 <code>自动部署</code>；<br>勾选 <code>代码更新时自动部署</code>，选择默认的 <code>推送到 Master 时触发构建</code> 这个是看你需要部署的是主线还是分支了，选择自己用的就好。<br><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step4.jpg" alt="填写静态网站信息"></p>
+<p>点击保存，完成创建。</p>
+<p><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step5.jpg" alt="完成部署"><br>这时候在页面中会显示你的 Coding Pages 访问地址，点击立即部署，这时候正常的话就会部署成功了。</p>
+<p>然后点击在右上角的设置，<br>进入 Coding Pages 设置后滑动到底部，将自己的域名添加到自定义域名列表中。</p>
+<h2 id="6、解析域名到-Coding-Pages"><a href="#6、解析域名到-Coding-Pages" class="headerlink" title="6、解析域名到 Coding Pages"></a>6、解析域名到 Coding Pages</h2><hr>
+<p>在自己域名服务商的控制台添加解析记录，类型为 <code>CNAME</code> 这些应该都不用多说了吧。<br>对应之前的解析记录增加不同的解析路线。<br><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step7.jpg" alt="域名解析"></p>
+<p>要注意的是如果只是想让百度蜘蛛爬取 Coding Pages，正常访问还是走的 Github Pages 的话，解析线路要设置成 <strong>百度</strong>。<br>（如果想要国内访问 Coding Pages，海外 Github Pages 的话，Coding 的解析路径设置成<strong>默认</strong>，Github 设置成<strong>海外</strong>）<br><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step6.jpg" alt="添加解析记录"></p>
+<p>等待解析生效就可以在百度的 <a href="https://ziyuan.baidu.com/" target="_blank" rel="noopener">站长平台</a> 提交 <code>sitemap</code> 让百度收录了</p>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><hr>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="部署失败-EvilType-21000：综合"><a href="#部署失败-EvilType-21000：综合" class="headerlink" title="部署失败 EvilType: 21000：综合"></a>部署失败 <code>EvilType: 21000：综合</code></h3><p>在最初的 Coding Pages 部署成功之后我在百度站长平台提交了 <code>sitemap.xml</code>，</p>
+<p>但是我重新提交了新的文章之后，部署就出现了问题，<br>原因是 Coding Pages 部署接入了腾讯云的 TMS 文本内容安全系统，<br>TMS 识别到我的文章内有违规内容，从而部署失败，导致百度蜘蛛爬取 404（站点都没起来怎么爬取…）</p>
+<p>但是我检查了好几遍并没有发现违规的内容,所以邮件联系了 Coding.net，<br>官方回复是：</p>
+<blockquote>
+<p>您好，由于相关政策因素，目前 Pages 的部署接入了系统级的自动审核，系统对于 Pages 的内容进行非常严格的排查，若是部署网站中出现涉政，涉黄，广告，<strong>链接</strong> 等内容，系统会自动判别为违规，无法部署成功，具体的违规内容涉及方向您可以参考 T-Sec 天御文本内容安全判别标准进行修正：<a href="https://cloud.tencent.com/product/tms" target="_blank" rel="noopener">https://cloud.tencent.com/product/tms</a> ，给您造成的不便非常抱歉。</p>
+</blockquote>
+<p>我加粗了问题出现的部分，不知道这个 TMS 管控是怎么识别链接的，<br>现阶段的日志文件看只要我的文章内出现了一些引用链接，就会提示 <code>EvilType: 21000：综合</code> ，<br>Coding Pages 的自动部署就会失败：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2020/01/16 15:44:21 Fetching depot archive:</span><br><span class="line">	Ref: refs/heads/master</span><br><span class="line">	CommitSHA: 974e01660df7063b4d703d7286ae1e8f7dbd9538</span><br><span class="line">2020/01/16 15:44:23 Extracting depot archive.</span><br><span class="line">2020/01/16 15:44:24 The following file contains offending content:</span><br><span class="line">2020/01/16 15:44:24 - Path: 2019/CSS-text_truncation/index.html</span><br><span class="line">2020/01/16 15:44:24 - EvilType: 21000：综合</span><br></pre></td></tr></table></figure>
+
+<p>再次询问客服，回复：</p>
+<blockquote>
+<p>目前是第三方做的检测，我们也在和第三方沟通，还请你耐心等待。</p>
+</blockquote>
+<p>头疼，等一段时间再看吧。如果可以我应该会在之后更新文章，实在不行的话，在看看其它的代码托管平台。</p>
+<ul>
+<li>2020.01.16</li>
+</ul>
+<hr>
+<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
+<li><a href="https://jerryzou.com/posts/feasibility-of-allowing-baiduSpider-for-Github-Pages/" target="_blank" rel="noopener">为什么 Github Pages 禁用了百度爬虫？</a></li>
+<li><a href="https://www.jianshu.com/p/23bae3d47b35" target="_blank" rel="noopener">Github Pages 不被百度蜘蛛抓取的问题</a></li>
+<li><a href="https://cloud.tencent.com/product/tms" target="_blank" rel="noopener">T-Sec 天御 文本内容安全</a></li>
+</ul>
  
   </article>
 
@@ -128,7 +182,7 @@
       <ul>
         
           <li>
-            <a href="/2020/CSS-reverse-hover-transition/">鼠标移出时颠倒补间动画</a>
+            <a href="/2020/CSS-reverse-hover-transition/">鼠标移出时颠倒元素过度效果</a>
           </li>
         
           <li>
@@ -140,7 +194,7 @@
           </li>
         
           <li>
-            <a href="/2020/How-to-make-GithubPage-included-by-Baidu/">如何让百度收录自己的Github Page</a>
+            <a href="/2020/How-to-make-GithubPage-included-by-Baidu/">如何让百度收录自己的Github Pages</a>
           </li>
         
           <li>
@@ -166,7 +220,7 @@
   <section class="widget-wrap">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/">SEO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/">SEO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Threejs/">Threejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
     </div>
   </section>
 
