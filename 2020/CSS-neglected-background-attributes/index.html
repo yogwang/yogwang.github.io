@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Axios | blog [ YOG WANG ]
+    被忽略的两个Background新属性 | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -32,53 +32,78 @@
 
     <div id="wrap">
       <main id="container">
-  
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Axios/">Axios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li></ul>
+  <div
+  id="post-CSS-neglected-background-attributes"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2020-01-18T07:04:16.000Z" itemprop="datePublished">2020-01-18</time>
+</p> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
 
+    </div>
+    
+    <header class="article-header">
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/jeecg-boot-devDiary05/">Jeecg-boot 中台挖坑日记05 Axios 异步请求</a>
-    </h2>
+    <h1 class="article-title" itemprop="name">
+      被忽略的两个Background新属性
+    </h1>
   
 
     </header>
-     
-  <article class="article-excerpt">
-    <blockquote>
-<p>一开始以为这里坑很大，结果坑其实并不大，而且内置了很多常用函数，<br>可能是我带有偏见了，所以这篇文章就简短的介绍了一下。</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>之前在看一个文章的时候有提到过，<code>background</code> 的这两个属性，确实不常用到，以至于没有几个人知道这两个新属性。<br>和他们同时期出的 <code>background-size</code> 因为经常用到所以被大众所熟知。</p>
+<p>对的，这次我要说的是<code>background-origin</code> 和 <code>background-clip</code> 两兄弟</p>
+<a id="more"></a>
+
+<ul>
+<li><code>background-origin</code> 规定背景的绘制区域。</li>
+<li><code>background-clip</code> 规定背景图片的定位区域。</li>
+</ul>
+<h4 id="可选值都是一样的三种："><a href="#可选值都是一样的三种：" class="headerlink" title="可选值都是一样的三种："></a>可选值都是一样的三种：</h4><ul>
+<li><code>padding-box</code> （相对于内边距框来定位/裁剪,<code>background-origin</code> 默认值）</li>
+<li><code>border-box</code> （相对于边框盒来定位/裁剪，<code>background-clip</code> 默认值）</li>
+<li><code>content-box</code> （相对于内容框来定位/裁剪）</li>
+</ul>
+<h2 id="哥俩好的-DEMO"><a href="#哥俩好的-DEMO" class="headerlink" title="哥俩好的 DEMO"></a>哥俩好的 DEMO</h2><h3 id="background-origin"><a href="#background-origin" class="headerlink" title="background-origin"></a>background-origin</h3><iframe id="cp_embed_RwNeQav" src="//codepen.io/yogwang/embed/RwNeQav?height=600&theme-id=dark&slug-hash=RwNeQav&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+<h3 id="background-clip"><a href="#background-clip" class="headerlink" title="background-clip"></a>background-clip</h3><iframe id="cp_embed_BayqYag" src="//codepen.io/yogwang/embed/BayqYag?height=600&theme-id=dark&slug-hash=BayqYag&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+<p>乍一看两兄弟的作用还是挺像的，可选值也是一样</p>
+<blockquote>
+<p>啥？你问 <code>background-clip</code> 不是多了一个 <code>text</code>？还是草案没确定呢，经常会有草案被废弃的事发生，所以等什么时候通过了再说吧（ 虽然兼容性还行主流浏览器都兼容 <sub><a href="https://caniuse.com/#search=background-clip%20text" target="_blank" rel="noopener">查看兼容性</a></sub> ）</p>
 </blockquote>
-<p>在 <code>@/utils/request.js</code> 中创建了 Axios 实例，<br>并且在 <code>@/api/manage.js</code> 中封装了常用函数<br>只需要在组件内按需导入即可。</p>
+<p><code>background-origin</code> 是把背景图定位的起点修改成为设置的值得盒模型右上角，<br>而 <code>background-clip</code> 则直接粗暴的把背景图按照盒模型进行了裁剪。</p>
+<p>所以这俩可以做到什么？暂时还没有想好到底有啥应用场景，看以后会不会用到吧，怪不得会被人遗忘…</p>
+<p>怪不得会有 <code>text</code> 这个属性的出现啊</p>
+ 
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/jeecg-boot-devDiary05/#more">阅读全文</a>
+
+
     </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-10-29T07:48:01.000Z" itemprop="datePublished">Oct 29</time>
-</p>
   </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/CSS-reverse-hover-transition/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">鼠标移出时颠倒元素过度效果</div>
+    </a>
+  
+</nav>
+ 
 </div>
-  
-  
-    </div></section>
-  
 
 
 
