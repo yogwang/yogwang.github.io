@@ -1,14 +1,10 @@
 # hexo robots.txt
+User-agent: Baiduspider
+User-agent: Googlebot
 User-agent: *
-Allow: /
-Allow: /about/ 
-Allow: /archives/ 
-Allow: /categories/ 
 
-Disallow: /js/
-Disallow: /css/
-Disallow: /img/
-Disallow: /fonts/
+Allow: /
+
 Disallow: /works/
 
 Sitemap: https://yogwang.site/sitemap.xml

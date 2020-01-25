@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/summary-at-the-end-of-2019/</loc>
+    
+    <lastmod>2020-01-25T15:47:24.280Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/about/index.html</loc>
+    
+    <lastmod>2020-01-25T15:39:37.901Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/CSS-neglected-background-attributes/</loc>
     
     <lastmod>2020-01-18T08:26:57.630Z</lastmod>
@@ -75,13 +89,6 @@
     <loc>https://yogwang.site/2019/JS-call-apply-bind/</loc>
     
     <lastmod>2020-01-15T07:01:01.915Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/about/index.html</loc>
-    
-    <lastmod>2020-01-09T14:01:18.766Z</lastmod>
     
   </url>
   
