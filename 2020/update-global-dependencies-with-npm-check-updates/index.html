@@ -59,6 +59,8 @@
        
   <article class="article-content">
     <p>今天像更新一下自己的全局依赖，直接在 <code>bash</code> 里边输入 <code>ncu -g</code> 居然提示 <code>No dependencies.</code>。<br>我就纳闷了，打错命令了吗，为啥提示没有依赖？<br>项目内依赖检查更新是没问题的，但是检测全局依赖就显示没有依赖，换了几个终端还是这个问题。<br>我怀疑是我全局以来的路径设置错了(我是使用 npm 来安装全局依赖，yarn 安装项目依赖)<br>查看了 npm 的全局依赖路径发现没错啊。</p>
+<a id="more"></a>
+
 <p>然后去到了 <a href="https://github.com/tjunnone/npm-check-updates" target="_blank" rel="noopener">npm-check-updates</a> 的 Github 上找 Issues 看，是不是有解决办法了，<br>但是相关的问题都被关闭了，然后提到的 Issue 里边答的也不一样，</p>
 <p>最后在 <a href="https://github.com/tjunnone/npm-check-updates/issues/146" target="_blank" rel="noopener">Issue#146</a> 上边看到了一个回答的思路，所以我就自己去查看源码了。</p>
 <p>然后找到了一个问题所在 <code>libs/package-managers/npm.js</code> 中，有一个 <code>defaultPrefix</code> 函数，其中返回了全局依赖的路径，最后返回的数据是错误的。</p>
