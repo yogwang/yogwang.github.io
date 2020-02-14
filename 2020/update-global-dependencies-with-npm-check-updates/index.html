@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    2019 | blog [ YOG WANG ]
+    使用 npm-check-updates 更新全局依赖提示 `No dependencies` | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -32,58 +32,63 @@
 
     <div id="wrap">
       <main id="container">
-  
-  
-  
+  <div
+  id="post-update-global-dependencies-with-npm-check-updates"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2020-02-14T09:20:40.000Z" itemprop="datePublished">2020-02-14</time>
+</p> 
+    </div>
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electron/">Electron</a></li></ul>
-
+    <header class="article-header">
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/Electron01-Electron-quick-start/">Electron_01 - 快速启动</a>
-    </h2>
+    <h1 class="article-title" itemprop="name">
+      使用 npm-check-updates 更新全局依赖提示 `No dependencies`
+    </h1>
   
 
     </header>
-     
-  <article class="article-excerpt">
-    <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir my-app</span><br><span class="line"></span><br><span class="line">$ cd my-app</span><br><span class="line"></span><br><span class="line">$ npm init --y</span><br><span class="line">Wrote to E:\my-app\package.json:</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;my-app&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [],</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>修改入口文件为 <code>main.js</code> 并且添加 <code>start</code> 脚本引导 <strong>Node</strong> 来执行 Electron</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/Electron01-Electron-quick-start/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-06-14T09:33:33.000Z" itemprop="datePublished">Jun 14</time>
-</p>
-  </div>
-</div>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/2019/page/5/">&laquo; prev</a><a class="page-number" href="/archives/2019/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/4/">4</a><a class="page-number" href="/archives/2019/page/5/">5</a><span class="page-number current">6</span>
-  </nav>
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>今天像更新一下自己的全局依赖，直接在 <code>bash</code> 里边输入 <code>ncu -g</code> 居然提示 <code>No dependencies.</code>。<br>我就纳闷了，打错命令了吗，为啥提示没有依赖？<br>项目内依赖检查更新是没问题的，但是检测全局依赖就显示没有依赖，换了几个终端还是这个问题。<br>我怀疑是我全局以来的路径设置错了(我是使用 npm 来安装全局依赖，yarn 安装项目依赖)<br>查看了 npm 的全局依赖路径发现没错啊。</p>
+<p>然后去到了 <a href="https://github.com/tjunnone/npm-check-updates" target="_blank" rel="noopener">npm-check-updates</a> 的 Github 上找 Issues 看，是不是有解决办法了，<br>但是相关的问题都被关闭了，然后提到的 Issue 里边答的也不一样，</p>
+<p>最后在 <a href="https://github.com/tjunnone/npm-check-updates/issues/146" target="_blank" rel="noopener">Issue#146</a> 上边看到了一个回答的思路，所以我就自己去查看源码了。</p>
+<p>然后找到了一个问题所在 <code>libs/package-managers/npm.js</code> 中，有一个 <code>defaultPrefix</code> 函数，其中返回了全局依赖的路径，最后返回的数据是错误的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function defaultPrefix(options) &#123;</span><br><span class="line">  if (options.prefix) &#123;</span><br><span class="line">    return Promise.resolve(options.prefix);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  const cmd = process.platform === &quot;win32&quot; ? &quot;npm.cmd&quot; : &quot;npm&quot;;</span><br><span class="line">  return spawn(cmd, [&quot;config&quot;, &quot;get&quot;, &quot;prefix&quot;]).then(prefix =&gt; &#123;</span><br><span class="line">    // FIX: for ncu -g doesn&apos;t work on homebrew or windows #146</span><br><span class="line">    // https://github.com/tjunnone/npm-check-updates/issues/146</span><br><span class="line">    return options.global &amp;&amp; prefix.match(&quot;Cellar&quot;)</span><br><span class="line">      ? &quot;/usr/local&quot;</span><br><span class="line">      : // Workaround: get prefix on windows for global packages</span><br><span class="line">      // Only needed when using npm api directly</span><br><span class="line">      process.platform === &quot;win32&quot; &amp;&amp; options.global &amp;&amp; !process.env.prefix</span><br><span class="line">      ? `$&#123;process.env.AppData&#125;\\npm`</span><br><span class="line">      : null;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个函数查询了一个 <code>prefix</code> 的环境变量，但是在项目的 <code>README</code> 中并没有提到，可能是因为我修改全局依赖的安装目录的时候没有正确的在环境变量中添加新的全局依赖路径，所以他直接获取了默认的 <code>AppData</code> 地址。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
+<li>1.在系统的环境变量中添加名为 <code>prefix</code> 值为你的自定义全局路径即可。(PS.记得重启电脑)</li>
+<li>2.修改 <code>npm.js</code> 的 169 行，把 <code>process.env</code> 替换为 <code>npmConfig</code> 也可以，就不需要重启电脑了…</li>
+</ul>
+<p>以上</p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/summary-at-the-end-of-2019/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">一年结束，回顾2019</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
 
 
 </main>
