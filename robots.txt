@@ -1,5 +1,0 @@
-# hexo robots.txt
-User-agent: *
-Disallow: /works/
-Sitemap: https://yogwang.site/sitemap.xml
-Sitemap: https://yogwang.site/baidusitemap.xml
