@@ -1,11 +1,15 @@
 # hexo robots.txt
 User-agent: Baiduspider
-User-agent: Googlebot
-User-agent: *
-
 Allow: /
-
 Disallow: /works/
-
-Sitemap: https://yogwang.site/sitemap.xml
 Sitemap: https://yogwang.site/baidusitemap.xml
+
+User-agent: Googlebot
+Allow: /
+Disallow: /works/
+Sitemap: https://yogwang.site/sitemap.xml
+
+User-agent: *
+Allow: /
+Disallow: /works/
+Sitemap: https://yogwang.site/sitemap.xml
