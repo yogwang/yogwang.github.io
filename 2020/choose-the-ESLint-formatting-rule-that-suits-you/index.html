@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    2020.2 | blog [ YOG WANG ]
+    ESlint的格式化风格有很多种，选择哪一种作为自己的代码格式化风格呢？ | blog [ YOG WANG ]
   </title>
   
   <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -32,32 +32,32 @@
 
     <div id="wrap">
       <main id="container">
-  
-  
-  
+  <div
+  id="post-choose-the-ESLint-formatting-rule-that-suits-you"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2020-02-20T06:04:37.000Z" itemprop="datePublished">2020-02-20</time>
+</p> 
+    </div>
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coding/">Coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
+    <header class="article-header">
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/choose-the-ESLint-formatting-rule-that-suits-you/">ESlint的格式化风格有很多种，选择哪一种作为自己的代码格式化风格呢？</a>
-    </h2>
+    <h1 class="article-title" itemprop="name">
+      ESlint的格式化风格有很多种，选择哪一种作为自己的代码格式化风格呢？
+    </h1>
   
 
     </header>
-     
-  <article class="article-excerpt">
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
     <p>这段时间刚刚复工，年前的我负责的一个年会大屏系统公司准备重新整理制作成为商城可售卖版本，然后又来了一个公司服务器租赁的 WebAPP 的项目，<br>我春节期间的外包项目也没有做完。那么给我自身 CodeReview 的时间就不够了，所以需要一个 ESLint 的通配规则来减少我编写的时候小失误，<br>虽然有自己的代码书写习惯，但是并没有强制要求自己，一直以来自己的 <code>ESLint</code> 配置仅具有错误预防功能，并没有使用一个通用的格式化风格，一直考虑的是使用 <code>Airbnb config</code>。</p>
 <p>趁着 CLI 在创建项目下载依赖的时间，我想选择一个规则作为我自己的以后的编码风格，<br>根据 CLI 给出的提示，默认可以配置的有三种：</p>
 <ul>
@@ -65,56 +65,86 @@
 <li>ESLint + Standard config <sub><a href="https://standardjs.com/" target="_blank" rel="noopener">detail</a></sub></li>
 <li>ESLint + Prettier <sub><a href="https://www.npmjs.com/package/prettier-eslint" target="_blank" rel="noopener">detail</a></sub></li>
 </ul>
+<a id="more"></a>
+
+<p>第一个 Airbnb 我是知道的，后边两个我并不了解，所以去搜索了一下，但是并没有找到一篇详细说明每个规则各自的风格特点，<br>我就只能一个一个的去找，然后整理选择一个自己更喜欢的风格,并且保持下去。</p>
+<p>先把三种风格分割出来，并且描述我了解到的一些会影响书写的规则特点：</p>
+<h2 id="Airbnb-JavaScript-Style"><a href="#Airbnb-JavaScript-Style" class="headerlink" title="Airbnb JavaScript Style"></a>Airbnb JavaScript Style</h2><ul>
+<li>使用两个空格经行缩进</li>
+<li>使用 <code>const</code>,<code>let</code> 避免使用 <code>var</code></li>
+<li>字符串使用单引号</li>
+<li>函数使用小驼峰，结构体/类/单例/函数库/对象 时用大驼峰</li>
+<li>用字符串模板而不是字符串拼接 <a href="https://eslint.org/docs/rules/prefer-template.html" target="_blank" rel="noopener">prefer-template</a> <a href="https://eslint.org/docs/rules/template-curly-spacing" target="_blank" rel="noopener">template-curly-spacing</a></li>
+<li>字符串中禁用 <code>eval()</code></li>
+<li>使用 <a href="https://eslint.org/docs/rules/object-shorthand.html" target="_blank" rel="noopener">object-shorthand</a> 定义对象方法</li>
+<li>所有对象声明放在文档开始</li>
+<li>数组用字面量赋值 <a href="https://eslint.org/docs/rules/no-array-constructor.html" target="_blank" rel="noopener">no-array-constructor</a>，如果数组有很多行，在数组的 [ 后和 ] 前断行</li>
+<li>使用 <code>...</code> (拓展运算符)，而不是 <code>Object.assign</code>(还有一些别的例如:<code>Array.from</code>)</li>
+<li>用对象的解构赋值来获取和使用对象某个或多个属性值，数组同理 <a href="https://eslint.org/docs/rules/prefer-destructuring" target="_blank" rel="noopener">prefer-destructuring</a></li>
+<li>用命名函数表达式而不是函数声明 <a href="https://eslint.org/docs/rules/func-style" target="_blank" rel="noopener">func-style</a></li>
+<li>用默认参数语法而不是在函数里对参数重新赋值。 <code>function handleThings(opts = {}) { ... }</code></li>
+<li>导入语句在其他所有语句之前</li>
+<li>同模一个路径使用一个导入语句 <code>import { myFunc1, myFunc2 } from &#39;module&#39;</code></li>
+<li>不使用一元自增自减运算符 <a href="http://eslint.org/docs/rules/no-plusplus" target="_blank" rel="noopener">no-plusplus</a></li>
+<li>使用全等 === 摒弃 == （在需要检查 null || undefined 时可以使用 obj == null）<a href="https://eslint.org/docs/rules/eqeqeq.html" target="_blank" rel="noopener">eqeqeq</a></li>
+<li>布尔值用缩写，而字符串和数字要明确比较对象 <code>if (collection.length &gt; 0) { .. }</code></li>
+<li>三元表达式不应该嵌套</li>
+<li>大括号前增加空格 <a href="https://eslint.org/docs/rules/space-before-blocks.html" target="_blank" rel="noopener">space-before-blocks</a></li>
+<li>关键字、函数名后加空格 <a href="https://eslint.org/docs/rules/keyword-spacing" target="_blank" rel="noopener">keyword-spacing</a></li>
+<li>用空格来隔开运算符 <a href="https://eslint.org/docs/rules/space-infix-ops" target="_blank" rel="noopener">space-infix-ops</a></li>
+<li>文件以回车结尾 <a href="http://eslint.org/docs/rules/eol-last" target="_blank" rel="noopener">eol-last</a></li>
+<li>方括号、圆括号里不要加空格</li>
+<li>花括号里加空格</li>
+<li>每个逗号后边都需要有空格</li>
+<li>调用函数时，函数名和圆括号之间不要空格</li>
+<li>空格添加在键值属性的冒号后 <code>{ &#39;key&#39;: &#39;value&#39;}</code></li>
+<li>逗号不要前置，连接符<code>.</code>如果需要折行则前置</li>
+<li>需要结尾逗号</li>
+</ul>
+<h2 id="JavaScript-Standard-Style"><a href="#JavaScript-Standard-Style" class="headerlink" title="JavaScript Standard Style"></a>JavaScript Standard Style</h2><ul>
+<li>使用两个空格进行缩进</li>
+<li>变量、函数使用小驼峰命名，构造函数大驼峰命名</li>
+<li>字符串使用单引号（需要转义的地方除外）</li>
+<li>模板字符串中没有空格 <a href="https://eslint.org/docs/rules/template-curly-spacing" target="_blank" rel="noopener">template-curly-spacing</a></li>
+<li>字符串中禁用 <code>eval()</code></li>
+<li>关键字、函数名后加空格 <a href="https://eslint.org/docs/rules/keyword-spacing" target="_blank" rel="noopener">keyword-spacing</a></li>
+<li>使用全等 === 摒弃 == （在需要检查 null || undefined 时可以使用 obj == null）<a href="https://eslint.org/docs/rules/eqeqeq.html" target="_blank" rel="noopener">eqeqeq</a></li>
+<li>不使用分号</li>
+<li>方括号、圆括号里不要加空格</li>
+<li>花括号里加空格 <code>function foo () { return true }</code></li>
+<li>用空格来隔开运算符 <a href="https://eslint.org/docs/rules/space-infix-ops" target="_blank" rel="noopener">space-infix-ops</a></li>
+<li>调用函数时，函数名和圆括号之间不要空格</li>
+<li>数组用字面量赋值 <a href="https://eslint.org/docs/rules/no-array-constructor.html" target="_blank" rel="noopener">no-array-constructor</a></li>
+<li>每个逗号后边都需要有空格</li>
+<li>不需要结尾逗号</li>
+<li>空格添加在键值属性的冒号后 <code>{ &#39;key&#39;: &#39;value&#39;}</code></li>
+<li>不使用 <code>debugger</code></li>
+<li>禁止扩展 <code>Object</code> 原型</li>
+<li>同模一个路径使用一个导入语句 <code>import { myFunc1, myFunc2 } from &#39;module&#39;</code></li>
+<li>文件以回车结尾 <a href="http://eslint.org/docs/rules/eol-last" target="_blank" rel="noopener">eol-last</a></li>
+</ul>
+<h2 id="Prettier"><a href="#Prettier" class="headerlink" title="Prettier"></a>Prettier</h2><p>还没查阅</p>
+<h1 id="全文未完成-2020-02-20"><a href="#全文未完成-2020-02-20" class="headerlink" title="全文未完成 2020/02/20"></a>全文未完成 2020/02/20</h1><p>感觉规则太乱不方便查看，我按照类别拆分开才行，按照类型还是操作区分还没考虑好。</p>
+<p>例如按照类型：对象，数组，函数，字符串….<br>按照操作：书写格式（缩进，命名，符号），表达式规则….</p>
+<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p><a href="https://cn.eslint.org/demo/" target="_blank" rel="noopener">eslint 在线规则配置</a></p>
+ 
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/choose-the-ESLint-formatting-rule-that-suits-you/#more">阅读全文</a>
+
+
     </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-02-20T06:04:37.000Z" itemprop="datePublished">Feb 20</time>
-</p>
   </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/update-global-dependencies-with-npm-check-updates/">使用 npm-check-updates 更新全局依赖提示 No dependencies</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>今天想起自己一直依赖没有更新全局依赖，就直接在 <code>bash</code> 里边输入 <code>ncu -g</code> 居然提示 <code>No dependencies.</code><br>我就纳闷了，打错命令了吗，为啥提示没有依赖？<br>项目内依赖检查更新是没问题的，但是检测全局依赖就显示没有依赖，换了几个终端还是这个问题。<br>我怀疑是我全局以来的路径设置错了(我是使用 npm 来安装全局依赖，yarn 安装项目依赖)<br>查看了 npm 的全局依赖路径发现没错啊。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/update-global-dependencies-with-npm-check-updates/#more">阅读全文</a>
-    </div>
    
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-02-14T09:20:40.000Z" itemprop="datePublished">Feb 14</time>
-</p>
-  </div>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/update-global-dependencies-with-npm-check-updates/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">使用 npm-check-updates 更新全局依赖提示 No dependencies</div>
+    </a>
+  
+</nav>
+ 
 </div>
-  
-  
-    </div></section>
-  
 
 
 
