@@ -2,16 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yogwang.site/2020/TypeScript-learning-00/</loc>
-    <lastmod>2020-02-27</lastmod>
+    <lastmod>2020-02-28</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/deconstruction-assignment-of-the-object-model/</loc>
+    <lastmod>2020-02-28</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/choose-the-ESLint-formatting-rule-that-suits-you/</loc>
-    <lastmod>2020-02-20</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/</loc>
-    <lastmod>2020-02-18</lastmod>
+    <lastmod>2020-02-28</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/update-global-dependencies-with-npm-check-updates/</loc>
-    <lastmod>2020-02-14</lastmod>
+    <lastmod>2020-02-28</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/</loc>
+    <lastmod>2020-02-28</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/summary-at-the-end-of-2019/</loc>
     <lastmod>2020-02-06</lastmod>
