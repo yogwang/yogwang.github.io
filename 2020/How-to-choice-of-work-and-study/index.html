@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    Apache 配置虚拟域名 | blog [ YOG WANG ]
+    谁能告诉我如何在工作、学习和生活中平衡? | blog [ YOG WANG ]
   </title>
   <meta name="keywords" content="YogWang,blog,web-frontend">
   <meta name="description" content="Here is my blog, my notes and some thoughts">
@@ -36,7 +36,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-php-VirtualHost"
+  id="post-How-to-choice-of-work-and-study"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -44,10 +44,10 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-07-30T07:13:41.000Z" itemprop="datePublished">2019-07-30</time>
+  <time datetime="2020-03-14T02:06:23.000Z" itemprop="datePublished">2020-03-14</time>
 </p> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+    <a class="article-category-link" href="/categories/Daily/">Daily</a>
   </div>
 
     </div>
@@ -56,7 +56,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      Apache 配置虚拟域名
+      谁能告诉我如何在工作、学习和生活中平衡?
     </h1>
   
 
@@ -65,28 +65,22 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>在本地调试后端项目时候经常会用到虚拟域名的功能；</p>
-<p>毕竟项目都放在 WWW 目录下，如果不使用虚拟域名，URL 实在太长，实在不方便调试。</p>
-<p>例如：<code>http://localhost/project/public/index.php/sample/test/hello</code></p>
-<p>如果使用虚拟域名就可以简化为 <code>http://p.loc/sample/test/hello</code> 着实方便很多。</p>
-<p>但我总是记不住怎么去添加虚拟域名，总不可能一直百度吧,所以就记下笔记了。</p>
-<a id="more"></a>
-
-<p>本地使用的 <a href="http://phpstudy.php.cn/" target="_blank" rel="noopener">phpStudy 集成环境</a>，所以步骤都是按照 phpStudy 的来，实际也相差不大。</p>
-<h2 id="方法-1：针对项目添加虚拟域名"><a href="#方法-1：针对项目添加虚拟域名" class="headerlink" title="方法 1：针对项目添加虚拟域名"></a>方法 1：针对项目添加虚拟域名</h2><h3 id="Step1：-打开-vhosts-ini-配置文件"><a href="#Step1：-打开-vhosts-ini-配置文件" class="headerlink" title="Step1： 打开 vhosts-ini 配置文件"></a>Step1： 打开 <code>vhosts-ini</code> 配置文件</h3><p><img src="https://yogwang.site/2019/php-VirtualHost/f1step1.png" alt="f1Step1:vhosts.conf"></p>
-<p>或者使用路径打开 <code>..\phpStudy\PHPTutorial\Apache\conf\vhosts.conf</code></p>
-<h3 id="Step2：-添加新-VirtualHost"><a href="#Step2：-添加新-VirtualHost" class="headerlink" title="Step2： 添加新 VirtualHost"></a>Step2： 添加新 VirtualHost</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost _default_:80&gt;</span><br><span class="line">ServerName &quot;p.loc&quot;</span><br><span class="line">DocumentRoot &quot;E:/WWW/project/public&quot;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Step3：-修改-hosts-文件"><a href="#Step3：-修改-hosts-文件" class="headerlink" title="Step3： 修改 hosts 文件"></a>Step3： 修改 <code>hosts</code> 文件</h3><p><img src="https://yogwang.site/2019/php-VirtualHost/f1step3.png" alt="f1Step3:hosts"></p>
-<p>或者使用路径打开 <code>C:\Windows\System32\drivers\etc</code></p>
-<h3 id="Step3：-重启-ALache-服务"><a href="#Step3：-重启-ALache-服务" class="headerlink" title="Step3： 重启 ALache 服务"></a>Step3： 重启 ALache 服务</h3><p><img src="https://yogwang.site/2019/php-VirtualHost/f1step4.png" alt="f1Step4:重启ALache"></p>
-<blockquote>
-<p>不用修改其他，因为 phpStudy 启用了 <code>conf/vhosts.conf</code> 在 httpd.conf:486</p>
-</blockquote>
-<h2 id="更加偷懒的方式？"><a href="#更加偷懒的方式？" class="headerlink" title="更加偷懒的方式？"></a>更加偷懒的方式？</h2><p>想到了一种泛域名解析的方式去配置虚拟域名，然后根据二级域名来指向不同目录。但是在只修改 <code>vhosts-ini</code> 情况还不能办到。可能需要启动 <code>htttpd.conf</code> 里的扩展功能，暂时不研究了，记一下先。</p>
-<h2 id="Internal-Server-Error"><a href="#Internal-Server-Error" class="headerlink" title="Internal Server Error"></a>Internal Server Error</h2><p>遇到 Internal Server Error ，在 apache 配置文件 httpd.conf 中开启重写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#LoadModule rewrite_module modules/mod_rewrite.so // 去掉#</span><br></pre></td></tr></table></figure>
-
+    <p>当资金管理出现问题之后就有个问题一直在困扰我，如何去平衡工作和学习还有生活。</p>
+<p>从重庆回来之后我就进入了一个长达 1 年多的欠款偿还期，一直从 19 年初期持续到 20 年末，基本每个月很难达到收支平衡，每个月都是超额支出，并且需要向朋友借来资金周转。<br>并且因为收入赤字所以日常生活中会出现更多的机会使用信用卡，导致更多的账单出现在月中，所以只能接收更多的项目外包</p>
+<p>时间的大部分已经被工作占用了，晚上到家之后的时间就需要再分配给外包工作，<br>学习和休息的时间就更紧张，只能在通勤的时候看思否和一些视频教程，把运动的时间放在了晚餐用完之后 8 点。</p>
+<p>但是人的精力到底是有限的，持续了几个月之后就就出现了疲倦感<a id="more"></a>，每天到家之后根本就提不起继续动手的念头，就想瘫在沙发上休息。<br>每天通勤的时间也分配给了休息能闭上眯一会对我来说也是极好的。<br>现在几乎就只有早上到公司的半个小时思否问答，公司的项目我一直在想重新整理业务代码缺一直没有时间安排，技术栈也就没有变动过了，去年下半年就一直想学的 <code>TypeScript</code> 顺利继承到了今年的小目标。<br>锻炼时间直接被砍掉了，体重从刚离开重庆的 <code>70kg</code> 直线上升到现在的近 <code>80kg</code> 的体重，女票已经向我表达了嫌弃之情（其实就算有时间也没有这个精力了）</p>
+<p>加上我习惯每个休息日习惯睡到下午，基本就是每周的能利用的天数就是 6-6.5 天</p>
+<p>每天的日常:</p>
+<ul>
+<li>工作占用了 <code>8h</code></li>
+<li>用餐时间 <code>2h</code></li>
+<li>通勤时间 <code>2h</code></li>
+<li>休息时间 <code>7h</code></li>
+<li>琐碎日常 <code>1.5h</code></li>
+</ul>
+<p>每周可以利用的时间就是 <code>29h ~ 35h</code>，精细到每天平均 5 个小时不到，乍一看还挺富裕的，但是还有外包的项目需要占用 3 个小时出来，<br>那么就只剩下了 2 个小时（当然在没有外包的话时间还是很充足的）。</p>
+<p>但是我很想把体重控制下来，并且想在近期提出调薪的要求，所以在有外包的时候一下子时间就不够用了。</p>
+<p>暂时还没有一个很好的方案来安排自己的时间，今天写博客吐槽占用的时间已经很多了，其它的文章的下次再填坑了。<br>以上</p>
  
   </article>
 
@@ -96,19 +90,10 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/phpok-Guestbook/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          PHPOK 5.x 多站点共享留言板
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/html5-set_videoSpeed/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/JS-whats-arguments/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">简单设置Video标签的播放倍速</div>
+      <div class="article-nav-title">什么是 [Arguments] ?</div>
     </a>
   
 </nav>
