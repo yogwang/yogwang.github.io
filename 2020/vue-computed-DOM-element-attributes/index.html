@@ -72,7 +72,10 @@
 <p>接着我就把之前填充默认填充的假数据给去掉了，再一次获取了计算出来的属性：<br><img src="https://yogwang.site/2020/vue-computed-DOM-element-attributes/snipaste2.jpg" alt="去除假数据后获取到的scrollHeight"><br>嗯？为啥都是一个值，这个值不应该是会随内容的增加变化的吗？为什么就一直是初始的值呢。</p>
 <p>想了想会不会是计算属性缓存了 <code>scrollHeight</code>，然后就在滚动方法里同样输出了容器的<code>scrollHeight</code>，确实是被缓存了。<br><img src="https://yogwang.site/2020/vue-computed-DOM-element-attributes/snipaste3.jpg" alt="对比两个scrollHeight"></p>
 <p>然后就去查阅了一下资料，也询问了群内的大佬</p>
-<h3 id="确实-DOM-元素相关的属性不能被-Computed-计算，"><a href="#确实-DOM-元素相关的属性不能被-Computed-计算，" class="headerlink" title="确实 DOM 元素相关的属性不能被 Computed 计算，"></a>确实 DOM 元素相关的属性不能被 <code>Computed</code> 计算，</h3><h3 id="因为-DOM-元素不具有响应式依赖。所以会被计算属性缓存。"><a href="#因为-DOM-元素不具有响应式依赖。所以会被计算属性缓存。" class="headerlink" title="因为 DOM 元素不具有响应式依赖。所以会被计算属性缓存。"></a>因为 DOM 元素不具有响应式依赖。所以会被计算属性缓存。</h3> 
+<blockquote>
+<p>计算属性的结果会被缓存，除非依赖的响应式属性变化才会重新计算。注意，如果某个依赖 (比如非响应式属性) 在该实例范畴之外，则计算属性是不会被更新的。</p>
+</blockquote>
+<h3 id="确实-DOM-元素相关的属性不能被-Computed-计算，"><a href="#确实-DOM-元素相关的属性不能被-Computed-计算，" class="headerlink" title="确实 DOM 元素相关的属性不能被 Computed 计算，"></a>确实 DOM 元素相关的属性不能被 <code>Computed</code> 计算，</h3><h3 id="DOM-元素不具有响应式依赖，所以会被计算属性缓存。"><a href="#DOM-元素不具有响应式依赖，所以会被计算属性缓存。" class="headerlink" title="DOM 元素不具有响应式依赖，所以会被计算属性缓存。"></a>DOM 元素不具有响应式依赖，所以会被计算属性缓存。</h3> 
   </article>
 
 
