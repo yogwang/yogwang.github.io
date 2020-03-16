@@ -2,6 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2019/html5-canvas-identify-content/</loc>
+    
+    <lastmod>2020-03-16T16:05:29.413Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/CSS-neglected-background-attributes/</loc>
+    
+    <lastmod>2020-03-16T16:04:37.335Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/JS-map-and-forEach/</loc>
+    
+    <lastmod>2020-03-16T16:02:57.133Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/JS-whats-arguments/</loc>
+    
+    <lastmod>2020-03-16T15:18:38.314Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/How-to-choice-of-work-and-study/</loc>
+    
+    <lastmod>2020-03-16T14:35:13.174Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/change-the-hexo-theme/</loc>
+    
+    <lastmod>2020-03-16T06:49:32.407Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/vue-computed-DOM-element-attributes/</loc>
     
     <lastmod>2020-03-16T06:46:46.064Z</lastmod>
@@ -51,34 +93,6 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/2020/change-the-hexo-theme/</loc>
-    
-    <lastmod>2020-03-14T07:31:54.625Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/How-to-choice-of-work-and-study/</loc>
-    
-    <lastmod>2020-03-14T03:11:26.455Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/JS-whats-arguments/</loc>
-    
-    <lastmod>2020-03-14T01:20:18.977Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/JS-map-and-forEach/</loc>
-    
-    <lastmod>2020-03-14T00:58:16.516Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://yogwang.site/2019/html5-set_videoSpeed/</loc>
     
     <lastmod>2020-02-28T08:40:01.326Z</lastmod>
@@ -117,13 +131,6 @@
     <loc>https://yogwang.site/about/index.html</loc>
     
     <lastmod>2020-01-25T15:39:37.901Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/CSS-neglected-background-attributes/</loc>
-    
-    <lastmod>2020-01-18T08:26:57.630Z</lastmod>
     
   </url>
   
@@ -194,13 +201,6 @@
     <loc>https://yogwang.site/2019/AnnualParty-devDiay01/</loc>
     
     <lastmod>2020-01-06T09:04:21.510Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2019/html5-canvas-identify-content/</loc>
-    
-    <lastmod>2020-01-06T07:11:31.249Z</lastmod>
     
   </url>
   

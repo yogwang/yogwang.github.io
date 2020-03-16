@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2019/html5-canvas-identify-content/</loc>
+    <lastmod>2020-03-16</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/CSS-neglected-background-attributes/</loc>
+    <lastmod>2020-03-16</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/JS-map-and-forEach/</loc>
+    <lastmod>2020-03-16</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/JS-whats-arguments/</loc>
+    <lastmod>2020-03-16</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/How-to-choice-of-work-and-study/</loc>
+    <lastmod>2020-03-16</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/change-the-hexo-theme/</loc>
+    <lastmod>2020-03-16</lastmod>
+  </url>  <url>
     <loc>https://yogwang.site/2020/vue-computed-DOM-element-attributes/</loc>
     <lastmod>2020-03-16</lastmod>
   </url>  <url>
@@ -22,18 +40,6 @@
     <loc>https://yogwang.site/2020/TypeScript-learning-00/</loc>
     <lastmod>2020-03-16</lastmod>
   </url>  <url>
-    <loc>https://yogwang.site/2020/change-the-hexo-theme/</loc>
-    <lastmod>2020-03-14</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/How-to-choice-of-work-and-study/</loc>
-    <lastmod>2020-03-14</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/JS-whats-arguments/</loc>
-    <lastmod>2020-03-14</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/JS-map-and-forEach/</loc>
-    <lastmod>2020-03-14</lastmod>
-  </url>  <url>
     <loc>https://yogwang.site/2019/html5-set_videoSpeed/</loc>
     <lastmod>2020-02-28</lastmod>
   </url>  <url>
@@ -48,9 +54,6 @@
   </url>  <url>
     <loc>https://yogwang.site/2020/summary-at-the-end-of-2019/</loc>
     <lastmod>2020-02-06</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/CSS-neglected-background-attributes/</loc>
-    <lastmod>2020-01-18</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/CSS-pseudo-elements-content/</loc>
     <lastmod>2020-01-18</lastmod>
@@ -80,9 +83,6 @@
     <lastmod>2020-01-15</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/AnnualParty-devDiay01/</loc>
-    <lastmod>2020-01-06</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/html5-canvas-identify-content/</loc>
     <lastmod>2020-01-06</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/JS-Object-attribute-sort/</loc>
