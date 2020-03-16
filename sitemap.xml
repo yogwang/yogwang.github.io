@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/JS-map-and-forEach/</loc>
+    
+    <lastmod>2020-03-16T16:08:21.162Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/change-the-hexo-theme/</loc>
     
     <lastmod>2020-03-16T16:06:30.958Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://yogwang.site/2020/CSS-neglected-background-attributes/</loc>
     
     <lastmod>2020-03-16T16:04:37.335Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/JS-map-and-forEach/</loc>
-    
-    <lastmod>2020-03-16T16:02:57.133Z</lastmod>
     
   </url>
   
