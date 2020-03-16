@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/about/index.html</loc>
+    
+    <lastmod>2020-03-16T16:41:57.088Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/JS-map-and-forEach/</loc>
     
-    <lastmod>2020-03-16T16:13:48.313Z</lastmod>
+    <lastmod>2020-03-16T16:21:54.832Z</lastmod>
     
   </url>
   
@@ -124,13 +131,6 @@
     <loc>https://yogwang.site/2020/summary-at-the-end-of-2019/</loc>
     
     <lastmod>2020-02-06T06:45:47.205Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/about/index.html</loc>
-    
-    <lastmod>2020-01-25T15:39:37.901Z</lastmod>
     
   </url>
   
