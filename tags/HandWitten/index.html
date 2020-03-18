@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    map() 和 forEach() 的区别 | blog [ YOG WANG ]
+    HandWitten | blog [ YOG WANG ]
   </title>
   <meta name="keywords" content="YogWang,blog,web-frontend">
   <meta name="description" content="Here is my blog, my notes and some thoughts">
@@ -35,91 +35,46 @@
 
     <div id="wrap">
       <main id="container">
-  <div
-  id="post-JS-map-and-forEach"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
->
-  <div class="article-inner">
-    <div class="article-meta">
-      <p class="article-date">
-  <time datetime="2020-03-12T03:27:13.000Z" itemprop="datePublished">2020-03-12</time>
-</p> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </div>
-
-    </div>
+  
+  
+  
     
-    <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archives">
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HandWitten/">HandWitten</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
       
   
-    <h1 class="article-title" itemprop="name">
-      map() 和 forEach() 的区别
-    </h1>
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/javascript-native-methods-Handwritten-DigPit/">手写 JavaScript 原生函数开坑</a>
+    </h2>
   
 
     </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-       
+     
   <article class="article-content">
-    <p>一直以来没有整理查阅过数组的原生方法，所以对什么时候用 <code>map</code>, 什么时候用 <code>forEach</code> 并不是很明确，完全看心情。<br>只是知道 <code>map</code>有返回值而 <code>forEach</code> 没有需要自己操作，所以今天准备好好梳理一下记录下来。</p>
-<a id="more"></a>
-
-<h2 id="两个操作都有相同的部分"><a href="#两个操作都有相同的部分" class="headerlink" title="两个操作都有相同的部分"></a>两个操作都有相同的部分</h2><ul>
-<li><strong>都只能遍历数组</strong></li>
-<li><strong>都可以循环遍历数组中的每一项</strong></li>
-<li><strong>第一个参数都是 <code>callback</code> 函数，且该函数接收三个参数</strong>（ <code>item</code>, <code>index</code>, <code>array</code> ）</li>
-<li>都有可选的第二个参数 <code>thisArg</code> 可改变 <code>callback</code> 中 <code>this</code> 的值（这个可以忽略基本用不到）</li>
-</ul>
-<h2 id="不同的是："><a href="#不同的是：" class="headerlink" title="不同的是："></a>不同的是：</h2><ul>
-<li><strong><code>map</code> 有返回值，而 <code>forEach</code> 没有</strong></li>
-<li><code>map</code> 的运行速度更快</li>
-<li><code>map</code> 可以被链式调用（ <code>forEach</code> 因为没有返回值不能被链式调用）</li>
-</ul>
-<h3 id="所以哪个更好？"><a href="#所以哪个更好？" class="headerlink" title="所以哪个更好？"></a>所以哪个更好？</h3><p>如果你想改变数组并且返回一个新数组时候推荐使用 <code>.map()</code>，不光是因为它会返回一个新数组和速度快，而且可以被链式调用继续操作返回的数组。</p>
-<p>如果只是单纯想操作数据但是不想返回一个数组时，使用 <code>.forEach()</code> 就可以省略多余的步骤。</p>
-<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><ul>
-<li>如果已访问的元素在迭代时被删除了（ 例如使用 <code>.shift()</code> 操作了原数组 ），之后的元素将被跳过</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> words = [<span class="string">"one"</span>, <span class="string">"two"</span>, <span class="string">"three"</span>, <span class="string">"four"</span>];</span><br><span class="line">words.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(word);</span><br><span class="line">  <span class="keyword">if</span> (word === <span class="string">"two"</span>) &#123;</span><br><span class="line">    words.shift();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// =&gt; one</span></span><br><span class="line"><span class="comment">// =&gt; two</span></span><br><span class="line"><span class="comment">// =&gt; four  // 这里的 three 被跳过了</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>最近真的时间很紧张，都没有空闲的时间好好的去整理，<br>等有时间了准备梳理一下被 <code>VueJS</code> 改写的 7 个数组原生方法：<code>push</code>, <code>pop</code>, <code>shift</code>, <code>unshift</code>, <code>splice</code>, <code>sort</code>, <code>reverse</code></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank" rel="noopener">Array.prototype.forEach()</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="noopener">Array.prototype.map()</a></li>
-<li><a href="https://blog.csdn.net/alison_z/article/details/80811317" target="_blank" rel="noopener">JS 中 map 和 forEach 的区别</a></li>
-</ul>
+    <p>真的是前天才把之前的两个小坑填完，之前的万年坑还没开始填，又想开一个大坑，准备以一个月实现一个原生函数的频率，来制作一个手写函数的坑，就按照 W3CSchool 上边的顺序来吧。接下来一周看看先写一个出来，嗯嗯。</p>
  
   </article>
 
 
-    </div>
+    <p class="archive-article-date">
+  <time datetime="2020-03-18T03:02:49.000Z" itemprop="datePublished">Mar 18</time>
+</p>
   </div>
-   
-<nav id="article-nav">
-  
-    <a href="/2020/JS-whats-arguments/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          什么是 [Arguments] 隐式参数？
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/change-the-hexo-theme/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">博客改版准备中...</div>
-    </a>
-  
-</nav>
- 
 </div>
+  
+  
+    </div></section>
+  
 
 
 
