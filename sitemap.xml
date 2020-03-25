@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://yogwang.site/2020/FE-mock-doc-test/</loc>
+    <loc>https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/</loc>
     
-    <lastmod>2020-03-25T08:01:13.736Z</lastmod>
+    <lastmod>2020-03-25T08:04:11.506Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://yogwang.site/2020/Guide-How-To-Use-MockJS/</loc>
     
-    <lastmod>2020-03-25T07:56:39.352Z</lastmod>
+    <lastmod>2020-03-25T08:01:43.333Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/FE-mock-doc-test/</loc>
+    
+    <lastmod>2020-03-25T08:01:13.736Z</lastmod>
     
   </url>
   
@@ -138,13 +145,6 @@
     <loc>https://yogwang.site/2020/update-global-dependencies-with-npm-check-updates/</loc>
     
     <lastmod>2020-02-28T07:53:24.617Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/</loc>
-    
-    <lastmod>2020-02-28T07:52:37.618Z</lastmod>
     
   </url>
   
