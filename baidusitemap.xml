@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2020/javascript-native-methods-Handwritten-DigPit/</loc>
+    <lastmod>2020-04-07</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary08/</loc>
+    <lastmod>2020-03-25</lastmod>
+  </url>  <url>
     <loc>https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/</loc>
     <lastmod>2020-03-25</lastmod>
   </url>  <url>
@@ -8,9 +14,6 @@
     <lastmod>2020-03-25</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/FE-mock-doc-test/</loc>
-    <lastmod>2020-03-25</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/javascript-native-methods-Handwritten-DigPit/</loc>
     <lastmod>2020-03-25</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/JS-map-and-forEach/</loc>
@@ -116,9 +119,6 @@
     <lastmod>2019-12-07</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/JS-foreach-promise/</loc>
-    <lastmod>2019-12-07</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary08/</loc>
     <lastmod>2019-12-07</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/wordpress-themeDevelop-lesson01/</loc>
