@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2020/webpack-dev-server-proxy-note/</loc>
+    <lastmod>2020-04-09</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/webpack-ignore-comments-logs/</loc>
+    <lastmod>2020-04-09</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/vue-ssr-dev-note/</loc>
+    <lastmod>2020-04-09</lastmod>
+  </url>  <url>
     <loc>https://yogwang.site/2020/javascript-native-methods-Handwritten-DigPit/</loc>
     <lastmod>2020-04-07</lastmod>
   </url>  <url>
@@ -74,9 +83,6 @@
     <lastmod>2020-01-18</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/jeecg-boot-devDiary09/</loc>
-    <lastmod>2020-01-16</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/webpack-ignore-comments-logs/</loc>
     <lastmod>2020-01-16</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/CSS-reverse-hover-transition/</loc>
