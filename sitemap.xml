@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/javascript-native-methods-Handwritten-DigPit/</loc>
+    
+    <lastmod>2020-04-11T05:18:46.772Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/FE-mock-doc-test/</loc>
+    
+    <lastmod>2020-04-11T05:18:42.409Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/Guide-How-To-Use-MockJS/</loc>
+    
+    <lastmod>2020-04-11T05:18:38.189Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/webpack-dev-server-proxy-note/</loc>
     
-    <lastmod>2020-04-09T07:28:47.781Z</lastmod>
+    <lastmod>2020-04-11T05:18:33.702Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/vue-ssr-dev-note/</loc>
+    
+    <lastmod>2020-04-11T05:18:29.594Z</lastmod>
     
   </url>
   
@@ -12,20 +40,6 @@
     <loc>https://yogwang.site/2020/webpack-ignore-comments-logs/</loc>
     
     <lastmod>2020-04-09T07:27:17.421Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/vue-ssr-dev-note/</loc>
-    
-    <lastmod>2020-04-09T07:24:01.638Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/javascript-native-methods-Handwritten-DigPit/</loc>
-    
-    <lastmod>2020-04-07T04:38:01.766Z</lastmod>
     
   </url>
   
@@ -40,20 +54,6 @@
     <loc>https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/</loc>
     
     <lastmod>2020-03-25T08:04:11.506Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/Guide-How-To-Use-MockJS/</loc>
-    
-    <lastmod>2020-03-25T08:01:43.333Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/FE-mock-doc-test/</loc>
-    
-    <lastmod>2020-03-25T08:01:13.736Z</lastmod>
     
   </url>
   

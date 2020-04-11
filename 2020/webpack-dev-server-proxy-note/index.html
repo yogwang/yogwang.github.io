@@ -61,7 +61,14 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>这次在外包项目中遇到后端允许跨域了但是还是提示跨域的问题，所以就用到了 <code>webpack-dev-server</code> 的 <code>proxy</code><br>但是有一些部分我并没有整明白，所以写一篇文章梳理一下。</p>
+    <p>在这次的项目中，遇到了后端配置了允许跨域，但是我这边请求的时候还是提示跨域，后端折腾了会，我说算了，我这边本地做一下代里还快一点，你继续整接口吧。</p>
+<p>所以就用到了 <code>webpack-dev-server</code> 的 <code>proxy</code>，但是有一些部分我并没有整明白，所以写一篇文章梳理一下。</p>
+<p>最简单的就是直接在 <code>webpack</code> 的配置文件中启用 proxy 就可以了，</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  publicPath: <span class="string">"./"</span>,</span><br><span class="line">  outputDir: <span class="string">"./dist"</span>,</span><br><span class="line">  lintOnSave: <span class="literal">true</span>,</span><br><span class="line">  css: &#123;</span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      ....</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">"/api"</span>: &#123;</span><br><span class="line">        target: <span class="string">"http://www.domain.com/"</span>, <span class="comment">//对应自己的接口</span></span><br><span class="line">        changeOrigin: <span class="literal">true</span>, <span class="comment">// 如果接口跨域，需要配置这个参数</span></span><br><span class="line">        secure: <span class="literal">false</span>, <span class="comment">// 如果是https接口，需要配置这个参数</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>然后再请求的配置文件中修改地址为启动的服务地址就可以初步实现了。</p>
+<p>然后到生产环境的时候就需要去修改配置文件，我就觉得很麻烦，一点也不优雅，<br>所以就需要用webpack的环境变量来配置代里</p>
  
   </article>
 
