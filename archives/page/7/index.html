@@ -54,6 +54,41 @@
       
   
     <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/git_commit--amend/">Git 撤销上一次提交 并将暂存区文件重新提交</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>把刚刚提交到的版本库的操作撤销掉,并将正确的版本提交 这时我们就需要用到 <code>git commit –-amend</code> 命令</p>
+<p>我们把文件修改为正确的，然后 <code>git add</code> 到暂存区 再使用 <code>git commit -–amend</code> 命令<br>这时 <code>Bash</code> 会提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git commit --amend</span><br><span class="line">hint: Waiting for your editor to close the file...</span><br></pre></td></tr></table></figure>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/git_commit--amend/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-03T09:29:11.000Z" itemprop="datePublished">Jul 3</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
       <a class="archive-article-title" href="/2019/git_rebase/">Git 编辑历史提交的 Commit</a>
     </h2>
   
@@ -382,41 +417,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/git_install/">安装 Git in windows</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-content">
-    <blockquote>
-<p><br>Git 官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a><br><br></p>
-</blockquote>
-<h2 id="设置提交时的-NAME-和-EMAIL："><a href="#设置提交时的-NAME-和-EMAIL：" class="headerlink" title="设置提交时的 NAME 和 EMAIL："></a>设置提交时的 NAME 和 EMAIL：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;nikename&quot;</span><br><span class="line"></span><br><span class="line">$ git config --global user.email &quot;example@example.com&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看设置的-NAME-和-EMAIL："><a href="#查看设置的-NAME-和-EMAIL：" class="headerlink" title="查看设置的 NAME 和 EMAIL："></a>查看设置的 NAME 和 EMAIL：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name</span><br><span class="line"></span><br><span class="line">$ git config user.email</span><br></pre></td></tr></table></figure>
-
- 
-  </article>
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-06-17T03:03:48.000Z" itemprop="datePublished">Jun 17</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -455,6 +455,10 @@
       <ul>
         
           <li>
+            <a href="/2020/what-the-export-x-as-x/">export {x as x} 中的 as 是什么？</a>
+          </li>
+        
+          <li>
             <a href="/2020/vue-ssr-dev-note/">Vue项目的服务器端渲染 - VueJS SSR</a>
           </li>
         
@@ -468,10 +472,6 @@
         
           <li>
             <a href="/2020/FE-mock-doc-test/">使用 MockJS 模拟 RESTful 接口并且生成接口文档</a>
-          </li>
-        
-          <li>
-            <a href="/2020/javascript-native-methods-Handwritten-DigPit/">手写 JavaScript 原生函数开坑</a>
           </li>
         
       </ul>

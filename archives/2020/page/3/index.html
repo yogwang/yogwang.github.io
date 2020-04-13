@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    记Web端唤起QQ聊天的两种方法 | blog [ YOG WANG ]
+    2020 | blog [ YOG WANG ]
   </title>
   <meta name="keywords" content="YogWang,blog,web-frontend">
   <meta name="description" content="Here is my blog, my notes and some thoughts">
@@ -35,73 +35,61 @@
 
     <div id="wrap">
       <main id="container">
-  <div
-  id="post-web-arouse-qq"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
->
-  <div class="article-inner">
-    <div class="article-meta">
-      <p class="article-date">
-  <time datetime="2019-11-28T01:26:56.000Z" itemprop="datePublished">2019-11-28</time>
-</p> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </div>
-
-    </div>
+  
+  
+  
     
-    <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archives">
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
       
   
-    <h1 class="article-title" itemprop="name">
-      记Web端唤起QQ聊天的两种方法
-    </h1>
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/JS-Object-attribute-sort/">Js对象 调整属性排序是否有意义</a>
+    </h2>
   
 
     </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-       
-  <article class="article-content">
-    <p>以前一直使用的 <code>tencent://message/?Menu=yes&amp;uin={YourQQCode}&amp;Site={SiteDomain}</code> 来做的 web 端唤起 QQ 在线聊天。<br>这次接了一个外包是自适应的 Web 页面，在手机端点击会提示 <strong>Safari 浏览器打不开该网页，应为网址无效。</strong></p>
-<p>👇</p>
-<p><img src="https://yogwang.site/2019/web-arouse-qq/error.jpg" alt="alert"></p>
-<a id="more"></a>
-
-<p>搜了搜。<br>腾讯的 <code>Tencent://Message</code> 协议，借助的是注册表 （ Windows 操作系统允许我们为自己的应用程序注册为一个协议处理者 <sub><a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa767914(v=vs.85)?redirectedfrom=MSDN" target="_blank" rel="noopener">详情</a></sub> ），所以在手机端并不能使用。</p>
-<h3 id="手机端唤起-QQ"><a href="#手机端唤起-QQ" class="headerlink" title="手机端唤起 QQ"></a>手机端唤起 QQ</h3><p>在手机端唤起 QQ，腾讯给了另外一种链接：<br><code>mqqwpa://im/chat?chat_type=wpa&amp;uin={YourQQCode}&amp;version=1&amp;src_type=web&amp;web_src={SiteDomain}</code></p>
-<p>使用的 <code>URL Scheme</code> 的方式来在不同 App 之间传递消息。</p>
-<p>然后搭配 Js 来控制不同的设备之间输出不同的链接，就可以。<br>电脑端使用<code>Tencent://Message</code>，手机端使用 <code>mqqwpa://</code></p>
- 
+     
+  <article class="article-excerpt">
+    <p>年会终于结束了，忙了一个月，终于可以开始填坑了。</p>
+<p>昨天把之前写了一半的 <a href="https://yogwang.site/2019/JS-navigation-detection/">滚动侦测导航</a> 给写完了。</p>
+<p>写的途中就有在思考 对象属性的排序问题，</p>
+<p>最开始我是直接用数组的下边作为年份，输出的时候会出现一堆空白 item，</p>
+<p>然后改成赋值给一个 <code>timeline</code> 对象，以年为属性名，月份为内部数组元素</p>
+<p>但是循环输出内容的时候就发现会按照正序的方式去输出属性。<br>比如我整理好的数据为</p>
   </article>
-
-
+  
+    <div class="article-more-link">
+      <a href="/2020/JS-Object-attribute-sort/#more">阅读全文</a>
     </div>
-  </div>
    
-<nav id="article-nav">
-  
-    <a href="/2019/html5-canvas-identify-content/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Canvas识别图片内容并使用用户头像拼接
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/CSS-position/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">一直以来记错的CSS属性：Position 元素定位</div>
-    </a>
-  
-</nav>
- 
-</div>
 
+
+    <p class="archive-article-date">
+  <time datetime="2020-01-03T04:36:41.000Z" itemprop="datePublished">Jan 3</time>
+</p>
+  </div>
+</div>
+  
+  
+    </div></section>
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/archives/2020/page/2/">&laquo; prev</a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
 
 </main>

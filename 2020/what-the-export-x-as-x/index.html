@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <title>
-    记Web端唤起QQ聊天的两种方法 | blog [ YOG WANG ]
+    export {x as x} 中的 as 是什么？ | blog [ YOG WANG ]
   </title>
   <meta name="keywords" content="YogWang,blog,web-frontend">
   <meta name="description" content="Here is my blog, my notes and some thoughts">
@@ -36,7 +36,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-web-arouse-qq"
+  id="post-what-the-export-x-as-x"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -44,19 +44,15 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-11-28T01:26:56.000Z" itemprop="datePublished">2019-11-28</time>
+  <time datetime="2020-04-13T06:38:59.000Z" itemprop="datePublished">2020-04-13</time>
 </p> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </div>
-
     </div>
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      记Web端唤起QQ聊天的两种方法
+      export {x as x} 中的 as 是什么？
     </h1>
   
 
@@ -65,15 +61,21 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>以前一直使用的 <code>tencent://message/?Menu=yes&amp;uin={YourQQCode}&amp;Site={SiteDomain}</code> 来做的 web 端唤起 QQ 在线聊天。<br>这次接了一个外包是自适应的 Web 页面，在手机端点击会提示 <strong>Safari 浏览器打不开该网页，应为网址无效。</strong></p>
-<p>👇</p>
-<p><img src="https://yogwang.site/2019/web-arouse-qq/error.jpg" alt="alert"></p>
-<a id="more"></a>
+    <p>今天在读一个开源框架的时候看到了一行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; installer <span class="keyword">as</span> VueAxios, service <span class="keyword">as</span> axios &#125;;</span><br></pre></td></tr></table></figure>
 
-<p>搜了搜。<br>腾讯的 <code>Tencent://Message</code> 协议，借助的是注册表 （ Windows 操作系统允许我们为自己的应用程序注册为一个协议处理者 <sub><a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa767914(v=vs.85)?redirectedfrom=MSDN" target="_blank" rel="noopener">详情</a></sub> ），所以在手机端并不能使用。</p>
-<h3 id="手机端唤起-QQ"><a href="#手机端唤起-QQ" class="headerlink" title="手机端唤起 QQ"></a>手机端唤起 QQ</h3><p>在手机端唤起 QQ，腾讯给了另外一种链接：<br><code>mqqwpa://im/chat?chat_type=wpa&amp;uin={YourQQCode}&amp;version=1&amp;src_type=web&amp;web_src={SiteDomain}</code></p>
-<p>使用的 <code>URL Scheme</code> 的方式来在不同 App 之间传递消息。</p>
-<p>然后搭配 Js 来控制不同的设备之间输出不同的链接，就可以。<br>电脑端使用<code>Tencent://Message</code>，手机端使用 <code>mqqwpa://</code></p>
+<p>然后我就 <code>? ? ?</code>，以前一直都不知道这个 <code>as</code>，然后就赶紧百度，结果没有一个匹配的结果。</p>
+<p>然后就只能从阮一峰老师的ES6入门里边找…</p>
+<a id="more"></a>
+<hr>
+<blockquote>
+<p>通常情况下，<code>export</code> 输出的变量就是本来的名字，但是可以使用 <code>as</code> 关键字重命名。</p>
+</blockquote>
+<h4 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">v1</span>(<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">v2</span>(<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">  v1 <span class="keyword">as</span> streamV1,</span><br><span class="line">  v2 <span class="keyword">as</span> streamV2,</span><br><span class="line">  v2 <span class="keyword">as</span> streamLatestVersion</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码使用 <code>as</code> 关键字，重命名了函数 v1 和 v2 的对外接口。重命名后，v2 可以用不同的名字输出两次。</p>
+<h3 id="所以其实-as-关键词的作用就是重命名导出的关键词，来起一个更加语义化的名称，或者隐藏模块里边的变量名称。"><a href="#所以其实-as-关键词的作用就是重命名导出的关键词，来起一个更加语义化的名称，或者隐藏模块里边的变量名称。" class="headerlink" title="所以其实 as 关键词的作用就是重命名导出的关键词，来起一个更加语义化的名称，或者隐藏模块里边的变量名称。"></a>所以其实 <code>as</code> 关键词的作用就是重命名导出的关键词，来起一个更加语义化的名称，或者隐藏模块里边的变量名称。</h3><p>然后再重新查阅其它博客的文章的时候发现，有一部分的博客把重命名写在了 <code>as</code> 关键词前边，我就又奇怪了，难不成两边都可以嘛？我就自己写了个demo，然而只能写在后边….</p>
+<p>好了，Demo 也写了，也闹明白了，其实就是一个关键字重命名，所以用到的太少了，看到就蒙了，以后记着就好。</p>
  
   </article>
 
@@ -83,19 +85,10 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/html5-canvas-identify-content/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Canvas识别图片内容并使用用户头像拼接
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/CSS-position/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/vue-ssr-dev-note/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">一直以来记错的CSS属性：Position 元素定位</div>
+      <div class="article-nav-title">Vue项目的服务器端渲染 - VueJS SSR</div>
     </a>
   
 </nav>
