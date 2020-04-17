@@ -49,6 +49,43 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/what-the-export-x-as-x/">export {x as x} 中的 as 是什么？</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>今天在读一个开源框架的时候看到了一行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; installer <span class="keyword">as</span> VueAxios, service <span class="keyword">as</span> axios &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>然后我就 <code>? ? ?</code>，以前一直都不知道这个 <code>as</code>，然后就赶紧百度，结果没有一个匹配的结果。</p>
+<p>然后就只能从阮一峰老师的ES6入门里边找…</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2020/what-the-export-x-as-x/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2020-04-13T06:38:59.000Z" itemprop="datePublished">Apr 13</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HandWitten/">HandWitten</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
 
       
@@ -348,38 +385,6 @@
 
     <p class="archive-article-date">
   <time datetime="2019-12-09T15:40:07.000Z" itemprop="datePublished">Dec 9</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/JS-foreach-promise/">forEach() 与 Promise()</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-content">
-    <p>今天写年会活动页的时候用到了异步记载数组里边的图片，然后按照数组的下标顺序做不同的操作，<br>所以想循环里边用 <code>await</code>，那就要 <code>Promise</code> 化图片的加载。</p>
-<p>可是我问了下群友，好像不能在 <code>forEach</code> 中使用 <code>async/await</code> ，<br>但在 <code>for</code> 替换则可以。</p>
-<p>所以像探究下为什么 <code>forEach</code> 中不能使用 <code>async/await</code></p>
-<p>开坑未填<br>2019-12-02</p>
- 
-  </article>
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-12-02T07:13:38.000Z" itemprop="datePublished">Dec 2</time>
 </p>
   </div>
 </div>
