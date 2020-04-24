@@ -127,6 +127,14 @@
   <article class="article-content">
     <p>之前开发的时间比较干工期，所以在某些还没弄明白的地方我直接使用了 <code>v-model</code> 来绑定数据，没并没有使用 <code>v-decorator</code>，<br>所以局部的表单验证需要自己手动去写，异常提示也是需要单独的去做，</p>
 <p>现在空下来了，开始整理一下，使用 <code>form.validateFields</code> 来做验证。</p>
+<p>1、动态校验规则，比如说，可以修改上传数量限制。这个时候直接修改规则并不会直接重新验证，需要重新修改数据之后才会再次校验。</p>
+<ul>
+<li>如果动态校验，需要校验的时候在 option 中加上 <code>{ force: true }</code></li>
+</ul>
+<p>2.提交方式分，保存为草稿和保存两种，保存校验所有字段，存为草稿则只需要验证一部分的字段并且保存所有已经填写的字段</p>
+<ul>
+<li>在 <code>validateFields</code> 中的规则内填写需要校验的字段，并且在<code>if(!err)</code> 中，使用获取整个表单数据 <code>getFieldsValue</code></li>
+</ul>
  
   </article>
 
@@ -416,7 +424,11 @@
       <ul>
         
           <li>
-            <a href="/2020/what-the-export-x-as-x/">export {x as x} 中的 as 是什么？</a>
+            <a href="/2020/jeecg-boot-devDiary10/">Jeecg-boot 中台挖坑日记10 升级AntD依赖后按钮组件配色出现异常</a>
+          </li>
+        
+          <li>
+            <a href="/2020/what-the-export-x-as-x/">export { x as x } 中的 as 是什么？</a>
           </li>
         
           <li>
@@ -429,10 +441,6 @@
         
           <li>
             <a href="/2020/Guide-How-To-Use-MockJS/">在项目中使用 MockJS 生成虚拟数据</a>
-          </li>
-        
-          <li>
-            <a href="/2020/FE-mock-doc-test/">使用 MockJS 模拟 RESTful 接口并且生成接口文档</a>
           </li>
         
       </ul>
