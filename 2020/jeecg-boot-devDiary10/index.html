@@ -63,6 +63,7 @@
   <article class="article-content">
     <p>昨天项目有新需求用到了，Ant Design Vue <code>1.5.0+</code> 的新组件 <code>Descriptions</code>，<br>所以就单独升级了一下组件库的版本，从 v1.3.9 升到了 v1.5.3，然后新组件是可以用了，但是按钮组件出现问题了；<br>当<code>type</code> 为 <code>danger</code> 时，背景会变成白色，同时文字也是白色的，就会如下图一样的情况。</p>
 <p><img src="https://yogwang.site/2020/jeecg-boot-devDiary10/snipaste.jpg" alt="问题截图"></p>
+<a id="more"></a>
 <p>然后审查模式下边看到是有一个样式覆盖了组件库的样式</p>
 <p><img src="https://yogwang.site/2020/jeecg-boot-devDiary10/css.jpg" alt="审查模式下查看到的叠加样式"></p>
 <p>然后我自己就没有定义过组件库的全局样式，正常我自己覆盖组件库内样式的时候都是私有样式，就郁闷了一个早上，在视图层到处找哪个组件里没有加样式私有化，结果一个上午都没有找到。<br>然后午休完了之后就突然想起来是不是 <code>jeecg-boot</code> 自己定义了一个全局样式，在入口文件中引入了，所以导致样式被覆盖了。结果就真的是这个问题。</p>
