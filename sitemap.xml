@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary09/</loc>
+    <loc>https://yogwang.site/2020/webpack-dev-server-proxy-note/</loc>
     
-    <lastmod>2020-04-28T07:14:47.391Z</lastmod>
+    <lastmod>2020-05-05T09:46:30.483Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://yogwang.site/2020/vue-project-nginx-configuration/</loc>
     
-    <lastmod>2020-04-24T16:50:43.148Z</lastmod>
+    <lastmod>2020-05-05T07:47:12.395Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary09/</loc>
+    
+    <lastmod>2020-04-28T07:14:47.391Z</lastmod>
     
   </url>
   
@@ -47,13 +54,6 @@
     <loc>https://yogwang.site/2020/Guide-How-To-Use-MockJS/</loc>
     
     <lastmod>2020-04-11T05:18:38.189Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/webpack-dev-server-proxy-note/</loc>
-    
-    <lastmod>2020-04-11T05:18:33.702Z</lastmod>
     
   </url>
   
