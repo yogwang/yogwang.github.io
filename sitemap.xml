@@ -2,23 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://yogwang.site/2020/webpack-dev-server-proxy-note/</loc>
-    
-    <lastmod>2020-05-05T09:46:30.483Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/vue-project-nginx-configuration/</loc>
-    
-    <lastmod>2020-05-05T07:47:12.395Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://yogwang.site/2020/jeecg-boot-devDiary09/</loc>
     
-    <lastmod>2020-04-28T07:14:47.391Z</lastmod>
+    <lastmod>2020-05-14T03:30:20.860Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/webpack-dev-server-proxy-note/</loc>
+    
+    <lastmod>2020-05-14T01:36:21.041Z</lastmod>
     
   </url>
   
@@ -44,23 +37,9 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/2020/javascript-native-methods-Handwritten-DigPit/</loc>
-    
-    <lastmod>2020-04-11T05:18:46.772Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://yogwang.site/2020/Guide-How-To-Use-MockJS/</loc>
     
     <lastmod>2020-04-11T05:18:38.189Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/vue-ssr-dev-note/</loc>
-    
-    <lastmod>2020-04-11T05:18:29.594Z</lastmod>
     
   </url>
   
@@ -124,13 +103,6 @@
     <loc>https://yogwang.site/2020/JS-whats-arguments/</loc>
     
     <lastmod>2020-03-16T15:18:38.314Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/How-to-choice-of-work-and-study/</loc>
-    
-    <lastmod>2020-03-16T14:35:13.174Z</lastmod>
     
   </url>
   
@@ -362,13 +334,6 @@
     <loc>https://yogwang.site/2019/phpok-Guestbook/</loc>
     
     <lastmod>2019-11-08T06:38:57.233Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2019/Terminator-Dark-Fate/</loc>
-    
-    <lastmod>2019-11-07T11:40:41.564Z</lastmod>
     
   </url>
   
