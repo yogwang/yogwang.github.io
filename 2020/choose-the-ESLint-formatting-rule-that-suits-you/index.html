@@ -75,64 +75,10 @@
 <a id="more"></a>
 
 <p>第一个 Airbnb 我是知道的，后边两个我并不了解，所以去搜索了一下，但是并没有找到一篇详细说明每个规则各自的风格特点，<br>我就只能一个一个的去找，然后整理选择一个自己更喜欢的风格,并且保持下去。</p>
-<p>先把三种风格分割出来，并且描述我了解到的一些会影响书写的规则特点：</p>
-<h2 id="Airbnb-JavaScript-Style"><a href="#Airbnb-JavaScript-Style" class="headerlink" title="Airbnb JavaScript Style"></a>Airbnb JavaScript Style</h2><ul>
-<li>使用两个空格经行缩进</li>
-<li>使用 <code>const</code>,<code>let</code> 避免使用 <code>var</code></li>
-<li>字符串使用单引号</li>
-<li>函数使用小驼峰，结构体/类/单例/函数库/对象 时用大驼峰</li>
-<li>用字符串模板而不是字符串拼接 <a href="https://eslint.org/docs/rules/prefer-template.html" target="_blank" rel="noopener">prefer-template</a> <a href="https://eslint.org/docs/rules/template-curly-spacing" target="_blank" rel="noopener">template-curly-spacing</a></li>
-<li>字符串中禁用 <code>eval()</code></li>
-<li>使用 <a href="https://eslint.org/docs/rules/object-shorthand.html" target="_blank" rel="noopener">object-shorthand</a> 定义对象方法</li>
-<li>所有对象声明放在文档开始</li>
-<li>数组用字面量赋值 <a href="https://eslint.org/docs/rules/no-array-constructor.html" target="_blank" rel="noopener">no-array-constructor</a>，如果数组有很多行，在数组的 [ 后和 ] 前断行</li>
-<li>使用 <code>...</code> (拓展运算符)，而不是 <code>Object.assign</code>(还有一些别的例如:<code>Array.from</code>)</li>
-<li>用对象的解构赋值来获取和使用对象某个或多个属性值，数组同理 <a href="https://eslint.org/docs/rules/prefer-destructuring" target="_blank" rel="noopener">prefer-destructuring</a></li>
-<li>用命名函数表达式而不是函数声明 <a href="https://eslint.org/docs/rules/func-style" target="_blank" rel="noopener">func-style</a></li>
-<li>用默认参数语法而不是在函数里对参数重新赋值。 <code>function handleThings(opts = {}) { ... }</code></li>
-<li>导入语句在其他所有语句之前</li>
-<li>同模一个路径使用一个导入语句 <code>import { myFunc1, myFunc2 } from &#39;module&#39;</code></li>
-<li>不使用一元自增自减运算符 <a href="http://eslint.org/docs/rules/no-plusplus" target="_blank" rel="noopener">no-plusplus</a></li>
-<li>使用全等 === 摒弃 == （在需要检查 null || undefined 时可以使用 obj == null）<a href="https://eslint.org/docs/rules/eqeqeq.html" target="_blank" rel="noopener">eqeqeq</a></li>
-<li>布尔值用缩写，而字符串和数字要明确比较对象 <code>if (collection.length &gt; 0) { .. }</code></li>
-<li>三元表达式不应该嵌套</li>
-<li>大括号前增加空格 <a href="https://eslint.org/docs/rules/space-before-blocks.html" target="_blank" rel="noopener">space-before-blocks</a></li>
-<li>关键字、函数名后加空格 <a href="https://eslint.org/docs/rules/keyword-spacing" target="_blank" rel="noopener">keyword-spacing</a></li>
-<li>用空格来隔开运算符 <a href="https://eslint.org/docs/rules/space-infix-ops" target="_blank" rel="noopener">space-infix-ops</a></li>
-<li>文件以回车结尾 <a href="http://eslint.org/docs/rules/eol-last" target="_blank" rel="noopener">eol-last</a></li>
-<li>方括号、圆括号里不要加空格</li>
-<li>花括号里加空格</li>
-<li>每个逗号后边都需要有空格</li>
-<li>调用函数时，函数名和圆括号之间不要空格</li>
-<li>空格添加在键值属性的冒号后 <code>{ &#39;key&#39;: &#39;value&#39;}</code></li>
-<li>逗号不要前置，连接符<code>.</code>如果需要折行则前置</li>
-<li>需要结尾逗号</li>
-</ul>
-<h2 id="JavaScript-Standard-Style"><a href="#JavaScript-Standard-Style" class="headerlink" title="JavaScript Standard Style"></a>JavaScript Standard Style</h2><ul>
-<li>使用两个空格进行缩进</li>
-<li>变量、函数使用小驼峰命名，构造函数大驼峰命名</li>
-<li>字符串使用单引号（需要转义的地方除外）</li>
-<li>模板字符串中没有空格 <a href="https://eslint.org/docs/rules/template-curly-spacing" target="_blank" rel="noopener">template-curly-spacing</a></li>
-<li>字符串中禁用 <code>eval()</code></li>
-<li>关键字、函数名后加空格 <a href="https://eslint.org/docs/rules/keyword-spacing" target="_blank" rel="noopener">keyword-spacing</a></li>
-<li>使用全等 === 摒弃 == （在需要检查 null || undefined 时可以使用 obj == null）<a href="https://eslint.org/docs/rules/eqeqeq.html" target="_blank" rel="noopener">eqeqeq</a></li>
-<li>不使用分号</li>
-<li>方括号、圆括号里不要加空格</li>
-<li>花括号里加空格 <code>function foo () { return true }</code></li>
-<li>用空格来隔开运算符 <a href="https://eslint.org/docs/rules/space-infix-ops" target="_blank" rel="noopener">space-infix-ops</a></li>
-<li>调用函数时，函数名和圆括号之间不要空格</li>
-<li>数组用字面量赋值 <a href="https://eslint.org/docs/rules/no-array-constructor.html" target="_blank" rel="noopener">no-array-constructor</a></li>
-<li>每个逗号后边都需要有空格</li>
-<li>不需要结尾逗号</li>
-<li>空格添加在键值属性的冒号后 <code>{ &#39;key&#39;: &#39;value&#39;}</code></li>
-<li>不使用 <code>debugger</code></li>
-<li>禁止扩展 <code>Object</code> 原型</li>
-<li>同模一个路径使用一个导入语句 <code>import { myFunc1, myFunc2 } from &#39;module&#39;</code></li>
-<li>文件以回车结尾 <a href="http://eslint.org/docs/rules/eol-last" target="_blank" rel="noopener">eol-last</a></li>
-</ul>
-<h2 id="Prettier"><a href="#Prettier" class="headerlink" title="Prettier"></a>Prettier</h2><p>并不用考虑书写格式，在文档保存时自动帮你把代码格式化为他们所规定的格式。</p>
-<h1 id="全文未完成-2020-02-20"><a href="#全文未完成-2020-02-20" class="headerlink" title="全文未完成 2020/02/20"></a>全文未完成 2020/02/20</h1><p>感觉规则太乱不方便查看，我按照类别拆分开才行，按照类型还是操作区分还没考虑好。</p>
-<p>例如按照类型：对象，数组，函数，字符串….<br>按照操作：书写格式（缩进，命名，符号），表达式规则….</p>
+<p>但是我并没有找到一个简短代码片段可以展示它们各自的风格特点，所以就只能大概说一下：</p>
+<p>如果使用 <code>Airbnb</code> 和 <code>Standard</code> 的风格那么就是以他人的书写风格来限制自己的书写习惯，并不自由但是强制代码风格统一，多人开发的时候让所有人代码风格感觉像是一个人写出来的，我觉得挺好的而且不需要考虑规则编辑，开箱即用慢慢适应就可以了。</p>
+<p>如果使用 <code>prettier</code> 虽然会默认一种风格，但是是可以修改配置文件来达到最偏好的 lint 规则，但是多人开发时要不就选择默认要不就要大家一起讨论制定出一个规则来。如果每个人都配置了文件但是没有上传，或者上传了其他人修改了就会出现意外的警告。</p>
+<p>所以我觉得个人开发会适合 <code>prettier</code> 一些，当然多人开发选择也不是不行，只是需要提前规范好，<br>选择 <code>Airbnb</code> 和 <code>Standard</code> 的话就不需要考虑配置，安装了之后直接使用就可以了，适合多人开发以及喜欢开箱即用的人。</p>
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p><a href="https://cn.eslint.org/demo/" target="_blank" rel="noopener">eslint 在线规则配置</a></p>
  
   </article>
