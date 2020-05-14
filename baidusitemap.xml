@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2019/AnnualParty-devDiay01/</loc>
+    <lastmod>2020-05-14</lastmod>
+  </url>  <url>
     <loc>https://yogwang.site/2020/jeecg-boot-devDiary09/</loc>
     <lastmod>2020-05-14</lastmod>
   </url>  <url>
@@ -97,9 +100,6 @@
     <loc>https://yogwang.site/2019/JS-call-apply-bind/</loc>
     <lastmod>2020-01-15</lastmod>
   </url>  <url>
-    <loc>https://yogwang.site/2019/AnnualParty-devDiay01/</loc>
-    <lastmod>2020-01-06</lastmod>
-  </url>  <url>
     <loc>https://yogwang.site/2020/JS-Object-attribute-sort/</loc>
     <lastmod>2020-01-03</lastmod>
   </url>  <url>
@@ -153,9 +153,6 @@
   </url>  <url>
     <loc>https://yogwang.site/2019/nodejs-npm-save-dev-global/</loc>
     <lastmod>2019-10-21</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/JS-let/</loc>
-    <lastmod>2019-10-19</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/CSS-placeholder-shown/</loc>
     <lastmod>2019-10-19</lastmod>
