@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2019/AnnualParty-devDiay01/</loc>
+    <lastmod>2020-05-22</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/AnnualParty-devDiay03/</loc>
+    <lastmod>2020-05-22</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/react-learning-00/</loc>
+    <lastmod>2020-05-22</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/TypeScript-learning-00/</loc>
+    <lastmod>2020-05-20</lastmod>
+  </url>  <url>
     <loc>https://yogwang.site/2020/jeecg-boot-devDiary09/</loc>
     <lastmod>2020-05-14</lastmod>
   </url>  <url>
@@ -8,9 +20,6 @@
     <lastmod>2020-05-14</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/AnnualParty-devDiay02/</loc>
-    <lastmod>2020-05-14</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/AnnualParty-devDiay01/</loc>
     <lastmod>2020-05-14</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/webpack-dev-server-proxy-note/</loc>
@@ -70,9 +79,6 @@
     <loc>https://yogwang.site/2019/jeecg-boot-devDiary04/</loc>
     <lastmod>2020-03-16</lastmod>
   </url>  <url>
-    <loc>https://yogwang.site/2020/TypeScript-learning-00/</loc>
-    <lastmod>2020-03-16</lastmod>
-  </url>  <url>
     <loc>https://yogwang.site/2019/html5-set_videoSpeed/</loc>
     <lastmod>2020-02-28</lastmod>
   </url>  <url>
@@ -83,9 +89,6 @@
     <lastmod>2020-02-06</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/CSS-pseudo-elements-content/</loc>
-    <lastmod>2020-01-18</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/AnnualParty-devDiay03/</loc>
     <lastmod>2020-01-18</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/CSS-reverse-hover-transition/</loc>
