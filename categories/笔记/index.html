@@ -48,6 +48,68 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/挖坑/">挖坑</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/JS-class-constructor/">关于 ES6 Class 中 Constructor 的整理</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-content">
+    <p>其实也不只是 <code>Constructor</code> 有问题其它的部分其实也有问题.先开坑,之后看是写成一篇文章还是分开写.</p>
+ 
+  </article>
+
+
+    <p class="archive-article-date">
+  <time datetime="2020-05-26T03:14:27.000Z" itemprop="datePublished">May 26</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/react-learning-01/">「 ReactJS 笔记 」 井字棋练习</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>学习新东西的时候只看文档肯定是不够的,所以既然 <code>ReactJS</code> 官方提供了一个学习的案例,那么就一边写Deom,一边读文档.<br>这样就是让自主学习变成了业务驱动型学习.</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2020/react-learning-01/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2020-05-26T00:48:12.000Z" itemprop="datePublished">May 26</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
 
       
@@ -60,10 +122,20 @@
     </header>
      
   <article class="article-content">
-    <h3 id="现存的一些疑问"><a href="#现存的一些疑问" class="headerlink" title="现存的一些疑问"></a>现存的一些疑问</h3><ul>
+    <p><code>Vue 3.0</code> Beta版本已经更新很久了,不出意外正式的 <code>Release</code> 应该如约在第三季度发布,然而我还没有开始学习 <code>TypeScript</code> 以及 <code>Composition API</code>,趁着这几天项目还没开始,就抓紧了解了一下 React</p>
+<h3 id="ReactJS"><a href="#ReactJS" class="headerlink" title="ReactJS"></a>ReactJS</h3><h3 id="现存的一些疑问"><a href="#现存的一些疑问" class="headerlink" title="现存的一些疑问"></a>现存的一些疑问</h3><ul>
 <li>ReactJS 与 VueJS 的区别</li>
 <li>ReactJS 有什么好的?</li>
 <li>为什么 ReactJS 是单向数据流</li>
+<li>create-react-app 创建的项目依赖为什么都在dependencies</li>
+<li>onClick会渲染成功会自动执行</li>
+<li>怎么不使用constructor的情况下定义state</li>
+<li>react是否有生命周期</li>
+<li>如果有生命周期钩子是否和vue差不多?</li>
+</ul>
+<h3 id="加上Typescript之后的问题"><a href="#加上Typescript之后的问题" class="headerlink" title="加上Typescript之后的问题"></a>加上Typescript之后的问题</h3><ul>
+<li>Props怎么定义interface</li>
+<li>如果需要手动定义接口岂不是太傻?</li>
 </ul>
  
   </article>
@@ -318,73 +390,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/update-global-dependencies-with-npm-check-updates/">使用 npm-check-updates 更新全局依赖提示 No dependencies</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>今天想起自己一直依赖没有更新全局依赖，就直接在 <code>bash</code> 里边输入 <code>ncu -g</code> 居然提示 <code>No dependencies.</code><br>我就纳闷了，打错命令了吗，为啥提示没有依赖？<br>项目内依赖检查更新是没问题的，但是检测全局依赖就显示没有依赖，换了几个终端还是这个问题。<br>我怀疑是我全局以来的路径设置错了(我是使用 npm 来安装全局依赖，yarn 安装项目依赖)<br>查看了 npm 的全局依赖路径发现没错啊。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/update-global-dependencies-with-npm-check-updates/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-02-14T09:20:40.000Z" itemprop="datePublished">Feb 14</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/CSS-neglected-background-attributes/">被忽略的两个 Background 新属性(CSS3)</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>之前在看一个文章的时候有提到过，<code>background</code> 的这两个属性，确实不常用到，以至于没有几个人知道这两个新属性。<br>和他们同时期出的 <code>background-size</code> 因为经常用到所以被大众所熟知。</p>
-<p>对的，这次我要说的是<code>background-origin</code> 和 <code>background-clip</code> 两兄弟</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/CSS-neglected-background-attributes/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-01-18T07:04:16.000Z" itemprop="datePublished">Jan 18</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -423,6 +428,14 @@
       <ul>
         
           <li>
+            <a href="/2020/JS-class-constructor/">关于 ES6 Class 中 Constructor 的整理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/react-learning-01/">「 ReactJS 笔记 」 井字棋练习</a>
+          </li>
+        
+          <li>
             <a href="/2020/react-learning-00/">「 ReactJS 笔记 」 楔子</a>
           </li>
         
@@ -432,14 +445,6 @@
         
           <li>
             <a href="/2020/what-the-export-x-as-x/">export { x as x } 中的 as 是什么？</a>
-          </li>
-        
-          <li>
-            <a href="/2020/webpack-dev-server-proxy-note/">使用 Webpack 的 Proxy 解决跨域问题</a>
-          </li>
-        
-          <li>
-            <a href="/2020/Guide-How-To-Use-MockJS/">在项目中使用 MockJS 生成虚拟数据</a>
           </li>
         
       </ul>

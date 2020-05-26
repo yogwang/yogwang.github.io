@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/JS-class-constructor/</loc>
+    
+    <lastmod>2020-05-26T04:05:02.227Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/react-learning-00/</loc>
+    
+    <lastmod>2020-05-26T01:00:34.100Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/react-learning-01/</loc>
+    
+    <lastmod>2020-05-26T00:50:38.506Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2019/AnnualParty-devDiay01/</loc>
     
     <lastmod>2020-05-22T06:53:22.067Z</lastmod>
@@ -12,13 +33,6 @@
     <loc>https://yogwang.site/2019/AnnualParty-devDiay03/</loc>
     
     <lastmod>2020-05-22T06:50:40.733Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/react-learning-00/</loc>
-    
-    <lastmod>2020-05-22T06:38:49.617Z</lastmod>
     
   </url>
   

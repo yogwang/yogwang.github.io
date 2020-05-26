@@ -53,6 +53,74 @@
       
   
     <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/git_connectToGitHub/">Git 关联到GigHub</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <h2 id="创建-SSH-Keygen"><a href="#创建-SSH-Keygen" class="headerlink" title="创建 SSH Keygen"></a>创建 SSH Keygen</h2><p>使用<code>ssh-keygen</code>生成私钥和公钥</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br><span class="line"></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/c/Users/yog/.ssh/id_rsa):</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in /c/Users/yog/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/yog/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:0ZYdnPILyMbV9xpgRE/hWf1MayqhoEYquZTuOMr8EcE yog@YOG-DESKTOP</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 3072]----+</span><br><span class="line">|           =+.o.o|</span><br><span class="line">|  .      .oo*=.oo|</span><br><span class="line">|   E   o.o++.o++o|</span><br><span class="line">|    .. .=o... .o+|</span><br><span class="line">|  o.o ..S ....oo |</span><br><span class="line">| = ..o   . ....  |</span><br><span class="line">|o o..       .    |</span><br><span class="line">|=o  .            |</span><br><span class="line">|==..             |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/git_connectToGitHub/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-06-17T07:36:06.000Z" itemprop="datePublished">Jun 17</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/git_log/">Git 查看提交日志</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a><code>git log</code></h3><p>基础查看提交日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 12:10:01 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line">commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/git_log/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-06-17T07:33:26.000Z" itemprop="datePublished">Jun 17</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
       <a class="archive-article-title" href="/2019/git_common/">Git 操作命令</a>
     </h2>
   
@@ -224,6 +292,14 @@
       <ul>
         
           <li>
+            <a href="/2020/JS-class-constructor/">关于 ES6 Class 中 Constructor 的整理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/react-learning-01/">「 ReactJS 笔记 」 井字棋练习</a>
+          </li>
+        
+          <li>
             <a href="/2020/react-learning-00/">「 ReactJS 笔记 」 楔子</a>
           </li>
         
@@ -233,14 +309,6 @@
         
           <li>
             <a href="/2020/what-the-export-x-as-x/">export { x as x } 中的 as 是什么？</a>
-          </li>
-        
-          <li>
-            <a href="/2020/webpack-dev-server-proxy-note/">使用 Webpack 的 Proxy 解决跨域问题</a>
-          </li>
-        
-          <li>
-            <a href="/2020/Guide-How-To-Use-MockJS/">在项目中使用 MockJS 生成虚拟数据</a>
           </li>
         
       </ul>
