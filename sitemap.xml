@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://yogwang.site/2020/JS-class-constructor/</loc>
-    
-    <lastmod>2020-05-26T09:45:15.164Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://yogwang.site/2020/react-learning-01/</loc>
     
-    <lastmod>2020-05-26T08:35:34.877Z</lastmod>
+    <lastmod>2020-05-27T10:04:34.613Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://yogwang.site/2020/react-learning-00/</loc>
     
-    <lastmod>2020-05-26T04:08:46.827Z</lastmod>
+    <lastmod>2020-05-27T09:28:52.454Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/JS-class-constructor/</loc>
+    
+    <lastmod>2020-05-26T09:45:15.164Z</lastmod>
     
   </url>
   
@@ -289,13 +289,6 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/2019/CSS-svg-img-bridle/</loc>
-    
-    <lastmod>2019-12-20T11:38:03.862Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://yogwang.site/2019/web-arouse-qq/</loc>
     
     <lastmod>2019-12-07T10:41:43.972Z</lastmod>
@@ -306,13 +299,6 @@
     <loc>https://yogwang.site/2019/phpok-create-project-failed/</loc>
     
     <lastmod>2019-12-07T10:41:34.962Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2019/JS-foreach-promise/</loc>
-    
-    <lastmod>2019-12-07T10:41:28.836Z</lastmod>
     
   </url>
   
