@@ -190,7 +190,16 @@ main#container {
 }
 main#container article a {
   color: inherit;
-  background: linear-gradient(to bottom, transparent 70%, rgba(49,184,204,0.5) 70%);
+  background: linear-gradient(to bottom, transparent 70%, #98dce6 70%);
+  transition: background 0.4s;
+}
+main#container article a:before,
+main#container article a:after {
+  content: ' ';
+  display: inline;
+}
+main#container article a:hover {
+  text-decoration: none;
 }
 main#container nav#page-nav {
   font-size: 18px;
