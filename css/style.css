@@ -183,7 +183,8 @@ main#container {
   width: calc(100% - 300px);
 }
 main#container article a {
-  color: #0e90d2;
+  color: inherit;
+  background: linear-gradient(to bottom, transparent 70%, rgba(49,184,204,0.5) 70%);
 }
 main#container nav#page-nav {
   font-size: 18px;
