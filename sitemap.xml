@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/JS-use-mockjs/</loc>
+    
+    <lastmod>2020-06-01T04:02:27.531Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/react-learning-01/</loc>
     
-    <lastmod>2020-05-29T08:17:44.509Z</lastmod>
+    <lastmod>2020-05-29T09:30:56.397Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2019/AnnualParty-devDiay01/</loc>
+    
+    <lastmod>2020-05-29T08:41:47.470Z</lastmod>
     
   </url>
   
@@ -19,13 +33,6 @@
     <loc>https://yogwang.site/2020/JS-class-constructor/</loc>
     
     <lastmod>2020-05-26T09:45:15.164Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2019/AnnualParty-devDiay01/</loc>
-    
-    <lastmod>2020-05-22T06:53:22.067Z</lastmod>
     
   </url>
   
@@ -89,13 +96,6 @@
     <loc>https://yogwang.site/2020/FE-mock-doc-test/</loc>
     
     <lastmod>2020-04-18T04:33:46.747Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/Guide-How-To-Use-MockJS/</loc>
-    
-    <lastmod>2020-04-11T05:18:38.189Z</lastmod>
     
   </url>
   
