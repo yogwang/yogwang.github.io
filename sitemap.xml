@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary10/</loc>
+    
+    <lastmod>2020-06-02T09:10:17.963Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
     
-    <lastmod>2020-06-02T08:38:04.907Z</lastmod>
+    <lastmod>2020-06-02T08:40:46.380Z</lastmod>
     
   </url>
   
@@ -82,13 +89,6 @@
     <loc>https://yogwang.site/2020/webpack-dev-server-proxy-note/</loc>
     
     <lastmod>2020-05-14T01:36:21.041Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary10/</loc>
-    
-    <lastmod>2020-04-24T06:36:59.273Z</lastmod>
     
   </url>
   

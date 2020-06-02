@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary10/</loc>
+    <lastmod>2020-06-02</lastmod>
+  </url>  <url>
     <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
     <lastmod>2020-06-02</lastmod>
   </url>  <url>
@@ -36,9 +39,6 @@
   </url>  <url>
     <loc>https://yogwang.site/2020/webpack-dev-server-proxy-note/</loc>
     <lastmod>2020-05-14</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary10/</loc>
-    <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/what-the-export-x-as-x/</loc>
     <lastmod>2020-04-18</lastmod>
