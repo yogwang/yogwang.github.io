@@ -76,7 +76,7 @@
 <li>更高级匹配： <code>*张*三*</code></li>
 </ul>
 <h2 id="3、包含查询："><a href="#3、包含查询：" class="headerlink" title="3、包含查询："></a>3、包含查询：</h2><p>查询数据格式采用逗号分隔：{ <code>,</code> }<br>  例如：<code>张三,李四</code> (含义：<code>In(&#39;张三&#39;,&#39;李四&#39;)</code>)</p>
-<h2 id="4、不匹配查询："><a href="#4、不匹配查询：" class="headerlink" title="4、不匹配查询："></a>4、不匹配查询：</h2><p>查询数据格式需要加叹号前缀：{ ! }<br>例如：<code>!张三</code> （含义：不等于’张三’）</p>
+<h2 id="4、不匹配查询："><a href="#4、不匹配查询：" class="headerlink" title="4、不匹配查询："></a>4、不匹配查询：</h2><p>查询数据格式需要加叹号前缀：{ <code>!</code> }<br>例如：<code>!张三</code> （含义：不等于’张三’）</p>
 <h3 id="特殊说明："><a href="#特殊说明：" class="headerlink" title="特殊说明："></a>特殊说明：</h3><ul>
 <li>查询不为Null的语法：<code>!null</code> （大小写没关系）;</li>
 <li>查询不为空字符串的方法：<code>!</code> （只有一个叹号）;</li>
@@ -109,6 +109,7 @@
 <p><em>高级规则暂时发现不能在 <code>integer</code> 类型中使用，加上 <code>_MultiString</code> 虽然不会报错了，但是返回的数据错误。</em></p>
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><ul>
 <li><a href="http://doc.jeecg.com/1273939" target="_blank" rel="noopener">查询过滤器用法 · Jeecg-boot 开发文档</a></li>
+<li>因为查询过滤器已经重构多次，版本最好 <code>2.2.0</code> 以上，<code>2.1.x</code> 的版本只有 <code>范围查询</code>, <code>1.x</code> 版本只有全匹配/模糊查询/包含查询/不匹配查询</li>
 </ul>
  
   </article>
