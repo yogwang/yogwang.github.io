@@ -69,8 +69,7 @@
 <p>但是在生成模拟数据的时候出现了问题，并且我想使用 <code>MockJS</code> 的 <code>TimeOut</code> 属性去延时返回数据。<br>但是经过一番折腾效果并不理想，所以先整理一下关于 <code>MockJS</code> 的东西，然后再写生成文档的部分。</p>
 <a id="more"></a>
 
-<p>###遇到的问题：</p>
-<ul>
+<h3 id="遇到的问题："><a href="#遇到的问题：" class="headerlink" title="遇到的问题："></a>遇到的问题：</h3><ul>
 <li>创建一个随机数组，随机数组中使用随机属性，这些随机参数怎么都是相同的<ul>
 <li>因为只执行了一次，给随机属性加上箭头函数就可以在随机数组里边使用随机参数了。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Mock.mock(&#123;</span><br><span class="line">  <span class="string">'data|1-10'</span>: [&#123;</span><br><span class="line">    <span class="string">'id|+1'</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">'attr'</span>: <span class="function"><span class="params">()</span> =&gt;</span> Mock.Random.natural(<span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">  &#125;],</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -133,6 +132,10 @@
       <ul>
         
           <li>
+            <a href="/2020/jeecg-boot-devDiary11/">Jeecg-boot 中台挖坑日记11 查询过滤器整理</a>
+          </li>
+        
+          <li>
             <a href="/2020/JS-class-constructor/">关于 ES6 Class 继承中 Constructor 的整理</a>
           </li>
         
@@ -148,10 +151,6 @@
             <a href="/2020/jeecg-boot-devDiary10/">Jeecg-boot 中台挖坑日记10 升级AntD依赖后按钮组件配色出现异常</a>
           </li>
         
-          <li>
-            <a href="/2020/what-the-export-x-as-x/">export { x as x } 中的 as 是什么？</a>
-          </li>
-        
       </ul>
     </div>
   </section>
@@ -161,7 +160,7 @@
   <section class="widget-wrap">
     <h3 class="widget-title">archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
     </div>
   </section>
 
