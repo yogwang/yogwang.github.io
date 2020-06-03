@@ -70,10 +70,10 @@
 <p>第22行引入的 <code>OnlineForm.css</code>中就重定义了 <code>.ant-btn-danger</code> 的背景色为白色，把 <code>AntD</code> 的样式文件在这个之后引入就不会被覆盖了，我大概看了一下，这个样式表中重写了 AntD 的 <code>169</code> 个样式</p>
 <p><img src="https://yogwang.site/2020/jeecg-boot-devDiary10/onlineform.png" alt="onlineform.css截图"></p>
 <p>这个意思就是说，不只是按钮的样式会出现问题，如果其它的样式没有做好覆盖，也会导致显示异常…</p>
-<p>有一些还是加了私有作用域，不知道是怎么一个情况…</p>
+<p>有一些还是加了私有作用域，不知道是怎么一个情况…<br>反正我不用在线报表就先注释了，之后看开发团队会不会修复这个问题吧。</p>
 <h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
 <li>本文所使用的 <code>Jeecg-boot</code> 版本为 <code>v2.1.0</code></li>
-<li>已经提交了 <a href="https://github.com/zhangdaiscott/jeecg-boot/issues/1286" target="_blank" rel="noopener">issue</a> 等开发团队回复吧。</li>
+<li><code>v2.2.0</code>版本也有这个问题，已经提交了 <a href="https://github.com/zhangdaiscott/jeecg-boot/issues/1286" target="_blank" rel="noopener">issue</a> 等开发团队回复吧。</li>
 </ul>
  
   </article>
