@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary09/</loc>
+    <lastmod>2020-06-03</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/summary-at-the-end-of-2019/</loc>
+    <lastmod>2020-06-03</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/Electron01-Electron-quick-start/</loc>
+    <lastmod>2020-06-03</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary06/</loc>
+    <lastmod>2020-06-03</lastmod>
+  </url>  <url>
     <loc>https://yogwang.site/2020/jeecg-boot-devDiary10/</loc>
     <lastmod>2020-06-03</lastmod>
   </url>  <url>
@@ -27,9 +39,6 @@
   </url>  <url>
     <loc>https://yogwang.site/2020/TypeScript-learning-00/</loc>
     <lastmod>2020-05-20</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary09/</loc>
-    <lastmod>2020-05-14</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/choose-the-ESLint-formatting-rule-that-suits-you/</loc>
     <lastmod>2020-05-14</lastmod>
@@ -94,9 +103,6 @@
     <loc>https://yogwang.site/2020/update-global-dependencies-with-npm-check-updates/</loc>
     <lastmod>2020-02-28</lastmod>
   </url>  <url>
-    <loc>https://yogwang.site/2020/summary-at-the-end-of-2019/</loc>
-    <lastmod>2020-02-06</lastmod>
-  </url>  <url>
     <loc>https://yogwang.site/2019/CSS-pseudo-elements-content/</loc>
     <lastmod>2020-01-18</lastmod>
   </url>  <url>
@@ -135,9 +141,6 @@
   </url>  <url>
     <loc>https://yogwang.site/2019/CSS-position/</loc>
     <lastmod>2019-11-20</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary06/</loc>
-    <lastmod>2019-11-15</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/php-VirtualHost/</loc>
     <lastmod>2019-11-08</lastmod>
@@ -180,9 +183,6 @@
   </url>  <url>
     <loc>https://yogwang.site/2019/Chrome-VerticalCentering/</loc>
     <lastmod>2019-07-30</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/Electron01-Electron-quick-start/</loc>
-    <lastmod>2019-07-24</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/Electron03-Electron-builder/</loc>
     <lastmod>2019-07-24</lastmod>
