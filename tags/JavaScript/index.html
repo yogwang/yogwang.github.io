@@ -48,6 +48,45 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/JS-closures/">谈一谈 JavaScript 中的闭包</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <blockquote>
+<p>函数和对其周围状态（lexical environment，词法环境）的引用捆绑在一起构成闭包（closure）。也就是说，闭包可以让你从内部函数访问外部函数作用域。在 JavaScript 中，每当函数被创建，就会在函数生成时生成闭包。</p>
+</blockquote>
+<p>先拿MDN上的一个简单的闭包例子来说：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">"Mozilla"</span>; <span class="comment">// name 是一个被 init 创建的局部变量</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123; <span class="comment">// displayName() 是内部函数，一个闭包</span></span><br><span class="line">        alert(name); <span class="comment">// 使用了父函数中声明的变量</span></span><br><span class="line">    &#125;</span><br><span class="line">    displayName();</span><br><span class="line">&#125;</span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
+
+<p><code>init()</code> 创建了一个局部变量 <code>name</code> 和一个名为 <code>displayName()</code> 的函数。<br><code>displayName()</code> 是定义在 <code>init()</code> 里的内部函数（仅在 <code>init()</code> 函数体内可用），它没有自己的局部变量，<br>然而它可以访问到外部函数的变量，所以 <code>displayName()</code> 可以使用父函数 <code>init()</code> 中声明的变量 <code>name</code> 。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2020/JS-closures/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2020-06-15T09:56:21.000Z" itemprop="datePublished">Jun 15</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
       
@@ -369,40 +408,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/JS-navigation-detection/">Javascript 滚动侦测导航</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>一个以前的小项目要改，新增一个根据时间线显示不同月份绩效的需求。<br>没有设计稿，想了下怎么做出来好看。就有了以下这个想法</p>
-<p>左侧显示时间线，滑动会显示不同的年份和月份，<br>右侧显示不同月份的统计数据。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/JS-navigation-detection/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-12-09T15:40:07.000Z" itemprop="datePublished">Dec 9</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -441,6 +446,10 @@
       <ul>
         
           <li>
+            <a href="/2020/JS-closures/">谈一谈 JavaScript 中的闭包</a>
+          </li>
+        
+          <li>
             <a href="/2020/digitalocean-created-droplets-add-ssh-key/">DigitalOcean向已经创建的Droplets实例添加SSH_key</a>
           </li>
         
@@ -454,10 +463,6 @@
         
           <li>
             <a href="/2020/JS-class-constructor/">关于 ES6 Class 继承中 Constructor 的整理</a>
-          </li>
-        
-          <li>
-            <a href="/2020/react-learning-01/">「 ReactJS 笔记 」 L01 井字棋</a>
           </li>
         
       </ul>
