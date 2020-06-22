@@ -69,6 +69,8 @@
 <p>然而每次都要切换网络来完成需求，我觉得有点蠢，肯定有更加优雅的方式来实现的需求。</p>
 <p>所以就记一下这个办法。</p>
 <a id="more"></a>
+
+<hr>
 <p>我们 <strong>使用管理员权限</strong> 打开终端 <code>CMD</code>。<br>在终端中输入 <code>route print</code> 我们获得以下信息：<br><img src="https://yogwang.site/2020/intranet-and-extranet-routes/route_print.jpg" alt="route_print"></p>
 <p>可以看到路由表中有两个 <code>0.0.0.0</code> 的路由信息<br><img src="https://yogwang.site/2020/intranet-and-extranet-routes/0.0.0.0.jpg" alt="重复的路由信息"></p>
 <p>并且跃点数也是一样的都是 <code>35</code>，这样会路由冲突，只能使用其中一个。</p>
@@ -84,6 +86,10 @@
 <p>重新查看路由信息，看到新的路由配置已经被加上了<br><img src="https://yogwang.site/2020/intranet-and-extranet-routes/res.jpg" alt="添加后的路由配置信息"></p>
 <p>不过中间我看到 <code>192.168.1.0</code> 出现了两次，并且配置信息是一样的，是不是我这边本来就有这个路由信息的，所以我又把后来添加的信息去掉了。</p>
 <p>各位添加的时候注意检查一下原来的路由表里边是否已经有内网的路由信息了。</p>
+<p>因为是临时网络没有通，所以我就不加永久路由，每天手动调整一下路由就行，如果你这边是固定的内网有网络限制的话，可以在 <code>route</code> 之后添加 <code>-p</code> 就可以实现永久路由了。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route -p add <span class="number">192</span>.<span class="number">168</span>.<span class="number">1</span>.<span class="number">0</span> mask <span class="number">255</span>.<span class="number">255</span>.<span class="number">255</span>.<span class="number">0</span> <span class="number">192</span>.<span class="number">168</span>.<span class="number">1</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>以上</p>
  
   </article>
 
