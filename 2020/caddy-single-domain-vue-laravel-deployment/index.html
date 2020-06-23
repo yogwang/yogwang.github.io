@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <title>tinyMCE | blog [ YOG WANG ]</title>
+  <title>Caddy单域名部署Vue与Laravel项目 | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend">
   <meta name="description" content="Here is my blog, my notes and some thoughts">
   <meta name="author" content="YogWang">
@@ -34,53 +34,70 @@
 
     <div id="wrap">
       <main id="container">
-  
-  
-  
+  <div
+  id="post-caddy-single-domain-vue-laravel-deployment"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2020-06-23T06:16:12.000Z" itemprop="datePublished">2020-06-23</time>
+</p> 
+    </div>
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li></ul>
-
+    <header class="article-header">
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/jeecg-boot-devDiary06/">Jeecg-boot 中台挖坑日记06 富文本编辑器tinyMCE 图片附件上传</a>
-    </h2>
+    <h1 class="article-title" itemprop="name">
+      Caddy单域名部署Vue与Laravel项目
+    </h1>
   
 
     </header>
-     
-  <article class="article-excerpt">
-    <blockquote>
-<p>这个富文本组件本质是 <code>TinyMCE</code> <a href="https://github.com/tinymce/tinymce" target="_blank" rel="noopener">github.com/tinymce/tinymce</a>，<br>在 Vue 项目中使用的封装库 <a href="https://github.com/tinymce/tinymce-vue" target="_blank" rel="noopener">github.com/tinymce/tinymce-vue</a></p>
-</blockquote>
-<p>Github 上有一个人回复了，框架是使用的 <a href="https://www.tiny.cloud/" target="_blank" rel="noopener">TinyMCE</a> 这个富文本编辑器的 <a href="https://github.com/tinymce/tinymce-vue" target="_blank" rel="noopener">封装库</a>，<br>所以在其手册里找到了，修改 <a href="https://www.tiny.cloud/docs/configure/file-image-upload" target="_blank" rel="noopener">上传方式的部分</a></p>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>之前是想写一篇 <code>Nginx</code> 关于配置前后端项目公用一个域名笔记的，可是后来客户提供的是已经是由其它项目的服务器，他们是使用的 <code>Caddy</code> 作为 web 服务器，所以也就变成了这篇文章。</p>
+<p>我对于服务器环境配置可以说是一无所知，勉勉强强完成这次的项目部署，各位将就看看…😖</p>
+<a id="more"></a>
+
+<h2 id="使用两个二级域名"><a href="#使用两个二级域名" class="headerlink" title="使用两个二级域名"></a>使用两个二级域名</h2><p>一个顶级域名可以创建很多个二级域名，所以使用两个二级域名就很容易配置了，直接创建两个服务就可以，但是会跨域，因为是不同二级域名，后端单独做一下跨域允许就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># Vue</span><br><span class="line">https://www.example.com &#123;</span><br><span class="line">    root /var/www/vue</span><br><span class="line">    log /var/log/caddy/fe.log</span><br><span class="line">    errors /var/log/caddy/fe.errors.log</span><br><span class="line">    gzip</span><br><span class="line"></span><br><span class="line">    rewrite &#123;</span><br><span class="line">        to &#123;path&#125; /</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"># Laravel</span><br><span class="line">https://api.example.com &#123;</span><br><span class="line">    root /var/www/laravel/public</span><br><span class="line">    log /var/log/caddy/bk.log</span><br><span class="line">    errors /var/log/caddy/bk.errors.log</span><br><span class="line">    gzip</span><br><span class="line"></span><br><span class="line">    # PHP-FPM Configuration for Caddy</span><br><span class="line">    fastcgi / /run/php/php7.2-fpm.sock php &#123;</span><br><span class="line">        ext .php</span><br><span class="line">        split .php</span><br><span class="line">        index index.php</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    rewrite &#123;</span><br><span class="line">        to &#123;path&#125; &#123;path&#125;/ /index.php?&#123;query&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="使用同一个域名"><a href="#使用同一个域名" class="headerlink" title="使用同一个域名"></a>使用同一个域名</h2><h3 id="方法一：使用同一域名然后不同路径作为站点地址："><a href="#方法一：使用同一域名然后不同路径作为站点地址：" class="headerlink" title="方法一：使用同一域名然后不同路径作为站点地址："></a>方法一：使用同一域名然后不同路径作为站点地址：</h3><p>我使用 <code>https://www.example.com/</code> 作为 Vue 项目的地址；<br><code>https://www.example.com/api</code> 作为 laravel 项目的站点地址。</p>
+<p>这个时候访问的地址，后台可以接收到，但是在路由表中找不到对应信息，因为 laravel 部分把 <code>/api</code> 作为路由前缀，修改一下就可以了，例如 <code>https://www.example.com/v</code> ，前端请求的时候使用 <code>/v/api</code> 这个地址</p>
+<h3 id="方法二：使用一个域名作为-Vue-项目站点地址，api接口使用重定向"><a href="#方法二：使用一个域名作为-Vue-项目站点地址，api接口使用重定向" class="headerlink" title="方法二：使用一个域名作为 Vue 项目站点地址，api接口使用重定向"></a>方法二：使用一个域名作为 Vue 项目站点地址，api接口使用重定向</h3><p>这个方法我还没有尝试，等之后我尝试看看</p>
+<hr>
+<h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><ul>
+<li><strong>配置完之后访问 laravel 提示 [ <code>file not found</code> ]</strong><br>一般来说遇到这个问题的同时，可以在日志文件中查看到 <code>Primary script unknown</code> 的异常，这个问题是由于配置的目录没有写入权限，如果已经配置了写入权限，请确保在 同一用户/组 下运行 <code>Caddy</code> 和<code>php-fpm</code></li>
+</ul>
+<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
+<li><a href="https://caddyserver.com/v1/docs" target="_blank" rel="noopener">Caddy_v1 官方文档</a></li>
+<li><a href="https://dengxiaolong.com/caddy/zh/" target="_blank" rel="noopener">Caddy 中文文档</a></li>
+<li><a href="https://caddy.community/t/primary-script-unknown/191/5" target="_blank" rel="noopener">Primary script unknown - Caddy FORUM</a></li>
+</ul>
+ 
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/jeecg-boot-devDiary06/#more">阅读全文</a>
+
+
     </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-10-31T05:40:20.000Z" itemprop="datePublished">Oct 31</time>
-</p>
   </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/intranet-and-extranet-routes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">记录单独配置内网路由和外网路由的办法</div>
+    </a>
+  
+</nav>
+ 
 </div>
-  
-  
-    </div></section>
-  
 
 
 
