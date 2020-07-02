@@ -63,12 +63,13 @@
     <blockquote>
 <p>函数和对其周围状态（lexical environment，词法环境）的引用捆绑在一起构成闭包（closure）。也就是说，闭包可以让你从内部函数访问外部函数作用域。在 JavaScript 中，每当函数被创建，就会在函数生成时生成闭包。</p>
 </blockquote>
-<p>先拿MDN上的一个简单的闭包例子来说：</p>
+<p>先拿 MDN 上的一个简单的 🌰 来说：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">"Mozilla"</span>; <span class="comment">// name 是一个被 init 创建的局部变量</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">displayName</span>(<span class="params"></span>) </span>&#123; <span class="comment">// displayName() 是内部函数，一个闭包</span></span><br><span class="line">        alert(name); <span class="comment">// 使用了父函数中声明的变量</span></span><br><span class="line">    &#125;</span><br><span class="line">    displayName();</span><br><span class="line">&#125;</span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
 
 <p><code>init()</code> 创建了一个局部变量 <code>name</code> 和一个名为 <code>displayName()</code> 的函数。<br><code>displayName()</code> 是定义在 <code>init()</code> 里的内部函数（仅在 <code>init()</code> 函数体内可用），它没有自己的局部变量，<br>然而它可以访问到外部函数的变量，所以 <code>displayName()</code> 可以使用父函数 <code>init()</code> 中声明的变量 <code>name</code> 。</p>
 <a id="more"></a>
 <p>这个就是最简单的一个闭包实现。<br>当然一般我们都是把内部函数 <code>return</code> 出来，来达到缓存数据的效果。</p>
+<p>越查文档越觉得这个坑有点大，因为我是按照我之前对于闭包一些疑问作为切入点，读完文档之后我知道怎么一回事但是不知道怎么去写了,我得好好捋捋….</p>
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><ul>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures" target="_blank" rel="noopener">闭包 - MDN</a></li>
 </ul>

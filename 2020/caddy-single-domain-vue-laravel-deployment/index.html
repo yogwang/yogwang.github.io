@@ -70,15 +70,21 @@
 <hr>
 <h2 id="使用同一个域名"><a href="#使用同一个域名" class="headerlink" title="使用同一个域名"></a>使用同一个域名</h2><h3 id="方法一：使用同一域名然后不同路径作为站点地址："><a href="#方法一：使用同一域名然后不同路径作为站点地址：" class="headerlink" title="方法一：使用同一域名然后不同路径作为站点地址："></a>方法一：使用同一域名然后不同路径作为站点地址：</h3><p>我使用 <code>https://www.example.com/</code> 作为 Vue 项目的地址；<br><code>https://www.example.com/api</code> 作为 laravel 项目的站点地址。</p>
 <p>这个时候访问的地址，后台可以接收到，但是在路由表中找不到对应信息，因为 laravel 部分把 <code>/api</code> 作为路由前缀，修改一下就可以了，例如 <code>https://www.example.com/v</code> ，前端请求的时候使用 <code>/v/api</code> 这个地址</p>
-<h3 id="方法二：使用一个域名作为-Vue-项目站点地址，api接口使用重定向"><a href="#方法二：使用一个域名作为-Vue-项目站点地址，api接口使用重定向" class="headerlink" title="方法二：使用一个域名作为 Vue 项目站点地址，api接口使用重定向"></a>方法二：使用一个域名作为 Vue 项目站点地址，api接口使用重定向</h3><p>这个方法我还没有尝试，等之后我尝试看看</p>
+<h3 id="方法二：使用一个域名作为-Vue-项目站点地址，api接口使用重定向"><a href="#方法二：使用一个域名作为-Vue-项目站点地址，api接口使用重定向" class="headerlink" title="方法二：使用一个域名作为 Vue 项目站点地址，api接口使用重定向"></a>方法二：使用一个域名作为 Vue 项目站点地址，api接口使用重定向</h3><p>这个方法我还没有尝试，等以后尝试看看</p>
 <hr>
 <h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><ul>
-<li><strong>配置完之后访问 laravel 提示 [ <code>file not found</code> ]</strong><br>一般来说遇到这个问题的同时，可以在日志文件中查看到 <code>Primary script unknown</code> 的异常，这个问题是由于配置的目录没有写入权限，如果已经配置了写入权限，请确保在 同一用户/组 下运行 <code>Caddy</code> 和<code>php-fpm</code></li>
+<li><p><strong>配置完之后访问 laravel 提示 [ <code>file not found</code> ]</strong><br>一般来说遇到这个问题的同时，可以在日志文件中查看到 <code>Primary script unknown</code> 的异常，这个问题是由于配置的目录没有写入权限，如果已经配置了写入权限，请确保在 同一用户/组 下运行 <code>Caddy</code> 和<code>php-fpm</code></p>
+</li>
+<li><p>如果 <code>Vue</code> 项目需要启用 <code>History</code> 路由模式怎么配置Caddy ?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rewrite &#123;</span><br><span class="line">    regexp .*</span><br><span class="line">    to &#123;path&#125; /</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
 <h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
 <li><a href="https://caddyserver.com/v1/docs" target="_blank" rel="noopener">Caddy_v1 官方文档</a></li>
 <li><a href="https://dengxiaolong.com/caddy/zh/" target="_blank" rel="noopener">Caddy 中文文档</a></li>
 <li><a href="https://caddy.community/t/primary-script-unknown/191/5" target="_blank" rel="noopener">Primary script unknown - Caddy FORUM</a></li>
+<li><a href="https://router.vuejs.org/zh/guide/essentials/history-mode.html#caddy" target="_blank" rel="noopener">HTML5 History 模式 - Vue Router</a></li>
 </ul>
  
   </article>
