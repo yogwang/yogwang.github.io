@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/</loc>
+    <lastmod>2020-07-04</lastmod>
+  </url>  <url>
     <loc>https://yogwang.site/2020/JS-closures/</loc>
     <lastmod>2020-07-04</lastmod>
   </url>  <url>
@@ -77,9 +80,6 @@
     <lastmod>2020-04-09</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/jeecg-boot-devDiary08/</loc>
-    <lastmod>2020-03-25</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/</loc>
     <lastmod>2020-03-25</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/JS-map-and-forEach/</loc>
