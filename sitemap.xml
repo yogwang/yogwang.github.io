@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/caddy-single-domain-vue-laravel-deployment/</loc>
+    
+    <lastmod>2020-07-09T08:43:16.789Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/js-slider-captcha/</loc>
     
-    <lastmod>2020-07-08T07:27:07.128Z</lastmod>
+    <lastmod>2020-07-09T01:57:01.715Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/</loc>
     
     <lastmod>2020-07-04T09:24:35.523Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/caddy-single-domain-vue-laravel-deployment/</loc>
-    
-    <lastmod>2020-07-04T09:17:39.158Z</lastmod>
     
   </url>
   
