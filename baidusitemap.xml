@@ -2,7 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yogwang.site/2020/jeecg-boot-devDiary09/</loc>
-    <lastmod>2020-07-13</lastmod>
+    <lastmod>2020-07-14</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary01/</loc>
+    <lastmod>2020-07-14</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary10/</loc>
+    <lastmod>2020-07-14</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary03/</loc>
+    <lastmod>2020-07-14</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary06/</loc>
+    <lastmod>2020-07-14</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary08/</loc>
+    <lastmod>2020-07-14</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
+    <lastmod>2020-07-14</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary12/</loc>
+    <lastmod>2020-07-14</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary04/</loc>
+    <lastmod>2020-07-14</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary07/</loc>
+    <lastmod>2020-07-14</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary05/</loc>
+    <lastmod>2020-07-14</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary02/</loc>
+    <lastmod>2020-07-14</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/caddy-single-domain-vue-laravel-deployment/</loc>
     <lastmod>2020-07-09</lastmod>
@@ -25,23 +58,11 @@
     <loc>https://yogwang.site/2020/digitalocean-created-droplets-add-ssh-key/</loc>
     <lastmod>2020-06-13</lastmod>
   </url>  <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary12/</loc>
-    <lastmod>2020-06-03</lastmod>
-  </url>  <url>
     <loc>https://yogwang.site/2020/summary-at-the-end-of-2019/</loc>
     <lastmod>2020-06-03</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/Electron01-Electron-quick-start/</loc>
     <lastmod>2020-06-03</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary06/</loc>
-    <lastmod>2020-06-03</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary10/</loc>
-    <lastmod>2020-06-03</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
-    <lastmod>2020-06-02</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/JS-use-mockjs/</loc>
     <lastmod>2020-06-02</lastmod>
@@ -82,9 +103,6 @@
     <loc>https://yogwang.site/2020/webpack-ignore-comments-logs/</loc>
     <lastmod>2020-04-09</lastmod>
   </url>  <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary08/</loc>
-    <lastmod>2020-03-25</lastmod>
-  </url>  <url>
     <loc>https://yogwang.site/2020/JS-map-and-forEach/</loc>
     <lastmod>2020-03-16</lastmod>
   </url>  <url>
@@ -101,21 +119,6 @@
     <lastmod>2020-03-16</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/vue-computed-DOM-element-attributes/</loc>
-    <lastmod>2020-03-16</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary07/</loc>
-    <lastmod>2020-03-16</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary01/</loc>
-    <lastmod>2020-03-16</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary02/</loc>
-    <lastmod>2020-03-16</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary03/</loc>
-    <lastmod>2020-03-16</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary04/</loc>
     <lastmod>2020-03-16</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/html5-set_videoSpeed/</loc>
@@ -168,9 +171,6 @@
   </url>  <url>
     <loc>https://yogwang.site/2019/phpok-Guestbook/</loc>
     <lastmod>2019-11-08</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary05/</loc>
-    <lastmod>2019-10-31</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/hexo-theme-development-codeblock/</loc>
     <lastmod>2019-10-22</lastmod>
