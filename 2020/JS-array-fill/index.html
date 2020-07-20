@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <title>文本开头空格不显示问题 | blog [ YOG WANG ]</title>
+  <title>ES6 中 Array 的 .fill() 方法 | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend">
   <meta name="description" content="Here is my blog, my notes and some thoughts">
   <meta name="author" content="YogWang">
@@ -35,7 +35,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-html-space-display"
+  id="post-JS-array-fill"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -43,19 +43,15 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-10-15T03:27:28.000Z" itemprop="datePublished">2019-10-15</time>
+  <time datetime="2020-07-20T01:05:15.000Z" itemprop="datePublished">2020-07-20</time>
 </p> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </div>
-
     </div>
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      文本开头空格不显示问题
+      ES6 中 Array 的 .fill() 方法
     </h1>
   
 
@@ -64,15 +60,8 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>在 html 中手动输入多个空格，在页面解析的时候都会变成一个空格，<br>如果在开头甚至一个空格都不会显示</p>
-<p>但就是一定要求在开头/中间显示多个空格，这个问题怎么解决呢？</p>
-<a id="more"></a>
-
-<iframe id="cp_embed_MWWeRor" src="//codepen.io/yogwang/embed/MWWeRor?height=600&theme-id=dark&slug-hash=MWWeRor&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
-
-<h3 id="1-使用字符实体"><a href="#1-使用字符实体" class="headerlink" title="1.使用字符实体"></a>1.使用字符实体</h3><p>实体名称 <code>&amp;nbsp;</code> 或者实体编号 <code>&amp;#160;</code></p>
-<h3 id="2-使用全角文字"><a href="#2-使用全角文字" class="headerlink" title="2.使用全角文字"></a>2.使用全角文字</h3><h3 id="3-使用-CSS-样式控制"><a href="#3-使用-CSS-样式控制" class="headerlink" title="3.使用 CSS 样式控制"></a>3.使用 CSS 样式控制</h3><p>在容器上添加 <code>white-space:pre</code> CSS 属性</p>
-<h3 id="4-使用-lt-pre-gt-标签"><a href="#4-使用-lt-pre-gt-标签" class="headerlink" title="4.使用 &lt;pre&gt; 标签"></a>4.使用 <code>&lt;pre&gt;</code> 标签</h3> 
+    <p>最近遇到的一个坑，其实也不算是坑，只是自己没有了解清楚就在用了。</p>
+ 
   </article>
 
 
@@ -81,19 +70,10 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/jeecg-boot-devDiary02/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Jeecg-boot 开发挖坑日记02 用户头像上传 / Vue-AntD上传组件
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/jeecg-boot-devDiary01/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/js-slider-captcha/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">Jeecg-boot 开发挖坑日记01 Jeecg-Boot是个什么鬼?</div>
+      <div class="article-nav-title">简单实现滑动滑块完成验证</div>
     </a>
   
 </nav>
