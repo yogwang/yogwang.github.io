@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/JS-for/</loc>
+    
+    <lastmod>2020-07-23T16:03:45.497Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/JS-array-find-some-every/</loc>
+    
+    <lastmod>2020-07-22T07:43:07.502Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/JS-array-fill/</loc>
     
     <lastmod>2020-07-21T09:34:18.192Z</lastmod>
