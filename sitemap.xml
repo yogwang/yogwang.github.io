@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/js-slider-captcha/</loc>
+    
+    <lastmod>2020-07-24T09:28:40.489Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/JS-for/</loc>
     
-    <lastmod>2020-07-24T09:20:20.645Z</lastmod>
+    <lastmod>2020-07-24T09:22:20.893Z</lastmod>
     
   </url>
   
@@ -65,14 +72,14 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary12/</loc>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
     
     <lastmod>2020-07-14T01:05:10.115Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary12/</loc>
     
     <lastmod>2020-07-14T01:05:10.115Z</lastmod>
     
@@ -110,13 +117,6 @@
     <loc>https://yogwang.site/2020/caddy-single-domain-vue-laravel-deployment/</loc>
     
     <lastmod>2020-07-09T08:47:30.133Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/js-slider-captcha/</loc>
-    
-    <lastmod>2020-07-09T08:44:49.014Z</lastmod>
     
   </url>
   
