@@ -60,7 +60,35 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>最近遇到的一个坑，其实也不算是坑，只是自己没有了解清楚就在用了。<br>等回家补全一下。</p>
+    <blockquote>
+<p><code>fill</code> 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。不包括终止索引。</p>
+</blockquote>
+<p>最近遇到的一个坑，其实也不算是坑，只是自己没有了解清楚就在用了。</p>
+<p>以前在业务中声明数组变量时我都是使用的 <code>var arr = []</code> 来声明，<br>这次兴起用了一次 <code>var arr = new Array(8).fill([])</code> 声明并且填充内容时居然翻车了….</p>
+<a id="more"></a>
+<hr>
+<h2 id="先来看下使用方法"><a href="#先来看下使用方法" class="headerlink" title="先来看下使用方法"></a>先来看下使用方法</h2><blockquote>
+<p>arr.fill(value[, start[, end]]) </p>
+</blockquote>
+<p><code>fill</code> 方法接受三个参数 <code>value</code>, <code>start</code> 以及 <code>end</code>，并且返回一个修改后的数组;</p>
+<ul>
+<li><code>valut</code> 用来填充数组元素的值, 如果不写则填充 <code>undefined</code></li>
+<li><code>start</code> 和 <code>end</code> 参数是可选的, 分别是 <strong>起始索引</strong> 和 <strong>终止索引</strong> ，默认值分别为 <code>0</code> 和 <code>this</code> 对象的 <code>length</code> 属性值。</li>
+<li><code>fill</code> 方法是个可变方法, 它会<strong>改变</strong>调用它的 <code>this</code> 对象本身, 然后返回它, 而<strong>并不是返回一个副本</strong></li>
+</ul>
+<h3 id="🌰🌰🌰-时间"><a href="#🌰🌰🌰-时间" class="headerlink" title="🌰🌰🌰 时间"></a>🌰🌰🌰 时间</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].fill(<span class="number">4</span>);               <span class="comment">// [4, 4, 4]</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].fill(<span class="number">4</span>, <span class="number">1</span>);            <span class="comment">// [1, 4, 4]</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].fill(<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>);         <span class="comment">// [1, 4, 3]</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].fill(<span class="number">4</span>, <span class="number">1</span>, <span class="number">1</span>);         <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].fill(<span class="number">4</span>, <span class="number">3</span>);            <span class="comment">// [1, 2, 3]</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].fill(<span class="number">4</span>, <span class="literal">NaN</span>, <span class="literal">NaN</span>);     <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].fill(<span class="number">4</span>, <span class="number">-1</span>);           <span class="comment">// [1, 2, 4]</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].fill(<span class="number">4</span>, <span class="number">-2</span>, <span class="number">-1</span>);       <span class="comment">// [1, 4, 3]</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].fill(<span class="number">4</span>, <span class="number">-1</span>, <span class="number">-2</span>);       <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>(<span class="number">3</span>).fill(<span class="number">4</span>);                <span class="comment">// [4, 4, 4]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 还有一个MDN上的奇怪操作</span></span><br><span class="line">[].fill.call(&#123; <span class="attr">length</span>: <span class="number">3</span> &#125;, <span class="number">4</span>);  <span class="comment">// &#123;0: 4, 1: 4, 2: 4, length: 3&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来就要提到我遇到坑了，<br>当使用fill方法填充一个对象时，比如说:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">8</span>).fill(&#123; <span class="attr">a</span>: <span class="number">1</span> &#125;)   </span><br><span class="line"><span class="comment">// [&#123;a: 1&#125;, &#123;a: 1&#125;, &#123;a: 1&#125;, &#123;a: 1&#125;, &#123;a: 1&#125;, &#123;a: 1&#125;, &#123;a: 1&#125;, &#123;a: 1&#125;]</span></span><br></pre></td></tr></table></figure>
+
+<p>然后我们修改其中任意子项的属性 a，然后输出他们</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr[0].a = 2</span><br><span class="line">console.log(arr)</span><br><span class="line">// [&#123;a: 2&#125;, &#123;a: 2&#125;, &#123;a: 2&#125;, &#123;a: 2&#125;, &#123;a: 2&#125;, &#123;a: 2&#125;, &#123;a: 2&#125;, &#123;a: 2&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到他们全体都被修改了，对的，当一个对象（数组也一样）被传递给 <code>fill</code> 方法的时候, 填充数组的是这个对象的引用。</p>
+<p>所以这次我自己 Debug 了3个小时都没发现的 <a href="https://segmentfault.com/q/1010000023286285" target="_blank" rel="noopener">问题</a> 就是因为这！！ </p>
+<h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/fill" target="_blank" rel="noopener">Array.prototype.fill() - MDN</a></li>
+</ul>
  
   </article>
 
@@ -74,7 +102,7 @@
       <strong class="article-nav-caption">newer</strong>
       <div class="article-nav-title">
         
-          Js数组中的find/findIndex/some的区别以及every
+          Js数组中的 find/findIndex/some 以及 every
         
       </div>
     </a>
@@ -122,7 +150,7 @@
           </li>
         
           <li>
-            <a href="/2020/JS-array-find-some-every/">Js数组中的find/findIndex/some的区别以及every</a>
+            <a href="/2020/JS-array-find-some-every/">Js数组中的 find/findIndex/some 以及 every</a>
           </li>
         
           <li>
