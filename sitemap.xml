@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2019/JS-navigation-detection/</loc>
+    
+    <lastmod>2020-08-10T08:37:23.459Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/JS-for/</loc>
     
     <lastmod>2020-08-01T08:36:04.309Z</lastmod>
@@ -72,14 +79,14 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary08/</loc>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
     
     <lastmod>2020-07-14T01:05:10.115Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary08/</loc>
     
     <lastmod>2020-07-14T01:05:10.115Z</lastmod>
     
@@ -369,13 +376,6 @@
     <loc>https://yogwang.site/2020/JS-Object-attribute-sort/</loc>
     
     <lastmod>2020-01-03T06:13:58.179Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2019/JS-navigation-detection/</loc>
-    
-    <lastmod>2020-01-03T05:19:58.238Z</lastmod>
     
   </url>
   
