@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/vue-v-bind-props-camel-sync/</loc>
+    
+    <lastmod>2020-11-05T15:25:14.856Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/JS-closures/</loc>
     
     <lastmod>2020-10-26T04:18:49.288Z</lastmod>
