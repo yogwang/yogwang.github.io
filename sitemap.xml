@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/JS-ES6-MAP/</loc>
+    
+    <lastmod>2020-11-07T09:53:44.344Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/JS-for/</loc>
+    
+    <lastmod>2020-11-06T01:51:34.538Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/JS-slider-captcha/</loc>
+    
+    <lastmod>2020-11-06T01:51:22.695Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/vue-v-bind-props-camel-sync/</loc>
     
     <lastmod>2020-11-05T15:25:14.856Z</lastmod>
@@ -16,13 +37,6 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/2020/JS-slider-captcha/</loc>
-    
-    <lastmod>2020-10-26T02:08:43.765Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://yogwang.site/2020/JS-Object-attribute-sort/</loc>
     
     <lastmod>2020-09-16T06:39:37.504Z</lastmod>
@@ -33,13 +47,6 @@
     <loc>https://yogwang.site/2019/JS-navigation-detection/</loc>
     
     <lastmod>2020-08-10T08:41:28.956Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/JS-for/</loc>
-    
-    <lastmod>2020-08-01T08:36:04.309Z</lastmod>
     
   </url>
   

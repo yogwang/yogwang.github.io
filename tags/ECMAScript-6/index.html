@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <title>纯CSS实现瀑布流布局 | blog [ YOG WANG ]</title>
+  <title>ECMAScript 6 | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend">
   <meta name="description" content="Here is my blog, my notes and some thoughts">
   <meta name="author" content="YogWang">
@@ -34,83 +34,52 @@
 
     <div id="wrap">
       <main id="container">
-  <div
-  id="post-CSS-WaterFull"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
->
-  <div class="article-inner">
-    <div class="article-meta">
-      <p class="article-date">
-  <time datetime="2019-07-10T09:35:57.000Z" itemprop="datePublished">2019-07-10</time>
-</p> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </div>
-
-    </div>
+  
+  
+  
     
-    <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archives">
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
+
       
   
-    <h1 class="article-title" itemprop="name">
-      纯CSS实现瀑布流布局
-    </h1>
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/JS-ES6-MAP/">ES6 中的 新数据结构 Set &amp; Map</a>
+    </h2>
   
 
     </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-       
-  <article class="article-content">
-    <h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><ol>
-<li><code>column-count: n</code> 将元素中的文本分为 n 列</li>
-<li><code>break-inside: avoid</code> 避免元素内部断行并产生新列<ul>
-<li>可以不加，但可能会影响布局效果</li>
-</ul>
-</li>
-</ol>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo:"></a>Demo:</h2><p>👉 在 <a href="https://codepen.io/yogwang/pen/RzvNre" target="_blank" rel="noopener">CodePen</a> 中打开</p>
-<a id="more"></a>
-
-<ul>
-<li><h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">html5</span><br><span class="line">  div#container // 外部容器</span><br><span class="line">    ul#waterfall // 瀑布流容器</span><br><span class="line">     - for(let i=0;i&lt;12;i++ )</span><br><span class="line">      li.item // 内部项目</span><br><span class="line">        // 生成随机高度</span><br><span class="line">        - let height = Math.ceil(Math.random() *(150+1-500)+500)</span><br><span class="line">          // 模拟不同高度图片</span><br><span class="line">          div(class=&apos;img&apos;,style=&apos;height:&apos;+height+&apos;px&apos;)</span><br><span class="line">          // 模拟介绍文本</span><br><span class="line">          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa cupiditate a aperiam libero aspernatur unde</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4></li>
-</ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//reset</span></span><br><span class="line">*</span><br><span class="line"> <span class="attribute">padding</span> <span class="number">0</span></span><br><span class="line"> <span class="attribute">margin</span> <span class="number">0</span></span><br><span class="line"><span class="comment">// 外部容器</span></span><br><span class="line">#container</span><br><span class="line">  <span class="attribute">width</span> <span class="number">1200px</span></span><br><span class="line">  <span class="attribute">margin</span> <span class="number">30px</span> auto</span><br><span class="line">  <span class="comment">// 瀑布流容器</span></span><br><span class="line">  #waterfall</span><br><span class="line">    <span class="attribute">column-count</span> <span class="number">3</span></span><br><span class="line">    <span class="attribute">list-style-type</span> none</span><br><span class="line">    <span class="comment">// 内部项目</span></span><br><span class="line">    .item</span><br><span class="line">      <span class="attribute">padding</span> <span class="number">10px</span></span><br><span class="line">      <span class="attribute">margin</span> <span class="number">0</span> <span class="number">10px</span> <span class="number">20px</span></span><br><span class="line">      <span class="attribute">break-inside</span> avoid</span><br><span class="line">      <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="number">#000</span></span><br><span class="line">      <span class="selector-tag">div</span>.img</span><br><span class="line">        <span class="attribute">background</span> red</span><br></pre></td></tr></table></figure>
-
- 
+     
+  <article class="article-excerpt">
+    <p>今天在一个需求里边遇到一个使用 MAP 数据结构的场景，就去解了一下 ES6 的新数据结构</p>
+<p>ECMAScript 6 内提供了 4种 新结构 <code>Set</code>, <code>WeakSet</code>, <code>Map</code>, <code>WeakMap</code>，虽然已经是5年前的知识了，但是对于我来说还是新🤣</p>
+<p>本来想先聊 <code>Map</code> 的，但是仔细看了阮一峰老师的文章之后发现，确实是要从 <code>Set</code> 开始讲</p>
   </article>
-
-
+  
+    <div class="article-more-link">
+      <a href="/2020/JS-ES6-MAP/#more">阅读全文</a>
     </div>
-  </div>
    
-<nav id="article-nav">
-  
-    <a href="/2019/hexo_theme/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Hexo 主题开发制作
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/hello you/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">Hello Hexo</div>
-    </a>
-  
-</nav>
- 
+
+
+    <p class="archive-article-date">
+  <time datetime="2020-11-07T05:22:28.000Z" itemprop="datePublished">Nov 7</time>
+</p>
+  </div>
 </div>
+  
+  
+    </div></section>
+  
 
 
 

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>ES6 中的 新数据结构 Set &amp; Map | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend">
+  <meta name="description" content="Here is my blog, my notes and some thoughts">
+  <meta name="author" content="YogWang">
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U">
+  
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="sign" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <main id="container">
+  <div
+  id="post-JS-ES6-MAP"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2020-11-07T05:22:28.000Z" itemprop="datePublished">2020-11-07</time>
+</p> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+    </div>
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      ES6 中的 新数据结构 Set &amp; Map
+    </h1>
+  
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>今天在一个需求里边遇到一个使用 MAP 数据结构的场景，就去解了一下 ES6 的新数据结构</p>
+<p>ECMAScript 6 内提供了 4种 新结构 <code>Set</code>, <code>WeakSet</code>, <code>Map</code>, <code>WeakMap</code>，虽然已经是5年前的知识了，但是对于我来说还是新🤣</p>
+<p>本来想先聊 <code>Map</code> 的，但是仔细看了阮一峰老师的文章之后发现，确实是要从 <code>Set</code> 开始讲</p>
+<a id="more"></a>
+
+<h2 id="1-Set"><a href="#1-Set" class="headerlink" title="1 | Set"></a>1 | <code>Set</code></h2><blockquote>
+<ul>
+<li>类似于数组，但是成员的值都是唯一的，没有重复的值。</li>
+<li>本身是一个构造函数，用来生成 <code>Set</code> 数据结构。</li>
+<li>拥有两个属性：<ul>
+<li><code>Set.prototype.constructor</code>：构造函数，默认就是 <code>Set</code> 函数。</li>
+<li><code>Set.prototype.size</code>：返回 <code>Set</code> 实例的成员总数。</li>
+</ul>
+</li>
+<li>四个操作方法和四个遍历方法：<ul>
+<li>操作方法<ul>
+<li><code>Set.prototype.add(value)</code>：添加某个值，返回 Set 结构本身。</li>
+<li><code>Set.prototype.delete(value)</code>：删除某个值，返回一个布尔值，表示删除是否成功。</li>
+<li><code>Set.prototype.has(value)</code>：返回一个布尔值，表示该值是否为Set的成员。</li>
+<li><code>Set.prototype.clear()</code>：清除所有成员，没有返回值。</li>
+</ul>
+</li>
+<li>遍历方法<ul>
+<li><code>Set.prototype.keys()</code>：返回 键名 的遍历器</li>
+<li><code>Set.prototype.values()</code>：返回 键值 的遍历器</li>
+<li><code>Set.prototype.entries()</code>：返回 键值对 的遍历器</li>
+<li><code>Set.prototype.forEach()</code>：使用回调函数遍历每个成员</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>先说 <code>Set</code> 数据结构的创建，因为 <code>Set</code> 本身是一个构造函数，所以可以使用 <code>new</code> 命令来创建，然后通过 <code>add()</code> 来添加成员。</p>
+<p>当然也可以通过传入一个数组来进行初始化。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直接创建一个Set结构</span></span><br><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">s.add(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// Set(1) &#123;1&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 传入数组的形式创建Set结构</span></span><br><span class="line"><span class="keyword">const</span> s2 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="comment">// Set(4) &#123;1, 2, 3, 4&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>既然 <code>Set</code> 函数支持传入数组来进行初始化，并且成员的值都是唯一的，没有重复的值，所以可以使用 <code>Set</code> 来实现一个简短的数组去重方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简单数组去重</span></span><br><span class="line"><span class="keyword">const</span> sourceArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>]</span><br><span class="line"><span class="keyword">const</span> newArray = <span class="built_in">Array</span>.from((<span class="keyword">new</span> <span class="built_in">Set</span>(sourceArray)))</span><br><span class="line"><span class="built_in">console</span>.log(newArray)</span><br><span class="line"><span class="comment">// (8) [1, 2, 3, 4, 5, 6, 7, 8]</span></span><br></pre></td></tr></table></figure>
+
+<p>另外向 <code>Set</code> 添加成员的时候需要注意几个点:</p>
+<ol>
+<li>添加成员的时候，不会发生类型转换</li>
+<li>两个 对象 总是不相等的，但是两个 <code>NaN</code> 会被认为是相等的</li>
+<li>插入顺序就是遍历顺序，所以能保证按照添加顺序调用（不能直接改变结构）</li>
+</ol>
+<blockquote>
+<p>内部使用的算法叫做 <strong>“Same-value-zero equality”</strong>，类似于精确相等运算符（===）</p>
+</blockquote>
+<p>乍一看可能不明白，我举几个例子🌰</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 插入数字和字符串</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = new Set()</span><br><span class="line"><span class="keyword">set</span>.add(1)</span><br><span class="line"><span class="keyword">set</span>.add('1')</span><br><span class="line">// Set(2) &#123;<span class="number">1</span>, <span class="string">"1"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 插入对象</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = new Set()</span><br><span class="line">let a1 = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> a2 = &#123;&#125;</span><br><span class="line"><span class="keyword">set</span>.add(a1)</span><br><span class="line"><span class="keyword">set</span>.add(a2)</span><br><span class="line"><span class="keyword">set</span>.size</span><br><span class="line">// 2</span><br><span class="line"></span><br><span class="line">// Set(2) &#123;&#123;…&#125;, &#123;…&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 插入 NaN</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = new Set()</span><br><span class="line">let a1 = NaN</span><br><span class="line">let a2 = NaN</span><br><span class="line"><span class="keyword">set</span>.add(a1)</span><br><span class="line"><span class="keyword">set</span>.add(a2)</span><br><span class="line"><span class="keyword">set</span>.size</span><br><span class="line">// 1</span><br><span class="line"></span><br><span class="line">// Set(1) &#123;<span class="literal">NaN</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顺序保持</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = new Set()</span><br><span class="line"><span class="keyword">set</span>.add(1)</span><br><span class="line"><span class="keyword">set</span>.add(2)</span><br><span class="line"><span class="keyword">set</span>.add(6)</span><br><span class="line"><span class="keyword">set</span>.add(4)</span><br><span class="line"><span class="keyword">set</span>.add(5)</span><br><span class="line">// Set(5) &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="接着就是-Set-的遍历方法了，"><a href="#接着就是-Set-的遍历方法了，" class="headerlink" title="接着就是 Set 的遍历方法了，"></a>接着就是 <code>Set</code> 的遍历方法了，</h3><ul>
+<li><p>第一类： <code>keys()</code>，<code>values()</code>，<code>entries()</code></p>
+<ul>
+<li>返回的都是遍历器对象（Iterator 对象 - SetIterator）</li>
+<li><code>Set</code> 的遍历顺序就是插入顺序</li>
+<li><code>Set</code> 结构的实例默认可遍历，它的默认遍历器生成函数就是它的 <code>values</code> 方法。</li>
+</ul>
+<p><small>由于 Set 结构没有键名，只有键值（或者说键名和键值是同一个值），所以 <code>keys</code> 方法和 <code>values</code> 方法的行为完全一致。</small></p>
+</li>
+<li><p>第二类： <code>forEach()</code></p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">set</span> = new Set(['red', 'green', 'blue']);</span><br><span class="line"></span><br><span class="line">// 返回键名</span><br><span class="line">for (let item of <span class="keyword">set</span>.keys()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// red</span></span><br><span class="line"><span class="comment">// green</span></span><br><span class="line"><span class="comment">// blue</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回键值</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> <span class="keyword">set</span>.values()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// red</span></span><br><span class="line"><span class="comment">// green</span></span><br><span class="line"><span class="comment">// blue</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回键值对</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> <span class="keyword">set</span>.entries()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// (2)["red", "red"]</span></span><br><span class="line"><span class="comment">// (2)["green", "green"]</span></span><br><span class="line"><span class="comment">// (2)["blue", "blue"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接遍历</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> x <span class="keyword">of</span> <span class="keyword">set</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// red</span></span><br><span class="line"><span class="comment">// green</span></span><br><span class="line"><span class="comment">// blue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>.forEach((value, key) =&gt; console.log(key + ' : ' + value))</span><br><span class="line">// red : red</span><br><span class="line">// green : green</span><br><span class="line">// blue : blue</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="2-WeakSet"><a href="#2-WeakSet" class="headerlink" title="2 | WeakSet"></a>2 | <code>WeakSet</code></h2><blockquote>
+<p><code>WeakSet</code> 结构与 <code>Set</code> 类似，也是不重复的值的集合。但是，它与 Set 有两个区别。</p>
+<ol>
+<li><code>WeakSet</code> 的成员只能是对象，而不能是其他类型的值。</li>
+<li><code>WeakSet</code> 中的对象都是弱引用（即垃圾回收机制不考虑 WeakSet 对该对象的引用）</li>
+</ol>
+</blockquote>
+<p>那直接看说明，很直接明了，第一个区别也很直接，主要就是第二个区别，什么是 <strong>垃圾回收机制不考虑 WeakSet 对该对象的引用</strong> </p>
+<h2 id="下班了，先回家。"><a href="#下班了，先回家。" class="headerlink" title="下班了，先回家。"></a>下班了，先回家。</h2><h2 id="3-Map"><a href="#3-Map" class="headerlink" title="3 | Map"></a>3 | <code>Map</code></h2><hr>
+<h2 id="4-WeakMap"><a href="#4-WeakMap" class="headerlink" title="4 | WeakMap"></a>4 | <code>WeakMap</code></h2><hr>
+<h2 id="其它问题"><a href="#其它问题" class="headerlink" title="其它问题"></a>其它问题</h2><blockquote>
+<p>Vue 的响应式系统不支持 <code>Map</code> 和 <code>Set</code>，也就是说，当 <code>Map</code> 与 <code>Set</code> 里面的元素变化时Vue追踪不到这些变化，因此无法做出响应。</p>
+</blockquote>
+<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><ul>
+<li><a href="https://es6.ruanyifeng.com/#docs/set-map" target="_blank" rel="noopener">Set 和 Map 数据结构 - 阮一峰</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator" target="_blank" rel="noopener">迭代器 Symbol.iterator</a></li>
+</ul>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/vue-v-bind-props-camel-sync/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">VueJS中 v-bind 的一些修饰符</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+
+
+</main>
+<aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/JS-ES6-MAP/">ES6 中的 新数据结构 Set &amp; Map</a>
+          </li>
+        
+          <li>
+            <a href="/2020/vue-v-bind-props-camel-sync/">VueJS中 v-bind 的一些修饰符</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-for/">JS 中的各种 for 循环</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-array-find-some-every/">Js数组中的 find/findIndex/some 以及 every</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-array-fill/">ES6 中 Array 的 fill() 方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handlebars/">Handlebars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON-Server/">JSON-Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MockJS/">MockJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  <span>
+    &copy;2019-2020 YogWang powered_by
+    <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </span>
+  <br />
+  <span
+    >licensed
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
+      >CC BY-NC 4.0</a
+    ></span
+  >
+</footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
+  </body>
+</html>

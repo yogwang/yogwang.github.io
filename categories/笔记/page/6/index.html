@@ -48,6 +48,105 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electron/">Electron</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/Electron04-ElectronBuilder-ElectronUpdater/">Electron:Electron-builder+Electron-updater 完成Electron应用的自升级</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-content">
+    <p>2019/07/19 开坑。</p>
+ 
+  </article>
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-19T06:25:13.000Z" itemprop="datePublished">Jul 19</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/CSS-checked+label/">万能的 :checked + label</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <blockquote>
+<p>Meathill：纯 CSS 组件顾名思义，只改变外观，不改变行为。所以它的功能不会因为浏览器变化而变化，即使浏览器支持不完善，即使因为加载速度或者网络关系，导致 CSS、JS 加载失败，它最多样式回归到原始样式，功能是完全一致的。在非标准浏览器环境下，如读屏器，也是如此</p>
+</blockquote>
+<p>前年看肉大直播的时候听到：万能的 <code>:checked + label</code> 当时没有体会到有啥万能，不就是自定义 <code>input</code> 样式吗，直到前段时间看到一个 <a href="https://codepen.io/dipanjanb/pen/GaOvmG" target="_blank" rel="noopener">Demo</a> 虽然不是使用的这种方法，但是我突然就明白了，这个就可以用 <code>:checked + label</code> 来实现。</p>
+<p>…</p>
+<p>原来很多需要 <code>Js</code> 配合的一些效果点击效果只需要 <code>:checked + label</code> 就可以完成。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/CSS-checked+label/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-18T06:06:44.000Z" itemprop="datePublished">Jul 18</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/问题/">问题</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/BetterScrol-mouse-wheel/">BetterScrol 2.x Mouse-whell 没效果</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-content">
+    <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>yarn add @better-scroll/mouse-wheel@next</code></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import BScroll from &apos;@better-scroll/core&apos;</span><br><span class="line">import MouseWheel from &apos;@better-scroll/mouse-wheel&apos;</span><br><span class="line">BScroll.use(MouseWheel)</span><br><span class="line"></span><br><span class="line">new BScroll(&apos;.bs-wrap&apos;, &#123;</span><br><span class="line">  //...</span><br><span class="line">  mouseWheel: &#123;</span><br><span class="line">    speed: 20,</span><br><span class="line">    invert: false,</span><br><span class="line">    easeTime: 300</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="但是为什么在原有的基础上这样写没有用呢。官方-Demo"><a href="#但是为什么在原有的基础上这样写没有用呢。官方-Demo" class="headerlink" title="但是为什么在原有的基础上这样写没有用呢。官方 Demo"></a>但是为什么在原有的基础上这样写没有用呢。<a href="https://better-scroll.github.io/docs/zh-CN/plugins/mouse-wheel.html#%E7%A4%BA%E4%BE%8B" target="_blank" rel="noopener">官方 Demo</a></h2><p>查看 <code>Demo</code> 源码在 <code>scroll-wrapper</code> 外多了一层 <code>core-mouse-wheel</code> 加上就可以了。</p>
+<h3 id="😂-没仔细看-Demo-源码"><a href="#😂-没仔细看-Demo-源码" class="headerlink" title="😂 没仔细看 Demo 源码"></a>😂 没仔细看 <code>Demo</code> 源码</h3> 
+  </article>
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-15T03:13:04.000Z" itemprop="datePublished">Jul 15</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
 
       
@@ -303,116 +402,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electron/">Electron</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/Electron03-Electron-builder/">Electron_03 - Electron-builder</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <h2 id="安装-Electron-builder"><a href="#安装-Electron-builder" class="headerlink" title="安装 Electron-builder"></a>安装 Electron-builder</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/electron/electron-quick-start</span><br><span class="line"></span><br><span class="line">$ cd electron-quick-start</span><br><span class="line"></span><br><span class="line">$ yarn add electron-builder --dev // 官方推荐</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line">$ npm install elctron-builder --save-dev</span><br></pre></td></tr></table></figure>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/Electron03-Electron-builder/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-06-21T08:41:29.000Z" itemprop="datePublished">Jun 21</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electron/">Electron</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/Electron02-Electron-parkager/">Electron_02 - Electron-packager</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <h2 id="安装-Electron-packager"><a href="#安装-Electron-packager" class="headerlink" title="安装 Electron-packager"></a>安装 <a href="https://github.com/electron-userland/electron-packager" target="_blank" rel="noopener">Electron-packager</a></h2><blockquote>
-<p>需要 Node.js 6.0 或更高版本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install electron-packager --save-dev</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://github.com/electron-userland/electron-packager/blob/master/docs/api.md" target="_blank" rel="noopener">electron-packager API</a></p>
-<h2 id="使用命令行打包"><a href="#使用命令行打包" class="headerlink" title="使用命令行打包"></a>使用命令行打包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">electron-packager &lt;sourcedir&gt; &lt;appname&gt; --platform=&lt;platform&gt; --arch=&lt;arch&gt; [optional flags...]</span><br></pre></td></tr></table></figure>
-
-<p>必需参数</p>
-<ul>
-<li><p>sourcedir - 应用程序源</p></li></ul>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/Electron02-Electron-parkager/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-06-18T02:58:51.000Z" itemprop="datePublished">Jun 18</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/git_connectToGitHub/">Git 关联到GigHub</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <h2 id="创建-SSH-Keygen"><a href="#创建-SSH-Keygen" class="headerlink" title="创建 SSH Keygen"></a>创建 SSH Keygen</h2><p>使用<code>ssh-keygen</code>生成私钥和公钥</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br><span class="line"></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/c/Users/yog/.ssh/id_rsa):</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in /c/Users/yog/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/yog/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:0ZYdnPILyMbV9xpgRE/hWf1MayqhoEYquZTuOMr8EcE yog@YOG-DESKTOP</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 3072]----+</span><br><span class="line">|           =+.o.o|</span><br><span class="line">|  .      .oo*=.oo|</span><br><span class="line">|   E   o.o++.o++o|</span><br><span class="line">|    .. .=o... .o+|</span><br><span class="line">|  o.o ..S ....oo |</span><br><span class="line">| = ..o   . ....  |</span><br><span class="line">|o o..       .    |</span><br><span class="line">|=o  .            |</span><br><span class="line">|==..             |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/git_connectToGitHub/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-06-17T07:36:06.000Z" itemprop="datePublished">Jun 17</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -451,6 +440,10 @@
       <ul>
         
           <li>
+            <a href="/2020/JS-ES6-MAP/">ES6 中的 新数据结构 Set &amp; Map</a>
+          </li>
+        
+          <li>
             <a href="/2020/vue-v-bind-props-camel-sync/">VueJS中 v-bind 的一些修饰符</a>
           </li>
         
@@ -464,10 +457,6 @@
         
           <li>
             <a href="/2020/JS-array-fill/">ES6 中 Array 的 fill() 方法</a>
-          </li>
-        
-          <li>
-            <a href="/2020/nvm-install-use/">NVM 的安装和使用</a>
           </li>
         
       </ul>
@@ -489,7 +478,7 @@
   <section class="widget-wrap">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handlebars/">Handlebars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON-Server/">JSON-Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MockJS/">MockJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handlebars/">Handlebars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON-Server/">JSON-Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MockJS/">MockJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
     </div>
   </section>
 
