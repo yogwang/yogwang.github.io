@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2020/JS-array-fill/</loc>
+    <lastmod>2020-11-09</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/JS-array-find-some-every/</loc>
+    <lastmod>2020-11-09</lastmod>
+  </url>  <url>
     <loc>https://yogwang.site/2020/JS-ES6-MAP/</loc>
     <lastmod>2020-11-09</lastmod>
   </url>  <url>
@@ -24,12 +30,6 @@
   </url>  <url>
     <loc>https://yogwang.site/2020/nvm-install-use/</loc>
     <lastmod>2020-08-01</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/JS-array-find-some-every/</loc>
-    <lastmod>2020-07-24</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/JS-array-fill/</loc>
-    <lastmod>2020-07-24</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/jeecg-boot-devDiary09/</loc>
     <lastmod>2020-07-14</lastmod>
