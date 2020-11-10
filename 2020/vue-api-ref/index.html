@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <title>Jeecg-boot | blog [ YOG WANG ]</title>
+  <title>Vue 使用 ref 注册组件的特性 | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend">
   <meta name="description" content="Here is my blog, my notes and some thoughts">
   <meta name="author" content="YogWang">
@@ -34,104 +34,94 @@
 
     <div id="wrap">
       <main id="container">
-  
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/挖坑/">挖坑</a></li></ul>
+  <div
+  id="post-vue-api-ref"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2020-11-02T09:14:09.000Z" itemprop="datePublished">2020-11-02</time>
+</p> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
 
+    </div>
+    
+    <header class="article-header">
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/jeecg-boot-devDiary02/">Jeecg-boot 开发挖坑日记02 用户头像上传 / Vue-AntD上传组件</a>
-    </h2>
+    <h1 class="article-title" itemprop="name">
+      Vue 使用 ref 注册组件的特性
+    </h1>
   
 
     </header>
-     
-  <article class="article-excerpt">
-    <blockquote>
-<p>项目正式开始，第一个功能模块的用户信息编辑就开始卡壳，特别是头像上传组件。</p>
-</blockquote>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>一直以来，我对于 VueJS 中对于使用 <code>ref</code> 注册的组件，在使用 <code>$refs</code> 调用时，为什么有时候是一个 DOM元素/组件实例，是时候会是一个实例<strong>数组</strong>。</p>
+<p>所以在很长一段时间内我觉得 <code>ref</code> 注册的的组件在使用 <code>$refs</code> 调用时有很大的不确定性，虽然我的弹窗组件一直都是用的 <code>$refs.modal.open()</code> 来打开的。</p>
+<p>直到前一段时间，我在一个场景下想在 <code>v-for</code> 循环渲染的组件下 <code>slot</code> 模板中想使用 <code>ref</code> 注册成一个实例集合来调用时，发现怎么样重写返回的都只是一个组件实例，而不是一个组件实例集合。</p>
+<p>所以有了这样一篇笔记。</p>
+<a id="more"></a>
+<h2 id="注册-ref"><a href="#注册-ref" class="headerlink" title="注册 | ref"></a>注册 | <code>ref</code></h2><blockquote>
+<p>用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。</p>
 <ul>
-<li>弹出框 <code>a-mdal</code> 的表单值怎么获取到的</li>
-<li><code>ant-design-vue</code> 上传组件的头像上传</li>
+<li>如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；</li>
+<li>如果用在子组件上，引用就指向组件实例：</li>
 </ul>
-<h2 id="使用-ant-design-vue-上传组件的头像上传。"><a href="#使用-ant-design-vue-上传组件的头像上传。" class="headerlink" title="使用 ant-design-vue 上传组件的头像上传。"></a>使用 <code>ant-design-vue</code> 上传组件的头像上传。</h2><p>在 Jeecg-boot 中头像上传是 antD 的上传组件 <code>listType=&quot;picture-card&quot;</code>，<br>在教程里是直接使用 <code>upload</code> 组件的 <code>defaultFileList</code> API，<br>但他们 DEMO 是 <code>listType=&quot;text&quot;</code>，或 <code>listType=&quot;picture-card&quot;</code> 但绑定的是 <code>fileList</code>，<br>并不是 <code>defaultFileList</code>，就和 ant-design-vue 的文档是一摸一样的照着读了一遍，</p>
-<p>然后我直接复制的官方用户头像 DEMO,就出现了问题。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/jeecg-boot-devDiary02/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-10-17T09:07:24.000Z" itemprop="datePublished">Oct 17</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/">VueJS</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/jeecg-boot-devDiary01/">Jeecg-boot 开发挖坑日记01 Jeecg-Boot是个什么鬼?</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <blockquote>
-<p>这段时间公司有一个项目是用 Jeecg-Boot 开发的，管理平台部分就分配到我这边了。这段时间看了下他们官方的文档，感觉文档有点少，感觉之后大部分时间都要和这个东西杠上了。 _yogwang 2019.10.10 15:28</p>
 </blockquote>
-<h2 id="what-is-the-fuxk-jeecg-boot"><a href="#what-is-the-fuxk-jeecg-boot" class="headerlink" title="what is the fuxk jeecg-boot?"></a>what is the fuxk <a href="https://github.com/zhangdaiscott/jeecg-boot" target="_blank" rel="noopener">jeecg-boot</a>?</h2><p><img src="https://yogwang.site/2019/jeecg-boot-devDiary01/jeecg-boot.png" alt="Jeecg-boot"></p>
-<blockquote>
-<p>Java RAD framework for enterprise web applications</p>
+<p>关于 <code>ref</code> 注册时间的重要说明：因为 <code>ref</code> 本身是作为 <strong>渲染结果</strong> 被创建的，在初始渲染的时候你不能访问它们 - 它们还不存在！<br><code>$refs</code> 也 <strong>不是响应式</strong> 的，因此你不应该试图用它在模板中做数据绑定。</p>
+<p>所以不要在 <code>mounted()</code> 之前的生命周期钩子里边直接使用 <code>$refs</code> 来获取元素，<br>或者在没有渲染组件的情况下调用元素内的属性或方法，如果一定要的话，记得放在 <code>$nextTick()</code> 里。</p>
+<hr>
+<h2 id="使用-refs"><a href="#使用-refs" class="headerlink" title="使用 | $refs"></a>使用 | <code>$refs</code></h2><blockquote>
+<p>一个对象，持有注册过 ref attribute 的所有 DOM 元素和组件实例。</p>
+<ul>
+<li>只读</li>
+<li>允许父级组件通过 <code>$refs</code> 来访问子组件实例内部元素的访问，比如来访问子组件实例内的 <code>data</code> 和 <code>methods</code></li>
+<li>当 <code>ref</code> 和 <code>v-for</code> 一起使用的时候，将得到一个 DOM 节点数组 或 <strong>包含了对应数据源</strong> 的组件实例的。</li>
+</ul>
 </blockquote>
-<p>基于代码生成器的 JAVA 快速开发平台,采用前后端分离架构：</p>
+<hr>
+<h3 id="1、什么时候只返回一个组件-DOM实例"><a href="#1、什么时候只返回一个组件-DOM实例" class="headerlink" title="1、什么时候只返回一个组件/DOM实例"></a>1、什么时候只返回一个组件/DOM实例</h3><p>一般来说，直接在一个没有使用 <code>v-for</code> 循环的元素上使用 <code>ref</code> 注册的元素，在使用 <code>this.$refs.xxx</code> 获取时，返回的只会是一个组件实例。</p>
+<h3 id="2、什么时候返回一个实例集合"><a href="#2、什么时候返回一个实例集合" class="headerlink" title="2、什么时候返回一个实例集合"></a>2、什么时候返回一个实例集合</h3><p>按照文档上边来看，在使用 <code>v-for</code> 循环的元素上使用 <code>ref</code> 注册的元素，在使用 <code>$refs.xxx</code> 获取时，会返回一个实例集合。</p>
+<p><strong>有没有其他办法？比如我不是使用 <code>v-for</code> 循环出来的实例，但是我想注册在一个 <code>ref</code> 下。</strong></p>
+<p><strong>暂时没有办法。</strong></p>
+<h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><p><a href="https://cn.vuejs.org/v2/api/#ref" target="_blank" rel="noopener">ref — Vue.js</a><br><a href="https://cn.vuejs.org/v2/api/#vm-refs" target="_blank" rel="noopener">vm.$refs — Vue.js</a><br><a href="https://cn.vuejs.org/v2/guide/components-edge-cases.html#访问子组件实例或子元素" target="_blank" rel="noopener">访问子组件实例或子元素 — Vue.js</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelectorAll" target="_blank" rel="noopener">Document.querySelectorAll - MDN</a><br><a href="https://www.zhihu.com/question/24702250" target="_blank" rel="noopener">querySelectorAll 方法相比 getElementsBy 系列方法有什么区别？- 知乎</a></p>
+<p><a href="https://www.zhihu.com/question/429036806/answer/1564223482" target="_blank" rel="noopener">如何评价 Vue 的 ref 语法糖提案？尤雨溪的回答 - 知乎</a></p>
+ 
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/jeecg-boot-devDiary01/#more">阅读全文</a>
+
+
     </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-10-10T06:37:44.000Z" itemprop="datePublished">Oct 10</time>
-</p>
   </div>
+   
+<nav id="article-nav">
+  
+    <a href="/2020/vue-v-bind-props-camel-sync/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          VueJS中 v-bind 的一些修饰符
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/JS-for/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">JS 中的各种 for 循环</div>
+    </a>
+  
+</nav>
+ 
 </div>
-  
-  
-    </div></section>
-  
 
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/tags/Jeecg-boot/">&laquo; prev</a><a class="page-number" href="/tags/Jeecg-boot/">1</a><span class="page-number current">2</span>
-  </nav>
 
 
 </main>

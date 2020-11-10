@@ -117,6 +117,42 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/">VueJS</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/vue-api-ref/">Vue 使用 ref 注册组件的特性</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>一直以来，我对于 VueJS 中对于使用 <code>ref</code> 注册的组件，在使用 <code>$refs</code> 调用时，为什么有时候是一个 DOM元素/组件实例，是时候会是一个实例<strong>数组</strong>。</p>
+<p>所以在很长一段时间内我觉得 <code>ref</code> 注册的的组件在使用 <code>$refs</code> 调用时有很大的不确定性，虽然我的弹窗组件一直都是用的 <code>$refs.modal.open()</code> 来打开的。</p>
+<p>直到前一段时间，我在一个场景下想在 <code>v-for</code> 循环渲染的组件下 <code>slot</code> 模板中想使用 <code>ref</code> 注册成一个实例集合来调用时，发现怎么样重写返回的都只是一个组件实例，而不是一个组件实例集合。</p>
+<p>所以有了这样一篇笔记。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2020/vue-api-ref/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2020-11-02T09:14:09.000Z" itemprop="datePublished">Nov 2</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
 
       
@@ -361,39 +397,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/">VueJS</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/vue-computed-DOM-element-attributes/">使用VueJS的计算属性监听DOM元素属性的问题</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>今天在写一个模拟微信的聊天组件的时候，需要获取消息列表的滚动条高度，来实现每次发送接受消息数据时，自动滚动到列表末尾。<br>当然就想到了用 <code>Computed</code> 属性来计算容器的 <code>scrollHeight</code>。<br>然后就发现一开始滚动条会定位到列表最后，但是测着测着就发现怎么超出了一定高度范围之后就不会滚动到列表末尾了，而是固定在了一个值。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/vue-computed-DOM-element-attributes/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-03-16T06:18:59.000Z" itemprop="datePublished">Mar 16</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -440,15 +443,15 @@
           </li>
         
           <li>
+            <a href="/2020/vue-api-ref/">Vue 使用 ref 注册组件的特性</a>
+          </li>
+        
+          <li>
             <a href="/2020/JS-for/">JS 中的各种 for 循环</a>
           </li>
         
           <li>
             <a href="/2020/JS-array-find-some-every/">Js数组中的 find/findIndex/some 以及 every</a>
-          </li>
-        
-          <li>
-            <a href="/2020/JS-array-fill/">ES6 中 Array 的 fill() 方法</a>
           </li>
         
       </ul>
