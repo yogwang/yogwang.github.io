@@ -89,8 +89,8 @@
 </blockquote>
 <hr>
 <h3 id="1、什么时候只返回一个组件-DOM实例"><a href="#1、什么时候只返回一个组件-DOM实例" class="headerlink" title="1、什么时候只返回一个组件/DOM实例"></a>1、什么时候只返回一个组件/DOM实例</h3><p>一般来说，直接在一个没有使用 <code>v-for</code> 循环的元素上使用 <code>ref</code> 注册的元素，在使用 <code>this.$refs.xxx</code> 获取时，返回的只会是一个组件实例。</p>
-<h3 id="2、什么时候返回一个实例集合"><a href="#2、什么时候返回一个实例集合" class="headerlink" title="2、什么时候返回一个实例集合"></a>2、什么时候返回一个实例集合</h3><p>按照文档上边来看，在使用 <code>v-for</code> 循环的元素上使用 <code>ref</code> 注册的元素，在使用 <code>$refs.xxx</code> 获取时，会返回一个实例集合。</p>
-<p><strong>有没有其他办法？比如我不是使用 <code>v-for</code> 循环出来的实例，但是我想注册在一个 <code>ref</code> 下。</strong></p>
+<h3 id="2、什么时候返回一个实例集合"><a href="#2、什么时候返回一个实例集合" class="headerlink" title="2、什么时候返回一个实例集合"></a>2、什么时候返回一个实例集合</h3><p>按照文档上边来看，在使用 <code>v-for</code> 循环的元素上使用 <code>ref</code> 注册的元素，在使用 <code>this.$refs.xxx</code> 获取时，会返回一个实例集合。</p>
+<p><strong>有没有其他办法？比如我不是使用 <code>v-for</code> 循环出来的实例，但是我想注册在同一个 <code>ref</code> 下。</strong></p>
 <p><strong>暂时没有办法。</strong></p>
 <h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><p><a href="https://cn.vuejs.org/v2/api/#ref" target="_blank" rel="noopener">ref — Vue.js</a><br><a href="https://cn.vuejs.org/v2/api/#vm-refs" target="_blank" rel="noopener">vm.$refs — Vue.js</a><br><a href="https://cn.vuejs.org/v2/guide/components-edge-cases.html#访问子组件实例或子元素" target="_blank" rel="noopener">访问子组件实例或子元素 — Vue.js</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelectorAll" target="_blank" rel="noopener">Document.querySelectorAll - MDN</a><br><a href="https://www.zhihu.com/question/24702250" target="_blank" rel="noopener">querySelectorAll 方法相比 getElementsBy 系列方法有什么区别？- 知乎</a></p>
 <p><a href="https://www.zhihu.com/question/429036806/answer/1564223482" target="_blank" rel="noopener">如何评价 Vue 的 ref 语法糖提案？尤雨溪的回答 - 知乎</a></p>
