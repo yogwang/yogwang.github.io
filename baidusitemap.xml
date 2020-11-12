@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2020/vue-coding-style-and-lint/</loc>
+    <lastmod>2020-11-12</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/vue-v-bind-props-camel-sync/</loc>
+    <lastmod>2020-11-12</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/JS-navigation-detection/</loc>
+    <lastmod>2020-11-11</lastmod>
+  </url>  <url>
     <loc>https://yogwang.site/2020/JS-Object-attribute-sort/</loc>
+    <lastmod>2020-11-11</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/AnnualParty-devDiay03/</loc>
+    <lastmod>2020-11-11</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2019/AnnualParty-devDiay01/</loc>
     <lastmod>2020-11-11</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/JS-ES6-MAP/</loc>
@@ -22,14 +37,8 @@
     <loc>https://yogwang.site/2020/JS-slider-captcha/</loc>
     <lastmod>2020-11-06</lastmod>
   </url>  <url>
-    <loc>https://yogwang.site/2020/vue-v-bind-props-camel-sync/</loc>
-    <lastmod>2020-11-05</lastmod>
-  </url>  <url>
     <loc>https://yogwang.site/2020/JS-closures/</loc>
     <lastmod>2020-10-26</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/JS-navigation-detection/</loc>
-    <lastmod>2020-08-10</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/nvm-install-use/</loc>
     <lastmod>2020-08-01</lastmod>
@@ -49,10 +58,10 @@
     <loc>https://yogwang.site/2019/jeecg-boot-devDiary06/</loc>
     <lastmod>2020-07-14</lastmod>
   </url>  <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary08/</loc>
     <lastmod>2020-07-14</lastmod>
   </url>  <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary08/</loc>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
     <lastmod>2020-07-14</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/jeecg-boot-devDiary12/</loc>
@@ -97,17 +106,11 @@
     <loc>https://yogwang.site/2020/react-learning-01/</loc>
     <lastmod>2020-05-29</lastmod>
   </url>  <url>
-    <loc>https://yogwang.site/2019/AnnualParty-devDiay01/</loc>
-    <lastmod>2020-05-29</lastmod>
-  </url>  <url>
     <loc>https://yogwang.site/2020/react-learning-00/</loc>
     <lastmod>2020-05-27</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/JS-class-constructor/</loc>
     <lastmod>2020-05-26</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2019/AnnualParty-devDiay03/</loc>
-    <lastmod>2020-05-22</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2020/TypeScript-learning-00/</loc>
     <lastmod>2020-05-20</lastmod>

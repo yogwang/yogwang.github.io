@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <title>Git 编辑历史提交的 Commit | blog [ YOG WANG ]</title>
+  <title>聊一下自己 VueJS 项目的编码习惯和风格 | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend">
   <meta name="description" content="Here is my blog, my notes and some thoughts">
   <meta name="author" content="YogWang">
@@ -35,7 +35,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-git_rebase"
+  id="post-vue-coding-style-and-lint"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -43,19 +43,15 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-07-03T08:28:25.000Z" itemprop="datePublished">2019-07-03</time>
+  <time datetime="2020-11-11T04:01:49.000Z" itemprop="datePublished">2020-11-11</time>
 </p> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </div>
-
     </div>
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      Git 编辑历史提交的 Commit
+      聊一下自己 VueJS 项目的编码习惯和风格
     </h1>
   
 
@@ -64,27 +60,62 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>做一个功能，可能提交了 10 多次，会不会有一些崩溃？单纯这么多次的 commit 就可能出现有无用，或者可以合并的 commit，就很让人不舒服。</p>
-<p>基于上面所说问题，不难想到：每一次功能开发， 对多个 commit 进行合并或者删除处理，这时候就需要用到 <code>git rebase</code> 修改提交的历史 Commit</p>
-<h4 id="Eg"><a href="#Eg" class="headerlink" title="Eg:"></a>Eg:</h4><p>修改最近的 4 次提交纪录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~4</span><br></pre></td></tr></table></figure>
+    <p><img src="https://yogwang.site/2020/vue-coding-style-and-lint/banner.jpg" alt="横幅"></p>
+<p>最近在考虑把遍码习惯整理一下，一个良好的遍码习惯可以有效减少一个项目的维护成本，<br>因为不可能在整个项目的生命周期中，均由最初的开发人员来维护，或者所有的代码都是由你一个人写出来的，<br>改善代码的可读性，可以让开发人员尽快而彻底地理解新的代码。</p>
+<p>之前也有研究过 <a href="/2020/choose-the-ESLint-formatting-rule-that-suits-you/">ESlint的格式化风格</a> 选择一款适合自己的来规范自己，但是了解的越多，越觉得还是需要团队互相讨论来找一个大家能都接受的妥协结果，所以最后还是选择了 <code>Prettier</code> ，因为我觉得其它两种风格相对来说太严苛了，很多项目都是自己开发并没有多人合作开发的情况出现，所以使用 Prettier 相对来说所自由一些…</p>
+<a id="more"></a>
 
-<ul>
-<li><code>-i</code> 是 <code>--interactive</code> 的缩写 - 交互的意思；</li>
-<li><code>HEAD~4</code> 修改最近的 4 次提交记录；<a id="more"></a>
-然后在弹出的编辑器中显示 <code>git-rebase-todo</code> 文件，在 <code>rebase-todo</code> 中修改列表中的 pick 命令。</li>
+<hr>
+<h2 id="先来讲代码的格式与注释"><a href="#先来讲代码的格式与注释" class="headerlink" title="先来讲代码的格式与注释"></a>先来讲代码的格式与注释</h2><p>代码的格式和注释虽起不到逻辑作用，但是可以是团队合作效率更高，代码更易于维护。特别是在其他人接手自己项目的时候，能让他很快了解自己的想法。</p>
+<p>我这边一直在使用的类似 <code>AirBnb</code> 的 Lint 风格，但只是其中的一些命名、缩进和换行的风格，我并没有严格按照他们的风格来，例如：</p>
+<blockquote>
+<h4 id="用命名函数表达式而不是函数声明-func-style"><a href="#用命名函数表达式而不是函数声明-func-style" class="headerlink" title="用命名函数表达式而不是函数声明 func-style"></a>用命名函数表达式而不是函数声明 <code>func-style</code></h4><ul>
+<li>函数表达式： <code>const func = function () {}</code></li>
+<li>函数声明： <code>function func() {}</code></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">pick f77a6e7 version 0.1.3</span><br><span class="line">pick 434a2f2 version 0.1.4</span><br><span class="line">pick 094263b version 0.1.5</span><br><span class="line">pick 9135476 version 0.1.5 change XXXX</span><br><span class="line"></span><br><span class="line"># Rebase 50adf2a..9135476 onto 50adf2a (4 commands)</span><br><span class="line">#</span><br><span class="line"># Commands:</span><br><span class="line"># p, pick &lt;commit&gt; = use commit   // 保留该commit</span><br><span class="line"># r, reword &lt;commit&gt; = use commit, but edit the commit message  // 保留该commit，但修改该commit的注释</span><br><span class="line"># e, edit &lt;commit&gt; = use commit, but stop for amending  // 保留该commit, 但我要停下来修改该commit</span><br><span class="line"># s, squash &lt;commit&gt; = use commit, but meld into previous commit  // 将该commit合并到前一个commit</span><br><span class="line"># f, fixup &lt;commit&gt; = like &quot;squash&quot;, but discard this commit&apos;s log message  // 将该commit合并到前一个commit，并不要保留该提交的注释信息</span><br><span class="line"># x, exec &lt;command&gt; = run command (the rest of the line) using shell  // 执行后边的shell命令</span><br><span class="line"># b, break = stop here (continue rebase later with &apos;git rebase --continue&apos;)   //在这里停止，稍后使用 --continue 继续</span><br><span class="line"># d, drop &lt;commit&gt; = remove commit  // 清除该commit</span><br><span class="line"># l, label &lt;label&gt; = label current HEAD with a name // 使用label标记当前HEAD</span><br><span class="line"># t, reset &lt;label&gt; = reset HEAD to a label  // 设置HEAD到标记的label</span><br><span class="line"># m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]  // 合并分支</span><br><span class="line"># .       create a merge commit using the original merge commit&apos;s</span><br><span class="line"># .       message (or the oneline, if no original merge commit was</span><br><span class="line"># .       specified). Use -c &lt;commit&gt; to reword the commit message.</span><br><span class="line">#</span><br><span class="line"># These lines can be re-ordered; they are executed from top to bottom.</span><br><span class="line">#</span><br><span class="line"># If you remove a line here THAT COMMIT WILL BE LOST.</span><br><span class="line">#</span><br><span class="line"># However, if you remove everything, the rebase will be aborted.</span><br><span class="line">#</span><br><span class="line"># Note that empty commits are commented out</span><br></pre></td></tr></table></figure>
-
-<h4 id="Eg-1"><a href="#Eg-1" class="headerlink" title="Eg:"></a>Eg:</h4><p>我需要修改第二行和第三行的 Commit，那我将第二行和第三行的 pick 改成 edit 或 e，保存并退出。</p>
-<p>git 会依次执行上面的操作，当操作为 pick 时，直接 commit。当操作为 edit 时，会中断，并提示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">You can amend the commit now, with  // 你可以使用 git commit --amend 来修改此次提交</span><br><span class="line"></span><br><span class="line">    git commit --amend</span><br><span class="line"></span><br><span class="line">Once you are satisfied with your changes, run // 修改以后满意了，执行 git rebase --continue 继续剩下的流程</span><br><span class="line"></span><br><span class="line">    git rebase --continue</span><br></pre></td></tr></table></figure>
-
-<p>全部修改完成以后提示如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git rebase --continue</span><br><span class="line">Successfully rebased and updated refs/heads/master.</span><br></pre></td></tr></table></figure>
-
-<h3 id="如果需要把修改的历史-commit-push-到远程库中"><a href="#如果需要把修改的历史-commit-push-到远程库中" class="headerlink" title="如果需要把修改的历史 commit push 到远程库中"></a>如果需要把修改的历史 commit push 到远程库中</h3><p>使用 <code>git push -f</code> 命令即可</p>
-<h3 id="如果意外关闭了弹出的编辑窗口"><a href="#如果意外关闭了弹出的编辑窗口" class="headerlink" title="如果意外关闭了弹出的编辑窗口"></a>如果意外关闭了弹出的编辑窗口</h3><p>如果 git 没有执行完操作，<code>git rebase --edit-todo</code> 命令可以返回编辑</p>
+</blockquote>
+<p>虽然有他们的道理，但是我并不是很喜欢，当然会根据不同团队做出改变。所以保持业务代码的可读性就好，<br>我没有按部就班的使用，项目也只是启用了 <code>Prettier</code> 的默认设置。</p>
+<p><strong>概念隔离</strong>：不同的的概念/逻辑代码使用空行隔离</p>
+<h2 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h2><p>代码注释我这边还没有很明确到很精细的规范，很自由。<br>只是要求了在 <strong>文件头</strong>、<strong>函数声明时</strong> 以及 <strong>函数内一些关键的部分</strong> 进行补充说明，因为有时候只是代码的语义化并不能很好的说明情况。<br>虽然自己也经常会忘记在一些复杂场景下补充注释，但是事后记得补全就好。</p>
+<p>哦，对了，记得增加提示信息，防止出现踩坑事件，例如使用 <code>TODO</code> 等标记未来得及完成的部分，并且安装 <a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree" target="_blank" rel="noopener">TODO Tree</a> 插件确保自己不会遗忘填坑。</p>
+<hr>
+<h2 id="冗余代码"><a href="#冗余代码" class="headerlink" title="冗余代码"></a>冗余代码</h2><p>尽量避免重复代码，我对于冗余代码的意见是很大的，需要代码简洁明了清晰易读，特别是明显可以抽离出来复用的业务逻辑。如果重复出现多次的话，我一定会分离出去，特别是一些复杂场景下的大段代码中，尽量 <strong>保持一个函数职责单一</strong></p>
+<h3 id="对于代码的提炼"><a href="#对于代码的提炼" class="headerlink" title="对于代码的提炼"></a>对于代码的提炼</h3><p>在考虑到项目的后续发展和可能会出现的扩展之后，在一定版本迭代中不会出现功能拓展的业务代码进行提炼和优化，这就需要你对于项目整体要有一定程度的了解。</p>
+<p>对可能在可遇见的时间范围内会出现变动的的业务代码精心适量的优化，并且保持扩展的便利性，确保不会出现死结。</p>
+<blockquote>
+<p>同时保持代码短小精炼并且易维护、易拓展是很困难的，<strong>优先保证易维护和易拓展</strong>。</p>
+</blockquote>
+<h2 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h2><p>有时候为了实现尽快实现功能，会出现急功近利的情况，牺牲代码的可读性以及结构。<br>如果很赶时间，尽量在Coding之前，整理好需求，在设计完代码流程和结构之后把注释写在功能头部。<br>方便结束之后整理优化，就算自己忘记整理了，也不至于接手的下一任直接重写，记得代码面向读代码的人来写。</p>
+<hr>
+<h2 id="最后是-Vue-官方的风格规范"><a href="#最后是-Vue-官方的风格规范" class="headerlink" title="最后是 Vue 官方的风格规范:"></a>最后是 <code>Vue</code> 官方的风格规范:</h2><p>Vue 有一套官方的<a href="https://cn.vuejs.org/v2/style-guide/" target="_blank" rel="noopener">风格指南</a>，里边有一些指导和参考，总共分为四类：</p>
+<blockquote>
+<ul>
+<li>优先级 A：必要的</li>
+<li>优先级 B：强烈推荐</li>
+<li>优先级 C：推荐</li>
+<li>优先级 D：谨慎使用</li>
+</ul>
+</blockquote>
+<p><strong>优先级 A</strong> 的就不需要说了吧，必要的这块内容，应该在学习 Vue 的时候就已经从官方给出的 Demo 感受到了，比如 <strong>组件名为多个单词</strong>，以及 <strong>组件的 data 必须是一个函数</strong>。虽然有一些规范在 Vue3 中已经被修改了，但是在 Vue2 中还是适用的。</p>
+<p><strong>优先级 B</strong> 这一类的内容是为了增加代码可读性的，所以尽最大可能的保证使用以及一贯性，基本都是一些命名和书写规范，刻意保持一段时间就习惯了。</p>
+<p><strong>优先级 C</strong> 这块内容是比较自由的，官方也设定为<strong>推荐</strong>级别，其中提到的 <strong>组件/实例的选项的顺序</strong>，我觉得重要性还是很高的，在Cooding时保持和官方文档一样的排列顺序。</p>
+<p>最近我就出现了同事把 <code>created</code> 代码放到组件最后，我在增加功能的时候在头部也增加了 <code>created</code> ，发现自己的 <code>created</code> 钩子没有执行。当然这个锅其实有一部分是编辑器的，我这边没有对重复声明的对象属性进行错误高亮。</p>
+<p><strong>优先级 D</strong> 中的内容是警告内容，这块内容在良好的编码习惯下一般是不会出现的。</p>
+<hr>
+<p>当然如果你觉得官方的Lint的风格很好，那么你可以使用他们提供的 <a href="https://www.npmjs.com/package/eslint-plugin-vue" target="_blank" rel="noopener">eslint-plugin-vue</a> 这个依赖项，来规范和格式化代码。</p>
+<p>最后的最后我对之前 Vue 官方指导没有提到的一些地方进行补充：</p>
+<ol>
+<li>每一个组件都要有 <code>name</code> 属性。</li>
+<li>你需要了解 <code>mixins</code> 和 <code>extends</code>。</li>
+<li>使用 <code>computed</code> 来计算一些属性，比如路由信息 <code>$route</code>中的一些传递参数，或者在代码中出现频率很高的深层属性。</li>
+<li>在生命周期钩子中，保证不出现业务代码，如果一块内容超过<code>6</code>行那就单独拿出来写成函数放到 <code>methods</code> 中，尽量减少生命周期钩子中的代码量。</li>
+<li>业务代码都在 <code>methods</code> 中，或者取成 <code>功能名称.js</code>文件。</li>
+<li>在路由中使用 <code>params</code> 来传递参数，记得在路由配置中绑定动态路径参数，不然会丢失</li>
+<li>保持Lint开启。</li>
+<li>使用环境变量。</li>
+</ol>
+<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p><a href="https://cn.vuejs.org/v2/style-guide/" target="_blank" rel="noopener">风格指南 — Vue.js</a><br><a href="https://eslint.vuejs.org/rules/order-in-components.html" target="_blank" rel="noopener">vue/order-in-components | eslint-plugin-vue</a></p>
+<p><a href="https://eslint.vuejs.org/" target="_blank" rel="noopener">Introduction | eslint-plugin-vue</a></p>
  
   </article>
 
@@ -94,19 +125,10 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/git_commit--amend/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Git 撤销上一次提交 并将暂存区文件重新提交
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/Chrome-VerticalCentering/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/JS-ES6-MAP/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">Chrome下垂直居中容器内区块改变高度使外层容器被移动</div>
+      <div class="article-nav-title">ES6 中的 新数据结构 Set &amp; Map</div>
     </a>
   
 </nav>

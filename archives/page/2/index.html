@@ -48,6 +48,46 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coding/">Coding</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/intranet-and-extranet-routes/">记录单独配置内网路由和外网路由的办法</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>由于公司刚刚搬迁，本地服务器还没有连上网络，所以并不能在外网访问到公司的服务器，只能使用局域网访问到。<br>所以想连接手机热点来连外网，并且通过插网线来访问内网，想实现同时访问外网和内网的效果。</p>
+<p>单独连热点或者单独连内网都是可以的，但是同时就不行了，会默认使用本地连接也就是插的网线来访问网络，所以只能从一下选择其中一个：</p>
+<ol>
+<li>可以访问外网，但是不能访问内部服务器；</li>
+<li>不可以访问内网，但可以使用内网服务器。</li>
+</ol>
+<p>然而每次都要切换网络来完成需求，我觉得有点蠢，肯定有更加优雅的方式来实现的需求。</p>
+<p>所以就记一下这个办法。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2020/intranet-and-extranet-routes/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2020-06-22T03:04:47.000Z" itemprop="datePublished">Jun 22</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
       
@@ -367,41 +407,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/webpack-dev-server-proxy-note/">使用 Webpack 的 Proxy 解决跨域问题</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>在这次的项目中，遇到了后端配置了允许跨域，但是我这边请求的时候还是提示跨域，后端折腾了会，我说算了，我这边本地做一下代里还快一点，你继续整接口吧。</p>
-<p>所以就用到了 <code>webpack-dev-server</code> 的 <code>proxy</code>，但是有一些部分我并没有整明白，所以写一篇文章梳理一下。</p>
-<p>最简单的就是直接在 <code>webpack</code> 的配置文件中启用 proxy 就可以了，</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/webpack-dev-server-proxy-note/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-03-27T07:20:58.000Z" itemprop="datePublished">Mar 27</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -440,6 +445,10 @@
       <ul>
         
           <li>
+            <a href="/2020/vue-coding-style-and-lint/">聊一下自己 VueJS 项目的编码习惯和风格</a>
+          </li>
+        
+          <li>
             <a href="/2020/JS-ES6-MAP/">ES6 中的 新数据结构 Set &amp; Map</a>
           </li>
         
@@ -453,10 +462,6 @@
         
           <li>
             <a href="/2020/JS-for/">JS 中的各种 for 循环</a>
-          </li>
-        
-          <li>
-            <a href="/2020/JS-array-find-some-every/">Js数组中的 find/findIndex/some 以及 every</a>
           </li>
         
       </ul>
