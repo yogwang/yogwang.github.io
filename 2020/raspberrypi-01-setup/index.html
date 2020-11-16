@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>📟 树莓派 4B(2GB RAM) 开箱记录 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend">
+  <meta name="description" content="Here is my blog, my notes and some thoughts">
+  <meta name="author" content="YogWang">
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U">
+  
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="sign" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <main id="container">
+  <div
+  id="post-raspberrypi-01-setup"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2020-11-16T12:56:29.000Z" itemprop="datePublished">2020-11-16</time>
+</p> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+    </div>
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      📟 树莓派 4B(2GB RAM) 开箱记录
+    </h1>
+  
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>自从我爸妈他们屋子重新装修好了之后，我爸就嚷嚷着要把他的旧电脑搬上楼装起来，但是家里没有多少地方能摆电脑桌了(怕他又和以前一样在书房看着小说抽一整天的烟)。所以趁着双十一，就入手了一个<a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/" target="_blank" rel="noopener">树莓派 4 Model B</a>，准备给他放客厅连到电视上，通过家里人时不时打断他投入看小说的状态。</p>
+<p>今天到货了，开始折腾一下….</p>
+<a id="more"></a>
+
+<h2 id="📦-喜闻乐见的开箱环节"><a href="#📦-喜闻乐见的开箱环节" class="headerlink" title="📦 喜闻乐见的开箱环节"></a>📦 喜闻乐见的开箱环节</h2><p><img src="https://yogwang.site/2020/raspberrypi-01-setup/photo.jpg" alt="开箱照"></p>
+<p>我买的是官方的国内代理，其实就是淘宝店，然后买的 【 官方配件基础套餐 】，里边有一个板子然后一些配件(电源，散热贴片，外壳，TF卡(16G)，读卡器)</p>
+<hr>
+<h2 id="💾-安装镜像"><a href="#💾-安装镜像" class="headerlink" title="💾 安装镜像"></a>💾 安装镜像</h2><p>安装镜像没什么好说的，使用<a href="https://www.raspberrypi.org/software/" target="_blank" rel="noopener">官方文档</a>上的软件，格式化SD卡以及写入系统镜像即可。</p>
+<h3 id="意外情况："><a href="#意外情况：" class="headerlink" title="意外情况："></a>意外情况：</h3><p><img src="https://yogwang.site/2020/raspberrypi-01-setup/writing0%.jpg" alt="树莓派 4 Model B"><br>如果一直卡在 <strong>Writing..0%</strong> 的界面的话，直接到官网手动下载需要的镜像，<br>然后在 <code>CHOOSE OS</code> 中选择 <code>Use custom</code> 选项，然后找到下载的镜像文件再写入就可以了。</p>
+<p>安装完成之后在 <strong>Boot</strong> 分区下创建 <code>ssh</code> 文件(开启SSH)和 <code>wpa_supplicant.conf</code> 文件(自动连接WiFi)，然后把TF卡插回树莓派，接入电源后使用 <code>SSH</code> 链接就可以连接到树莓派了，默认用户名（<code>pi</code>）和密码（<code>raspberry</code>）。</p>
+<p>如果要使用桌面的话，如果使用 <code>VNC Viewer</code> 来访问的话，直接查看<a href="https://www.raspberrypi.org/documentation/remote-access/vnc/README.md" target="_blank" rel="noopener">官方的文档</a>即可。</p>
+<p>我的话，直接就通过 Win10 自带的远程连接的话，就不能按照文档照搬了，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xrdp tightvncserver</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后键入 <code>sudo /etc/init.d/xrdp start</code> 启动 <code>xrdp</code>，这个时候就已经可直接使用远程连接访问树莓派了。<br>但是浏览网页明显感觉到卡顿，不知道是不是远程链接的问题，明天再试试VNC Viewer来连接看。</p>
+<hr>
+<h2 id="💥遇问题"><a href="#💥遇问题" class="headerlink" title="💥遇问题"></a>💥遇问题</h2><h3 id="1、没有外接显示器，直接使用SSH连接的时候遇到-Connection-refused"><a href="#1、没有外接显示器，直接使用SSH连接的时候遇到-Connection-refused" class="headerlink" title="1、没有外接显示器，直接使用SSH连接的时候遇到 Connection refused"></a>1、没有外接显示器，直接使用SSH连接的时候遇到 <code>Connection refused</code></h3><p><img src="https://yogwang.site/2020/raspberrypi-01-setup/err_connection_refused.jpg" alt="Connection refused"><br>因为中午在办公室开箱的，所以在午休的时候捣鼓，写入系统之后发现怎么都连接不上，以为是没有镜像没有写入好，所以又重新格式化又写了一遍，之后发现还是连不上，就Google了一下，发现是SSH没有开启的问题。</p>
+<blockquote>
+<p>As of the November 2016 release, Raspberry Pi OS has the SSH server disabled by default.</p>
+</blockquote>
+<p>但是我手头上没有可以用的显示器，就想着怎么不用显示器来开启SSH，官方提供了几个方案（连接在文档最后）：</p>
+<blockquote>
+<ul>
+<li><ol>
+<li>连接显示器后进入 <code>Preferences</code> 菜单进行操作。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>连接显示器后使用命令行开启。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>通过 <code>headless</code> 可以直接在 boot 分区下创建 <code>ssh</code> 文件(小写)，在系统启动时自启动 <code>SSH</code>。</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<p>方案1 和 方案2 直接放弃，要有这个条件我还纠结啥….所以只能在 方案3 上尝试一下。</p>
+<p>由于后来我又尝试安装了 <code>Ubuntu Desktop 20.10</code> 所以可能有些不一样，各种创建文件的方式我都尝试了，但是都没有成功，好像是说 <code>Ubuntu Desktop</code> 默认没有 SSH 服务，需要手动安装启动。<br>只能尝试通过先安装 <code>Ubuntu Server</code>版，再安装 <code>ubuntu-desktop</code> 的方式看看能不能行得通。</p>
+<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><p><a href="https://www.sdcard.org/downloads/formatter/" target="_blank" rel="noopener">SD Memory Card Formatter - SD Association</a><br><a href="https://www.raspberrypi.org/software/operating-systems/" target="_blank" rel="noopener">Operating system images – Raspberry Pi</a><br><a href="https://www.raspberrypi.org/documentation/remote-access/ssh/README.md" target="_blank" rel="noopener">SSH (Secure Shell) - Raspberry Pi Documentation</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/vue-coding-style-and-lint/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">聊一下自己 VueJS 项目的编码习惯和风格</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+
+
+</main>
+<aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/raspberrypi-01-setup/">📟 树莓派 4B(2GB RAM) 开箱记录</a>
+          </li>
+        
+          <li>
+            <a href="/2020/vue-coding-style-and-lint/">聊一下自己 VueJS 项目的编码习惯和风格</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-ES6-MAP/">ES6 中的 新数据结构 Set &amp; Map</a>
+          </li>
+        
+          <li>
+            <a href="/2020/vue-v-bind-props-camel-sync/">VueJS中 v-bind 的一些修饰符</a>
+          </li>
+        
+          <li>
+            <a href="/2020/vue-api-ref/">Vue 使用 ref 注册组件的特性</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handlebars/">Handlebars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON-Server/">JSON-Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MockJS/">MockJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  <span>
+    &copy;2019-2020 YogWang powered_by
+    <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </span>
+  <br />
+  <span
+    >licensed
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
+      >CC BY-NC 4.0</a
+    ></span
+  >
+</footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
+  </body>
+</html>
