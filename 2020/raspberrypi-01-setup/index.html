@@ -72,7 +72,7 @@
 <p>我买的是官方的国内代理，其实就是淘宝店，然后买的 【 官方配件基础套餐 】，里边有一个板子然后一些配件(电源，散热贴片，外壳，TF卡(16G)，读卡器)</p>
 <hr>
 <h2 id="💾-安装镜像"><a href="#💾-安装镜像" class="headerlink" title="💾 安装镜像"></a>💾 安装镜像</h2><p>安装镜像没什么好说的，使用<a href="https://www.raspberrypi.org/software/" target="_blank" rel="noopener">官方文档</a>上的软件，格式化SD卡以及写入系统镜像即可。</p>
-<h3 id="意外情况："><a href="#意外情况：" class="headerlink" title="意外情况："></a>意外情况：</h3><p><img src="https://yogwang.site/2020/raspberrypi-01-setup/writing0%.jpg" alt="树莓派 4 Model B"><br>如果一直卡在 <strong>Writing..0%</strong> 的界面的话，直接到官网手动下载需要的镜像，<br>然后在 <code>CHOOSE OS</code> 中选择 <code>Use custom</code> 选项，然后找到下载的镜像文件再写入就可以了。</p>
+<h3 id="意外情况："><a href="#意外情况：" class="headerlink" title="意外情况："></a>意外情况：</h3><p><img src="https://yogwang.site/2020/raspberrypi-01-setup/writing0.jpg" alt="Writing..0%"><br>如果一直卡在 <strong>Writing..0%</strong> 的界面的话，直接到官网手动下载需要的镜像，<br>然后在 <code>CHOOSE OS</code> 中选择 <code>Use custom</code> 选项，然后找到下载的镜像文件再写入就可以了。</p>
 <p>安装完成之后在 <strong>Boot</strong> 分区下创建 <code>ssh</code> 文件(开启SSH)和 <code>wpa_supplicant.conf</code> 文件(自动连接WiFi)，然后把TF卡插回树莓派，接入电源后使用 <code>SSH</code> 链接就可以连接到树莓派了，默认用户名（<code>pi</code>）和密码（<code>raspberry</code>）。</p>
 <p>如果要使用桌面的话，如果使用 <code>VNC Viewer</code> 来访问的话，直接查看<a href="https://www.raspberrypi.org/documentation/remote-access/vnc/README.md" target="_blank" rel="noopener">官方的文档</a>即可。</p>
 <p>我的话，直接就通过 Win10 自带的远程连接的话，就不能按照文档照搬了，</p>
