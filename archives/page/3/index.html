@@ -48,43 +48,6 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/what-the-export-x-as-x/">export { x as x } 中的 as 是什么？</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>今天在读一个开源框架的时候看到了一行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; installer <span class="keyword">as</span> VueAxios, service <span class="keyword">as</span> axios &#125;;</span><br></pre></td></tr></table></figure>
-
-<p>然后我就 <code>? ? ?</code>，以前一直都不知道这个 <code>as</code>，然后就赶紧百度，结果没有一个匹配的结果。</p>
-<p>然后就只能从阮一峰老师的ES6入门里边找…</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/what-the-export-x-as-x/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-04-13T06:38:59.000Z" itemprop="datePublished">Apr 13</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
 
       
@@ -385,6 +348,39 @@
 
     <p class="archive-article-date">
   <time datetime="2020-02-20T06:04:37.000Z" itemprop="datePublished">Feb 20</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/update-global-dependencies-with-npm-check-updates/">使用 npm-check-updates 更新全局依赖提示 No dependencies</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>今天想起自己一直依赖没有更新全局依赖，就直接在 <code>bash</code> 里边输入 <code>ncu -g</code> 居然提示 <code>No dependencies.</code><br>我就纳闷了，打错命令了吗，为啥提示没有依赖？<br>项目内依赖检查更新是没问题的，但是检测全局依赖就显示没有依赖，换了几个终端还是这个问题。<br>我怀疑是我全局以来的路径设置错了(我是使用 npm 来安装全局依赖，yarn 安装项目依赖)<br>查看了 npm 的全局依赖路径发现没错啊。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2020/update-global-dependencies-with-npm-check-updates/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2020-02-14T09:20:40.000Z" itemprop="datePublished">Feb 14</time>
 </p>
   </div>
 </div>
