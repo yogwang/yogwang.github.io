@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <title>DigitalOcean向已经创建的Droplets实例添加SSH_key | blog [ YOG WANG ]</title>
+  <title>笔记 | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend">
   <meta name="description" content="Here is my blog, my notes and some thoughts">
   <meta name="author" content="YogWang">
@@ -34,91 +34,58 @@
 
     <div id="wrap">
       <main id="container">
-  <div
-  id="post-digitalocean-created-droplets-add-ssh-key"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
->
-  <div class="article-inner">
-    <div class="article-meta">
-      <p class="article-date">
-  <time datetime="2020-06-13T17:23:22.000Z" itemprop="datePublished">2020-06-14</time>
-</p> 
-    </div>
+  
+  
+  
     
-    <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archives">
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electron/">Electron</a></li></ul>
+
       
   
-    <h1 class="article-title" itemprop="name">
-      DigitalOcean向已经创建的Droplets实例添加SSH_key
-    </h1>
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/Electron01-Electron-quick-start/">Electron_01 - 快速启动</a>
+    </h2>
   
 
     </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-       
-  <article class="article-content">
-    <blockquote>
-<p>这几天心态崩溃的有些厉害，几近一周没有写过代码了，今天实在感觉不能再颓下去了，就准备远程配置一下客户服务器的环境。</p>
-</blockquote>
-<p>这次客户邀请我加入了他们 <code>DigitalOcean</code> 的 Team 中，但是他们不想提供 Droplet 实例 Root 密码， 看了一下控制台大概找到了一个添加 <code>SSH_Key</code> 登陆的地方，所以使用了 <code>PuTTYGen</code> 创建了一对 Key，但是添加之后使用 <code>SSH</code> 连接时提示我: 远程服务器拒绝此密钥，让我重新输入Root账户的密码。</p>
-<p>大概找了一下国内的相关问题并没有找到解决的方法，Google 出来也差不多，基本都是添加 Key 之后，需要创建新的实例才可以使用新添加的 Key。<br>那我需要对 <em>已经创建了的 <code>Droplet</code> 实例</em>  添加 <code>Key</code> 怎么办呢？</p>
-<p>相信大家在搜索该问题时已经添加好了自己的 <code>SSH Key</code>，具体添加创建 key 的过程我就不详述了，大家在官方 <a href="https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/" target="_blank" rel="noopener">文档</a> 中查找即可。</p>
-<a id="more"></a> 
-<p>也可以在文末 <a href="#附">附</a> 中直接点击链接查看详细文档。</p>
-<hr>
-<p>那么我就直接开始描述我是如何对已经创建的实例使用新增加的 Key。<small><em>方法应该并不只有这一种，如果有其它更好的方式可以<a href="mailto:yogwang@foxmail.com?subject=DigitalOcean向已经创建的Droplets实例添加SSH_key" target="_blank" rel="noopener">留言</a>给我。</em></small></p>
-<h2 id="1-打开网页终端"><a href="#1-打开网页终端" class="headerlink" title="1.打开网页终端"></a>1.打开网页终端</h2><p>这步应该不用说了吧，打开终端之后切换到 <code>~/.ssh</code> 目录下，查看一下目录下文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@test:/# cd ~/.ssh</span><br><span class="line">root@test:~/.ssh# ls</span><br><span class="line">authorized_keys  id_rsa  id_rsa.pub  know_hosts</span><br></pre></td></tr></table></figure>
+     
+  <article class="article-excerpt">
+    <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir my-app</span><br><span class="line"></span><br><span class="line">$ cd my-app</span><br><span class="line"></span><br><span class="line">$ npm init --y</span><br><span class="line">Wrote to E:\my-app\package.json:</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;my-app&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [],</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>可以看到有一个名为 <code>authorized_keys</code> 的文件，这个我不知道是不是本来就有，我这边因为客户已经关联过一个 key 了所以是有这个文件。<br>然后你使用 <code>vi</code> 或者 <code>nano</code> 打开这个 <code>authorized_keys</code> 文件。</p>
-<h2 id="2-添加你的公钥到文件中"><a href="#2-添加你的公钥到文件中" class="headerlink" title="2. 添加你的公钥到文件中"></a>2. 添加你的公钥到文件中</h2><p>我希望你没有把之前创建Key的公钥给丢了，不过找不到了也没有关系，回到 DigitalOcean 的控制台在 <code>Account -&gt; Settings -&gt; Security -&gt; SSH keys</code> 中找到你添加的 Key 然后点击编辑就可以看到你添加的公钥了。<br><img src="https://yogwang.site/2020/digitalocean-created-droplets-add-ssh-key/settings.jpg" alt="设置"></p>
-<p>把公钥复制一下，粘贴进去保存就可以了。</p>
-<p><img src="https://yogwang.site/2020/digitalocean-created-droplets-add-ssh-key/console.jpg" alt="authorized_keys"></p>
-<h4 id="在粘贴的过程中遇到了粘贴进来的公钥出现转码的情况"><a href="#在粘贴的过程中遇到了粘贴进来的公钥出现转码的情况" class="headerlink" title="在粘贴的过程中遇到了粘贴进来的公钥出现转码的情况:"></a>在粘贴的过程中遇到了粘贴进来的公钥出现转码的情况:</h4><p><img src="https://yogwang.site/2020/digitalocean-created-droplets-add-ssh-key/transcode.jpg" alt="转码"><br>这是因为复制的密钥太长了，控制的一下每次粘贴内容长度，分段粘贴过来就好了。</p>
-<p>然后就可以使用 SSH 远程连接到服务器上了（具体连接步骤查看下方 <a href="#附">附</a> 中查看详细文档）。<br><img src="https://yogwang.site/2020/digitalocean-created-droplets-add-ssh-key/PuTTY.jpg" alt="PuTTY"></p>
-<p>以上。</p>
-<hr>
-<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><h4 id="参考资源链接"><a href="#参考资源链接" class="headerlink" title="参考资源链接"></a>参考资源链接</h4><ul>
-<li><a href="https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/create-with-putty/" target="_blank" rel="noopener">使用PuTTY创建Key - Create Keys with PuTTY</a></li>
-<li><a href="https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/create-with-openssh/" target="_blank" rel="noopener">使用OpenSSH创建Key - Create Keys with OpenSSH</a></li>
-<li><a href="https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/to-account/" target="_blank" rel="noopener">添加Key到DO账户 - Add Keys to a DO Account</a></li>
-<li><a href="https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/" target="_blank" rel="noopener">使用SSH连接到服务器 - Connect with SSH</a></li>
-</ul>
-<h4 id="相关类似问题"><a href="#相关类似问题" class="headerlink" title="相关类似问题"></a>相关类似问题</h4><ul>
-<li><a href="https://www.digitalocean.com/community/questions/how-do-i-add-a-second-ssh-key-to-droplet" target="_blank" rel="noopener">How do I add a second SSH key to droplet?</a></li>
-<li><a href="https://www.digitalocean.com/community/questions/additional-ssh-key-not-working" target="_blank" rel="noopener">Additional SSH Key not working</a></li>
-</ul>
- 
+<p>修改入口文件为 <code>main.js</code> 并且添加 <code>start</code> 脚本引导 <strong>Node</strong> 来执行 Electron</p>
   </article>
-
-
+  
+    <div class="article-more-link">
+      <a href="/2019/Electron01-Electron-quick-start/#more">阅读全文</a>
     </div>
-  </div>
    
-<nav id="article-nav">
-  
-    <a href="/2020/JS-closures/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          谈一谈 JavaScript 中的闭包
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/jeecg-boot-devDiary12/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">Jeecg-boot 开发挖坑日记12 自定义登陆界面</div>
-    </a>
-  
-</nav>
- 
-</div>
 
+
+    <p class="archive-article-date">
+  <time datetime="2019-06-14T09:33:33.000Z" itemprop="datePublished">Jun 14</time>
+</p>
+  </div>
+</div>
+  
+  
+    </div></section>
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/categories/笔记/page/7/">&laquo; prev</a><a class="page-number" href="/categories/笔记/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/笔记/page/6/">6</a><a class="page-number" href="/categories/笔记/page/7/">7</a><span class="page-number current">8</span>
+  </nav>
 
 
 </main>

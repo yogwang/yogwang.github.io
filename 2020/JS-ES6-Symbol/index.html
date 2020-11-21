@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Symbol() 是个什么东西? | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend">
+  <meta name="description" content="Here is my blog, my notes and some thoughts">
+  <meta name="author" content="YogWang">
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U">
+  
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="sign" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <main id="container">
+  <div
+  id="post-JS-ES6-Symbol"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2020-11-21T15:44:47.000Z" itemprop="datePublished">2020-11-21</time>
+</p> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+    </div>
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Symbol() 是个什么东西?
+    </h1>
+  
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>最近在一些 Demo 中经常会看到 <code>Symbol()</code> 这个东西，例如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> race = &#123;</span><br><span class="line">  protoss: <span class="built_in">Symbol</span>(),</span><br><span class="line">  terran: <span class="built_in">Symbol</span>(),</span><br><span class="line">  zerg: <span class="built_in">Symbol</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就只能记得大概了，就是赋值一个独特的值，但是这个值具体是什么我想不起来了。<br>所以还是记个笔记加深下印象，省的看了又忘。</p>
+<blockquote>
+<p>ES6 引入了一种新的原始数据类型<code>Symbol</code>，表示独一无二的值。它是 JavaScript 语言的第七种数据类型</p>
+</blockquote>
+<a id="more"></a>
+
+<p>如果只看 阮一峰的 <strong>ECMAScript 6入门</strong> 和 MDN 上的说明，可能会有点迷糊，但是大概知道只要是 Symbol类型 是都是独一无二的，保证不会与其他属性名产生冲突。<br>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 = <span class="built_in">Symbol</span>(<span class="number">1</span>)</span><br><span class="line"><span class="comment">// Symbol(1)</span></span><br><span class="line"><span class="keyword">var</span> s2 = <span class="built_in">Symbol</span>(<span class="number">1</span>)</span><br><span class="line"><span class="comment">// Symbol(1)</span></span><br><span class="line">s1 === s2</span><br><span class="line"><span class="comment">// false</span></span><br><span class="line">s1 == s2</span><br><span class="line"><span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>所以，就出现了文章一开始的那个例子，出自方应杭老师的的每日一题（在文章最后有附链接）<br>大概的需求场景，就是需要通过传入不同的 <code>String</code> 来执行不同的操作，接下来我就大概引用该文章内的例子来说明</p>
+<p>例如：在玩SC2的时候，我们需要在开始时选择种族，选择完成之后在游戏加载时就会执行对应的创建角色操作。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> race = &#123;</span><br><span class="line">  protoss: <span class="string">'protoss'</span>, <span class="comment">// 神族</span></span><br><span class="line">  terran: <span class="string">'terran'</span>, <span class="comment">// 人族</span></span><br><span class="line">  zerg: <span class="string">'zerg'</span> <span class="comment">// 虫族</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createRole</span>(<span class="params">type</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(type === race.protoss)&#123; 创建神族角色 &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(type === race.terran)&#123; 创建人族角色 &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(type === race.zerg)&#123; 创建虫族角色 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用户选择种族后，就需要调用 createRole 来创建角色：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传入字符串</span></span><br><span class="line">createRole(<span class="string">'zerg'</span>) </span><br><span class="line"><span class="comment">// 或者传入变量</span></span><br><span class="line">createRole(race.zerg)</span><br></pre></td></tr></table></figure>
+
+<p>但是在传入 type 值的时候，如果<strong>直接用字符串</strong>，就不是一个好的方式（不利于将来的修改和维护），所以需要传入例如 <code>race.zerg</code> 这样的<strong>变量属性</strong>。<br>那么如果这样操作的话，其实这些对象属性（<code>race.protoss</code>,<code>race.terran</code>,<code>race.zerg</code>）对应的值并不重要，因为传入的肯定是同一个值。<br>所以以下声明和前一个例子中声明可以完成同一个作用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> race = &#123;</span><br><span class="line">  protoss: <span class="string">'askdjaslkfjas;lfkjas;flkj'</span>, <span class="comment">// 神族</span></span><br><span class="line">  terran: <span class="string">';lkfalksjfl;askjfsfal;skfj'</span>, <span class="comment">// 人族</span></span><br><span class="line">  zerg: <span class="string">'qwieqwoirqwoiruoiwqoisrqwroiu'</span> <span class="comment">// 虫族</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也就是说， <code>race.zerg</code> 的值是多少并不重要，只要它的值跟 <code>race.protoss</code> 和 <code>race.terran</code> 的值不一样就行，<code>Symbol</code> 的用途就是如此。</p>
+<blockquote>
+<p>凡是数据类型属于 <code>Symbol</code> 类型，就都是独一无二的</p>
+</blockquote>
+<p>所以可以用以下代码来声明，并且保证不会出现冲突的属性值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> race = &#123;</span><br><span class="line">  protoss: <span class="built_in">Symbol</span>(),</span><br><span class="line">  terran: <span class="built_in">Symbol</span>(),</span><br><span class="line">  zerg: <span class="built_in">Symbol</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 抑或填入描述</span></span><br><span class="line"><span class="keyword">var</span> race = &#123;</span><br><span class="line">  protoss: <span class="built_in">Symbol</span>(<span class="string">'protoss'</span>),</span><br><span class="line">  terran: <span class="built_in">Symbol</span>(<span class="string">'terran'</span>),</span><br><span class="line">  zerg: <span class="built_in">Symbol</span>(<span class="string">'zerg'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此我觉得 <code>Symbol</code> 数据类型已经解释清楚了，如果还是不明白，请重新回到头部阅读一遍。</p>
+<hr>
+<h2 id="Symbol-拥有的一些特性"><a href="#Symbol-拥有的一些特性" class="headerlink" title="Symbol 拥有的一些特性"></a><code>Symbol</code> 拥有的一些特性</h2><h3 id="一、Symbol-作为属性名进行遍历时："><a href="#一、Symbol-作为属性名进行遍历时：" class="headerlink" title="一、Symbol 作为属性名进行遍历时："></a>一、<code>Symbol</code> 作为属性名进行遍历时：</h3><blockquote>
+<ul>
+<li>Symbol 作为属性名，遍历对象的时候，该属性不会出现在 <code>for...in</code>、<code>for...of</code> 循环中，也不会被 <code>Object.keys()</code>、<code>Object.getOwnPropertyNames()</code>、<code>JSON.stringify()</code> 返回。</li>
+<li>Symbol 也不是私有属性。</li>
+</ul>
+</blockquote>
+<p>可以通过 <code>Object.getOwnPropertySymbols()</code> 方法来获取指定对象的所有 Symbol 属性名（方法返回一个数组，成员是当前对象的所有用作属性名的 Symbol 值）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>(<span class="string">'a'</span>);</span><br><span class="line"><span class="keyword">let</span> b = <span class="built_in">Symbol</span>(<span class="string">'b'</span>);</span><br><span class="line"></span><br><span class="line">obj[a] = <span class="string">'Hello'</span>;</span><br><span class="line">obj[b] = <span class="string">'World'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertySymbols(obj);</span><br><span class="line"><span class="comment">// [Symbol(a), Symbol(b)]</span></span><br></pre></td></tr></table></figure>
+
+<p>当然也可以使用 ES6 的新 API <code>Reflect.ownKeys()</code> 来获取所有类型的键名，包括 <strong>常规键名</strong> 和 <code>Symbol</code> 键名。</p>
+<h3 id="二、Symbol-for-方法"><a href="#二、Symbol-for-方法" class="headerlink" title="二、Symbol.for() 方法"></a>二、<code>Symbol.for()</code> 方法</h3><blockquote>
+<p><code>Symbol.for()</code>方法可以接受一个字符串作为参数，然后搜索有没有以该参数作为名称的 <code>Symbol</code> 值。<br> 如果有，就返回这个 <code>Symbol</code> 值，否则就新建一个以该字符串为名称的 <code>Symbol</code> 值，并将其注册到全局。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="built_in">Symbol</span>.for(<span class="string">'foo'</span>);</span><br><span class="line"><span class="keyword">let</span> s2 = <span class="built_in">Symbol</span>.for(<span class="string">'foo'</span>);</span><br><span class="line"></span><br><span class="line">s1 === s2 </span><br><span class="line"><span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Symbol</span>.for(<span class="string">"bar"</span>) === <span class="built_in">Symbol</span>.for(<span class="string">"bar"</span>)</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Symbol.for()</code> 与 <code>Symbol()</code> 都会生成新的 <code>Symbol</code>。它们的区别是，前者会被登记在全局环境中供搜索，后者不会。</p>
+<h3 id="三、Symbol-keyFor-方法"><a href="#三、Symbol-keyFor-方法" class="headerlink" title="三、Symbol.keyFor() 方法"></a>三、<code>Symbol.keyFor()</code> 方法</h3><blockquote>
+<p><code>Symbol.keyFor()</code> 方法返回一个已登记的 <code>Symbol</code> 类型值的 <code>key</code>。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="built_in">Symbol</span>.for(<span class="string">"foo"</span>);</span><br><span class="line"><span class="built_in">Symbol</span>.keyFor(s1) <span class="comment">// "foo"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s2 = <span class="built_in">Symbol</span>(<span class="string">"foo"</span>);</span><br><span class="line"><span class="built_in">Symbol</span>.keyFor(s2) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="四、内置的-Symbol-属性"><a href="#四、内置的-Symbol-属性" class="headerlink" title="四、内置的 Symbol 属性"></a>四、内置的 Symbol 属性</h3><p>除了定义自己使用的 <code>Symbol</code> 值以外，ES6 还提供了 <strong>11</strong> 个内置的 Symbol 值，指向语言内部使用的方法。</p>
+<ol>
+<li><p><code>Symbol.hasInstance</code></p>
+</li>
+<li><p><code>Symbol.isConcatSpreadable</code></p>
+</li>
+<li><p><code>Symbol.species</code></p>
+</li>
+<li><p><code>Symbol.match</code></p>
+</li>
+<li><p><code>Symbol.replace</code></p>
+</li>
+<li><p><code>Symbol.search</code></p>
+</li>
+<li><p><code>Symbol.split</code></p>
+</li>
+<li><p><code>Symbol.iterator</code></p>
+</li>
+<li><p><code>Symbol.toPrimitive</code></p>
+</li>
+<li><p><code>Symbol.toStringTag</code></p>
+</li>
+<li><p><code>Symbol.unscopables</code></p>
+</li>
+</ol>
+<p>这11个属性具体的说明看阮一峰老师的 ECMAScript 6入门 就可以了，里边有单独的小Demo可以阅读，我就不单独说明了，因为如果全部说明的话，内容就太多了，并且和书的内容高度重复了。</p>
+<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p><a href="https://zhuanlan.zhihu.com/p/22652486" target="_blank" rel="noopener">「每日一题」JS 中的 Symbol 是什么？ | 方应杭</a><br><a href="https://es6.ruanyifeng.com/#docs/symbol" target="_blank" rel="noopener">Symbol - ECMAScript 6入门 | 阮一峰</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank" rel="noopener">Symbol - JavaScript | MDN</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank" rel="noopener">Symbol.prototype.description - JavaScript | MDN</a><br><a href="https://es6.ruanyifeng.com/#docs/reflect" target="_blank" rel="noopener">Reflect - ECMAScript 6入门 | 阮一峰</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/ownKeys" target="_blank" rel="noopener">Reflect.ownKeys() - JavaScript | MDN</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/raspberrypi-01-setup/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">📟 树莓派 4B(2GB RAM) 开箱记录</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+
+
+</main>
+<aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/JS-ES6-Symbol/">Symbol() 是个什么东西?</a>
+          </li>
+        
+          <li>
+            <a href="/2020/raspberrypi-01-setup/">📟 树莓派 4B(2GB RAM) 开箱记录</a>
+          </li>
+        
+          <li>
+            <a href="/2020/vue-coding-style-and-lint/">聊一下自己 VueJS 项目的编码习惯和风格</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-ES6-MAP/">ES6 中的 新数据结构 Set &amp; Map</a>
+          </li>
+        
+          <li>
+            <a href="/2020/vue-v-bind-props-camel-sync/">VueJS中 v-bind 的一些修饰符</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handlebars/">Handlebars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON-Server/">JSON-Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MockJS/">MockJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  <span>
+    &copy;2019-2020 YogWang powered_by
+    <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </span>
+  <br />
+  <span
+    >licensed
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
+      >CC BY-NC 4.0</a
+    ></span
+  >
+</footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
+  </body>
+</html>

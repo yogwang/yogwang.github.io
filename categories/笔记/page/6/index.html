@@ -48,6 +48,46 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHPOK/">PHPOK</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/phpok-Guestbook/">PHPOK 5.x 多站点共享留言板</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>前景：</p>
+<p>要求 <strong>中文站</strong> 和 <strong>英文站</strong> 提交的留言内容都收集在中文站的留言板中，方便查看。</p>
+<p>之前 <code>3.x</code> 版本直接使用 <code>CateID</code> 就可以了，但是在 <code>5.x</code> 版本中不行。</p>
+<p>文档里也没有，所以在尝试多次之后，憋不住就在群里问了作者团队，</p>
+<p>答：</p>
+<blockquote>
+<p>在 <code>Ajax</code> 请求地址上加上 <code>SiteID</code> 就可以了。</p>
+</blockquote>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/phpok-Guestbook/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-08-03T03:06:49.000Z" itemprop="datePublished">Aug 3</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Apache/">Apache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/挖坑/">挖坑</a></li></ul>
 
       
@@ -352,46 +392,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/git_rebase/">Git 编辑历史提交的 Commit</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>做一个功能，可能提交了 10 多次，会不会有一些崩溃？单纯这么多次的 commit 就可能出现有无用，或者可以合并的 commit，就很让人不舒服。</p>
-<p>基于上面所说问题，不难想到：每一次功能开发， 对多个 commit 进行合并或者删除处理，这时候就需要用到 <code>git rebase</code> 修改提交的历史 Commit</p>
-<h4 id="Eg"><a href="#Eg" class="headerlink" title="Eg:"></a>Eg:</h4><p>修改最近的 4 次提交纪录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~4</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>-i</code> 是 <code>--interactive</code> 的缩写 - 交互的意思；</li>
-<li><code>HEAD~4</code> 修改最近的 4 次提交记录；</li></ul>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/git_rebase/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-07-03T08:28:25.000Z" itemprop="datePublished">Jul 3</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -399,7 +399,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/categories/笔记/page/5/">&laquo; prev</a><a class="page-number" href="/categories/笔记/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/笔记/page/4/">4</a><a class="page-number" href="/categories/笔记/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/categories/笔记/page/7/">7</a><a class="extend next" rel="next" href="/categories/笔记/page/7/">next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/categories/笔记/page/5/">&laquo; prev</a><a class="page-number" href="/categories/笔记/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/笔记/page/4/">4</a><a class="page-number" href="/categories/笔记/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/categories/笔记/page/7/">7</a><a class="page-number" href="/categories/笔记/page/8/">8</a><a class="extend next" rel="next" href="/categories/笔记/page/7/">next &raquo;</a>
   </nav>
 
 
@@ -430,6 +430,10 @@
       <ul>
         
           <li>
+            <a href="/2020/JS-ES6-Symbol/">Symbol() 是个什么东西?</a>
+          </li>
+        
+          <li>
             <a href="/2020/raspberrypi-01-setup/">📟 树莓派 4B(2GB RAM) 开箱记录</a>
           </li>
         
@@ -443,10 +447,6 @@
         
           <li>
             <a href="/2020/vue-v-bind-props-camel-sync/">VueJS中 v-bind 的一些修饰符</a>
-          </li>
-        
-          <li>
-            <a href="/2020/vue-api-ref/">Vue 使用 ref 注册组件的特性</a>
           </li>
         
       </ul>

@@ -48,6 +48,45 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/JS-ES6-Symbol/">Symbol() 是个什么东西?</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>最近在一些 Demo 中经常会看到 <code>Symbol()</code> 这个东西，例如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> race = &#123;</span><br><span class="line">  protoss: <span class="built_in">Symbol</span>(),</span><br><span class="line">  terran: <span class="built_in">Symbol</span>(),</span><br><span class="line">  zerg: <span class="built_in">Symbol</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就只能记得大概了，就是赋值一个独特的值，但是这个值具体是什么我想不起来了。<br>所以还是记个笔记加深下印象，省的看了又忘。</p>
+<blockquote>
+<p>ES6 引入了一种新的原始数据类型<code>Symbol</code>，表示独一无二的值。它是 JavaScript 语言的第七种数据类型</p>
+</blockquote>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2020/JS-ES6-Symbol/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2020-11-21T15:44:47.000Z" itemprop="datePublished">Nov 21</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RaspberryPi/">RaspberryPi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
 
       
@@ -360,41 +399,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MockJS/">MockJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未完成/">未完成</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-use-mockjs/">在项目中使用 MockJS 生成虚拟数据</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>今天本来想写一篇关于按照测试数据生成本地模拟 <code>REST API</code> 和接口文档的文章，<br>但是在使用 <code>MockJS</code> 的时候遇到了问题。</p>
-<p>我想先使用 <code>MockJS</code> 生成模拟数据然后生成成一个 <code>.json</code> 文件，然后使用 <code>handleBars</code> 模板去生成接口文档。</p>
-<p>但是在生成模拟数据的时候出现了问题，并且我想使用 <code>MockJS</code> 的 <code>TimeOut</code> 属性去延时返回数据。<br>但是经过一番折腾效果并不理想，所以先整理一下关于 <code>MockJS</code> 的东西，然后再写生成文档的部分。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-use-mockjs/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-03-25T07:47:53.000Z" itemprop="datePublished">Mar 25</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -402,7 +406,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/categories/笔记/page/2/">2</a><a class="page-number" href="/categories/笔记/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/笔记/page/7/">7</a><a class="extend next" rel="next" href="/categories/笔记/page/2/">next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/categories/笔记/page/2/">2</a><a class="page-number" href="/categories/笔记/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/笔记/page/8/">8</a><a class="extend next" rel="next" href="/categories/笔记/page/2/">next &raquo;</a>
   </nav>
 
 
@@ -433,6 +437,10 @@
       <ul>
         
           <li>
+            <a href="/2020/JS-ES6-Symbol/">Symbol() 是个什么东西?</a>
+          </li>
+        
+          <li>
             <a href="/2020/raspberrypi-01-setup/">📟 树莓派 4B(2GB RAM) 开箱记录</a>
           </li>
         
@@ -446,10 +454,6 @@
         
           <li>
             <a href="/2020/vue-v-bind-props-camel-sync/">VueJS中 v-bind 的一些修饰符</a>
-          </li>
-        
-          <li>
-            <a href="/2020/vue-api-ref/">Vue 使用 ref 注册组件的特性</a>
           </li>
         
       </ul>
