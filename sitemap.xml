@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/design-pattern-learning-L00/</loc>
+    
+    <lastmod>2020-11-24T17:06:20.044Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/JS-type-and-status-management-dictionary/</loc>
+    
+    <lastmod>2020-11-24T16:57:56.044Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/2020/summary-at-the-end-of-2019/</loc>
+    
+    <lastmod>2020-11-24T16:14:55.246Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/JS-ES6-Symbol/</loc>
     
     <lastmod>2020-11-21T18:01:34.003Z</lastmod>
@@ -156,14 +177,14 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary12/</loc>
     
     <lastmod>2020-07-14T01:05:10.115Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary12/</loc>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
     
     <lastmod>2020-07-14T01:05:10.115Z</lastmod>
     
@@ -229,13 +250,6 @@
     <loc>https://yogwang.site/2020/digitalocean-created-droplets-add-ssh-key/</loc>
     
     <lastmod>2020-06-13T19:04:57.396Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/summary-at-the-end-of-2019/</loc>
-    
-    <lastmod>2020-06-03T02:21:09.576Z</lastmod>
     
   </url>
   

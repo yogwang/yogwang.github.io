@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2020/design-pattern-learning-L00/</loc>
+    <lastmod>2020-11-24</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/JS-type-and-status-management-dictionary/</loc>
+    <lastmod>2020-11-24</lastmod>
+  </url>  <url>
+    <loc>https://yogwang.site/2020/summary-at-the-end-of-2019/</loc>
+    <lastmod>2020-11-24</lastmod>
+  </url>  <url>
     <loc>https://yogwang.site/2020/JS-ES6-Symbol/</loc>
     <lastmod>2020-11-21</lastmod>
   </url>  <url>
@@ -67,10 +76,10 @@
     <loc>https://yogwang.site/2019/jeecg-boot-devDiary08/</loc>
     <lastmod>2020-07-14</lastmod>
   </url>  <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary12/</loc>
     <lastmod>2020-07-14</lastmod>
   </url>  <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary12/</loc>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
     <lastmod>2020-07-14</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/jeecg-boot-devDiary04/</loc>
@@ -99,9 +108,6 @@
   </url>  <url>
     <loc>https://yogwang.site/2020/digitalocean-created-droplets-add-ssh-key/</loc>
     <lastmod>2020-06-13</lastmod>
-  </url>  <url>
-    <loc>https://yogwang.site/2020/summary-at-the-end-of-2019/</loc>
-    <lastmod>2020-06-03</lastmod>
   </url>  <url>
     <loc>https://yogwang.site/2019/Electron01-Electron-quick-start/</loc>
     <lastmod>2020-06-03</lastmod>
