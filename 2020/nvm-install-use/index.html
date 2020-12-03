@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>NVM 的安装和使用 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend">
+  <meta name="description" content="Here is my blog, my notes and some thoughts">
+  <meta name="author" content="YogWang">
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U">
+  
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="sign" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <main id="container">
+  <div
+  id="post-nvm-install-use"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2020-07-15T08:40:22.000Z" itemprop="datePublished">2020-07-15</time>
+</p> 
+    </div>
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      NVM 的安装和使用
+    </h1>
+  
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>今天后端同学那边遇到了一个问题，那边跑一个react项目，<code>npm install</code> 直接报错，但是在我这边并没有报异常，后来发现他的 NPM 版本为 <code>3.10.10</code>， 我猜测是 NPM 版本太低的缘故，就顺便看了下 Node 的版本，版本是 <code>v6.10.0</code>, 所以直接给他更新了 NodeJS，正当我以为问题解决了的时候，后端同学又和我说，现在的项目可以跑起来了，但是之前的项目他跑不起来了。</p>
+<p>emmmm…..我又过去看了下报错信息，这会问题是 Node 给我更新掉了，版本太高项目跑不起来了….<br>所以，有了这篇关于 Node Version Manager (NVM) for Windows 的文章</p>
+<a id="more"></a>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>NVM 安装很简单，直接去Github上边找 <code>nvm-windows</code> 的 <a href="https://github.com/coreybutler/nvm-windows/releases" target="_blank" rel="noopener">releases</a>，直接下载最新那版的zip就可以了。有免安装和安装版可以选择(我选择了安装版)。</p>
+<p>安装过程中选择一下 NVM 安装目录以及之后 NodeJS 的管理目录。</p>
+<p><img src="https://yogwang.site/2020/nvm-install-use/install.jpg" alt="选择目录"></p>
+<p>之前有安装 NodeJS 记得指定到之前安装的目录下，就可以使用 NVM 管理之前安装的Node版本了。<br>如果是NodeJS使用的是绿色版的话，之后可能需要使用NVM 重新下载安装。</p>
+<p>然后就等待安装完成就可以了。<br>完成之后在终端输入 <code>nvm</code> 检查版本确认是否安装成功(当前版本1.1.7)</p>
+<p><img src="https://yogwang.site/2020/nvm-install-use/check.jpg" alt="检查版本"></p>
+<hr>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
+<li><p><strong>查看 NVM 下已经安装的 Node 版本号</strong><br>显示当前已安装 Node 版本列表，缩写为 <code>ls</code>， 当前使用的版本会在前标识 <code>*</code> ，<br>在末尾加上 <code>available</code> 显示可供下载的所有版本列表</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\yog\Desktop&gt; nvm list // 简写为 nvm ls</span><br><span class="line">    <span class="number">14</span>.<span class="number">5</span>.<span class="number">0</span></span><br><span class="line">  * <span class="number">12</span>.<span class="number">12</span>.<span class="number">0</span> (Currently using <span class="number">64</span>-bit executable)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>切换到指定的 Node 版本</strong></p>
+<blockquote>
+<p><code>nvm use [version] [arch]</code></p>
+</blockquote>
+<p>一般先使用 <code>nvm ls</code> 输出已经安装的版本，然后再根据可选项切换版本。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\yog\Desktop&gt; nvm use <span class="number">12</span>.<span class="number">12</span>.<span class="number">0</span> // 具体版本号</span><br><span class="line">Now using node v12.<span class="number">12</span>.<span class="number">0</span> (<span class="number">64</span>-bit)</span><br></pre></td></tr></table></figure>
+
+<p>设置 <code>[arch]</code> 可指定 32/64位结构。<br>如果不填版本号只填写 32( <code>nvm use 32</code> )将继续使用当前Node版本，只切换到32位模式。</p>
+</li>
+<li><p><strong>安装指定版本的Node</strong></p>
+<blockquote>
+<p><code>nvm install &lt;version&gt; [arch]</code></p>
+</blockquote>
+<p><code>&lt;version&gt;</code> 可以是 <code>具体版本号</code> 也可以是 <code>latest</code> 来安装最新的 <strong>稳定</strong> 版本，<br><code>[arch]</code> 指定安装 32位 还是 64位 版本（默认为系统结构）， 设置为 <code>all</code> 以同时安装32和64位版本。 </p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\yog\Desktop&gt; nvm install <span class="number">6</span>.<span class="number">10</span>.<span class="number">0</span></span><br><span class="line">Downloading node.js version <span class="number">6</span>.<span class="number">10</span>.<span class="number">0</span> (<span class="number">64</span>-bit)...</span><br><span class="line">Complete</span><br><span class="line">Downloading npm version <span class="number">3</span>.<span class="number">10</span>.<span class="number">10</span>... Complete</span><br><span class="line">Installing npm v3.<span class="number">10</span>.<span class="number">10</span>...</span><br><span class="line"></span><br><span class="line">Installation complete. <span class="keyword">If</span> you want to use this version, <span class="built_in">type</span></span><br><span class="line"></span><br><span class="line">nvm use <span class="number">6</span>.<span class="number">10</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以在末尾添加 <code>--insecure</code> 可以绕过远程下载服务器的SSL验证。</p>
+</li>
+<li><p><strong>卸载指定Node版本</strong></p>
+<blockquote>
+<p><code>nvm uninstall &lt;version&gt;</code></p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\yog\Desktop&gt; nvm uninstall <span class="number">6</span>.<span class="number">10</span>.<span class="number">0</span></span><br><span class="line">Uninstalling node v6.<span class="number">10</span>.<span class="number">0</span>... done</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查看所有可安装的Node版本</strong></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\yog\Desktop&gt; nvm ls available</span><br><span class="line"></span><br><span class="line">|   CURRENT    |     LTS      |  OLD STABLE  | OLD UNSTABLE |</span><br><span class="line">|--------------|--------------|--------------|--------------|</span><br><span class="line">|    <span class="number">14</span>.<span class="number">7</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">18</span>.<span class="number">3</span>    |   <span class="number">0</span>.<span class="number">12</span>.<span class="number">18</span>    |   <span class="number">0</span>.<span class="number">11</span>.<span class="number">16</span>    |</span><br><span class="line">|    <span class="number">14</span>.<span class="number">6</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">18</span>.<span class="number">2</span>    |   <span class="number">0</span>.<span class="number">12</span>.<span class="number">17</span>    |   <span class="number">0</span>.<span class="number">11</span>.<span class="number">15</span>    |</span><br><span class="line">|    <span class="number">14</span>.<span class="number">5</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">18</span>.<span class="number">1</span>    |   <span class="number">0</span>.<span class="number">12</span>.<span class="number">16</span>    |   <span class="number">0</span>.<span class="number">11</span>.<span class="number">14</span>    |</span><br><span class="line">|    <span class="number">14</span>.<span class="number">4</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">18</span>.<span class="number">0</span>    |   <span class="number">0</span>.<span class="number">12</span>.<span class="number">15</span>    |   <span class="number">0</span>.<span class="number">11</span>.<span class="number">13</span>    |</span><br><span class="line">|    <span class="number">14</span>.<span class="number">3</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">17</span>.<span class="number">0</span>    |   <span class="number">0</span>.<span class="number">12</span>.<span class="number">14</span>    |   <span class="number">0</span>.<span class="number">11</span>.<span class="number">12</span>    |</span><br><span class="line">|    <span class="number">14</span>.<span class="number">2</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">16</span>.<span class="number">3</span>    |   <span class="number">0</span>.<span class="number">12</span>.<span class="number">13</span>    |   <span class="number">0</span>.<span class="number">11</span>.<span class="number">11</span>    |</span><br><span class="line">|    <span class="number">14</span>.<span class="number">1</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">16</span>.<span class="number">2</span>    |   <span class="number">0</span>.<span class="number">12</span>.<span class="number">12</span>    |   <span class="number">0</span>.<span class="number">11</span>.<span class="number">10</span>    |</span><br><span class="line">|    <span class="number">14</span>.<span class="number">0</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">16</span>.<span class="number">1</span>    |   <span class="number">0</span>.<span class="number">12</span>.<span class="number">11</span>    |    <span class="number">0</span>.<span class="number">11</span>.<span class="number">9</span>    |</span><br><span class="line">|   <span class="number">13</span>.<span class="number">14</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">16</span>.<span class="number">0</span>    |   <span class="number">0</span>.<span class="number">12</span>.<span class="number">10</span>    |    <span class="number">0</span>.<span class="number">11</span>.<span class="number">8</span>    |</span><br><span class="line">|   <span class="number">13</span>.<span class="number">13</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">15</span>.<span class="number">0</span>    |    <span class="number">0</span>.<span class="number">12</span>.<span class="number">9</span>    |    <span class="number">0</span>.<span class="number">11</span>.<span class="number">7</span>    |</span><br><span class="line">|   <span class="number">13</span>.<span class="number">12</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">14</span>.<span class="number">1</span>    |    <span class="number">0</span>.<span class="number">12</span>.<span class="number">8</span>    |    <span class="number">0</span>.<span class="number">11</span>.<span class="number">6</span>    |</span><br><span class="line">|   <span class="number">13</span>.<span class="number">11</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">14</span>.<span class="number">0</span>    |    <span class="number">0</span>.<span class="number">12</span>.<span class="number">7</span>    |    <span class="number">0</span>.<span class="number">11</span>.<span class="number">5</span>    |</span><br><span class="line">|   <span class="number">13</span>.<span class="number">10</span>.<span class="number">1</span>    |   <span class="number">12</span>.<span class="number">13</span>.<span class="number">1</span>    |    <span class="number">0</span>.<span class="number">12</span>.<span class="number">6</span>    |    <span class="number">0</span>.<span class="number">11</span>.<span class="number">4</span>    |</span><br><span class="line">|   <span class="number">13</span>.<span class="number">10</span>.<span class="number">0</span>    |   <span class="number">12</span>.<span class="number">13</span>.<span class="number">0</span>    |    <span class="number">0</span>.<span class="number">12</span>.<span class="number">5</span>    |    <span class="number">0</span>.<span class="number">11</span>.<span class="number">3</span>    |</span><br><span class="line">|    <span class="number">13</span>.<span class="number">9</span>.<span class="number">0</span>    |   <span class="number">10</span>.<span class="number">22</span>.<span class="number">0</span>    |    <span class="number">0</span>.<span class="number">12</span>.<span class="number">4</span>    |    <span class="number">0</span>.<span class="number">11</span>.<span class="number">2</span>    |</span><br><span class="line">|    <span class="number">13</span>.<span class="number">8</span>.<span class="number">0</span>    |   <span class="number">10</span>.<span class="number">21</span>.<span class="number">0</span>    |    <span class="number">0</span>.<span class="number">12</span>.<span class="number">3</span>    |    <span class="number">0</span>.<span class="number">11</span>.<span class="number">1</span>    |</span><br><span class="line">|    <span class="number">13</span>.<span class="number">7</span>.<span class="number">0</span>    |   <span class="number">10</span>.<span class="number">20</span>.<span class="number">1</span>    |    <span class="number">0</span>.<span class="number">12</span>.<span class="number">2</span>    |    <span class="number">0</span>.<span class="number">11</span>.<span class="number">0</span>    |</span><br><span class="line">|    <span class="number">13</span>.<span class="number">6</span>.<span class="number">0</span>    |   <span class="number">10</span>.<span class="number">20</span>.<span class="number">0</span>    |    <span class="number">0</span>.<span class="number">12</span>.<span class="number">1</span>    |    <span class="number">0</span>.<span class="number">9</span>.<span class="number">12</span>    |</span><br><span class="line">|    <span class="number">13</span>.<span class="number">5</span>.<span class="number">0</span>    |   <span class="number">10</span>.<span class="number">19</span>.<span class="number">0</span>    |    <span class="number">0</span>.<span class="number">12</span>.<span class="number">0</span>    |    <span class="number">0</span>.<span class="number">9</span>.<span class="number">11</span>    |</span><br><span class="line">|    <span class="number">13</span>.<span class="number">4</span>.<span class="number">0</span>    |   <span class="number">10</span>.<span class="number">18</span>.<span class="number">1</span>    |   <span class="number">0</span>.<span class="number">10</span>.<span class="number">48</span>    |    <span class="number">0</span>.<span class="number">9</span>.<span class="number">10</span>    |</span><br><span class="line"></span><br><span class="line">This is a partial list. <span class="keyword">For</span> a complete list, visit https://nodejs.org/download/release</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h2><ol>
+<li><p><code>nvm arch</code>                 查看 Node 当前运行32位还是64位模式。</p>
+</li>
+<li><p><code>nvm on</code>                   开启 NVM 版本管理.</p>
+</li>
+<li><p><code>nvm off</code>                  关闭 NVM 版本管理.</p>
+</li>
+<li><p><code>nvm proxy [url]</code>          设置用于下载的代理。将 [url] 留空查看当前设置的代理，将 <code>[url]</code> 设置为 “none” 来删除代理。</p>
+</li>
+<li><p><code>nvm node_mirror [url]</code>    设置节点镜像。默认为 <a href="https://nodejs.org/dist/，将" target="_blank" rel="noopener">https://nodejs.org/dist/，将</a> <code>[url]</code> 留空 以使用 默认url</p>
+</li>
+<li><p><code>nvm npm_mirror [url]</code>     设置 NPM 镜像。默认为<a href="https://github.com/npm/cli/archive/，将" target="_blank" rel="noopener">https://github.com/npm/cli/archive/，将</a> <code>[url]</code> 留空 保留为 默认url。</p>
+</li>
+<li><p><code>nvm root [path]</code>          设置 NVM 不同版本的 Node.js 的存储目录，如果 <code>[path]</code> 留空，将显示当前设置的存储目录。</p>
+</li>
+<li><p><code>nvm version</code>              显示当前 NVM 运行版本。 缩写 <code>v</code>。</p>
+</li>
+</ol>
+<hr>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
+<li><h3 id="安装完成之后使用-nvm-ls-没有看到之前已经安装的NodeJS版本"><a href="#安装完成之后使用-nvm-ls-没有看到之前已经安装的NodeJS版本" class="headerlink" title="安装完成之后使用 nvm ls 没有看到之前已经安装的NodeJS版本"></a>安装完成之后使用 <code>nvm ls</code> 没有看到之前已经安装的NodeJS版本</h3>我在使用的过程中没有遇到这个问题，但是同事在安装之后遇到了，这个问题。有可能是因为安装时指定的Node目录错误了，可以卸载之前安装的 NodeJS，然后使用 <code>nvm install &lt;version&gt;</code> 重新安装对应版本的 NodeJS</li>
+</ul>
+<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
+<li><a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="noopener">nvm-windows - Github</a></li>
+</ul>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a href="/2020/JS-array-fill/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          ES6 中 Array 的 fill() 方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/JS-slider-captcha/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">简单实现滑动滑块完成验证</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+
+
+</main>
+<aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/design-pattern-learning-L00/">「 设计模式学习 」 L00 开坑贴 &amp; 设计模式概览</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-type-and-status-management-dictionary/">项目中的类型和状态管理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-ES6-Symbol/">Symbol() 是个什么东西?</a>
+          </li>
+        
+          <li>
+            <a href="/2020/raspberrypi-01-setup/">📟 树莓派 4B(2GB RAM) 开箱记录</a>
+          </li>
+        
+          <li>
+            <a href="/2020/vue-coding-style-and-lint/">聊一下自己 VueJS 项目的编码习惯和风格</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handlebars/">Handlebars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON-Server/">JSON-Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MockJS/">MockJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  <span>
+    &copy;2019-2020 YogWang powered_by
+    <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </span>
+  <br />
+  <span
+    >licensed
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
+      >CC BY-NC 4.0</a
+    ></span
+  >
+</footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
+  </body>
+</html>

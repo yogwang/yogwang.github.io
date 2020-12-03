@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Js对象 调整属性排序是否有意义 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend">
+  <meta name="description" content="Here is my blog, my notes and some thoughts">
+  <meta name="author" content="YogWang">
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U">
+  
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="sign" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <main id="container">
+  <div
+  id="post-JS-Object-attribute-sort"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2020-01-03T04:36:41.000Z" itemprop="datePublished">2020-01-03</time>
+</p> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+    </div>
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Js对象 调整属性排序是否有意义
+    </h1>
+  
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>年会终于结束了，忙了一个月，终于可以开始填坑了。</p>
+<p>昨天把之前写了一半的 <a href="/2019/JS-navigation-detection/">滚动侦测导航</a> 给写完了。</p>
+<p>写的途中就有在思考 对象属性的排序问题，</p>
+<p>最开始我是直接用数组的下标作为年份，输出的时候会出现一堆空白 item，</p>
+<p>然后改成赋值给一个 <code>timeline</code> 对象，以年为属性名，月份为内部数组元素</p>
+<p>但是循环输出内容的时候就发现会按照正序的方式去输出属性。<br>比如我整理好的数据为</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> timeline = &#123;</span><br><span class="line">  <span class="string">"2020"</span>: [<span class="string">"01"</span>],</span><br><span class="line">  <span class="string">"2019"</span>: [<span class="string">"12"</span>, <span class="string">"11"</span>, <span class="string">"10"</span>, <span class="string">"09"</span>, <span class="string">"08"</span>, <span class="string">"07"</span>, <span class="string">"06"</span>, <span class="string">"05"</span>, <span class="string">"04"</span>, <span class="string">"03"</span>, <span class="string">"02"</span>, <span class="string">"01"</span>],</span><br><span class="line">  <span class="string">"2018"</span>: [<span class="string">"12"</span>, <span class="string">"11"</span>, <span class="string">"10"</span>, <span class="string">"09"</span>]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>那么我使用 Vue 的 <code>v-for</code> 循环输出的时候，其实是从 <code>2018</code> 开始的，配合 <code>flex</code> 布局是达到了效果，但是使用 Js 去滚动的时候出现了问题。<br>自己也思考了很久，最后还是用数组的方式去实现了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> timeline = [</span><br><span class="line">  &#123; <span class="attr">year</span>: <span class="string">"2020"</span>, <span class="attr">months</span>: [<span class="string">"01"</span>] &#125;,</span><br><span class="line">  &#123; <span class="attr">year</span>: <span class="string">"2019"</span>, <span class="attr">months</span>: [<span class="string">"12"</span>, <span class="string">"11"</span>, <span class="string">"10"</span>, <span class="string">"09"</span>, <span class="string">"08"</span>, <span class="string">"07"</span>, <span class="string">"06"</span>, <span class="string">"05"</span>, <span class="string">"04"</span>, <span class="string">"03"</span>, <span class="string">"02"</span>, <span class="string">"01"</span>]&#125;,</span><br><span class="line">  &#123; <span class="attr">year</span>: <span class="string">"2020"</span>, <span class="attr">months</span>: [<span class="string">"12"</span>, <span class="string">"11"</span>, <span class="string">"10"</span>, <span class="string">"09"</span>] &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>方式二</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> timeline = [</span><br><span class="line">  [<span class="string">"2020"</span>, [<span class="string">"01"</span>]],</span><br><span class="line">  [<span class="string">"2019"</span>, [<span class="string">"12"</span>, <span class="string">"11"</span>, <span class="string">"10"</span>, <span class="string">"09"</span>, <span class="string">"08"</span>, <span class="string">"07"</span>, <span class="string">"06"</span>, <span class="string">"05"</span>, <span class="string">"04"</span>, <span class="string">"03"</span>, <span class="string">"02"</span>, <span class="string">"01"</span>]],</span><br><span class="line">  [<span class="string">"2020"</span>, [<span class="string">"12"</span>, <span class="string">"11"</span>, <span class="string">"10"</span>, <span class="string">"09"</span>]]</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>这种方式也行，而且代码更简洁，判断是否是新的一年时也方便很多。<br>但是我觉得写 demo 这样可能不够明了还是用了数组包对象的方式来做。</p>
+<p>然后昨天夜里刚填完坑，今天上午就有人在群里问对象的属性排序的问题。</p>
+<p><img src="https://yogwang.site/2020/JS-Object-attribute-sort/q.jpg" alt="聊天截图"></p>
+<p>正巧别人也有这个疑问，我就接着琢磨了。</p>
+<p>然后在 segmentfault 上找到了一样的问题 <a href="https://segmentfault.com/q/1010000014373117" target="_blank" rel="noopener">Js 中如何调换对象属性的位置</a>。</p>
+<p>里边直接就有人提到了 <strong>意义何在</strong></p>
+<h4 id="详细的回答"><a href="#详细的回答" class="headerlink" title="详细的回答"></a>详细的回答</h4><blockquote>
+<p>dablwow80：<br>object 是无序的，看起来像添加顺序也不是稳定的，所以你改变 key 的“顺序”，以及利用这个“顺序”执行一些逻辑，都是不稳定的</p>
+</blockquote>
+<p>具体原因我在大佬群里问了一下。</p>
+<blockquote>
+<p><code>object</code> 作为 <code>javascript</code> 的一种数据存储格式，采用哈希表的存取方式，而 <code>hashmap</code> 是不保证属性顺序的</p>
+</blockquote>
+<p>基本可以理解为 <em>object 数据存储是没有顺序的</em></p>
+<p>所以，在对有数据顺序有要求的场景下，应该避免使用 object 来存取数据，尽量用 array 来替代。<br>如果可以运用 <a href="/2020/JS-ES6-MAP/">Map 结构</a> 来存储就可以自定义的顺序来使用。</p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a href="/2020/How-to-make-GithubPage-included-by-Baidu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          如何让百度收录自己的Github Pages
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/CSS-striped-background/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">CSS 实现条纹背景</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+
+
+</main>
+<aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/design-pattern-learning-L00/">「 设计模式学习 」 L00 开坑贴 &amp; 设计模式概览</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-type-and-status-management-dictionary/">项目中的类型和状态管理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-ES6-Symbol/">Symbol() 是个什么东西?</a>
+          </li>
+        
+          <li>
+            <a href="/2020/raspberrypi-01-setup/">📟 树莓派 4B(2GB RAM) 开箱记录</a>
+          </li>
+        
+          <li>
+            <a href="/2020/vue-coding-style-and-lint/">聊一下自己 VueJS 项目的编码习惯和风格</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handlebars/">Handlebars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON-Server/">JSON-Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MockJS/">MockJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  <span>
+    &copy;2019-2020 YogWang powered_by
+    <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </span>
+  <br />
+  <span
+    >licensed
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
+      >CC BY-NC 4.0</a
+    ></span
+  >
+</footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
+  </body>
+</html>

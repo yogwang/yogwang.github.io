@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Jeecg-boot 开发挖坑日记09 AntD 表单校验 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend">
+  <meta name="description" content="Here is my blog, my notes and some thoughts">
+  <meta name="author" content="YogWang">
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U">
+  
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="sign" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <main id="container">
+  <div
+  id="post-jeecg-boot-devDiary09"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2020-01-09T03:20:11.000Z" itemprop="datePublished">2020-01-09</time>
+</p> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+    </div>
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Jeecg-boot 开发挖坑日记09 AntD 表单校验
+    </h1>
+  
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>之前开发的时间比较赶，所以在某些还没弄明白的地方我直接使用了 <code>v-model</code> 来绑定数据，没并没有使用 <code>v-decorator</code>，所以表单验证需要自己手动去写，异常提示也是需要单独的去做，</p>
+<p>现在空下来了，重新整理了一下业务代码，总的来说大部分的表单元素都有demo可以对照着看，复杂的部分也只是上传组件或者一些联动的部分。</p>
+<a id="more"></a>
+<h2 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h2><p>使用 <code>this.$form.createForm()</code> 创建的收集器，可以通过 <code>validateFields</code> 和 <code>validateFieldsAndScroll</code> 这两个api对收集器进行<a href="https://www.antdv.com/components/form-cn/#validateFields/validateFieldsAndScroll" target="_blank" rel="noopener">数据校验</a>，当然需要提前在 <code>form-item</code> 中配置<a href="https://www.antdv.com/components/form-cn/#%E6%A0%A1%E9%AA%8C%E8%A7%84%E5%88%99" target="_blank" rel="noopener">校验规则</a>。</p>
+<h5 id="配置校验规则"><a href="#配置校验规则" class="headerlink" title="配置校验规则"></a>配置校验规则</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a-form-item</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a-input</span></span></span><br><span class="line"><span class="tag">    <span class="attr">v-decorator</span>=<span class="string">"['email',&#123; </span></span></span><br><span class="line"><span class="tag"><span class="string">      rules: [</span></span></span><br><span class="line"><span class="tag"><span class="string">          &#123; required: true, message: '请输入您的电子邮箱!' &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="string">          &#123; type: 'email', message: '请输入正确的电子邮箱号!' &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="string">      ],</span></span></span><br><span class="line"><span class="tag"><span class="string">    &#125;]"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">placeholder</span>=<span class="string">"您的电子邮箱</span></span></span><br><span class="line"><span class="tag"><span class="string">  &gt;</span></span></span><br><span class="line"><span class="tag"><span class="string">    &lt;a-icon slot="</span><span class="attr">prefix</span>" <span class="attr">type</span>=<span class="string">"mail"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">a-input</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a-form-item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="表单校验"><a href="#表单校验" class="headerlink" title="表单校验"></a>表单校验</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">  <span class="comment">// 保存</span></span><br><span class="line">  handleSubmit() &#123;</span><br><span class="line">    <span class="comment">// 触发表单验证</span></span><br><span class="line">    <span class="keyword">this</span>.form.validateFields([<span class="string">'email'</span>, <span class="string">'password'</span>],(err, values) =&gt; &#123;</span><br><span class="line">      <span class="comment">// ['email', 'password'] 是需要校验的字段名</span></span><br><span class="line">      ...</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 保存</span></span><br><span class="line">  handleSubmit() &#123;</span><br><span class="line">    <span class="comment">// 触发表单验证</span></span><br><span class="line">    <span class="keyword">this</span>.form.validateFields(,(err, values) =&gt; &#123;</span><br><span class="line">      <span class="comment">// 也可以直接省略 [fieldNames] 校验全部数据</span></span><br><span class="line">      ...</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样每次在提交表单时就会触发数据校验，并且在 <code>err</code> 中会返回错误信息，<code>values</code>中返回校验过的数据，搭配 <code>if(!err)</code> 就可以完成业务操作了。</p>
+<h2 id="头像上传组件"><a href="#头像上传组件" class="headerlink" title="头像上传组件"></a>头像上传组件</h2><p>使用 <code>Upload</code> 组件的 <code>picture-card</code> 模式来作为头像上传组件，在@change事件中对 <code>form</code> 进行 <code>setFieldsValue</code> 来赋值给 <code>a-input:hidden</code> 这样就可以进行校验和返回值了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;a-form :form=&quot;form&quot; @submit.prevent=&quot;handleSubmit&quot;&gt;</span><br><span class="line">    &lt;a-form-item&gt;</span><br><span class="line">      &lt;a-upload</span><br><span class="line">        listType=&quot;picture-card&quot;</span><br><span class="line">        class=&quot;avatar-uploader&quot;</span><br><span class="line">        :headers=&quot;headers&quot;</span><br><span class="line">        :showUploadList=&quot;false&quot;</span><br><span class="line">        :action=&quot;uploadURL&quot;</span><br><span class="line">        :beforeUpload=&quot;beforeUpload&quot;</span><br><span class="line">        @change=&quot;handleChange&quot;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;img v-if=&quot;avatar&quot; :src=&quot;avatar&quot; alt=&quot;avatar&quot; style=&quot;width:100%;&quot; /&gt;</span><br><span class="line">        &lt;div v-else&gt;</span><br><span class="line">          &lt;a-icon :type=&quot;loading ? &apos;loading&apos; : &apos;plus&apos;&quot; /&gt;</span><br><span class="line">          &lt;div class=&quot;ant-upload-text&quot;&gt;Upload&lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/a-upload&gt;</span><br><span class="line">      &lt;a-input type=&quot;hidden&quot; v-decorator=&quot;[&apos;avatar&apos;, validatorRules.avatar]&quot; /&gt;</span><br><span class="line">    &lt;/a-form-item&gt;</span><br><span class="line">    &lt;a-form-item&gt;</span><br><span class="line">      &lt;a-button type=&quot;primary&quot; html-type=&quot;submit&quot; block&gt;保存&lt;/a-button&gt;</span><br><span class="line">    &lt;/a-form-item&gt;</span><br><span class="line">  &lt;/a-form&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;UserInfoEdit&apos;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      avatar: &apos;&apos;,</span><br><span class="line">      loading: false,</span><br><span class="line">      validatorRules: &#123;</span><br><span class="line">        avatar: &#123;</span><br><span class="line">          rules: [&#123; required: true, message: &apos;请上传头像!&apos; &#125;]</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      form: this.$form.createForm(this),</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    // 头像上传前检查</span><br><span class="line">    beforeUpload(file) &#123;</span><br><span class="line">      const isLt2M = file.size / 1024 / 1024 &lt; 2</span><br><span class="line">      if (!isLt2M) &#123;</span><br><span class="line">        this.$message.error(&apos;图片最大限制为2MB！&apos;)</span><br><span class="line">      &#125;</span><br><span class="line">      return isLt2M</span><br><span class="line">    &#125;,</span><br><span class="line">    // 头像修改</span><br><span class="line">    handleChange(info) &#123;</span><br><span class="line">      if (info.file.status === &apos;uploading&apos;) &#123;</span><br><span class="line">        this.loading = true</span><br><span class="line">        return</span><br><span class="line">      &#125;</span><br><span class="line">      if (info.file.status === &apos;done&apos;) &#123;</span><br><span class="line">        this.form.setFieldsValue(&#123; avatar: info.file.response.url &#125;) // 短链接提交给后端的数据</span><br><span class="line">        this.avatar = info.file.response.thumbUrl // 赋值给展示链接展示链接</span><br><span class="line">        this.loading = false</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 保存</span><br><span class="line">    handleSubmit() &#123;</span><br><span class="line">      // 触发表单验证</span><br><span class="line">      this.form.validateFields((err, values) =&gt; &#123;</span><br><span class="line">        if (!err) &#123;</span><br><span class="line">          // 具体业务代码</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当然也可以直接绑定在 <code>Upload</code> 组件上，我只是偷个懒不想再在验证之后去修改数据了。</p>
+<h2 id="动态校验规则"><a href="#动态校验规则" class="headerlink" title="动态校验规则"></a>动态校验规则</h2><p>比如说，可以修改上传数量限制。这个时候直接修改规则并不会直接重新验证，需要重新修改数据之后才会再次校验。</p>
+<ul>
+<li>如果动态校验，需要校验的时候在 option 中加上 <code>{ force: true }</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 伪代码片段</span></span><br><span class="line">methods:&#123;</span><br><span class="line">  <span class="comment">// 保存</span></span><br><span class="line">  handleSubmit() &#123;</span><br><span class="line">    <span class="comment">// 触发表单验证</span></span><br><span class="line">    <span class="keyword">this</span>.form.validateFields(&#123; <span class="attr">force</span>: <span class="literal">true</span> &#125;,(err, values) =&gt; &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="一个FormItem中多个被装饰过的表单元素"><a href="#一个FormItem中多个被装饰过的表单元素" class="headerlink" title="一个FormItem中多个被装饰过的表单元素"></a>一个FormItem中多个被装饰过的表单元素</h2><p><img src="https://yogwang.site/2020/jeecg-boot-devDiary09/FormItemMoreChild.jpg" alt="多个子元素"><br>有时候会遇到这样的的情况，在一个FormItem中有多个Input或者Select联动。</p>
+<p>如果只是使用 <code>v-decorator</code> 来装饰会有警告提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: [antdv: Form.Item] Cannot generate `validateStatus` and `help` automatically, while there are more than one `getFieldDecorator` in it.`</span><br></pre></td></tr></table></figure>
+
+<p>反正就是 <em>一个 Form.Item 建议只放一个被 getFieldDecorator 或 v-decorator 装饰过的 child</em><br>如果存在多个就需要自己配置 <code>help</code>, <code>required</code>, <code>validateStatus</code>，这点可以在 <a href="https://www.antdv.com/components/form-cn/#Form.Item" target="_blank" rel="noopener">API文档</a> 中看到。</p>
+<p>如何配置呢？附一个伪代码例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;a-form :form=&quot;form&quot;&gt;</span><br><span class="line">    &lt;a-form-item</span><br><span class="line">      :labelCol=&quot;labelCol&quot;</span><br><span class="line">      :wrapperCol=&quot;wrapperCol&quot;</span><br><span class="line">      label=&quot;地址&quot;</span><br><span class="line">      :help=&quot;help&quot;</span><br><span class="line">      :validateStatus=&quot;validateStatus&quot;</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;a-input-group compact&gt;</span><br><span class="line">        &lt;a-select</span><br><span class="line">          style=&quot;width:33%&quot;</span><br><span class="line">          placeholder=&quot; - &quot;</span><br><span class="line">          v-decorator=&quot;[&apos;provinceId&apos;, validatorRules.provinceId]&quot;</span><br><span class="line">          @change=&quot;handleCityChange&quot;</span><br><span class="line">        &gt;</span><br><span class="line">          &lt;a-spin v-if=&quot;regionList.province.fetch&quot; slot=&quot;notFoundContent&quot; size=&quot;small&quot; /&gt;</span><br><span class="line">          &lt;a-select-option</span><br><span class="line">            v-for=&quot;i in regionList.province.list&quot;</span><br><span class="line">            :key=&quot;i.id&quot;</span><br><span class="line">            :title=&quot;i.regionName&quot;</span><br><span class="line">          &gt;&#123;&#123; i.regionName &#125;&#125;&lt;/a-select-option&gt;</span><br><span class="line">        &lt;/a-select&gt;</span><br><span class="line">        &lt;a-select</span><br><span class="line">          style=&quot;width:33%&quot;</span><br><span class="line">          placeholder=&quot; - &quot;</span><br><span class="line">          v-decorator=&quot;[&apos;cityId&apos;,validatorRules.cityId]&quot;</span><br><span class="line">          @change=&quot;handleCityChange&quot;</span><br><span class="line">        &gt;</span><br><span class="line">          &lt;a-spin v-if=&quot;regionList.city.fetch&quot; slot=&quot;notFoundContent&quot; size=&quot;small&quot; /&gt;</span><br><span class="line">          &lt;a-select-option</span><br><span class="line">            v-for=&quot;i in regionList.city.list&quot;</span><br><span class="line">            :key=&quot;i.id&quot;</span><br><span class="line">            :title=&quot;i.regionName&quot;</span><br><span class="line">          &gt;&#123;&#123; i.regionName &#125;&#125;&lt;/a-select-option&gt;</span><br><span class="line">        &lt;/a-select&gt;</span><br><span class="line">        &lt;a-select</span><br><span class="line">          style=&quot;width:33%&quot;</span><br><span class="line">          placeholder=&quot; - &quot;</span><br><span class="line">          v-decorator=&quot;[&apos;areaId&apos;, validatorRules.areaId]&quot;</span><br><span class="line">        &gt;</span><br><span class="line">          &lt;a-spin v-if=&quot;regionList.area.fetch&quot; slot=&quot;notFoundContent&quot; size=&quot;small&quot; /&gt;</span><br><span class="line">          &lt;a-select-option</span><br><span class="line">            v-for=&quot;i in regionList.area.list&quot;</span><br><span class="line">            :key=&quot;i.id&quot;</span><br><span class="line">            :title=&quot;i.regionName&quot;</span><br><span class="line">          &gt;&#123;&#123; i.regionName &#125;&#125;&lt;/a-select-option&gt;</span><br><span class="line">        &lt;/a-select&gt;</span><br><span class="line">      &lt;/a-input-group&gt;</span><br><span class="line">    &lt;/a-form-item&gt;</span><br><span class="line">    &lt;a-form-item :wrapperCol=&quot;offsetWrapperCol&quot;&gt;</span><br><span class="line">      &lt;a-button type=&apos;primary&apos; @click=&quot;handleSubmit&quot;&gt;提交&lt;/a-button&gt;</span><br><span class="line">    &lt;/a-form-item&gt;</span><br><span class="line">  &lt;/a-form&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;address-modal&apos;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      // 自定义校验信息</span><br><span class="line">      validateStatus: &apos;&apos;,</span><br><span class="line">      help: &apos;&apos;,</span><br><span class="line">      form: this.$form.createForm(this),</span><br><span class="line">      confirmLoading:false,</span><br><span class="line">      // 校验规则</span><br><span class="line">      validatorRules: &#123;</span><br><span class="line">        provinceId: &#123; rules: [&#123; required: true, message: &apos;请选择省份&apos; &#125;] &#125;,</span><br><span class="line">        cityId: &#123; rules: [&#123; required: true, message: &apos;请选择城市&apos; &#125;] &#125;,</span><br><span class="line">        areaId: &#123; rules: [&#123; required: true, message: &apos;请选择地区&apos; &#125;] &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      // 城市列表数据</span><br><span class="line">      regionList: &#123;</span><br><span class="line">        province: &#123;</span><br><span class="line">          list: [],</span><br><span class="line">          fetch: false</span><br><span class="line">        &#125;,</span><br><span class="line">        city: &#123;</span><br><span class="line">          list: [],</span><br><span class="line">          fetch: false</span><br><span class="line">        &#125;,</span><br><span class="line">        area: &#123;</span><br><span class="line">          list: [],</span><br><span class="line">          fetch: false</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      // 表单栅格</span><br><span class="line">      labelCol: &#123;</span><br><span class="line">        xs: &#123; span: 24 &#125;,</span><br><span class="line">        sm: &#123; span: 5 &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      wrapperCol: &#123;</span><br><span class="line">        xs: &#123; span: 24 &#125;,</span><br><span class="line">        sm: &#123; span: 16 &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      offsetWrapperCol: &#123;</span><br><span class="line">        xs: &#123; span: 24 &#125;,</span><br><span class="line">        sm: &#123; span: 16, offset: 5 &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    handleSubmit() &#123;</span><br><span class="line">      // 监听表单提交事件，触发表单验证</span><br><span class="line">      this.form.validateFields((err, values) =&gt; &#123;</span><br><span class="line">        if (!err) &#123;</span><br><span class="line">          // 这里是验证通过之后的操作</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          // 校验失败，自定义校验信息</span><br><span class="line">          // 这边三个值依次取值，返回第一个有错误信息的属性</span><br><span class="line">          const onErr = err.provinceId || err.cityId || err.areaId </span><br><span class="line">          if (onErr &amp;&amp; onErr.errors) &#123;</span><br><span class="line">            // 如果有错误信息，设置错误状态</span><br><span class="line">            this.validateStatus = &apos;error&apos;</span><br><span class="line">            // 一个错误信息内部是校验内容是以数组的形式返回的，可以在data.validatorRules中的rules中看到顺序</span><br><span class="line">            this.help = onErr.errors[0].message</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            // 如果没有报错的情况</span><br><span class="line">            this.validateStatus = &apos;success&apos;</span><br><span class="line">            this.help = &apos;&apos;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    handleCityChange(value, option) &#123;</span><br><span class="line">      // 这里是监听改变的业务逻辑，比如获取下级地址列表</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="两种提交方式（存为草稿和保存发布）"><a href="#两种提交方式（存为草稿和保存发布）" class="headerlink" title="两种提交方式（存为草稿和保存发布）"></a>两种提交方式（存为草稿和保存发布）</h2><p>保存数据分委两种，一种是存为草稿，另一种是保存并发布；</p>
+<ul>
+<li>存为草稿则只需要验证一部分必填字段，其它字段如果填写就校验，并且收集所有已经填写的字段。</li>
+<li>保存校验所有字段，并且需要匹配所有规则。</li>
+</ul>
+<p>暂时还没有想好，现阶段分开两个函数，存为草稿是在 <code>validateFields</code> 中的规则内填写需要校验的字段，并且在<code>if(!err)</code> 中，使用 <code>getFieldsValue</code> 获取整个表单数据</p>
+<h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><ul>
+<li><code>AntD Vue</code> 1.5.0+ 增加了新组件<a href="https://www.antdv.com/components/form-model-cn/" target="_blank" rel="noopener">FormModel 表单</a> 可以通过 <code>v-model</code> 绑定收集数据，并且校验数据了</li>
+</ul>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a href="/2020/webpack-ignore-comments-logs/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          使用 WebPack 打包时去除注释和控制台日志
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/How-to-make-GithubPage-included-by-Baidu/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">如何让百度收录自己的Github Pages</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+
+
+</main>
+<aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/design-pattern-learning-L00/">「 设计模式学习 」 L00 开坑贴 &amp; 设计模式概览</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-type-and-status-management-dictionary/">项目中的类型和状态管理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-ES6-Symbol/">Symbol() 是个什么东西?</a>
+          </li>
+        
+          <li>
+            <a href="/2020/raspberrypi-01-setup/">📟 树莓派 4B(2GB RAM) 开箱记录</a>
+          </li>
+        
+          <li>
+            <a href="/2020/vue-coding-style-and-lint/">聊一下自己 VueJS 项目的编码习惯和风格</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handlebars/">Handlebars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON-Server/">JSON-Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MockJS/">MockJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  <span>
+    &copy;2019-2020 YogWang powered_by
+    <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </span>
+  <br />
+  <span
+    >licensed
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
+      >CC BY-NC 4.0</a
+    ></span
+  >
+</footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
+  </body>
+</html>

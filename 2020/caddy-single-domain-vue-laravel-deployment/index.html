@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Caddy单域名部署Vue与Laravel项目 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend">
+  <meta name="description" content="Here is my blog, my notes and some thoughts">
+  <meta name="author" content="YogWang">
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U">
+  
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="sign" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <main id="container">
+  <div
+  id="post-caddy-single-domain-vue-laravel-deployment"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2020-06-23T06:16:12.000Z" itemprop="datePublished">2020-06-23</time>
+</p> 
+    </div>
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Caddy单域名部署Vue与Laravel项目
+    </h1>
+  
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>之前是想写一篇 <code>Nginx</code> 关于配置前后端项目公用一个域名笔记的，可是后来客户提供的是已经是由其它项目的服务器，他们是使用的 <code>Caddy</code> 作为 web 服务器，所以也就变成了这篇文章。</p>
+<p>我对于服务器环境配置可以说是一无所知，勉勉强强完成这次的项目部署，各位将就看看…😖</p>
+<a id="more"></a>
+
+<h2 id="使用两个二级域名"><a href="#使用两个二级域名" class="headerlink" title="使用两个二级域名"></a>使用两个二级域名</h2><p>一个顶级域名可以创建很多个二级域名，所以使用两个二级域名就很容易配置了，直接创建两个服务就可以，但是会跨域，因为是不同二级域名，后端单独做一下跨域允许就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># Vue</span><br><span class="line">https://www.example.com &#123;</span><br><span class="line">    root /var/www/vue</span><br><span class="line">    log /var/log/caddy/fe.log</span><br><span class="line">    errors /var/log/caddy/fe.errors.log</span><br><span class="line">    gzip</span><br><span class="line"></span><br><span class="line">    rewrite &#123;</span><br><span class="line">        to &#123;path&#125; /</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"># Laravel</span><br><span class="line">https://api.example.com &#123;</span><br><span class="line">    root /var/www/laravel/public</span><br><span class="line">    log /var/log/caddy/bk.log</span><br><span class="line">    errors /var/log/caddy/bk.errors.log</span><br><span class="line">    gzip</span><br><span class="line"></span><br><span class="line">    # PHP-FPM Configuration for Caddy</span><br><span class="line">    fastcgi / /run/php/php7.2-fpm.sock php &#123;</span><br><span class="line">        ext .php</span><br><span class="line">        split .php</span><br><span class="line">        index index.php</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    rewrite &#123;</span><br><span class="line">        to &#123;path&#125; &#123;path&#125;/ /index.php?&#123;query&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="使用同一个域名"><a href="#使用同一个域名" class="headerlink" title="使用同一个域名"></a>使用同一个域名</h2><h3 id="方法一：使用同一域名然后不同路径作为站点地址："><a href="#方法一：使用同一域名然后不同路径作为站点地址：" class="headerlink" title="方法一：使用同一域名然后不同路径作为站点地址："></a>方法一：使用同一域名然后不同路径作为站点地址：</h3><p>我使用 <code>https://www.example.com/</code> 作为 Vue 项目的地址；<br><code>https://www.example.com/api</code> 作为 laravel 项目的站点地址。<br>配置如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># Vue</span><br><span class="line">https://www.example.com &#123;</span><br><span class="line">    root /var/www/vue</span><br><span class="line">    log /var/log/caddy/fe.log</span><br><span class="line">    errors /var/log/caddy/fe.errors.log</span><br><span class="line">    gzip</span><br><span class="line"></span><br><span class="line">    rewrite &#123;</span><br><span class="line">        to &#123;path&#125; /</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"># Laravel</span><br><span class="line">https://www.example.com/v/ &#123;</span><br><span class="line">    root /var/www/laravel/public</span><br><span class="line">    log /var/log/caddy/bk.log</span><br><span class="line">    errors /var/log/caddy/bk.errors.log</span><br><span class="line">    gzip</span><br><span class="line"></span><br><span class="line">    # PHP-FPM Configuration for Caddy</span><br><span class="line">    fastcgi / /run/php/php7.2-fpm.sock php &#123;</span><br><span class="line">        ext .php</span><br><span class="line">        split .php</span><br><span class="line">        index index.php</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    rewrite &#123;</span><br><span class="line">        to &#123;path&#125; &#123;path&#125;/ /index.php?&#123;query&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个时候访问的地址，后台可以接收到，但是在路由表中找不到对应信息，因为 laravel 部分把 <code>/api</code> 作为路由前缀，修改一下就可以了，例如 <code>https://www.example.com/v</code> ，前端请求的时候使用 <code>/v/api</code> 这个地址</p>
+<h3 id="方法二：使用一个域名作为-Vue-项目站点地址，api接口使用重定向"><a href="#方法二：使用一个域名作为-Vue-项目站点地址，api接口使用重定向" class="headerlink" title="方法二：使用一个域名作为 Vue 项目站点地址，api接口使用重定向"></a>方法二：使用一个域名作为 Vue 项目站点地址，api接口使用重定向</h3><p>这个方法我还没有在Caddy尝试，Nginx倒是知道，等以后尝试看看</p>
+<hr>
+<h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><ul>
+<li><p><strong>配置完之后访问 laravel 提示 [ <code>file not found</code> ]</strong><br>一般来说遇到这个问题的同时，可以在日志文件中查看到 <code>Primary script unknown</code> 的异常，这个问题是由于配置的目录没有写入权限，如果已经配置了写入权限，请确保在 同一用户/组 下运行 <code>Caddy</code> 和<code>php-fpm</code></p>
+</li>
+<li><p>如果 <code>Vue</code> 项目需要启用 <code>History</code> 路由模式怎么配置Caddy ?<br>当使用 history 模式时，URL 就像正常的 url，例如 <a href="http://yoursite.com/user/id，不过这种模式还需要后台配置支持。" target="_blank" rel="noopener">http://yoursite.com/user/id，不过这种模式还需要后台配置支持。</a><br>因为应用是个单页客户端应用，如果后台没有正确的配置，当用户在浏览器直接访问 <a href="http://oursite.com/user/id" target="_blank" rel="noopener">http://oursite.com/user/id</a> 就会返回 404，所以需要在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 index.html 页面，这个页面就是你 app 依赖的页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rewrite &#123;</span><br><span class="line">    regexp .*</span><br><span class="line">    to &#123;path&#125; /</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
+<li><a href="https://caddyserver.com/v1/docs" target="_blank" rel="noopener">Caddy_v1 官方文档</a></li>
+<li><a href="https://dengxiaolong.com/caddy/zh/" target="_blank" rel="noopener">Caddy 中文文档</a></li>
+<li><a href="https://caddy.community/t/primary-script-unknown/191/5" target="_blank" rel="noopener">Primary script unknown - Caddy FORUM</a></li>
+<li><a href="https://router.vuejs.org/zh/guide/essentials/history-mode.html#caddy" target="_blank" rel="noopener">HTML5 History 模式 - Vue Router</a></li>
+</ul>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a href="/2020/JS-slider-captcha/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          简单实现滑动滑块完成验证
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/intranet-and-extranet-routes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">记录单独配置内网路由和外网路由的办法</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+
+
+</main>
+<aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/design-pattern-learning-L00/">「 设计模式学习 」 L00 开坑贴 &amp; 设计模式概览</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-type-and-status-management-dictionary/">项目中的类型和状态管理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/JS-ES6-Symbol/">Symbol() 是个什么东西?</a>
+          </li>
+        
+          <li>
+            <a href="/2020/raspberrypi-01-setup/">📟 树莓派 4B(2GB RAM) 开箱记录</a>
+          </li>
+        
+          <li>
+            <a href="/2020/vue-coding-style-and-lint/">聊一下自己 VueJS 项目的编码习惯和风格</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handlebars/">Handlebars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON-Server/">JSON-Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MockJS/">MockJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  <span>
+    &copy;2019-2020 YogWang powered_by
+    <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </span>
+  <br />
+  <span
+    >licensed
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
+      >CC BY-NC 4.0</a
+    ></span
+  >
+</footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
+  </body>
+</html>
