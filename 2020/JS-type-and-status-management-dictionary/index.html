@@ -64,13 +64,52 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>这段时间项目迭代比较快，所以很多时候对于记录的状态和类型判断我都是使用的 <strong>魔术字符串</strong> 的形式，但是这样很 <strong>不利于后期的维护</strong>，特别是最近一整个分类的类型和状态的都变更了，所以在业务逻辑内的魔术字符串也需要一个一个去同步修改，大部分的都被替换了，但还有一些零碎的地方没有被修改到，导致不断有 BUG 被提上来，这就很头疼了。</p>
-<p>所以我就想者怎么把业务逻辑内的魔术字符串使用一种方式替换掉，最开始我想法是使用 <strong>链式</strong>（变量属性）的方式去使用。</p>
-<p>例如在用户下的客户类别中的付费用户那就是使用 <code>user.customer.member.key</code> 去判断是否展示操作内容，但是这样的话，在管理端的用户列表中，去替换用户类型的 <code>key</code> 为 <code>label</code> 就比较麻烦（后端只返回用户类型<code>key</code>值，在前端替换为中文名称），因为层级会比较深比如之前的例子 <code>key</code> 就是处于三层，如果一个一个拿出来手动放到一个数组里边有会显得很呆。</p>
-<p>就想着是否可以使用一种设计模式来解决这样的问题，但是在快下班的时候怎么样的找不到一个好的方式来描述我遇到的问题。所以只能等回家之后翻一直在书架吃灰的《设计模式：可复用面向对象软件的基础》这本书，想找到一个合适的设计模式……</p>
+    <p>这段时间项目迭代比较快，所以很多时候对于记录的状态和类型判断我都是使用的 <strong>魔术字符串</strong> 的形式，但是这样就与代码形成了 “强耦合”, <strong>不利于后期的维护</strong>，</p>
+<p>特别是最近一整个分类的类型和状态的都变更了，所以在业务逻辑内的魔术字符串也需要一个一个文件去同步修改，大部分的都被替换了，但还有一些零碎的地方没有被修改到，导致不断有 BUG 被提上来，这就很头疼了。</p>
+<p>所以我就想者怎么把业务逻辑内的魔术字符串使用一种方式替换掉，最开始我想法是把状态集中起来进行管理</p>
 <a id="more"></a>
+<hr>
+<h2 id="阶段一：使用数组来管理-方式-①"><a href="#阶段一：使用数组来管理-方式-①" class="headerlink" title="阶段一：使用数组来管理 方式 ①"></a>阶段一：使用数组来管理 方式 ①</h2><p>在数组中枚举所有状态，然后调用数组下标的方式去使用。<br>例如这个示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// order.js</span></span><br><span class="line"><span class="keyword">const</span> statusLabels = [<span class="string">'已创建'</span>, <span class="string">'申请中'</span>, <span class="string">'通过审核'</span>, <span class="string">'....'</span>]</span><br></pre></td></tr></table></figure>
 
-<p>我先把设计模式整体看一遍，然后看怎么去解决问题。</p>
+<p>就可以这样使用 <code>statusLabels[index]</code> 来转换 <code>key</code> 值为 <code>label</code> ，但是这样很明显会有一些问题，比如说：</p>
+<ol>
+<li><p>这个 <code>key</code> 值不能是负数，虽然可以通过下面的方式来处理，但是有点蠢….<br>如果最小的 key 值 为 <code>-2</code> 时，把对应的 状态名 放到数组首位，通过这样转换 <code>status[index + 2]</code>；</p>
+</li>
+<li><p>依旧强耦合，在组件的条件判断中还是会使用 key 值，例如：<code>&lt;a @click=&#39;xxx&#39; v-if=&#39;record.status === 0&#39;&gt;编辑&lt;/a&gt;</code>,<br>如果将来 <strong>增加/删除</strong> 状态的时候会还是需要一个一个文件修改。</p>
+</li>
+<li><p>只能处理 <code>key - label</code> 的转换，并不能增加其他属性</p>
+</li>
+</ol>
+<p>当然如果单纯只是转换 <code>key</code> 和 <code>label</code> 可以这样使用，这个是项目一开始所使用的方式，后来陆续修改成了 方式 ② 的形式。</p>
+<hr>
+<h2 id="阶段二：数组管理-方式-②"><a href="#阶段二：数组管理-方式-②" class="headerlink" title="阶段二：数组管理 方式 ②"></a>阶段二：数组管理 方式 ②</h2><p>这个阶段因为很多组件复用了订单状态表，并且增加了很多属性，比如说图标等。那么以上</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// order.js</span></span><br><span class="line"><span class="keyword">const</span> status = [</span><br><span class="line">    &#123;</span><br><span class="line">        label:<span class="string">'已创建'</span>,</span><br><span class="line">        key:<span class="number">0</span>,</span><br><span class="line">        icon: <span class="string">'exclamation-circle'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        label:<span class="string">'申请中'</span>,</span><br><span class="line">        key:<span class="number">1</span>,</span><br><span class="line">        icon: <span class="string">'clock-circle'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        label:<span class="string">'通过审核'</span>,</span><br><span class="line">        key:<span class="number">2</span>,</span><br><span class="line">        icon: <span class="string">'check-circle'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// .....</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>转换 <code>key</code> 值为 <code>label</code> 就可以这样使用 <code>status.find(r=&gt;r.key===record.status)</code>，然后通过 <code>.属性名</code> 的方式来使用需要的属性，但是这样也会有一些问题，比如说：</p>
+<ol>
+<li><p>条件判断中语义不明，会出现类似这样的代码，<code>&lt;a @click=&#39;xxx&#39; v-if=&#39;record.status === status[1].key&#39;&gt;编辑&lt;/a&gt;</code>，除了我之外其他人并不知道 <code>status[1]</code> 是什么意思</p>
+</li>
+<li><p>如果将来 <strong>增加/删除</strong> 状态的时候会还是需要去同步修改使用下标的组件，不然可能下标错位</p>
+</li>
+</ol>
+<p>这个阶段就是我写这篇笔记时的管理，因为项目的 v1.2.x 版本 状态码整体调整了一次，后续状态码一直有小范围的改动，所以出现了需要大面积替换魔术字符串的情况，<br>那么我就在考虑如何在状态管理的文件中枚举一次所有状态，来处理转换状态标签和操作的判断条件，如果后续如果状态码有改动也方便维护的处理方式，就有之后两个阶段的处理方式</p>
+<hr>
+<h2 id="阶段三：使用对象来管理"><a href="#阶段三：使用对象来管理" class="headerlink" title="阶段三：使用对象来管理"></a>阶段三：使用对象来管理</h2><p>这个阶段有考虑过使用 Map 数据结构因为可以遍历，但是在取值的时候会比较麻烦，并不能直接使用 <strong>链式</strong>（变量属性）来使用。</p>
+<p>所以使用对象来管理，并且使用 <code>Object.values</code> 来返回所有状态数组，例如以下示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// order.js</span></span><br><span class="line"><span class="keyword">const</span> status = &#123;</span><br><span class="line">    created:&#123;</span><br><span class="line">        label:<span class="string">'已创建'</span>,</span><br><span class="line">        key:<span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    pending:&#123;</span><br><span class="line">        label:<span class="string">'申请中'</span>,</span><br><span class="line">        key:<span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    approved:&#123;</span><br><span class="line">        label:<span class="string">'通过审核'</span>,</span><br><span class="line">        key:<span class="number">12</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// .....</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> statusList = <span class="built_in">Object</span>.values(status)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转换</span></span><br><span class="line"><span class="keyword">const</span> getOrderStatus = <span class="function"><span class="keyword">function</span>(<span class="params">key</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> f = statusList.find(<span class="function"><span class="params">item</span> =&gt;</span> item.key === key)</span><br><span class="line">  <span class="keyword">return</span> f || status.created</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个时候可以通过 <code>getOrderStatus</code> 函数来处理 <code>key-label</code> 的转换，并且可以使用 <strong>链式</strong>（变量属性）的方式去处理判断条件。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">'xxx'</span> <span class="attr">v-if</span>=<span class="string">'record.status === status.created.key'</span>&gt;</span>编辑<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>那这样就可以很方便的来 转换状态 和 在判断条件中使用，并且不用担心语义化的问题。</p>
+<p>但是这边又出现了一个问题，比如说：</p>
+<blockquote>
+<p>在用户下的客户类别中的付费用户，如果单纯使用一个 <code>user.js</code> 来管理，并且使用 <code>user.customer.member.key</code> 去判断是否展示操作内容，但是这样的话，在管理端的用户列表中，去替换用户类型的 <code>key</code> 为 <code>label</code> 就比较麻烦，因为层级会比较深，<code>Object.values</code> 只会返回一层，如果一个一个拿出来手动放到一个数组里边有会显得很呆。</p>
+</blockquote>
+<p>所以阶段4就出现了</p>
+<hr>
+<h2 id="阶段四：对集中管理文件中的对象拆分"><a href="#阶段四：对集中管理文件中的对象拆分" class="headerlink" title="阶段四：对集中管理文件中的对象拆分"></a>阶段四：对集中管理文件中的对象拆分</h2><p>未完成</p>
  
   </article>
 
@@ -176,7 +215,7 @@
     </div>
     <footer id="footer">
   <span>
-    &copy;2019-2020 YogWang powered_by
+    &copy;2019-2021 YogWang powered_by
     <a href="http://hexo.io/" target="_blank">Hexo</a>
   </span>
   <br />

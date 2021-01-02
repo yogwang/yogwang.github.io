@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yogwang.site/2020/JS-type-and-status-management-dictionary/</loc>
+    
+    <lastmod>2021-01-02T09:52:26.084Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/2020/JS-slider-captcha/</loc>
     
     <lastmod>2020-12-03T09:50:15.426Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://yogwang.site/2020/design-pattern-learning-L00/</loc>
     
     <lastmod>2020-11-24T17:06:20.044Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/2020/JS-type-and-status-management-dictionary/</loc>
-    
-    <lastmod>2020-11-24T16:57:56.044Z</lastmod>
     
   </url>
   
