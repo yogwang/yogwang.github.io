@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
   <title>Jeecg-boot 开发挖坑日记11 查询过滤器整理 | blog [ YOG WANG ]</title>
-  <meta name="keywords" content="YogWang,blog,web-frontend">
-  <meta name="description" content="Here is my blog, my notes and some thoughts">
-  <meta name="author" content="YogWang">
-  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U">
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U" />
   
-  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
 
   <body>
     <header id="header">
@@ -27,7 +31,7 @@
     
     <a class="nav-link" href="/about">我</a>
     
-    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
     
   </nav>
 </header>
@@ -75,7 +79,7 @@
 <li>全模糊匹配： <code>*张*</code>                                          </li>
 <li>更高级匹配： <code>*张*三*</code></li>
 </ul>
-<h2 id="3、包含查询："><a href="#3、包含查询：" class="headerlink" title="3、包含查询："></a>3、包含查询：</h2><p>查询数据格式采用逗号分隔：{ <code>,</code> }<br>  例如：<code>张三,李四</code> (含义：<code>In(&#39;张三&#39;,&#39;李四&#39;)</code>)</p>
+<h2 id="3、包含查询："><a href="#3、包含查询：" class="headerlink" title="3、包含查询："></a>3、包含查询：</h2><p>查询数据格式采用逗号分隔：{ <code>,</code> }<br>  例如：<code>张三,李四  </code> (含义：<code>In(&#39;张三&#39;,&#39;李四&#39;)</code>)</p>
 <h2 id="4、不匹配查询："><a href="#4、不匹配查询：" class="headerlink" title="4、不匹配查询："></a>4、不匹配查询：</h2><p>查询数据格式需要加叹号前缀：{ <code>!</code> }<br>例如：<code>!张三</code> （含义：不等于’张三’）</p>
 <h3 id="特殊说明："><a href="#特殊说明：" class="headerlink" title="特殊说明："></a>特殊说明：</h3><ul>
 <li>查询不为Null的语法：<code>!null</code> （大小写没关系）;</li>
@@ -84,21 +88,20 @@
 <h2 id="5、范围查询"><a href="#5、范围查询" class="headerlink" title="5、范围查询"></a>5、范围查询</h2><p>支持数字，时间的范围查询，针对范围查询页面会生成两个查询控件</p>
 <ol>
 <li>如果是单一匹配方式，则页面查询控件的 <code>name</code>， 跟实体字段命名一样</li>
-<li>如果是范围匹配方式，则页面查询控件需要变成两个分别名 <code>{*}_begin</code>，<code>{*}_end</code><ul>
-<li><code>{*}_begin</code> 表示查询范围开始值</li>
-<li><code>{*}_end</code> 表示查询范围结束值 </li>
-</ul>
-</li>
+<li>如果是范围匹配方式，则页面查询控件需要变成两个分别名 <code>&#123;*&#125;_begin</code>，<code>&#123;*&#125;_end</code></li>
 </ol>
+<ul>
+<li><code>&#123;*&#125;_begin</code> 表示查询范围开始值</li>
+<li><code>&#123;*&#125;_end</code> 表示查询范围结束值 </li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">举例：</span><br><span class="line">字段名称 orderDate</span><br><span class="line">查询开始时间 : orderDate_begin</span><br><span class="line">查询结束时间 : orderDate_end</span><br></pre></td></tr></table></figure>
-
 <h3 id="注意部分"><a href="#注意部分" class="headerlink" title="注意部分"></a>注意部分</h3><ol>
 <li>数值类型不支持此种 <code>取非查询</code> ,可以将数值字段定义为字符串类型的在查询；</li>
-<li>数字类型字段多值查询，需要将字段加上后缀 <code>_MultiString</code>，其他规则同理；<ul>
+<li>数字类型字段多值查询，需要将字段加上后缀 <code>_MultiString</code>，其他规则同理；</li>
+</ol>
+<ul>
 <li>因为后端的实体字段也需要增加后缀，例如：实体类中为： <code>tableType</code>，页面接受参数字段就是 <code>tableType_MultiString</code></li>
 </ul>
-</li>
-</ol>
 <hr>
 <h2 id="高级值规则"><a href="#高级值规则" class="headerlink" title="高级值规则"></a>高级值规则</h2><ol>
 <li><strong>小于查询</strong>：查询内容值规则：”lt+ 空格 + 内容”;<br>🌰：输入值：<code>lt 100</code></li>
@@ -117,8 +120,8 @@
 </ul>
 <h3 id="文章所使用后端框架版本-v2-2-0-发布日期：2020-05-06）"><a href="#文章所使用后端框架版本-v2-2-0-发布日期：2020-05-06）" class="headerlink" title="文章所使用后端框架版本 v2.2.0 (发布日期：2020-05-06）"></a>文章所使用后端框架版本 <code>v2.2.0</code> (发布日期：2020-05-06）</h3><p>不知道后续开发团队会不会更新说明文档。</p>
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><ul>
-<li><a href="http://doc.jeecg.com/1273939" target="_blank" rel="noopener">查询过滤器用法 · Jeecg-boot 开发文档</a></li>
-<li><a href="http://doc.jeecg.com/1640423" target="_blank" rel="noopener">Online报表排序 · Jeecg-boot 开发文档</a></li>
+<li><a target="_blank" rel="noopener" href="http://doc.jeecg.com/1273939">查询过滤器用法 · Jeecg-boot 开发文档</a></li>
+<li><a target="_blank" rel="noopener" href="http://doc.jeecg.com/1640423">Online报表排序 · Jeecg-boot 开发文档</a></li>
 <li>因为查询过滤器已经重构多次，版本最好 <code>2.2.0</code> 以上，<code>2.1.x</code> 的版本只有 <code>范围查询</code>, <code>1.x</code> 版本只有全匹配/模糊查询/包含查询/不匹配查询</li>
 </ul>
  
@@ -216,7 +219,7 @@
   <section class="widget-wrap">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
     </div>
   </section>
 
@@ -240,7 +243,11 @@
 <div>
   <a id="gotop" class="fa fa-level-up"></a>
 </div>
-<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+ 
+<script src="/js/common.js"></script>
+
 
   </body>
 </html>

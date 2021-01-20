@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
   <title>Jeecg-boot 开发挖坑日记01 Jeecg-Boot是个什么鬼? | blog [ YOG WANG ]</title>
-  <meta name="keywords" content="YogWang,blog,web-frontend">
-  <meta name="description" content="Here is my blog, my notes and some thoughts">
-  <meta name="author" content="YogWang">
-  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U">
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U" />
   
-  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
 
   <body>
     <header id="header">
@@ -27,7 +31,7 @@
     
     <a class="nav-link" href="/about">我</a>
     
-    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
     
   </nav>
 </header>
@@ -46,7 +50,7 @@
   <time datetime="2019-10-10T06:37:44.000Z" itemprop="datePublished">2019-10-10</time>
 </p> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
   </div>
 
     </div>
@@ -67,7 +71,7 @@
     <blockquote>
 <p>这段时间公司有一个项目是用 Jeecg-Boot 开发的，管理平台部分就分配到我这边了。这段时间看了下他们官方的文档，感觉文档有点少，感觉之后大部分时间都要和这个东西杠上了。 _yogwang 2019.10.10 15:28</p>
 </blockquote>
-<h2 id="what-is-the-fuxk-jeecg-boot"><a href="#what-is-the-fuxk-jeecg-boot" class="headerlink" title="what is the fuxk jeecg-boot?"></a>what is the fuxk <a href="https://github.com/zhangdaiscott/jeecg-boot" target="_blank" rel="noopener">jeecg-boot</a>?</h2><p><img src="/.site//jeecg-boot.png" alt="Jeecg-boot"></p>
+<h2 id="what-is-the-fuxk-jeecg-boot"><a href="#what-is-the-fuxk-jeecg-boot" class="headerlink" title="what is the fuxk jeecg-boot?"></a>what is the fuxk <a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot">jeecg-boot</a>?</h2><p><img src="/2019/jeecg-boot-devDiary01/jeecg-boot.png" alt="Jeecg-boot"></p>
 <blockquote>
 <p>Java RAD framework for enterprise web applications</p>
 </blockquote>
@@ -81,12 +85,11 @@
 <li>Shiro</li>
 <li>JWT</li>
 </ul>
-<p><img src="/.site//preview.png" alt="界面截图"></p>
+<p><img src="/2019/jeecg-boot-devDiary01/preview.png" alt="界面截图"></p>
 <p>代码生成器让前后端代码一键生成，无需写任何代码，绝对是全栈开发福音！！ （现在看来前端开发者的大坑 - yogwang/2019.10.17）</p>
 <p>JeecgBoot 的宗旨是提高 UI 能力的同时,降低前后分离的开发成本，（后端确实是很喜欢）</p>
-<h2 id="获取项目"><a href="#获取项目" class="headerlink" title="获取项目"></a>获取项目</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zhangdaiscott/jeecg-boot.git</span><br><span class="line">cd  jeecg-boot/ant-design-jeecg-vue</span><br></pre></td></tr></table></figure>
-
-<h2 id="前端部分"><a href="#前端部分" class="headerlink" title="前端部分"></a>前端部分</h2><p>基于 <a href="https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/" target="_blank" rel="noopener">Ant Design of Vue</a> 实现的 Ant Design Pro Vue 版</p>
+<h2 id="获取项目"><a href="#获取项目" class="headerlink" title="获取项目"></a>获取项目</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;zhangdaiscott&#x2F;jeecg-boot.git</span><br><span class="line">cd  jeecg-boot&#x2F;ant-design-jeecg-vue</span><br></pre></td></tr></table></figure>
+<h2 id="前端部分"><a href="#前端部分" class="headerlink" title="前端部分"></a>前端部分</h2><p>基于 <a target="_blank" rel="noopener" href="https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/">Ant Design of Vue</a> 实现的 Ant Design Pro Vue 版</p>
 <h3 id="开发环境和依赖"><a href="#开发环境和依赖" class="headerlink" title="开发环境和依赖"></a>开发环境和依赖</h3><ul>
 <li>node</li>
 <li>Ant-Design-Vue 1.x</li>
@@ -120,25 +123,25 @@
 </blockquote>
 <p>也不知道什么时候会有修复，不过我应该是看不到了。</p>
 <h2 id="技术文档"><a href="#技术文档" class="headerlink" title="技术文档"></a>技术文档</h2><ul>
-<li><p><a href="http://boot.jeecg.com" target="_blank" rel="noopener">Jeecg-boot 在线演示</a></p>
+<li><p><a target="_blank" rel="noopener" href="http://boot.jeecg.com/">Jeecg-boot 在线演示</a></p>
 </li>
-<li><p><a href="http://doc.jeecg.com/1273753" target="_blank" rel="noopener">开发文档</a></p>
+<li><p><a target="_blank" rel="noopener" href="http://doc.jeecg.com/1273753">开发文档</a></p>
 </li>
-<li><p><a href="https://github.com/zhangdaiscott/jeecg-boot" target="_blank" rel="noopener">Jeecg-boot/Github</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot">Jeecg-boot/Github</a></p>
 </li>
-<li><p><a href="http://www.jeecg.org/" target="_blank" rel="noopener">Jeecg 社区论坛</a></p>
+<li><p><a target="_blank" rel="noopener" href="http://www.jeecg.org/">Jeecg 社区论坛</a></p>
 </li>
 </ul>
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><ul>
-<li><p><a href="https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn" target="_blank" rel="noopener">Ant Design Vue</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn">Ant Design Vue</a></p>
 </li>
-<li><p><a href="https://viserjs.github.io/demo.html#/viser/bar/basic-bar" target="_blank" rel="noopener">报表 viser-vue</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://viserjs.github.io/demo.html#/viser/bar/basic-bar">报表 viser-vue</a></p>
 </li>
-<li><p><a href="https://cn.vuejs.org/v2/guide" target="_blank" rel="noopener">Vue</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide">Vue</a></p>
 </li>
-<li><p><a href="https://github.com/zhangdaiscott/jeecg-boot/tree/master/ant-design-jeecg-vue/src/router/README.md" target="_blank" rel="noopener">路由/菜单说明</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot/tree/master/ant-design-jeecg-vue/src/router/README.md">路由/菜单说明</a></p>
 </li>
-<li><p><a href="https://github.com/zhangdaiscott/jeecg-boot/tree/master/ant-design-jeecg-vue/src/defaultSettings.js" target="_blank" rel="noopener">ANTD 默认配置项</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot/tree/master/ant-design-jeecg-vue/src/defaultSettings.js">ANTD 默认配置项</a></p>
 </li>
 <li><p>待补充…</p>
 </li>
@@ -238,7 +241,7 @@
   <section class="widget-wrap">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
     </div>
   </section>
 
@@ -262,7 +265,11 @@
 <div>
   <a id="gotop" class="fa fa-level-up"></a>
 </div>
-<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+ 
+<script src="/js/common.js"></script>
+
 
   </body>
 </html>

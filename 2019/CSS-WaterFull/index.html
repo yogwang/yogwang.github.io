@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
   <title>纯CSS实现瀑布流布局 | blog [ YOG WANG ]</title>
-  <meta name="keywords" content="YogWang,blog,web-frontend">
-  <meta name="description" content="Here is my blog, my notes and some thoughts">
-  <meta name="author" content="YogWang">
-  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U">
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U" />
   
-  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
 
   <body>
     <header id="header">
@@ -27,7 +31,7 @@
     
     <a class="nav-link" href="/about">我</a>
     
-    <a class="nav-link" href="https://github.com/yogwang">GitHub</a>
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
     
   </nav>
 </header>
@@ -46,7 +50,7 @@
   <time datetime="2019-07-10T09:35:57.000Z" itemprop="datePublished">2019-07-10</time>
 </p> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
   </div>
 
     </div>
@@ -71,20 +75,17 @@
 </ul>
 </li>
 </ol>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo:"></a>Demo:</h2><p>👉 在 <a href="https://codepen.io/yogwang/pen/RzvNre" target="_blank" rel="noopener">CodePen</a> 中打开</p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo:"></a>Demo:</h2><p>👉 在 <a target="_blank" rel="noopener" href="https://codepen.io/yogwang/pen/RzvNre">CodePen</a> 中打开</p>
 <a id="more"></a>
 
 <ul>
 <li><h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">html5</span><br><span class="line">  div#container // 外部容器</span><br><span class="line">    ul#waterfall // 瀑布流容器</span><br><span class="line">     - for(let i=0;i&lt;12;i++ )</span><br><span class="line">      li.item // 内部项目</span><br><span class="line">        // 生成随机高度</span><br><span class="line">        - let height = Math.ceil(Math.random() *(150+1-500)+500)</span><br><span class="line">          // 模拟不同高度图片</span><br><span class="line">          div(class=&apos;img&apos;,style=&apos;height:&apos;+height+&apos;px&apos;)</span><br><span class="line">          // 模拟介绍文本</span><br><span class="line">          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa cupiditate a aperiam libero aspernatur unde</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">html5</span><br><span class="line">  div#container &#x2F;&#x2F; 外部容器</span><br><span class="line">    ul#waterfall &#x2F;&#x2F; 瀑布流容器</span><br><span class="line">     - for(let i&#x3D;0;i&lt;12;i++ )</span><br><span class="line">      li.item &#x2F;&#x2F; 内部项目</span><br><span class="line">        &#x2F;&#x2F; 生成随机高度</span><br><span class="line">        - let height &#x3D; Math.ceil(Math.random() *(150+1-500)+500)</span><br><span class="line">          &#x2F;&#x2F; 模拟不同高度图片</span><br><span class="line">          div(class&#x3D;&#39;img&#39;,style&#x3D;&#39;height:&#39;+height+&#39;px&#39;)</span><br><span class="line">          &#x2F;&#x2F; 模拟介绍文本</span><br><span class="line">          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa cupiditate a aperiam libero aspernatur unde</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4></li>
 </ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//reset</span></span><br><span class="line">*</span><br><span class="line"> <span class="attribute">padding</span> <span class="number">0</span></span><br><span class="line"> <span class="attribute">margin</span> <span class="number">0</span></span><br><span class="line"><span class="comment">// 外部容器</span></span><br><span class="line">#container</span><br><span class="line">  <span class="attribute">width</span> <span class="number">1200px</span></span><br><span class="line">  <span class="attribute">margin</span> <span class="number">30px</span> auto</span><br><span class="line">  <span class="comment">// 瀑布流容器</span></span><br><span class="line">  #waterfall</span><br><span class="line">    <span class="attribute">column-count</span> <span class="number">3</span></span><br><span class="line">    <span class="attribute">list-style-type</span> none</span><br><span class="line">    <span class="comment">// 内部项目</span></span><br><span class="line">    .item</span><br><span class="line">      <span class="attribute">padding</span> <span class="number">10px</span></span><br><span class="line">      <span class="attribute">margin</span> <span class="number">0</span> <span class="number">10px</span> <span class="number">20px</span></span><br><span class="line">      <span class="attribute">break-inside</span> avoid</span><br><span class="line">      <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="number">#000</span></span><br><span class="line">      <span class="selector-tag">div</span>.img</span><br><span class="line">        <span class="attribute">background</span> red</span><br></pre></td></tr></table></figure>
-
- 
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//reset</span></span><br><span class="line">*</span><br><span class="line"> <span class="attribute">padding</span> <span class="number">0</span></span><br><span class="line"> <span class="attribute">margin</span> <span class="number">0</span></span><br><span class="line"><span class="comment">// 外部容器</span></span><br><span class="line">#container</span><br><span class="line">  <span class="attribute">width</span> <span class="number">1200px</span></span><br><span class="line">  <span class="attribute">margin</span> <span class="number">30px</span> auto</span><br><span class="line">  <span class="comment">// 瀑布流容器</span></span><br><span class="line">  #waterfall</span><br><span class="line">    <span class="attribute">column-count</span> <span class="number">3</span></span><br><span class="line">    <span class="attribute">list-style-type</span> none</span><br><span class="line">    <span class="comment">// 内部项目</span></span><br><span class="line">    .item</span><br><span class="line">      <span class="attribute">padding</span> <span class="number">10px</span></span><br><span class="line">      <span class="attribute">margin</span> <span class="number">0</span> <span class="number">10px</span> <span class="number">20px</span></span><br><span class="line">      <span class="attribute">break-inside</span> avoid</span><br><span class="line">      <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="number">#000</span></span><br><span class="line">      <span class="selector-tag">div</span>.img</span><br><span class="line">        <span class="attribute">background</span> red</span><br><span class="line"></span><br></pre></td></tr></table></figure> 
   </article>
 
 
@@ -103,7 +104,7 @@
     </a>
   
   
-    <a href="/2019/hello you/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/hello%20you/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
       <div class="article-nav-title">Hello Hexo</div>
     </a>
@@ -179,7 +180,7 @@
   <section class="widget-wrap">
     <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/年会开发日记/">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/挖坑/">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/未完成/">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题/">问题</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/" rel="tag">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
     </div>
   </section>
 
@@ -203,7 +204,11 @@
 <div>
   <a id="gotop" class="fa fa-level-up"></a>
 </div>
-<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script> <script src="/js/common.js"></script>
+
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+ 
+<script src="/js/common.js"></script>
+
 
   </body>
 </html>
