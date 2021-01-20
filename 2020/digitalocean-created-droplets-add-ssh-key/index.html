@@ -74,11 +74,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@test:/# cd ~/.ssh</span><br><span class="line">root@test:~/.ssh# ls</span><br><span class="line">authorized_keys  id_rsa  id_rsa.pub  know_hosts</span><br></pre></td></tr></table></figure>
 
 <p>可以看到有一个名为 <code>authorized_keys</code> 的文件，这个我不知道是不是本来就有，我这边因为客户已经关联过一个 key 了所以是有这个文件。<br>然后你使用 <code>vi</code> 或者 <code>nano</code> 打开这个 <code>authorized_keys</code> 文件。</p>
-<h2 id="2-添加你的公钥到文件中"><a href="#2-添加你的公钥到文件中" class="headerlink" title="2. 添加你的公钥到文件中"></a>2. 添加你的公钥到文件中</h2><p>我希望你没有把之前创建Key的公钥给丢了，不过找不到了也没有关系，回到 DigitalOcean 的控制台在 <code>Account -&gt; Settings -&gt; Security -&gt; SSH keys</code> 中找到你添加的 Key 然后点击编辑就可以看到你添加的公钥了。<br><img src="https://yogwang.site/2020/digitalocean-created-droplets-add-ssh-key/settings.jpg" alt="设置"></p>
+<h2 id="2-添加你的公钥到文件中"><a href="#2-添加你的公钥到文件中" class="headerlink" title="2. 添加你的公钥到文件中"></a>2. 添加你的公钥到文件中</h2><p>我希望你没有把之前创建Key的公钥给丢了，不过找不到了也没有关系，回到 DigitalOcean 的控制台在 <code>Account -&gt; Settings -&gt; Security -&gt; SSH keys</code> 中找到你添加的 Key 然后点击编辑就可以看到你添加的公钥了。<br><img src="/.site//settings.jpg" alt="设置"></p>
 <p>把公钥复制一下，粘贴进去保存就可以了。</p>
-<p><img src="https://yogwang.site/2020/digitalocean-created-droplets-add-ssh-key/console.jpg" alt="authorized_keys"></p>
-<h4 id="在粘贴的过程中遇到了粘贴进来的公钥出现转码的情况"><a href="#在粘贴的过程中遇到了粘贴进来的公钥出现转码的情况" class="headerlink" title="在粘贴的过程中遇到了粘贴进来的公钥出现转码的情况:"></a>在粘贴的过程中遇到了粘贴进来的公钥出现转码的情况:</h4><p><img src="https://yogwang.site/2020/digitalocean-created-droplets-add-ssh-key/transcode.jpg" alt="转码"><br>这是因为复制的密钥太长了，控制的一下每次粘贴内容长度，分段粘贴过来就好了。</p>
-<p>然后就可以使用 SSH 远程连接到服务器上了（具体连接步骤查看下方 <a href="#附">附</a> 中查看详细文档）。<br><img src="https://yogwang.site/2020/digitalocean-created-droplets-add-ssh-key/PuTTY.jpg" alt="PuTTY"></p>
+<p><img src="/.site//console.jpg" alt="authorized_keys"></p>
+<h4 id="在粘贴的过程中遇到了粘贴进来的公钥出现转码的情况"><a href="#在粘贴的过程中遇到了粘贴进来的公钥出现转码的情况" class="headerlink" title="在粘贴的过程中遇到了粘贴进来的公钥出现转码的情况:"></a>在粘贴的过程中遇到了粘贴进来的公钥出现转码的情况:</h4><p><img src="/.site//transcode.jpg" alt="转码"><br>这是因为复制的密钥太长了，控制的一下每次粘贴内容长度，分段粘贴过来就好了。</p>
+<p>然后就可以使用 SSH 远程连接到服务器上了（具体连接步骤查看下方 <a href="#附">附</a> 中查看详细文档）。<br><img src="/.site//PuTTY.jpg" alt="PuTTY"></p>
 <p>以上。</p>
 <hr>
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><h4 id="参考资源链接"><a href="#参考资源链接" class="headerlink" title="参考资源链接"></a>参考资源链接</h4><ul>

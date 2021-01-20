@@ -76,33 +76,33 @@
 <h4 id="开坑多个-SSH-Key-多个-GitHub-账户"><a href="#开坑多个-SSH-Key-多个-GitHub-账户" class="headerlink" title="开坑多个 SSH_Key 多个 GitHub 账户"></a>开坑多个 SSH_Key 多个 GitHub 账户</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;Exam@email.com&quot; -f ~/.ssh/id_rsa_for_Exam</span><br></pre></td></tr></table></figure>
 
 <h2 id="在-GitHub-上添加-SSH-key"><a href="#在-GitHub-上添加-SSH-key" class="headerlink" title="在 GitHub 上添加 SSH key"></a>在 GitHub 上添加 SSH key</h2><p>登陆 <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> ,点击右上角头像，在弹出的菜单中选择 <code>Settings</code> 进入设置页</p>
-<img src="https://yogwang.site/2019/git_connectToGitHub/img_1.png">
+<img src="/.site//img_1.png">
 
 <p>在右侧 <b>Personal settings</b> 中选择 <code>SSH and GPG keys</code></p>
-<img src="https://yogwang.site/2019/git_connectToGitHub/img_2.png">
+<img src="/.site//img_2.png">
 
-<p>点击 <b>New SSH key</b>，在 Key 中粘贴复制的公钥内容,然后 <b>Add SSH key</b> 完成 <code>SSH key</code> 添加<br><img src="https://yogwang.site/2019/git_connectToGitHub/img_3.png"></p>
+<p>点击 <b>New SSH key</b>，在 Key 中粘贴复制的公钥内容,然后 <b>Add SSH key</b> 完成 <code>SSH key</code> 添加<br><img src="/.site//img_3.png"></p>
 <h2 id="创建-GitHub-仓库"><a href="#创建-GitHub-仓库" class="headerlink" title="创建 GitHub 仓库"></a>创建 GitHub 仓库</h2><p>同样点击右上角头像，在弹出的菜单中选择 <code>Your repositories</code> 进入资源库页</p>
-<img src="https://yogwang.site/2019/git_connectToGitHub/img_4.png">
+<img src="/.site//img_4.png">
 <br>
 
 <p>在页面中间靠右点击 <b>New</b> 按钮</p>
-<img src="https://yogwang.site/2019/git_connectToGitHub/img_5.png">
+<img src="/.site//img_5.png">
 
 <p>输入 <code>Repository name</code> 然后点击 <b>Create repository</b> 按钮</p>
-<img src="https://yogwang.site/2019/git_connectToGitHub/img_6.png">
+<img src="/.site//img_6.png">
 
 <blockquote>
 <p>Description:可选输入一段描述，仓库选择 Public 和 Private 都可以。</p>
 </blockquote>
-<p>资源库创建完成后，复制页面中的 <code>git remote add</code> 命令，回到 <code>Git Bash</code><br><img src="https://yogwang.site/2019/git_connectToGitHub/img_7.png"></p>
+<p>资源库创建完成后，复制页面中的 <code>git remote add</code> 命令，回到 <code>Git Bash</code><br><img src="/.site//img_7.png"></p>
 <p>回创建的本地 Git 库中，运行复制的 <code>git remote add</code> 命令，关联本地库到 GitHub 远程库上</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd E:/GitLibrary/git_demo</span><br><span class="line"></span><br><span class="line">$ git remote add origin git@github.com:yogwang/demo_repositories.git</span><br></pre></td></tr></table></figure>
 
 <p>使用 <code>git push</code> 命令把本地库的所有内容推送到远程库上</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
 
-<p>然后刷新 GitHub 库页面就可以看到上传的本地库文件了<br><img src="https://yogwang.site/2019/git_connectToGitHub/img_8.png"></p>
+<p>然后刷新 GitHub 库页面就可以看到上传的本地库文件了<br><img src="/.site//img_8.png"></p>
  
   </article>
 

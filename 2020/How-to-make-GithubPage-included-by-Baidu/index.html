@@ -77,9 +77,9 @@
 <p>这个都不需要多说了吧….直接上链接吧。<a href="https://e.coding.net/signup" target="_blank" rel="noopener">Coding.net SignUp</a></p>
 <h2 id="2、创建代码托管仓库"><a href="#2、创建代码托管仓库" class="headerlink" title="2、创建代码托管仓库"></a>2、创建代码托管仓库</h2><hr>
 <p>注册好了之后和使用 Github 一样，创建一个项目，选择 <code>代码托管项目</code> 。</p>
-<p><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step1.jpg" alt="选择项目模板"></p>
+<p><img src="/.site//step1.jpg" alt="选择项目模板"></p>
 <p>项目名称随便填写，我直接填写的用户名因为 Github Pages 是这样要求的，但是 Coding 并没有这个要求；<br>项目标识是你的 Git 仓库标识，起一个自己好记得就行。我输入的 <code>blog</code>，其实填写了项目名称会自动填写进去的。（这个是可以修改的，相应的也要修改本地 Git 的 <code>Origin Url</code>）</p>
-<p>然后选择 <code>Git仓库</code><br>项目描述就随便填咯，反正也就自己用，后边不满意了也可以在项目设置里边修改。<br><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step2.jpg" alt="创建项目"></p>
+<p>然后选择 <code>Git仓库</code><br>项目描述就随便填咯，反正也就自己用，后边不满意了也可以在项目设置里边修改。<br><img src="/.site//step2.jpg" alt="创建项目"></p>
 <h2 id="3、绑定-SSH-公钥"><a href="#3、绑定-SSH-公钥" class="headerlink" title="3、绑定 SSH 公钥"></a>3、绑定 SSH 公钥</h2><hr>
 <p>创建完成之后在个人设置里边添加自己的 SSH 公钥，如果已经配置 Github Pages 的话这个也不用多说了吧</p>
 <ul>
@@ -98,14 +98,14 @@
 <p>然后直接使用 <code>hexo deploy</code>/<code>hexo d</code> 就可以自动部署到两个远程仓库中了。</p>
 <h2 id="5、部署-Coding-Pages"><a href="#5、部署-Coding-Pages" class="headerlink" title="5、部署 Coding Pages"></a>5、部署 Coding Pages</h2><hr>
 <p>回到 Coding.net 项目中 找到项目左侧菜单中的 <code>构建与部署</code> 下的 <code>静态网站</code>项</p>
-<p>点击立即发布静态网站<br><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step3.jpg" alt="部署Coding Pages"></p>
-<p>网站名称不重要，随便填自己能看明白就好；<br>部署来源选择 <code>本项目仓库</code>；<br>触发机制 <code>自动部署</code>；<br>勾选 <code>代码更新时自动部署</code>，选择默认的 <code>推送到 Master 时触发构建</code> 这个是看你需要部署的是主线还是分支了，选择自己用的就好。<br><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step4.jpg" alt="填写静态网站信息"></p>
+<p>点击立即发布静态网站<br><img src="/.site//step3.jpg" alt="部署Coding Pages"></p>
+<p>网站名称不重要，随便填自己能看明白就好；<br>部署来源选择 <code>本项目仓库</code>；<br>触发机制 <code>自动部署</code>；<br>勾选 <code>代码更新时自动部署</code>，选择默认的 <code>推送到 Master 时触发构建</code> 这个是看你需要部署的是主线还是分支了，选择自己用的就好。<br><img src="/.site//step4.jpg" alt="填写静态网站信息"></p>
 <p>点击保存，完成创建。</p>
-<p><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step5.jpg" alt="完成部署"><br>这时候在页面中会显示你的 Coding Pages 访问地址，点击立即部署，这时候正常的话就会部署成功了。</p>
+<p><img src="/.site//step5.jpg" alt="完成部署"><br>这时候在页面中会显示你的 Coding Pages 访问地址，点击立即部署，这时候正常的话就会部署成功了。</p>
 <p>然后点击在右上角的设置，<br>进入 Coding Pages 设置后滑动到底部，将自己的域名添加到自定义域名列表中。</p>
 <h2 id="6、解析域名到-Coding-Pages"><a href="#6、解析域名到-Coding-Pages" class="headerlink" title="6、解析域名到 Coding Pages"></a>6、解析域名到 Coding Pages</h2><hr>
-<p>在自己域名服务商的控制台添加解析记录，类型为 <code>CNAME</code> 这些应该都不用多说了吧。<br>对应之前的解析记录增加不同的解析路线。<br><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step7.jpg" alt="域名解析"></p>
-<p>要注意的是如果只是想让百度蜘蛛爬取 Coding Pages，正常访问还是走的 Github Pages 的话，解析线路要设置成 <strong>百度</strong>。<br>（如果想要国内访问 Coding Pages，海外 Github Pages 的话，Coding 的解析路径设置成<strong>默认</strong>，Github 设置成<strong>海外</strong>）<br><img src="https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/step6.jpg" alt="添加解析记录"></p>
+<p>在自己域名服务商的控制台添加解析记录，类型为 <code>CNAME</code> 这些应该都不用多说了吧。<br>对应之前的解析记录增加不同的解析路线。<br><img src="/.site//step7.jpg" alt="域名解析"></p>
+<p>要注意的是如果只是想让百度蜘蛛爬取 Coding Pages，正常访问还是走的 Github Pages 的话，解析线路要设置成 <strong>百度</strong>。<br>（如果想要国内访问 Coding Pages，海外 Github Pages 的话，Coding 的解析路径设置成<strong>默认</strong>，Github 设置成<strong>海外</strong>）<br><img src="/.site//step6.jpg" alt="添加解析记录"></p>
 <p>等待解析生效就可以在百度的 <a href="https://ziyuan.baidu.com/" target="_blank" rel="noopener">站长平台</a> 提交 <code>sitemap</code> 让百度收录了</p>
 <h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><hr>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="申请-SSL-TLS-证书失败"><a href="#申请-SSL-TLS-证书失败" class="headerlink" title="申请 SSL/TLS 证书失败"></a>申请 SSL/TLS 证书失败</h3><blockquote>

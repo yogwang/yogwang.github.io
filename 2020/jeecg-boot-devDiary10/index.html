@@ -61,14 +61,14 @@
        
   <article class="article-content">
     <p>昨天项目有新需求用到了，Ant Design Vue <code>1.5.0+</code> 的新组件 <code>Descriptions</code>，<br>所以就单独升级了一下UI库依赖，从 v1.3.9 升到了 v1.5.3，然后新组件是可以用了，但是按钮组件出现问题了；<br>当<code>type</code> 为 <code>danger</code> 时，背景会变成白色，同时文字也是白色的，就会如下图一样的情况。</p>
-<p><img src="https://yogwang.site/2020/jeecg-boot-devDiary10/snipaste.jpg" alt="问题截图"></p>
+<p><img src="/.site//snipaste.jpg" alt="问题截图"></p>
 <a id="more"></a>
 <p>然后审查模式下边看到是有一个样式覆盖了组件库的样式</p>
-<p><img src="https://yogwang.site/2020/jeecg-boot-devDiary10/css.jpg" alt="审查模式下查看到的叠加样式"></p>
+<p><img src="/.site//css.jpg" alt="审查模式下查看到的叠加样式"></p>
 <p>然后我自己就没有定义过组件库的全局样式，正常我自己覆盖组件库内样式的时候都是私有样式，就郁闷了一个早上，在视图层到处找哪个组件里没有加样式私有化，结果一个上午都没有找到。<br>然后午休完了之后就突然想起来是不是 <code>Jeecg-boot</code> 自己定义了一个全局样式，在入口文件中引入了，所以导致样式被覆盖了。结果就真的是这个问题。</p>
-<p><img src="https://yogwang.site/2020/jeecg-boot-devDiary10/importCSS.jpg" alt="入口文件内的样式引入截图"></p>
+<p><img src="/.site//importCSS.jpg" alt="入口文件内的样式引入截图"></p>
 <p>第22行引入的 <code>OnlineForm.css</code>中就重定义了 <code>.ant-btn-danger</code> 的背景色为白色，把 <code>AntD</code> 的样式文件在这个之后引入就不会被覆盖了，我大概看了一下，这个样式表中重写了 AntD 的 <code>169</code> 个样式</p>
-<p><img src="https://yogwang.site/2020/jeecg-boot-devDiary10/onlineform.png" alt="onlineform.css截图"></p>
+<p><img src="/.site//onlineform.png" alt="onlineform.css截图"></p>
 <p>这个意思就是说，不只是按钮的样式会出现问题，如果其它的样式没有做好覆盖，也会导致显示异常…</p>
 <p>有一些还是加了私有作用域，不知道是怎么一个情况…<br>反正我不用在线报表就先注释了，之后看开发团队会不会修复这个问题吧。</p>
 <h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>

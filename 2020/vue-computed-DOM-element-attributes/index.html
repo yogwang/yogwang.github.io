@@ -67,9 +67,9 @@
     <p>今天在写一个模拟微信的聊天组件的时候，需要获取消息列表的滚动条高度，来实现每次发送接受消息数据时，自动滚动到列表末尾。<br>当然就想到了用 <code>Computed</code> 属性来计算容器的 <code>scrollHeight</code>。<br>然后就发现一开始滚动条会定位到列表最后，但是测着测着就发现怎么超出了一定高度范围之后就不会滚动到列表末尾了，而是固定在了一个值。</p>
 <a id="more"></a>
 
-<p>所以在我在控制台输出了一下获取到的值:<br><img src="https://yogwang.site/2020/vue-computed-DOM-element-attributes/snipaste.jpg" alt="获取到的scrollHeight"><br>就觉得是不是因为这里拿到的是容器可视部分的值 <code>offsetHeight</code>，检查后发现我并没有取错属性。</p>
-<p>接着我就把之前填充默认填充的假数据给去掉了，再一次获取了计算出来的属性：<br><img src="https://yogwang.site/2020/vue-computed-DOM-element-attributes/snipaste2.jpg" alt="去除假数据后获取到的scrollHeight"><br>嗯？为啥都是一个值，这个值不应该是会随内容的增加变化的吗？为什么就一直是初始的值呢。</p>
-<p>想了想会不会是计算属性缓存了 <code>scrollHeight</code>，然后就在滚动方法里同样输出了容器的<code>scrollHeight</code>，确实是被缓存了。<br><img src="https://yogwang.site/2020/vue-computed-DOM-element-attributes/snipaste3.jpg" alt="对比两个scrollHeight"></p>
+<p>所以在我在控制台输出了一下获取到的值:<br><img src="/.site//snipaste.jpg" alt="获取到的scrollHeight"><br>就觉得是不是因为这里拿到的是容器可视部分的值 <code>offsetHeight</code>，检查后发现我并没有取错属性。</p>
+<p>接着我就把之前填充默认填充的假数据给去掉了，再一次获取了计算出来的属性：<br><img src="/.site//snipaste2.jpg" alt="去除假数据后获取到的scrollHeight"><br>嗯？为啥都是一个值，这个值不应该是会随内容的增加变化的吗？为什么就一直是初始的值呢。</p>
+<p>想了想会不会是计算属性缓存了 <code>scrollHeight</code>，然后就在滚动方法里同样输出了容器的<code>scrollHeight</code>，确实是被缓存了。<br><img src="/.site//snipaste3.jpg" alt="对比两个scrollHeight"></p>
 <p>然后就去查阅了一下资料，也询问了群内的大佬</p>
 <blockquote>
 <p>计算属性的结果会被缓存，除非依赖的响应式属性变化才会重新计算。注意，如果某个依赖 (比如非响应式属性) 在该实例范畴之外，则计算属性是不会被更新的。</p>
