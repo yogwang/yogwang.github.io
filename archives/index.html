@@ -52,7 +52,7 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
 
       
   
@@ -86,7 +86,7 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
 
       
   
@@ -98,7 +98,9 @@
     </header>
      
   <article class="article-excerpt">
-    <p>这段时间项目迭代比较快，所以很多时候对于记录的状态和类型判断我都是使用的 <strong>魔术字符串</strong> 的形式，但是这样就与代码形成了 “强耦合”, <strong>不利于后期的维护</strong>，</p>
+    <p>这段时间项目迭代比较快，所以很多时候对于记录的状态和类型判断我都是使用的 <strong>魔术字符串</strong> 的形式，但是这样就与代码形成了 “强耦合”， <strong>不利于后期的维护</strong>。</p>
+<p>例如这样的代码结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 用vue template来举例 --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">        &lt;!-- 其它结构 --&gt;</span><br><span class="line">        &lt;td&gt;</span><br><span class="line">            &lt;!-- 直接使用状态值判断 --&gt;</span><br><span class="line">            &lt;a @click&#x3D;&#39;xxx&#39; v-if&#x3D;&#39;record.status &#x3D;&#x3D;&#x3D; 0&#39;&gt;操作A&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;!-- 使用数组下标判断 --&gt;</span><br><span class="line">            &lt;a @click&#x3D;&#39;xxx&#39; v-eles-if&#x3D;&#39;record.status &#x3D;&#x3D;&#x3D; status[1].key&#39;&gt;操作B&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;a @click&#x3D;&#39;xxx&#39; v-else&#39;&gt;其他操作&lt;&#x2F;a&gt;</span><br><span class="line">        &lt;&#x2F;td&gt;</span><br><span class="line">        &lt;!-- 其它结构 --&gt;</span><br><span class="line">    &lt;&#x2F;table&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
 <p>特别是最近一整个分类的类型和状态的都变更了，所以在业务逻辑内的魔术字符串也需要一个一个文件去同步修改，大部分的都被替换了，但还有一些零碎的地方没有被修改到，导致不断有 BUG 被提上来，这就很头疼了。</p>
 <p>所以我就想者怎么把业务逻辑内的魔术字符串使用一种方式替换掉，最开始我想法是把状态集中起来进行管理</p>
   </article>
