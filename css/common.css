@@ -129,6 +129,10 @@ body {
   margin: 0;
   position: relative;
 }
+*::selection {
+  color: #fff;
+  background-color: #40bdd0;
+}
 /*
  * 头部
  */

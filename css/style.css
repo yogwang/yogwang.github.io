@@ -132,6 +132,10 @@ body {
   margin: 0;
   position: relative;
 }
+*::selection {
+  color: #fff;
+  background-color: #40bdd0;
+}
 header#header {
   padding: 10px 15px;
   box-shadow: 0 0 5px #bbb;
