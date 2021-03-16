@@ -68,10 +68,10 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>设计模式是我在2018年在成都工作的时候听 <a target="_blank" rel="noopener" href="https://blog.meathill.com/">肉山老师</a> 的直播<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mW411Y71x">JavaScript 设计模式 导言</a>的时候就想学习的一个东西，但是一直拖拖拖，买了肉老师的 Chat <a target="_blank" rel="noopener" href="https://gitbook.cn/gitchat/activity/5ccedbcfe5bb505613f45186">从 jQuery 里学习设计模式</a>，但是看了一头雾水，也同样买了肉老师推荐的书《设计模式：可复用面向对象软件的基础》，但是在家里吃灰了半年。<br>一直想把整个设计模式都了解一下啊，不用吃透，吃个大概明了就可，但是每次都提不起开坑的念头，如果再写成学习笔记的话，学习周期会大大拉长。</p>
-<p>但是这在当前项目中的不断迭代中，我遇到了一个问题，就是 <a href="/2020/JS-type-and-status-management-dictionary/">项目中的类型和状态管理</a>，所以就想着是否有一个合适的设计模式来解决问题，所以就被逼迫着捡起来了……</p>
+    <p>设计模式是我在2018年在成都工作的时候听 <a target="_blank" rel="noopener" href="https://blog.meathill.com/">肉山老师</a> 的直播<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mW411Y71x">JavaScript 设计模式 导言</a>的时候就想学习的一个东西，但是一直拖拖拖，虽然后来买了肉老师的 Chat <a target="_blank" rel="noopener" href="https://gitbook.cn/gitchat/activity/5ccedbcfe5bb505613f45186">从 jQuery 里学习设计模式</a>，但是看了一头雾水，后来同样买了肉老师推荐的书《设计模式：可复用面向对象软件的基础》，也是在家里吃灰了半年多。<br>一直想把整个设计模式都了解一下，不用吃透大概明了就可以，但是每次都提不起开坑的念头，如果再写成学习笔记的话，学习周期会大大拉长。</p>
+<p>这次在项目的不断迭代中，我遇到了一个问题，就是 <a href="/2020/JS-type-and-status-management-dictionary/">项目中的类型和状态管理</a>，所以就想着是否有一个合适的设计模式来解决问题，所以就被逼迫着捡起来了……</p>
 <a id="more"></a>
-<p>肉老师谈论如何学习设计模式的方法，和我的学习想法是类似的，不管是学习设计模式还是学习一个框架/库，先了解一个大概心里有一个底，然后在实际遇到问题的时候再去找文档来炒冷饭，我觉得这样会更清晰一些。</p>
+<p>肉老师谈论如何学习设计模式的方法，和我的学习想法是类似的，不管是学习设计模式还是学习一个框架/库，先了解一个大概心里有一个底，然后在实际遇到问题的时候再去找文档来炒冷饭，我觉得这样会更清晰一些，但是他不推荐了解的那么多设计模式，只需要过一遍，等遇到了差不多的场景再去具体看适合哪一个。</p>
 <p>《设计模式：可复用面向对象软件的基础》这本书是 1995 出版的，可能会有一些问题，或者有一些新的设计模式出现，但都不是问题，咱先把这本书内的 <code>23</code> 个设计模式了解，之后再看情况去了解新的内容。</p>
 <p>所以这篇文章应该会陆陆续续的更新一些新内容，好了，在这篇标号 00 的笔记中我就以前端开发者的视角按照设计模式名称+概括+简单示例，来大概描述一下每种设计模式，如果有遇到可用场景时再深入的去记录。</p>
 <p>这本书内把设计模式分成 <strong><code>三种类型</code>（ 创建型、结构形、行为型） 和 <code>二十三个模式</code></strong></p>
@@ -141,36 +141,54 @@
 <h2 id="2-命令-Command"><a href="#2-命令-Command" class="headerlink" title="2. 命令 Command"></a>2. 命令 <code>Command</code></h2><blockquote>
 <p>将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化，对请求排队或记录请求日志，以及支持可撤销的操作。</p>
 </blockquote>
-<p>设计思想是把命令的创建和执行分离，使得调用者无需关心具体的执行过程</p>
+<p>设计思想是把命令拆分开来，创建和执行分离，使得调用者无需关心具体的执行过程，大概是，每天中午点餐的时候只要和老板娘喊一嗓子炒年糕，一会老板就会端出来一盆炒年糕。</p>
 <h2 id="3-解释器-Interpreter"><a href="#3-解释器-Interpreter" class="headerlink" title="3. 解释器 Interpreter"></a>3. 解释器 <code>Interpreter</code></h2><blockquote>
 <p>给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。</p>
 </blockquote>
+<p>快速的话可以理解成 正则，把一系列复杂的规则判断用简单的语句实现。</p>
 <h2 id="4-迭代器-Iterator"><a href="#4-迭代器-Iterator" class="headerlink" title="4. 迭代器 Iterator"></a>4. 迭代器 <code>Iterator</code></h2><blockquote>
 <p>提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。</p>
 </blockquote>
+<p>这种模式用于顺序访问集合对象的元素，不需要知道集合对象的底层表示。可以用对象的 <code>Object.entries()</code> 方法来理解。每一个对象都有它自己的迭代方法，你不需要知道它具体有哪些属性，它可以按照顺序去输出对象的内部元素。</p>
 <h2 id="5-中介者-Mediator"><a href="#5-中介者-Mediator" class="headerlink" title="5. 中介者 Mediator"></a>5. 中介者 <code>Mediator</code></h2><blockquote>
 <p>用一个中介对象来封装一系列的对象交互。中介者使各个对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。</p>
 </blockquote>
+<p><code>MVC</code> 框架中的 <code>C</code>（控制器），它就是用来控制 M（模型）和 V（视图）的中介者。</p>
 <h2 id="6-备忘录-Memento"><a href="#6-备忘录-Memento" class="headerlink" title="6. 备忘录 Memento"></a>6. 备忘录 <code>Memento</code></h2><blockquote>
 <p>在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。</p>
 </blockquote>
+<p>一般来描述这个模式都是举例文本编辑器的撤销功能，并且可以一直退回到空白文本的状态，其它的类似还有，浏览器的后退前进，数据库的事务回滚等等。<br>保持对象的状态，并且可以在调用组件生命周期内持久保存这些快照。</p>
 <h2 id="7-观察者-Observer"><a href="#7-观察者-Observer" class="headerlink" title="7. 观察者 Observer"></a>7. 观察者 <code>Observer</code></h2><blockquote>
 <p>定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p>
 </blockquote>
+<p>这个直接用Vue来举例吧，<code>data</code> 内 <strong>声明</strong> 的变量被修改时，会自动通知UI更新。<br>最直接可以看到的就是每一个在<code>data</code>内声明的变量都会有一个 <code>__ob__</code> 对象。<br>观察者模式和中介者模式其实非常的相似，只不过这里的 “中介者/订阅者” 就是观察者</p>
 <h2 id="8-状态-State"><a href="#8-状态-State" class="headerlink" title="8. 状态 State"></a>8. 状态 <code>State</code></h2><blockquote>
 <p>允许一个对象在其内部状态改变时改变它的行为。对象看起来似乎修改了它的类。</p>
 </blockquote>
+<p>可以描述一个应用场景，在一个后台管理系统中，一定会有审核相关的部分，每一条不同状态的记录都会对应不同的操作，这边就会适合状态模式的应用。</p>
 <h2 id="9-策略-Strategy"><a href="#9-策略-Strategy" class="headerlink" title="9. 策略 Strategy"></a>9. 策略 <code>Strategy</code></h2><blockquote>
 <p>定义一系列的算法，把它们一个个封装起来，并且使它们可相互替换。本模式使得算法可独立于使用它的客户而变化。</p>
 </blockquote>
+<p>也描述一个应用场景吧，比如你现在老板给你一个任务，让你做一个根据职位、绩效、考勤和工资自动计算奖金的程序，不同的职务有不同的标准，不同的绩效等级也会影响奖金系数。<br>一开始你可以使用 <code>if...else</code>，去判断不同的场景，随着需求变化，代码不断调整，越来越臃肿。代码几乎不能维护，因为你根本不知道这里的一处改动会对后面造成什么样的影响。<br>这时候可以使用策略模式来更具不同的条件执行不同的业务逻辑。</p>
 <h2 id="10-模板方法-Template-Method"><a href="#10-模板方法-Template-Method" class="headerlink" title="10. 模板方法 Template Method"></a>10. 模板方法 <code>Template Method</code></h2><blockquote>
 <p>定义一个操作中的算法的骨架，而将一些步骤延迟到子类中，使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。</p>
 </blockquote>
+<p><small><em>在面向对象程序设计过程中，程序员常常会遇到这种情况：设计一个系统时知道了算法所需的关键步骤，而且确定了这些步骤的执行顺序，但某些步骤的具体实现还未知，或者说某些步骤的实现与具体的环境相关。</em></small></p>
+<p>这个很容易解释，我们所熟悉的 <code>Ajax</code> 函数就是，基本流程都确定，只需要接受 <strong>URL 地址</strong> 和 <strong>Settings 对象</strong> 就可以，再把需要执行的操作放在回调函数里。<br>它封装了不变部分，扩展可变部分。在父类中提取了公共的部分代码，便于代码复用，而把可变部分算法由子类继承实现，便于子类继续扩展。</p>
 <h2 id="11-访问者-Visitor"><a href="#11-访问者-Visitor" class="headerlink" title="11. 访问者 Visitor"></a>11. 访问者 <code>Visitor</code></h2><blockquote>
 <p>表示一个作用于某对象结构中的各元素的操作。它使你可以在不改变各元素的类的前提下定义作用于这些元素的新操作。</p>
 </blockquote>
-<h1 id="未完成"><a href="#未完成" class="headerlink" title="未完成"></a>未完成</h1><hr>
-<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p><a target="_blank" rel="noopener" href="http://product.dangdang.com/27875838.html">《设计模式：可复用面向对象软件的基础》</a><br><a target="_blank" rel="noopener" href="https://gitbook.cn/gitchat/activity/5ccedbcfe5bb505613f45186">从 jQuery 里学习设计模式 - Meathill</a><br><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264742167474528">设计模式 - 廖雪峰</a><br><a target="_blank" rel="noopener" href="https://www.runoob.com/design-pattern/design-pattern-tutorial.html">设计模式 | 菜鸟教程</a><br><a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns">《深入设计模式》一本关于设计模式及其背后原则的电子书籍</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html">Javascript继承机制的设计思想 - 阮一峰</a></p>
+<p><small><em>核心思想是为了访问比较复杂的数据结构，不去改变数据结构，而是把对数据的操作抽象出来，在“访问”的过程中以回调形式在访问者中处理操作逻辑。</em></small></p>
+<p>这个还没有想到合适的场景，大概就是说 有一个稳定的数据结构，但是需要实现的功能并不确定，针对不同的访问者有不同的行为职责。<br>感觉有点类似命令模式，命令模式Plus？</p>
+<hr>
+<br>
+<br>
+<br>
+
+
+
+<p>不断了解各种设计模式的的时候，发现其实不同的设计模式之间可能并没有很明确的界限，并且这些传统的设计模式在前端工作中很多都使用不上，应该可以简略成几个模式即可，不需要每一个都了解，反而可能影响自己的认知。</p>
+<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p><a target="_blank" rel="noopener" href="http://product.dangdang.com/27875838.html">《设计模式：可复用面向对象软件的基础》</a><br><a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns">《深入设计模式》一本关于设计模式及其背后原则的电子书籍</a><br><a target="_blank" rel="noopener" href="https://weread.qq.com/web/reader/6bf3215071a123016bf0b74kc81322c012c81e728d9d180">JavaScript设计模式与开发实践 - 曾探</a><br><a target="_blank" rel="noopener" href="https://www.runoob.com/design-pattern/design-pattern-tutorial.html">设计模式 | 菜鸟教程</a><br><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264742167474528">设计模式 - 廖雪峰</a><br><a target="_blank" rel="noopener" href="https://gitbook.cn/gitchat/activity/5ccedbcfe5bb505613f45186">从 jQuery 里学习设计模式 - Meathill</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html">Javascript继承机制的设计思想 - 阮一峰</a><br><a target="_blank" rel="noopener" href="https://www.bookstack.cn/books/design-pattern-in-javascript">JavaScript中的设计模式</a></p>
  
   </article>
 
