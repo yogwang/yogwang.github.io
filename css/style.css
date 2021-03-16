@@ -186,6 +186,9 @@ div#wrap a:hover {
 main#container {
   width: calc(100% - 300px);
 }
+main#container article {
+  font-size: 17px;
+}
 main#container article a {
   color: inherit;
   background: linear-gradient(to bottom, transparent 70%, #98dce6 70%);
@@ -198,6 +201,9 @@ main#container article a:after {
 }
 main#container article a:hover {
   text-decoration: none;
+}
+main#container article p {
+  line-height: 1.8;
 }
 main#container nav#page-nav {
   font-size: 18px;
