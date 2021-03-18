@@ -197,12 +197,12 @@ main#container article {
 }
 main#container article a {
   color: inherit;
-  background: linear-gradient(to bottom, transparent 70%, #98dce6 70%);
+  background: linear-gradient(to bottom, transparent 70%, #d4faff 70%);
   transition: background 0.4s;
 }
 main#container article a:before,
 main#container article a:after {
-  content: ' ';
+  content: '';
   display: inline;
 }
 main#container article a:hover {
