@@ -300,6 +300,40 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/JS-about-this/">JavaScript 中的 this 指向问题</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>今天在群里看到大家在讨论一个问题，就是 <code>this</code> 的指向，并且牵扯到了 <code>let</code>，<code>const</code> 的变量提升，比如说在全局顶部声明的 <code>let</code> 变量能否挂载到 <code>window</code> 下之类的。<br>还是老流程，先讨论第一个问题，然后再开始牵扯到后续的展开。</p>
+<p><code>this</code> 指向大概分为两种，普通函数内的 <code>this</code> 和 箭头函数内的 <code>this</code>，箭头函数内的 <code>this</code> 其实挺好理解的，主要是普通函数上的 <code>this</code>，因为各种 <code>call</code>、<code>apply</code>、<code>bind</code> 所影响。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2020/JS-about-this/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2020-10-26T04:01:21.000Z" itemprop="datePublished">Oct 26</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li></ul>
 
       
@@ -362,43 +396,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-class-constructor/">关于 ES6 Class 继承中 Constructor 的整理</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>今天在和小伙伴聊天时, 发现对于 ES6 中的 Class 继承的理解我其实还是只是一个模棱两可的状态, 其实也不只是 <code>constructor</code> 有问题其它的部分其实也有问题, 这次先写类的继承之后再看有没有其它没理解的地方</p>
-<p><em>整篇文章搭配食用 阮一峰老师的 <a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/class-extends">ECMAScript 6 入门 - Class的继承</a> 更佳</em> </p>
-<blockquote>
-<p>Class 可以通过extends关键字实现继承，这比 ES5 的通过修改原型链实现继承，要清晰和方便很多。</p>
-</blockquote>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-class-constructor/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-05-26T03:14:27.000Z" itemprop="datePublished">May 26</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -406,7 +403,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/2/">2</a><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/7/">7</a><a class="extend next" rel="next" href="/categories/%E7%AC%94%E8%AE%B0/page/2/">next &gt;&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/2/">2</a><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/8/">8</a><a class="extend next" rel="next" href="/categories/%E7%AC%94%E8%AE%B0/page/2/">next &gt;&gt;</a>
   </nav>
 
 
@@ -437,6 +434,10 @@
       <ul>
         
           <li>
+            <a href="/2021/JS-operators/">JavaScript 中的位运算符</a>
+          </li>
+        
+          <li>
             <a href="/2021/use-stylus-with-gulp-in-miniprogram/">在小程序中使用CSS预处理器</a>
           </li>
         
@@ -452,10 +453,6 @@
             <a href="/2021/about-emotional-blackmail/">关于情感勒索与关系依存自尊者</a>
           </li>
         
-          <li>
-            <a href="/2020/design-pattern-learning-L00/">「 设计模式学习 」 L00 开坑贴 &amp; 设计模式概览</a>
-          </li>
-        
       </ul>
     </div>
   </section>
@@ -465,7 +462,7 @@
   <section class="widget-wrap">
     <h3 class="widget-title">archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
     </div>
   </section>
 

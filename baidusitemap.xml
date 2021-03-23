@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2020/JS-about-this/</loc>
+    <lastmod>2021-03-23</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2021/JS-operators/</loc>
+    <lastmod>2021-03-23</lastmod>
+  </url>
+  <url>
     <loc>https://yogwang.site/2020/JS-for/</loc>
     <lastmod>2021-03-20</lastmod>
   </url>
