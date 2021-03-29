@@ -170,7 +170,7 @@
      
   <article class="article-excerpt">
     <p>今天在群里看到大家在讨论一个问题，就是 <code>this</code> 的指向，并且牵扯到了 <code>let</code>，<code>const</code> 的变量提升，比如说在全局顶部声明的 <code>let</code> 变量能否挂载到 <code>window</code> 下之类的。<br>还是老流程，先讨论第一个问题，然后再开始牵扯到后续的展开。</p>
-<p><code>this</code> 指向大概分为两种，普通函数内的 <code>this</code> 和 箭头函数内的 <code>this</code>，箭头函数内的 <code>this</code> 其实挺好理解的，主要是普通函数上的 <code>this</code>，因为各种 <code>call</code>、<code>apply</code>、<code>bind</code> 所影响。</p>
+<p><code>this</code> 指向大概分为两种，普通函数内的 <code>this</code> 和 箭头函数内的 <code>this</code>，箭头函数内的 <code>this</code> 其实挺好理解的，主要是因为各种 <code>call()</code>、<code>apply()</code>、<code>bind()</code> 和 <code>new</code> 影响下的 <code>this</code> 指向问题。</p>
   </article>
   
     <div class="article-more-link">
