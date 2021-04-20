@@ -123,12 +123,8 @@
 </li>
 </ol>
 <hr>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
-<li><h3 id="安装完成之后使用-nvm-ls-没有看到之前已经安装的NodeJS版本"><a href="#安装完成之后使用-nvm-ls-没有看到之前已经安装的NodeJS版本" class="headerlink" title="安装完成之后使用 nvm ls 没有看到之前已经安装的NodeJS版本"></a>安装完成之后使用 <code>nvm ls</code> 没有看到之前已经安装的NodeJS版本</h3><p>我在使用的过程中没有遇到这个问题，但是同事在安装之后遇到了，这个问题。有可能是因为安装时指定的Node目录错误了，可以卸载之前安装的 NodeJS，然后使用 <code>nvm install &lt;version&gt;</code> 重新安装对应版本的 NodeJS</p>
-</li>
-<li><h3 id="切换版本之后全局依赖丢失"><a href="#切换版本之后全局依赖丢失" class="headerlink" title="切换版本之后全局依赖丢失"></a>切换版本之后全局依赖丢失</h3><p>今天小伙伴问题，切换了新版本之后他以前安装的全局依赖都没了，又要重新安装，然后切换到老版本之后和新安装的全局依赖版本还不一样，问我怎么解决的。</p>
-</li>
-</ul>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="安装完成之后使用-nvm-ls-没有看到之前已经安装的NodeJS版本"><a href="#安装完成之后使用-nvm-ls-没有看到之前已经安装的NodeJS版本" class="headerlink" title="安装完成之后使用 nvm ls 没有看到之前已经安装的NodeJS版本"></a>安装完成之后使用 <code>nvm ls</code> 没有看到之前已经安装的NodeJS版本</h3><p>我在使用的过程中没有遇到这个问题，但是同事在安装之后遇到了，这个问题。有可能是因为安装时指定的Node目录错误了，可以卸载之前安装的 NodeJS，然后使用 <code>nvm install &lt;version&gt;</code> 重新安装对应版本的 NodeJS</p>
+<h3 id="切换版本之后全局依赖丢失"><a href="#切换版本之后全局依赖丢失" class="headerlink" title="切换版本之后全局依赖丢失"></a>切换版本之后全局依赖丢失</h3><p>今天小伙伴问题，切换了新版本之后他以前安装的全局依赖都没了，又要重新安装，然后切换到老版本之后和新安装的全局依赖版本还不一样，问我怎么解决的。</p>
 <p>这个问题，是因为切换了版本之后其实是切换软链接路径，然后你又重新配置过依赖项安装位置了，比如指向到了NodsJs目录下，所以现在指向到的是新的NodeJs下的目录，肯定目录下就没有老的全局依赖了。<br>所以重新切换到外部就好了，比如说我是在 <code>NVM</code> 目录下新建一个 <code>dependencies</code> 文件夹，然后重新 <code>npm set prefix</code> 到这个目录就好了，和以前切换<code>npm</code>安装路径一样，记得也同时修改一下缓存位置。<br>对了，最后记得修改系统的环境变量，分别在用户变量和系统变量的 <code>path</code> 中，只不过我是单独配置了一个 <code>prefix</code> 项，所以就不展示了。</p>
 <h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">nvm-windows - Github</a></li>
