@@ -72,20 +72,12 @@
 <h2 id="Roadmap"><a href="#Roadmap" class="headerlink" title="# Roadmap"></a># Roadmap</h2><blockquote>
 <p>学习路径会在学习和开发中不断调整，不同阶段会有不同的理解，以下只是现阶段我对于学习顺序先后的整理。</p>
 </blockquote>
-<h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><ul>
-<li>所有路由</li>
-<li>路由传参</li>
-<li>清空路由历史</li>
-</ul>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><h3 id="发起请求"><a href="#发起请求" class="headerlink" title="发起请求"></a>发起请求</h3><h3 id="拉起授权"><a href="#拉起授权" class="headerlink" title="拉起授权"></a>拉起授权</h3><hr>
+<h3 id="目录结构-👉-学习日记-L01-目录结构"><a href="#目录结构-👉-学习日记-L01-目录结构" class="headerlink" title="目录结构 👉 学习日记 L01 目录结构"></a>目录结构 👉 <a href="/2021/miniprogram-devDiary-01-structure/">学习日记 L01 目录结构</a></h3><h3 id="路由跳转-👉-学习日记-L02-路由跳转"><a href="#路由跳转-👉-学习日记-L02-路由跳转" class="headerlink" title="路由跳转 👉 学习日记 L02 路由跳转"></a>路由跳转 👉 <a href="/2021/miniprogram-devDiary-02-router/">学习日记 L02 路由跳转</a></h3><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><h3 id="发起请求"><a href="#发起请求" class="headerlink" title="发起请求"></a>发起请求</h3><h3 id="拉起授权"><a href="#拉起授权" class="headerlink" title="拉起授权"></a>拉起授权</h3><hr>
 <h2 id="疑问"><a href="#疑问" class="headerlink" title="# 疑问"></a># 疑问</h2><h4 id="🎇-小程序开发到底是像-Vue-还是-React？"><a href="#🎇-小程序开发到底是像-Vue-还是-React？" class="headerlink" title="🎇 小程序开发到底是像 Vue 还是 React？"></a>🎇 小程序开发到底是像 <code>Vue</code> 还是 <code>React</code>？</h4><h4 id="🎇-小程序开发能否使用-npm-进行包管理？"><a href="#🎇-小程序开发能否使用-npm-进行包管理？" class="headerlink" title="🎇 小程序开发能否使用 npm 进行包管理？"></a>🎇 小程序开发能否使用 <code>npm</code> 进行包管理？</h4><p>可以</p>
 <h4 id="🎇-路由是否可以像-vue-router-一样省略-index"><a href="#🎇-路由是否可以像-vue-router-一样省略-index" class="headerlink" title="🎇 路由是否可以像 vue-router 一样省略 index"></a>🎇 路由是否可以像 <code>vue-router</code> 一样省略 <code>index</code></h4><p>不可以，需要全路径</p>
 <h4 id="🎇-尺寸单位-rpx-应该怎么去理解"><a href="#🎇-尺寸单位-rpx-应该怎么去理解" class="headerlink" title="🎇 尺寸单位 rpx 应该怎么去理解"></a>🎇 尺寸单位 <code>rpx</code> 应该怎么去理解</h4><p>正常来说，在网页端我们基本都是使用 <code>px</code>/<code>em</code>/<code>rem</code> 这类的常规单位，然后按照不同的设备尺寸去适配，但是小程序有一个 <code>rpx</code> 单位，可以根据屏幕宽度进行自适应，怎么去理解呢？<br>其实就是<strong>看设计稿</strong>，因为 <code>rpx</code> 默认屏幕宽为 <code>750rpx</code> ，所以如果UI给的设计稿为 <code>750px</code> 则 <code>1rpx</code> 趋近于 <code>0.5px</code> 或者 <code>1pt</code> 因为大部分设备 <code>DPR = 2</code>，如果设计稿是 <code>375px</code> 宽度的则 <strong>1：1</strong> 转换就可。一句话形容就是<strong>按照设计稿的宽度除以 <code>750</code> 再乘以 2 来计算</strong>。</p>
 <h4 id="🎇-小程序是否支持CSS预处理器"><a href="#🎇-小程序是否支持CSS预处理器" class="headerlink" title="🎇 小程序是否支持CSS预处理器"></a>🎇 小程序是否支持CSS预处理器</h4><p>不支持，但是你可以自己处理成 <code>.wxss</code>，具体可以查看这篇文章： 📍<a target="_blank" rel="noopener" href="http://localhost:4000/2021/use-stylus-with-gulp-in-miniprogram/">在小程序中使用CSS预处理器</a></p>
 <h4 id="🎇-微信授权的问题"><a href="#🎇-微信授权的问题" class="headerlink" title="🎇 微信授权的问题"></a>🎇 微信授权的问题</h4><h4 id="🎇-Component-如何使用-properties-中的-observer"><a href="#🎇-Component-如何使用-properties-中的-observer" class="headerlink" title="🎇 Component 如何使用 properties 中的 observer"></a>🎇 <code>Component</code> 如何使用 <code>properties</code> 中的 <code>observer</code></h4><h4 id="🎇-bindtap-绑定的函数怎么传入自定义参数"><a href="#🎇-bindtap-绑定的函数怎么传入自定义参数" class="headerlink" title="🎇 bindtap 绑定的函数怎么传入自定义参数"></a>🎇 <code>bindtap</code> 绑定的函数怎么传入自定义参数</h4><p>使用 <code>dataset</code>，例如：<code>&lt;view id=&quot;tapTest&quot; data-hi=&quot;Weixin&quot; bindtap=&quot;&#123;&#123;tapName&#125;&#125;&quot;&gt; Click me! &lt;/view&gt;</code>，具体可以看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html#%E4%BA%8B%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F">事件 | 微信开放文档</a>。是不是有点蠢….</p>
-<h4 id="🎇-如何路由传参"><a href="#🎇-如何路由传参" class="headerlink" title="🎇 如何路由传参"></a>🎇 如何路由传参</h4><p>需要跳转的应用内非 tabBar 的页面路径后可以用 <code>query</code> 的形式传递参数，如 <code>path?key=value&amp;key2=value2</code>。<br>页面中也可以在 <code>onLoad</code> 事件中接受参数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  onLoad: <span class="function"><span class="keyword">function</span>(<span class="params">option</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(option.query)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>具体查看文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html">wx.navigateTo(Object object) | 微信开放文档</a></p>
 <h4 id="🎇-事件如何绑定在按键上"><a href="#🎇-事件如何绑定在按键上" class="headerlink" title="🎇 事件如何绑定在按键上"></a>🎇 事件如何绑定在按键上</h4><p>可以</p>
 <h4 id="🎇-是否有组件-slot"><a href="#🎇-是否有组件-slot" class="headerlink" title="🎇 是否有组件 slot"></a>🎇 是否有组件 <code>slot</code></h4><p>有，组件提供一个 <code>&lt;slot&gt;</code> 节点，具体文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html">组件模板和样式 | 微信开放文档</a></p>
 <h4 id="🎇-组件间通信方法-事件"><a href="#🎇-组件间通信方法-事件" class="headerlink" title="🎇 组件间通信方法/事件"></a>🎇 组件间通信方法/事件</h4><p>类似 <code>Vue</code> 中的 <code>$emit</code> 方法， <code>this.triggerEvent(&quot;myEventName&quot;, myEventDetail, myEventOption)</code>，文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/events.html">组件间通信与事件 | 微信开放文档</a></p>
@@ -105,7 +97,7 @@
    
 <nav id="article-nav">
   
-    <a href="/2021/miniprogram-devDiary-01/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/miniprogram-devDiary-01-structure/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">newer</strong>
       <div class="article-nav-title">
         
@@ -153,7 +145,11 @@
       <ul>
         
           <li>
-            <a href="/2021/miniprogram-devDiary-01/">微信小程序学习日记 L01 目录结构</a>
+            <a href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-01-structure/">微信小程序学习日记 L01 目录结构</a>
           </li>
         
           <li>
@@ -166,10 +162,6 @@
         
           <li>
             <a href="/2021/use-stylus-with-gulp-in-miniprogram/">在小程序中使用CSS预处理器</a>
-          </li>
-        
-          <li>
-            <a href="/2021/jirengu-share-my-life-88th/">程序员社群 成长&amp;生活分享 2021/03/18</a>
           </li>
         
       </ul>

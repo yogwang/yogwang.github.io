@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>小程序 | blog [ YOG WANG ]</title>
+  <title>微信小程序学习日记 L01 目录结构 | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
@@ -38,154 +38,151 @@
 
     <div id="wrap">
       <main id="container">
-  
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>以前一直都是写的 Vue，所以在刚接触小程序的时候会疑惑，小程序是否也有和 Vue 一样有路由表，但是看完开放文档之后发现没有路由表，就很疑惑。<br>那小程序怎么去做页面跳转的呢？</p>
-<h3 id="首先，虽然小程序没有路由表，但是在全局配置文件-app-json-中有-pages-信息"><a href="#首先，虽然小程序没有路由表，但是在全局配置文件-app-json-中有-pages-信息" class="headerlink" title="首先，虽然小程序没有路由表，但是在全局配置文件(app.json)中有 pages 信息"></a>首先，虽然小程序没有路由表，但是在全局配置文件(<code>app.json</code>)中有 <code>pages</code> 信息</h3><p>用于指定小程序由哪些页面组成，每一项都对应一个页面的 路径（含文件名） 信息。<br>文件名不需要写文件后缀，框架会自动去寻找对应位置的文件进行处理。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/miniprogram-devDiary-02-router/#more">阅读全文</a>
+  <div
+  id="post-miniprogram-devDiary-01-structure"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2021-05-06T14:21:47.000Z" itemprop="datePublished">2021-05-06</time>
+</p> 
     </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2021-05-09T07:25:19.000Z" itemprop="datePublished">May 9</time>
-</p>
-  </div>
-</div>
-  
     
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
-
+    <header class="article-header">
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/miniprogram-devDiary-01-structure/">微信小程序学习日记 L01 目录结构</a>
-    </h2>
+    <h1 class="article-title" itemprop="name">
+      微信小程序学习日记 L01 目录结构
+    </h1>
   
 
     </header>
-     
-  <article class="article-excerpt">
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
     <p>小程序包含一个描述整体程序的 <code>app</code> 和多个描述各自页面的 <code>page</code>。<br>刚刚接触到小程序，使用 微信开发者工具 新建完项目之后，会有一个这样的初始结构：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">├─pages</span><br><span class="line">│  ├─index</span><br><span class="line">│  │     index.js</span><br><span class="line">│  │     index.json</span><br><span class="line">│  │     index.wxml</span><br><span class="line">│  │     index.wxss</span><br><span class="line">│  │      </span><br><span class="line">│  └─logs</span><br><span class="line">│        logs.js</span><br><span class="line">│        logs.json</span><br><span class="line">│        logs.wxml</span><br><span class="line">│        logs.wxss</span><br><span class="line">│          </span><br><span class="line">├─utils</span><br><span class="line">│     util.js</span><br><span class="line">├─ app.js</span><br><span class="line">├─ app.json</span><br><span class="line">├─ app.wxss</span><br><span class="line">├─ project.config.json</span><br><span class="line">└─ sitemap.json</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h3 id="先看最外层的文件-app-js-app-json-app-wxss-project-config-json-sitemap-json"><a href="#先看最外层的文件-app-js-app-json-app-wxss-project-config-json-sitemap-json" class="headerlink" title="先看最外层的文件 [ app.js, app.json, app.wxss, project.config.json, sitemap.json ]"></a>先看最外层的文件 [ <code>app.js</code>, <code>app.json</code>, <code>app.wxss</code>, <code>project.config.json</code>, <code>sitemap.json</code> ]</h3><ul>
+<li><p><code>app.js</code>    小程序实例化，可配置小程序实例</p>
+<ul>
+<li>设置<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html">生命周期回调和事件监听</a></li>
+<li>配置小程序全局对象 <code>globalData</code></li>
+<li>全局可以通过 <code>getApp()</code> 方法获取小程序实例<br>恶</li>
+</ul>
+</li>
+<li><p><code>app.json</code>  小程序全局公共配置、默认配置项 </p>
+<ul>
+<li><code>&quot;pages&quot;</code> 页面路由配置</li>
+<li><code>&quot;window&quot;</code> 全局默认页我面样式配置 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/page.html">配置文档</a></li>
+<li><code>&quot;tabBar&quot;</code> 底部 选项卡 配置就</li>
+<li><code>&quot;usingComponents&quot;</code> 全局自定义组件配置 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6">使用自定义组件</a></li>
+<li>其它他配置项可以查看 👉 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html">全局配置 | 微信开放文档</a></li>
+</ul>
+</li>
+<li><p><code>app.wxss</code>  小程序全局样式</p>
+<ul>
+<li>小程序全局的样式配置，会被局部样式覆盖</li>
+<li>具有 <code>CSS</code> 大部分特性</li>
+<li>当前支持的选择器 👉 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html#%E9%80%89%E6%8B%A9%E5%99%A8">选择器 | 微信开放文档</a></li>
+<li>拓展了一个尺寸单位 <code>rpx</code> <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html#%E5%B0%BA%E5%AF%B8%E5%8D%95%E4%BD%8D">尺寸单位 | 微信开放文档</a></li>
+</ul>
+</li>
+<li><p><code>project.config.json</code> 小程序项目配置文件</p>
+<ul>
+<li>可以直接配置本地小程序项目属性，<strong>工具栏-设置-项目设置</strong> 中设置的配置项</li>
+<li>每次提交项目时不会提交该文件</li>
+</ul>
+</li>
+<li><p><code>sitemap.json</code> 配置小程序及其页面是否允许被微信搜索索引</p>
+<ul>
+<li><code>rules</code> 索引规则，具体可查看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/sitemap.html">sitemap 配置 | 微信开放文档</a></li>
+<li>如果没有 <code>sitemap.json</code> ，默认所有页面都允许被索引</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="然后看-pages-目录"><a href="#然后看-pages-目录" class="headerlink" title="然后看 pages 目录"></a>然后看 <code>pages</code> 目录</h2><blockquote>
+<p>小程序的页面目录</p>
+</blockquote>
+<p><code>pages/index</code> 下是包括了4种文件的 [ <code>js</code>, <code>wxml</code>, <code>json</code>, <code>wxss</code> ], 和根目录一样，只是多了一个 <code>wxml</code> 文件，<br>分别对应的是：</p>
+<ul>
+<li><code>js</code> - 注册页面，配置页面的初始数据、生命周期回调、事件处理函数等 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html">配置文档</a></li>
+<li><code>wxml</code> - 组件的结构，微信自己的一套类似 <code>html</code> 的标签语言，来构建出页面结构 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/">WXML | 微信开放文档</a><ul>
+<li><code>&lt;view&gt;</code> 对应 <code>&lt;div&gt;</code> 标签</li>
+<li><code>&lt;text&gt;</code> 对应 <code>&lt;span&gt;</code> 标签</li>
+<li><code>&lt;template&gt;</code> 对应 Vue 的 <code>&lt;template&gt;</code> 模板标签</li>
+<li><code>&lt;image&gt;</code> 对应 <code>&lt;img&gt;</code> 标签</li>
+<li>其它更多标签可以查看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/">视图容器 | 微信开放文档</a></li>
+</ul>
+</li>
+<li><code>json</code> - 当前页面配置，类似 <code>app.json</code> <ul>
+<li>会覆盖 <code>app.json</code> 的 <code>window</code> 中相同的配置项</li>
+<li>具体配置查看 👉 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/page.html">配置文档</a></li>
+<li>非必须项，可以被删除</li>
+</ul>
+</li>
+<li><code>wxss</code> - 组件的样式<ul>
+<li>会覆盖 <code>app.wxss</code> 当中相同的选择器样式</li>
+<li>非必须项，可以被删除</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>注意：为了方便开发者减少配置项，描述页面的四个文件必须具有相同的路径与文件名。</strong></p>
+</blockquote>
+<p>微信客户端会先根据 <code>index.json</code> 配置生成一个界面，顶部的颜色和文字都可以在这个 <code>json</code> 文件里边定义好。然后微信就会装载这个页面的 <code>WXML</code> 结构和 <code>WXSS</code> 样式，最后微信会装载 <code>index.js</code></p>
+<hr>
+<h2 id="utils-目录"><a href="#utils-目录" class="headerlink" title="utils 目录"></a><code>utils</code> 目录</h2><p>一般来说 <code>utils</code> 目录下是一些被抽离出来的公共代码，比如说你封装好的请求函数，和默认给你的时间格式化和数字格式化。<br>通过 <code>export</code> 导出，在需要的文件中通过 <code>import</code> 引入。</p>
+<blockquote>
+<p>但是不支持 <code>绝对路径</code>，需要使用 <code>相对路径</code> 来引入，这个比较麻烦需要自己注意。</p>
+</blockquote>
+<hr>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>在正常使用过程中，我们还会遇到 <code>component</code> - <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/">自定义组件</a>，它和 <code>pages</code> 页面组件类似，也是由 [ <code>json</code>, <code>wxml</code>, <code>wxss</code>, <code>js</code> ] 4个文件组成，但是稍有不同。</p>
+<p>你可以单独新建一个顶级的 <code>components</code> 目录，例如：<code>/components/userInfo/...</code>，<br>也可以放到不同 <code>page</code> 对应的目录下 <code>/pages/home/components/userInfo/...</code></p>
+<h4 id="不同点："><a href="#不同点：" class="headerlink" title="不同点："></a>不同点：</h4><p>首先，<code>.json</code> 文件中需要声明 <code>component</code> 为 <code>true</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;component&quot;</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后是在 <code>.js</code> 文件中注册组件的不同， 需要使用 <code>Component()</code> 来注册组件，多了 <code>properties</code> 属性和 <code>methods</code> 属性。</p>
+<p>具体配置就不多说了，直接参看文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/component.html">Component 构造器 | 微信开放文档</a><br><br></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整体和 Vue 的遍写思路很像了，</p>
+<ul>
+<li><code>.js</code> 文件对应的是 Vue 文件的 <code>&lt;script&gt;</code> 部分</li>
+<li><code>.wxml</code> 文件对应的是 Vue 文件的 <code>&lt;template&gt;</code> 部分</li>
+<li><code>.wxss</code> 文件时 Vue 文件中的 <code>&lt;style&gt;</code> 部分</li>
+<li><code>.json</code> 文件算是 Vue 实例初始化时的 <code>options</code></li>
+</ul>
+ 
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/miniprogram-devDiary-01-structure/#more">阅读全文</a>
+
+
     </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2021-05-06T14:21:47.000Z" itemprop="datePublished">May 6</time>
-</p>
   </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/miniprogram-devDiary-00/">微信小程序学习开发日记 L00</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>发现我安装小程序开发者工具是18年的事情了，那个时候还没有开始学 <code>vue</code>，算是开始填早几年立的一个 📌<strong>Flag</strong> 吧。</p>
-<p>当时是想给我们的烘焙工作室的公众号做一个配套的营销工具，所以在18年底有去了解，只不过后来只做了一个展示型网站 <a target="_blank" rel="noopener" href="http://www.sl-cake.cn/">岁礼气球派对</a>，后来又改版了好几次现在主营是派对布置，好了有点扯远了。</p>
-<p>填坑的动力主要是业务驱动，因为现在正好有这个任务安排，在回顾2020也大概提到了。所以今天先开始概括一下没有开发过小程序的前端，对于小程序的一些疑问。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/miniprogram-devDiary-00/#more">阅读全文</a>
-    </div>
    
-
-
-    <p class="archive-article-date">
-  <time datetime="2021-04-01T03:22:28.000Z" itemprop="datePublished">Apr 1</time>
-</p>
-  </div>
+<nav id="article-nav">
+  
+    <a href="/2021/miniprogram-devDiary-02-router/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          微信小程序学习日记 L02 路由跳转
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/miniprogram-devDiary-00/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">微信小程序学习开发日记 L00</div>
+    </a>
+  
+</nav>
+ 
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/use-stylus-with-gulp-in-miniprogram/">在小程序中使用CSS预处理器</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>该来的一天还是来了，两年前立的Flag还是到了，现在在跟进项目配套的小程序开发，但对于写惯了 <a target="_blank" rel="noopener" href="https://stylus-lang.com/">Stylus</a> 的我，真的是太煎熬了，每次都忘记写冒号和分号…<br>所以就想着翻翻开发文档看 <code>.wxss</code> 支持不支持CSS预处理器的写法，比如 <code>SCSS</code>。明显这是不可能的，官方也没有计划支持，所以还是得自己动手。</p>
-<p>大概看了一下大家的解决方案，和我想的一样，使用 <a target="_blank" rel="noopener" href="https://gulpjs.com/">Gulp</a> 来自动化构建成 <code>.wxss</code> 文件。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/use-stylus-with-gulp-in-miniprogram/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2021-03-18T03:09:04.000Z" itemprop="datePublished">Mar 18</time>
-</p>
-  </div>
-</div>
-  
-  
-    </div></section>
-  
 
 
 

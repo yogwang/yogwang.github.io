@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>微信小程序学习日记 L02 路由跳转 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U" />
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="sign" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <main id="container">
+  <div
+  id="post-miniprogram-devDiary-02-router"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2021-05-09T07:25:19.000Z" itemprop="datePublished">2021-05-09</time>
+</p> 
+    </div>
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      微信小程序学习日记 L02 路由跳转
+    </h1>
+  
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>以前一直都是写的 Vue，所以在刚接触小程序的时候会疑惑，小程序是否也有和 Vue 一样有路由表，但是看完开放文档之后发现没有路由表，就很疑惑。<br>那小程序怎么去做页面跳转的呢？</p>
+<h3 id="首先，虽然小程序没有路由表，但是在全局配置文件-app-json-中有-pages-信息"><a href="#首先，虽然小程序没有路由表，但是在全局配置文件-app-json-中有-pages-信息" class="headerlink" title="首先，虽然小程序没有路由表，但是在全局配置文件(app.json)中有 pages 信息"></a>首先，虽然小程序没有路由表，但是在全局配置文件(<code>app.json</code>)中有 <code>pages</code> 信息</h3><p>用于指定小程序由哪些页面组成，每一项都对应一个页面的 路径（含文件名） 信息。<br>文件名不需要写文件后缀，框架会自动去寻找对应位置的文件进行处理。</p>
+<a id="more"></a>
+<p>例如默认项目中:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;pages&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;pages/index/index&quot;</span>, <span class="comment">// 首页</span></span><br><span class="line">    <span class="string">&quot;pages/logs/logs&quot;</span> <span class="comment">// 日志页</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;entryPagePath&quot;</span>: <span class="string">&quot;pages/index/index&quot;</span> <span class="comment">// 初始页面</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以通过 <code>entryPagePath</code> 指定小程序的初始页面（首页），如果未配置则默认为 <code>pages</code> 数组的第一项。</p>
+<p>📑 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#pages">pages - 全局配置 | 微信开放文档</a></p>
+<p>如果想要配置到底部的Tabs上，则需要在 <code>tabBar</code> 属性中配置<br>例如：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;pages&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;pages/index/index&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pages/logs/logs&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;entryPagePath&quot;</span>: <span class="string">&quot;pages/index/index&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;tabBar&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;color&quot;</span>: <span class="string">&quot;#BBBBBD&quot;</span>, <span class="comment">// 文字默认颜色</span></span><br><span class="line">    <span class="attr">&quot;selectedColor&quot;</span>: <span class="string">&quot;#040104&quot;</span>, <span class="comment">// 文字选中时的颜色</span></span><br><span class="line">    <span class="attr">&quot;list&quot;</span>: [ <span class="comment">// tab 的列表</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;pagePath&quot;</span>: <span class="string">&quot;pages/index/index&quot;</span>, <span class="comment">// 页面路径，必须在 pages 中先定义</span></span><br><span class="line">        <span class="attr">&quot;text&quot;</span>: <span class="string">&quot;首页&quot;</span>, <span class="comment">// tab 上按钮文字</span></span><br><span class="line">        <span class="attr">&quot;iconPath&quot;</span>: <span class="string">&quot;assets/img/tabbar_home.png&quot;</span>, <span class="comment">// icon图片路径</span></span><br><span class="line">        <span class="attr">&quot;selectedIconPath&quot;</span>: <span class="string">&quot;assets/img/tabbar_home_active.png&quot;</span> <span class="comment">// tab选中时icon图片路径</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">&quot;pagePath&quot;</span>: <span class="string">&quot;pages/logs/logs&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;text&quot;</span>: <span class="string">&quot;日志&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;iconPath&quot;</span>: <span class="string">&quot;assets/img/tabbar_logo.png&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;selectedIconPath&quot;</span>: <span class="string">&quot;assets/img/tabbar_logo_active.png&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意：只能配置最少 2 个、最多 5 个 tab，tab 按数组的顺序排序，每个项都是一个对象</strong></p>
+</blockquote>
+<p>📑 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#tabBar">tabBar - 全局配置 | 微信开放文档</a><br>📑 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/ability/custom-tabbar.html">自定义 tabBar | 微信开放文档</a></p>
+<hr>
+<h2 id="页面信息配置完了，怎么进行路由呢？"><a href="#页面信息配置完了，怎么进行路由呢？" class="headerlink" title="页面信息配置完了，怎么进行路由呢？"></a>页面信息配置完了，怎么进行路由呢？</h2><p>小程序提供了 <code>5</code> 种路由操作API：</p>
+<h3 id="1-wx-switchTab-Opts"><a href="#1-wx-switchTab-Opts" class="headerlink" title="#1. wx.switchTab(Opts)"></a>#1. <code>wx.switchTab(Opts)</code></h3><blockquote>
+<p>跳转到 tabBar 页面，并<strong>关闭其他所有非 tabBar 页面</strong></p>
+</blockquote>
+<h3 id="2-wx-navigateTo-Opts"><a href="#2-wx-navigateTo-Opts" class="headerlink" title="#2. wx.navigateTo(Opts)"></a>#2. <code>wx.navigateTo(Opts)</code></h3><blockquote>
+<p>保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。</p>
+</blockquote>
+<ul>
+<li>对应 <code>vue-router</code> 当中的 <code>$router.push()</code></li>
+</ul>
+<h3 id="3-wx-redirectTo-Opts"><a href="#3-wx-redirectTo-Opts" class="headerlink" title="#3. wx.redirectTo(Opts)"></a>#3. <code>wx.redirectTo(Opts)</code></h3><blockquote>
+<p>关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。</p>
+</blockquote>
+<ul>
+<li>对应 <code>vue-router</code> 当中的 <code>$router.replace()</code></li>
+</ul>
+<h3 id="4-wx-navigateBack-Opts"><a href="#4-wx-navigateBack-Opts" class="headerlink" title="#4. wx.navigateBack(Opts)"></a>#4. <code>wx.navigateBack(Opts)</code></h3><blockquote>
+<p>关闭当前页面，返回上一页面或多级页面，如果大于现有页面数，则返回到首页。</p>
+</blockquote>
+<ul>
+<li>对应 <code>vue-router</code> 当中的 <code>$router.back()</code>、<code>$router.forward()</code>、<code>$router.go(-1)</code> 或者 <code>$router.go(-n)</code></li>
+</ul>
+<h3 id="5-wx-reLaunch-Opts"><a href="#5-wx-reLaunch-Opts" class="headerlink" title="#5. wx.reLaunch(Opts)"></a>#5. <code>wx.reLaunch(Opts)</code></h3><blockquote>
+<p>关闭所有页面，打开到应用内的某个页面</p>
+</blockquote>
+<ul>
+<li>可以理解成 <code>location.reload()</code> ，刷新小程序并且打开指定页面</li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>注意：小程序中页面栈最多十层</strong></p>
+</blockquote>
+<h2 id="最后是疑问部分："><a href="#最后是疑问部分：" class="headerlink" title="最后是疑问部分："></a>最后是疑问部分：</h2><h4 id="🎇-如何路由传参"><a href="#🎇-如何路由传参" class="headerlink" title="🎇 如何路由传参"></a>🎇 如何路由传参</h4><p>需要跳转的应用内非 tabBar 的页面路径后可以用 <code>query</code> 的形式传递参数，如 <code>path?key=value&amp;key2=value2</code>。<br>页面中也可以在 <code>onLoad</code> 事件中接受参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  onLoad: <span class="function"><span class="keyword">function</span>(<span class="params">option</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(option.query)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>具体查看文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html">wx.navigateTo(Object object) | 微信开放文档</a></p>
+<h4 id="🎇-清空路由历史"><a href="#🎇-清空路由历史" class="headerlink" title="🎇 清空路由历史"></a>🎇 清空路由历史</h4><p>没有单独的清空跳转历史API，可以直接使用 <code>wx.reLaunch()</code> 来跳转到目标页面，并且同时关闭所有已经打开过的页面，就不能用 <code>wx.navigateBack()</code> 返回了，左上角的按钮也会变成 🏠 <code>home</code> </p>
+<h4 id="🎇-路由文档中的-EventChannel-是什么"><a href="#🎇-路由文档中的-EventChannel-是什么" class="headerlink" title="🎇 路由文档中的 EventChannel 是什么"></a>🎇 路由文档中的 <code>EventChannel</code> 是什么</h4><blockquote>
+<p>如果一个页面由另一个页面通过 wx.navigateTo 打开，这两个页面间将建立一条数据通道</p>
+<ul>
+<li>被打开的页面可以通过 <code>this.getOpenerEventChannel()</code> 方法来获得一个 <code>EventChannel</code> 对象；</li>
+<li><code>wx.navigateTo</code> 的 <code>success</code> 回调中也包含一个 EventChannel 对象。</li>
+</ul>
+</blockquote>
+<p>有点 Vue 中的父子组件通信 <code>$emit</code> 和 <code>@on</code> ，比如说来进行数据回传：</p>
+<p>1.先打开页面A；<br>2.然后选择具体信息（打开页面B）；<br>3.选择完成确定；<br>4.返回页面A（接收页面B回传的数据） 的步骤。</p>
+<p><strong>示例代码就不复制过来了，直接看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81">示例代码</a> 内的 Demo 就好了，也可以查看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/s/sYz82Kmy7Gfq">📌代码片段</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/route/EventChannel.html">EventChannel | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#%E9%A1%B5%E9%9D%A2%E9%97%B4%E9%80%9A%E4%BF%A1">页面间通信 - Page(Object object) | 微信开放文档</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2021/miniprogram-devDiary-01-structure/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">微信小程序学习日记 L01 目录结构</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+
+
+</main>
+<aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-01-structure/">微信小程序学习日记 L01 目录结构</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-00/">微信小程序学习开发日记 L00</a>
+          </li>
+        
+          <li>
+            <a href="/2021/JS-operators/">JavaScript 中的位运算符</a>
+          </li>
+        
+          <li>
+            <a href="/2021/use-stylus-with-gulp-in-miniprogram/">在小程序中使用CSS预处理器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  <span>
+    &copy;2019-2021 YogWang powered_by
+    <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </span>
+  <br />
+  <span
+    >licensed
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
+      >CC BY-NC 4.0</a
+    ></span
+  >
+</footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+ 
+<script src="/js/common.js"></script>
+
+
+  </body>
+</html>
