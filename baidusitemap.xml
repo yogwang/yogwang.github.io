@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://yogwang.site/2021/miniprogram-devDiary-00/</loc>
-    <lastmod>2021-05-13</lastmod>
+    <loc>https://yogwang.site/2021/CSS-specificity-selectors-weight/</loc>
+    <lastmod>2021-05-14</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2021/miniprogram-devDiary-02-router/</loc>
-    <lastmod>2021-05-13</lastmod>
+    <loc>https://yogwang.site/2021/miniprogram-devDiary-00/</loc>
+    <lastmod>2021-05-14</lastmod>
   </url>
   <url>
     <loc>https://yogwang.site/2021/miniprogram-devDiary-01-structure/</loc>
-    <lastmod>2021-05-13</lastmod>
+    <lastmod>2021-05-14</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2021/miniprogram-devDiary-03-lifecycle/</loc>
+    <lastmod>2021-05-14</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2021/miniprogram-devDiary-02-router/</loc>
+    <lastmod>2021-05-14</lastmod>
   </url>
   <url>
     <loc>https://yogwang.site/2019/html5-canvas-identify-content/</loc>

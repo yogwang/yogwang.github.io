@@ -52,6 +52,76 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/AnnualParty-devDiay03/">年会开发日记03 - WebSocket长连接获取微信签到用户信息</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>接着 <a href="/2019/AnnualParty-devDiay01/">年会开发日记 01</a> 的签到墙，<br>里边用到了 <code>WebSocket</code> 来实现用户微信扫码签到，然后后端推送签到用户信息到前端，<br>前端收到数据之后创建元素添加到 3D 墙中。</p>
+<p>本来是想直接自己写的，但是有后来又加入了礼品活跃气氛，就要用到用户列表的展示和抽取过程中的随机效果，虽然哪些人获奖是后台返回给我的。<br>所以这些用户信息需要在多组件内共用，那我就懒得自己写了，就去找了 Vue 的组件库了。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/AnnualParty-devDiay03/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-12-20T11:35:24.000Z" itemprop="datePublished">Dec 20</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/AnnualParty-devDiay02/">年会开发日记02 - 红包雨</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <blockquote>
+<p>鸽了6个月了，终于想起来这篇还没有写完…</p>
+</blockquote>
+<p>年会预备了一个红包雨的活动，虽然到最后也没有用上，但是笔记还是要写的。<br>整个流程是关注公众号，然后回复 <code>抢红包</code> 返回一个授权地址获取用户授权信息，然后跳转到活动h5页面，抢红包的同时会在大荧幕上实时展示排名数据。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/AnnualParty-devDiay02/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-12-17T13:12:50.000Z" itemprop="datePublished">Dec 17</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
 
       
@@ -331,78 +401,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/jeecg-boot-devDiary06/">Jeecg-boot 开发挖坑日记06 富文本编辑器tinyMCE 图片附件上传</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <blockquote>
-<p>这个富文本组件本质是 <code>TinyMCE</code> <a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce">github.com/tinymce/tinymce</a>，<br>在 Vue 项目中使用的封装库 <a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce-vue">github.com/tinymce/tinymce-vue</a></p>
-</blockquote>
-<p>Github 上有一个人回复了，框架是使用的 <a target="_blank" rel="noopener" href="https://www.tiny.cloud/">TinyMCE</a> 这个富文本编辑器的 <a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce-vue">封装库</a>，<br>所以在其手册里找到了，修改 <a target="_blank" rel="noopener" href="https://www.tiny.cloud/docs/configure/file-image-upload">上传方式的部分</a></p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/jeecg-boot-devDiary06/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-10-31T05:40:20.000Z" itemprop="datePublished">Oct 31</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Axios/" rel="tag">Axios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/jeecg-boot-devDiary05/">Jeecg-boot 开发挖坑日记05 Axios 异步请求</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <blockquote>
-<p>一开始以为这里坑很大，结果坑其实并不大，而且内置了很多常用函数，<br>可能是我带有偏见了，所以这篇文章就简短的介绍了一下。</p>
-</blockquote>
-<p>在 <code>@/utils/request.js</code> 中创建了 Axios 实例，<br>并且在 <code>@/api/manage.js</code> 中封装了常用函数<br>只需要在组件内按需导入即可。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/jeecg-boot-devDiary05/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-10-29T07:48:01.000Z" itemprop="datePublished">Oct 29</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -441,6 +439,14 @@
       <ul>
         
           <li>
+            <a href="/2021/CSS-specificity-selectors-weight/">CSS 选择器权重和优先级</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-03-lifecycle/">微信小程序学习日记 L03 生命周期</a>
+          </li>
+        
+          <li>
             <a href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
           </li>
         
@@ -450,14 +456,6 @@
         
           <li>
             <a href="/2021/miniprogram-devDiary-00/">微信小程序学习开发日记 L00</a>
-          </li>
-        
-          <li>
-            <a href="/2021/JS-operators/">JavaScript 中的位运算符</a>
-          </li>
-        
-          <li>
-            <a href="/2021/use-stylus-with-gulp-in-miniprogram/">在小程序中使用CSS预处理器</a>
           </li>
         
       </ul>

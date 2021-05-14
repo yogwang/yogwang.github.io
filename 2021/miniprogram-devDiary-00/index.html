@@ -72,7 +72,7 @@
 <h2 id="Roadmap"><a href="#Roadmap" class="headerlink" title="# Roadmap"></a># Roadmap</h2><blockquote>
 <p>学习路径会在学习和开发中不断调整，不同阶段会有不同的理解，以下只是现阶段我对于学习顺序先后的整理。</p>
 </blockquote>
-<h3 id="目录结构-👉-学习日记-L01-目录结构"><a href="#目录结构-👉-学习日记-L01-目录结构" class="headerlink" title="目录结构 👉 学习日记 L01 目录结构"></a>目录结构 👉 <a href="/2021/miniprogram-devDiary-01-structure/">学习日记 L01 目录结构</a></h3><h3 id="路由跳转-👉-学习日记-L02-路由跳转"><a href="#路由跳转-👉-学习日记-L02-路由跳转" class="headerlink" title="路由跳转 👉 学习日记 L02 路由跳转"></a>路由跳转 👉 <a href="/2021/miniprogram-devDiary-02-router/">学习日记 L02 路由跳转</a></h3><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><h3 id="发起请求"><a href="#发起请求" class="headerlink" title="发起请求"></a>发起请求</h3><h3 id="拉起授权"><a href="#拉起授权" class="headerlink" title="拉起授权"></a>拉起授权</h3><hr>
+<h3 id="目录结构-👉-学习日记-L01-目录结构"><a href="#目录结构-👉-学习日记-L01-目录结构" class="headerlink" title="目录结构 👉 学习日记 L01 目录结构"></a>目录结构 👉 <a href="/2021/miniprogram-devDiary-01-structure/">学习日记 L01 目录结构</a></h3><h3 id="路由跳转-👉-学习日记-L02-路由跳转"><a href="#路由跳转-👉-学习日记-L02-路由跳转" class="headerlink" title="路由跳转 👉 学习日记 L02 路由跳转"></a>路由跳转 👉 <a href="/2021/miniprogram-devDiary-02-router/">学习日记 L02 路由跳转</a></h3><h3 id="生命周期-👉-学习日记-L03-生命周期"><a href="#生命周期-👉-学习日记-L03-生命周期" class="headerlink" title="生命周期 👉 学习日记 L03 生命周期"></a>生命周期 👉 <a href="/2021/miniprogram-devDiary-03-lifecycle/">学习日记 L03 生命周期</a></h3><h3 id="发起请求"><a href="#发起请求" class="headerlink" title="发起请求"></a>发起请求</h3><h3 id="拉起授权"><a href="#拉起授权" class="headerlink" title="拉起授权"></a>拉起授权</h3><hr>
 <h2 id="疑问"><a href="#疑问" class="headerlink" title="# 疑问"></a># 疑问</h2><h4 id="🎇-小程序开发到底是像-Vue-还是-React？"><a href="#🎇-小程序开发到底是像-Vue-还是-React？" class="headerlink" title="🎇 小程序开发到底是像 Vue 还是 React？"></a>🎇 小程序开发到底是像 <code>Vue</code> 还是 <code>React</code>？</h4><h4 id="🎇-小程序开发能否使用-npm-进行包管理？"><a href="#🎇-小程序开发能否使用-npm-进行包管理？" class="headerlink" title="🎇 小程序开发能否使用 npm 进行包管理？"></a>🎇 小程序开发能否使用 <code>npm</code> 进行包管理？</h4><p>可以</p>
 <h4 id="🎇-路由是否可以像-vue-router-一样省略-index"><a href="#🎇-路由是否可以像-vue-router-一样省略-index" class="headerlink" title="🎇 路由是否可以像 vue-router 一样省略 index"></a>🎇 路由是否可以像 <code>vue-router</code> 一样省略 <code>index</code></h4><p>不可以，需要全路径</p>
 <h4 id="🎇-尺寸单位-rpx-应该怎么去理解"><a href="#🎇-尺寸单位-rpx-应该怎么去理解" class="headerlink" title="🎇 尺寸单位 rpx 应该怎么去理解"></a>🎇 尺寸单位 <code>rpx</code> 应该怎么去理解</h4><p>正常来说，在网页端我们基本都是使用 <code>px</code>/<code>em</code>/<code>rem</code> 这类的常规单位，然后按照不同的设备尺寸去适配，但是小程序有一个 <code>rpx</code> 单位，可以根据屏幕宽度进行自适应，怎么去理解呢？<br>其实就是<strong>看设计稿</strong>，因为 <code>rpx</code> 默认屏幕宽为 <code>750rpx</code> ，所以如果UI给的设计稿为 <code>750px</code> 则 <code>1rpx</code> 趋近于 <code>0.5px</code> 或者 <code>1pt</code> 因为大部分设备 <code>DPR = 2</code>，如果设计稿是 <code>375px</code> 宽度的则 <strong>1：1</strong> 转换就可。一句话形容就是<strong>按照设计稿的宽度除以 <code>750</code> 再乘以 2 来计算</strong>。</p>
@@ -145,6 +145,14 @@
       <ul>
         
           <li>
+            <a href="/2021/CSS-specificity-selectors-weight/">CSS 选择器权重和优先级</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-03-lifecycle/">微信小程序学习日记 L03 生命周期</a>
+          </li>
+        
+          <li>
             <a href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
           </li>
         
@@ -154,14 +162,6 @@
         
           <li>
             <a href="/2021/miniprogram-devDiary-00/">微信小程序学习开发日记 L00</a>
-          </li>
-        
-          <li>
-            <a href="/2021/JS-operators/">JavaScript 中的位运算符</a>
-          </li>
-        
-          <li>
-            <a href="/2021/use-stylus-with-gulp-in-miniprogram/">在小程序中使用CSS预处理器</a>
           </li>
         
       </ul>
