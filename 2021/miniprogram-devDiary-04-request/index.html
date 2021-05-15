@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>微信小程序学习日记 L04 网络请求 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U" />
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="sign" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <main id="container">
+  <div
+  id="post-miniprogram-devDiary-04-request"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2021-05-15T05:54:11.000Z" itemprop="datePublished">2021-05-15</time>
+</p> 
+    </div>
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      微信小程序学习日记 L04 网络请求
+    </h1>
+  
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>在小程序中发送网络请求，需要使用微信提供的API，提供了5种：</p>
+<ul>
+<li>普通 HTTPS 请求（<code>wx.request</code>）</li>
+<li>上传文件（<code>wx.uploadFile</code>）</li>
+<li>下载文件（<code>wx.downloadFile</code>) </li>
+<li>WebSocket 通信（<code>wx.connectSocket</code>）</li>
+<li>UDP 通信（<code>wx.createUDPSocket</code>）</li>
+</ul>
+<p>一般项目中使用频率最高的是 <code>wx.request</code> 和 <code>wx.uploadFile</code></p>
+<p>需要注意的是，小程序<strong>只可以跟指定的域名进行网络通信</strong>，需要事先设置通讯域名（服务器域名请在 「小程序后台-开发-开发设置-服务器域名」 中进行配置）。</p>
+<p>可以查看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html#%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B">配置流程</a> 了解一下具体注意项。</p>
+<a id="more"></a>
+
+<hr>
+<h2 id="1-HTTPS-请求"><a href="#1-HTTPS-请求" class="headerlink" title="#1 HTTPS 请求"></a>#1 HTTPS 请求</h2><p><code>wx.request(options)</code> 可以传入一个 <code>options</code> 对象，具体可以配置哪些参数可以查看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/network/request/wx.request.html#%E5%8F%82%E6%95%B0">发起请求 - 参数</a> ，我就不一一例出来了。</p>
+<p>简单的上一个登陆请求示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">  url: <span class="string">&#x27;https://example.weixin.qq.com/login&#x27;</span>, <span class="comment">// 接口地址</span></span><br><span class="line">  data: &#123; <span class="comment">// 请求参数</span></span><br><span class="line">    uid: <span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">    pwd: <span class="string">&#x27;123456&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  header: &#123; <span class="comment">// 请求头</span></span><br><span class="line">    <span class="string">&#x27;content-type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span> <span class="comment">// 默认json，为了举例我还是写上来了</span></span><br><span class="line">  &#125;,</span><br><span class="line">  method:<span class="string">&#x27;POST&#x27;</span>, <span class="comment">// 请求类型</span></span><br><span class="line">  success (res) &#123;</span><br><span class="line">    <span class="comment">// 接口调用成功的回调函数</span></span><br><span class="line">  &#125;,</span><br><span class="line">  fail (err) &#123;</span><br><span class="line">    <span class="comment">// 接口调用失败的回调函数</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="需要注意的是："><a href="#需要注意的是：" class="headerlink" title="需要注意的是："></a>需要注意的是：</h4><ol>
+<li>不支持以 Promise 风格 调用。<br><small><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/api.html#API">Promise 风格</a> 是基础库版本 <strong>2.10.2</strong> 起开始支持的新调用方式，旧版本只能使用 <code>callback</code> 的形式来处理</small></li>
+<li>最终发送给服务器的数据是 String 类型，如果传入的 <code>data</code> 不是 <code>String</code> 类型，会被转换成 <code>String</code> ，可以查看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/network/request/wx.request.html#data-%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E">data 参数说明</a></li>
+</ol>
+<p><strong>不过一般我会自己把请求函数 Promisify，如下</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// request.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; requestUrl &#125; = getApp().globalData <span class="comment">// 在 app.js 设置的全局变量</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">request</span> (<span class="params">&#123; url, method, data, contentType = &#123;&#125; &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> apiUrl = requestUrl + url <span class="comment">// 拼接完整请求地址</span></span><br><span class="line">  <span class="keyword">const</span> token = wx.getStorageSync(<span class="string">&quot;token&quot;</span>)</span><br><span class="line">  <span class="keyword">const</span> header = <span class="built_in">Object</span>.assign(&#123; <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/json&quot;</span>, <span class="string">&quot;X-Access-Token&quot;</span>: token &#125;, contentType)</span><br><span class="line">  <span class="built_in">console</span>.info(<span class="string">&quot;请求接口: &quot;</span>, apiUrl);</span><br><span class="line">  <span class="built_in">console</span>.info(<span class="string">&quot;请求头部: &quot;</span>, header)</span><br><span class="line">  <span class="built_in">console</span>.info(<span class="string">&quot;请求参数: &quot;</span>, data)</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">      url: apiUrl,</span><br><span class="line">      data: data,</span><br><span class="line">      method: method,</span><br><span class="line">      header: header,</span><br><span class="line">      success (res) &#123;</span><br><span class="line">        <span class="built_in">console</span>.info(<span class="string">`[<span class="subst">$&#123;apiUrl&#125;</span>]请求返回值:`</span>);</span><br><span class="line">        <span class="built_in">console</span>.table(res.data)</span><br><span class="line">        <span class="keyword">const</span> &#123; success, result, message &#125; = res.data</span><br><span class="line">        <span class="keyword">if</span>(success) &#123;</span><br><span class="line">          resolve(res.data)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          reject(res.data)</span><br><span class="line">          <span class="built_in">console</span>.warn(<span class="string">&quot;ERROR_URL:&quot;</span>, url)</span><br><span class="line">          <span class="keyword">return</span> onErr(res.data) <span class="comment">// 异常处理</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      fail (err) &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">        Toast(&#123; <span class="attr">title</span>: <span class="string">&quot;服务器异常，请重试！&quot;</span> &#125;) <span class="comment">// 封装的wx.showToast()</span></span><br><span class="line">        <span class="built_in">console</span>.warn(<span class="string">&quot;----------请求异常-----------&quot;</span>)</span><br><span class="line">        <span class="built_in">console</span>.warn(err)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后再封装一下不同的请求方法，在使用的时候按需引入就好了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// manage.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; request &#125; <span class="keyword">from</span> <span class="string">&#x27;./request&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> FORM_DATA = &#123;<span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded;charset=UTF-8&quot;</span>&#125;</span><br><span class="line"><span class="comment">// post</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">postAction</span> (<span class="params">url, parameter, contentType = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> request(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    data: parameter,</span><br><span class="line">    contentType:contentType,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// http method= &#123;POST | PUT&#125;</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">httpAction</span> (<span class="params">url, parameter = &#123;&#125;, method, contentType = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> request(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    method: method,</span><br><span class="line">    data: parameter,</span><br><span class="line">    contentType:contentType,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// put</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">putAction</span> (<span class="params">url, parameter = &#123;&#125;, contentType = FORM_DATA</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> request(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    method: <span class="string">&#x27;PUT&#x27;</span>,</span><br><span class="line">    data: parameter,</span><br><span class="line">    contentType:contentType,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// get</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getAction</span> (<span class="params">url, parameter = &#123;&#125;, contentType = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> request(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    method: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">    data: parameter,</span><br><span class="line">    contentType:contentType,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// delete</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">deleteAction</span> (<span class="params">url, parameter = &#123;&#125;, contentType = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> request(&#123;</span><br><span class="line">    url: url,</span><br><span class="line">    method: <span class="string">&#x27;DELETE&#x27;</span>,</span><br><span class="line">    data: parameter,</span><br><span class="line">    contentType:contentType,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>是不是有一股子 Ant Design Vue Pro 的味道 😂😂😂</p>
+<h2 id="2-上传文件"><a href="#2-上传文件" class="headerlink" title="#2 上传文件"></a>#2 上传文件</h2><p><code>wx.uploadFile(options)</code>，可以传入一个 <code>options</code> 对象，<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/network/upload/wx.uploadFile.html">参数配置文档</a></p>
+<blockquote>
+<p>注意：客户端发起一个 <code>HTTPS POST</code> 请求，其中 <code>content-type</code> 为 <code>multipart/form-data</code>。</p>
+</blockquote>
+<p>示例代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">wx.chooseImage(&#123;</span><br><span class="line">  success (res) &#123;</span><br><span class="line">    <span class="keyword">const</span> tempFilePaths = res.tempFilePaths <span class="comment">// 获取的文件临时路径</span></span><br><span class="line">    wx.uploadFile(&#123;</span><br><span class="line">      url: <span class="string">&#x27;https://example.weixin.qq.com/upload&#x27;</span>, <span class="comment">// 请求的网络接口</span></span><br><span class="line">      filePath: tempFilePaths[<span class="number">0</span>], <span class="comment">// 文件路径</span></span><br><span class="line">      name: <span class="string">&#x27;file&#x27;</span>, <span class="comment">// 文件key，服务端可以通过这个 key 获取文件二进制内容 </span></span><br><span class="line">      formData: &#123; <span class="comment">// 额外的 formData 可以不传</span></span><br><span class="line">        <span class="string">&#x27;user&#x27;</span>: <span class="string">&#x27;test&#x27;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      success (result)&#123;</span><br><span class="line">        <span class="comment">// 接口调用成功的回调函数</span></span><br><span class="line">      &#125;,</span><br><span class="line">      fail (error)&#123;</span><br><span class="line">        <span class="comment">// 接口调用失败的回调函数</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>同样也会封装成 Promise</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// request.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">uploadFile</span> (<span class="params">&#123; url, data &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> apiUrl = requestUrl + url</span><br><span class="line">  <span class="keyword">const</span> token = wx.getStorageSync(<span class="string">&quot;token&quot;</span>)</span><br><span class="line">  <span class="keyword">const</span> header = &#123; <span class="string">&quot;X-Access-Token&quot;</span>: token &#125;</span><br><span class="line">  <span class="built_in">console</span>.info(<span class="string">&quot;请求接口: &quot;</span>, apiUrl);</span><br><span class="line">  <span class="built_in">console</span>.info(<span class="string">&quot;请求头部: &quot;</span>, header)</span><br><span class="line">  <span class="built_in">console</span>.info(<span class="string">&quot;文件地址: &quot;</span>, data)</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    wx.uploadFile(&#123;</span><br><span class="line">      url: apiUrl,</span><br><span class="line">      filePath: data.filePath,</span><br><span class="line">      name: <span class="string">&#x27;file&#x27;</span>,</span><br><span class="line">      header: header,</span><br><span class="line">      success: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.info(<span class="string">`[<span class="subst">$&#123;apiUrl&#125;</span>]请求返回值:`</span>);</span><br><span class="line">        <span class="built_in">console</span>.table(res.data)</span><br><span class="line">        <span class="keyword">const</span> &#123; data, statusCode &#125; = res</span><br><span class="line">        <span class="keyword">if</span> (statusCode !== <span class="number">200</span>)&#123;</span><br><span class="line">          Toast(&#123; <span class="attr">title</span>: <span class="string">&quot;上传失败&quot;</span> &#125;)</span><br><span class="line">          reject(res.data)</span><br><span class="line">          <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 这里需要注意是否返回的是JSON格式的 data</span></span><br><span class="line">        <span class="keyword">const</span> d = <span class="built_in">JSON</span>.parse(data)</span><br><span class="line">        <span class="keyword">const</span> &#123; success, result, message &#125; = data</span><br><span class="line">        <span class="keyword">if</span> (success) &#123;</span><br><span class="line">          resolve(d)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          reject(res.data)</span><br><span class="line">          <span class="built_in">console</span>.warn(<span class="string">&quot;ERROR_URL:&quot;</span>, url)</span><br><span class="line">          <span class="keyword">return</span> onErr(d) <span class="comment">// 异常处理</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      fail (err) &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">        Toast(&#123; <span class="attr">title</span>: <span class="string">&quot;服务器异常，请重试！&quot;</span> &#125;)</span><br><span class="line">        <span class="built_in">console</span>.warn(<span class="string">&quot;-----------上传失败-----------&quot;</span>);</span><br><span class="line">        <span class="built_in">console</span>.warn(err);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-下载文件"><a href="#3-下载文件" class="headerlink" title="#3 下载文件"></a>#3 下载文件</h2><p><code>wx.downloadFile(options)</code>，同样也可以传入一个 <code>options</code> 对象，配置文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/network/download/wx.downloadFile.html">DownloadTask | 微信开放文档</a></p>
+<ul>
+<li>发起一个 <code>HTTPS GET</code> 请求</li>
+<li>返回文件的本地临时路径 (本地路径)</li>
+<li>单次下载允许的最大文件为 <code>200MB</code></li>
+</ul>
+<blockquote>
+<p>注意：请在服务端响应的 <code>header</code> 中指定合理的 <code>Content-Type</code> 字段，以保证客户端正确处理文件类型。</p>
+</blockquote>
+<p>示例代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">wx.downloadFile(&#123;</span><br><span class="line">  url: <span class="string">&#x27;https://example.com/audio/123&#x27;</span>, <span class="comment">// 仅为示例，并非真实的资源</span></span><br><span class="line">  success (res) &#123;</span><br><span class="line">    <span class="comment">// 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容</span></span><br><span class="line">    <span class="keyword">if</span> (res.statusCode === <span class="number">200</span>) &#123;</span><br><span class="line">      wx.playVoice(&#123;</span><br><span class="line">        filePath: res.tempFilePath</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="未完成"><a href="#未完成" class="headerlink" title="未完成"></a>未完成</h1><p>这几天睡得少，有点写不动了，缓一缓….</p>
+<h2 id="4-WebSocket-通信"><a href="#4-WebSocket-通信" class="headerlink" title="#4 WebSocket 通信"></a>#4 WebSocket 通信</h2><p>首先需要使用 <code>wx.connectSocket(options)</code> 创建一个 WebSocket 连接。具体文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/network/websocket/wx.connectSocket.html">SocketTask | 微信开放文档</a><br>然后就和正常使用 WebSocket 一样了：</p>
+<ul>
+<li><code>wx.onSocketOpen(function callback)</code> 监听 WebSocket 连接打开事件</li>
+<li><code>wx.sendSocketMessage(Object object)</code> 通过 WebSocket 连接发送数据。</li>
+<li><code>wx.onSocketMessage(function callback)</code> 监听 WebSocket 接受到服务器的消息事件</li>
+<li><code>wx.onSocketError(function callback)</code> 监听 WebSocket 错误事件</li>
+<li><code>wx.closeSocket(Object object)</code> 关闭 WebSocket 连接</li>
+<li><code>wx.onSocketClose(function callback)</code> 监听 WebSocket 连接关闭事件</li>
+</ul>
+<h2 id="5-UDP-通信"><a href="#5-UDP-通信" class="headerlink" title="#5 UDP 通信"></a>#5 UDP 通信</h2><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h4 id="📌-配置网络请求超时时间"><a href="#📌-配置网络请求超时时间" class="headerlink" title="📌 配置网络请求超时时间"></a>📌 配置网络请求超时时间</h4><p>如果需要配置超时时间则需要去 <code>app.json</code> 中配置 <code>networkTimeout</code>，<br>默认 <code>60000</code> (单位：毫秒)，最大超时时间也是 <code>60000</code>。<br>可以为4个网络请求单独配置超时时间，具体查看 👉 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#networkTimeout">配置文档</a></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 其他配置项....</span></span><br><span class="line">  <span class="attr">&quot;networkTimeout&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;request&quot;</span>: <span class="number">10000</span>, <span class="comment">// wx.request 的超时时间 </span></span><br><span class="line">    <span class="attr">&quot;uploadFile&quot;</span>: <span class="number">10000</span> <span class="comment">// wx.uploadFile 的超时时间</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html">网络 | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/network/request/wx.request.html">RequestTask | 微信开放文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/extended/utils/api-promise.html">API Promise化 | 微信开放文档</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2021/CSS-specificity-selectors-weight/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">CSS 选择器权重和优先级</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+
+
+</main>
+<aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-04-request/">微信小程序学习日记 L04 网络请求</a>
+          </li>
+        
+          <li>
+            <a href="/2021/CSS-specificity-selectors-weight/">CSS 选择器权重和优先级</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-03-lifecycle/">微信小程序学习日记 L03 生命周期</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-01-structure/">微信小程序学习日记 L01 目录结构</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  <span>
+    &copy;2019-2021 YogWang powered_by
+    <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </span>
+  <br />
+  <span
+    >licensed
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
+      >CC BY-NC 4.0</a
+    ></span
+  >
+</footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+ 
+<script src="/js/common.js"></script>
+
+
+  </body>
+</html>
