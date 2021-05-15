@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://yogwang.site/2021/miniprogram-devDiary-04-request/</loc>
+    <loc>https://yogwang.site/2021/miniprogram-devDiary-00/</loc>
     
     <lastmod>2021-05-15</lastmod>
     
   </url>
   
   <url>
-    <loc>https://yogwang.site/2021/miniprogram-devDiary-00/</loc>
+    <loc>https://yogwang.site/2021/miniprogram-devDiary-04-request/</loc>
     
     <lastmod>2021-05-15</lastmod>
     
@@ -725,6 +725,13 @@
   </url>
   
   <url>
+    <loc>https://yogwang.site/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/</loc>
+    <lastmod>2021-05-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/tags/Canvas/</loc>
     <lastmod>2021-05-15</lastmod>
     <changefreq>daily</changefreq>
@@ -733,13 +740,6 @@
   
   <url>
     <loc>https://yogwang.site/tags/Three-js/</loc>
-    <lastmod>2021-05-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/</loc>
     <lastmod>2021-05-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
