@@ -52,30 +52,344 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
 
       
   
     <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/Electron01-Electron-quick-start/">Electron_01 - 快速启动</a>
+      <a class="archive-article-title" href="/2019/JS-call-apply-bind/">如何理解 Call, Apply, Bind?</a>
     </h2>
   
 
     </header>
      
   <article class="article-excerpt">
-    <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir my-app</span><br><span class="line"></span><br><span class="line">$ cd my-app</span><br><span class="line"></span><br><span class="line">$ npm init --y</span><br><span class="line">Wrote to E:\my-app\package.json:</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;my-app&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [],</span><br><span class="line">  &quot;author&quot;: &quot;&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>修改入口文件为 <code>main.js</code> 并且添加 <code>start</code> 脚本引导 <strong>Node</strong> 来执行 Electron</p>
+    <p>今天，介绍这两个方法的区别以及一些妙用，还有用法相似的 bind 的方法。</p>
+<p>它们最主要的作用，是改变 <code>this</code> 的指向。在平时的工作中，除了在写一些基础类，或者公用库方法的时候会用到它们，其他时候应用场景并不多（ <code>React</code> 我习惯用箭头函数）。</p>
   </article>
   
     <div class="article-more-link">
-      <a href="/2019/Electron01-Electron-quick-start/#more">阅读全文</a>
+      <a href="/2019/JS-call-apply-bind/#more">阅读全文</a>
     </div>
    
 
 
     <p class="archive-article-date">
-  <time datetime="2019-06-14T09:33:33.000Z" itemprop="datePublished">Jun 14</time>
+  <time datetime="2019-08-06T01:37:07.000Z" itemprop="datePublished">Aug 6</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/phpok-Guestbook/">PHPOK 5.x 多站点共享留言板</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>前景：</p>
+<p>要求 <strong>中文站</strong> 和 <strong>英文站</strong> 提交的留言内容都收集在中文站的留言板中，方便查看。</p>
+<p>之前 <code>3.x</code> 版本直接使用 <code>CateID</code> 就可以了，但是在 <code>5.x</code> 版本中不行。</p>
+<p>文档里也没有，所以在尝试多次之后，憋不住就在群里问了作者团队，</p>
+<p>答：</p>
+<blockquote>
+<p>在 <code>Ajax</code> 请求地址上加上 <code>SiteID</code> 就可以了。</p>
+</blockquote>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/phpok-Guestbook/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-08-03T03:06:49.000Z" itemprop="datePublished">Aug 3</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/php-VirtualHost/">Apache 配置虚拟域名</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>在本地调试后端项目时候经常会用到虚拟域名的功能；</p>
+<p>毕竟项目都放在 WWW 目录下，如果不使用虚拟域名，URL 实在太长，实在不方便调试。</p>
+<p>例如：<code>http://localhost/project/public/index.php/sample/test/hello</code></p>
+<p>如果使用虚拟域名就可以简化为 <code>http://p.loc/sample/test/hello</code> 着实方便很多。</p>
+<p>但我总是记不住怎么去添加虚拟域名，总不可能一直百度吧,所以就记下笔记了。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/php-VirtualHost/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-30T07:13:41.000Z" itemprop="datePublished">Jul 30</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/html5-set_videoSpeed/">简单设置Video标签的播放倍速</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>在 <a target="_blank" rel="noopener" href="https://www.bilibili.com/">B 站</a> 看视频教学的时候，发现最快只有 2 倍速,</p>
+<p>我觉得太慢了，在百度之后发现有 <code>video</code> 标签有 <code>playbackRate</code> 属性可以设置倍速。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/html5-set_videoSpeed/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-21T08:21:58.000Z" itemprop="datePublished">Jul 21</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/Electron04-ElectronBuilder-ElectronUpdater/">Electron:Electron-builder+Electron-updater 完成Electron应用的自升级</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-content">
+    <p>2019/07/19 开坑。</p>
+ 
+  </article>
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-19T06:25:13.000Z" itemprop="datePublished">Jul 19</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/CSS-checked&label/">万能的 :checked + label</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <blockquote>
+<p>Meathill：纯 CSS 组件顾名思义，只改变外观，不改变行为。所以它的功能不会因为浏览器变化而变化，即使浏览器支持不完善，即使因为加载速度或者网络关系，导致 CSS、JS 加载失败，它最多样式回归到原始样式，功能是完全一致的。在非标准浏览器环境下，如读屏器，也是如此</p>
+</blockquote>
+<p>前年看肉大直播的时候听到：万能的 <code>:checked + label</code> 当时没有体会到有啥万能，不就是自定义 <code>input</code> 样式吗，直到前段时间看到一个 <a target="_blank" rel="noopener" href="https://codepen.io/dipanjanb/pen/GaOvmG">Demo</a> 虽然不是使用的这种方法，但是我突然就明白了，这个就可以用 <code>:checked + label</code> 来实现。</p>
+<p>…</p>
+<p>原来很多需要 <code>Js</code> 配合的一些效果点击效果只需要 <code>:checked + label</code> 就可以完成。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/CSS-checked&label/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-18T06:06:44.000Z" itemprop="datePublished">Jul 18</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/BetterScrol-mouse-wheel/">BetterScrol 2.x Mouse-whell 没效果</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-content">
+    <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>yarn add @better-scroll/mouse-wheel@next</code></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import BScroll from &#39;@better-scroll&#x2F;core&#39;</span><br><span class="line">import MouseWheel from &#39;@better-scroll&#x2F;mouse-wheel&#39;</span><br><span class="line">BScroll.use(MouseWheel)</span><br><span class="line"></span><br><span class="line">new BScroll(&#39;.bs-wrap&#39;, &#123;</span><br><span class="line">  &#x2F;&#x2F;...</span><br><span class="line">  mouseWheel: &#123;</span><br><span class="line">    speed: 20,</span><br><span class="line">    invert: false,</span><br><span class="line">    easeTime: 300</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="但是为什么在原有的基础上这样写没有用呢。官方-Demo"><a href="#但是为什么在原有的基础上这样写没有用呢。官方-Demo" class="headerlink" title="但是为什么在原有的基础上这样写没有用呢。官方 Demo"></a>但是为什么在原有的基础上这样写没有用呢。<a target="_blank" rel="noopener" href="https://better-scroll.github.io/docs/zh-CN/plugins/mouse-wheel.html#%E7%A4%BA%E4%BE%8B">官方 Demo</a></h2><p>查看 <code>Demo</code> 源码在 <code>scroll-wrapper</code> 外多了一层 <code>core-mouse-wheel</code> 加上就可以了。</p>
+<h3 id="😂-没仔细看-Demo-源码"><a href="#😂-没仔细看-Demo-源码" class="headerlink" title="😂 没仔细看 Demo 源码"></a>😂 没仔细看 <code>Demo</code> 源码</h3> 
+  </article>
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-15T03:13:04.000Z" itemprop="datePublished">Jul 15</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/hexo_theme/">Hexo 主题开发制作</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <h2 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 的安装就不讲了，直接开始我在制作 Hexo 主题遇到的一些问题。</p>
+</blockquote>
+<p>首先<br>在使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-cli">Hexo cli</a> 脚手架创建完 <code>Hexo</code> 项目后会有一个默认官方主题 <a target="_blank" rel="noopener" href="https://hexojs.github.io/hexo-theme-landscape/">landscape</a> 在 <code>themes</code> 目录中复制一份出来重命名成自己的名称，例如我的就是改成了 <code>yogwang</code>，并且在根目录中的 <code>_config.yml</code> 中修改主题为自己的主题</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/hexo_theme/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-11T07:34:10.000Z" itemprop="datePublished">Jul 11</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/CSS-WaterFull/">纯CSS实现瀑布流布局</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><ol>
+<li><code>column-count: n</code> 将元素中的文本分为 n 列</li>
+<li><code>break-inside: avoid</code> 避免元素内部断行并产生新列<ul>
+<li>可以不加，但可能会影响布局效果</li>
+</ul>
+</li>
+</ol>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo:"></a>Demo:</h2><p>👉 在 <a target="_blank" rel="noopener" href="https://codepen.io/yogwang/pen/RzvNre">CodePen</a> 中打开</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/CSS-WaterFull/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-10T09:35:57.000Z" itemprop="datePublished">Jul 10</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/hello%20you/">Hello Hexo</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-content">
+    <h2 id="Hello-Hexo-Hello-Github-Pages"><a href="#Hello-Hexo-Hello-Github-Pages" class="headerlink" title="Hello Hexo,Hello Github Pages"></a>Hello Hexo,Hello Github Pages</h2><p>2019.7.9 11:59:16</p>
+ 
+  </article>
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">Jul 9</time>
 </p>
   </div>
 </div>
@@ -87,7 +401,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/categories/%E7%AC%94%E8%AE%B0/page/7/">&lt;&lt; prev</a><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/6/">6</a><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/7/">7</a><span class="page-number current">8</span>
+    <a class="extend prev" rel="prev" href="/categories/%E7%AC%94%E8%AE%B0/page/7/">&lt;&lt; prev</a><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/6/">6</a><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/9/">9</a><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/10/">10</a><a class="extend next" rel="next" href="/categories/%E7%AC%94%E8%AE%B0/page/9/">next &gt;&gt;</a>
   </nav>
 
 
@@ -118,6 +432,10 @@
       <ul>
         
           <li>
+            <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
+          </li>
+        
+          <li>
             <a href="/2021/miniprogram-devDiary-04-request/">微信小程序学习日记 L04 网络请求</a>
           </li>
         
@@ -131,10 +449,6 @@
         
           <li>
             <a href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
-          </li>
-        
-          <li>
-            <a href="/2021/miniprogram-devDiary-01-structure/">微信小程序学习日记 L01 目录结构</a>
           </li>
         
       </ul>

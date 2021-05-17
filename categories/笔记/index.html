@@ -52,6 +52,340 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>一直没有怎么用过 Vue 的 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/filters.html">过滤器 API</a>，都是直接用 <a target="_blank" rel="noopener" href="https://github.com/vueComponent/ant-design-vue-pro">AntD Pro</a> 当中提供的数字千分格式化、时间格式化之类的，没有自己去声明过，主要是因为 <code>Array.prototype.filter</code> 的先入为主，一直把 <code>vue.filter</code> 理解成为了筛选，而不是过滤器。</p>
+<p>其实，<code>vue.filter</code> 是借鉴了 Linux 当中的 Pipe 符号 (<code>|</code>) 来处理数据 ，然后借用了 <code>filter</code> 这个名字：</p>
+<blockquote>
+<p>利用 Linux 所提供的管道符 “<code>|</code>” 将两个命令隔开，管道符<strong>左边命令的输出</strong>就会作为管道符<strong>右边命令的输入</strong></p>
+</blockquote>
+<p>其实我觉得如果直接用 <code>pipe</code> 来命名其实就更好理解了，但是也许是因为前端圈子接触到 <code>pipe</code> 的人并不多，使用 <code>filter</code> 这个熟悉的单词可能更加容易让大众接受。</p>
+<p>使用起来确实很方便，用 <code>|</code> 符号分隔就行，会按照 <strong>从前往后的顺序</strong> 依次 传入过滤器，然后返回转换后的值。</p>
+<p>等到后来再遇到适合的场景想起来使用 <code>filter</code> ，但又因为项目的历史原因没有去使用，因为自己都是局部使用 <strong><code>computed</code>计算</strong> 和 <strong>方法调用返回</strong> 来处理（<a target="_blank" rel="noopener" href="https://v3.vuejs.org/guide/migration/filters.html#_3-x-update">也是Vue3所推荐的替代filter的方式</a>）</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2021/vue-api-filter/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2021-05-17T03:23:49.000Z" itemprop="datePublished">May 17</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2021/miniprogram-devDiary-04-request/">微信小程序学习日记 L04 网络请求</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>在小程序中发送网络请求，需要使用微信提供的API，提供了5种：</p>
+<ul>
+<li>普通 HTTPS 请求（<code>wx.request</code>）</li>
+<li>上传文件（<code>wx.uploadFile</code>）</li>
+<li>下载文件（<code>wx.downloadFile</code>) </li>
+<li>WebSocket 通信（<code>wx.connectSocket</code>）</li>
+<li>UDP 通信（<code>wx.createUDPSocket</code>）</li>
+</ul>
+<p>一般项目中使用频率最高的是 <code>wx.request</code> 和 <code>wx.uploadFile</code></p>
+<p>需要注意的是，小程序<strong>只可以跟指定的域名进行网络通信</strong>，需要事先设置通讯域名（服务器域名请在 「小程序后台-开发-开发设置-服务器域名」 中进行配置）。</p>
+<p>可以查看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html#%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B">配置流程</a> 了解一下具体注意项。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2021/miniprogram-devDiary-04-request/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2021-05-15T05:54:11.000Z" itemprop="datePublished">May 15</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2021/CSS-specificity-selectors-weight/">CSS 选择器权重和优先级</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>群里突然又聊到了CSS样式的权重，这个话题每隔一段时间就会出现一次，但是每次都去搜索找选择器权重的文章分享有点太麻烦了，<br>主要是配图，想要找到自己记忆里的那张图真的很麻烦😂，所以还是自己整理一篇，以后直接分享自己的笔记就好了。<br>其实权重计算这个东西不麻烦，就是分 <code>4</code> 类:</p>
+<ol>
+<li><code>inlineStyle</code>: 行内样式</li>
+<li><code>#ID</code>: ID选择器</li>
+<li><code>.Class</code>: 类,属性和伪类选择器</li>
+<li><code>Element</code>: 元素和伪类元素选择器</li>
+</ol>
+<p>简单的权重比较 <code>inline style &gt; ID &gt; Class &gt; Element &gt; *</code> 这个应该不需要说了吧，主要是多个选择器混合使用时计算的问题。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2021/CSS-specificity-selectors-weight/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2021-05-14T03:03:15.000Z" itemprop="datePublished">May 14</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2021/miniprogram-devDiary-03-lifecycle/">微信小程序学习日记 L03 生命周期</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>一开始按照 Vue 的思路下来，会认为生命周期很重要，需要完整的看一遍，但是其实整个小程序开发完之后，生命周期的概念其实并不是很重要，<br>大概分成 <code>小程序</code> 的生命周期 和 <code>页面/组件</code> 的生命周期。<br>这些生命周期函数中 主要就是使用 <code>onShow</code> 和 <code>onLoad</code> 两个，用来获取和设置初始参数，发起请求等等。<br>其它的几个回调函数其实很少有用到，但是还是聊一聊吧。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2021/miniprogram-devDiary-03-lifecycle/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2021-05-13T11:29:31.000Z" itemprop="datePublished">May 13</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>以前一直都是写的 Vue，所以在刚接触小程序的时候会疑惑，小程序是否也有和 Vue 一样有路由表，但是看完开放文档之后发现没有路由表，就很疑惑。<br>那小程序怎么去做页面跳转的呢？</p>
+<h3 id="首先，虽然小程序没有路由表，但是在全局配置文件-app-json-中有-pages-信息"><a href="#首先，虽然小程序没有路由表，但是在全局配置文件-app-json-中有-pages-信息" class="headerlink" title="首先，虽然小程序没有路由表，但是在全局配置文件(app.json)中有 pages 信息"></a>首先，虽然小程序没有路由表，但是在全局配置文件(<code>app.json</code>)中有 <code>pages</code> 信息</h3><p>用于指定小程序由哪些页面组成，每一项都对应一个页面的 路径（含文件名） 信息。<br>文件名不需要写文件后缀，框架会自动去寻找对应位置的文件进行处理。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2021/miniprogram-devDiary-02-router/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2021-05-09T07:25:19.000Z" itemprop="datePublished">May 9</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2021/miniprogram-devDiary-01-structure/">微信小程序学习日记 L01 目录结构</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>小程序包含一个描述整体程序的 <code>app</code> 和多个描述各自页面的 <code>page</code>。<br>刚刚接触到小程序，使用 微信开发者工具 新建完项目之后，会有一个这样的初始结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">├─pages</span><br><span class="line">│  ├─index</span><br><span class="line">│  │     index.js</span><br><span class="line">│  │     index.json</span><br><span class="line">│  │     index.wxml</span><br><span class="line">│  │     index.wxss</span><br><span class="line">│  │      </span><br><span class="line">│  └─logs</span><br><span class="line">│        logs.js</span><br><span class="line">│        logs.json</span><br><span class="line">│        logs.wxml</span><br><span class="line">│        logs.wxss</span><br><span class="line">│          </span><br><span class="line">├─utils</span><br><span class="line">│     util.js</span><br><span class="line">├─ app.js</span><br><span class="line">├─ app.json</span><br><span class="line">├─ app.wxss</span><br><span class="line">├─ project.config.json</span><br><span class="line">└─ sitemap.json</span><br></pre></td></tr></table></figure>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2021/miniprogram-devDiary-01-structure/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2021-05-06T14:21:47.000Z" itemprop="datePublished">May 6</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2021/miniprogram-devDiary-00/">微信小程序学习开发日记 L00</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>发现我安装小程序开发者工具是18年的事情了，那个时候还没有开始学 <code>vue</code>，算是开始填早几年立的一个 📌<strong>Flag</strong> 吧。</p>
+<p>当时是想给我们的烘焙工作室的公众号做一个配套的营销工具，所以在18年底有去了解，只不过后来只做了一个展示型网站 <a target="_blank" rel="noopener" href="http://www.sl-cake.cn/">岁礼气球派对</a>，后来又改版了好几次现在主营是派对布置，好了有点扯远了。</p>
+<p>填坑的动力主要是业务驱动，因为现在正好有这个任务安排，在回顾2020也大概提到了。所以今天先开始概括一下没有开发过小程序的前端，对于小程序的一些疑问。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2021/miniprogram-devDiary-00/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2021-04-01T03:22:28.000Z" itemprop="datePublished">Apr 1</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2021/JS-operators/">JavaScript 中的位运算符</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>在思否上遇到一个问位运算符的问题 <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000039690782">字符串的位运算，是怎么执行的</a>，我也挺好奇的，就是为啥<strong>字符串进行位运算</strong>的时候返回的结果是 <code>0</code>，索性在解答这个问题的同时把<strong>位运算符</strong>都整理一遍。</p>
+<p>那么先来整理一下位运算符，最后再说明为什么字符串的处理结果为 <code>0</code></p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2021/JS-operators/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2021-03-23T01:43:40.000Z" itemprop="datePublished">Mar 23</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2021/use-stylus-with-gulp-in-miniprogram/">在小程序中使用CSS预处理器</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>该来的一天还是来了，两年前立的Flag还是到了，现在在跟进项目配套的小程序开发，但对于写惯了 <a target="_blank" rel="noopener" href="https://stylus-lang.com/">Stylus</a> 的我，真的是太煎熬了，每次都忘记写冒号和分号…<br>所以就想着翻翻开发文档看 <code>.wxss</code> 支持不支持CSS预处理器的写法，比如 <code>SCSS</code>。明显这是不可能的，官方也没有计划支持，所以还是得自己动手。</p>
+<p>大概看了一下大家的解决方案，和我想的一样，使用 <a target="_blank" rel="noopener" href="https://gulpjs.com/">Gulp</a> 来自动化构建成 <code>.wxss</code> 文件。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2021/use-stylus-with-gulp-in-miniprogram/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2021-03-18T03:09:04.000Z" itemprop="datePublished">Mar 18</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archives">
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
 
       
@@ -80,322 +414,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-type-and-status-management-dictionary/">项目中的类型和状态管理</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>这段时间项目迭代比较快，所以很多时候对于记录的状态和类型判断我都是使用的 <strong>魔术字符串</strong> 的形式，但是这样就与代码形成了 “强耦合”， <strong>不利于后期的维护</strong>。</p>
-<p>例如这样的代码结构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 用vue template来举例 --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">        &lt;!-- 其它结构 --&gt;</span><br><span class="line">        &lt;td&gt;</span><br><span class="line">            &lt;!-- 直接使用状态值判断 --&gt;</span><br><span class="line">            &lt;a @click&#x3D;&#39;xxx&#39; v-if&#x3D;&#39;record.status &#x3D;&#x3D;&#x3D; 0&#39;&gt;操作A&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;!-- 使用数组下标判断 --&gt;</span><br><span class="line">            &lt;a @click&#x3D;&#39;xxx&#39; v-eles-if&#x3D;&#39;record.status &#x3D;&#x3D;&#x3D; status[1].key&#39;&gt;操作B&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;a @click&#x3D;&#39;xxx&#39; v-else&#39;&gt;其他操作&lt;&#x2F;a&gt;</span><br><span class="line">        &lt;&#x2F;td&gt;</span><br><span class="line">        &lt;!-- 其它结构 --&gt;</span><br><span class="line">    &lt;&#x2F;table&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
-<p>特别是最近一整个分类的类型和状态的都变更了，所以在业务逻辑内的魔术字符串也需要一个一个文件去同步修改，大部分的都被替换了，但还有一些零碎的地方没有被修改到，导致不断有 BUG 被提上来，这就很头疼了。</p>
-<p>所以我就想者怎么把业务逻辑内的魔术字符串使用一种方式替换掉，最开始我想法是把状态集中起来进行管理</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-type-and-status-management-dictionary/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-11-24T15:47:32.000Z" itemprop="datePublished">Nov 24</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-ES6-Symbol/">Symbol() 是个什么东西?</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>最近在一些 Demo 中经常会看到 <code>Symbol()</code> 这个东西，例如:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> race = &#123;</span><br><span class="line">  protoss: <span class="built_in">Symbol</span>(),</span><br><span class="line">  terran: <span class="built_in">Symbol</span>(),</span><br><span class="line">  zerg: <span class="built_in">Symbol</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>就只能记得大概了，就是赋值一个独特的值，但是这个值具体是什么我想不起来了。<br>所以还是记个笔记加深下印象，省的看了又忘。</p>
-<blockquote>
-<p>ES6 引入了一种新的原始数据类型<code>Symbol</code>，表示独一无二的值。它是 JavaScript 语言的第七种数据类型</p>
-</blockquote>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-ES6-Symbol/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-11-21T15:44:47.000Z" itemprop="datePublished">Nov 21</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/raspberrypi-01-setup/">📟 树莓派 4B(2GB RAM) 开箱记录</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>自从我爸妈他们屋子重新装修好了之后，我爸就嚷嚷着要把他的旧电脑搬上楼装起来，但是家里没有多少地方能摆电脑桌了(怕他又和以前一样在书房看着小说抽一整天的烟)。所以趁着双十一，就入手了一个<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/">树莓派 4 Model B</a>，准备给他放客厅连到电视上，通过家里人时不时打断他投入看小说的状态。</p>
-<p>今天到货了，开始折腾一下….</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/raspberrypi-01-setup/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-11-16T12:56:29.000Z" itemprop="datePublished">Nov 16</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-ES6-MAP/">ES6 中的 新数据结构 Set &amp; Map</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>今天在一个需求里边遇到一个使用 MAP 数据结构的场景，就去解了一下 ES6 的新数据结构</p>
-<p>ECMAScript 6 内提供了 4种 新结构 <code>Set</code>, <code>WeakSet</code>, <code>Map</code>, <code>WeakMap</code>，虽然已经是5年前的知识了，但是对于我来说还是新🤣</p>
-<p>本来想先聊 <code>Map</code> 的，但是仔细看了阮一峰老师的文章之后发现，确实是要从 <code>Set</code> 开始讲</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-ES6-MAP/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-11-07T05:22:28.000Z" itemprop="datePublished">Nov 7</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/vue-v-bind-props-camel-sync/">VueJS中 v-bind 的一些修饰符</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>今天洗澡的时候在听 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Dy4y1B73J">饥人谷的模拟面试 (五)</a> 的时候，一直觉得这次面试的学生有点差，如果是我来面话可能已经让他回家了，但是 方方老师 很有耐心，在中间问道 <code>.sync</code> 的时候我 ???? 完全没有印象了。</p>
-<p>正好自暴自弃了2个月没有更新了，所以复习一下 <code>v-bind</code> 的三个修饰符 [ <code>.prop</code>, <code>.camel</code>, <code>.sync</code> ] </p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/vue-v-bind-props-camel-sync/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-11-05T13:59:52.000Z" itemprop="datePublished">Nov 5</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/vue-api-ref/">Vue 使用 ref 注册组件的特性</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>一直以来，我对于 VueJS 中对于使用 <code>ref</code> 注册的组件，在使用 <code>$refs</code> 调用时，为什么有时候是一个 DOM元素/组件实例，是时候会是一个实例<strong>数组</strong>。</p>
-<p>所以在很长一段时间内我觉得 <code>ref</code> 注册的的组件在使用 <code>$refs</code> 调用时有很大的不确定性，虽然我的弹窗组件一直都是用的 <code>$refs.modal.open()</code> 来打开的。</p>
-<p>直到前一段时间，我在一个场景下想在 <code>v-for</code> 循环渲染的组件下 <code>slot</code> 模板中想使用 <code>ref</code> 注册成一个实例集合来调用时，发现怎么样重写返回的都只是一个组件实例，而不是一个组件实例集合。</p>
-<p>所以有了这样一篇笔记。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/vue-api-ref/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-11-02T09:14:09.000Z" itemprop="datePublished">Nov 2</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-about-this/">JavaScript 中的 this 指向问题</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>今天在群里看到大家在讨论一个问题，就是 <code>this</code> 的指向，并且牵扯到了 <code>let</code>，<code>const</code> 的变量提升，比如说在全局顶部声明的 <code>let</code> 变量能否挂载到 <code>window</code> 下之类的。<br>还是老流程，先讨论第一个问题，然后再开始牵扯到后续的展开。</p>
-<p><code>this</code> 指向大概分为两种，普通函数内的 <code>this</code> 和 箭头函数内的 <code>this</code>，箭头函数内的 <code>this</code> 其实挺好理解的，主要是因为各种 <code>call()</code>、<code>apply()</code>、<code>bind()</code> 和 <code>new</code> 影响下的 <code>this</code> 指向问题。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-about-this/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-10-26T04:01:21.000Z" itemprop="datePublished">Oct 26</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-for/">JS 中的各种 for 循环</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>真是一坑未填又开一坑….现在阶段，for循环有4种，我们先把所有的 for 循环列出，一个一个的聊。</p>
-<p>从MDN上边，找到了 <strong>四种</strong> for 循环，分别是：<code>for</code>、<code>for...in</code>、<code>for...of</code> 和 <code>for await...of</code></p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-for/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-07-23T16:03:04.000Z" itemprop="datePublished">Jul 24</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-slider-captcha/">简单实现滑动滑块完成验证</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>偶尔会遇到PM提的需求，要加入滑动验证，但是不想使用付费的第三方验证，想就在前端实现滑块验证即可(zuò zuò yàng zi)，<br>这一段时间遇到两次要求加滑动验证了，就整理一下构思和部分伪代码逻辑。</p>
-<p>本例只是一个面子工程，不会牵扯到复杂的人机验证部分，所以如果需要考虑人机校验，还是推荐你选择靠谱的第三方行为验证，不要自己瞎折腾。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-slider-captcha/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-07-08T01:40:50.000Z" itemprop="datePublished">Jul 8</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -403,7 +421,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/2/">2</a><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/8/">8</a><a class="extend next" rel="next" href="/categories/%E7%AC%94%E8%AE%B0/page/2/">next &gt;&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/2/">2</a><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/10/">10</a><a class="extend next" rel="next" href="/categories/%E7%AC%94%E8%AE%B0/page/2/">next &gt;&gt;</a>
   </nav>
 
 
@@ -434,6 +452,10 @@
       <ul>
         
           <li>
+            <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
+          </li>
+        
+          <li>
             <a href="/2021/miniprogram-devDiary-04-request/">微信小程序学习日记 L04 网络请求</a>
           </li>
         
@@ -447,10 +469,6 @@
         
           <li>
             <a href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
-          </li>
-        
-          <li>
-            <a href="/2021/miniprogram-devDiary-01-structure/">微信小程序学习日记 L01 目录结构</a>
           </li>
         
       </ul>

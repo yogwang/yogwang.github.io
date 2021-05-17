@@ -52,6 +52,43 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/jeecg-boot-devDiary11/">Jeecg-boot 开发挖坑日记11 查询过滤器整理</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <blockquote>
+<p>如果不配置默认查询条件是全匹配，想实现模糊查询需求在查询值的前后加: <code>*</code></p>
+</blockquote>
+<p>Jeecg-boot支持不编码通过配置实现 <code>模糊查询</code>、 <code>匹配查询</code>、 <code>范围查询</code>、 <code>不匹配查询</code> 等规则，<br>但是页面查询字段，需跟后台 <code>Controller</code> 中 <code>Page</code> 的字段对应一致，就可以不需写后台代码自动生成查询条件SQL。</p>
+<p>例如：想实现模糊查询需求在查询值的前后加: <code>*</code></p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2020/jeecg-boot-devDiary11/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2020-06-02T06:31:26.000Z" itemprop="datePublished">Jun 2</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
 
       
@@ -361,38 +398,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/change-the-hexo-theme/">博客改版准备中...</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>今天突然就想把自己的博客的主题给改了，并且在想如何在 hexo 中使用 vue。</p>
-<p>如果可以的话，应该会出一个文章。如果不行的话，还是使用 <code>ejs</code> 或者 <code>pug</code> 来制作(或者使用 VuePress??)<br>这次可能会多使用几个插件并且会提交到 <code>hexo</code> 官方，并且会考虑 <code>i18n</code>。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/change-the-hexo-theme/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-03-02T03:07:46.000Z" itemprop="datePublished">Mar 2</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -431,6 +436,10 @@
       <ul>
         
           <li>
+            <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
+          </li>
+        
+          <li>
             <a href="/2021/miniprogram-devDiary-04-request/">微信小程序学习日记 L04 网络请求</a>
           </li>
         
@@ -444,10 +453,6 @@
         
           <li>
             <a href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
-          </li>
-        
-          <li>
-            <a href="/2021/miniprogram-devDiary-01-structure/">微信小程序学习日记 L01 目录结构</a>
           </li>
         
       </ul>
