@@ -113,21 +113,53 @@
 </blockquote>
 <p>示例代码</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">wx.downloadFile(&#123;</span><br><span class="line">  url: <span class="string">&#x27;https://example.com/audio/123&#x27;</span>, <span class="comment">// 仅为示例，并非真实的资源</span></span><br><span class="line">  success (res) &#123;</span><br><span class="line">    <span class="comment">// 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容</span></span><br><span class="line">    <span class="keyword">if</span> (res.statusCode === <span class="number">200</span>) &#123;</span><br><span class="line">      wx.playVoice(&#123;</span><br><span class="line">        filePath: res.tempFilePath</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="未完成"><a href="#未完成" class="headerlink" title="未完成"></a>未完成</h1><p>这几天睡得少，有点写不动了，缓一缓….</p>
+<p>暂时还没有使用的场景，就暂时不描述了，WebSocket 也是还没有在小程序业务上使用过，就不细说了，简单的用文档中的示例</p>
 <h2 id="4-WebSocket-通信"><a href="#4-WebSocket-通信" class="headerlink" title="#4 WebSocket 通信"></a>#4 WebSocket 通信</h2><p>首先需要使用 <code>wx.connectSocket(options)</code> 创建一个 WebSocket 连接。具体文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/network/websocket/wx.connectSocket.html">SocketTask | 微信开放文档</a><br>然后就和正常使用 WebSocket 一样了：</p>
-<ul>
-<li><code>wx.onSocketOpen(function callback)</code> 监听 WebSocket 连接打开事件</li>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
 <li><code>wx.sendSocketMessage(Object object)</code> 通过 WebSocket 连接发送数据。</li>
-<li><code>wx.onSocketMessage(function callback)</code> 监听 WebSocket 接受到服务器的消息事件</li>
-<li><code>wx.onSocketError(function callback)</code> 监听 WebSocket 错误事件</li>
 <li><code>wx.closeSocket(Object object)</code> 关闭 WebSocket 连接</li>
-<li><code>wx.onSocketClose(function callback)</code> 监听 WebSocket 连接关闭事件</li>
 </ul>
-<h2 id="5-UDP-通信"><a href="#5-UDP-通信" class="headerlink" title="#5 UDP 通信"></a>#5 UDP 通信</h2><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h4 id="📌-配置网络请求超时时间"><a href="#📌-配置网络请求超时时间" class="headerlink" title="📌 配置网络请求超时时间"></a>📌 配置网络请求超时时间</h4><p>如果需要配置超时时间则需要去 <code>app.json</code> 中配置 <code>networkTimeout</code>，<br>默认 <code>60000</code> (单位：毫秒)，最大超时时间也是 <code>60000</code>。<br>可以为4个网络请求单独配置超时时间，具体查看 👉 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#networkTimeout">配置文档</a></p>
+<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><ul>
+<li>全局事件<ul>
+<li><code>wx.onSocketOpen(callback)</code> 监听 WebSocket 连接打开事件</li>
+<li><code>wx.onSocketMessage(callback)</code> 监听 WebSocket 接受到服务器的消息事件</li>
+<li><code>wx.onSocketError(callback)</code> 监听 WebSocket 错误事件</li>
+<li><code>wx.onSocketClose(callback)</code> 监听 WebSocket 连接关闭事件</li>
+</ul>
+</li>
+<li>当前Socket事件<ul>
+<li>通过 <code>wx.connectSocket()</code> 接口创建返回赋值给变量 <code>SocketTask</code></li>
+<li><code>SocketTask.onSocketOpen(callback)</code> 监听 WebSocket 连接打开事件</li>
+<li><code>SocketTask.onSocketMessage(callback)</code> 监听 WebSocket 接受到服务器的消息事件</li>
+<li><code>SocketTask.onSocketError(callback)</code> 监听 WebSocket 错误事件</li>
+<li><code>SocketTask.onSocketClose(callback)</code> 监听 WebSocket 连接关闭事件</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-UDP-通信"><a href="#5-UDP-通信" class="headerlink" title="#5 UDP 通信"></a>#5 UDP 通信</h2><p>使用 <code>wx.createUDPSocket()</code> 创建一个 UDP Socket 实例，之后就可以和 <code>WebSocket</code> 通信类似的方式使用 <code>UDPSocket</code> API来通信了，具体文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/network/udp/UDPSocket.html">UDPSocket | 微信开放文档</a></p>
+<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><ul>
+<li><code>UDPSocket.bind(number port)</code> 绑定一个可用端口号</li>
+<li><code>UDPSocket.send()</code> 向指定的 IP 和 port 发送消息</li>
+<li><code>UDPSocket.connect(Object object)</code> 预先连接到指定的 IP 和 port，需要配合 write 方法一起使用</li>
+<li><code>UDPSocket.write()</code> 用法与 send 方法相同，如果没有预先调用 connect 则与 send 无差异</li>
+<li><code>UDPSocket.close()</code> 关闭 UDP Socket 实例，相当于销毁</li>
+</ul>
+<h4 id="事件-1"><a href="#事件-1" class="headerlink" title="事件"></a>事件</h4><ul>
+<li><code>UDPSocket.onClose(callback)</code> 监听关闭事件</li>
+<li><code>UDPSocket.offClose(callback)</code> <strong>取消</strong>监听关闭事件 </li>
+<li><code>UDPSocket.onError(callback)</code> 监听错误事件</li>
+<li><code>UDPSocket.offError(callback)</code> <strong>取消</strong>监听错误事件</li>
+<li><code>UDPSocket.onListening(callback)</code> 监听开始监听数据包消息的事件</li>
+<li><code>UDPSocket.offListening(callback)</code> <strong>取消</strong>监听开始监听数据包消息的事件</li>
+<li><code>UDPSocket.onMessage(callback)</code> 监听收到消息的事件</li>
+<li><code>UDPSocket.offMessage(callback)</code> <strong>取消</strong>监听收到消息的事件</li>
+</ul>
+<p>错误码之类的直接看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/network/udp/UDPSocket.html#%E9%94%99%E8%AF%AF">文档</a> 吧。<br>这个API应该是和我无缘了，物联网和直播之类的场景我应该是很难遇到的。</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h4 id="📌-配置网络请求超时时间"><a href="#📌-配置网络请求超时时间" class="headerlink" title="📌 配置网络请求超时时间"></a>📌 配置网络请求超时时间</h4><p>如果需要配置超时时间则需要去 <code>app.json</code> 中配置 <code>networkTimeout</code>，<br>默认 <code>60000</code> (单位：毫秒)，最大超时时间也是 <code>60000</code>。<br>可以为4个网络请求单独配置超时时间，具体查看 👉 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#networkTimeout">配置文档</a></p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 其他配置项....</span></span><br><span class="line">  <span class="attr">&quot;networkTimeout&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;request&quot;</span>: <span class="number">10000</span>, <span class="comment">// wx.request 的超时时间 </span></span><br><span class="line">    <span class="attr">&quot;uploadFile&quot;</span>: <span class="number">10000</span> <span class="comment">// wx.uploadFile 的超时时间</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html">网络 | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/network/request/wx.request.html">RequestTask | 微信开放文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/extended/utils/api-promise.html">API Promise化 | 微信开放文档</a></p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html">网络 | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/network/request/wx.request.html">RequestTask | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/extended/utils/api-promise.html">API Promise化 | 微信开放文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket">WebSocket - Web API 接口参考 | MDN</a></p>
  
   </article>
 
@@ -185,6 +217,10 @@
       <ul>
         
           <li>
+            <a href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
+          </li>
+        
+          <li>
             <a href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
           </li>
         
@@ -198,10 +234,6 @@
         
           <li>
             <a href="/2021/CSS-specificity-selectors-weight/">CSS 选择器权重和优先级</a>
-          </li>
-        
-          <li>
-            <a href="/2021/miniprogram-devDiary-03-lifecycle/">微信小程序学习日记 L03 生命周期</a>
           </li>
         
       </ul>

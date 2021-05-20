@@ -57,6 +57,41 @@
       
   
     <h2 itemprop="name">
+      <a class="archive-article-title" href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>在实际业务场景中，最常接触到的就是拉取微信登陆了，但单纯的一个点击按钮直接微信登录的需要获取多少微信权限呢？</p>
+<p>最少的需要使用到1个微信开放接口：<code>wx.login</code>，<br>如果需要获取用户头像和昵称，需要调用 <code>wx.getUserProfile</code> 方法 (<code>wx.getUserInfo</code> 已调整<sub>【尾声#1】</sub>)，并且需要在绑定在按钮上 ，并会唤起授权提示；<br>如果需要获取用户手机号信息，需要在按钮上绑定 <code>getPhoneNumber</code> 事件。</p>
+<p>一般来说非敏感信息可以直接调用，含有敏感信息的接口需要绑定在按钮上，在用户自行操作之后才可以调用。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2021/miniprogram-devDiary-05-authorize/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2021-05-20T08:04:22.000Z" itemprop="datePublished">May 20</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
       <a class="archive-article-title" href="/2021/miniprogram-devDiary-04-request/">微信小程序学习日记 L04 网络请求</a>
     </h2>
   
@@ -407,6 +442,10 @@
       <ul>
         
           <li>
+            <a href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
+          </li>
+        
+          <li>
             <a href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
           </li>
         
@@ -420,10 +459,6 @@
         
           <li>
             <a href="/2021/CSS-specificity-selectors-weight/">CSS 选择器权重和优先级</a>
-          </li>
-        
-          <li>
-            <a href="/2021/miniprogram-devDiary-03-lifecycle/">微信小程序学习日记 L03 生命周期</a>
           </li>
         
       </ul>

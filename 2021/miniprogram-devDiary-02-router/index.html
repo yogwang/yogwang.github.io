@@ -114,7 +114,8 @@
 <blockquote>
 <p><strong>注意：小程序中页面栈最多十层</strong></p>
 </blockquote>
-<h2 id="最后是疑问部分："><a href="#最后是疑问部分：" class="headerlink" title="最后是疑问部分："></a>最后是疑问部分：</h2><h4 id="🎇-如何路由传参"><a href="#🎇-如何路由传参" class="headerlink" title="🎇 如何路由传参"></a>🎇 如何路由传参</h4><p>需要跳转的应用内非 tabBar 的页面路径后可以用 <code>query</code> 的形式传递参数，如 <code>path?key=value&amp;key2=value2</code>。<br>页面中也可以在 <code>onLoad</code> 事件中接受参数</p>
+<h2 id="最后是疑问部分："><a href="#最后是疑问部分：" class="headerlink" title="最后是疑问部分："></a>最后是疑问部分：</h2><h4 id="🎇-路由是否可以像-vue-router-一样省略-index"><a href="#🎇-路由是否可以像-vue-router-一样省略-index" class="headerlink" title="🎇 路由是否可以像 vue-router 一样省略 index"></a>🎇 路由是否可以像 <code>vue-router</code> 一样省略 <code>index</code></h4><p>不可以，需要全路径</p>
+<h4 id="🎇-如何路由传参"><a href="#🎇-如何路由传参" class="headerlink" title="🎇 如何路由传参"></a>🎇 如何路由传参</h4><p>需要跳转的应用内非 tabBar 的页面路径后可以用 <code>query</code> 的形式传递参数，如 <code>path?key=value&amp;key2=value2</code>。<br>页面中也可以在 <code>onLoad</code> 事件中接受参数</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  onLoad: <span class="function"><span class="keyword">function</span>(<span class="params">option</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(option.query)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>具体查看文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html">wx.navigateTo(Object object) | 微信开放文档</a></p>
 <h4 id="🎇-清空路由历史"><a href="#🎇-清空路由历史" class="headerlink" title="🎇 清空路由历史"></a>🎇 清空路由历史</h4><p>没有单独的清空跳转历史API，可以直接使用 <code>wx.reLaunch()</code> 来跳转到目标页面，并且同时关闭所有已经打开过的页面，就不能用 <code>wx.navigateBack()</code> 返回了，左上角的按钮也会变成 🏠 <code>home</code> </p>
@@ -189,6 +190,10 @@
       <ul>
         
           <li>
+            <a href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
+          </li>
+        
+          <li>
             <a href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
           </li>
         
@@ -202,10 +207,6 @@
         
           <li>
             <a href="/2021/CSS-specificity-selectors-weight/">CSS 选择器权重和优先级</a>
-          </li>
-        
-          <li>
-            <a href="/2021/miniprogram-devDiary-03-lifecycle/">微信小程序学习日记 L03 生命周期</a>
           </li>
         
       </ul>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>微信小程序学习日记 L05 拉起授权 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U" />
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body>
+    <header id="header">
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="sign" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <main id="container">
+  <div
+  id="post-miniprogram-devDiary-05-authorize"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    <div class="article-meta">
+      <p class="article-date">
+  <time datetime="2021-05-20T08:04:22.000Z" itemprop="datePublished">2021-05-20</time>
+</p> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+    </div>
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      微信小程序学习日记 L05 拉起授权
+    </h1>
+  
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+       
+  <article class="article-content">
+    <p>在实际业务场景中，最常接触到的就是拉取微信登陆了，但单纯的一个点击按钮直接微信登录的需要获取多少微信权限呢？</p>
+<p>最少的需要使用到1个微信开放接口：<code>wx.login</code>，<br>如果需要获取用户头像和昵称，需要调用 <code>wx.getUserProfile</code> 方法 (<code>wx.getUserInfo</code> 已调整<sub>【尾声#1】</sub>)，并且需要在绑定在按钮上 ，并会唤起授权提示；<br>如果需要获取用户手机号信息，需要在按钮上绑定 <code>getPhoneNumber</code> 事件。</p>
+<p>一般来说非敏感信息可以直接调用，含有敏感信息的接口需要绑定在按钮上，在用户自行操作之后才可以调用。</p>
+<a id="more"></a>
+
+<h2 id="开放接口"><a href="#开放接口" class="headerlink" title="开放接口"></a>开放接口</h2><h4 id="1、-微信登陆"><a href="#1、-微信登陆" class="headerlink" title="1、 微信登陆"></a>1、 微信登陆</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html">登陆 | 微信开放文档</a></p>
+<h4 id="2、-获取用户资料"><a href="#2、-获取用户资料" class="headerlink" title="2、 获取用户资料"></a>2、 获取用户资料</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/user-info/wx.getUserProfile.html">用户信息 | 微信开放文档</a></p>
+<h4 id="3、-获取用户手机号"><a href="#3、-获取用户手机号" class="headerlink" title="3、 获取用户手机号"></a>3、 获取用户手机号</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html">获取手机号 | 微信开放文档</a></p>
+<h4 id="4、-调用微信支付"><a href="#4、-调用微信支付" class="headerlink" title="4、 调用微信支付"></a>4、 调用微信支付</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/payment/wx.requestPayment.html">支付 | 微信开放文档</a></p>
+<h4 id="5、-获取收货地址"><a href="#5、-获取收货地址" class="headerlink" title="5、 获取收货地址"></a>5、 获取收货地址</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/address/wx.chooseAddress.html">收货地址 | 微信开放文档</a></p>
+<h4 id="6、-获取微信运动"><a href="#6、-获取微信运动" class="headerlink" title="6、 获取微信运动"></a>6、 获取微信运动</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/werun/wx.shareToWeRun.html">微信运动 | 微信开放文档</a></p>
+<h4 id="7、-获取自定义权限"><a href="#7、-获取自定义权限" class="headerlink" title="7、 获取自定义权限"></a>7、 获取自定义权限</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/authorize/wx.authorize.html">wx.authorize | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/authorize.html">授权 | 微信开放文档</a></p>
+<h1 id="————–-未完成-—————"><a href="#————–-未完成-—————" class="headerlink" title="————– 未完成 —————"></a>————– 未完成 —————</h1><h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><h4 id="微信调整了-wx-getUserInfo-接口，现在已经只会返回匿名用户信息了，加密信息中的-openID和unionID还可以获取"><a href="#微信调整了-wx-getUserInfo-接口，现在已经只会返回匿名用户信息了，加密信息中的-openID和unionID还可以获取" class="headerlink" title="微信调整了 wx.getUserInfo 接口，现在已经只会返回匿名用户信息了，加密信息中的 openID和unionID还可以获取"></a>微信调整了 <code>wx.getUserInfo</code> 接口，现在已经<strong>只会返回匿名用户信息</strong>了，加密信息中的 <code>openID</code>和<code>unionID</code>还可以获取</h4><p>调整说明 👉 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/doc/000cacfa20ce88df04cb468bc52801">小程序登录、用户信息相关接口调整说明 | 微信开放社区</a></p>
+<h2 id="资源-📚"><a href="#资源-📚" class="headerlink" title="资源 📚"></a>资源 📚</h2><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html">开放接口 | 微信开放文档</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2021/JS-flat&flatMap/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">ES6 中的数组拓展方法 flat() &amp; flatMap()</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+
+
+</main>
+<aside id="sidebar">
+  
+    
+<section class="userinfo">
+    <img src="/img/userimg.jpg" alt="王阳阳">
+    <h2>王阳阳</h2>
+    <span>久之须自见得</span>
+    <p>ODIN.INC</p>
+    <p>Jiaxing,China</p>
+    <div>
+      
+      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
+          </li>
+        
+          <li>
+            <a href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
+          </li>
+        
+          <li>
+            <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-04-request/">微信小程序学习日记 L04 网络请求</a>
+          </li>
+        
+          <li>
+            <a href="/2021/CSS-specificity-selectors-weight/">CSS 选择器权重和优先级</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+    
+  <section class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <footer id="footer">
+  <span>
+    &copy;2019-2021 YogWang powered_by
+    <a href="http://hexo.io/" target="_blank">Hexo</a>
+  </span>
+  <br />
+  <span
+    >licensed
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
+      >CC BY-NC 4.0</a
+    ></span
+  >
+</footer>
+<div>
+  <a id="gotop" class="fa fa-level-up"></a>
+</div>
+
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+ 
+<script src="/js/common.js"></script>
+
+
+  </body>
+</html>
