@@ -52,6 +52,42 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2020/vue-api-ref/">Vue 使用 ref 注册组件的特性</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>一直以来，我对于 VueJS 中对于使用 <code>ref</code> 注册的组件，在使用 <code>$refs</code> 调用时，为什么有时候是一个 DOM元素/组件实例，是时候会是一个实例<strong>数组</strong>。</p>
+<p>所以在很长一段时间内我觉得 <code>ref</code> 注册的的组件在使用 <code>$refs</code> 调用时有很大的不确定性，虽然我的弹窗组件一直都是用的 <code>$refs.modal.open()</code> 来打开的。</p>
+<p>直到前一段时间，我在一个场景下想在 <code>v-for</code> 循环渲染的组件下 <code>slot</code> 模板中想使用 <code>ref</code> 注册成一个实例集合来调用时，发现怎么样重写返回的都只是一个组件实例，而不是一个组件实例集合。</p>
+<p>所以有了这样一篇笔记。</p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2020/vue-api-ref/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2020-11-02T09:14:09.000Z" itemprop="datePublished">Nov 2</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li></ul>
 
       
@@ -369,44 +405,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/" rel="tag">Server</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/digitalocean-created-droplets-add-ssh-key/">DigitalOcean向已经创建的Droplets实例添加SSH_key</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <blockquote>
-<p>这几天心态崩溃的有些厉害，几近一周没有写过代码了，今天实在感觉不能再颓下去了，就准备远程配置一下客户服务器的环境。</p>
-</blockquote>
-<p>这次客户邀请我加入了他们 <code>DigitalOcean</code> 的 Team 中，但是他们不想提供 Droplet 实例 Root 密码， 看了一下控制台大概找到了一个添加 <code>SSH_Key</code> 登陆的地方，所以使用了 <code>PuTTYGen</code> 创建了一对 Key，但是添加之后使用 <code>SSH</code> 连接时提示我: 远程服务器拒绝此密钥，让我重新输入Root账户的密码。</p>
-<p>大概找了一下国内的相关问题并没有找到解决的方法，Google 出来也差不多，基本都是添加 Key 之后，需要创建新的实例才可以使用新添加的 Key。<br>那我需要对 <em>已经创建了的 <code>Droplet</code> 实例</em>  添加 <code>Key</code> 怎么办呢？</p>
-<p>相信大家在搜索该问题时已经添加好了自己的 <code>SSH Key</code>，具体添加创建 key 的过程我就不详述了，大家在官方 <a target="_blank" rel="noopener" href="https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/">文档</a> 中查找即可。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/digitalocean-created-droplets-add-ssh-key/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2020-06-13T17:23:22.000Z" itemprop="datePublished">Jun 14</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -445,6 +443,10 @@
       <ul>
         
           <li>
+            <a href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
+          </li>
+        
+          <li>
             <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
           </li>
         
@@ -458,10 +460,6 @@
         
           <li>
             <a href="/2021/miniprogram-devDiary-03-lifecycle/">微信小程序学习日记 L03 生命周期</a>
-          </li>
-        
-          <li>
-            <a href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
           </li>
         
       </ul>

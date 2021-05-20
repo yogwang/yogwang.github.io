@@ -75,9 +75,9 @@
 </blockquote>
 <p>其实我觉得如果直接用 <code>pipe</code> 来命名其实就更好理解了，但是也许是因为前端圈子接触到 <code>pipe</code> 的人并不多，使用 <code>filter</code> 这个熟悉的单词可能更加容易让大众接受。</p>
 <p>使用起来确实很方便，用 <code>|</code> 符号分隔就行，会按照 <strong>从前往后的顺序</strong> 依次 传入过滤器，然后返回转换后的值。</p>
-<p>等到后来再遇到适合的场景想起来使用 <code>filter</code> ，但又因为项目的历史原因没有去使用，因为自己都是局部使用 <strong><code>computed</code>计算</strong> 和 <strong>方法调用返回</strong> 来处理（<a target="_blank" rel="noopener" href="https://v3.vuejs.org/guide/migration/filters.html#_3-x-update">也是Vue3所推荐的替代filter的方式</a>）</p>
+<p>等到后来再遇到适合的场景想起来使用 <code>filter</code> ，但又因为项目的历史原因没有去使用，因为自己都是局部使用 <strong><code>computed</code>计算</strong> 和 <strong>方法调用返回</strong> 来处理（<a target="_blank" rel="noopener" href="https://v3.vuejs.org/guide/migration/filters.html#_3-x-update">也是Vue3所推荐的替代过滤器的方式</a>）</p>
 <a id="more"></a>
-<h2 id="初步使用filter：在组件中使用过滤器"><a href="#初步使用filter：在组件中使用过滤器" class="headerlink" title="初步使用filter：在组件中使用过滤器"></a>初步使用filter：在组件中使用过滤器</h2><p>过滤器可以用在两个地方（可以直接的使用方式有 2 种） </p>
+<h2 id="初步使用：在组件中使用过滤器"><a href="#初步使用：在组件中使用过滤器" class="headerlink" title="初步使用：在组件中使用过滤器"></a>初步使用：在组件中使用过滤器</h2><p>过滤器可以用在两个地方（可以直接的使用方式有 2 种） </p>
 <ol>
 <li>在双花括号中 <code>&#123;&#123; message | filterName &#125;&#125;</code>; </li>
 <li>在 <code>v-bind</code> 中 <code>&lt;div v-bind:id=&quot;message | filterName&quot;&gt;&lt;/div&gt;</code>。</li>
@@ -88,7 +88,7 @@
 <h4 id="✨-多参数-过滤器-的情况"><a href="#✨-多参数-过滤器-的情况" class="headerlink" title="✨ 多参数 过滤器 的情况"></a>✨ 多参数 过滤器 的情况</h4><p>例如，需要传入 <strong>两个参数</strong> 的过滤器，刨开第一个默认传入的参数，键入第二个参数即可： <code>&#123;&#123; price | NumberFormat(2) &#125;&#125;</code> , 三个参数： <code>&#123;&#123; price | NumberFormat(2, '$') &#125;&#125;</code>，更多参数以此类推。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;span&gt;&#123;&#123; price | NumberFormat(2, &#39;$&#39;) &#125;&#125;&lt;&#x2F;span&gt; </span><br><span class="line">    &lt;!-- 渲染结果是 $ 0.67 --&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      price:0.6666,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  filters:&#123;</span><br><span class="line">    NumberFormat(value, limit, sign) &#123;</span><br><span class="line">      if (!value) return &#39;0&#39;</span><br><span class="line">      const intPartFormat &#x3D; value.toFixed(limit).toString()</span><br><span class="line">      return &#96;$&#123;sign&#125;  $&#123;intPartFormat&#125;&#96;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="进阶-使用全局过滤器"><a href="#进阶-使用全局过滤器" class="headerlink" title="进阶 使用全局过滤器"></a>进阶 使用全局过滤器</h2><p>在项目的不断完善中，会有出现一些重复使用的过滤器，如果每次都重新声明就很麻烦，就可以注册 <strong>全局过滤器</strong> <code>vue.filter</code></p>
+<h2 id="更进一步：使用全局过滤器"><a href="#更进一步：使用全局过滤器" class="headerlink" title="更进一步：使用全局过滤器"></a>更进一步：使用全局过滤器</h2><p>在项目的不断完善中，会有出现一些重复使用的过滤器，如果每次都重新声明就很麻烦，就可以注册 <strong>全局过滤器</strong> <code>vue.filter</code></p>
 <p>🌰 栗子：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line">Vue.filter(<span class="string">&#x27;NumberFormat&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!value) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;0&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> intPartFormat = value.toString().replace(<span class="regexp">/(\d)(?=(?:\d&#123;3&#125;)+$)/g</span>, <span class="string">&#x27;$1,&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> intPartFormat</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="comment">// options</span></span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p>然后就可以在全局直接使用这个过滤器了，<strong>不需要单独再声明或者引入</strong>。</p>
@@ -111,6 +111,15 @@
   </div>
    
 <nav id="article-nav">
+  
+    <a href="/2021/JS-flat&flatMap/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          ES6 中的数组拓展方法 flat() &amp; flatMap()
+        
+      </div>
+    </a>
   
   
     <a href="/2021/miniprogram-devDiary-04-request/" id="article-nav-older" class="article-nav-link-wrap">
@@ -151,6 +160,10 @@
       <ul>
         
           <li>
+            <a href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
+          </li>
+        
+          <li>
             <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
           </li>
         
@@ -164,10 +177,6 @@
         
           <li>
             <a href="/2021/miniprogram-devDiary-03-lifecycle/">微信小程序学习日记 L03 生命周期</a>
-          </li>
-        
-          <li>
-            <a href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
           </li>
         
       </ul>

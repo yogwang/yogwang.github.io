@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Jeecg-boot 开发挖坑日记04 全局 Vue-AntD 标签页的控制 | blog [ YOG WANG ]</title>
+  <title>ES6 中的数组拓展方法 flat() &amp; flatMap() | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
@@ -39,7 +39,7 @@
     <div id="wrap">
       <main id="container">
   <div
-  id="post-jeecg-boot-devDiary04"
+  id="post-JS-flat&amp;flatMap"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -47,7 +47,7 @@
   <div class="article-inner">
     <div class="article-meta">
       <p class="article-date">
-  <time datetime="2019-10-28T05:49:01.000Z" itemprop="datePublished">2019-10-28</time>
+  <time datetime="2021-05-17T06:14:01.000Z" itemprop="datePublished">2021-05-17</time>
 </p> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
@@ -59,7 +59,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      Jeecg-boot 开发挖坑日记04 全局 Vue-AntD 标签页的控制
+      ES6 中的数组拓展方法 flat() &amp; flatMap()
     </h1>
   
 
@@ -68,28 +68,29 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p>开坑 2019 年 10 月 28 日</p>
-<p>暂时没有找到好的方法，在不修改原来 layout 框架的情况下。</p>
+    <p>之前有使用过 <code>flat()</code> 方法，但是一直不知道 <code>flatMap()</code> 方法，在使用 <code>map()</code> 方法组装集合的时候，在组装完成之后还要链式调用一下 <code>flat()</code>，如果可以知道 <code>flatMap()</code> 代码还能精简一点，也方便递归返回的数组内容。</p>
+<p>本来是上个月发现的，但隔了一个月才有时间写，已经想不起来当时怎么发现的 <code>flatMap()</code> 这个方法了…<br>就直接跳过前置场景，直接开始聊这两个扩展方法吧。</p>
 <a id="more"></a>
 
-<p><a target="_blank" rel="noopener" href="https://vue.ant.design/components/tabs-cn/">Vue-AntD Tabs</a></p>
-<table>
-<thead>
-<tr>
-<th>事件名称</th>
-<th>说明</th>
-<th>回调参数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>edit</td>
-<td>新增和删除页签的回调，在 type=”editable-card” 时有效</td>
-<td>(targetKey, action): void</td>
-</tr>
-</tbody></table>
-<p>移除 Tab 方法在: <code>@/components/layouts/TabLayout.vue =&gt; remove:117</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">editPage</span>(<span class="params">key, action</span>)</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>[action](key)</span><br><span class="line">&#125;,</span><br><span class="line"><span class="function"><span class="title">remove</span>(<span class="params">key</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (key == indexKey) &#123;</span><br><span class="line">    <span class="built_in">this</span>.$message.warning(<span class="string">&#x27;首页不能关闭!&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">this</span>.pageList.length === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="built_in">this</span>.$message.warning(<span class="string">&#x27;这是最后一页，不能再关闭了啦&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">this</span>.pageList = <span class="built_in">this</span>.pageList.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.fullPath !== key)</span><br><span class="line">  <span class="keyword">let</span> index = <span class="built_in">this</span>.linkList.indexOf(key)</span><br><span class="line">  <span class="built_in">this</span>.linkList = <span class="built_in">this</span>.linkList.filter(<span class="function"><span class="params">item</span> =&gt;</span> item !== key)</span><br><span class="line">  index = index &gt;= <span class="built_in">this</span>.linkList.length ? <span class="built_in">this</span>.linkList.length - <span class="number">1</span> : index</span><br><span class="line">  <span class="built_in">this</span>.activePage = <span class="built_in">this</span>.linkList[index]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<p>没找到好的解决办法，在考虑直接用 vuex 重写了…</p>
+<h2 id="Array-prototype-flat-depth"><a href="#Array-prototype-flat-depth" class="headerlink" title="Array.prototype.flat([depth])"></a><code>Array.prototype.flat([depth])</code></h2><blockquote>
+<p><code>flat()</code> 方法会按照一个<strong>可指定的深度</strong>递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回，对原数据没有影响。</p>
+</blockquote>
+<p><code>flat()</code> 默认深度为 <code>1</code>，如果想要 “拉平” 多层的嵌套数组，可以将 <code>flat()</code> 方法的参数写成一个整数，表示想要拉平的层数。<br>✨ 如果不管有多少层嵌套，都要转成一维数组，可以用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Infinity"><strong>Infinity</strong> 关键字</a>作为参数。<br>✨ 如果原数组有空位，<code>flat()</code>方法会跳过空位(过滤掉<strong>空值</strong>)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>]];</span><br><span class="line"><span class="comment">// 展开一层数组</span></span><br><span class="line">arr1.flat();</span><br><span class="line"><span class="comment">// [1, 2, 3, 4]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</span><br><span class="line">arr2.flat();</span><br><span class="line"><span class="comment">// [1, 2, 3, 4, [5, 6]]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 展开两层数组</span></span><br><span class="line">arr2.flat(<span class="number">2</span>);</span><br><span class="line"><span class="comment">// [1, 2, 3, 4, 5, 6]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 Infinity，可展开任意深度的嵌套数组</span></span><br><span class="line"><span class="keyword">var</span> arr3 = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>, [<span class="number">9</span>, <span class="number">10</span>]]]]];</span><br><span class="line">arr3.flat(<span class="literal">Infinity</span>);</span><br><span class="line"><span class="comment">// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// flat() 方法会移除数组中的空项</span></span><br><span class="line"><span class="keyword">var</span> arr4 = [<span class="number">1</span>, <span class="number">2</span>, , <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">arr4.flat();</span><br><span class="line"><span class="comment">// [1, 2, 4, 5]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>很容易理解的一个方法，就是推平数组，其实成为自己想要的一维数组。不过可以接收一个 <code>depth</code> 参数，我是再写这篇笔记的时候才知道的，所以还是要多记笔记啊。</p>
+<hr>
+<h2 id="Array-prototype-flatMap-callback-thisArg"><a href="#Array-prototype-flatMap-callback-thisArg" class="headerlink" title="Array.prototype.flatMap(callback [, thisArg]))"></a><code>Array.prototype.flatMap(callback [, thisArg]))</code></h2><blockquote>
+<p><code>flatMap()</code> 方法对原数组的每个成员执行一个函数（相当于执行 <code>Array.prototype.map()</code>），然后对返回值组成的数组执行 <code>flat()</code> 方法。该方法返回一个新数组，不改变原数组。</p>
+</blockquote>
+<p>这个方法如果在知道 <code>flat()</code> 方法之后直接看，就还挺清楚作用是什么的，但是一看MDN上的说明，瞬间就被迷糊了….<br>其实简单来说是先 <code>map()</code> 然后执行 <code>flat()</code> 的简化版（不能指定深度）。</p>
+<p>✨ <strong><code>flatMap()</code> 只能展开一层数组</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">&quot;it&#x27;s Sunny in&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;California&quot;</span>];</span><br><span class="line"></span><br><span class="line">arr.map(<span class="function"><span class="params">x</span> =&gt;</span> x.split(<span class="string">&quot; &quot;</span>));</span><br><span class="line"><span class="comment">// [[&quot;it&#x27;s&quot;,&quot;Sunny&quot;,&quot;in&quot;],[&quot;&quot;],[&quot;California&quot;]]</span></span><br><span class="line"></span><br><span class="line">arr.map(<span class="function"><span class="params">x</span> =&gt;</span> x.split(<span class="string">&quot; &quot;</span>)).flat()</span><br><span class="line"><span class="comment">// [&quot;it&#x27;s&quot;,&quot;Sunny&quot;,&quot;in&quot;, &quot;&quot;, &quot;California&quot;]</span></span><br><span class="line"></span><br><span class="line">arr.flatMap(<span class="function"><span class="params">x</span> =&gt;</span> x.split(<span class="string">&quot; &quot;</span>));</span><br><span class="line"><span class="comment">// [&quot;it&#x27;s&quot;,&quot;Sunny&quot;,&quot;in&quot;, &quot;&quot;, &quot;California&quot;]</span></span><br></pre></td></tr></table></figure>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><h4 id="使用-reduce-与-concat-来替代-flat-方法就不复述了，直接去看MDN上的实现就好。"><a href="#使用-reduce-与-concat-来替代-flat-方法就不复述了，直接去看MDN上的实现就好。" class="headerlink" title="使用 reduce() 与 concat() 来替代 flat() 方法就不复述了，直接去看MDN上的实现就好。"></a>使用 <code>reduce()</code> 与 <code>concat()</code> 来替代 <code>flat()</code> 方法就不复述了，直接去看MDN上的实现就好。</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat#%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88">替代方案 - flat</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap#%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88">替代方案 - flatMap</a></li>
+</ul>
+<h4 id="是不是发现了一个-Infinity-关键字？这个关键字可以在哪些地方使用？"><a href="#是不是发现了一个-Infinity-关键字？这个关键字可以在哪些地方使用？" class="headerlink" title="是不是发现了一个 Infinity 关键字？这个关键字可以在哪些地方使用？"></a>是不是发现了一个 <code>Infinity</code> 关键字？这个关键字可以在哪些地方使用？</h4><p><code>Infinity</code> 是一个全局变量(只读)，大于任何值，你也可以取反 <code>-Infinity</code> 使用<br>基本上只要可以传入一个正整数来 比较 或者 迭代 的都可以使用它</p>
+<h2 id="📚-资源"><a href="#📚-资源" class="headerlink" title="📚 资源"></a>📚 资源</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat">Array.prototype.flat() - JavaScript | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap">Array.prototype.flatMap() - JavaScript | MDN</a><br><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/array#%E6%95%B0%E7%BB%84%E5%AE%9E%E4%BE%8B%E7%9A%84-flat%EF%BC%8CflatMap">§ 9.数组实例的 flat()，flatMap() - 数组的扩展 - ECMAScript 6入门</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Infinity">Infinity - JavaScript | MDN</a></p>
  
   </article>
 
@@ -99,19 +100,10 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/jeecg-boot-devDiary05/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Jeecg-boot 开发挖坑日记05 Axios 异步请求
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/CSS-pseudo-elements-content/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/vue-api-filter/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">记一个 CSS 伪类的 content 用法</div>
+      <div class="article-nav-title">VueJS 的过滤器 filter API</div>
     </a>
   
 </nav>
