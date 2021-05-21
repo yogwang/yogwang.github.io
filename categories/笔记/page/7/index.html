@@ -52,6 +52,77 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/jeecg-boot-devDiary07/">Jeecg-boot 开发挖坑日记07 多登陆入口</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <p>项目结尾了，但是需要根据用户和管理员设置不同的登陆入口界面，</p>
+<p>所以就想着直接在 <code>@/config/router.config.js</code> 中修改基础路由，<br>但是因为不知名原因，路由并没有生效。</p>
+<p>感觉像是有设置路由守卫全部都跳转回了 <code>#/user/login</code></p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/jeecg-boot-devDiary07/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-11-07T05:57:06.000Z" itemprop="datePublished">Nov 7</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a></li></ul>
+
+      
+  
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/2019/jeecg-boot-devDiary06/">Jeecg-boot 开发挖坑日记06 富文本编辑器tinyMCE 图片附件上传</a>
+    </h2>
+  
+
+    </header>
+     
+  <article class="article-excerpt">
+    <blockquote>
+<p>这个富文本组件本质是 <code>TinyMCE</code> <a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce">github.com/tinymce/tinymce</a>，<br>在 Vue 项目中使用的封装库 <a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce-vue">github.com/tinymce/tinymce-vue</a></p>
+</blockquote>
+<p>Github 上有一个人回复了，框架是使用的 <a target="_blank" rel="noopener" href="https://www.tiny.cloud/">TinyMCE</a> 这个富文本编辑器的 <a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce-vue">封装库</a>，<br>所以在其手册里找到了，修改 <a target="_blank" rel="noopener" href="https://www.tiny.cloud/docs/configure/file-image-upload">上传方式的部分</a></p>
+  </article>
+  
+    <div class="article-more-link">
+      <a href="/2019/jeecg-boot-devDiary06/#more">阅读全文</a>
+    </div>
+   
+
+
+    <p class="archive-article-date">
+  <time datetime="2019-10-31T05:40:20.000Z" itemprop="datePublished">Oct 31</time>
+</p>
+  </div>
+</div>
+  
+    
+    
+    <div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Axios/" rel="tag">Axios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li></ul>
 
       
@@ -362,85 +433,6 @@
   </div>
 </div>
   
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/nodejs-npm-save-dev-global/">怎么知道依赖包需要安装到生产还是开发环境或者是安装到全局</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <blockquote>
-<p>刚开始接触 <code>Node.js</code> (包管理项目) 的时候很多人都会疑惑哪些依赖是可以装在全局的，哪些依赖是安装在项目里的，安装在项目里的依赖又是怎么分辨是否是要安装在开发环境中还是生产环境中？</p>
-</blockquote>
-<p>小白的时候还不知道怎么搜索关键词，然后就只能看着文档，他们怎么说自己就怎么敲，</p>
-<p>上边写的是 <code>npm install vue</code> 就 <code>npm install</code>,<br>如果写的是 <code>npm install -g @vue/cli</code> 那么就 <code>npm install -g</code>,<br>如果是 <code>npm install --save-dev @babel/core</code> 那么就 <code>npm install --save-dev</code></p>
-<p>比如 4 个月前的我就是这样，最近有一些人在群里问，那我就整理了下（原来这不是我笨理解不了，别人也是这样觉得的！）</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/nodejs-npm-save-dev-global/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-09-22T05:48:39.000Z" itemprop="datePublished">Sep 22</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
-
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/CSS-border_radius-semicircle/">CSS border-radius 制作特殊圆</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>以前只知道 <code>border-radius</code> 有一个圆角半径，今天在做一个半圆的时候突然发现，它还有 x 轴和 y 轴属性。</p>
-<h2 id="先来看一下-MDN-中-border-radius-说明："><a href="#先来看一下-MDN-中-border-radius-说明：" class="headerlink" title="先来看一下 MDN 中 border-radius 说明："></a>先来看一下 MDN 中 <code>border-radius</code> 说明：</h2><blockquote>
-<p>CSS 属性 border-radius 允许你设置元素的外边框圆角。当使用一个半径时确定一个圆形，当使用两个半径时确定一个椭圆。这个(椭)圆与边框的交集形成圆角效果。</p>
-</blockquote>
-<blockquote>
-<p>该属性是一个 简写属性，是为了将这四个属性 border-top-left-radius、border-top-right-radius、border-bottom-right-radius，和 border-bottom-left-radius 简写为一个属性。</p>
-</blockquote>
-<p>也就是说，每个圆角都有 <code>圆角半径</code>、 <code>水平半长轴</code> 和 <code>垂直半长轴</code> 属性值:</p>
-<p><img src="/2019/CSS-border_radius-semicircle/border-radius.png" alt="border-radius示例"></p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/CSS-border_radius-semicircle/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2019-08-23T02:24:35.000Z" itemprop="datePublished">Aug 23</time>
-</p>
-  </div>
-</div>
-  
   
     </div></section>
   
@@ -479,6 +471,14 @@
       <ul>
         
           <li>
+            <a href="/2021/JS-proto-and-prototype/">原型链！ _proto_ &amp; prototype</a>
+          </li>
+        
+          <li>
+            <a href="/2021/JS-what-dose-new-operators-do/">JS中的 new 关键字做了什么？</a>
+          </li>
+        
+          <li>
             <a href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
           </li>
         
@@ -488,14 +488,6 @@
         
           <li>
             <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
-          </li>
-        
-          <li>
-            <a href="/2021/miniprogram-devDiary-04-request/">微信小程序学习日记 L04 网络请求</a>
-          </li>
-        
-          <li>
-            <a href="/2021/CSS-specificity-selectors-weight/">CSS 选择器权重和优先级</a>
           </li>
         
       </ul>
