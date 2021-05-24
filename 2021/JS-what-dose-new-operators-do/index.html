@@ -68,19 +68,29 @@
     <div class="article-entry" itemprop="articleBody">
        
   <article class="article-content">
-    <p><code>new</code> 关键字会进行如下的操作：</p>
+    <blockquote>
+<p><code>new</code> 运算符 <strong>创建</strong> 一个用户定义的 <strong>对象类型</strong> 的实例或 <strong>具有构造函数的内置对象</strong> 的实例。</p>
+</blockquote>
+<p>完整的了解 <code>new</code> 运算符你可能还需要了解一下 面向对象思想 以及 原型链，可以简单查看这篇笔记 👉 <a target="_blank" rel="noopener" href="http://localhost:4000/2021/JS-proto-and-prototype/">原型链！ __proto__ 与 prototype</a></p>
+<p>如果快速的了解 <code>new</code> 关键字按照MDN的文档描述来说就是：</p>
 <ol>
-<li>创建一个空的简单JavaScript对象（即 <code>&#123;&#125;</code>）；</li>
-<li>链接该对象（设置该对象的 <code>constructor</code>）到另一个对象 ；</li>
+<li><code>new</code>关键字会创建一个空的简单JavaScript对象（即 <code>&#123;&#125;</code>）；</li>
+<li>链接该对象（设置该对象的 <code>constructor</code>）到另一个对象 （绑定原型）；</li>
 <li>将 <strong>步骤1</strong> 新创建的对象作为 <code>this</code> 的上下文 ；</li>
 <li>如果该函数没有返回对象，则返回 <code>this</code>。</li>
 </ol>
-<a id="more"></a>
-
-<h2 id="未完成，"><a href="#未完成，" class="headerlink" title="未完成，"></a>未完成，</h2><p>看了一下还需要先把原型链的坑填了才能连续起来，互相串联，容我先填原型链的坑</p>
 <hr>
-<p>ES6 为 <code>new</code> 引入了一个 <code>new.target</code> 属性，可以用来确定构造函数是怎么调用的。</p>
-<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new">new 运算符 - JavaScript | MDN</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/23987456">JS 的 new 到底是干什么的？ - 知乎</a><br><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/class#new-target-%E5%B1%9E%E6%80%A7">§ 6.new.target 属性 - Class 的基本语法 - ECMAScript 6入门</a></p>
+<p>可以简单理解成 <code>new</code> 关键字帮我们处理了书写构造函数时一些固定的步骤</p>
+<a id="more"></a>
+<ul>
+<li>创建临时对象；</li>
+<li>绑定原型；</li>
+<li><code>return</code> 这个临时对象</li>
+</ul>
+<p>整个遍写构造函数的过程中，可以省略上面的步骤，直接使用 <code>this</code> 就可以指向这个临时对象，为他创建属性，<br>直接为 <code>prototype</code> 赋值属性和方法就可以对公共（对象原型）增加属性、方法。</p>
+<h2 id="未完成"><a href="#未完成" class="headerlink" title="未完成"></a>未完成</h2><hr>
+<h3 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h3><p>ES6 为 <code>new</code> 引入了一个 <code>new.target</code> 属性，可以用来确定构造函数是怎么调用的。</p>
+<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new">new 运算符 - JavaScript | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor">Object.prototype.constructor - JavaScript | MDN</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/23987456">JS 的 new 到底是干什么的？ - 知乎</a><br><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/class#new-target-%E5%B1%9E%E6%80%A7">§ 6.new.target 属性 - Class 的基本语法 - ECMAScript 6入门</a></p>
  
   </article>
 
