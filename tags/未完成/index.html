@@ -57,7 +57,7 @@
       
   
     <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/JS-proto-and-prototype/">原型链！ _proto_ &amp; prototype</a>
+      <a class="archive-article-title" href="/2021/JS-proto-and-prototype/">原型链！ __proto__ 与 prototype</a>
     </h2>
   
 
@@ -65,9 +65,10 @@
      
   <article class="article-excerpt">
     <blockquote>
-<p>Every JavaScript object has a second JavaScript object (or null ,but this is rare) associated with it. This second object is known as a prototype, and the first object inherits properties from the prototype.</p>
+<p>Every JavaScript object has a second JavaScript object (or <code>null</code> ,but this is rare) associated with it. This second object is known as a prototype, and the first object <strong>inherits</strong> properties from the prototype.<br>每个 JavaScript 对象都会对应一个原型对象（除了 <code>null</code>），并从原型对象<strong>继承</strong>属性和方法。<br><small>JavaScript 权威指南</small></p>
 </blockquote>
-<p>JS的原型链问题</p>
+<p>说实话，一直以来都没有搞清楚原型链这个东西，早些年，大概15/16年的时候，我就不需要用面向对象的方法来写Js，大部分的业务都是切页面和补全一些交互上的东西，面向过程就可以完美的解决，偶尔一些需求需要使用 Canvas 也是直接上百度搜 “插件”，直接引入一个别人写好的 Canvas 函数，然后在 <code>$(function()&#123;&#125;)</code> 中 <code>init()</code>。<br>再到后来 Vue 项目就更加了，基本上都是直接 <code>npm install xxx</code> 安装一个依赖，然后在 <code>main.js</code> 中 <code>import</code> 进来，再配合 <code>vue.use()</code>，或者直接在组件中 <code>import</code>。根本不需要我去理解 OOP 概念，面向过程的代码足够满足需求、结构清晰又简单易懂，在一些关键或者复杂的步骤中添加一些注释，阅读起来也很轻松。</p>
+<p>之前的年会活动，开始写一些面向对象的代码，但其实大部分的代码还是面向过程的。<br>最近在听一些面试经聊原型链的时候自己模拟回答的时候只知道笼统的讲一下大概，但如果说要让我仔细去描述的话，还是没有一个明确的界定。趁着这一次写 <a href="/2021/JS-what-dose-new-operators-do/">聊 <code>new</code> 方法</a> 一次性捋清楚。</p>
   </article>
   
     <div class="article-more-link">
@@ -444,7 +445,7 @@
       <ul>
         
           <li>
-            <a href="/2021/JS-proto-and-prototype/">原型链！ _proto_ &amp; prototype</a>
+            <a href="/2021/JS-proto-and-prototype/">原型链！ __proto__ 与 prototype</a>
           </li>
         
           <li>
