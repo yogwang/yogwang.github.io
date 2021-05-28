@@ -17,7 +17,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
 
   <body>
     <header id="header">
@@ -48,7 +48,8 @@
     <div class="article-meta">
       <p class="article-date">
   <time datetime="2019-06-17T07:33:26.000Z" itemprop="datePublished">2019-06-17</time>
-</p> 
+</p>
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
   </div>
@@ -69,31 +70,189 @@
        
   <article class="article-content">
     <h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a><code>git log</code></h3><p>基础查看提交日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line"></span><br><span class="line">commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin&#x2F;master)</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 12:10:01 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line">commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
+<pre><code>$ git log
+
+commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 12:10:01 2019 +0800
+
+    wrote a readme file
+
+commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 09:52:50 2019 +0800
+
+    add distributed
+
+commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 09:50:33 2019 +0800
+
+    wrote a readme file</code></pre>
 <a id="more"></a>
 
 <h3 id="git-log-oneline"><a href="#git-log-oneline" class="headerlink" title="git log --oneline"></a><code>git log --oneline</code></h3><p>精简模式显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline</span><br><span class="line"></span><br><span class="line">2c8fcc8 (HEAD -&gt; master, origin&#x2F;master) wrote a readme file</span><br><span class="line">87c9d12 add distributed</span><br><span class="line">77ac955 wrote a readme file</span><br></pre></td></tr></table></figure>
+<pre><code>$ git log --oneline
+
+2c8fcc8 (HEAD -&gt; master, origin/master) wrote a readme file
+87c9d12 add distributed
+77ac955 wrote a readme file</code></pre>
 <h3 id="git-log-pretty-oneline"><a href="#git-log-pretty-oneline" class="headerlink" title="git log --pretty=oneline"></a><code>git log --pretty=oneline</code></h3><p>精简模式并显示完整版本号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git log --pretty&#x3D;oneline</span><br><span class="line"></span><br><span class="line">2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin&#x2F;master) wrote a readme file</span><br><span class="line">87c9d12bdd979859811fc224c7f9ade7b97b0d13 add distributed</span><br><span class="line">77ac9552a7fb2e8d1f57d324d991de11efa897f2 wrote a readme file</span><br></pre></td></tr></table></figure>
+<pre><code>$ git log --pretty=oneline
+
+2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master) wrote a readme file
+87c9d12bdd979859811fc224c7f9ade7b97b0d13 add distributed
+77ac9552a7fb2e8d1f57d324d991de11efa897f2 wrote a readme file</code></pre>
 <h3 id="git-log-graph"><a href="#git-log-graph" class="headerlink" title="git log --graph"></a><code>git log --graph</code></h3><p>图形模式显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ git log --graph</span><br><span class="line">* commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin&#x2F;master)</span><br><span class="line">| Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">| Date:   Mon Jun 17 12:10:01 2019 +0800</span><br><span class="line">|</span><br><span class="line">|     wrote a readme file</span><br><span class="line">|</span><br><span class="line">* commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">| Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">| Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line">|</span><br><span class="line">|     add distributed</span><br><span class="line">|</span><br><span class="line">* commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">  Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">  Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">      wrote a readme file</span><br></pre></td></tr></table></figure>
+<pre><code>$ git log --graph
+* commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)
+| Author: yogwang &lt;yogwang@yog.red&gt;
+| Date:   Mon Jun 17 12:10:01 2019 +0800
+|
+|     wrote a readme file
+|
+* commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13
+| Author: yogwang &lt;yogwang@yog.red&gt;
+| Date:   Mon Jun 17 09:52:50 2019 +0800
+|
+|     add distributed
+|
+* commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2
+  Author: yogwang &lt;yogwang@yog.red&gt;
+  Date:   Mon Jun 17 09:50:33 2019 +0800
+
+      wrote a readme file</code></pre>
 <h3 id="git-log-stat"><a href="#git-log-stat" class="headerlink" title="git log --stat"></a><code>git log --stat</code></h3><p>显示文件更改列表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ git log --stat</span><br><span class="line">commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin&#x2F;master)</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 12:10:01 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line"> demo&#x2F;reademe.txt | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br><span class="line"></span><br><span class="line">commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line"> readme.txt | 2 +-</span><br><span class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</span><br><span class="line"></span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line"> readme.txt | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
+<pre><code>$ git log --stat
+commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 12:10:01 2019 +0800
+
+    wrote a readme file
+
+ demo/reademe.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 09:52:50 2019 +0800
+
+    add distributed
+
+ readme.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 09:50:33 2019 +0800
+
+    wrote a readme file
+
+ readme.txt | 2 ++
+ 1 file changed, 2 insertions(+)</code></pre>
 <h3 id="git-log-author-name"><a href="#git-log-author-name" class="headerlink" title="git log --author=_name"></a><code>git log --author=_name</code></h3><p>根据作者筛选</p>
 <p>_name：作者名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ git log --author&#x3D;yogwang</span><br><span class="line"></span><br><span class="line">commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin&#x2F;master)</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 12:10:01 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line">commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
+<pre><code>$ git log --author=yogwang
+
+commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 12:10:01 2019 +0800
+
+    wrote a readme file
+
+commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 09:52:50 2019 +0800
+
+    add distributed
+
+commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 09:50:33 2019 +0800
+
+    wrote a readme file</code></pre>
 <h3 id="git-log-p-file-name"><a href="#git-log-p-file-name" class="headerlink" title="git log -p file_name"></a><code>git log -p file_name</code></h3><p>查看某个文件的详细修改   有详细内容</p>
 <p>file_name：文件名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">$ git log -p readme.txt</span><br><span class="line"></span><br><span class="line">commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">diff --git a&#x2F;readme.txt b&#x2F;readme.txt</span><br><span class="line">index d8036c1..013b5bc 100644</span><br><span class="line">--- a&#x2F;readme.txt</span><br><span class="line">+++ b&#x2F;readme.txt</span><br><span class="line">@@ -1,2 +1,2 @@</span><br><span class="line">-Git is a version control system.</span><br><span class="line">+Git is a distributed version control system.</span><br><span class="line"> Git is free software.</span><br><span class="line">\ No newline at end of file</span><br><span class="line"></span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line">diff --git a&#x2F;readme.txt b&#x2F;readme.txt</span><br><span class="line">new file mode 100644</span><br><span class="line">index 0000000..d8036c1</span><br><span class="line">--- &#x2F;dev&#x2F;null</span><br><span class="line">+++ b&#x2F;readme.txt</span><br><span class="line">@@ -0,0 +1,2 @@</span><br><span class="line">+Git is a version control system.</span><br><span class="line">+Git is free software.</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
+<pre><code>$ git log -p readme.txt
+
+commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 09:52:50 2019 +0800
+
+    add distributed
+
+diff --git a/readme.txt b/readme.txt
+index d8036c1..013b5bc 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -1,2 +1,2 @@
+-Git is a version control system.
++Git is a distributed version control system.
+ Git is free software.
+\ No newline at end of file
+
+commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 09:50:33 2019 +0800
+
+    wrote a readme file
+
+diff --git a/readme.txt b/readme.txt
+new file mode 100644
+index 0000000..d8036c1
+--- /dev/null
++++ b/readme.txt
+@@ -0,0 +1,2 @@
++Git is a version control system.
++Git is free software.
+\ No newline at end of file</code></pre>
 <h3 id="git-log-L-start-end-file-name"><a href="#git-log-L-start-end-file-name" class="headerlink" title="git log -L start,end:file_name"></a><code>git log -L start,end:file_name</code></h3><p>查看某个文件某几行范围内的修改记录</p>
 <p>start:开始行号</p>
 <p>end:结束行号</p>
 <p>file_name:文件名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">$ git log -L 1,2:readme.txt</span><br><span class="line"></span><br><span class="line">commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:52:50 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">diff --git a&#x2F;readme.txt b&#x2F;readme.txt</span><br><span class="line">--- a&#x2F;readme.txt</span><br><span class="line">+++ b&#x2F;readme.txt</span><br><span class="line">@@ -1,2 +1,2 @@</span><br><span class="line">-Git is a version control system.</span><br><span class="line">+Git is a distributed version control system.</span><br><span class="line"> Git is free software.</span><br><span class="line">\ No newline at end of file</span><br><span class="line"></span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line">diff --git a&#x2F;readme.txt b&#x2F;readme.txt</span><br><span class="line">--- &#x2F;dev&#x2F;null</span><br><span class="line">+++ b&#x2F;readme.txt</span><br><span class="line">@@ -0,0 +1,2 @@</span><br><span class="line">+Git is a version control system.</span><br><span class="line">+Git is free software.</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
+<pre><code>$ git log -L 1,2:readme.txt
+
+commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 09:52:50 2019 +0800
+
+    add distributed
+
+diff --git a/readme.txt b/readme.txt
+--- a/readme.txt
++++ b/readme.txt
+@@ -1,2 +1,2 @@
+-Git is a version control system.
++Git is a distributed version control system.
+ Git is free software.
+\ No newline at end of file
+
+commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 09:50:33 2019 +0800
+
+    wrote a readme file
+
+diff --git a/readme.txt b/readme.txt
+--- /dev/null
++++ b/readme.txt
+@@ -0,0 +1,2 @@
++Git is a version control system.
++Git is free software.
+\ No newline at end of file</code></pre>
 <h3 id="git-log-stat-commit-id"><a href="#git-log-stat-commit-id" class="headerlink" title="git log --stat commit_id"></a><code>git log --stat commit_id</code></h3><p>根本版本号查看提交修改列表</p>
 <p>commit_id：提交版本号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git log --stat 77ac</span><br><span class="line">commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2</span><br><span class="line">Author: yogwang &lt;yogwang@yog.red&gt;</span><br><span class="line">Date:   Mon Jun 17 09:50:33 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br><span class="line"></span><br><span class="line"> readme.txt | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br><span class="line"></span><br></pre></td></tr></table></figure> 
+<pre><code>$ git log --stat 77ac
+commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2
+Author: yogwang &lt;yogwang@yog.red&gt;
+Date:   Mon Jun 17 09:50:33 2019 +0800
+
+    wrote a readme file
+
+ readme.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+</code></pre>
+ 
   </article>
 
 
@@ -176,9 +335,9 @@
   
     
   <section class="widget-wrap">
-    <h3 class="widget-title">archive</h3>
+    <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </section>
 
@@ -186,9 +345,9 @@
   
     
   <section class="widget-wrap">
-    <h3 class="widget-title">tags</h3>
+    <h3 class="widget-title">archive</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li></ul>
     </div>
   </section>
 

@@ -17,7 +17,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
 
   <body>
     <header id="header">
@@ -48,7 +48,8 @@
     <div class="article-meta">
       <p class="article-date">
   <time datetime="2019-07-11T07:34:10.000Z" itemprop="datePublished">2019-07-11</time>
-</p> 
+</p>
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
   </div>
@@ -74,23 +75,100 @@
 <p>首先<br>在使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-cli">Hexo cli</a> 脚手架创建完 <code>Hexo</code> 项目后会有一个默认官方主题 <a target="_blank" rel="noopener" href="https://hexojs.github.io/hexo-theme-landscape/">landscape</a> 在 <code>themes</code> 目录中复制一份出来重命名成自己的名称，例如我的就是改成了 <code>yogwang</code>，并且在根目录中的 <code>_config.yml</code> 中修改主题为自己的主题</p>
 <a id="more"></a>
 
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">yogwang</span> <span class="string">//这里修改成自己的主题</span></span><br></pre></td></tr></table></figure>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h4 id="完全展开主题目录："><a href="#完全展开主题目录：" class="headerlink" title="完全展开主题目录："></a>完全展开主题目录：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">─yogwang</span><br><span class="line">  ├─languages     &#x2F;&#x2F; 国际化(i18n)让网站以不同语言呈现</span><br><span class="line">  │  └─...</span><br><span class="line">  ├─layout        &#x2F;&#x2F; 布局文件</span><br><span class="line">  │  ├─_partial     &#x2F;&#x2F; 局部组件</span><br><span class="line">  │  │  ├─post      &#x2F;&#x2F; 文章组件</span><br><span class="line">  │  │  └─...</span><br><span class="line">  │  ├─_widget      &#x2F;&#x2F; 侧边栏部件</span><br><span class="line">  │  └─...</span><br><span class="line">  ├─scripts       &#x2F;&#x2F; 启动时自动载入的Js脚本</span><br><span class="line">  ├─source        &#x2F;&#x2F; 资源文件夹</span><br><span class="line">  │  ├─css          &#x2F;&#x2F; CSS样式</span><br><span class="line">  │  │  ├─fonts     &#x2F;&#x2F; 字体</span><br><span class="line">  │  │  ├─images    &#x2F;&#x2F; 图片</span><br><span class="line">  │  │  ├─_partial  &#x2F;&#x2F; 局部组件CSS</span><br><span class="line">  │  │  ├─_util     &#x2F;&#x2F; 分栏&amp;Mixin</span><br><span class="line">  │  │  └─...</span><br><span class="line">  │  ├─fancybox     &#x2F;&#x2F; fancybox插件</span><br><span class="line">  │  └─js           &#x2F;&#x2F; JS脚本</span><br><span class="line">  ├─_config.yml   &#x2F;&#x2F; 主题配置文件</span><br><span class="line">  ├─.gitignore    &#x2F;&#x2F; Git忽略配置</span><br><span class="line">  ├─Gruntfile.js  &#x2F;&#x2F; Grunt项目文件</span><br><span class="line">  ├─LICENSE       &#x2F;&#x2F; 授权条款</span><br><span class="line">  ├─package.json  &#x2F;&#x2F; 包管理配置文件</span><br><span class="line">  └─README.md     &#x2F;&#x2F; 项目手册</span><br></pre></td></tr></table></figure>
+<pre class=" language-yml"><code class="language-yml"># Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: yogwang //这里修改成自己的主题</code></pre>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h4 id="完全展开主题目录："><a href="#完全展开主题目录：" class="headerlink" title="完全展开主题目录："></a>完全展开主题目录：</h4><pre><code>─yogwang
+  ├─languages     // 国际化(i18n)让网站以不同语言呈现
+  │  └─...
+  ├─layout        // 布局文件
+  │  ├─_partial     // 局部组件
+  │  │  ├─post      // 文章组件
+  │  │  └─...
+  │  ├─_widget      // 侧边栏部件
+  │  └─...
+  ├─scripts       // 启动时自动载入的Js脚本
+  ├─source        // 资源文件夹
+  │  ├─css          // CSS样式
+  │  │  ├─fonts     // 字体
+  │  │  ├─images    // 图片
+  │  │  ├─_partial  // 局部组件CSS
+  │  │  ├─_util     // 分栏&amp;Mixin
+  │  │  └─...
+  │  ├─fancybox     // fancybox插件
+  │  └─js           // JS脚本
+  ├─_config.yml   // 主题配置文件
+  ├─.gitignore    // Git忽略配置
+  ├─Gruntfile.js  // Grunt项目文件
+  ├─LICENSE       // 授权条款
+  ├─package.json  // 包管理配置文件
+  └─README.md     // 项目手册</code></pre>
 <p>因为我是完全重新创作一个主题，所以需要保留下来的目录如下</p>
-<h4 id="保留下来的目录"><a href="#保留下来的目录" class="headerlink" title="保留下来的目录"></a>保留下来的目录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">─yogwang</span><br><span class="line">  ├─layout</span><br><span class="line">  │  ├─_partial</span><br><span class="line">  │  │  └─post</span><br><span class="line">  │  │  └─...</span><br><span class="line">  │  ├─_widget</span><br><span class="line">  │  └─...</span><br><span class="line">  ├─scripts</span><br><span class="line">  ├─source</span><br><span class="line">  │  ├─css</span><br><span class="line">  │  └─js</span><br><span class="line">  ├─_config.yml</span><br><span class="line">  ├─.gitignore</span><br><span class="line">  ├─package.json</span><br><span class="line">  └─README.md</span><br></pre></td></tr></table></figure>
+<h4 id="保留下来的目录"><a href="#保留下来的目录" class="headerlink" title="保留下来的目录"></a>保留下来的目录</h4><pre><code>─yogwang
+  ├─layout
+  │  ├─_partial
+  │  │  └─post
+  │  │  └─...
+  │  ├─_widget
+  │  └─...
+  ├─scripts
+  ├─source
+  │  ├─css
+  │  └─js
+  ├─_config.yml
+  ├─.gitignore
+  ├─package.json
+  └─README.md</code></pre>
 <p>因为仅自己使用所以 <code>languages</code>、<code>Gruntfile.js</code> 和 <code>LICENSE</code> 没有保留，</p>
 <p>保留下了 <code>layout</code> 布局文件夹的全部文件，</p>
 <p>清空了 <code>scripts</code> 和 <code>source</code> 目录下文件仅保留目录;</p>
 <p><code>README.md</code> 作为备忘录。</p>
 <h2 id="制作"><a href="#制作" class="headerlink" title="制作"></a>制作</h2><p>因为保留下了官方主题的布局文件，所以只需要在原有基础上调整就可以制作一个主题雏形。</p>
-<h4 id="调整后的目录："><a href="#调整后的目录：" class="headerlink" title="调整后的目录："></a>调整后的目录：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Layout</span><br><span class="line">│  archive.ejs    &#x2F;&#x2F; 所有归档文章列表</span><br><span class="line">│  category.ejs   &#x2F;&#x2F; 归档时间来分类的列表</span><br><span class="line">│  index.ejs      &#x2F;&#x2F; 主页</span><br><span class="line">│  layout.ejs     &#x2F;&#x2F; 通用布局模板</span><br><span class="line">│  page.ejs       &#x2F;&#x2F; 单页模板</span><br><span class="line">│  post.ejs       &#x2F;&#x2F; 文章模板</span><br><span class="line">│  tag.ejs        &#x2F;&#x2F; 标签归档列表页</span><br><span class="line">├─_partial        &#x2F;&#x2F; 私有组件</span><br><span class="line">│  │  archive-post.ejs      &#x2F;&#x2F; 列表页文章预览</span><br><span class="line">│  │  archive.ejs           &#x2F;&#x2F; 文章列表</span><br><span class="line">│  │  article.ejs           &#x2F;&#x2F; 文章详情</span><br><span class="line">│  │  footer.ejs            &#x2F;&#x2F; 尾部模板</span><br><span class="line">│  │  meta.ejs              &#x2F;&#x2F; 页面META部分</span><br><span class="line">│  │  header.ejs            &#x2F;&#x2F; 头部模板</span><br><span class="line">│  │  sidebar.ejs           &#x2F;&#x2F; 侧边栏</span><br><span class="line">│  └─posts      &#x2F;&#x2F; 文章组件</span><br><span class="line">│          category.ejs     &#x2F;&#x2F; 文章分类归档</span><br><span class="line">│          date.ejs         &#x2F;&#x2F; 文章创建时间</span><br><span class="line">│          nav.ejs          &#x2F;&#x2F; 文章分页</span><br><span class="line">│          tag.ejs          &#x2F;&#x2F; 文章Tag</span><br><span class="line">│          title.ejs        &#x2F;&#x2F; 文章标题</span><br><span class="line">└─_widget      &#x2F;&#x2F; 侧边栏部件</span><br><span class="line">        archive.ejs         &#x2F;&#x2F; 分类列表部件</span><br><span class="line">        category.ejs        &#x2F;&#x2F; 时间归档部件</span><br><span class="line">        recent_posts.ejs    &#x2F;&#x2F; 最后发布部件</span><br><span class="line">        tag.ejs             &#x2F;&#x2F; 标签分类部件</span><br></pre></td></tr></table></figure>
+<h4 id="调整后的目录："><a href="#调整后的目录：" class="headerlink" title="调整后的目录："></a>调整后的目录：</h4><pre><code>Layout
+│  archive.ejs    // 所有归档文章列表
+│  category.ejs   // 归档时间来分类的列表
+│  index.ejs      // 主页
+│  layout.ejs     // 通用布局模板
+│  page.ejs       // 单页模板
+│  post.ejs       // 文章模板
+│  tag.ejs        // 标签归档列表页
+├─_partial        // 私有组件
+│  │  archive-post.ejs      // 列表页文章预览
+│  │  archive.ejs           // 文章列表
+│  │  article.ejs           // 文章详情
+│  │  footer.ejs            // 尾部模板
+│  │  meta.ejs              // 页面META部分
+│  │  header.ejs            // 头部模板
+│  │  sidebar.ejs           // 侧边栏
+│  └─posts      // 文章组件
+│          category.ejs     // 文章分类归档
+│          date.ejs         // 文章创建时间
+│          nav.ejs          // 文章分页
+│          tag.ejs          // 文章Tag
+│          title.ejs        // 文章标题
+└─_widget      // 侧边栏部件
+        archive.ejs         // 分类列表部件
+        category.ejs        // 时间归档部件
+        recent_posts.ejs    // 最后发布部件
+        tag.ejs             // 标签分类部件</code></pre>
 <blockquote>
 <p>书写样式直接跳过,以下是一些制作完成之后遇到的问题</p>
 </blockquote>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="在主题配置文件中添加个人信息并输出到页面"><a href="#在主题配置文件中添加个人信息并输出到页面" class="headerlink" title="在主题配置文件中添加个人信息并输出到页面"></a>在主题配置文件中添加个人信息并输出到页面</h3><p>打开 thems 目录下对应主题的 <code>_config.yml</code> 文件，参考官方模板中的 <code>Menu</code> 属性同样创建 <code>userinfo</code></p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># userinfo</span></span><br><span class="line"><span class="attr">user:</span></span><br><span class="line">  <span class="attr">nickname:</span> <span class="string">王阳阳</span></span><br><span class="line">  <span class="attr">bio:</span> <span class="string">&#x27;久之须自见得&#x27;</span></span><br><span class="line">  <span class="attr">commpany:</span> <span class="string">ODIN.INC</span></span><br><span class="line">  <span class="attr">address:</span> <span class="string">Jiaxing,China</span></span><br><span class="line"><span class="attr">follow:</span></span><br><span class="line">  <span class="attr">github:</span> <span class="string">https://github.com/yogwang</span></span><br><span class="line">  <span class="attr">weibo:</span> <span class="string">http://weibo.com/yooooooge</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-yml"><code class="language-yml"># userinfo
+user:
+  nickname: 王阳阳
+  bio: '久之须自见得'
+  commpany: ODIN.INC
+  address: Jiaxing,China
+follow:
+  github: https://github.com/yogwang
+  weibo: http://weibo.com/yooooooge</code></pre>
 <p>如何在页面中输出？？<br>在页面对应位置 <code>&lt;%= theme.user.nickname %&gt;</code> 即可，也可以循环输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% for (var i in theme.follow)&#123; %&gt;</span><br><span class="line">  &lt;a href&#x3D;&quot;&lt;%&#x3D; theme.follow[i] %&gt;&quot; target&#x3D;&quot;_blank&quot;&gt;&lt;&#x2F;a&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;% for (var i in theme.follow)&#123; %&gt;
+  &lt;a href=&quot;&lt;%= theme.follow[i] %&gt;&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;
+&lt;% &#125; %&gt;</code></pre>
 <p><em>其实也可以在 Hexo 根目录下的 <code>_config.yml</code> 文件配置</em> 输出标签如 <code>&lt;%= config.LABEL %&gt;</code></p>
 <h3 id="不知道怎么生成-‘关于我’-单页面"><a href="#不知道怎么生成-‘关于我’-单页面" class="headerlink" title="不知道怎么生成 ‘关于我’ 单页面"></a>不知道怎么生成 ‘关于我’ 单页面</h3><p>在 <code>Layout</code> 中编写完 <code>about.ejs</code> 模板之后,我想使用这个布局来创建关于我的单页面</p>
 <p>在 <code>Hexo.io</code> 官方文档中是这样写的</p>
@@ -99,16 +177,23 @@
 <p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
 </blockquote>
 <p>使用 <code>hexo new</code> 命令，创建<code>关于我</code>单页面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS E:\yogwang.github.io&gt; hexo new about aboutme</span><br><span class="line">INFO  Created: E:\yogwang.github.io\source\_posts\aboutme.md</span><br></pre></td></tr></table></figure>
+<pre><code>PS E:\yogwang.github.io&gt; hexo new about aboutme
+INFO  Created: E:\yogwang.github.io\source\_posts\aboutme.md</code></pre>
 <p>这样就会生成一篇使用 <code>about.ejs</code> 来布局的 <code>文章</code> 并生成在_posts 文件夹下。注意哦，生成的是文章会在文章列表中显示。</p>
 <p><em>那么问题来了，我怎么创建一个使用 <code>about.ejs</code> 布局，且不在文章列表中显示的单页面呢</em></p>
 <blockquote>
 <p>Hexo 有 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/writing">三种默认布局</a> ：<code>post</code>、<code>page</code> 和 <code>draft</code>，它们分别对应不同的路径，自定义的其他布局和 <code>post</code> 相同，草稿文件都将储存到 <code>source/_posts</code> 文件夹。</p>
 </blockquote>
 <p>所以在 <code>hexo new</code> 页面的时候先使用 <code>hexo new page about</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS E:\yogwang.github.io&gt; hexo new page about</span><br><span class="line">INFO  Created: E:\yogwang.github.io\source\about\index.md</span><br></pre></td></tr></table></figure>
+<pre><code>PS E:\yogwang.github.io&gt; hexo new page about
+INFO  Created: E:\yogwang.github.io\source\about\index.md</code></pre>
 <p>这样会在 <code>source</code> 目录下创建 <code>about</code> 目录，并生成 <code>index.md</code> 文件，打开它在 <code>Front-matter</code> 中添加 <code>layout: about</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 我</span><br><span class="line">date: 2019-07-11 15:10:39</span><br><span class="line">layout: about</span><br><span class="line">---</span><br></pre></td></tr></table></figure> 
+<pre><code>---
+title: 我
+date: 2019-07-11 15:10:39
+layout: about
+---</code></pre>
+ 
   </article>
 
 
@@ -191,9 +276,9 @@
   
     
   <section class="widget-wrap">
-    <h3 class="widget-title">archive</h3>
+    <h3 class="widget-title">tags</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </section>
 
@@ -201,9 +286,9 @@
   
     
   <section class="widget-wrap">
-    <h3 class="widget-title">tags</h3>
+    <h3 class="widget-title">archive</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li></ul>
     </div>
   </section>
 

@@ -4,7 +4,7 @@
  * @Author: yogwang
  * @Date: 2019-10-22 16:54:10
  * @Last Modified by: yogwang
- * @Last Modified time: 2019-10-22 16:54:41
+ * @Last Modified time: 2021-05-28 15:11:43
  */
 /*
  * 代码高亮
@@ -23,7 +23,26 @@ figure {
   overflow-y: hidden;
 }
 figure .line {
-  color: #555;
+  color: #777;
+}
+figure.js .keyword {
+  color: #333;
+  font-weight: 600;
+}
+figure.js .function .keyword {
+  color: #0092db;
+}
+figure.js .title {
+  color: #83b917;
+}
+figure.js .string {
+  color: #d14;
+}
+figure.js .built_in {
+  color: #0086b3;
+}
+figure.js .number {
+  color: #ae81ff;
 }
 figure .comment {
   color: #999;
