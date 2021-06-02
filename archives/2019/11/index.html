@@ -1,6 +1,8 @@
+<!-- layout page -->
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
+  <!-- 头部信息 head&meta -->
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -9,22 +11,24 @@
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
-  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U" />
   
-  
-<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
-
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
 
   <body>
-    <header id="header">
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
   <a class="header-sign" href="/">
-    <img src="/favicon.png" alt="sign" />
+    <img src="/favicon.png" alt="logo" />
     <span>YOG<br />WANG</span>
   </a>
+  <!-- 头部菜单 header menu -->
   <nav class="header-navbar">
     
     <a class="nav-link" href="/archives">文章</a>
@@ -37,18 +41,13 @@
 </header>
 
     <div id="wrap">
-      <main id="container">
-  
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <div class="archive-article archive-type-post">
+      <!-- 文章列表页面 post list page -->
+<main id="container">
+  <!-- 文章分类列表 archives list -->
+<div class="archives-wrap">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -57,40 +56,37 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/web-arouse-qq/">记Web端唤起QQ聊天的两种方法</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/web-arouse-qq/">记Web端唤起QQ聊天的两种方法</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>以前一直使用的 <code>tencent://message/?Menu=yes&amp;uin=&#123;YourQQCode&#125;&amp;Site=&#123;SiteDomain&#125;</code> 来做的 web 端唤起 QQ 在线聊天。<br>这次接了一个外包是自适应的 Web 页面，在手机端点击会提示 <strong>Safari 浏览器打不开该网页，应为网址无效。</strong></p>
 <p>👇</p>
 <p><img src="/2019/web-arouse-qq/error.jpg" alt="alert"></p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/web-arouse-qq/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-11-28T01:26:56.000Z" itemprop="datePublished">11月 28</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-11-28T01:26:56.000Z" itemprop="datePublished">2019/11/28</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -99,41 +95,38 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/CSS-position/">一直以来记错的CSS属性：Position 元素定位</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/CSS-position/">一直以来记错的CSS属性：Position 元素定位</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <blockquote>
 <p>我一直记忆的是 <code>position:relative</code> 是相对于父级元素定位的，今天才发现原来自己记错了。<br>也想明白了绝对定位的元素使用 <code>margin:auto</code> 为什么可以实现垂直居中</p>
 </blockquote>
 <p>今天早上心有点静不下来，就去 SegmentFault 上看了看文章，有一篇文章 <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020966360">【“寒冬”三年经验前端面试总结之 CSS 篇】</a>，<br>里边的 <code>垂直居中的方法四</code> 我觉得挺奇怪的。</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/CSS-position/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-11-20T03:40:09.000Z" itemprop="datePublished">11月 20</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-11-20T03:40:09.000Z" itemprop="datePublished">2019/11/20</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -142,19 +135,20 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/">踩坑日记</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/jeecg-boot-devDiary08/">Jeecg-boot 开发挖坑日记08 Vue 中使用百度地图获取坐标点</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/jeecg-boot-devDiary08/">Jeecg-boot 开发挖坑日记08 Vue 中使用百度地图获取坐标点</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>突然想起来项目里边的一个需求，在用户申请称为公司账户的时候需要附加公司地址的百度地图坐标点，以便在 APP 中显示。<br>所以需要用到百度地图的坐标拾取，<br>反正总不可能让用户自己去拾取然后输入到 <code>&lt;input&gt;</code> 中去。</p>
 <p>这篇文章就是简单说一下如何在 Vue 项目中使用百度地图。</p>
@@ -163,22 +157,18 @@
 </blockquote>
 <p>👉 <a target="_blank" rel="noopener" href="https://dafrok.github.io/vue-baidu-map/#/zh/start/usage">开发手册</a></p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/jeecg-boot-devDiary08/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-11-07T08:22:53.000Z" itemprop="datePublished">11月 7</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-11-07T08:22:53.000Z" itemprop="datePublished">2019/11/07</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -187,68 +177,91 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/">踩坑日记</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/jeecg-boot-devDiary07/">Jeecg-boot 开发挖坑日记07 多登陆入口</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/jeecg-boot-devDiary07/">Jeecg-boot 开发挖坑日记07 多登陆入口</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>项目结尾了，但是需要根据用户和管理员设置不同的登陆入口界面，</p>
 <p>所以就想着直接在 <code>@/config/router.config.js</code> 中修改基础路由，<br>但是因为不知名原因，路由并没有生效。</p>
 <p>感觉像是有设置路由守卫全部都跳转回了 <code>#/user/login</code></p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/jeecg-boot-devDiary07/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-11-07T05:57:06.000Z" itemprop="datePublished">11月 7</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-11-07T05:57:06.000Z" itemprop="datePublished">2019/11/07</time>
+</div>
   </div>
 </div>
-  
-  
-    </div></section>
-  
 
+</div>
+<!-- 列表分页 list paginator -->
 
 
 </main>
+<!-- 侧边栏 sidebar -->
 <aside id="sidebar">
   
     
-<section class="userinfo">
-    <img src="/img/userimg.jpg" alt="王阳阳">
-    <h2>王阳阳</h2>
-    <span>久之须自见得</span>
-    <p>ODIN.INC</p>
-    <p>Jiaxing,China</p>
-    <div>
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">ODIN.INC</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
       
-      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
       
-      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
       
     </div>
 </section>
 
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">recent_posts</h3>
+  <!-- 分类菜单 category menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+          </li>
+        
+          <li>
+            <a href="/2021/hexo-theme-edit/">Hexo 主题开发</a>
+          </li>
         
           <li>
             <a href="/2021/JS-proto-and-prototype/">原型链！ __proto__ 与 prototype</a>
@@ -262,34 +275,27 @@
             <a href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
           </li>
         
-          <li>
-            <a href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
-          </li>
-        
-          <li>
-            <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
-          </li>
-        
       </ul>
     </div>
   </section>
 
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">tags</h3>
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </section>
 
-
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">archive</h3>
+<!-- 文档归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
     </div>
   </section>
 
@@ -297,25 +303,26 @@
   
 </aside>
     </div>
-    <footer id="footer">
-  <span>
-    &copy;2019-2021 YogWang powered_by
-    <a href="http://hexo.io/" target="_blank">Hexo</a>
-  </span>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2021 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
   <br />
-  <span
-    >licensed
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
-      >CC BY-NC 4.0</a
-    ></span
-  >
-</footer>
-<div>
+  <!-- go top -->
   <a id="gotop" class="fa fa-level-up"></a>
-</div>
+</footer>
 
 <script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
- 
+
+
 <script src="/js/common.js"></script>
 
 

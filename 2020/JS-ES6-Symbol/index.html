@@ -1,6 +1,8 @@
+<!-- layout page -->
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
+  <!-- 头部信息 head&meta -->
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -9,22 +11,24 @@
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
-  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U" />
   
-  
-<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
-
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
 
   <body>
-    <header id="header">
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
   <a class="header-sign" href="/">
-    <img src="/favicon.png" alt="sign" />
+    <img src="/favicon.png" alt="logo" />
     <span>YOG<br />WANG</span>
   </a>
+  <!-- 头部菜单 header menu -->
   <nav class="header-navbar">
     
     <a class="nav-link" href="/archives">文章</a>
@@ -37,8 +41,10 @@
 </header>
 
     <div id="wrap">
-      <main id="container">
-  <div
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!-- 文章详情 Post Detail -->
+<div
   id="post-JS-ES6-Symbol"
   class="article article-type-post"
   itemscope
@@ -46,14 +52,20 @@
 >
   <div class="article-inner">
     <div class="article-meta">
-      <p class="article-date">
-  <time datetime="2020-11-21T15:44:47.000Z" itemprop="datePublished">2020-11-21</time>
-</p>
-      
+      <div>
+        
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+      </div>
+       
+<div class="article-date">
+  <time datetime="2020-11-21T15:44:47.000Z" itemprop="datePublished">2020-11-21</time>
+</div>
     </div>
     
     <header class="article-header">
@@ -64,71 +76,77 @@
     </h1>
   
 
+      <div class="article-updated">
+        
+        latest update：<time datetime="2021-05-29T03:25:44.354Z" itemprop="datePublished">2021-05-29 11:25</time>
+        
+      </div>
     </header>
     
     <div class="article-entry" itemprop="articleBody">
-       
+      <!-- 文章内容 article body -->
+ 
   <article class="article-content">
     <p>最近在一些 Demo 中经常会看到 <code>Symbol()</code> 这个东西，例如:</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> race <span class="token operator">=</span> <span class="token punctuation">{</span>
-  protoss<span class="token punctuation">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  terran<span class="token punctuation">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  zerg<span class="token punctuation">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> race <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  protoss<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  terran<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  zerg<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>就只能记得大概了，就是赋值一个独特的值，但是这个值具体是什么我想不起来了。<br>所以还是记个笔记加深下印象，省的看了又忘。</p>
 <blockquote>
 <p>ES6 引入了一种新的原始数据类型<code>Symbol</code>，表示独一无二的值。它是 JavaScript 语言的第七种数据类型</p>
 </blockquote>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>如果只看 阮一峰的 <strong>ECMAScript 6入门</strong> 和 MDN 上的说明，可能会有点迷糊，但是大概知道只要是 Symbol类型 是都是独一无二的，保证不会与其他属性名产生冲突。<br>例如：</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> s1 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// Symbol(1)</span>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> s1 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment">// Symbol(1)</span>
 <span class="token keyword">var</span> s2 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// Symbol(1)</span>
+<span class="token comment">// Symbol(1)</span>
 s1 <span class="token operator">===</span> s2
-<span class="token comment" spellcheck="true">// false</span>
+<span class="token comment">// false</span>
 s1 <span class="token operator">==</span> s2
-<span class="token comment" spellcheck="true">// false</span></code></pre>
+<span class="token comment">// false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>所以，就出现了文章一开始的那个例子，出自方应杭老师的的每日一题（在文章最后有附链接）<br>大概的需求场景，就是需要通过传入不同的 <code>String</code> 来执行不同的操作，接下来我就大概引用该文章内的例子来说明</p>
 <p>例如：在玩SC2的时候，我们需要在开始时选择种族，选择完成之后在游戏加载时就会执行对应的创建角色操作。</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> race <span class="token operator">=</span> <span class="token punctuation">{</span>
-  protoss<span class="token punctuation">:</span> <span class="token string">'protoss'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 神族</span>
-  terran<span class="token punctuation">:</span> <span class="token string">'terran'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 人族</span>
-  zerg<span class="token punctuation">:</span> <span class="token string">'zerg'</span> <span class="token comment" spellcheck="true">// 虫族</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function">createRole</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">if</span><span class="token punctuation">(</span>type <span class="token operator">===</span> race<span class="token punctuation">.</span>protoss<span class="token punctuation">)</span><span class="token punctuation">{</span> 创建神族角色 <span class="token punctuation">}</span>
-  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type <span class="token operator">===</span> race<span class="token punctuation">.</span>terran<span class="token punctuation">)</span><span class="token punctuation">{</span> 创建人族角色 <span class="token punctuation">}</span>
-  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type <span class="token operator">===</span> race<span class="token punctuation">.</span>zerg<span class="token punctuation">)</span><span class="token punctuation">{</span> 创建虫族角色 <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> race <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  protoss<span class="token operator">:</span> <span class="token string">'protoss'</span><span class="token punctuation">,</span> <span class="token comment">// 神族</span>
+  terran<span class="token operator">:</span> <span class="token string">'terran'</span><span class="token punctuation">,</span> <span class="token comment">// 人族</span>
+  zerg<span class="token operator">:</span> <span class="token string">'zerg'</span> <span class="token comment">// 虫族</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">function</span> <span class="token function">createRole</span><span class="token punctuation">(</span><span class="token parameter">type</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>type <span class="token operator">===</span> race<span class="token punctuation">.</span>protoss<span class="token punctuation">)</span><span class="token punctuation">&#123;</span> 创建神族角色 <span class="token punctuation">&#125;</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type <span class="token operator">===</span> race<span class="token punctuation">.</span>terran<span class="token punctuation">)</span><span class="token punctuation">&#123;</span> 创建人族角色 <span class="token punctuation">&#125;</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type <span class="token operator">===</span> race<span class="token punctuation">.</span>zerg<span class="token punctuation">)</span><span class="token punctuation">&#123;</span> 创建虫族角色 <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>用户选择种族后，就需要调用 createRole 来创建角色：</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 传入字符串</span>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 传入字符串</span>
 <span class="token function">createRole</span><span class="token punctuation">(</span><span class="token string">'zerg'</span><span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">// 或者传入变量</span>
-<span class="token function">createRole</span><span class="token punctuation">(</span>race<span class="token punctuation">.</span>zerg<span class="token punctuation">)</span></code></pre>
+<span class="token comment">// 或者传入变量</span>
+<span class="token function">createRole</span><span class="token punctuation">(</span>race<span class="token punctuation">.</span>zerg<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>但是在传入 type 值的时候，如果<strong>直接用字符串</strong>，就不是一个好的方式（不利于将来的修改和维护），所以需要传入例如 <code>race.zerg</code> 这样的<strong>变量属性</strong>。<br>那么如果这样操作的话，其实这些对象属性（<code>race.protoss</code>,<code>race.terran</code>,<code>race.zerg</code>）对应的值并不重要，因为传入的肯定是同一个值。<br>所以以下声明和前一个例子中声明可以完成同一个作用。</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> race <span class="token operator">=</span> <span class="token punctuation">{</span>
-  protoss<span class="token punctuation">:</span> <span class="token string">'askdjaslkfjas;lfkjas;flkj'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 神族</span>
-  terran<span class="token punctuation">:</span> <span class="token string">';lkfalksjfl;askjfsfal;skfj'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 人族</span>
-  zerg<span class="token punctuation">:</span> <span class="token string">'qwieqwoirqwoiruoiwqoisrqwroiu'</span> <span class="token comment" spellcheck="true">// 虫族</span>
-<span class="token punctuation">}</span></code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> race <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  protoss<span class="token operator">:</span> <span class="token string">'askdjaslkfjas;lfkjas;flkj'</span><span class="token punctuation">,</span> <span class="token comment">// 神族</span>
+  terran<span class="token operator">:</span> <span class="token string">';lkfalksjfl;askjfsfal;skfj'</span><span class="token punctuation">,</span> <span class="token comment">// 人族</span>
+  zerg<span class="token operator">:</span> <span class="token string">'qwieqwoirqwoiruoiwqoisrqwroiu'</span> <span class="token comment">// 虫族</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>也就是说， <code>race.zerg</code> 的值是多少并不重要，只要它的值跟 <code>race.protoss</code> 和 <code>race.terran</code> 的值不一样就行，<code>Symbol</code> 的用途就是如此。</p>
 <blockquote>
 <p>凡是数据类型属于 <code>Symbol</code> 类型，就都是独一无二的</p>
 </blockquote>
 <p>所以可以用以下代码来声明，并且保证不会出现冲突的属性值：</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> race <span class="token operator">=</span> <span class="token punctuation">{</span>
-  protoss<span class="token punctuation">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  terran<span class="token punctuation">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  zerg<span class="token punctuation">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 抑或填入描述</span>
-<span class="token keyword">var</span> race <span class="token operator">=</span> <span class="token punctuation">{</span>
-  protoss<span class="token punctuation">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'protoss'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  terran<span class="token punctuation">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'terran'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  zerg<span class="token punctuation">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'zerg'</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> race <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  protoss<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  terran<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  zerg<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 抑或填入描述</span>
+<span class="token keyword">var</span> race <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  protoss<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'protoss'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  terran<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'terran'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  zerg<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'zerg'</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>至此我觉得 <code>Symbol</code> 数据类型已经解释清楚了，如果还是不明白，请重新回到头部阅读一遍。</p>
 <hr>
 <h2 id="Symbol-拥有的一些特性"><a href="#Symbol-拥有的一些特性" class="headerlink" title="Symbol 拥有的一些特性"></a><code>Symbol</code> 拥有的一些特性</h2><h3 id="一、Symbol-作为属性名进行遍历时："><a href="#一、Symbol-作为属性名进行遍历时：" class="headerlink" title="一、Symbol 作为属性名进行遍历时："></a>一、<code>Symbol</code> 作为属性名进行遍历时：</h3><blockquote>
@@ -138,7 +156,7 @@ s1 <span class="token operator">==</span> s2
 </ul>
 </blockquote>
 <p>可以通过 <code>Object.getOwnPropertySymbols()</code> 方法来获取指定对象的所有 Symbol 属性名（方法返回一个数组，成员是当前对象的所有用作属性名的 Symbol 值）</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -146,28 +164,29 @@ obj<span class="token punctuation">[</span>a<span class="token punctuation">]</s
 obj<span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'World'</span><span class="token punctuation">;</span>
 
 Object<span class="token punctuation">.</span><span class="token function">getOwnPropertySymbols</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// [Symbol(a), Symbol(b)]</span></code></pre>
+<span class="token comment">// [Symbol(a), Symbol(b)]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>当然也可以使用 ES6 的新 API <code>Reflect.ownKeys()</code> 来获取所有类型的键名，包括 <strong>常规键名</strong> 和 <code>Symbol</code> 键名。</p>
 <h3 id="二、Symbol-for-方法"><a href="#二、Symbol-for-方法" class="headerlink" title="二、Symbol.for() 方法"></a>二、<code>Symbol.for()</code> 方法</h3><blockquote>
 <p><code>Symbol.for()</code>方法可以接受一个字符串作为参数，然后搜索有没有以该参数作为名称的 <code>Symbol</code> 值。<br> 如果有，就返回这个 <code>Symbol</code> 值，否则就新建一个以该字符串为名称的 <code>Symbol</code> 值，并将其注册到全局。</p>
 </blockquote>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> s1 <span class="token operator">=</span> Symbol<span class="token punctuation">.</span><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> s2 <span class="token operator">=</span> Symbol<span class="token punctuation">.</span><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> s1 <span class="token operator">=</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> s2 <span class="token operator">=</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 s1 <span class="token operator">===</span> s2 
-<span class="token comment" spellcheck="true">// true</span>
+<span class="token comment">// true</span>
 
-Symbol<span class="token punctuation">.</span><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span> <span class="token operator">===</span> Symbol<span class="token punctuation">.</span><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// true</span></code></pre>
+Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span> <span class="token operator">===</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span>
+<span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><code>Symbol.for()</code> 与 <code>Symbol()</code> 都会生成新的 <code>Symbol</code>。它们的区别是，前者会被登记在全局环境中供搜索，后者不会。</p>
 <h3 id="三、Symbol-keyFor-方法"><a href="#三、Symbol-keyFor-方法" class="headerlink" title="三、Symbol.keyFor() 方法"></a>三、<code>Symbol.keyFor()</code> 方法</h3><blockquote>
 <p><code>Symbol.keyFor()</code> 方法返回一个已登记的 <code>Symbol</code> 类型值的 <code>key</code>。</p>
 </blockquote>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> s1 <span class="token operator">=</span> Symbol<span class="token punctuation">.</span><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Symbol<span class="token punctuation">.</span><span class="token function">keyFor</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// "foo"</span>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> s1 <span class="token operator">=</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Symbol<span class="token punctuation">.</span><span class="token function">keyFor</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span> <span class="token comment">// "foo"</span>
 
 <span class="token keyword">let</span> s2 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Symbol<span class="token punctuation">.</span><span class="token function">keyFor</span><span class="token punctuation">(</span>s2<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// undefined</span></code></pre>
+Symbol<span class="token punctuation">.</span><span class="token function">keyFor</span><span class="token punctuation">(</span>s2<span class="token punctuation">)</span> <span class="token comment">// undefined</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="四、内置的-Symbol-属性"><a href="#四、内置的-Symbol-属性" class="headerlink" title="四、内置的 Symbol 属性"></a>四、内置的 Symbol 属性</h3><p>除了定义自己使用的 <code>Symbol</code> 值以外，ES6 还提供了 <strong>11</strong> 个内置的 Symbol 值，指向语言内部使用的方法。</p>
 <ol>
 <li><p><code>Symbol.hasInstance</code></p>
@@ -205,51 +224,71 @@ Symbol<span class="token punctuation">.</span><span class="token function">keyFo
 <nav id="article-nav">
   
     <a href="/2020/JS-type-and-status-management-dictionary/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          项目中的类型和状态管理
-        
-      </div>
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">项目中的类型和状态管理</div>
     </a>
   
   
     <a href="/2020/raspberrypi-01-setup/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">📟 树莓派 4B(2GB RAM) 开箱记录</div>
     </a>
   
 </nav>
  
 </div>
-
-
-
 </main>
+<!-- 侧边栏 sidebar -->
 <aside id="sidebar">
   
     
-<section class="userinfo">
-    <img src="/img/userimg.jpg" alt="王阳阳">
-    <h2>王阳阳</h2>
-    <span>久之须自见得</span>
-    <p>ODIN.INC</p>
-    <p>Jiaxing,China</p>
-    <div>
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">ODIN.INC</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
       
-      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
       
-      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
       
     </div>
 </section>
 
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">recent_posts</h3>
+  <!-- 分类菜单 category menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+          </li>
+        
+          <li>
+            <a href="/2021/hexo-theme-edit/">Hexo 主题开发</a>
+          </li>
         
           <li>
             <a href="/2021/JS-proto-and-prototype/">原型链！ __proto__ 与 prototype</a>
@@ -263,34 +302,27 @@ Symbol<span class="token punctuation">.</span><span class="token function">keyFo
             <a href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
           </li>
         
-          <li>
-            <a href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
-          </li>
-        
-          <li>
-            <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
-          </li>
-        
       </ul>
     </div>
   </section>
 
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">tags</h3>
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </section>
 
-
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">archive</h3>
+<!-- 文档归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
     </div>
   </section>
 
@@ -298,25 +330,26 @@ Symbol<span class="token punctuation">.</span><span class="token function">keyFo
   
 </aside>
     </div>
-    <footer id="footer">
-  <span>
-    &copy;2019-2021 YogWang powered_by
-    <a href="http://hexo.io/" target="_blank">Hexo</a>
-  </span>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2021 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
   <br />
-  <span
-    >licensed
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
-      >CC BY-NC 4.0</a
-    ></span
-  >
-</footer>
-<div>
+  <!-- go top -->
   <a id="gotop" class="fa fa-level-up"></a>
-</div>
+</footer>
 
 <script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
- 
+
+
 <script src="/js/common.js"></script>
 
 

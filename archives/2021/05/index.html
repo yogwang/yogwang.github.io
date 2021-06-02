@@ -1,6 +1,8 @@
+<!-- layout page -->
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
+  <!-- 头部信息 head&meta -->
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -9,22 +11,24 @@
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
-  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U" />
   
-  
-<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
-
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
 
   <body>
-    <header id="header">
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
   <a class="header-sign" href="/">
-    <img src="/favicon.png" alt="sign" />
+    <img src="/favicon.png" alt="logo" />
     <span>YOG<br />WANG</span>
   </a>
+  <!-- 头部菜单 header menu -->
   <nav class="header-navbar">
     
     <a class="nav-link" href="/archives">文章</a>
@@ -37,18 +41,87 @@
 </header>
 
     <div id="wrap">
-      <main id="container">
-  
-  
-  
-    
-    
+      <!-- 文章列表页面 post list page -->
+<main id="container">
+  <!-- 文章分类列表 archives list -->
+<div class="archives-wrap">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+      </div>
       
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>最近在更新博客的样式，突然想到现在的flex布局已经可以定义间距了，所以大概整理了一下关于gap这个新属性资料。</p>
+  </article>
+   
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2021-05-29T07:02:19.000Z" itemprop="datePublished">2021/05/29</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <div class="archive-article archive-type-post">
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2021/hexo-theme-edit/">Hexo 主题开发</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>去年就开始说要更新博客主题了，拖到现在终于有点空闲时间和动力了。</p>
+  </article>
+   
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2021-05-27T06:01:41.000Z" itemprop="datePublished">2021/05/27</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -57,41 +130,38 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/JS-proto-and-prototype/">原型链！ __proto__ 与 prototype</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2021/JS-proto-and-prototype/">原型链！ __proto__ 与 prototype</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <blockquote>
 <p>Every JavaScript object has a second JavaScript object (or <code>null</code> ,but this is rare) associated with it. This second object is known as a prototype, and the first object <strong>inherits</strong> properties from the prototype.<br>每个 JavaScript 对象都会对应一个原型对象（除了 <code>null</code>），并从原型对象<strong>继承</strong>属性和方法。<br><small>JavaScript 权威指南</small></p>
 </blockquote>
 <p>一句话解释：<strong>对象 <code>__proto__</code> 属性是JS内置的，它所对应值是原型对象的 <code>prototype</code> ；而 <code>prototype</code> 就是你自己写的原型属性、方法 加上 JS原型内置的属性、方法</strong></p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/JS-proto-and-prototype/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2021-05-21T16:51:09.000Z" itemprop="datePublished">5月 22</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2021-05-21T16:51:09.000Z" itemprop="datePublished">2021/05/22</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -100,19 +170,20 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/JS-what-dose-new-operators-do/">JS中的 new 关键字做了什么？</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2021/JS-what-dose-new-operators-do/">JS中的 new 关键字做了什么？</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <blockquote>
 <p><code>new</code> 运算符 <strong>创建</strong> 一个用户定义的 <strong>对象类型</strong> 的实例或 <strong>具有构造函数的内置对象</strong> 的实例。</p>
@@ -128,22 +199,18 @@
 <hr>
 <p>可以简单理解成 <code>new</code> 关键字帮我们处理了书写构造函数时一些固定的步骤</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/JS-what-dose-new-operators-do/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2021-05-21T10:48:10.000Z" itemprop="datePublished">5月 21</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2021-05-21T10:48:10.000Z" itemprop="datePublished">2021/05/21</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -152,40 +219,37 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/">踩坑日记</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>在实际业务场景中，最常接触到的就是拉取微信登陆了，但单纯的一个点击按钮直接微信登录的需要获取多少微信权限呢？</p>
 <p>最少的需要使用到1个微信开放接口：<code>wx.login</code>，<br>如果需要获取用户头像和昵称，需要调用 <code>wx.getUserProfile</code> 方法 (<code>wx.getUserInfo</code> 已调整<sub>【尾声#1】</sub>)，并且需要在绑定在按钮上 ，并会唤起授权提示；<br>如果需要获取用户手机号信息，需要在按钮上绑定 <code>getPhoneNumber</code> 事件。</p>
 <p>一般来说非敏感信息可以直接调用，含有敏感信息的接口需要绑定在按钮上，在用户自行操作之后才可以调用。</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/miniprogram-devDiary-05-authorize/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2021-05-20T08:04:22.000Z" itemprop="datePublished">5月 20</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2021-05-20T08:04:22.000Z" itemprop="datePublished">2021/05/20</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -194,39 +258,36 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>之前有使用过 <code>flat()</code> 方法，但是一直不知道 <code>flatMap()</code> 方法，在使用 <code>map()</code> 方法组装集合的时候，在组装完成之后还要链式调用一下 <code>flat()</code>，如果可以知道 <code>flatMap()</code> 代码还能精简一点，也方便递归返回的数组内容。</p>
 <p>本来是上个月发现的，但隔了一个月才有时间写，已经想不起来当时怎么发现的 <code>flatMap()</code> 这个方法了…<br>就直接跳过前置场景，直接开始聊这两个扩展方法吧。</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/JS-flat&flatMap/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2021-05-17T06:14:01.000Z" itemprop="datePublished">5月 17</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2021-05-17T06:14:01.000Z" itemprop="datePublished">2021/05/17</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -235,19 +296,20 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>一直没有怎么用过 Vue 的 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/filters.html">过滤器 API</a>，都是直接用 <a target="_blank" rel="noopener" href="https://github.com/vueComponent/ant-design-vue-pro">AntD Pro</a> 当中提供的数字千分格式化、时间格式化之类的，没有自己去声明过，主要是因为 <code>Array.prototype.filter</code> 的先入为主，一直把 <code>vue.filter</code> 理解成为了筛选，而不是过滤器。</p>
 <p>其实，<code>vue.filter</code> 是借鉴了 Linux 当中的 Pipe 符号 (<code>|</code>) 来处理数据 ，然后借用了 <code>filter</code> 这个名字：</p>
@@ -258,22 +320,18 @@
 <p>使用起来确实很方便，用 <code>|</code> 符号分隔就行，会按照 <strong>从前往后的顺序</strong> 依次 传入过滤器，然后返回转换后的值。</p>
 <p>等到后来再遇到适合的场景想起来使用 <code>filter</code> ，但又因为项目的历史原因没有去使用，因为自己都是局部使用 <strong><code>computed</code>计算</strong> 和 <strong>方法调用返回</strong> 来处理（<a target="_blank" rel="noopener" href="https://v3.vuejs.org/guide/migration/filters.html#_3-x-update">也是Vue3所推荐的替代过滤器的方式</a>）</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/vue-api-filter/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2021-05-17T03:23:49.000Z" itemprop="datePublished">5月 17</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2021-05-17T03:23:49.000Z" itemprop="datePublished">2021/05/17</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -282,19 +340,20 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/">踩坑日记</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/miniprogram-devDiary-04-request/">微信小程序学习日记 L04 网络请求</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2021/miniprogram-devDiary-04-request/">微信小程序学习日记 L04 网络请求</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>在小程序中发送网络请求，需要使用微信提供的API，提供了5种：</p>
 <ul>
@@ -308,22 +367,18 @@
 <p>需要注意的是，小程序<strong>只可以跟指定的域名进行网络通信</strong>，需要事先设置通讯域名（服务器域名请在 「小程序后台-开发-开发设置-服务器域名」 中进行配置）。</p>
 <p>可以查看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html#%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B">配置流程</a> 了解一下具体注意项。</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/miniprogram-devDiary-04-request/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2021-05-15T05:54:11.000Z" itemprop="datePublished">5月 15</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2021-05-15T05:54:11.000Z" itemprop="datePublished">2021/05/15</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -332,19 +387,20 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/CSS-specificity-selectors-weight/">CSS 选择器权重和优先级</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2021/CSS-specificity-selectors-weight/">CSS 选择器权重和优先级</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>群里突然又聊到了CSS样式的权重，这个话题每隔一段时间就会出现一次，但是每次都去搜索找选择器权重的文章分享有点太麻烦了，<br>主要是配图，想要找到自己记忆里的那张图真的很麻烦😂，所以还是自己整理一篇，以后直接分享自己的笔记就好了。<br>其实权重计算这个东西不麻烦，就是分 <code>4</code> 类:</p>
 <ol>
@@ -355,22 +411,18 @@
 </ol>
 <p>简单的权重比较 <code>inline style &gt; ID &gt; Class &gt; Element &gt; *</code> 这个应该不需要说了吧，主要是多个选择器混合使用时计算的问题。</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/CSS-specificity-selectors-weight/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2021-05-14T03:03:15.000Z" itemprop="datePublished">5月 14</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2021-05-14T03:03:15.000Z" itemprop="datePublished">2021/05/14</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -379,167 +431,94 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/">踩坑日记</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/miniprogram-devDiary-03-lifecycle/">微信小程序学习日记 L03 生命周期</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2021/miniprogram-devDiary-03-lifecycle/">微信小程序学习日记 L03 生命周期</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>一开始按照 Vue 的思路下来，会认为生命周期很重要，需要完整的看一遍，但是其实整个小程序开发完之后，生命周期的概念其实并不是很重要，<br>大概分成 <code>小程序</code> 的生命周期 和 <code>页面/组件</code> 的生命周期。<br>这些生命周期函数中 主要就是使用 <code>onShow</code> 和 <code>onLoad</code> 两个，用来获取和设置初始参数，发起请求等等。<br>其它的几个回调函数其实很少有用到，但是还是聊一聊吧。</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/miniprogram-devDiary-03-lifecycle/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2021-05-13T11:29:31.000Z" itemprop="datePublished">5月 13</time>
-</p>
-  </div>
-</div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <div class="archive-article-header-meta">
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
-
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-  </div>
-
-      </div>
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/miniprogram-devDiary-02-router/">微信小程序学习日记 L02 路由跳转</a>
-    </h2>
-  
-
-    </header>
      
-  <article class="article-excerpt">
-    <p>以前一直都是写的 Vue，所以在刚接触小程序的时候会疑惑，小程序是否也有和 Vue 一样有路由表，但是看完开放文档之后发现没有路由表，就很疑惑。<br>那小程序怎么去做页面跳转的呢？</p>
-<h3 id="首先，虽然小程序没有路由表，但是在全局配置文件-app-json-中有-pages-信息"><a href="#首先，虽然小程序没有路由表，但是在全局配置文件-app-json-中有-pages-信息" class="headerlink" title="首先，虽然小程序没有路由表，但是在全局配置文件(app.json)中有 pages 信息"></a>首先，虽然小程序没有路由表，但是在全局配置文件(<code>app.json</code>)中有 <code>pages</code> 信息</h3><p>用于指定小程序由哪些页面组成，每一项都对应一个页面的 路径（含文件名） 信息。<br>文件名不需要写文件后缀，框架会自动去寻找对应位置的文件进行处理。</p>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/miniprogram-devDiary-02-router/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2021-05-09T07:25:19.000Z" itemprop="datePublished">5月 9</time>
-</p>
+<div class="archive-article-date">
+  <time datetime="2021-05-13T11:29:31.000Z" itemprop="datePublished">2021/05/13</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <div class="archive-article-header-meta">
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
 
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-  </div>
-
-      </div>
-      
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2021/miniprogram-devDiary-01-structure/">微信小程序学习日记 L01 目录结构</a>
-    </h2>
-  
-
-    </header>
-     
-  <article class="article-excerpt">
-    <p>小程序包含一个描述整体程序的 <code>app</code> 和多个描述各自页面的 <code>page</code>。<br>刚刚接触到小程序，使用 微信开发者工具 新建完项目之后，会有一个这样的初始结构：</p>
-<pre><code>├─pages
-│  ├─index
-│  │     index.js
-│  │     index.json
-│  │     index.wxml
-│  │     index.wxss
-│  │      
-│  └─logs
-│        logs.js
-│        logs.json
-│        logs.wxml
-│        logs.wxss
-│          
-├─utils
-│     util.js
-├─ app.js
-├─ app.json
-├─ app.wxss
-├─ project.config.json
-└─ sitemap.json</code></pre>
-  </article>
-  
-    <div class="article-more-link">
-      <a href="/2021/miniprogram-devDiary-01-structure/#more">阅读全文</a>
-    </div>
-   
-
-
-    <p class="archive-article-date">
-  <time datetime="2021-05-06T14:21:47.000Z" itemprop="datePublished">5月 6</time>
-</p>
-  </div>
 </div>
-  
-  
-    </div></section>
-  
+<!-- 列表分页 list paginator -->
 
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/archives/2021/05/page/2/">2</a><a class="extend next" rel="next" href="/archives/2021/05/page/2/">Next &gt;&gt;</a>
+  </nav>
 
 
 </main>
+<!-- 侧边栏 sidebar -->
 <aside id="sidebar">
   
     
-<section class="userinfo">
-    <img src="/img/userimg.jpg" alt="王阳阳">
-    <h2>王阳阳</h2>
-    <span>久之须自见得</span>
-    <p>ODIN.INC</p>
-    <p>Jiaxing,China</p>
-    <div>
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">ODIN.INC</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
       
-      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
       
-      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
       
     </div>
 </section>
 
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">recent_posts</h3>
+  <!-- 分类菜单 category menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+          </li>
+        
+          <li>
+            <a href="/2021/hexo-theme-edit/">Hexo 主题开发</a>
+          </li>
         
           <li>
             <a href="/2021/JS-proto-and-prototype/">原型链！ __proto__ 与 prototype</a>
@@ -553,34 +532,27 @@
             <a href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
           </li>
         
-          <li>
-            <a href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
-          </li>
-        
-          <li>
-            <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
-          </li>
-        
       </ul>
     </div>
   </section>
 
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">tags</h3>
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </section>
 
-
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">archive</h3>
+<!-- 文档归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
     </div>
   </section>
 
@@ -588,25 +560,26 @@
   
 </aside>
     </div>
-    <footer id="footer">
-  <span>
-    &copy;2019-2021 YogWang powered_by
-    <a href="http://hexo.io/" target="_blank">Hexo</a>
-  </span>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2021 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
   <br />
-  <span
-    >licensed
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
-      >CC BY-NC 4.0</a
-    ></span
-  >
-</footer>
-<div>
+  <!-- go top -->
   <a id="gotop" class="fa fa-level-up"></a>
-</div>
+</footer>
 
 <script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
- 
+
+
 <script src="/js/common.js"></script>
 
 

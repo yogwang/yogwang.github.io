@@ -1,0 +1,40 @@
+/*
+  * @Description: 关于我样式
+  * @Author: yogwang
+  * @Date: 2021-06-02 17:32:35
+  * @Last Modified by:   yogwang
+  * @Last Modified time: 2021-06-02 17:32:35
+ */
+#about {
+  width: 100%;
+  padding: 5vh 0;
+}
+#about .about-header h1,
+#about .about-header h3 {
+  font-size: 25px;
+  font-weight: normal;
+}
+#about .about-header h2 {
+  font-size: 35px;
+  font-weight: normal;
+  margin: 15px 0;
+}
+#about .about-header h3 {
+  color: #999;
+  margin: 0 0 15px;
+}
+#about .article-content {
+  line-height: 35px;
+  font-size: 18px;
+}
+#about .article-content code {
+  color: #d14;
+  font-family: 'Micorsofe Yahei';
+}
+#about .article-content sub {
+  color: #666;
+}
+#about .article-content a {
+  color: inherit;
+  background: linear-gradient(to bottom, transparent 70%, rgba(49,184,204,0.5) 70%);
+}

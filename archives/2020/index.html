@@ -1,6 +1,8 @@
+<!-- layout page -->
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
+  <!-- 头部信息 head&meta -->
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -9,22 +11,24 @@
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
-  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U" />
   
-  
-<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
-
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
 
   <body>
-    <header id="header">
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
   <a class="header-sign" href="/">
-    <img src="/favicon.png" alt="sign" />
+    <img src="/favicon.png" alt="logo" />
     <span>YOG<br />WANG</span>
   </a>
+  <!-- 头部菜单 header menu -->
   <nav class="header-navbar">
     
     <a class="nav-link" href="/archives">文章</a>
@@ -37,18 +41,13 @@
 </header>
 
     <div id="wrap">
-      <main id="container">
-  
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <div class="archive-article archive-type-post">
+      <!-- 文章列表页面 post list page -->
+<main id="container">
+  <!-- 文章分类列表 archives list -->
+<div class="archives-wrap">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -57,39 +56,36 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/">踩坑日记</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/design-pattern-learning-L00/">「 设计模式学习 」 L00 开坑贴 &amp; 设计模式概览</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2020/design-pattern-learning-L00/">「 设计模式学习 」 L00 开坑贴 &amp; 设计模式概览</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>设计模式是我在2018年在成都工作的时候听 <a target="_blank" rel="noopener" href="https://blog.meathill.com/">肉山老师</a> 的直播<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mW411Y71x">JavaScript 设计模式 导言</a>的时候就想学习的一个东西，但是一直拖拖拖，虽然后来买了肉老师的 Chat <a target="_blank" rel="noopener" href="https://gitbook.cn/gitchat/activity/5ccedbcfe5bb505613f45186">从 jQuery 里学习设计模式</a>，但是看了一头雾水，后来同样买了肉老师推荐的书《设计模式：可复用面向对象软件的基础》，也是在家里吃灰了半年多。<br>一直想把整个设计模式都了解一下，不用吃透大概明了就可以，但是每次都提不起开坑的念头，如果再写成学习笔记的话，学习周期会大大拉长。</p>
 <p>这次在项目的不断迭代中，我遇到了一个问题，就是 <a href="/2020/JS-type-and-status-management-dictionary/">项目中的类型和状态管理</a>，所以就想着是否有一个合适的设计模式来解决问题，所以就被逼迫着捡起来了……</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/design-pattern-learning-L00/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2020-11-24T16:10:59.000Z" itemprop="datePublished">11月 25</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2020-11-24T16:10:59.000Z" itemprop="datePublished">2020/11/25</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -98,55 +94,52 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-type-and-status-management-dictionary/">项目中的类型和状态管理</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2020/JS-type-and-status-management-dictionary/">项目中的类型和状态管理</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>这段时间项目迭代比较快，所以很多时候对于记录的状态和类型判断我都是使用的 <strong>魔术字符串</strong> 的形式，但是这样就与代码形成了 “强耦合”， <strong>不利于后期的维护</strong>。</p>
 <p>例如这样的代码结构：</p>
-<pre><code class="html">&lt;!-- 用vue template来举例 --&gt;
-&lt;template&gt;
-    &lt;table&gt;
-        &lt;!-- 其它结构 --&gt;
-        &lt;td&gt;
-            &lt;!-- 直接使用状态值判断 --&gt;
-            &lt;a @click=&#39;xxx&#39; v-if=&#39;record.status === 0&#39;&gt;操作A&lt;/a&gt;
-            &lt;!-- 使用数组下标判断 --&gt;
-            &lt;a @click=&#39;xxx&#39; v-eles-if=&#39;record.status === status[1].key&#39;&gt;操作B&lt;/a&gt;
-            &lt;a @click=&#39;xxx&#39; v-else&#39;&gt;其他操作&lt;/a&gt;
-        &lt;/td&gt;
-        &lt;!-- 其它结构 --&gt;
-    &lt;/table&gt;
-&lt;/template&gt;</code></pre>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- 用vue template来举例 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">></span></span>
+        <span class="token comment">&lt;!-- 其它结构 --></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>
+            <span class="token comment">&lt;!-- 直接使用状态值判断 --></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>record.status === 0<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>操作A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+            <span class="token comment">&lt;!-- 使用数组下标判断 --></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span> <span class="token attr-name">v-eles-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>record.status === status[1].key<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>操作B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span> <span class="token attr-name">v-else'</span><span class="token punctuation">></span></span>其他操作<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+        <span class="token comment">&lt;!-- 其它结构 --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>特别是最近一整个分类的类型和状态的都变更了，所以在业务逻辑内的魔术字符串也需要一个一个文件去同步修改，大部分的都被替换了，但还有一些零碎的地方没有被修改到，导致不断有 BUG 被提上来，这就很头疼了。</p>
 <p>所以我就想者怎么把业务逻辑内的魔术字符串使用一种方式替换掉，最开始我想法是把状态集中起来进行管理</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-type-and-status-management-dictionary/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2020-11-24T15:47:32.000Z" itemprop="datePublished">11月 24</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2020-11-24T15:47:32.000Z" itemprop="datePublished">2020/11/24</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -155,47 +148,44 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-ES6-Symbol/">Symbol() 是个什么东西?</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2020/JS-ES6-Symbol/">Symbol() 是个什么东西?</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>最近在一些 Demo 中经常会看到 <code>Symbol()</code> 这个东西，例如:</p>
-<pre><code class="js">var race = &#123;
-  protoss: Symbol(),
-  terran: Symbol(),
-  zerg: Symbol()
-&#125;</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> race <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  protoss<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  terran<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  zerg<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>就只能记得大概了，就是赋值一个独特的值，但是这个值具体是什么我想不起来了。<br>所以还是记个笔记加深下印象，省的看了又忘。</p>
 <blockquote>
 <p>ES6 引入了一种新的原始数据类型<code>Symbol</code>，表示独一无二的值。它是 JavaScript 语言的第七种数据类型</p>
 </blockquote>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-ES6-Symbol/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2020-11-21T15:44:47.000Z" itemprop="datePublished">11月 21</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2020-11-21T15:44:47.000Z" itemprop="datePublished">2020/11/21</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -204,39 +194,36 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/">生活杂谈</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/raspberrypi-01-setup/">📟 树莓派 4B(2GB RAM) 开箱记录</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2020/raspberrypi-01-setup/">📟 树莓派 4B(2GB RAM) 开箱记录</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>自从我爸妈他们屋子重新装修好了之后，我爸就嚷嚷着要把他的旧电脑搬上楼装起来，但是家里没有多少地方能摆电脑桌了(怕他又和以前一样在书房看着小说抽一整天的烟)。所以趁着双十一，就入手了一个<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/">树莓派 4 Model B</a>，准备给他放客厅连到电视上，通过家里人时不时打断他投入看小说的状态。</p>
 <p>今天到货了，开始折腾一下….</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/raspberrypi-01-setup/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2020-11-16T12:56:29.000Z" itemprop="datePublished">11月 16</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2020-11-16T12:56:29.000Z" itemprop="datePublished">2020/11/16</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -247,34 +234,31 @@
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/vue-coding-style-and-lint/">聊一下自己 VueJS 项目的编码习惯和风格</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2020/vue-coding-style-and-lint/">聊一下自己 VueJS 项目的编码习惯和风格</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p><img src="/2020/vue-coding-style-and-lint/banner.jpg" alt="横幅"></p>
 <p>最近在考虑把遍码习惯整理一下，一个良好的遍码习惯可以有效减少一个项目的维护成本，<br>因为不可能在整个项目的生命周期中，均由最初的开发人员来维护，或者所有的代码都是由你一个人写出来的，<br>改善代码的可读性，可以让开发人员尽快理解历史的业务代码。</p>
 <p>之前也有研究过 <a href="/2020/choose-the-ESLint-formatting-rule-that-suits-you/">ESlint的格式化风格</a> 选择一款适合自己的来规范自己，但是了解的越多，越觉得还是需要团队互相讨论来找一个大家能都接受的妥协结果，所以最后还是选择了 <code>Prettier</code> ，因为我觉得其它两种风格相对来说太严苛了，很多项目都是自己开发并没有多人合作开发的情况出现，所以使用 Prettier 相对来说所自由一些…</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/vue-coding-style-and-lint/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2020-11-11T04:01:49.000Z" itemprop="datePublished">11月 11</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2020-11-11T04:01:49.000Z" itemprop="datePublished">2020/11/11</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -283,40 +267,37 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-ES6-MAP/">ES6 中的 新数据结构 Set &amp; Map</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2020/JS-ES6-MAP/">ES6 中的 新数据结构 Set &amp; Map</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>今天在一个需求里边遇到一个使用 MAP 数据结构的场景，就去解了一下 ES6 的新数据结构</p>
 <p>ECMAScript 6 内提供了 4种 新结构 <code>Set</code>, <code>WeakSet</code>, <code>Map</code>, <code>WeakMap</code>，虽然已经是5年前的知识了，但是对于我来说还是新🤣</p>
 <p>本来想先聊 <code>Map</code> 的，但是仔细看了阮一峰老师的文章之后发现，确实是要从 <code>Set</code> 开始讲</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-ES6-MAP/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2020-11-07T05:22:28.000Z" itemprop="datePublished">11月 7</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2020-11-07T05:22:28.000Z" itemprop="datePublished">2020/11/07</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -325,39 +306,36 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/vue-v-bind-props-camel-sync/">VueJS中 v-bind 的一些修饰符</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2020/vue-v-bind-props-camel-sync/">VueJS中 v-bind 的一些修饰符</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>今天洗澡的时候在听 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Dy4y1B73J">饥人谷的模拟面试 (五)</a> 的时候，一直觉得这次面试的学生有点差，如果是我来面话可能已经让他回家了，但是 方方老师 很有耐心，在中间问道 <code>.sync</code> 的时候我 ???? 完全没有印象了。</p>
 <p>正好自暴自弃了2个月没有更新了，所以复习一下 <code>v-bind</code> 的三个修饰符 [ <code>.prop</code>, <code>.camel</code>, <code>.sync</code> ] </p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/vue-v-bind-props-camel-sync/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2020-11-05T13:59:52.000Z" itemprop="datePublished">11月 5</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2020-11-05T13:59:52.000Z" itemprop="datePublished">2020/11/05</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -366,41 +344,38 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/vue-api-ref/">Vue 使用 ref 注册组件的特性</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2020/vue-api-ref/">Vue 使用 ref 注册组件的特性</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>一直以来，我对于 VueJS 中对于使用 <code>ref</code> 注册的组件，在使用 <code>$refs</code> 调用时，为什么有时候是一个 DOM元素/组件实例，是时候会是一个实例<strong>数组</strong>。</p>
 <p>所以在很长一段时间内我觉得 <code>ref</code> 注册的的组件在使用 <code>$refs</code> 调用时有很大的不确定性，虽然我的弹窗组件一直都是用的 <code>$refs.modal.open()</code> 来打开的。</p>
 <p>直到前一段时间，我在一个场景下想在 <code>v-for</code> 循环渲染的组件下 <code>slot</code> 模板中想使用 <code>ref</code> 注册成一个实例集合来调用时，发现怎么样重写返回的都只是一个组件实例，而不是一个组件实例集合。</p>
 <p>所以有了这样一篇笔记。</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/vue-api-ref/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2020-11-02T09:14:09.000Z" itemprop="datePublished">11月 2</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2020-11-02T09:14:09.000Z" itemprop="datePublished">2020/11/02</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -409,39 +384,36 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-about-this/">JavaScript 中的 this 指向问题</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2020/JS-about-this/">JavaScript 中的 this 指向问题</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>今天在群里看到大家在讨论一个问题，就是 <code>this</code> 的指向，并且牵扯到了 <code>let</code>，<code>const</code> 的变量提升，比如说在全局顶部声明的 <code>let</code> 变量能否挂载到 <code>window</code> 下之类的。<br>还是老流程，先讨论第一个问题，然后再开始牵扯到后续的展开。</p>
 <p><code>this</code> 指向大概分为两种，普通函数内的 <code>this</code> 和 箭头函数内的 <code>this</code>，箭头函数内的 <code>this</code> 其实挺好理解的，主要是因为各种 <code>call()</code>、<code>apply()</code>、<code>bind()</code> 和 <code>new</code> 影响下的 <code>this</code> 指向问题。</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-about-this/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2020-10-26T04:01:21.000Z" itemprop="datePublished">10月 26</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2020-10-26T04:01:21.000Z" itemprop="datePublished">2020/10/26</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -450,72 +422,95 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2020/JS-for/">JS 中的各种 for 循环</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2020/JS-for/">JS 中的各种 for 循环</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>真是一坑未填又开一坑….现在阶段，for循环有4种，我们先把所有的 for 循环列出，一个一个的聊。</p>
 <p>从MDN上边，找到了 <strong>四种</strong> for 循环，分别是：<code>for</code>、<code>for...in</code>、<code>for...of</code> 和 <code>for await...of</code></p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2020/JS-for/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2020-07-23T16:03:04.000Z" itemprop="datePublished">7月 24</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2020-07-23T16:03:04.000Z" itemprop="datePublished">2020/07/24</time>
+</div>
   </div>
 </div>
-  
-  
-    </div></section>
-  
 
+</div>
+<!-- 列表分页 list paginator -->
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><a class="extend next" rel="next" href="/archives/2020/page/2/">next &gt;&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><a class="extend next" rel="next" href="/archives/2020/page/2/">Next &gt;&gt;</a>
   </nav>
 
 
 </main>
+<!-- 侧边栏 sidebar -->
 <aside id="sidebar">
   
     
-<section class="userinfo">
-    <img src="/img/userimg.jpg" alt="王阳阳">
-    <h2>王阳阳</h2>
-    <span>久之须自见得</span>
-    <p>ODIN.INC</p>
-    <p>Jiaxing,China</p>
-    <div>
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">ODIN.INC</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
       
-      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
       
-      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
       
     </div>
 </section>
 
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">recent_posts</h3>
+  <!-- 分类菜单 category menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+          </li>
+        
+          <li>
+            <a href="/2021/hexo-theme-edit/">Hexo 主题开发</a>
+          </li>
         
           <li>
             <a href="/2021/JS-proto-and-prototype/">原型链！ __proto__ 与 prototype</a>
@@ -529,34 +524,27 @@
             <a href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
           </li>
         
-          <li>
-            <a href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
-          </li>
-        
-          <li>
-            <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
-          </li>
-        
       </ul>
     </div>
   </section>
 
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">tags</h3>
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </section>
 
-
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">archive</h3>
+<!-- 文档归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
     </div>
   </section>
 
@@ -564,25 +552,26 @@
   
 </aside>
     </div>
-    <footer id="footer">
-  <span>
-    &copy;2019-2021 YogWang powered_by
-    <a href="http://hexo.io/" target="_blank">Hexo</a>
-  </span>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2021 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
   <br />
-  <span
-    >licensed
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
-      >CC BY-NC 4.0</a
-    ></span
-  >
-</footer>
-<div>
+  <!-- go top -->
   <a id="gotop" class="fa fa-level-up"></a>
-</div>
+</footer>
 
 <script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
- 
+
+
 <script src="/js/common.js"></script>
 
 

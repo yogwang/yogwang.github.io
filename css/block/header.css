@@ -1,0 +1,39 @@
+/*
+  * @Description: 页头样式
+  * @Author: yogwang
+  * @Date: 2021-05-31 15:14:51
+ * @Last Modified by: yogwang
+ * @Last Modified time: 2021-06-02 18:51:14
+ */
+#header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#header a {
+  color: #333;
+}
+#header .header-sign {
+  height: 50px;
+  line-height: 16px;
+  font-size: 16px;
+  font-family: 'SF Pro';
+  display: flex;
+  align-items: center;
+}
+#header .header-sign img {
+  height: 50px;
+  margin-right: 10px;
+}
+#header .header-sign span {
+  display: block;
+}
+#header .header-navbar {
+  display: flex;
+}
+#header .header-navbar a {
+  padding: 5px;
+  margin: 0 5px;
+  display: block;
+}

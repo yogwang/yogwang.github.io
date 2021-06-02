@@ -1,0 +1,88 @@
+/*
+ * @Description: 主体部分
+ * @Author: yogwang
+ * @Date: 2021-05-31 15:18:04
+ * @Last Modified by: yogwang
+ * @Last Modified time: 2021-06-02 18:50:44
+ */
+#wrap {
+  max-width: 1200px;
+  padding: 25px 1vw 200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+#container {
+  min-height: 50vh;
+  width: calc(100% - 300px);
+  position: relative;
+}
+#container .article-excerpt,
+#container .article-content {
+  font-size: 17px;
+}
+#container .article-excerpt a,
+#container .article-content a {
+  word-break: break-word;
+  background: linear-gradient(to bottom, transparent 70%, #d4faff 70%);
+}
+#container .article-excerpt a:before,
+#container .article-content a:before,
+#container .article-excerpt a:after,
+#container .article-content a:after {
+  content: '';
+  display: inline;
+}
+#container .article-excerpt p,
+#container .article-content p {
+  line-height: 1.8;
+}
+#container .article-excerpt code:not([class]),
+#container .article-content code:not([class]),
+#container .article-excerpt code[class=''],
+#container .article-content code[class=''] {
+  line-height: 20px;
+  color: #c7254e;
+  word-break: break-word;
+  background: #f9f2f4;
+  padding: 0 8px;
+  border-radius: 2px;
+  display: inline-block;
+}
+#container .article-excerpt pre,
+#container .article-content pre {
+  padding-top: 2em;
+}
+#container .article-excerpt pre:before,
+#container .article-content pre:before {
+  content: attr(data-language);
+  color: #c3c3c3;
+  margin-top: -1.5em;
+  display: inline-block;
+  position: absolute;
+  right: 25px;
+  pointer-events: none;
+}
+#container .article-excerpt pre .caption,
+#container .article-content pre .caption {
+  font-size: 12px;
+  color: #222;
+  margin-top: -2em;
+  position: absolute;
+}
+#container .article-excerpt pre .caption a,
+#container .article-content pre .caption a {
+  margin: 0 5px;
+}
+/*
+ * 适配
+ */
+@media (max-width: 970px) {
+  #wrap {
+    padding: 5vh 2vw 120px;
+    flex-wrap: wrap;
+  }
+  #container {
+    width: 100%;
+  }
+}

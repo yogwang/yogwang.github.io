@@ -1,0 +1,42 @@
+/*
+ * @Description: 页尾部分
+ * @Author: yogwang
+ * @Date: 2021-05-31 15:33:50
+ * @Last Modified by: yogwang
+ * @Last Modified time: 2021-06-02 18:24:32
+ */
+#footer {
+  width: 100%;
+  text-align: center;
+  background: #f5f5f5;
+  padding: 4vh 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+#footer p {
+  margin: 0;
+}
+#gotop {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 25px;
+  color: #333;
+  text-align: center;
+  background: #dedede;
+  border-radius: 50%;
+  display: block;
+  cursor: pointer;
+  position: fixed;
+  right: 12vh;
+  bottom: 8vw;
+}
+/*
+ * 适配
+ */
+@media (max-width: 970px) {
+  #gotop {
+    right: 2.5vh;
+  }
+}

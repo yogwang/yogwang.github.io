@@ -1,6 +1,8 @@
+<!-- layout page -->
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
+  <!-- 头部信息 head&meta -->
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -9,22 +11,24 @@
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
-  <meta name="google-site-verification" content="C6xTGgRjDkU2yb8izJ39IyLjwUMbDpXiATd2a-WLg5U" />
   
-  
-<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
-
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
 
   <body>
-    <header id="header">
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
   <a class="header-sign" href="/">
-    <img src="/favicon.png" alt="sign" />
+    <img src="/favicon.png" alt="logo" />
     <span>YOG<br />WANG</span>
   </a>
+  <!-- 头部菜单 header menu -->
   <nav class="header-navbar">
     
     <a class="nav-link" href="/archives">文章</a>
@@ -37,18 +41,13 @@
 </header>
 
     <div id="wrap">
-      <main id="container">
-  
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archives">
-    
-    <div class="archive-article archive-type-post">
+      <!-- 文章列表页面 post list page -->
+<main id="container">
+  <!-- 文章分类列表 archives list -->
+<div class="archives-wrap">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -57,47 +56,49 @@
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/BetterScrol-mouse-wheel/">BetterScrol 2.x Mouse-whell 没效果</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/BetterScrol-mouse-wheel/">BetterScrol 2.x Mouse-whell 没效果</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-content">
     <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>yarn add @better-scroll/mouse-wheel@next</code></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre><code>import BScroll from &#39;@better-scroll/core&#39;
-import MouseWheel from &#39;@better-scroll/mouse-wheel&#39;
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre class="line-numbers language-none"><code class="language-none">import BScroll from &#39;@better-scroll&#x2F;core&#39;
+import MouseWheel from &#39;@better-scroll&#x2F;mouse-wheel&#39;
 BScroll.use(MouseWheel)
 
 new BScroll(&#39;.bs-wrap&#39;, &#123;
-  //...
+  &#x2F;&#x2F;...
   mouseWheel: &#123;
     speed: 20,
     invert: false,
     easeTime: 300
   &#125;
-&#125;)</code></pre>
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="但是为什么在原有的基础上这样写没有用呢。官方-Demo"><a href="#但是为什么在原有的基础上这样写没有用呢。官方-Demo" class="headerlink" title="但是为什么在原有的基础上这样写没有用呢。官方 Demo"></a>但是为什么在原有的基础上这样写没有用呢。<a target="_blank" rel="noopener" href="https://better-scroll.github.io/docs/zh-CN/plugins/mouse-wheel.html#%E7%A4%BA%E4%BE%8B">官方 Demo</a></h2><p>查看 <code>Demo</code> 源码在 <code>scroll-wrapper</code> 外多了一层 <code>core-mouse-wheel</code> 加上就可以了。</p>
 <h3 id="😂-没仔细看-Demo-源码"><a href="#😂-没仔细看-Demo-源码" class="headerlink" title="😂 没仔细看 Demo 源码"></a>😂 没仔细看 <code>Demo</code> 源码</h3> 
   </article>
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-07-15T03:13:04.000Z" itemprop="datePublished">7月 15</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-07-15T03:13:04.000Z" itemprop="datePublished">2019/07/15</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -106,41 +107,38 @@ new BScroll(&#39;.bs-wrap&#39;, &#123;
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/hexo_theme/">Hexo 主题开发制作</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/hexo_theme/">Hexo 主题开发制作</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <h2 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 的安装就不讲了，直接开始我在制作 Hexo 主题遇到的一些问题。</p>
 </blockquote>
 <p>首先<br>在使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-cli">Hexo cli</a> 脚手架创建完 <code>Hexo</code> 项目后会有一个默认官方主题 <a target="_blank" rel="noopener" href="https://hexojs.github.io/hexo-theme-landscape/">landscape</a> 在 <code>themes</code> 目录中复制一份出来重命名成自己的名称，例如我的就是改成了 <code>yogwang</code>，并且在根目录中的 <code>_config.yml</code> 中修改主题为自己的主题</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/hexo_theme/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-07-11T07:34:10.000Z" itemprop="datePublished">7月 11</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-07-11T07:34:10.000Z" itemprop="datePublished">2019/07/11</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -149,19 +147,20 @@ new BScroll(&#39;.bs-wrap&#39;, &#123;
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/CSS-WaterFull/">纯CSS实现瀑布流布局</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/CSS-WaterFull/">纯CSS实现瀑布流布局</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><ol>
 <li><code>column-count: n</code> 将元素中的文本分为 n 列</li>
@@ -172,22 +171,18 @@ new BScroll(&#39;.bs-wrap&#39;, &#123;
 </ol>
 <h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo:"></a>Demo:</h2><p>👉 在 <a target="_blank" rel="noopener" href="https://codepen.io/yogwang/pen/RzvNre">CodePen</a> 中打开</p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/CSS-WaterFull/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-07-10T09:35:57.000Z" itemprop="datePublished">7月 10</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-07-10T09:35:57.000Z" itemprop="datePublished">2019/07/10</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -196,34 +191,35 @@ new BScroll(&#39;.bs-wrap&#39;, &#123;
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/hello%20you/">Hello Hexo</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/hello%20you/">Hello Hexo</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-content">
     <h2 id="Hello-Hexo-Hello-Github-Pages"><a href="#Hello-Hexo-Hello-Github-Pages" class="headerlink" title="Hello Hexo,Hello Github Pages"></a>Hello Hexo,Hello Github Pages</h2><p>2019.7.9 11:59:16</p>
  
   </article>
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">7月 9</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-07-09T03:59:16.000Z" itemprop="datePublished">2019/07/09</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -232,41 +228,38 @@ new BScroll(&#39;.bs-wrap&#39;, &#123;
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E5%BB%B6%E4%BC%B8/">工作延伸</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/git_commit--amend/">Git 撤销上一次提交 并将暂存区文件重新提交</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/git_commit--amend/">Git 撤销上一次提交 并将暂存区文件重新提交</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>把刚刚提交到的版本库的操作撤销掉,并将正确的版本提交 这时我们就需要用到 <code>git commit –-amend</code> 命令</p>
 <p>我们把文件修改为正确的，然后 <code>git add</code> 到暂存区 再使用 <code>git commit -–amend</code> 命令<br>这时 <code>Bash</code> 会提示</p>
-<pre><code>$ git commit --amend
-hint: Waiting for your editor to close the file...</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">$ git commit --amend
+hint: Waiting for your editor to close the file...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/git_commit--amend/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-07-03T09:29:11.000Z" itemprop="datePublished">7月 3</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-07-03T09:29:11.000Z" itemprop="datePublished">2019/07/03</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -275,44 +268,42 @@ hint: Waiting for your editor to close the file...</code></pre>
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E5%BB%B6%E4%BC%B8/">工作延伸</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/git_rebase/">Git 编辑历史提交的 Commit</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/git_rebase/">Git 编辑历史提交的 Commit</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <p>做一个功能，可能提交了 10 多次，会不会有一些崩溃？单纯这么多次的 commit 就可能出现有无用，或者可以合并的 commit，就很让人不舒服。</p>
 <p>基于上面所说问题，不难想到：每一次功能开发， 对多个 commit 进行合并或者删除处理，这时候就需要用到 <code>git rebase</code> 修改提交的历史 Commit</p>
 <h4 id="Eg"><a href="#Eg" class="headerlink" title="Eg:"></a>Eg:</h4><p>修改最近的 4 次提交纪录</p>
-<pre><code>git rebase -i HEAD~4</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">git rebase -i HEAD~4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
 <li><code>-i</code> 是 <code>--interactive</code> 的缩写 - 交互的意思；</li>
 <li><code>HEAD~4</code> 修改最近的 4 次提交记录；</li></ul>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/git_rebase/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-07-03T08:28:25.000Z" itemprop="datePublished">7月 3</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-07-03T08:28:25.000Z" itemprop="datePublished">2019/07/03</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -321,19 +312,20 @@ hint: Waiting for your editor to close the file...</code></pre>
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/Chrome-VerticalCentering/">Chrome下垂直居中容器内区块改变高度使外层容器被移动</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在 Chrome 中，使用 transform 或者 flex 垂直居中内容块，当视窗滚动到容器一半时再经过第一个内容块（之后的都正常），整个容器块都会被移动</p>
 <ul>
@@ -347,22 +339,18 @@ hint: Waiting for your editor to close the file...</code></pre>
 </ul>
 <p><img src="/2019/Chrome-VerticalCentering/gif_2.gif" alt="问题Gif"></p>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/Chrome-VerticalCentering/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-07-03T07:37:00.000Z" itemprop="datePublished">7月 3</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-07-03T07:37:00.000Z" itemprop="datePublished">2019/07/03</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -371,19 +359,20 @@ hint: Waiting for your editor to close the file...</code></pre>
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E5%BB%B6%E4%BC%B8/">工作延伸</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/git_question/">Git 遇到的一些问题</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/git_question/">Git 遇到的一些问题</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <h2 id="这里是我在日常中遇到的一些-Git-方面的问题。"><a href="#这里是我在日常中遇到的一些-Git-方面的问题。" class="headerlink" title="这里是我在日常中遇到的一些 Git 方面的问题。"></a>这里是我在日常中遇到的一些 Git 方面的问题。</h2><ul>
 <li>Error: GH007</li>
@@ -392,22 +381,18 @@ hint: Waiting for your editor to close the file...</code></pre>
 <li>合并与删除历史提交的 Commit ?</li>
 <li>操作失误，退回操作之前的版本库</li></ul>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/git_question/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-07-03T06:27:56.000Z" itemprop="datePublished">7月 3</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-07-03T06:27:56.000Z" itemprop="datePublished">2019/07/03</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -416,46 +401,43 @@ hint: Waiting for your editor to close the file...</code></pre>
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/Electron03-Electron-builder/">Electron_03 - Electron-builder</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/Electron03-Electron-builder/">Electron_03 - Electron-builder</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
-    <h2 id="安装-Electron-builder"><a href="#安装-Electron-builder" class="headerlink" title="安装 Electron-builder"></a>安装 Electron-builder</h2><pre><code>$ git clone https://github.com/electron/electron-quick-start
+    <h2 id="安装-Electron-builder"><a href="#安装-Electron-builder" class="headerlink" title="安装 Electron-builder"></a>安装 Electron-builder</h2><pre class="line-numbers language-none"><code class="language-none">$ git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-quick-start
 
 $ cd electron-quick-start
 
-$ yarn add electron-builder --dev // 官方推荐
+$ yarn add electron-builder --dev &#x2F;&#x2F; 官方推荐
 
 or
 
-$ npm install elctron-builder --save-dev</code></pre>
+$ npm install elctron-builder --save-dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/Electron03-Electron-builder/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-06-21T08:41:29.000Z" itemprop="datePublished">6月 21</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-06-21T08:41:29.000Z" itemprop="datePublished">2019/06/21</time>
+</div>
   </div>
 </div>
-  
-    
-    
-    <div class="archive-article archive-type-post">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <div class="archive-article-header-meta">
@@ -464,79 +446,104 @@ $ npm install elctron-builder --save-dev</code></pre>
 
         
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
       </div>
       
   
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/Electron02-Electron-parkager/">Electron_02 - Electron-packager</a>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2019/Electron02-Electron-parkager/">Electron_02 - Electron-packager</a>
     </h2>
   
 
     </header>
-     
+    <!-- 文章内容 article body -->
+ 
   <article class="article-excerpt">
     <h2 id="安装-Electron-packager"><a href="#安装-Electron-packager" class="headerlink" title="安装 Electron-packager"></a>安装 <a target="_blank" rel="noopener" href="https://github.com/electron-userland/electron-packager">Electron-packager</a></h2><blockquote>
 <p>需要 Node.js 6.0 或更高版本</p>
 </blockquote>
-<pre><code>npm install electron-packager --save-dev</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">npm install electron-packager --save-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><a target="_blank" rel="noopener" href="https://github.com/electron-userland/electron-packager/blob/master/docs/api.md">electron-packager API</a></p>
-<h2 id="使用命令行打包"><a href="#使用命令行打包" class="headerlink" title="使用命令行打包"></a>使用命令行打包</h2><pre><code>electron-packager &lt;sourcedir&gt; &lt;appname&gt; --platform=&lt;platform&gt; --arch=&lt;arch&gt; [optional flags...]</code></pre>
+<h2 id="使用命令行打包"><a href="#使用命令行打包" class="headerlink" title="使用命令行打包"></a>使用命令行打包</h2><pre class="line-numbers language-none"><code class="language-none">electron-packager &lt;sourcedir&gt; &lt;appname&gt; --platform&#x3D;&lt;platform&gt; --arch&#x3D;&lt;arch&gt; [optional flags...]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>必需参数</p>
 <ul>
 <li><p>sourcedir - 应用程序源</p></li></ul>
   </article>
-  
-    <div class="article-more-link">
-      <a href="/2019/Electron02-Electron-parkager/#more">阅读全文</a>
-    </div>
    
 
 
-    <p class="archive-article-date">
-  <time datetime="2019-06-18T02:58:51.000Z" itemprop="datePublished">6月 18</time>
-</p>
+     
+<div class="archive-article-date">
+  <time datetime="2019-06-18T02:58:51.000Z" itemprop="datePublished">2019/06/18</time>
+</div>
   </div>
 </div>
-  
-  
-    </div></section>
-  
 
+</div>
+<!-- 列表分页 list paginator -->
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/2019/page/3/">&lt;&lt; prev</a><a class="page-number" href="/archives/2019/">1</a><a class="page-number" href="/archives/2019/page/2/">2</a><a class="page-number" href="/archives/2019/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2019/page/5/">5</a><a class="extend next" rel="next" href="/archives/2019/page/5/">next &gt;&gt;</a>
+    <a class="extend prev" rel="prev" href="/archives/2019/page/3/">&lt;&lt; Prev</a><a class="page-number" href="/archives/2019/">1</a><a class="page-number" href="/archives/2019/page/2/">2</a><a class="page-number" href="/archives/2019/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2019/page/5/">5</a><a class="extend next" rel="next" href="/archives/2019/page/5/">Next &gt;&gt;</a>
   </nav>
 
 
 </main>
+<!-- 侧边栏 sidebar -->
 <aside id="sidebar">
   
     
-<section class="userinfo">
-    <img src="/img/userimg.jpg" alt="王阳阳">
-    <h2>王阳阳</h2>
-    <span>久之须自见得</span>
-    <p>ODIN.INC</p>
-    <p>Jiaxing,China</p>
-    <div>
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">ODIN.INC</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
       
-      <a class='fa fa-github' href="https://github.com/yogwang" target="_blank"></a>
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
       
-      <a class='fa fa-weibo' href="http://weibo.com/yooooooge" target="_blank"></a>
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
       
     </div>
 </section>
 
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">recent_posts</h3>
+  <!-- 分类菜单 category menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+          </li>
+        
+          <li>
+            <a href="/2021/hexo-theme-edit/">Hexo 主题开发</a>
+          </li>
         
           <li>
             <a href="/2021/JS-proto-and-prototype/">原型链！ __proto__ 与 prototype</a>
@@ -550,34 +557,27 @@ $ npm install elctron-builder --save-dev</code></pre>
             <a href="/2021/miniprogram-devDiary-05-authorize/">微信小程序学习日记 L05 拉起授权</a>
           </li>
         
-          <li>
-            <a href="/2021/JS-flat&flatMap/">ES6 中的数组拓展方法 flat() &amp; flatMap()</a>
-          </li>
-        
-          <li>
-            <a href="/2021/vue-api-filter/">VueJS 的过滤器 filter API</a>
-          </li>
-        
       </ul>
     </div>
   </section>
 
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">tags</h3>
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </section>
 
-
   
     
-  <section class="widget-wrap">
-    <h3 class="widget-title">archive</h3>
+<!-- 文档归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
     </div>
   </section>
 
@@ -585,25 +585,26 @@ $ npm install elctron-builder --save-dev</code></pre>
   
 </aside>
     </div>
-    <footer id="footer">
-  <span>
-    &copy;2019-2021 YogWang powered_by
-    <a href="http://hexo.io/" target="_blank">Hexo</a>
-  </span>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2021 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
   <br />
-  <span
-    >licensed
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank"
-      >CC BY-NC 4.0</a
-    ></span
-  >
-</footer>
-<div>
+  <!-- go top -->
   <a id="gotop" class="fa fa-level-up"></a>
-</div>
+</footer>
 
 <script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
- 
+
+
 <script src="/js/common.js"></script>
 
 

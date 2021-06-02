@@ -1,0 +1,72 @@
+/*
+  * @Description: 分页
+  * @Author: yogwang
+  * @Date: 2021-05-31 15:25:37
+ * @Last Modified by: yogwang
+ * @Last Modified time: 2021-06-02 21:10:35
+ */
+#page-nav {
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 50px auto 5vh;
+}
+#page-nav >* {
+  min-width: 35px;
+  height: 35px;
+  line-height: 33px;
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+#page-nav >*.current {
+  color: #fff;
+  background: #0e90d2;
+  border-color: #0e90d2;
+  box-shadow: 2px 2px 4px #0e90d2;
+}
+#page-nav >*.extend {
+  font-size: 12px;
+}
+#article-nav {
+  font-size: 18px;
+  margin-top: 5vh;
+}
+#article-nav::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+#article-nav a {
+  display: inline-block;
+}
+#article-nav a:hover div {
+  transform: scale(1.03);
+}
+#article-nav strong {
+  font-size: 16px;
+  color: #008000;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+#article-nav strong::after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  margin: 5px 0;
+  display: block;
+}
+#article-nav div {
+  transition: transform 0.2s;
+}
+#article-nav #article-nav-older {
+  float: right;
+  text-align: right;
+}
+#article-nav #article-nav-older strong {
+  color: #808080;
+}

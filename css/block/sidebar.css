@@ -1,0 +1,218 @@
+/*
+ * @Description: 侧边栏样式
+ * @Author: yogwang
+ * @Date: 2021-05-31 15:30:50
+ * @Last Modified by: yogwang
+ * @Last Modified time: 2021-06-02 20:11:49
+ */
+#sidebar {
+  width: 250px;
+}
+#sidebar .widget-wrap {
+  color: #222;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+#sidebar .widget-wrap.shadow {
+  border: 1px solid #fafafa;
+  box-shadow: 3px 3px 10px #eaeaea;
+}
+#sidebar .widget-wrap ul,
+#sidebar .widget-wrap li {
+  line-height: 25px;
+  padding-right: 0.3rem;
+  margin: 0;
+}
+#sidebar .widget-wrap .widget-title {
+  font-weight: 500;
+  font-size: 15px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+#sidebar .widget-wrap .widget a {
+  max-width: 100%;
+  color: inherit;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  display: inline-block;
+  overflow: hidden;
+}
+#sidebar .widget-wrap .widget a:hover {
+  text-decoration: underline;
+}
+#sidebar .author-info {
+  color: #333;
+  text-align: center;
+}
+#sidebar .author-info-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 35px;
+  margin: 0 auto;
+  box-shadow: 3px 3px 8px #8c8c8c;
+  display: block;
+}
+#sidebar .author-info-nickname {
+  font-size: 22px;
+  font-weight: normal;
+  margin: 10px 0 15px;
+}
+#sidebar .author-info-bio {
+  color: #666;
+}
+#sidebar .author-info-txt {
+  font-size: 15px;
+  margin: 5px 0;
+}
+#sidebar .author-info-follow {
+  margin-top: 10px;
+}
+#sidebar .author-info-follow-item {
+  font-size: 24px;
+  color: #000;
+  margin: 0 5px;
+  display: inline-block;
+}
+#sidebar .shortcut-menu {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 5px;
+}
+#sidebar .shortcut-menu-item {
+  line-height: 25px;
+  text-align: center;
+  font-size: 12px;
+  margin: 10px auto;
+  border-radius: 5px;
+  display: block;
+  flex: 1;
+}
+#sidebar .shortcut-menu-item:hover,
+#sidebar .shortcut-menu-item.active {
+  color: #fff;
+  background: #000;
+}
+#sidebar .category-list-count {
+  margin-left: 5px;
+}
+#sidebar .category-list-count:before,
+#sidebar .category-list-count:after {
+  content: '[';
+  display: inline;
+}
+#sidebar .category-list-count:after {
+  content: ']';
+}
+#sidebar .archive-list {
+  padding-left: 0.8em;
+}
+#sidebar .archive-list-item {
+  display: flex;
+}
+#sidebar .archive-list-count {
+  margin-left: 5px;
+}
+#sidebar .archive-list-count:before,
+#sidebar .archive-list-count:after {
+  content: '[';
+  display: inline;
+}
+#sidebar .archive-list-count:after {
+  content: ']';
+}
+#sidebar .tag-list {
+  line-height: 1.7em;
+  padding-left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+#sidebar .tag-list-item {
+  min-width: 50%;
+  display: flex;
+}
+#sidebar .tag-list-item:hover {
+  color: #ff5722;
+}
+#sidebar .tag-list-item:hover .tag-list-count {
+  color: #ff5722;
+}
+#sidebar .tag-list-count {
+  color: #777;
+  font-weight: 500;
+  margin-left: 5px;
+}
+#sidebar .tag-list-count:before {
+  content: 'x';
+  display: inline;
+}
+#sidebar .tagcloud {
+  line-height: 1.5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#sidebar .tagcloud a {
+  margin: 0 3px;
+}
+/*
+ * 适配小屏幕
+ */
+@media (max-width: 970px) {
+  #sidebar {
+    width: 100%;
+    margin-top: 35px;
+  }
+  #sidebar .widget-wrap {
+    border: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+    box-shadow: none;
+  }
+  #sidebar .widget-wrap .widget-title {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+  }
+  #sidebar .widget-wrap.shadow {
+    border: none;
+    box-shadow: none;
+  }
+  #sidebar .author-info {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+  }
+  #sidebar .author-info-avatar {
+    width: 100px;
+    height: 100px;
+    grid-row-start: 1;
+    grid-row-end: 5;
+  }
+  #sidebar .author-info-nickname {
+    margin-bottom: 5px;
+  }
+  #sidebar .author-info-bio {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  #sidebar .author-info-txt {
+    line-height: 18px;
+    font-size: 13px;
+    margin: 0;
+  }
+  #sidebar .author-info-follow {
+    grid-column-start: 2;
+  }
+}
+@media (max-width: 780px) {
+  #sidebar .author-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
