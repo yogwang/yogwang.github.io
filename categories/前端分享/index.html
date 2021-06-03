@@ -64,7 +64,7 @@
       
   
     <h2 class="archive-article-title" itemprop="name">
-      <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+      <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
     </h2>
   
 
@@ -73,8 +73,15 @@
  
   <article class="article-excerpt">
     <p>最近在更新博客的样式，突然想到现在的flex布局已经可以定义间距了，所以大概整理了一下关于gap这个新属性资料。</p>
+<blockquote>
+<p><code>gap</code> 属性是用来设置网格行与列之间的间隙（gutters），该属性是 <code>row-gap</code> 与 <code>column-gap</code> 的简写形式。</p>
+</blockquote>
+<p>起初是在 Grid 布局中用 <code>grid-gap</code> 来设置行间距和列间距的，后来意识到 Multi-column 布局中有一个 <code>column-gap</code> 属性，同时存在 <code>grid-column-gap</code> 和 <code>column-gap</code> 对于开发者来说是一个很疑惑的问题。并且在大范围应用的 Flex 布局中，并没有一个很好的方法来设置行间距和列间距。</p>
+<p>于是CSS齐属属性规范开始调整，<code>gap</code> 代替了<code>grid-gap</code> 属性，并且规范对间隙属性进行了大统一，三种布局只需要使用 <code>gap</code> 属性就可以设置间距样式了。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/CSS-use-gap-in-flex-layout/#more">阅读全文</a>
+  </div>
 
 
      
@@ -111,7 +118,9 @@
   <article class="article-excerpt">
     <p>去年就开始说要更新博客主题了，拖到现在终于有点空闲时间和动力了。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/hexo-theme-edit/#more">阅读全文</a>
+  </div>
 
 
      
@@ -151,7 +160,9 @@
 </blockquote>
 <p>一句话解释：<strong>对象 <code>__proto__</code> 属性是JS内置的，它所对应值是原型对象的 <code>prototype</code> ；而 <code>prototype</code> 就是你自己写的原型属性、方法 加上 JS原型内置的属性、方法</strong></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/JS-proto-and-prototype/#more">阅读全文</a>
+  </div>
 
 
      
@@ -200,7 +211,9 @@
 <hr>
 <p>可以简单理解成 <code>new</code> 关键字帮我们处理了书写构造函数时一些固定的步骤</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/JS-what-dose-new-operators-do/#more">阅读全文</a>
+  </div>
 
 
      
@@ -238,7 +251,9 @@
     <p>之前有使用过 <code>flat()</code> 方法，但是一直不知道 <code>flatMap()</code> 方法，在使用 <code>map()</code> 方法组装集合的时候，在组装完成之后还要链式调用一下 <code>flat()</code>，如果可以知道 <code>flatMap()</code> 代码还能精简一点，也方便递归返回的数组内容。</p>
 <p>本来是上个月发现的，但隔了一个月才有时间写，已经想不起来当时怎么发现的 <code>flatMap()</code> 这个方法了…<br>就直接跳过前置场景，直接开始聊这两个扩展方法吧。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/JS-flat&flatMap/#more">阅读全文</a>
+  </div>
 
 
      
@@ -282,7 +297,9 @@
 <p>使用起来确实很方便，用 <code>|</code> 符号分隔就行，会按照 <strong>从前往后的顺序</strong> 依次 传入过滤器，然后返回转换后的值。</p>
 <p>等到后来再遇到适合的场景想起来使用 <code>filter</code> ，但又因为项目的历史原因没有去使用，因为自己都是局部使用 <strong><code>computed</code>计算</strong> 和 <strong>方法调用返回</strong> 来处理（<a target="_blank" rel="noopener" href="https://v3.vuejs.org/guide/migration/filters.html#_3-x-update">也是Vue3所推荐的替代过滤器的方式</a>）</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/vue-api-filter/#more">阅读全文</a>
+  </div>
 
 
      
@@ -326,7 +343,9 @@
 </ol>
 <p>简单的权重比较 <code>inline style &gt; ID &gt; Class &gt; Element &gt; *</code> 这个应该不需要说了吧，主要是多个选择器混合使用时计算的问题。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/CSS-specificity-selectors-weight/#more">阅读全文</a>
+  </div>
 
 
      
@@ -364,7 +383,9 @@
     <p>在思否上遇到一个问位运算符的问题 <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000039690782">字符串的位运算，是怎么执行的</a>，我也挺好奇的，就是为啥<strong>字符串进行位运算</strong>的时候返回的结果是 <code>0</code>，索性在解答这个问题的同时把<strong>位运算符</strong>都整理一遍。</p>
 <p>那么先来整理一下位运算符，最后再说明为什么字符串的处理结果为 <code>0</code></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/JS-operators/#more">阅读全文</a>
+  </div>
 
 
      
@@ -402,7 +423,9 @@
     <p>该来的一天还是来了，两年前立的Flag还是到了，现在在跟进项目配套的小程序开发，但对于写惯了 <a target="_blank" rel="noopener" href="https://stylus-lang.com/">Stylus</a> 的我，真的是太煎熬了，每次都忘记写冒号和分号…<br>所以就想着翻翻开发文档看 <code>.wxss</code> 支持不支持CSS预处理器的写法，比如 <code>SCSS</code>。明显这是不可能的，官方也没有计划支持，所以还是得自己动手。</p>
 <p>大概看了一下大家的解决方案，和我想的一样，使用 <a target="_blank" rel="noopener" href="https://gulpjs.com/">Gulp</a> 来自动化构建成 <code>.wxss</code> 文件。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/use-stylus-with-gulp-in-miniprogram/#more">阅读全文</a>
+  </div>
 
 
      
@@ -456,7 +479,9 @@
 <p>特别是最近一整个分类的类型和状态的都变更了，所以在业务逻辑内的魔术字符串也需要一个一个文件去同步修改，大部分的都被替换了，但还有一些零碎的地方没有被修改到，导致不断有 BUG 被提上来，这就很头疼了。</p>
 <p>所以我就想者怎么把业务逻辑内的魔术字符串使用一种方式替换掉，最开始我想法是把状态集中起来进行管理</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-type-and-status-management-dictionary/#more">阅读全文</a>
+  </div>
 
 
      
@@ -521,7 +546,7 @@
       <ul>
         
           <li>
-            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+            <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
           </li>
         
           <li>
@@ -572,7 +597,7 @@
 <footer id="footer">
   <!-- licensed -->
   <p>
-    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
   </p>
   <!-- copyright -->
   <p>

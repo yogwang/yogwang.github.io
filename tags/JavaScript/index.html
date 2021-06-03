@@ -77,7 +77,9 @@
 </blockquote>
 <p>一句话解释：<strong>对象 <code>__proto__</code> 属性是JS内置的，它所对应值是原型对象的 <code>prototype</code> ；而 <code>prototype</code> 就是你自己写的原型属性、方法 加上 JS原型内置的属性、方法</strong></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/JS-proto-and-prototype/#more">阅读全文</a>
+  </div>
 
 
      
@@ -126,7 +128,9 @@
 <hr>
 <p>可以简单理解成 <code>new</code> 关键字帮我们处理了书写构造函数时一些固定的步骤</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/JS-what-dose-new-operators-do/#more">阅读全文</a>
+  </div>
 
 
      
@@ -164,7 +168,9 @@
     <p>之前有使用过 <code>flat()</code> 方法，但是一直不知道 <code>flatMap()</code> 方法，在使用 <code>map()</code> 方法组装集合的时候，在组装完成之后还要链式调用一下 <code>flat()</code>，如果可以知道 <code>flatMap()</code> 代码还能精简一点，也方便递归返回的数组内容。</p>
 <p>本来是上个月发现的，但隔了一个月才有时间写，已经想不起来当时怎么发现的 <code>flatMap()</code> 这个方法了…<br>就直接跳过前置场景，直接开始聊这两个扩展方法吧。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/JS-flat&flatMap/#more">阅读全文</a>
+  </div>
 
 
      
@@ -202,7 +208,9 @@
     <p>在思否上遇到一个问位运算符的问题 <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000039690782">字符串的位运算，是怎么执行的</a>，我也挺好奇的，就是为啥<strong>字符串进行位运算</strong>的时候返回的结果是 <code>0</code>，索性在解答这个问题的同时把<strong>位运算符</strong>都整理一遍。</p>
 <p>那么先来整理一下位运算符，最后再说明为什么字符串的处理结果为 <code>0</code></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/JS-operators/#more">阅读全文</a>
+  </div>
 
 
      
@@ -248,7 +256,9 @@
 <p>ES6 引入了一种新的原始数据类型<code>Symbol</code>，表示独一无二的值。它是 JavaScript 语言的第七种数据类型</p>
 </blockquote>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-ES6-Symbol/#more">阅读全文</a>
+  </div>
 
 
      
@@ -287,7 +297,9 @@
 <p>ECMAScript 6 内提供了 4种 新结构 <code>Set</code>, <code>WeakSet</code>, <code>Map</code>, <code>WeakMap</code>，虽然已经是5年前的知识了，但是对于我来说还是新🤣</p>
 <p>本来想先聊 <code>Map</code> 的，但是仔细看了阮一峰老师的文章之后发现，确实是要从 <code>Set</code> 开始讲</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-ES6-MAP/#more">阅读全文</a>
+  </div>
 
 
      
@@ -325,7 +337,9 @@
     <p>今天在群里看到大家在讨论一个问题，就是 <code>this</code> 的指向，并且牵扯到了 <code>let</code>，<code>const</code> 的变量提升，比如说在全局顶部声明的 <code>let</code> 变量能否挂载到 <code>window</code> 下之类的。<br>还是老流程，先讨论第一个问题，然后再开始牵扯到后续的展开。</p>
 <p><code>this</code> 指向大概分为两种，普通函数内的 <code>this</code> 和 箭头函数内的 <code>this</code>，箭头函数内的 <code>this</code> 其实挺好理解的，主要是因为各种 <code>call()</code>、<code>apply()</code>、<code>bind()</code> 和 <code>new</code> 影响下的 <code>this</code> 指向问题。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-about-this/#more">阅读全文</a>
+  </div>
 
 
      
@@ -363,7 +377,9 @@
     <p>真是一坑未填又开一坑….现在阶段，for循环有4种，我们先把所有的 for 循环列出，一个一个的聊。</p>
 <p>从MDN上边，找到了 <strong>四种</strong> for 循环，分别是：<code>for</code>、<code>for...in</code>、<code>for...of</code> 和 <code>for await...of</code></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-for/#more">阅读全文</a>
+  </div>
 
 
      
@@ -405,7 +421,9 @@
 <p>相对于 <code>some()</code> 方法， 我知道 <code>find()</code> 方法会更加早一些，不知道为何，🤔明明 <code>find()</code> 方法才是更加新的特性( 也许因为子龙提到的因为jQuery？) </p>
 <p>所以今天我们来聊一聊 <code>find</code>/<code>findIndex</code>/<code>some</code> 以及 <code>every</code> 这4个使用起来感觉差不多的方法。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-array-find-some-every/#more">阅读全文</a>
+  </div>
 
 
      
@@ -446,7 +464,9 @@
 <p>最近遇到的一个坑，其实也不算是坑，只是自己没有了解清楚就在用了。</p>
 <p>以前在业务中声明数组变量时我都是使用的 <code>var arr = []</code> 来声明，<br>这次兴起用了一次 <code>var arr = new Array(8).fill([])</code> 声明并且填充内容时居然翻车了….</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-array-fill/#more">阅读全文</a>
+  </div>
 
 
      
@@ -511,7 +531,7 @@
       <ul>
         
           <li>
-            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+            <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
           </li>
         
           <li>
@@ -562,7 +582,7 @@
 <footer id="footer">
   <!-- licensed -->
   <p>
-    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
   </p>
   <!-- copyright -->
   <p>

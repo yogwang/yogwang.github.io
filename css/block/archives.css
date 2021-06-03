@@ -15,12 +15,12 @@
 .article-inner header li {
   list-style-type: none;
   padding: 0;
-  margin: 0 3px;
+  margin: 0 3px 0 0;
   display: flex;
 }
 .archive-article-inner header .article-tag-list::before,
 .article-inner header .article-tag-list::before {
-  content: 'Tags: ';
+  content: 'Tags：';
   display: inline;
 }
 .archive-article-inner header .article-tag-list li,

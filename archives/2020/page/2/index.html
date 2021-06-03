@@ -78,7 +78,9 @@
 <p>相对于 <code>some()</code> 方法， 我知道 <code>find()</code> 方法会更加早一些，不知道为何，🤔明明 <code>find()</code> 方法才是更加新的特性( 也许因为子龙提到的因为jQuery？) </p>
 <p>所以今天我们来聊一聊 <code>find</code>/<code>findIndex</code>/<code>some</code> 以及 <code>every</code> 这4个使用起来感觉差不多的方法。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-array-find-some-every/#more">阅读全文</a>
+  </div>
 
 
      
@@ -119,7 +121,9 @@
 <p>最近遇到的一个坑，其实也不算是坑，只是自己没有了解清楚就在用了。</p>
 <p>以前在业务中声明数组变量时我都是使用的 <code>var arr = []</code> 来声明，<br>这次兴起用了一次 <code>var arr = new Array(8).fill([])</code> 声明并且填充内容时居然翻车了….</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-array-fill/#more">阅读全文</a>
+  </div>
 
 
      
@@ -157,7 +161,9 @@
     <p>今天后端同学那边遇到了一个问题，那边跑一个react项目，<code>npm install</code> 直接报错，但是在我这边并没有报异常，后来发现他的 NPM 版本为 <code>3.10.10</code>， 我猜测是 NPM 版本太低的缘故，就顺便看了下 Node 的版本，版本是 <code>v6.10.0</code>, 所以直接给他更新了 NodeJS，正当我以为问题解决了的时候，后端同学又和我说，现在的项目可以跑起来了，但是之前的项目他跑不起来了。</p>
 <p>emmmm…..我又过去看了下报错信息，这会问题是 Node 给我更新掉了，版本太高项目跑不起来了….<br>所以，有了这篇关于 Node Version Manager (NVM) for Windows 的文章</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/nvm-install-use/#more">阅读全文</a>
+  </div>
 
 
      
@@ -195,7 +201,9 @@
     <p>偶尔会遇到PM提的需求，要加入滑动验证，但是不想使用付费的第三方验证，想就在前端实现滑块验证即可(zuò zuò yàng zi)，<br>这一段时间遇到两次要求加滑动验证了，就整理一下构思和部分伪代码逻辑。</p>
 <p>本例只是一个面子工程，不会牵扯到复杂的人机验证部分，所以如果需要考虑人机校验，还是推荐你选择靠谱的第三方行为验证，不要自己瞎折腾。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-slider-captcha/#more">阅读全文</a>
+  </div>
 
 
      
@@ -233,7 +241,9 @@
     <p>之前是想写一篇 <code>Nginx</code> 关于配置前后端项目公用一个域名笔记的，可是后来客户提供的是已经是由其它项目的服务器，他们是使用的 <code>Caddy</code> 作为 web 服务器，所以也就变成了这篇文章。</p>
 <p>我对于服务器环境配置可以说是一无所知，勉勉强强完成这次的项目部署，各位将就看看…😖</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/caddy-single-domain-vue-laravel-deployment/#more">阅读全文</a>
+  </div>
 
 
      
@@ -277,7 +287,9 @@
 <p>然而每次都要切换网络来完成需求，我觉得有点蠢，肯定有更加优雅的方式来实现的需求。</p>
 <p>所以就记一下这个办法。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/intranet-and-extranet-routes/#more">阅读全文</a>
+  </div>
 
 
      
@@ -326,7 +338,9 @@
 <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>init()</code> 创建了一个局部变量 <code>name</code> 和一个名为 <code>displayName()</code> 的函数。<br><code>displayName()</code> 是定义在 <code>init()</code> 里的内部函数（仅在 <code>init()</code> 函数体内可用），它没有自己的局部变量，<br>然而它可以访问到外部函数的变量，所以 <code>displayName()</code> 可以使用父函数 <code>init()</code> 中声明的变量 <code>name</code> 。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-closures/#more">阅读全文</a>
+  </div>
 
 
      
@@ -368,7 +382,9 @@
 <p>大概找了一下国内的相关问题并没有找到解决的方法，Google 出来也差不多，基本都是添加 Key 之后，需要创建新的实例才可以使用新添加的 Key。<br>那我需要对 <em>已经创建了的 <code>Droplet</code> 实例</em>  添加 <code>Key</code> 怎么办呢？</p>
 <p>相信大家在搜索该问题时已经添加好了自己的 <code>SSH Key</code>，具体添加创建 key 的过程我就不详述了，大家在官方 <a target="_blank" rel="noopener" href="https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/">文档</a> 中查找即可。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/digitalocean-created-droplets-add-ssh-key/#more">阅读全文</a>
+  </div>
 
 
      
@@ -409,7 +425,9 @@
 <p>Jeecg-boot支持不编码通过配置实现 <code>模糊查询</code>、 <code>匹配查询</code>、 <code>范围查询</code>、 <code>不匹配查询</code> 等规则，<br>但是页面查询字段，需跟后台 <code>Controller</code> 中 <code>Page</code> 的字段对应一致，就可以不需写后台代码自动生成查询条件SQL。</p>
 <p>例如：想实现模糊查询需求在查询值的前后加: <code>*</code></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/jeecg-boot-devDiary11/#more">阅读全文</a>
+  </div>
 
 
      
@@ -450,7 +468,9 @@
 <p>Class 可以通过extends关键字实现继承，这比 ES5 的通过修改原型链实现继承，要清晰和方便很多。</p>
 </blockquote>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-class-constructor/#more">阅读全文</a>
+  </div>
 
 
      
@@ -515,7 +535,7 @@
       <ul>
         
           <li>
-            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+            <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
           </li>
         
           <li>
@@ -566,7 +586,7 @@
 <footer id="footer">
   <!-- licensed -->
   <p>
-    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
   </p>
   <!-- copyright -->
   <p>

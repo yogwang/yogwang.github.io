@@ -83,7 +83,9 @@
 <p>ES6 引入了一种新的原始数据类型<code>Symbol</code>，表示独一无二的值。它是 JavaScript 语言的第七种数据类型</p>
 </blockquote>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-ES6-Symbol/#more">阅读全文</a>
+  </div>
 
 
      
@@ -122,7 +124,9 @@
 <p>ECMAScript 6 内提供了 4种 新结构 <code>Set</code>, <code>WeakSet</code>, <code>Map</code>, <code>WeakMap</code>，虽然已经是5年前的知识了，但是对于我来说还是新🤣</p>
 <p>本来想先聊 <code>Map</code> 的，但是仔细看了阮一峰老师的文章之后发现，确实是要从 <code>Set</code> 开始讲</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-ES6-MAP/#more">阅读全文</a>
+  </div>
 
 
      
@@ -160,7 +164,9 @@
     <p>今天洗澡的时候在听 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Dy4y1B73J">饥人谷的模拟面试 (五)</a> 的时候，一直觉得这次面试的学生有点差，如果是我来面话可能已经让他回家了，但是 方方老师 很有耐心，在中间问道 <code>.sync</code> 的时候我 ???? 完全没有印象了。</p>
 <p>正好自暴自弃了2个月没有更新了，所以复习一下 <code>v-bind</code> 的三个修饰符 [ <code>.prop</code>, <code>.camel</code>, <code>.sync</code> ] </p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/vue-v-bind-props-camel-sync/#more">阅读全文</a>
+  </div>
 
 
      
@@ -200,7 +206,9 @@
 <p>直到前一段时间，我在一个场景下想在 <code>v-for</code> 循环渲染的组件下 <code>slot</code> 模板中想使用 <code>ref</code> 注册成一个实例集合来调用时，发现怎么样重写返回的都只是一个组件实例，而不是一个组件实例集合。</p>
 <p>所以有了这样一篇笔记。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/vue-api-ref/#more">阅读全文</a>
+  </div>
 
 
      
@@ -238,7 +246,9 @@
     <p>今天在群里看到大家在讨论一个问题，就是 <code>this</code> 的指向，并且牵扯到了 <code>let</code>，<code>const</code> 的变量提升，比如说在全局顶部声明的 <code>let</code> 变量能否挂载到 <code>window</code> 下之类的。<br>还是老流程，先讨论第一个问题，然后再开始牵扯到后续的展开。</p>
 <p><code>this</code> 指向大概分为两种，普通函数内的 <code>this</code> 和 箭头函数内的 <code>this</code>，箭头函数内的 <code>this</code> 其实挺好理解的，主要是因为各种 <code>call()</code>、<code>apply()</code>、<code>bind()</code> 和 <code>new</code> 影响下的 <code>this</code> 指向问题。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-about-this/#more">阅读全文</a>
+  </div>
 
 
      
@@ -276,7 +286,9 @@
     <p>真是一坑未填又开一坑….现在阶段，for循环有4种，我们先把所有的 for 循环列出，一个一个的聊。</p>
 <p>从MDN上边，找到了 <strong>四种</strong> for 循环，分别是：<code>for</code>、<code>for...in</code>、<code>for...of</code> 和 <code>for await...of</code></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-for/#more">阅读全文</a>
+  </div>
 
 
      
@@ -318,7 +330,9 @@
 <p>相对于 <code>some()</code> 方法， 我知道 <code>find()</code> 方法会更加早一些，不知道为何，🤔明明 <code>find()</code> 方法才是更加新的特性( 也许因为子龙提到的因为jQuery？) </p>
 <p>所以今天我们来聊一聊 <code>find</code>/<code>findIndex</code>/<code>some</code> 以及 <code>every</code> 这4个使用起来感觉差不多的方法。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-array-find-some-every/#more">阅读全文</a>
+  </div>
 
 
      
@@ -359,7 +373,9 @@
 <p>最近遇到的一个坑，其实也不算是坑，只是自己没有了解清楚就在用了。</p>
 <p>以前在业务中声明数组变量时我都是使用的 <code>var arr = []</code> 来声明，<br>这次兴起用了一次 <code>var arr = new Array(8).fill([])</code> 声明并且填充内容时居然翻车了….</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-array-fill/#more">阅读全文</a>
+  </div>
 
 
      
@@ -397,7 +413,9 @@
     <p>偶尔会遇到PM提的需求，要加入滑动验证，但是不想使用付费的第三方验证，想就在前端实现滑块验证即可(zuò zuò yàng zi)，<br>这一段时间遇到两次要求加滑动验证了，就整理一下构思和部分伪代码逻辑。</p>
 <p>本例只是一个面子工程，不会牵扯到复杂的人机验证部分，所以如果需要考虑人机校验，还是推荐你选择靠谱的第三方行为验证，不要自己瞎折腾。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-slider-captcha/#more">阅读全文</a>
+  </div>
 
 
      
@@ -446,7 +464,9 @@
 <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>init()</code> 创建了一个局部变量 <code>name</code> 和一个名为 <code>displayName()</code> 的函数。<br><code>displayName()</code> 是定义在 <code>init()</code> 里的内部函数（仅在 <code>init()</code> 函数体内可用），它没有自己的局部变量，<br>然而它可以访问到外部函数的变量，所以 <code>displayName()</code> 可以使用父函数 <code>init()</code> 中声明的变量 <code>name</code> 。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-closures/#more">阅读全文</a>
+  </div>
 
 
      
@@ -511,7 +531,7 @@
       <ul>
         
           <li>
-            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+            <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
           </li>
         
           <li>
@@ -562,7 +582,7 @@
 <footer id="footer">
   <!-- licensed -->
   <p>
-    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
   </p>
   <!-- copyright -->
   <p>

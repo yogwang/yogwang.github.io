@@ -63,7 +63,7 @@
       
   
     <h2 class="archive-article-title" itemprop="name">
-      <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+      <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
     </h2>
   
 
@@ -72,8 +72,15 @@
  
   <article class="article-excerpt">
     <p>最近在更新博客的样式，突然想到现在的flex布局已经可以定义间距了，所以大概整理了一下关于gap这个新属性资料。</p>
+<blockquote>
+<p><code>gap</code> 属性是用来设置网格行与列之间的间隙（gutters），该属性是 <code>row-gap</code> 与 <code>column-gap</code> 的简写形式。</p>
+</blockquote>
+<p>起初是在 Grid 布局中用 <code>grid-gap</code> 来设置行间距和列间距的，后来意识到 Multi-column 布局中有一个 <code>column-gap</code> 属性，同时存在 <code>grid-column-gap</code> 和 <code>column-gap</code> 对于开发者来说是一个很疑惑的问题。并且在大范围应用的 Flex 布局中，并没有一个很好的方法来设置行间距和列间距。</p>
+<p>于是CSS齐属属性规范开始调整，<code>gap</code> 代替了<code>grid-gap</code> 属性，并且规范对间隙属性进行了大统一，三种布局只需要使用 <code>gap</code> 属性就可以设置间距样式了。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/CSS-use-gap-in-flex-layout/#more">阅读全文</a>
+  </div>
 
 
      
@@ -110,7 +117,9 @@
   <article class="article-excerpt">
     <p>去年就开始说要更新博客主题了，拖到现在终于有点空闲时间和动力了。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/hexo-theme-edit/#more">阅读全文</a>
+  </div>
 
 
      
@@ -150,7 +159,9 @@
 </blockquote>
 <p>一句话解释：<strong>对象 <code>__proto__</code> 属性是JS内置的，它所对应值是原型对象的 <code>prototype</code> ；而 <code>prototype</code> 就是你自己写的原型属性、方法 加上 JS原型内置的属性、方法</strong></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/JS-proto-and-prototype/#more">阅读全文</a>
+  </div>
 
 
      
@@ -199,7 +210,9 @@
 <hr>
 <p>可以简单理解成 <code>new</code> 关键字帮我们处理了书写构造函数时一些固定的步骤</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/JS-what-dose-new-operators-do/#more">阅读全文</a>
+  </div>
 
 
      
@@ -238,7 +251,9 @@
 <p>最少的需要使用到1个微信开放接口：<code>wx.login</code>，<br>如果需要获取用户头像和昵称，需要调用 <code>wx.getUserProfile</code> 方法 (<code>wx.getUserInfo</code> 已调整<sub>【尾声#1】</sub>)，并且需要在绑定在按钮上 ，并会唤起授权提示；<br>如果需要获取用户手机号信息，需要在按钮上绑定 <code>getPhoneNumber</code> 事件。</p>
 <p>一般来说非敏感信息可以直接调用，含有敏感信息的接口需要绑定在按钮上，在用户自行操作之后才可以调用。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/miniprogram-devDiary-05-authorize/#more">阅读全文</a>
+  </div>
 
 
      
@@ -276,7 +291,9 @@
     <p>之前有使用过 <code>flat()</code> 方法，但是一直不知道 <code>flatMap()</code> 方法，在使用 <code>map()</code> 方法组装集合的时候，在组装完成之后还要链式调用一下 <code>flat()</code>，如果可以知道 <code>flatMap()</code> 代码还能精简一点，也方便递归返回的数组内容。</p>
 <p>本来是上个月发现的，但隔了一个月才有时间写，已经想不起来当时怎么发现的 <code>flatMap()</code> 这个方法了…<br>就直接跳过前置场景，直接开始聊这两个扩展方法吧。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/JS-flat&flatMap/#more">阅读全文</a>
+  </div>
 
 
      
@@ -320,7 +337,9 @@
 <p>使用起来确实很方便，用 <code>|</code> 符号分隔就行，会按照 <strong>从前往后的顺序</strong> 依次 传入过滤器，然后返回转换后的值。</p>
 <p>等到后来再遇到适合的场景想起来使用 <code>filter</code> ，但又因为项目的历史原因没有去使用，因为自己都是局部使用 <strong><code>computed</code>计算</strong> 和 <strong>方法调用返回</strong> 来处理（<a target="_blank" rel="noopener" href="https://v3.vuejs.org/guide/migration/filters.html#_3-x-update">也是Vue3所推荐的替代过滤器的方式</a>）</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/vue-api-filter/#more">阅读全文</a>
+  </div>
 
 
      
@@ -367,7 +386,9 @@
 <p>需要注意的是，小程序<strong>只可以跟指定的域名进行网络通信</strong>，需要事先设置通讯域名（服务器域名请在 「小程序后台-开发-开发设置-服务器域名」 中进行配置）。</p>
 <p>可以查看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/ability/network.html#%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B">配置流程</a> 了解一下具体注意项。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/miniprogram-devDiary-04-request/#more">阅读全文</a>
+  </div>
 
 
      
@@ -411,7 +432,9 @@
 </ol>
 <p>简单的权重比较 <code>inline style &gt; ID &gt; Class &gt; Element &gt; *</code> 这个应该不需要说了吧，主要是多个选择器混合使用时计算的问题。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/CSS-specificity-selectors-weight/#more">阅读全文</a>
+  </div>
 
 
      
@@ -448,7 +471,9 @@
   <article class="article-excerpt">
     <p>一开始按照 Vue 的思路下来，会认为生命周期很重要，需要完整的看一遍，但是其实整个小程序开发完之后，生命周期的概念其实并不是很重要，<br>大概分成 <code>小程序</code> 的生命周期 和 <code>页面/组件</code> 的生命周期。<br>这些生命周期函数中 主要就是使用 <code>onShow</code> 和 <code>onLoad</code> 两个，用来获取和设置初始参数，发起请求等等。<br>其它的几个回调函数其实很少有用到，但是还是聊一聊吧。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/miniprogram-devDiary-03-lifecycle/#more">阅读全文</a>
+  </div>
 
 
      
@@ -513,7 +538,7 @@
       <ul>
         
           <li>
-            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+            <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
           </li>
         
           <li>
@@ -564,7 +589,7 @@
 <footer id="footer">
   <!-- licensed -->
   <p>
-    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
   </p>
   <!-- copyright -->
   <p>

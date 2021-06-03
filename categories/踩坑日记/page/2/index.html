@@ -75,7 +75,9 @@
     <p>这两天同时写 3 个项目，脑子有点乱，每天白天写一个晚上另外写一个，第二天可能就是第三个项目，所以每天上午到公司之后有大概 1 个多小时就处于梦游的状态，就等着群里有谁提问题，然后我解决的时候可以把脑回路给转换过来，但是这段时间可能因为疫情的原因吧，活跃的人越来越少了，还是自己写写 demo 把今年要学的 TS 给学起来吧。</p>
 <p>本来是想等到 Vue 更新 3.0 的时候再学的，但是感觉可能等到 3.0 出来了应该要是下半年了，如果上半年就只学习 React，不配合 TS 的就有点太浪费了，好多小伙伴就是用 TS 在开发 React 项目。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/TypeScript-learning-00/#more">阅读全文</a>
+  </div>
 
 
      
@@ -113,7 +115,9 @@
     <p>之前开发的时间比较赶，所以在某些还没弄明白的地方我直接使用了 <code>v-model</code> 来绑定数据，没并没有使用 <code>v-decorator</code>，所以表单验证需要自己手动去写，异常提示也是需要单独的去做，</p>
 <p>现在空下来了，重新整理了一下业务代码，总的来说大部分的表单元素都有demo可以对照着看，复杂的部分也只是上传组件或者一些联动的部分。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/jeecg-boot-devDiary09/#more">阅读全文</a>
+  </div>
 
 
      
@@ -151,7 +155,9 @@
     <p>接着 <a href="/2019/AnnualParty-devDiay01/">年会开发日记 01</a> 的签到墙，<br>里边用到了 <code>WebSocket</code> 来实现用户微信扫码签到，然后后端推送签到用户信息到前端，<br>前端收到数据之后创建元素添加到 3D 墙中。</p>
 <p>本来是想直接自己写的，但是有后来又加入了礼品活跃气氛，就要用到用户列表的展示和抽取过程中的随机效果，虽然哪些人获奖是后台返回给我的。<br>所以这些用户信息需要在多组件内共用，那我就懒得自己写了，就去找了 Vue 的组件库了。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/AnnualParty-devDiay03/#more">阅读全文</a>
+  </div>
 
 
      
@@ -191,7 +197,9 @@
 </blockquote>
 <p>年会预备了一个红包雨的活动，虽然到最后也没有用上，但是笔记还是要写的。<br>整个流程是关注公众号，然后回复 <code>抢红包</code> 返回一个授权地址获取用户授权信息，然后跳转到活动h5页面，抢红包的同时会在大荧幕上实时展示排名数据。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/AnnualParty-devDiay02/#more">阅读全文</a>
+  </div>
 
 
      
@@ -229,7 +237,9 @@
     <p>年会签到做到最后特效实现的部分，使用 Js 来不断绘制 Canvas 会出现擦除背景图的情况，而且并不流畅，<br>所以又考虑了下 CSS3 的动画属性，可是 Javascript 并不能控制 CSS3 动画。</p>
 <p>昨天折腾到晚上 10 点还没怎么好的思路，今天看到一个开源 WebGL Js 库 👉 <a target="_blank" rel="noopener" href="https://threejs.org/">ThreeJs.org</a></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/AnnualParty-devDiay01/#more">阅读全文</a>
+  </div>
 
 
      
@@ -271,7 +281,9 @@
 </blockquote>
 <p>👉 <a target="_blank" rel="noopener" href="https://dafrok.github.io/vue-baidu-map/#/zh/start/usage">开发手册</a></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/jeecg-boot-devDiary08/#more">阅读全文</a>
+  </div>
 
 
      
@@ -310,7 +322,9 @@
 <p>所以就想着直接在 <code>@/config/router.config.js</code> 中修改基础路由，<br>但是因为不知名原因，路由并没有生效。</p>
 <p>感觉像是有设置路由守卫全部都跳转回了 <code>#/user/login</code></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/jeecg-boot-devDiary07/#more">阅读全文</a>
+  </div>
 
 
      
@@ -350,7 +364,9 @@
 </blockquote>
 <p>Github 上有一个人回复了，框架是使用的 <a target="_blank" rel="noopener" href="https://www.tiny.cloud/">TinyMCE</a> 这个富文本编辑器的 <a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce-vue">封装库</a>，<br>所以在其手册里找到了，修改 <a target="_blank" rel="noopener" href="https://www.tiny.cloud/docs/configure/file-image-upload">上传方式的部分</a></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/jeecg-boot-devDiary06/#more">阅读全文</a>
+  </div>
 
 
      
@@ -390,7 +406,9 @@
 </blockquote>
 <p>在 <code>@/utils/request.js</code> 中创建了 Axios 实例，<br>并且在 <code>@/api/manage.js</code> 中封装了常用函数<br>只需要在组件内按需导入即可。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/jeecg-boot-devDiary05/#more">阅读全文</a>
+  </div>
 
 
      
@@ -428,7 +446,9 @@
     <p>开坑 2019 年 10 月 28 日</p>
 <p>暂时没有找到好的方法，在不修改原来 layout 框架的情况下。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/jeecg-boot-devDiary04/#more">阅读全文</a>
+  </div>
 
 
      
@@ -493,7 +513,7 @@
       <ul>
         
           <li>
-            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+            <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
           </li>
         
           <li>
@@ -544,7 +564,7 @@
 <footer id="footer">
   <!-- licensed -->
   <p>
-    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
   </p>
   <!-- copyright -->
   <p>

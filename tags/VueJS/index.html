@@ -81,7 +81,9 @@
 <p>使用起来确实很方便，用 <code>|</code> 符号分隔就行，会按照 <strong>从前往后的顺序</strong> 依次 传入过滤器，然后返回转换后的值。</p>
 <p>等到后来再遇到适合的场景想起来使用 <code>filter</code> ，但又因为项目的历史原因没有去使用，因为自己都是局部使用 <strong><code>computed</code>计算</strong> 和 <strong>方法调用返回</strong> 来处理（<a target="_blank" rel="noopener" href="https://v3.vuejs.org/guide/migration/filters.html#_3-x-update">也是Vue3所推荐的替代过滤器的方式</a>）</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/vue-api-filter/#more">阅读全文</a>
+  </div>
 
 
      
@@ -116,7 +118,9 @@
 <p>最近在考虑把遍码习惯整理一下，一个良好的遍码习惯可以有效减少一个项目的维护成本，<br>因为不可能在整个项目的生命周期中，均由最初的开发人员来维护，或者所有的代码都是由你一个人写出来的，<br>改善代码的可读性，可以让开发人员尽快理解历史的业务代码。</p>
 <p>之前也有研究过 <a href="/2020/choose-the-ESLint-formatting-rule-that-suits-you/">ESlint的格式化风格</a> 选择一款适合自己的来规范自己，但是了解的越多，越觉得还是需要团队互相讨论来找一个大家能都接受的妥协结果，所以最后还是选择了 <code>Prettier</code> ，因为我觉得其它两种风格相对来说太严苛了，很多项目都是自己开发并没有多人合作开发的情况出现，所以使用 Prettier 相对来说所自由一些…</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/vue-coding-style-and-lint/#more">阅读全文</a>
+  </div>
 
 
      
@@ -154,7 +158,9 @@
     <p>今天洗澡的时候在听 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Dy4y1B73J">饥人谷的模拟面试 (五)</a> 的时候，一直觉得这次面试的学生有点差，如果是我来面话可能已经让他回家了，但是 方方老师 很有耐心，在中间问道 <code>.sync</code> 的时候我 ???? 完全没有印象了。</p>
 <p>正好自暴自弃了2个月没有更新了，所以复习一下 <code>v-bind</code> 的三个修饰符 [ <code>.prop</code>, <code>.camel</code>, <code>.sync</code> ] </p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/vue-v-bind-props-camel-sync/#more">阅读全文</a>
+  </div>
 
 
      
@@ -194,7 +200,9 @@
 <p>直到前一段时间，我在一个场景下想在 <code>v-for</code> 循环渲染的组件下 <code>slot</code> 模板中想使用 <code>ref</code> 注册成一个实例集合来调用时，发现怎么样重写返回的都只是一个组件实例，而不是一个组件实例集合。</p>
 <p>所以有了这样一篇笔记。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/vue-api-ref/#more">阅读全文</a>
+  </div>
 
 
      
@@ -231,7 +239,9 @@
   <article class="article-excerpt">
     <p>今天在写一个模拟微信的聊天组件的时候，需要获取消息列表的滚动条高度，来实现每次发送接受消息数据时，自动滚动到列表末尾。<br>当然就想到了用 <code>Computed</code> 属性来计算容器的 <code>scrollHeight</code>。<br>然后就发现一开始滚动条会定位到列表最后，但是测着测着就发现怎么超出了一定高度范围之后就不会滚动到列表末尾了，而是固定在了一个值。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/vue-computed-DOM-element-attributes/#more">阅读全文</a>
+  </div>
 
 
      
@@ -273,7 +283,9 @@
 </blockquote>
 <p>👉 <a target="_blank" rel="noopener" href="https://dafrok.github.io/vue-baidu-map/#/zh/start/usage">开发手册</a></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/jeecg-boot-devDiary08/#more">阅读全文</a>
+  </div>
 
 
      
@@ -312,7 +324,9 @@
 <p>所以就想着直接在 <code>@/config/router.config.js</code> 中修改基础路由，<br>但是因为不知名原因，路由并没有生效。</p>
 <p>感觉像是有设置路由守卫全部都跳转回了 <code>#/user/login</code></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/jeecg-boot-devDiary07/#more">阅读全文</a>
+  </div>
 
 
      
@@ -350,7 +364,9 @@
     <p>开坑 2019 年 10 月 28 日</p>
 <p>暂时没有找到好的方法，在不修改原来 layout 框架的情况下。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/jeecg-boot-devDiary04/#more">阅读全文</a>
+  </div>
 
 
      
@@ -403,7 +419,9 @@
 </ul>
 <p>看了 Jeecg-Boot 的技术手册完全按照上边来的写也是不行，还是跳转到 <code>/</code>，在 Vue DevTools 中检查又没有问题。<br>就又折腾了好久，又是查文档又是看官方的教学视频。<br>最后真的是烦了，就偷懒了一把，结果成了….原因是啥呢???</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/jeecg-boot-devDiary03/#more">阅读全文</a>
+  </div>
 
 
      
@@ -448,7 +466,9 @@
 <h2 id="使用-ant-design-vue-上传组件的头像上传。"><a href="#使用-ant-design-vue-上传组件的头像上传。" class="headerlink" title="使用 ant-design-vue 上传组件的头像上传。"></a>使用 <code>ant-design-vue</code> 上传组件的头像上传。</h2><p>在 Jeecg-boot 中头像上传是 antD 的上传组件 <code>listType=&quot;picture-card&quot;</code>，<br>在教程里是直接使用 <code>upload</code> 组件的 <code>defaultFileList</code> API，<br>但他们 DEMO 是 <code>listType=&quot;text&quot;</code>，或 <code>listType=&quot;picture-card&quot;</code> 但绑定的是 <code>fileList</code>，<br>并不是 <code>defaultFileList</code>，就和 ant-design-vue 的文档是一摸一样的照着读了一遍，</p>
 <p>然后我直接复制的官方用户头像 DEMO,就出现了问题。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/jeecg-boot-devDiary02/#more">阅读全文</a>
+  </div>
 
 
      
@@ -513,7 +533,7 @@
       <ul>
         
           <li>
-            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+            <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
           </li>
         
           <li>
@@ -564,7 +584,7 @@
 <footer id="footer">
   <!-- licensed -->
   <p>
-    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
   </p>
   <!-- copyright -->
   <p>

@@ -74,7 +74,9 @@
     <p>以前一直都是写的 Vue，所以在刚接触小程序的时候会疑惑，小程序是否也有和 Vue 一样有路由表，但是看完开放文档之后发现没有路由表，就很疑惑。<br>那小程序怎么去做页面跳转的呢？</p>
 <h3 id="首先，虽然小程序没有路由表，但是在全局配置文件-app-json-中有-pages-信息"><a href="#首先，虽然小程序没有路由表，但是在全局配置文件-app-json-中有-pages-信息" class="headerlink" title="首先，虽然小程序没有路由表，但是在全局配置文件(app.json)中有 pages 信息"></a>首先，虽然小程序没有路由表，但是在全局配置文件(<code>app.json</code>)中有 <code>pages</code> 信息</h3><p>用于指定小程序由哪些页面组成，每一项都对应一个页面的 路径（含文件名） 信息。<br>文件名不需要写文件后缀，框架会自动去寻找对应位置的文件进行处理。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/miniprogram-devDiary-02-router/#more">阅读全文</a>
+  </div>
 
 
      
@@ -131,7 +133,9 @@
 ├─ project.config.json
 └─ sitemap.json<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/miniprogram-devDiary-01-structure/#more">阅读全文</a>
+  </div>
 
 
      
@@ -170,7 +174,9 @@
 <p>当时是想给我们的烘焙工作室的公众号做一个配套的营销工具，所以在18年底有去了解，只不过后来只做了一个展示型网站 <a target="_blank" rel="noopener" href="http://www.sl-cake.cn/">岁礼气球派对</a>，后来又改版了好几次现在主营是派对布置，好了有点扯远了。</p>
 <p>填坑的动力主要是业务驱动，因为现在正好有这个任务安排，在回顾2020也大概提到了。所以今天先开始概括一下没有开发过小程序的前端，对于小程序的一些疑问。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/miniprogram-devDiary-00/#more">阅读全文</a>
+  </div>
 
 
      
@@ -208,7 +214,9 @@
     <p>在思否上遇到一个问位运算符的问题 <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000039690782">字符串的位运算，是怎么执行的</a>，我也挺好奇的，就是为啥<strong>字符串进行位运算</strong>的时候返回的结果是 <code>0</code>，索性在解答这个问题的同时把<strong>位运算符</strong>都整理一遍。</p>
 <p>那么先来整理一下位运算符，最后再说明为什么字符串的处理结果为 <code>0</code></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/JS-operators/#more">阅读全文</a>
+  </div>
 
 
      
@@ -246,7 +254,9 @@
     <p>该来的一天还是来了，两年前立的Flag还是到了，现在在跟进项目配套的小程序开发，但对于写惯了 <a target="_blank" rel="noopener" href="https://stylus-lang.com/">Stylus</a> 的我，真的是太煎熬了，每次都忘记写冒号和分号…<br>所以就想着翻翻开发文档看 <code>.wxss</code> 支持不支持CSS预处理器的写法，比如 <code>SCSS</code>。明显这是不可能的，官方也没有计划支持，所以还是得自己动手。</p>
 <p>大概看了一下大家的解决方案，和我想的一样，使用 <a target="_blank" rel="noopener" href="https://gulpjs.com/">Gulp</a> 来自动化构建成 <code>.wxss</code> 文件。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/use-stylus-with-gulp-in-miniprogram/#more">阅读全文</a>
+  </div>
 
 
      
@@ -285,7 +295,9 @@
 <p>好自我介绍结束，开始正题：</p>
 <h2 id="💻-怎么入的前端坑？"><a href="#💻-怎么入的前端坑？" class="headerlink" title="💻 怎么入的前端坑？"></a>💻 怎么入的前端坑？</h2><p>之前一直学的计算机通信嘛，大概是13/14年有一届青少年科技创新大赛被老师拉进团队开始接触网站制作，那段时间接触的是<code>PHP</code>和<code>ASP</code>。快实习的时候一起比赛的学长找我去他们公司做，算是正式进入到前端领域（是一个外包公司）。<br>当时也没有认识到 <strong>外包</strong> 和 <strong>自研</strong> 的区别，工作也简单就是做一个 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/37420039">页面仔</a> 还原设计稿的，一开始一个月熟悉项目开发流程，后边就开始独立自己切，每天都一直努力还原设计稿，这段时间积累<code>HTML</code>、<code>CSS</code>的知识确实是最快的时候，我到现在都没有怎么回顾过了，基本看到设计稿大概就知道应该是怎么样的一个HTML结构，CSS应该怎么去写，有哪些部分可以复用，到实习结束大概已经切了大概有一百个网站（我们实习期很长有一年）</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/jirengu-share-my-life-88th/#more">阅读全文</a>
+  </div>
 
 
      
@@ -322,7 +334,9 @@
   <article class="article-excerpt">
     <p>不知不觉庚子年已经过完了，都不知道怎么就过完了看似艰难的一年，甚至觉得中间缺失另一部分的时间，还有很多想做的事情还没来得及做，可能年纪大了吧，真像别人说的，现在的一年只占用了 <strong>1/27</strong> 份的记忆空间，所以回忆起来觉得时间过得特别快，以后也只会越来越快。<br>说实话去年没有什么好回顾的，所以一直拖到正月都过完了都不想动手写，很多事情都不顺心，也出现了很多计划之外的事情。不管是工作还是生活上，特别是感情上，导致全年大部分的时间情绪都不高涨，先回顾一下去年吧。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/summary-at-the-end-of-2020/#more">阅读全文</a>
+  </div>
 
 
      
@@ -361,7 +375,9 @@
 <p>周二的时候知乎推送了一个问题 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/362269092/answer/1406119109">在恋爱中，女孩子真的会遇到一个满眼都是自己的男孩子吗?</a>, 第一次接触到一个名词 <strong>关系依存自尊</strong>，确实一直以来都把感情看得很重要，并且已经深刻影响到自己生活的方方面面。</p>
 <p><code>KnowYourself</code> 的回答真的让我一下子明白过来，原来在不经意中我已经情感勒索了很久并不自知，也理解了她口中的压力并不是我以前所想的那样……</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/about-emotional-blackmail/#more">阅读全文</a>
+  </div>
 
 
      
@@ -399,7 +415,9 @@
     <p>设计模式是我在2018年在成都工作的时候听 <a target="_blank" rel="noopener" href="https://blog.meathill.com/">肉山老师</a> 的直播<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mW411Y71x">JavaScript 设计模式 导言</a>的时候就想学习的一个东西，但是一直拖拖拖，虽然后来买了肉老师的 Chat <a target="_blank" rel="noopener" href="https://gitbook.cn/gitchat/activity/5ccedbcfe5bb505613f45186">从 jQuery 里学习设计模式</a>，但是看了一头雾水，后来同样买了肉老师推荐的书《设计模式：可复用面向对象软件的基础》，也是在家里吃灰了半年多。<br>一直想把整个设计模式都了解一下，不用吃透大概明了就可以，但是每次都提不起开坑的念头，如果再写成学习笔记的话，学习周期会大大拉长。</p>
 <p>这次在项目的不断迭代中，我遇到了一个问题，就是 <a href="/2020/JS-type-and-status-management-dictionary/">项目中的类型和状态管理</a>，所以就想着是否有一个合适的设计模式来解决问题，所以就被逼迫着捡起来了……</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/design-pattern-learning-L00/#more">阅读全文</a>
+  </div>
 
 
      
@@ -453,7 +471,9 @@
 <p>特别是最近一整个分类的类型和状态的都变更了，所以在业务逻辑内的魔术字符串也需要一个一个文件去同步修改，大部分的都被替换了，但还有一些零碎的地方没有被修改到，导致不断有 BUG 被提上来，这就很头疼了。</p>
 <p>所以我就想者怎么把业务逻辑内的魔术字符串使用一种方式替换掉，最开始我想法是把状态集中起来进行管理</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-type-and-status-management-dictionary/#more">阅读全文</a>
+  </div>
 
 
      
@@ -518,7 +538,7 @@
       <ul>
         
           <li>
-            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+            <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
           </li>
         
           <li>
@@ -569,7 +589,7 @@
 <footer id="footer">
   <!-- licensed -->
   <p>
-    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
   </p>
   <!-- copyright -->
   <p>

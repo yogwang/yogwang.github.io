@@ -64,7 +64,7 @@
       
   
     <h2 class="archive-article-title" itemprop="name">
-      <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+      <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
     </h2>
   
 
@@ -73,8 +73,15 @@
  
   <article class="article-excerpt">
     <p>最近在更新博客的样式，突然想到现在的flex布局已经可以定义间距了，所以大概整理了一下关于gap这个新属性资料。</p>
+<blockquote>
+<p><code>gap</code> 属性是用来设置网格行与列之间的间隙（gutters），该属性是 <code>row-gap</code> 与 <code>column-gap</code> 的简写形式。</p>
+</blockquote>
+<p>起初是在 Grid 布局中用 <code>grid-gap</code> 来设置行间距和列间距的，后来意识到 Multi-column 布局中有一个 <code>column-gap</code> 属性，同时存在 <code>grid-column-gap</code> 和 <code>column-gap</code> 对于开发者来说是一个很疑惑的问题。并且在大范围应用的 Flex 布局中，并没有一个很好的方法来设置行间距和列间距。</p>
+<p>于是CSS齐属属性规范开始调整，<code>gap</code> 代替了<code>grid-gap</code> 属性，并且规范对间隙属性进行了大统一，三种布局只需要使用 <code>gap</code> 属性就可以设置间距样式了。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/CSS-use-gap-in-flex-layout/#more">阅读全文</a>
+  </div>
 
 
      
@@ -118,7 +125,9 @@
 </ol>
 <p>简单的权重比较 <code>inline style &gt; ID &gt; Class &gt; Element &gt; *</code> 这个应该不需要说了吧，主要是多个选择器混合使用时计算的问题。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2021/CSS-specificity-selectors-weight/#more">阅读全文</a>
+  </div>
 
 
      
@@ -156,7 +165,9 @@
     <p>之前在看一个文章的时候有提到过，<code>background</code> 的这两个属性，确实不常用到，以至于没有几个人知道这两个新属性。<br>和他们同时期出的 <code>background-size</code> 因为经常用到所以被大众所熟知。</p>
 <p>对的，这次我要说的是<code>background-origin</code> 和 <code>background-clip</code> 两兄弟</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/CSS-neglected-background-attributes/#more">阅读全文</a>
+  </div>
 
 
      
@@ -195,7 +206,9 @@
 <p>比如说<br>移入的时候先让元素增加宽度，接着增加高度，最后显示内部元素，<br>鼠标移出的时候，先收缩高度隐藏元素，最后还原宽度。</p>
 <p>看了一些回复有些答非所问，或者推荐用 Js 的。<br>最开始想的是，<code>animation</code> 是不是有一个 <code>direction</code> 属性可以设置反向么，<br>就想看 <code>transition</code> 是不是也有，但是并没有。<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition">CSS transition - MDN</a><br>所以就想着用 <code>:hover</code> 来覆盖原先的 <code>transition</code></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/CSS-reverse-hover-transition/#more">阅读全文</a>
+  </div>
 
 
      
@@ -233,7 +246,9 @@
     <p><img src="/2019/CSS-striped-background/preview.jpg" alt="preview"></p>
 <p>刚刚写年会红包雨的时候用到了 <code>linear-gradient</code> 来实现条纹背景，但是突然卡壳想不起来怎么写了。<br>就去百度一下，所以现在把它记下来，方便以后查阅。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/CSS-striped-background/#more">阅读全文</a>
+  </div>
 
 
      
@@ -273,7 +288,9 @@
 </blockquote>
 <p>今天早上心有点静不下来，就去 SegmentFault 上看了看文章，有一篇文章 <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020966360">【“寒冬”三年经验前端面试总结之 CSS 篇】</a>，<br>里边的 <code>垂直居中的方法四</code> 我觉得挺奇怪的。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/CSS-position/#more">阅读全文</a>
+  </div>
 
 
      
@@ -316,7 +333,9 @@
 <p>我就和他说你设置伪类的宽高不就好了嘛？（我一直以来都是用伪类设置背景图片的形式来做 icon）<br>他说不行，我就看到了这个独特的写法…</p>
 <p>他是直接在 <code>content</code> 里边写了图片的 <code>url</code>，然后神奇的是居然可以显示 <code>content</code> 里填写的图片！！！</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/CSS-pseudo-elements-content/#more">阅读全文</a>
+  </div>
 
 
      
@@ -354,7 +373,9 @@
     <p>在 html 中手动输入多个空格，在页面解析的时候都会变成一个空格，<br>如果在开头甚至一个空格都不会显示</p>
 <p>但就是一定要求在开头/中间显示多个空格，这个问题怎么解决呢？</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/html-space-display/#more">阅读全文</a>
+  </div>
 
 
      
@@ -399,7 +420,9 @@
 <p>也就是说，每个圆角都有 <code>圆角半径</code>、 <code>水平半长轴</code> 和 <code>垂直半长轴</code> 属性值:</p>
 <p><img src="/2019/CSS-border_radius-semicircle/border-radius.png" alt="border-radius示例"></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/CSS-border_radius-semicircle/#more">阅读全文</a>
+  </div>
 
 
      
@@ -437,7 +460,9 @@
     <p>单行文字的截断非常简单，但多行文字的截断就很麻烦了，<br>经常要配合 JavaScript 或者 其他语言进行字符串截断，然后拼接上 “…”</p>
 <p>突然发现 <code>line-clamp</code> 它可以完成以纯 CSS 的多行文本截断，<br>并且配合 <code>text-overflow: ellipsis</code> 就可以在尾部加上省略号，<br>当然 <code>overflow: hidden</code> 并不可缺少</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2019/CSS-text_truncation/#more">阅读全文</a>
+  </div>
 
 
      
@@ -502,7 +527,7 @@
       <ul>
         
           <li>
-            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+            <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
           </li>
         
           <li>
@@ -553,7 +578,7 @@
 <footer id="footer">
   <!-- licensed -->
   <p>
-    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
   </p>
   <!-- copyright -->
   <p>

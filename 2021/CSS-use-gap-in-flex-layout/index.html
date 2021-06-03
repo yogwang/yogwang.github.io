@@ -45,30 +45,30 @@
 <main id="container">
   <!-- 文章详情 Post Detail -->
 <div
-  id="post-use-gap-in-flex-layout"
+  id="post-CSS-use-gap-in-flex-layout"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
 >
   <div class="article-inner">
-    <div class="article-meta">
-      <div>
-        
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
   <div class="article-category">
     <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
-        
+          
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
 
-      </div>
-       
+        </div>
+         
 <div class="article-date">
   <time datetime="2021-05-29T07:02:19.000Z" itemprop="datePublished">2021-05-29</time>
 </div>
-    </div>
-    
-    <header class="article-header">
+      </div>
       
   
     <h1 class="article-title" itemprop="name">
@@ -78,7 +78,7 @@
 
       <div class="article-updated">
         
-        latest update：<time datetime="2021-05-29T07:10:25.375Z" itemprop="datePublished">2021-05-29 15:10</time>
+        最后更新：<time datetime="2021-06-03T07:08:23.010Z" itemprop="datePublished">2021-06-03 15:08</time>
         
       </div>
     </header>
@@ -88,10 +88,72 @@
  
   <article class="article-content">
     <p>最近在更新博客的样式，突然想到现在的flex布局已经可以定义间距了，所以大概整理了一下关于gap这个新属性资料。</p>
+<blockquote>
+<p><code>gap</code> 属性是用来设置网格行与列之间的间隙（gutters），该属性是 <code>row-gap</code> 与 <code>column-gap</code> 的简写形式。</p>
+</blockquote>
+<p>起初是在 Grid 布局中用 <code>grid-gap</code> 来设置行间距和列间距的，后来意识到 Multi-column 布局中有一个 <code>column-gap</code> 属性，同时存在 <code>grid-column-gap</code> 和 <code>column-gap</code> 对于开发者来说是一个很疑惑的问题。并且在大范围应用的 Flex 布局中，并没有一个很好的方法来设置行间距和列间距。</p>
+<p>于是CSS齐属属性规范开始调整，<code>gap</code> 代替了<code>grid-gap</code> 属性，并且规范对间隙属性进行了大统一，三种布局只需要使用 <code>gap</code> 属性就可以设置间距样式了。</p>
 <span id="more"></span>
 
-
-<h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><p><a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/g/gap/">gap | CSS-Tricks</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap">gap (grid-gap) - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-align-3/#propdef-gap">CSS Box Alignment Module Level 3 - W3C Editor’s Draft</a></p>
+<p>我一直觉得 Grid 布局的属性太多，而且早期的兼容性很差，相对于 Flex 布局 我觉得最好用的属性就是 <code>gird-gap</code>，因为 <code>flex</code> 只有 5 种对齐属性，如果需要做间距的话就很麻烦，只能使用 <code>margin</code>。<br>今年年初的时候一大波的公众号在推送 <code>flex</code> 已经可以使用 <code>gap</code> 属性了，正好趁着这段时间博客主题改版，正好有用上。 </p>
+<h3 id="🔨-使用方式"><a href="#🔨-使用方式" class="headerlink" title="🔨 使用方式"></a>🔨 使用方式</h3><p>在 <code>grid</code> 与 <code>multi-column</code> 种使用、表现形式是和原先是一样的</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">#grid-box</span> <span class="token punctuation">&#123;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+  <span class="token property">grid-template</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span>3<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span> / <span class="token function">repeat</span><span class="token punctuation">(</span>3<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 15px 20px<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/CSS-use-gap-in-flex-layout/gap_in_grid.jpg" alt="gap in grid"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">#column-box</span> <span class="token punctuation">&#123;</span>
+  <span class="token property">column-count</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/CSS-use-gap-in-flex-layout/gap_in_column.jpg" alt="gap in column"></p>
+<p>在 <code>flex</code> 中用法与 <code>gird</code> 中一样，并且同时可以使用 <code>justify-content</code> 和 <code>align-content</code></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">#flex-box</span> <span class="token punctuation">&#123;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 20px 20px<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> space-between<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/CSS-use-gap-in-flex-layout/gap_in_flex.jpg" alt="gap in flex"></p>
+<h4 id="✨-gap-可接收的值："><a href="#✨-gap-可接收的值：" class="headerlink" title="✨ gap 可接收的值："></a>✨ <code>gap</code> 可接收的值：</h4><ol>
+<li><code>normal</code>：默认值，默认为0px，在 <code>multi-column-layout</code> 中为 <code>1em</code>;</li>
+<li><code>&lt;length&gt;</code>: 精确值，例如：<code>px</code>, <code>em</code>, <code>rem</code>, <code>vw</code>, <code>vmin</code> 之类的精确值；</li>
+<li><code>&lt;percentage&gt;</code>: 百分比值，表示相对栅格容器的百分比；</li>
+<li><code>calc()</code>: 计算值，经过计算函数来指定间距大小；</li>
+<li><code>inherit</code>： 继承自父级；</li>
+<li><code>initial</code>： 初始（或默认）值；</li>
+<li><code>unset</code>： 设为未设定。</li>
+</ol>
+<hr>
+<h3 id="🚫-兼容性"><a href="#🚫-兼容性" class="headerlink" title="🚫 兼容性"></a>🚫 兼容性</h3><ul>
+<li><p><strong>Grid布局</strong> 还是支持 <code>grid-gap</code> 属性，但这是为了兼容那些不支持 <code>gap</code> 属性的浏览器，处于类似于<strong>私有前缀</strong>的状态了，MDN上是建议使用 <code>gap</code> 属性。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://caniuse.com/mdn-css_properties_gap_grid_context">CSS property: gap: Supported in Grid Layout</a></li>
+</ul>
+</li>
+<li><p><strong>Flex布局</strong> 对于 <code>gap</code> 属性的支持，还处于草案阶段 <small> [2021/6/3] </small>，如果需要在生产环境使用，可能需要进行考量，虽说主流浏览器全部都已经支持了。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://caniuse.com/mdn-css_properties_gap_flex_context">CSS property: gap: Supported in Flex Layout</a></li>
+</ul>
+</li>
+<li><p><strong>Multi-column布局</strong> 已经支持了 <code>gap</code> 属性，但是只有列间距，没有行间距的概念，所以设置 <code>row-gap</code> 是没有效果的。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://caniuse.com/mdn-css_properties_gap_multicol_context">CSS property: gap: Supported in Multi-column Layout</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="🎃-一些疑惑"><a href="#🎃-一些疑惑" class="headerlink" title="🎃 一些疑惑"></a>🎃 一些疑惑</h3><ul>
+<li><p><strong>根据谁的大小来计算百分比？</strong><br>依据布局容器的 <code>content-box</code> 来确认百分比，与 <code>padding/margin</code> 的计算方式一致。</p>
+</li>
+<li><p><strong>为何有时会失效？</strong><br>需要容器有对应确定的宽高值，否则为 <code>0</code>。</p>
+</li>
+<li><p><strong>Safari 中已经支持了 <code>gap</code> 的 百分比值 和  <code>calc()</code>值</strong><br>2021年6月3日测试</p>
+</li>
+</ul>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap">gap (grid-gap) - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-align-3/#propdef-gap">CSS Box Alignment Module Level 3 - W3C Editor’s Draft</a></p>
+<p><a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/g/gap/">gap | CSS-Tricks</a><br><a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2020/06/css-gap-history/">CSS gap属性进化史 « 张鑫旭-鑫空间-鑫生活</a></p>
  
   </article>
 
@@ -156,7 +218,7 @@
       <ul>
         
           <li>
-            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+            <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
           </li>
         
           <li>
@@ -207,7 +269,7 @@
 <footer id="footer">
   <!-- licensed -->
   <p>
-    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
   </p>
   <!-- copyright -->
   <p>

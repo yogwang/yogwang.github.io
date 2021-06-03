@@ -3,7 +3,7 @@
  * @Author: yogwang
  * @Date: 2021-05-31 15:18:04
  * @Last Modified by: yogwang
- * @Last Modified time: 2021-06-02 18:50:44
+ * @Last Modified time: 2021-06-02 21:25:43
  */
 #wrap {
   max-width: 1200px;
@@ -36,6 +36,16 @@
 #container .article-excerpt p,
 #container .article-content p {
   line-height: 1.8;
+}
+#container .article-excerpt ul ul,
+#container .article-content ul ul,
+#container .article-excerpt ol ul,
+#container .article-content ol ul,
+#container .article-excerpt ul ol,
+#container .article-content ul ol,
+#container .article-excerpt ol ol,
+#container .article-content ol ol {
+  margin-top: -1rem;
 }
 #container .article-excerpt code:not([class]),
 #container .article-content code:not([class]),

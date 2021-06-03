@@ -74,7 +74,9 @@
     <p>昨天项目有新需求用到了，Ant Design Vue <code>1.5.0+</code> 的新组件 <code>Descriptions</code>，<br>所以就单独升级了一下UI库依赖，从 v1.3.9 升到了 v1.5.3，然后新组件是可以用了，但是按钮组件出现问题了；<br>当<code>type</code> 为 <code>danger</code> 时，背景会变成白色，同时文字也是白色的，就会如下图一样的情况。</p>
 <p><img src="/2020/jeecg-boot-devDiary10/snipaste.jpg" alt="问题截图"></p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/jeecg-boot-devDiary10/#more">阅读全文</a>
+  </div>
 
 
      
@@ -114,7 +116,9 @@
 <p>然后我就 <code>? ? ?</code>，以前一直都不知道这个 <code>as</code>，然后就赶紧百度，结果没有一个匹配的结果。</p>
 <p>然后就只能从阮一峰老师的ES6入门里边找…</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/what-the-export-x-as-x/#more">阅读全文</a>
+  </div>
 
 
      
@@ -153,7 +157,9 @@
 <p>所以就用到了 <code>webpack-dev-server</code> 的 <code>proxy</code>，但是有一些部分我并没有整明白，所以写一篇文章梳理一下。</p>
 <p>最简单的就是直接在 <code>webpack</code> 的配置文件中启用 proxy 就可以了，</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/webpack-dev-server-proxy-note/#more">阅读全文</a>
+  </div>
 
 
      
@@ -190,7 +196,9 @@
   <article class="article-excerpt">
     <p>今天在写一个模拟微信的聊天组件的时候，需要获取消息列表的滚动条高度，来实现每次发送接受消息数据时，自动滚动到列表末尾。<br>当然就想到了用 <code>Computed</code> 属性来计算容器的 <code>scrollHeight</code>。<br>然后就发现一开始滚动条会定位到列表最后，但是测着测着就发现怎么超出了一定高度范围之后就不会滚动到列表末尾了，而是固定在了一个值。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/vue-computed-DOM-element-attributes/#more">阅读全文</a>
+  </div>
 
 
      
@@ -227,7 +235,9 @@
   <article class="article-excerpt">
     <p>这段时间总是看到有人提到 <code>arguments</code> 隐式参数, 并且在 <a target="_blank" rel="noopener" href="https://jirengu.com/">方方老师</a> 的面试经中也提到了这个词，但是好像很多人不知道怎么一回事。<br>确实在 <code>ES6</code> 普及之后，有了 <code>...</code> 展开运算符之后就很少有用到 <code>arguments</code> 了，并且我在写这篇文章之前还总是拼错单词，因为我喜欢自己定义 <code>parameter</code> 形参…</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-whats-arguments/#more">阅读全文</a>
+  </div>
 
 
      
@@ -264,7 +274,9 @@
   <article class="article-excerpt">
     <p>一直以来没有整理查阅过数组的原生方法，所以对什么时候用 <code>map</code>, 什么时候用 <code>forEach</code> 并不是很明确，完全看心情。<br>只是知道 <code>map</code>有返回值而 <code>forEach</code> 没有需要自己操作，所以今天准备好好梳理一下记录下来。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/JS-map-and-forEach/#more">阅读全文</a>
+  </div>
 
 
      
@@ -302,7 +314,9 @@
     <p>这两天同时写 3 个项目，脑子有点乱，每天白天写一个晚上另外写一个，第二天可能就是第三个项目，所以每天上午到公司之后有大概 1 个多小时就处于梦游的状态，就等着群里有谁提问题，然后我解决的时候可以把脑回路给转换过来，但是这段时间可能因为疫情的原因吧，活跃的人越来越少了，还是自己写写 demo 把今年要学的 TS 给学起来吧。</p>
 <p>本来是想等到 Vue 更新 3.0 的时候再学的，但是感觉可能等到 3.0 出来了应该要是下半年了，如果上半年就只学习 React，不配合 TS 的就有点太浪费了，好多小伙伴就是用 TS 在开发 React 项目。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/TypeScript-learning-00/#more">阅读全文</a>
+  </div>
 
 
      
@@ -345,7 +359,9 @@
 <li>ESLint + Prettier <sub><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/prettier-eslint">detail</a></sub></li>
 </ul>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/choose-the-ESLint-formatting-rule-that-suits-you/#more">阅读全文</a>
+  </div>
 
 
      
@@ -382,7 +398,9 @@
   <article class="article-excerpt">
     <p>今天想起自己一直依赖没有更新全局依赖，就直接在 <code>bash</code> 里边输入 <code>ncu -g</code> 居然提示 <code>No dependencies.</code><br>我就纳闷了，打错命令了吗，为啥提示没有依赖？<br>项目内依赖检查更新是没问题的，但是检测全局依赖就显示没有依赖，换了几个终端还是这个问题。<br>我怀疑是我全局以来的路径设置错了(我是使用 npm 来安装全局依赖，yarn 安装项目依赖)<br>查看了 npm 的全局依赖路径发现没错啊。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/update-global-dependencies-with-npm-check-updates/#more">阅读全文</a>
+  </div>
 
 
      
@@ -422,7 +440,9 @@
 <p>从 接触客户了解需求 到 前端 再到 后端 最后 运维，基本上都沾了点，然后除了 <code>CSS</code> 部分玩出了花，其他都是半瓶子水到处乱晃。</p>
 <p>从学校离职之后去到成都就还是找的外包公司去作企业网站模板（当时自己也就这个拿手了，投的也大多都是这个类型的公司），所以技术栈就是 16 年学的那些东西。</p>
   </article>
-   
+  <div class="article-more-link">
+    <a href="/2020/summary-at-the-end-of-2019/#more">阅读全文</a>
+  </div>
 
 
      
@@ -487,7 +507,7 @@
       <ul>
         
           <li>
-            <a href="/2021/use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
+            <a href="/2021/CSS-use-gap-in-flex-layout/">在 Flex 布局中使用 gap 属性</a>
           </li>
         
           <li>
@@ -538,7 +558,7 @@
 <footer id="footer">
   <!-- licensed -->
   <p>
-    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> unless stating additionally.
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
   </p>
   <!-- copyright -->
   <p>
