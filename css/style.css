@@ -186,7 +186,13 @@ img {
 #container .article-content ul ol,
 #container .article-excerpt ol ol,
 #container .article-content ol ol {
-  margin-top: -1rem;
+  margin-top: 0;
+}
+#container .article-excerpt ul li > p,
+#container .article-content ul li > p,
+#container .article-excerpt ol li > p,
+#container .article-content ol li > p {
+  margin-bottom: 0.5em;
 }
 #container .article-excerpt code:not([class]),
 #container .article-content code:not([class]),
@@ -512,9 +518,6 @@ img {
   text-align: center;
   background: #f5f5f5;
   padding: 4vh 0;
-  position: absolute;
-  left: 0;
-  bottom: 0;
 }
 #footer p {
   margin: 0;
@@ -630,6 +633,7 @@ img {
   font-size: 24px;
   font-weight: normal;
   color: #222;
+  margin-top: 1em;
   margin-bottom: 0;
 }
 .article-inner .article-header .article-updated {

@@ -45,7 +45,13 @@
 #container .article-content ul ol,
 #container .article-excerpt ol ol,
 #container .article-content ol ol {
-  margin-top: -1rem;
+  margin-top: 0;
+}
+#container .article-excerpt ul li > p,
+#container .article-content ul li > p,
+#container .article-excerpt ol li > p,
+#container .article-content ol li > p {
+  margin-bottom: 0.5em;
 }
 #container .article-excerpt code:not([class]),
 #container .article-content code:not([class]),
