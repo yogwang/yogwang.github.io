@@ -641,6 +641,23 @@ img {
   text-align: right;
   color: #777;
 }
+.article-inner .article-content table thead {
+  color: #fff;
+  background: #333;
+}
+.article-inner .article-content table thead tr {
+  height: 50px;
+}
+.article-inner .article-content table thead tr th {
+  padding: 0 15px;
+}
+.article-inner .article-content table tbody tr {
+  height: 50px;
+  border-bottom: 1px solid #333;
+}
+.article-inner .article-content table tbody tr td {
+  padding: 0 15px;
+}
 #about {
   width: 100%;
   padding: 5vh 0;
