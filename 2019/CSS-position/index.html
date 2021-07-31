@@ -84,6 +84,8 @@
 
       <div class="article-updated">
         
+        最后更新：<time datetime="2021-07-31T07:35:03.224Z" itemprop="datePublished">2021-07-31 15:35</time>
+        
       </div>
     </header>
     
@@ -126,6 +128,31 @@
 <p>我一直记忆的是相对于父级做定位。</p>
 <p>以上</p>
 <p>2019 年 11 月 20 日</p>
+<hr>
+<h3 id="2021年7月31日更新："><a href="#2021年7月31日更新：" class="headerlink" title="2021年7月31日更新："></a>2021年7月31日更新：</h3><p>今天在写 <a href="/2021/border-style-of-special-border-box/">数据大屏 “炫酷” 容器边框实现</a> 的时候，突然发现 <code>position:absolute</code> 的定位起始点其实不是从<strong>定位祖先</strong>的左上角开始的，而是去除 <code>border-width</code> 的，小伙伴们请留意哦。</p>
+<p>演示例子 <a target="_blank" rel="noopener" href="https://codepen.io/yogwang/pen/JjNvxdB">🌰 CodePen link</a></p>
+<p>顺便在补充一下，如果定位的值是百分比，那么这个百分比值是通过其 <strong>定位祖先</strong> 的 <code>content</code> + <code>padding</code> 值来计算得出的，比如说：</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.father</span><span class="token punctuation">&#123;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 1000px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 1000px<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 50px solid red<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+  <span class="token property">box-sizing</span><span class="token punctuation">:</span> content-box<span class="token punctuation">;</span>  <span class="token comment">/* 默认盒模型 */</span>
+<span class="token punctuation">&#125;</span>
+<span class="token selector">.sub</span><span class="token punctuation">&#123;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 10%<span class="token punctuation">;</span> <span class="token comment">/* 等同于 left:110px */</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>为什么等于 <code>left:20px</code>？因为父级容器的 <code>width</code> 被 <code>border-area</code> 和 <code>padding-area</code> 撑开了，但是不计算 <code>border-area</code>，<br>所以 <code>left = (contentWidth + paddingWidth*2) * 10% = (1000px + 50px*2) * 10% = 110px</code>   </p>
+<hr>
+<p>如果把上边的例子的 <code>.father</code> 的盒模型改成 <code>border-box</code> 那么：<code>left: 10%</code> 就等于 <code>left: 90px</code> 了。</p>
+<p><strong>为何？</strong></p>
+<p>因为把和模型修改成 <code>border-box</code> 之后，CSS中设置的 <code>width</code> 就等于 <code>border-area</code> + <code>padding-area</code> + <code>content-area</code> 的总和，而因为 <code>width</code>、<code>border-width</code> 和 <code>padding-width</code> 是固定值，所以 <code>content-area</code> 就会被压缩。<br>所以在计算 <code>left</code> 百分比值时<strong>需要减去边框所占用的宽度</strong>，既是 <code>left = (width - borderWidth*2) * 10% = (1000px - 50px*2) * 10% = 90px</code></p>
+<hr>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position">position - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model">CSS 基础框盒模型介绍 - CSS（层叠样式表） | MDN</a></p>
  
   </article>
 
@@ -151,7 +178,7 @@
 </div>
 
 <script>
-const postDate = "2019-11-20"
+const postDate = "2021-07-31"
 const difference = moment().diff(postDate, 'days')
 const isExpired = difference > 300
 if (isExpired){
