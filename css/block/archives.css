@@ -90,7 +90,7 @@
   color: #333;
   padding: 1em 0;
   border-bottom: 1px solid #ddd;
-  margin-bottom: 5vh;
+  margin-bottom: 3vh;
 }
 .article-inner .article-header .article-title {
   font-size: 24px;
@@ -103,6 +103,21 @@
   font-size: 13px;
   text-align: right;
   color: #777;
+}
+.article-inner .article-entry {
+  position: relative;
+}
+.article-inner .article-entry #expired-tag {
+  min-height: 35px;
+  line-height: 35px;
+  color: #7d6970;
+  background: rgba(255,192,203,0.2);
+  padding: 0 10px;
+  border-radius: 5px;
+  margin-bottom: 2vh;
+}
+.article-inner .article-entry #expired-tag:empty {
+  display: none;
 }
 .article-inner .article-content table thead {
   color: #fff;
