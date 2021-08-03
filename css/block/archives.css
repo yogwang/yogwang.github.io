@@ -37,6 +37,11 @@
 .article-inner header .article-category {
   margin-left: auto;
 }
+.archive-article-inner img[src*='#center'],
+.article-inner img[src*='#center'] {
+  margin-left: auto;
+  margin-right: auto;
+}
 .archive-article {
   padding: 3vh 15px 5px;
   border-top: 5px solid #404040;

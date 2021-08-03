@@ -99,14 +99,52 @@
 <p><strong>首先</strong> 就是讲述一下 Markdown 语法当中的图片标记：</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">![alt text](&#x2F;src&#x2F;of&#x2F;image.jpg &quot;title&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>说实话，我在写这篇分享之前，完全不知道 图片标记 是有一个可选的 <code>title</code> 属性的，一直以为只有 <code>path</code> 和 <code>alt</code> 两个属性。(当然我是知道有一些 Markdown 扩展/转换器提供了一些额外的拓展属性，比如 <a target="_blank" rel="noopener" href="https://kramdown.gettalong.org/quickref.html#block-attributes">Kramdown</a>)</p>
-<p>按照 肉大 以及 Baron 的说法，可以使用 <code>#hash</code>、<code>?query</code> 或者直接使用 <code>alt</code> 和 <code>title</code> 属性的形式来实现。<br>但使用 <code>alt</code> 和 <code>title</code> 来实现，我的想法与 Baron 一致并不赞同以及提倡滥用 <code>alt</code> 和 <code>title</code> 属性。</p>
+<p>按照 肉大 以及 Baron Schwartz 的说法，可以使用 <code>#hash</code>、<code>?query</code> 或者直接使用 <code>alt</code> 和 <code>title</code> 属性的形式来实现。<br>但使用 <code>alt</code> 和 <code>title</code> 来实现，我的想法与 Baron 一致并不赞同以及提倡滥用 <code>alt</code> 和 <code>title</code> 属性。</p>
 <p>所以还是考虑使用 <code>#hash</code> 的方式来实现，为何不适用 <code>?query</code> 的形式，因为我国内的镜像是放在 <strong><em>Aliyun OSS</em></strong> 当中，一些多余的 <code>query</code> 参数可能会影响资源的加载。</p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>实现的部分其实不用多说，其实就是在语法当中的 <code>path</code> 部分加上 <code>#hash</code> 值，然后使用 CSS 的属性选择起来匹配：</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">![test](&#x2F;test.jpg#center &quot;test&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://yogwang.site/img/userimg.jpg#center" alt="test" title="test"></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">img[src$="#center"]</span><span class="token punctuation">&#123;</span>
+  <span class="token property">margin-left</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+  <span class="token property">margin-right</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果预览 👉<br><img src="/2021/CSS-use-attribute-selector-add-style-to-the-image/test.jpg#center" alt="test" title="test"></p>
+<p>但是如果想使用多个属性就会有一些问题，比如说我该怎么去 <strong>分隔</strong> 他们。</p>
+<p>Baron 的想法是使用 <strong>空格</strong>分隔 (<code>space-delimited</code>)，并且修改 <code>$</code> 使用 <code>~</code> 来匹配：</p>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">![test](&#x2F;test.jpg# center border &quot;test&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">img[src~="center"]</span><span class="token punctuation">&#123;</span>
+  <span class="token property">margin-left</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+  <span class="token property">margin-right</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token selector">img[src~="border"]</span> <span class="token punctuation">&#123;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 2px solid black
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但是 Hexo 在编译时，会认为语法错误，直接输出成为文本内容。<br>👉 <code>![test](/test.jpg# center border &quot;test&quot;)</code></p>
+<p>所以需要改成转义后的 <strong>空格</strong>（<code>%20</code>）来书写，才可以被编译为图片，但是这样书写就不能被属性选择器的 <code>~</code> 符所匹配到。</p>
+<p>而且我觉得 <code>%20</code> 也不便于记忆，所以我继续选择使用 <code>#</code> 来分隔，并且在每个样式之前都加上 <code>#</code>，例如：</p>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">![test](&#x2F;test.jpg#center#border &quot;test&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>同样的，属性选择器也需要变更，因为多个样式，就不能使用 <code>$</code> 或 <code>~</code> 来匹配了，需改成 <code>*</code> 来匹配。<br><small>具体可以查看 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors#%E8%AF%AD%E6%B3%95">属性选择器 | MDN</a></small></p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">img[src*="#center"]</span><span class="token punctuation">&#123;</span>
+  <span class="token property">margin-left</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+  <span class="token property">margin-right</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token selector">img[src*="#border"]</span> <span class="token punctuation">&#123;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 2px solid black
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果预览 👉</p>
+<style>
+img[src*="#center"]{
+  margin-left: auto;
+  margin-right: auto;
+}
+img[src*="#border"] {
+  border: 2px solid black
+}
+</style>
+<p><img src="/2021/CSS-use-attribute-selector-add-style-to-the-image/test.jpg#center#border" alt="test" title="test"></p>
+<p>暂时还没有发现任何影响，如果你知道这样书写会有问题，那么请 <a href="mailto:yogwang@foxmail.com?subject=吐槽你的文章">📧 Mail 给我吧</a> ！</p>
 <hr>
 <h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p><strong>✨ 为什么不用书写 <code>HTML</code> 的方式来实现，不是更加自由吗？</strong></p>
-<p>因为编译会有问题，如果在 markdown 中书写了，<code>HTML</code> 标签，那么在标签闭合之前，其中所有的内容都不会被处理，比如说在 <a target="_blank" rel="noopener" href="https://www.xaprb.com/blog/how-to-style-images-with-markdown/">这篇文章</a> 中提到的：</p>
+<p>因为编译会有问题，如果在 markdown 中书写了，<code>HTML</code> 标签，那么在标签闭合之前，其中所有的内容都不会被处理，比如说 Baron Schwartz 在文中提到的：</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">&lt;div style&#x3D;&quot;width:150px; height:100px&quot;&gt;
 ![Kitten](&#x2F;media&#x2F;2018&#x2F;08&#x2F;kitten.jpg)
 &lt;&#x2F;div&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -114,7 +152,6 @@
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">width</span><span class="token punctuation">:</span>150px<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span>100px</span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
 ![Kitten](/media/2018/08/kitten.jpg)
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 
 <h2 id="参考文档："><a href="#参考文档：" class="headerlink" title="参考文档："></a>参考文档：</h2><p><a target="_blank" rel="noopener" href="https://blog.meathill.com/tech/fe/how-to-style-images-in-markdown.html">给 Markdown 里的图片增加样式 – 山维空间</a><br><a target="_blank" rel="noopener" href="https://www.xaprb.com/blog/how-to-style-images-with-markdown/">How to Style Images With Markdown</a></p>
 <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors">属性选择器 - CSS | MDN</a></p>

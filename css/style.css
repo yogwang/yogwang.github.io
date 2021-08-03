@@ -23,7 +23,7 @@ small { font-size: 80% }
 sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline }
 sup { top: -.5em }
 sub { bottom: -.25em }
-img { -webkit-box-sizing: border-box; box-sizing: border-box; vertical-align: middle; border: 0; max-width: 100%;}
+img { -webkit-box-sizing: border-box; box-sizing: border-box; vertical-align: middle; border: 0; max-width: 100%; display: block;}
 svg:not(:root) { overflow: hidden }
 figure { margin: 0 }
 code, kbd, pre, samp { font-family: Monaco, Menlo, Consolas, "Courier New", monospace; font-size: 1em }
@@ -573,6 +573,11 @@ img {
 .archive-article-inner header .article-category,
 .article-inner header .article-category {
   margin-left: auto;
+}
+.archive-article-inner img[src*='#center'],
+.article-inner img[src*='#center'] {
+  margin-left: auto;
+  margin-right: auto;
 }
 .archive-article {
   padding: 3vh 15px 5px;
