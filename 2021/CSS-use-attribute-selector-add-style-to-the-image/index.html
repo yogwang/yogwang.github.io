@@ -101,7 +101,17 @@
 <p>说实话，我在写这篇分享之前，完全不知道 图片标记 是有一个可选的 <code>title</code> 属性的，一直以为只有 <code>path</code> 和 <code>alt</code> 两个属性。(当然我是知道有一些 Markdown 扩展/转换器提供了一些额外的拓展属性，比如 <a target="_blank" rel="noopener" href="https://kramdown.gettalong.org/quickref.html#block-attributes">Kramdown</a>)</p>
 <p>按照 肉大 以及 Baron Schwartz 的说法，可以使用 <code>#hash</code>、<code>?query</code> 或者直接使用 <code>alt</code> 和 <code>title</code> 属性的形式来实现。<br>但使用 <code>alt</code> 和 <code>title</code> 来实现，我的想法与 Baron 一致并不赞同以及提倡滥用 <code>alt</code> 和 <code>title</code> 属性。</p>
 <p>所以还是考虑使用 <code>#hash</code> 的方式来实现，为何不适用 <code>?query</code> 的形式，因为我国内的镜像是放在 <strong><em>Aliyun OSS</em></strong> 当中，一些多余的 <code>query</code> 参数可能会影响资源的加载。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>实现的部分其实不用多说，其实就是在语法当中的 <code>path</code> 部分加上 <code>#hash</code> 值，然后使用 CSS 的属性选择起来匹配：</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><style>
+img[src*="#center"]{
+  margin-left: auto;
+  margin-right: auto;
+}
+img[src*="#border"] {
+  border: 2px solid black
+}
+</style>
+
+<p>实现的部分其实不用多说，其实就是在语法当中的 <code>path</code> 部分加上 <code>#hash</code> 值，然后使用 CSS 的属性选择起来匹配：</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">![test](&#x2F;test.jpg#center &quot;test&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">img[src$="#center"]</span><span class="token punctuation">&#123;</span>
   <span class="token property">margin-left</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
@@ -130,17 +140,7 @@
 <span class="token selector">img[src*="#border"]</span> <span class="token punctuation">&#123;</span>
   <span class="token property">border</span><span class="token punctuation">:</span> 2px solid black
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>结果预览 👉</p>
-<style>
-img[src*="#center"]{
-  margin-left: auto;
-  margin-right: auto;
-}
-img[src*="#border"] {
-  border: 2px solid black
-}
-</style>
-<p><img src="/2021/CSS-use-attribute-selector-add-style-to-the-image/test.jpg#center#border" alt="test" title="test"></p>
+<p>结果预览 👉<br><img src="/2021/CSS-use-attribute-selector-add-style-to-the-image/test.jpg#center#border" alt="test" title="test"></p>
 <p>暂时还没有发现任何影响，如果你知道这样书写会有问题，那么请 <a href="mailto:yogwang@foxmail.com?subject=吐槽你的文章">📧 Mail 给我吧</a> ！</p>
 <hr>
 <h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p><strong>✨ 为什么不用书写 <code>HTML</code> 的方式来实现，不是更加自由吗？</strong></p>
