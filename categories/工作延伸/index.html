@@ -159,7 +159,7 @@
  
   <article class="article-excerpt">
     <blockquote>
-<p>这几天心态崩溃的有些厉害，几近一周没有写过代码了，今天实在感觉不能再颓下去了，就准备远程配置一下客户服务器的环境。</p>
+<p>几近一周没有好好写过代码了，就准备远程配置一下客户服务器的环境。</p>
 </blockquote>
 <p>这次客户邀请我加入了他们 <code>DigitalOcean</code> 的 Team 中，但是他们不想提供 Droplet 实例 Root 密码， 看了一下控制台大概找到了一个添加 <code>SSH_Key</code> 登陆的地方，所以使用了 <code>PuTTYGen</code> 创建了一对 Key，但是添加之后使用 <code>SSH</code> 连接时提示我: 远程服务器拒绝此密钥，让我重新输入Root账户的密码。</p>
 <p>大概找了一下国内的相关问题并没有找到解决的方法，Google 出来也差不多，基本都是添加 Key 之后，需要创建新的实例才可以使用新添加的 Key。<br>那我需要对 <em>已经创建了的 <code>Droplet</code> 实例</em>  添加 <code>Key</code> 怎么办呢？</p>
