@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>记一个 CSS 伪类的 content 用法 | blog [ YOG WANG ]</title>
+  <title>网页链接里的 noopener、noreferrer 和 nofollow | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
@@ -51,7 +51,7 @@
 <main id="container">
   <!-- 文章详情 Post Detail -->
 <div
-  id="post-CSS-pseudo-elements-content"
+  id="post-rel-value-noopener-noreferrer-nofollow"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,18 +67,16 @@
   </div>
 
           
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
-
         </div>
          
 <div class="article-date">
-  <time datetime="2019-10-28T05:24:26.000Z" itemprop="datePublished">2019-10-28</time>
+  <time datetime="2021-08-05T09:39:56.000Z" itemprop="datePublished">2021-08-05</time>
 </div>
       </div>
       
   
     <h1 class="article-title" itemprop="name">
-      记一个 CSS 伪类的 content 用法
+      网页链接里的 noopener、noreferrer 和 nofollow
     </h1>
   
 
@@ -92,26 +90,40 @@
       <!-- 文章内容 article body -->
  
   <article class="article-content">
-    <blockquote>
-<p><code>content: url(&#39;...&#39;);</code></p>
-</blockquote>
-<p>最近在群里看到一种写伪类 <code>content</code> 的用法，觉得很新奇，</p>
-<p>群友一开始使用伪类来显示一个小图标，但是这个小图标比较大，<br>所以他就像设置宽高来显示这个伪类，但是他怎么都设置不了这个伪类的宽高，</p>
-<p>我就和他说你设置伪类的宽高不就好了嘛？（我一直以来都是用伪类设置背景图片的形式来做 icon）<br>他说不行，我就看到了这个独特的写法…</p>
-<p>他是直接在 <code>content</code> 里边写了图片的 <code>url</code>，然后神奇的是居然可以显示 <code>content</code> 里填写的图片！！！</p>
+    <p>之前在一篇 <a target="_blank" rel="noopener" href="https://v2ex.com/t/787858">帖子</a> 中看到了一个名词 【阻断权重传递】，进而去了解一下这个名词。</p>
+<p>阅读相关资料的过程中，收集了3个 <code>no</code> 开头的关键词(<code>noopener</code>、<code>noreferrer</code> 和 <code>nofollow</code>)，并且作为相似内容整理成这篇笔记。</p>
+<p>太长不看版：</p>
+<ul>
+<li><code>noopener</code>: 使用<code>target=&quot;_blank&quot;</code>所打开的页面，将无法获取 <code>window.opener</code> 对象。</li>
+<li><code>noreferrer</code>: 使打开的页面无法获取 <code>document.referrer</code> 信息。</li>
+<li><code>nofollow</code>: 表明对该链接不认可，不传递权重。</li>
+</ul>
+<p>如果有兴趣可以接着看下去</p>
 <span id="more"></span>
 
-<p>我都没有用过,就查阅了一下 MDN 👉 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/content">[ content - CSS ]</a></p>
+<hr>
+<p>先顺着开头的 <strong>阻断权重传递</strong> 聊聊叭，老前端都知道，如果要做SEO，就会需要投放大量的站外链接到自己的站点，作为引流以及获得权重。在开发者社群中，也会相互交换友链来达到这个目的。<br>但是在一些比较大型的社交平台中，他们并不希望这些链接被搜索引擎的 <strong>spider</strong> 所爬取，并且将权重传递给那些可能是低质量/违法的页面。</p>
+<p>开头那篇帖子中提到的 “安全中心” 就是为了达到上述目的，我们可以从案例 “知乎” 当中看到 UGC 中的外链其实是这样的：</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://link.zhihu.com/?target=https%3A//yogwang.site<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span> wrap external<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>nofollow noreferrer<span class="token punctuation">"</span></span> <span class="token attr-name">data-za-detail-view-id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1234<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>一个测试外链<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>我们添加的外链其实已经变成了指向到 “安全中心” 页面，彻底就封死了权重传递的问题，并且避免了直接跳转链接导致的意外的安全问题，比如说钓鱼网站以及不合规内容的免责。</p>
+<h2 id="🔖-nofollow"><a href="#🔖-nofollow" class="headerlink" title="🔖 nofollow"></a>🔖 nofollow</h2><p>告知搜索引擎这是一个不被认可的链接，并不像把权重传递给此页面。<small>( P.S. 其实就算使用了 <code>nofollow</code> 其实也并不是完全没有排名影响，具体可以查看 <a target="_blank" rel="noopener" href="https://backlinko.com/nofollow-link">这篇文章</a> 其中有举了例子)</small></p>
+<h2 id="🔖-noreferrer"><a href="#🔖-noreferrer" class="headerlink" title="🔖 noreferrer"></a>🔖 noreferrer</h2><p>这个值其实已经在上边的 “安全中心” 链接当中看到了这个属性的出现，起到的 <strong>目的</strong> 也就是为了去除头部中的 <code>referrer</code> (来源)信息，说是另外限制了部分 <code>window.opener</code> 的访问权限，但是我感觉和没有限制一样。</p>
+<h2 id="🔖-noopener"><a href="#🔖-noopener" class="headerlink" title="🔖 noopener"></a>🔖 noopener</h2><p>声明在新页面中打开页面，并且不授权新页面对于源页面的访问权限，但是仍提供 <code>referrer</code> 头。</p>
+<p>因为通过 <code>target=&quot;_blank&quot;</code> 打开的新页面可以通过修改 <code>window.opener</code> 的部分属性来造成安全问题。</p>
 <blockquote>
-<p>URI 值会指定一个外部资源（比如图片）。如果该资源或图片不能显示，它就会被忽略或显示一些占位（比如无图片标志）。</p>
+<p>Using the <code>window.opener.location</code> it navigates to the new site – say, a login form emulating the Facebook login screen with a message: “Your previous Facebook session expired. Please log in again to continue using Facebook”.<br>使用 <code>window.opener.location</code> 导航到新站点 ———— 比如说，一个模拟 Facebook 登录屏幕的登录表单，其中包含一条消息：“您之前的 Facebook 会话已过期。 请重新登录以继续使用 Facebook”。</p>
+<p><small>Explained: noopener, noreferrer, and nofollow Values</small></p>
 </blockquote>
-<p>先来看一下 DEMO</p>
-<iframe id="cp_embed_oNNoZKj" src="//codepen.io/yogwang/embed/oNNoZKj?height=400&theme-id=dark&slug-hash=oNNoZKj&default-tab=css,result" scrolling="no" frameborder="no" height="400" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
-
-<p>虽然这个方式存在很多问题，但是可以方便很多时候处理图片小图标。</p>
-<p>就不需要先设置 <code>content:&#39;&#39;</code> 然后 <code>display:inline-block</code> 再设置宽高在设置背景图片，<br>直接把图片地址放在 <code>content</code> 里边就可以解决问题。很方便，但是这个方式显示的小图标并不能控制它的宽高。<br>不过把图片裁剪成合适大小就可以解决这个问题，而且兼容性还不错。 👉 <a target="_blank" rel="noopener" href="https://caniuse.com/#feat=css-gencontent">Can I use</a></p>
-<p><img src="/2019/CSS-pseudo-elements-content/caniuse.jpg" alt="兼容性"></p>
-<p>你敢信 IE8 都兼容！</p>
+<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><blockquote>
+<p>在 Chrome 78 最近的几个版本，如果A、B页面跨域，A页面中打开B页面，在B页面使用 <code>console.log</code> 在控制台打印 <code>window.opener</code> 会报跨域的错误。<br><small><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/opener">window.opener - Web API 接口参考 | MDN</a></small></p>
+</blockquote>
+<p>并且我发现在 Chrome 93 中打开新页面中输出 <code>window.opener</code> 为 <code>null</code>，即使我没有使用 <code>noopener</code>，需要特意声明 <code>rel=&quot;opener&quot;</code> 才可以获取 <code>opener</code> 对象，但是我还没有找到明确的变更日志，只在后续的查阅的过程中找到一个疑似的工作组 PR。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/whatwg/html/pull/4330">Make target=_blank imply noopener; support opener by annevk · Pull Request #4330 · whatwg/html</a></li>
+</ul>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel">HTML attribute: rel - HTML: HyperText Markup Language | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/noopener">Link types: noopener - HTML: HyperText Markup Language | MDN</a></p>
+<p><a target="_blank" rel="noopener" href="https://backlinko.com/nofollow-link">What Is a Nofollow Link? Here’s A Simple Plain English Answer</a><br><a target="_blank" rel="noopener" href="https://pointjupiter.com/what-noopener-noreferrer-nofollow-explained/">Explained: noopener, noreferrer, and nofollow Values - Point Jupiter</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/528f7BS4uR04WNVK70m0QA">外链用了 target=”_blank” 结果悲剧了 | 1024译站</a><br><a target="_blank" rel="noopener" href="https://www.tutorialdocs.com/article/html-opener-blank.html">The Hidden Dangers You Have Never Noticed: target = “_blank” and “opener” - TutorialDocs</a><br><a target="_blank" rel="noopener" href="https://css-tricks.com/use-target_blank/">When to use target=”_blank” | CSS-Tricks</a><br><a target="_blank" rel="noopener" href="https://mathiasbynens.github.io/rel-noopener/">About rel=noopener</a></p>
  
   </article>
 
@@ -121,15 +133,10 @@
    
 <nav id="article-nav">
   
-    <a href="/2019/jeecg-boot-devDiary04/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">Jeecg-boot 开发挖坑日记04 全局 Vue-AntD 标签页的控制</div>
-    </a>
   
-  
-    <a href="/2019/jeecg-boot-devDiary03/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/CSS-use-attribute-selector-add-style-to-the-image/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Jeecg-boot 开发挖坑日记03 动态路由传参</div>
+      <div class="article-nav-title">使用属性选择器为 Markdown 里的图片添加样式</div>
     </a>
   
 </nav>
@@ -137,7 +144,7 @@
 </div>
 
 <script>
-const postDate = "2019-10-28"
+const postDate = "2021-08-05"
 const difference = moment().diff(postDate, 'days')
 const isExpired = difference > 300
 if (isExpired){
