@@ -84,7 +84,7 @@
 
       <div class="article-updated">
         
-        最后更新：<time datetime="2021-09-09T09:41:41.174Z" itemprop="datePublished">2021-09-09 17:41</time>
+        最后更新：<time datetime="2021-09-09T09:46:13.384Z" itemprop="datePublished">2021-09-09 17:46</time>
         
       </div>
     </header>
@@ -110,9 +110,9 @@
 <p>开头那篇帖子中提到的 “安全中心” 就是为了达到上述目的，我们可以从案例 “知乎” 当中看到 UGC 中的外链其实是这样的：</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://link.zhihu.com/?target=https%3A//yogwang.site<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span> wrap external<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>nofollow noreferrer<span class="token punctuation">"</span></span> <span class="token attr-name">data-za-detail-view-id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1234<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>一个测试外链<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>我们添加的外链其实已经变成了指向到 “安全中心” 页面，彻底就封死了权重传递的问题，并且避免了直接跳转链接导致的意外的安全问题，比如说钓鱼网站以及不合规内容的免责。</p>
-<h2 id="🔖-nofollow"><a href="#🔖-nofollow" class="headerlink" title="🔖 nofollow"></a>🔖 nofollow</h2><p>告知搜索引擎这是一个不被认可的链接，并不像把权重传递给此页面。<small>( P.S. 其实就算使用了 <code>nofollow</code> 其实也并不是完全没有排名影响，具体可以查看 <a target="_blank" rel="noopener" href="https://backlinko.com/nofollow-link">这篇文章</a> 其中有举了例子)</small></p>
+<h2 id="🔖-nofollow"><a href="#🔖-nofollow" class="headerlink" title="🔖 nofollow"></a>🔖 nofollow</h2><p>告知搜索引擎这是一个不被认可的链接，并且不想把权重传递给此页面。<small>( P.S. 其实就算使用了 <code>nofollow</code> 其实也并不是完全没有排名影响，具体可以查看 <a target="_blank" rel="noopener" href="https://backlinko.com/nofollow-link">这篇文章</a> 其中有举了例子)</small></p>
 <h2 id="🔖-noreferrer"><a href="#🔖-noreferrer" class="headerlink" title="🔖 noreferrer"></a>🔖 noreferrer</h2><p>这个值其实已经在上边的 “安全中心” 链接当中看到了这个属性的出现，起到的 <strong>目的</strong> 也就是为了去除头部中的 <code>referrer</code> (来源)信息，说是另外限制了部分 <code>window.opener</code> 的访问权限，但是我感觉和没有限制一样。</p>
-<h2 id="🔖-noopener"><a href="#🔖-noopener" class="headerlink" title="🔖 noopener"></a>🔖 noopener</h2><p>声明在新页面中打开页面，并且不授权新页面对于源页面的访问权限，但是仍提供 <code>referrer</code> 头。</p>
+<h2 id="🔖-noopener"><a href="#🔖-noopener" class="headerlink" title="🔖 noopener"></a>🔖 noopener</h2><p>声明在新页面中打开页面，并且不授权新页面对于源页面的访问权限，但是仍提供 <code>referrer</code> 头，所以一般来说会和 <code>noreferrer</code> 合用。</p>
 <p>因为通过 <code>target=&quot;_blank&quot;</code> 打开的新页面可以通过修改 <code>window.opener</code> 的部分属性来造成安全问题。</p>
 <blockquote>
 <p>Using the <code>window.opener.location</code> it navigates to the new site – say, a login form emulating the Facebook login screen with a message: “Your previous Facebook session expired. Please log in again to continue using Facebook”.<br>使用 <code>window.opener.location</code> 导航到新站点 ———— 比如说，一个模拟 Facebook 登录屏幕的登录表单，其中包含一条消息：“您之前的 Facebook 会话已过期。 请重新登录以继续使用 Facebook”。</p>
