@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>使用 webpack 打包时去除注释和控制台日志 | blog [ YOG WANG ]</title>
+  <title>分享会 只用CSS实现走马灯（轮播图） | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
@@ -51,7 +51,7 @@
 <main id="container">
   <!-- 文章详情 Post Detail -->
 <div
-  id="post-webpack-ignore-comments-logs"
+  id="post-CSS-only-carousel"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,18 +67,18 @@
   </div>
 
           
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a></li></ul>
 
         </div>
          
 <div class="article-date">
-  <time datetime="2020-01-13T03:14:17.000Z" itemprop="datePublished">2020-01-13</time>
+  <time datetime="2021-08-06T07:22:36.000Z" itemprop="datePublished">2021-08-06</time>
 </div>
       </div>
       
   
     <h1 class="article-title" itemprop="name">
-      使用 webpack 打包时去除注释和控制台日志
+      分享会 只用CSS实现走马灯（轮播图）
     </h1>
   
 
@@ -92,7 +92,58 @@
       <!-- 文章内容 article body -->
  
   <article class="article-content">
-    <p>开一个坑，今天怎么尝试也都只能在打包的时候去除 <code>console</code> 但是注释还是不会被去除掉。</p>
+    <p>早些时候有看到过一个 <a target="_blank" rel="noopener" href="https://css-tricks.com/css-only-carousel/">纯CSS轮播图</a> 的文章，当时有研究过实现，大概是利用了 <code>hash</code> (锚标记) 和 <code>scroll-snap-type</code> 来实现的，但是具体实现已经回忆不起来了。</p>
+<p>正好现在分享群组里边暂时没有主题了，就想着可以当成一个常驻的补位小环节，大家一起浏览 <a target="_blank" rel="noopener" href="https://codepen.io/">CodePen</a> 之类的社区找一个大家都感兴趣的 Demo 来研究。<br>在分享前还是需要自己重新研究一遍的，不然在讲述的时候出错可太 “甜蜜的” 尴尬了。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="首先呢，先实现一个简易的的可控轮播示例"><a href="#首先呢，先实现一个简易的的可控轮播示例" class="headerlink" title="首先呢，先实现一个简易的的可控轮播示例"></a>首先呢，先实现一个简易的的可控轮播示例</h2><blockquote>
+<p>在样例的实现中我将会使用到一下技术栈，希望你可以稍微了解一下</p>
+<ol>
+<li><code>Pug</code> (HTML预处理器)</li>
+<li><code>Stylus</code> (CSS预处理器)</li>
+</ol>
+</blockquote>
+<p><small><strong><code>P.S.</code></strong> 以下笔记内容将逐步实现目标文章示例，会复原目标文章内的元素样式，稍微有点改动但变化不大，因为自己想的样式太丑了。</small></p>
+<iframe id="cp_embed_YzQxjaV" src="//codepen.io/yogwang/embed/YzQxjaV?height=600&theme-id=dark&slug-hash=YzQxjaV&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+<h3 id="讲解："><a href="#讲解：" class="headerlink" title="讲解："></a>讲解：</h3><p>可以点开上方示例中的选项卡查看实现代码，</p>
+<ol>
+<li>在 <code>html</code> 中书写了 5 个 <code>&lt;div</code> 并且声明了对应的 <code>ID</code>；</li>
+<li>并且在后续添加了 <code>&lt;a&gt;</code> 标签来改变URL当中的 <code>hash</code> 值来控制卡片的切换；</li>
+<li>在 <code>css</code> 利用 <code>scroll-behavior:smooth</code> 这个属性，来达到切换卡片的平滑滚动效果。</li>
+</ol>
+<p>但是缺少了切换前进后退按钮，接下来我们就来实现这个功能</p>
+<iframe id="cp_embed_WNOEgJb" src="//codepen.io/yogwang/embed/WNOEgJb?height=600&theme-id=dark&slug-hash=WNOEgJb&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+<h3 id="讲解"><a href="#讲解" class="headerlink" title="讲解:"></a>讲解:</h3><p>其实很憨，直接为每一个卡片添加了前进后退按钮的 <code>&lt;a&gt;</code> 标签而已。<br>稍微有点麻烦的就是 <strong>如何让这两个按钮随着卡片的切换而改变</strong>，而不被后一个卡片的按钮所覆盖，因为这两个按钮是不会随着卡片切换所移动的，这里就需要脑洞大开了！</p>
+<p>正常思路来说，肯定是会尝试修改 <strong>前进后退按钮</strong> 的父级的定位方式。<br>确实，会需要修改成 <code>position:relative</code>，但是这个其实是为了每次切换卡片后变更对应的锚链接的。</p>
+<p>原示例是从轮播组件的最外层容器创建了 <code>::before</code> 和 <code>::after</code> 两个伪类，给他们设置的切换按钮的样式，并且设置为点击穿透，然后把轮播卡片内的 <strong>前进后退按钮</strong> 为 <code>透明</code> 底色。<br>这样所展示的 <strong>“按钮”</strong> 就不会随卡片所以移动了，而<strong>实际</strong>的切换按钮会随着卡片所移动，只是不会被浏览者发现。</p>
+<p>功能基本实现了，然后我们复原一下原示例的样式。</p>
+<iframe id="cp_embed_vYZJQaJ" src="//codepen.io/yogwang/embed/vYZJQaJ?height=600&theme-id=dark&slug-hash=vYZJQaJ&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+
+
+<p>对照一下原示例，除了自动播放外还差了些什么呢？emmmm…..<strong>视差滚动</strong>！</p>
+<p>其实一开始我是不知道他如何实现的视差滚动的，结果在研究自动轮播的时候，突然就通了。</p>
+<p>通过 <code>transform:translate3d()</code> 给中间的元素，增加了 <strong>Z轴</strong> 属性，使其脱离了平面 “悬浮” 在轮播卡片上，然后在最外层容器的 “轮播器” 设置了 <code>perspective</code> 指定了容器平面与 <strong>视窗</strong> 的 <strong>Z轴</strong> 距离。</p>
+<p>让我们来实现一下！</p>
+<h1 id="未完成"><a href="#未完成" class="headerlink" title="未完成"></a>未完成</h1><iframe id="cp_embed_LYLzKdp" src="//codepen.io/yogwang/embed/LYLzKdp?height=600&theme-id=dark&slug-hash=LYLzKdp&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+<hr>
+<h2 id="💥-尾关BOSS-💥-自动轮播"><a href="#💥-尾关BOSS-💥-自动轮播" class="headerlink" title="💥 尾关BOSS 💥 自动轮播"></a>💥 尾关BOSS 💥 自动轮播</h2><p>最后来看一下她是如何实现自动播放的，这里的实现方式如果他不讲我直接就蒙圈了，但是确实很赞！👍</p>
+<blockquote>
+<ol>
+<li>First I slowly offset the scroll snap points to the right, making the scroll area follow along due to being snapped to them.<br>首先我缓慢地将滚动捕捉点向右偏移，使滚动区域由于捕捉它们而跟随。</li>
+<li>After having scrolled the width of a whole slide, I deactivate the snapping. The scroll area is now untied from the scroll snap points.<br>在滚动整个幻灯片宽度后，我停用了捕捉。 滚动区域现在与滚动捕捉点解除绑定。</li>
+<li>Now I let the scroll snap points jump back to their initial positions without them “snap-dragging” the scroll area back with them<br>现在我让滚动捕捉点跳回到它们的初始位置，而不用它们 “捕捉拖动” 滚动区域</li>
+<li>Then I re-engage the snapping which now lets the scroll area snap to a different snap point 🤯<br>然后我重新启用捕捉，让滚动区域捕捉到不同的捕捉点</li>
+</ol>
+</blockquote>
+<p>看起来有点不易懂，但是其实并不复杂的。</p>
+<h1 id="未完成-1"><a href="#未完成-1" class="headerlink" title="未完成"></a>未完成</h1><hr>
+<h2 id="文档链接"><a href="#文档链接" class="headerlink" title="文档链接"></a>文档链接</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/scroll-behavior">scroll-behavior - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/perspective">perspective - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/scroll-snap-type">scroll-snap-type - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-align">scroll-snap-align - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media/hover">hover - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:focus-within">:focus-within - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media/prefers-reduced-motion">prefers-reduced-motion - CSS | MDN</a></p>
+<p><a target="_blank" rel="noopener" href="https://css-tricks.com/css-only-carousel/">CSS-Only Carousel | CSS-Tricks</a><br><a target="_blank" rel="noopener" href="https://css-tricks.com/can-get-pretty-far-making-slider-just-html-css/">You can get pretty far in making a slider with just HTML and CSS | CSS-Tricks</a><br><a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2018/11/know-css-scroll-snap/">大侠，请留步，要不过来了解下CSS Scroll Snap？ « 张鑫旭-鑫空间-鑫生活</a></p>
  
   </article>
 
@@ -102,15 +153,10 @@
    
 <nav id="article-nav">
   
-    <a href="/2020/CSS-reverse-hover-transition/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">鼠标移出时颠倒元素过度效果</div>
-    </a>
   
-  
-    <a href="/2020/jeecg-boot-devDiary09/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/rel-value-noopener-noreferrer-nofollow/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Jeecg-boot 开发挖坑日记09 AntD 表单校验</div>
+      <div class="article-nav-title">网页链接里的 noopener、noreferrer 和 nofollow</div>
     </a>
   
 </nav>
@@ -118,7 +164,7 @@
 </div>
 
 <script>
-const postDate = "2020-01-13"
+const postDate = "2021-08-06"
 const difference = moment().diff(postDate, 'days')
 const isExpired = difference > 300
 if (isExpired){
