@@ -84,6 +84,8 @@
 
       <div class="article-updated">
         
+        最后更新：<time datetime="2021-09-27T07:01:52.827Z" itemprop="datePublished">2021-09-27 15:01</time>
+        
       </div>
     </header>
     
@@ -110,12 +112,15 @@
 <p>识别成栅格<br><img src="/2019/html5-canvas-identify-content/step1.png" alt="识别后的栅格图"><br>用户头像填充<br><img src="/2019/html5-canvas-identify-content/step2.jpg" alt="用户头像填充"></p>
 <h4 id="识别内容"><a href="#识别内容" class="headerlink" title="识别内容:"></a>识别内容:</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> maxWidth <span class="token operator">=</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>clientWidth<span class="token punctuation">;</span> <span class="token comment">// 获取视窗宽度</span>
 <span class="token keyword">const</span> maxHeight <span class="token operator">=</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>clientHeight<span class="token punctuation">;</span> <span class="token comment">// 获取视窗高度</span>
+
 <span class="token keyword">const</span> size <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">// 设置栅格大小</span>
 <span class="token keyword">const</span> points <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 坐标数组</span>
+
 <span class="token keyword">const</span> canvas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"canvas"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 拿到canvas实例</span>
 canvas<span class="token punctuation">.</span>width <span class="token operator">=</span> maxWidth<span class="token punctuation">;</span> <span class="token comment">// 设置canvas宽度 不能使用canvas.style.width来设置，会造成内容拉伸</span>
 canvas<span class="token punctuation">.</span>height <span class="token operator">=</span> maxHeight<span class="token punctuation">;</span> <span class="token comment">// 设置canvas高度</span>
 <span class="token keyword">const</span> ctx <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">"2d"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 获取canvas上下文，这边获取的是二维绘图，还有一个3D内容 "webgl"</span>
+
 <span class="token keyword">let</span> img <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Image</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建图片实例</span>
 img<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"assets/img/text.jpg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 获取设置图片url</span>
 <span class="token keyword">let</span> w <span class="token operator">=</span> maxWidth<span class="token punctuation">;</span> <span class="token comment">// 设置临时宽度，后边给绘制图片的时候会用到</span>
@@ -145,21 +150,42 @@ img<span class="token punctuation">.</span><span class="token function-variable 
       <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
   <span class="token punctuation">&#125;</span>
-  ctx<span class="token punctuation">.</span><span class="token function">clearRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> maxWidth<span class="token punctuation">,</span> maxHeight<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 清楚绘制的图片</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  ctx<span class="token punctuation">.</span><span class="token function">clearRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> maxWidth<span class="token punctuation">,</span> maxHeight<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 清除绘制的图片</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="绘制栅格图"><a href="#绘制栅格图" class="headerlink" title="绘制栅格图"></a>绘制栅格图</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">"rgba(255,0,0,.55)"</span><span class="token punctuation">;</span> <span class="token comment">// 设置填充色</span>
 <span class="token comment">// 遍历坐标数组内的所有数据</span>
 points<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">piont</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  ctx<span class="token punctuation">.</span><span class="token function">fillRect</span><span class="token punctuation">(</span>piont<span class="token punctuation">.</span>x<span class="token punctuation">,</span> piont<span class="token punctuation">.</span>y<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>size<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 绘制矩形</span>
+  ctx<span class="token punctuation">.</span><span class="token function">fillRect</span><span class="token punctuation">(</span>piont<span class="token punctuation">.</span>x<span class="token punctuation">,</span> piont<span class="token punctuation">.</span>y<span class="token punctuation">,</span> size<span class="token punctuation">,</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 绘制矩形</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="填充图片"><a href="#填充图片" class="headerlink" title="填充图片"></a>填充图片</h4><p>填充图片和绘制矩形的原理相似所以就不举例了。</p>
 <p>考虑到签到的人数有可能达不到坐标的数量，所以在最后可以重新循环用户头像列表来填充满整个栅格区</p>
 <p><img src="/2019/html5-canvas-identify-content/step2.jpg" alt="用户头像填充"></p>
 <p>以上是简单的使用 <code>canvas</code> 试别图片内容，并且栅格化且使用图片填充。</p>
-<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
-<li>特殊情况 1：如果识别超过 50% 时，笔画交汇时折角会超过 50%，但是没有处在交汇处的内容可能并没有超过 50%<br><img src="/2019/html5-canvas-identify-content/scenes1.jpg" alt="笔画交汇"></li>
+<h2 id="🎈-尾声"><a href="#🎈-尾声" class="headerlink" title="🎈 尾声"></a>🎈 尾声</h2><h4 id="可能遇到的一些问题"><a href="#可能遇到的一些问题" class="headerlink" title="可能遇到的一些问题"></a>可能遇到的一些问题</h4><blockquote>
+<p><strong>打印points一直是空数组</strong></p>
+</blockquote>
+<p>因为时机不正确，图片加载是异步的，你写的同步代码会先执行，需要把绘制栅格的部分代码放到图片 <code>onload</code> 之后。</p>
+<blockquote>
+<p><strong>栅格没有绘制</strong></p>
+</blockquote>
+<p>#1 因为异步加载的问题，<code>points</code> 数组为空，没有没办法绘制。<br>#2 因为 <code>canvas</code> 容器的高度不够，识别之后绘制的内容不够显示。<br>#3 我用的 Vue.js 写的 Demo，写笔记的时候忘记去掉 <code>this</code> 了，所以 <code>this.size</code> 会有问题，已经修改了。</p>
+<blockquote>
+<p><strong>加载微信头像或者其他来源的头像出现跨域/403的情况</strong></p>
+</blockquote>
+<p>尝试在绘制图片的时候为 <code>new Image()</code> 出来的图片实例 增加 <code>img.crossOrigin = &quot;Anonymous&quot;;</code> 属性</p>
+<blockquote>
+<p><strong>识别之后底部、右侧出现一整排/列的栅格</strong></p>
+</blockquote>
+<p>尝试调整栅格大小，一般这种情况是因为，识别的栅格太大，最后一排、一列超出的绘制范围拾取不到颜色，各项颜色值都会是0，会被认为是黑色</p>
+<blockquote>
+<p><strong>考虑把笔记重新整理</strong></p>
+</blockquote>
+<p>感觉上每年的年底都会收到邮件来询问这篇笔记的，可能真的要抽时间来完整梳理成文章，而不只是笔记记录一下思路，并且提供一些可预览的DEMO，便于各位学习。<br><code>P.S.</code> 去年就这样和小伙伴说过了，但是还是一拖再拖，真的自己是拖延症晚期没救了 😂</p>
+<hr>
+<h2 id="📌-附"><a href="#📌-附" class="headerlink" title="📌 附"></a>📌 附</h2><ul>
+<li>特殊情况 1：如果识别超过 50% 时，笔画交汇时折角会超过 50%，但是没有处在交汇处的内容可能并没有超过 50%<br><img src="/2019/html5-canvas-identify-content/scenes1.jpg" alt="笔画交汇"><br>调小栅格尺寸会避免大多数的这类情况</li>
 </ul>
  
   </article>
@@ -186,7 +212,7 @@ points<span class="token punctuation">.</span><span class="token function">forEa
 </div>
 
 <script>
-const postDate = "2019-12-01"
+const postDate = "2021-09-27"
 const difference = moment().diff(postDate, 'days')
 const isExpired = difference > 300
 if (isExpired){
