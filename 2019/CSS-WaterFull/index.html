@@ -84,6 +84,8 @@
 
       <div class="article-updated">
         
+        最后更新：<time datetime="2021-11-02T09:10:56.994Z" itemprop="datePublished">2021-11-02 17:10</time>
+        
       </div>
     </header>
     
@@ -142,6 +144,15 @@
       div.img
         background red
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="✨-更新-2021年11月2日"><a href="#✨-更新-2021年11月2日" class="headerlink" title="✨ 更新 2021年11月2日"></a>✨ 更新 <small>2021年11月2日</small></h2><p>以前一直不知道 <code>break-inside: avoid</code> 如果不加的话，可能会影响布局效果的 <strong>影响</strong> 是怎么样的，过去了那么久了，终于遇到了一次，可以很明显的看到第二列的首个元素被裁断了。<br><img src="/2019/CSS-WaterFull/preview1.jpg#center" alt="问题截图"></p>
+<p>给子元素加上 <code>break-inside: avoid</code> 之后：</p>
+<p><img src="/2019/CSS-WaterFull/preview2.jpg#center" alt="加上break-inside:avoid之后"></p>
+<blockquote>
+<p><strong>记得是给 子元素 这个属性哦，不是瀑布流容器。</strong></p>
+</blockquote>
+<hr>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-count">column-count - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/break-inside">break-inside - CSS（层叠样式表） | MDN</a></p>
  
   </article>
 
@@ -167,7 +178,7 @@
 </div>
 
 <script>
-const postDate = "2019-07-10"
+const postDate = "2021-11-02"
 const difference = moment().diff(postDate, 'days')
 const isExpired = difference > 300
 if (isExpired){
