@@ -84,7 +84,7 @@
 
       <div class="article-updated">
         
-        最后更新：<time datetime="2021-11-02T09:10:56.994Z" itemprop="datePublished">2021-11-02 17:10</time>
+        最后更新：<time datetime="2021-11-02T09:17:59.650Z" itemprop="datePublished">2021-11-02 17:17</time>
         
       </div>
     </header>
@@ -145,12 +145,13 @@
         background red
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="✨-更新-2021年11月2日"><a href="#✨-更新-2021年11月2日" class="headerlink" title="✨ 更新 2021年11月2日"></a>✨ 更新 <small>2021年11月2日</small></h2><p>以前一直不知道 <code>break-inside: avoid</code> 如果不加的话，可能会影响布局效果的 <strong>影响</strong> 是怎么样的，过去了那么久了，终于遇到了一次，可以很明显的看到第二列的首个元素被裁断了。<br><img src="/2019/CSS-WaterFull/preview1.jpg#center" alt="问题截图"></p>
-<p>给子元素加上 <code>break-inside: avoid</code> 之后：</p>
+<h2 id="✨-更新-2021年11月2日"><a href="#✨-更新-2021年11月2日" class="headerlink" title="✨ 更新 2021年11月2日"></a>✨ 更新 <small>2021年11月2日</small></h2><p>以前一直不知道 <code>break-inside: avoid</code> 如果不加的话，<strong>“可能会影响布局效果”</strong> 所描述的 <strong>影响</strong> 是怎么样的，过去了那么多年终于让我遇到了一次，可以很明显的从下图看到第二列的首个元素被截断了。<br><img src="/2019/CSS-WaterFull/preview1.jpg#center" alt="问题截图"></p>
+<p>一开始我一直以为是背景色是白色的缘故，直到我看到了列表最尾部，那段被截掉的头部。那么让我们给子元素加上 <code>break-inside: avoid</code> 看看效果。</p>
 <p><img src="/2019/CSS-WaterFull/preview2.jpg#center" alt="加上break-inside:avoid之后"></p>
 <blockquote>
 <p><strong>记得是给 子元素 这个属性哦，不是瀑布流容器。</strong></p>
 </blockquote>
+<p>我最开始认为是给列表容器加这个属性的，一直都不生效还以为因为兼容性的关系没办法应用呢，直到我尝试着给子元素加上试试看….太尴尬了，hhhhhhh。</p>
 <hr>
 <h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-count">column-count - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/break-inside">break-inside - CSS（层叠样式表） | MDN</a></p>
  

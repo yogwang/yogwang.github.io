@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2021/miniprogram-devDiary-00/</loc>
+    <lastmod>2021-11-25</lastmod>
+  </url>
+  <url>
     <loc>https://yogwang.site/2019/CSS-WaterFull/</loc>
     <lastmod>2021-11-02</lastmod>
   </url>
@@ -19,10 +23,6 @@
   <url>
     <loc>https://yogwang.site/2021/rel-value-noopener-noreferrer-nofollow/</loc>
     <lastmod>2021-09-09</lastmod>
-  </url>
-  <url>
-    <loc>https://yogwang.site/2021/miniprogram-devDiary-00/</loc>
-    <lastmod>2021-08-13</lastmod>
   </url>
   <url>
     <loc>https://yogwang.site/2021/CSS-use-attribute-selector-add-style-to-the-image/</loc>
