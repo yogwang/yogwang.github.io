@@ -1,0 +1,409 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>微信小程序学习日记 L08 分包加载 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!-- 文章详情 Post Detail -->
+<div
+  id="post-miniprogram-devDiary-08-subpackages"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+        </div>
+         
+<div class="article-date">
+  <time datetime="2021-12-04T07:19:12.000Z" itemprop="datePublished">2021-12-04</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      微信小程序学习日记 L08 分包加载
+    </h1>
+  
+
+      <div class="article-updated">
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <blockquote>
+<p>目前小程序分包大小有以下限制：</p>
+<ul>
+<li>整个小程序所有分包大小不超过 20M</li>
+<li>单个分包/主包大小不能超过 2M</li>
+</ul>
+</blockquote>
+<p>随着项目的不断迭代，小程序的主包会越来越大， 终究会有一天会超过 <code>2M</code> 的主包限制，首先考虑到的就是图片资源放到 <code>CDN</code> 或者 <code>OSS</code>，起初会很奏效，但是随着一些JS库的加入就没办法了，即使使用了 <code>.min</code> 版本，或者精简了类库代码，主包还会很大，这时候就会用到项目分包了。</p>
+<span id="more"></span>
+
+<h2 id="使用分包"><a href="#使用分包" class="headerlink" title="使用分包"></a>使用分包</h2><p>使用分包很简单，在 <code>app.json</code> 当中使用 <code>subpackages</code> 声明项目分包结构就可以。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
+  &quot;pages&quot;:[
+    &quot;pages&#x2F;index&quot;,
+    &quot;pages&#x2F;logs&quot;
+  ],
+  &quot;subpackages&quot;: [
+    &#123;
+      &quot;root&quot;: &quot;packageA&quot;, &#x2F;&#x2F; 子包根目录
+      &quot;name&quot;: &quot;pack1&quot;, &#x2F;&#x2F; 别名，预下载时使用
+      &quot;pages&quot;: [ &#x2F;&#x2F; 子包页面（相对于子包根目录）
+        &quot;pages&#x2F;cat&quot;, 
+        &quot;pages&#x2F;dog&quot;
+      ]
+    &#125;, &#123;
+      &quot;root&quot;: &quot;packageB&quot;,
+      &quot;name&quot;: &quot;pack2&quot;,
+      &quot;pages&quot;: [
+        &quot;pages&#x2F;apple&quot;,
+        &quot;pages&#x2F;banana&quot;
+      ]
+    &#125;
+  ]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后只需要注意2点就好了：</p>
+<ul>
+<li><code>subpackage</code> 的根目录不能是另外一个 <code>subpackage</code> 内的子目录(可以在主包目录下)；</li>
+<li><code>tabBar</code> 页面必须在主包内；</li>
+<li>不同 <code>subpackage</code> 间的资源无法相互引用，公共的部分可以放在主包内，或者使用 <a href="#%E5%88%86%E5%8C%85%E5%BC%82%E6%AD%A5%E5%8C%96">分包异步化</a> 来解决。</li>
+</ul>
+<p>有点迷糊的可以直接看官方给到的 <a target="_blank" rel="noopener" href="https://res.wx.qq.com/wxdoc/dist/assets/media/demo-subpackages.b42a3adb.zip">分包加载版示例源码</a></p>
+<h2 id="独立分包"><a href="#独立分包" class="headerlink" title="独立分包"></a>独立分包</h2><blockquote>
+<p>独立分包是小程序中一种特殊类型的分包，<strong>可以独立于主包和其他分包运行</strong>。<br>从独立分包中页面进入小程序时，不需要下载主包。当用户进入普通分包或主包内页面时，主包才会被下载。</p>
+</blockquote>
+<p>在上边的分包基础上，给独立分包的子包增加 <code>independent</code> 属性既可。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
+  &quot;pages&quot;:[
+    &quot;pages&#x2F;index&quot;,
+    &quot;pages&#x2F;logs&quot;
+  ],
+  &quot;subpackages&quot;: [
+    &#123;
+      &quot;root&quot;: &quot;packageA&quot;, &#x2F;&#x2F; 子包根目录
+      &quot;name&quot;: &quot;pack1&quot;, &#x2F;&#x2F; 别名，可在预下载时使用
+      &quot;pages&quot;: [ &#x2F;&#x2F; 子包页面（相对于子包根目录）
+        &quot;pages&#x2F;cat&quot;, 
+        &quot;pages&#x2F;dog&quot;
+      ]
+    &#125;, &#123;
+      &quot;root&quot;: &quot;packageB&quot;,
+      &quot;name&quot;: &quot;pack2&quot;,
+      &quot;pages&quot;: [
+        &quot;pages&#x2F;apple&quot;,
+        &quot;pages&#x2F;banana&quot;
+      ],
+      &quot;independent&quot;: true
+    &#125;
+  ]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>限制和分包一直，并且额外的有3个条件：</p>
+<ul>
+<li>独立分包中不能依赖主包中的内容，即不能使用公共的库和公共样式等资源;</li>
+<li>在主包加载前无法使用 <code>getApp()</code>;</li>
+<li>独立分包中暂时不支持使用插件。</li>
+</ul>
+<p>这个我暂时还没有用到，具体注意事项可以查看文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages/independent.html">独立分包 | 微信开放文档</a></p>
+<hr>
+<h2 id="分包预下载"><a href="#分包预下载" class="headerlink" title="分包预下载"></a>分包预下载</h2><blockquote>
+<p>开发者可以通过配置，在进入小程序某个页面时，由框架自动预下载可能需要的分包，提升进入后续分包页面时的启动速度。对于独立分包，也可以预下载主包</p>
+</blockquote>
+<p>预下载分包行为在 <strong>进入某个页面时触发</strong>，通过在 <code>app.json</code> 增加 <code>preloadRule</code> 项来配置。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
+  &quot;pages&quot;: [
+    &quot;pages&#x2F;index&quot;
+  ],
+  &quot;subpackages&quot;: [
+    &#123;
+      &quot;root&quot;: &quot;subpackage1&quot;,
+      &quot;pages&quot;: [
+        &quot;index&quot;
+      ],
+    &#125;,
+    &#123;
+      &quot;root&quot;: &quot;subpackage2&quot;,
+      &quot;name&quot;: &quot;sub2&quot;,
+      &quot;pages&quot;: [
+        &quot;index&quot;
+      ],
+    &#125;,
+    &#123;
+      &quot;root&quot;: &quot;subpackage3&quot;,
+      &quot;name&quot;: &quot;sub3&quot;,
+      &quot;pages&quot;: [
+        &quot;index&quot;
+      ]
+    &#125;,
+    &#123;
+      &quot;root&quot;: &quot;indep&quot;,
+      &quot;pages&quot;: [
+        &quot;index&quot;
+      ],
+      &quot;independent&quot;: true
+    &#125;
+  ],
+  &quot;preloadRule&quot;: &#123;
+    &quot;pages&#x2F;index&quot;: &#123;
+      &quot;network&quot;: &quot;all&quot;, &#x2F;&#x2F; 所有网络环境均进行预加载
+      &quot;packages&quot;: [&quot;subpackage1&quot;] &#x2F;&#x2F; 进入 pages&#x2F;index 时加载 subpackage1 的内容
+    &#125;,
+    &quot;subpackage1&#x2F;index&quot;: &#123;
+      &quot;packages&quot;: [&quot;sub2&quot;, &quot;sub3&quot;] &#x2F;&#x2F; 进入 subpackage1&#x2F;index 时加载 subpackage2 和 subpackage3 的内容
+    &#125;,
+    &quot;indep&#x2F;index&quot;: &#123;
+      &quot;network&quot;: &quot;wifi&quot;, &#x2F;&#x2F; 仅在wifi环境下预加载
+      &quot;packages&quot;: [&quot;__APP__&quot;] &#x2F;&#x2F; 进入独立分包 indep&#x2F;index 时加载 主包内容
+    &#125;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="📍-注意：同一个分包中的页面享有共同的预下载大小限额-2M，限额会在工具中打包时校验。"><a href="#📍-注意：同一个分包中的页面享有共同的预下载大小限额-2M，限额会在工具中打包时校验。" class="headerlink" title="📍 注意：同一个分包中的页面享有共同的预下载大小限额 2M，限额会在工具中打包时校验。"></a>📍 注意：同一个分包中的页面享有共同的预下载大小限额 2M，限额会在工具中打包时校验。</h3><blockquote>
+<p>如，页面 A 和 B 都在同一个分包中，A 中预下载总大小 0.5M 的分包，B中最多只能预下载总大小 1.5M 的分包。</p>
+</blockquote>
+<hr>
+<h2 id="分包异步化"><a href="#分包异步化" class="headerlink" title="分包异步化"></a>分包异步化</h2><p>在小程序中，不同的分包对应不同的下载单元；因此，除了非独立分包可以依赖主包外，分包之间不能互相使用自定义组件或进行 <code>require</code>。<br><strong>「分包异步化」特性将允许通过一些配置和新的接口，使部分跨分包的内容可以等待下载后异步使用</strong>，从而一定程度上解决这个限制。</p>
+<p>✨ 可以先打开官方给的 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/s/6AYlPZmm7csW">🔗代码片段</a> 然后对照着看。</p>
+<h3 id="1-跨分包自定义组件的引用"><a href="#1-跨分包自定义组件的引用" class="headerlink" title="1. 跨分包自定义组件的引用"></a>1. 跨分包自定义组件的引用</h3><p>首先是跨分包自定义组件引用，我们看示例代码当中并没有提到 <code>分包下载</code> 的内容，演示的代码片段中也没有，只是使用到了 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/placeholder.html">占位组件</a> 进行替代。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#x2F;&#x2F; subPackageA&#x2F;pages&#x2F;index.json
+&#123;
+  &quot;usingComponents&quot;: &#123;
+    &quot;button&quot;: &quot;..&#x2F;..&#x2F;commonPackage&#x2F;components&#x2F;button&quot;,
+    &quot;list&quot;: &quot;..&#x2F;..&#x2F;subPackageB&#x2F;components&#x2F;full-list&quot;,
+    &quot;simple-list&quot;: &quot;..&#x2F;components&#x2F;simple-list&quot;
+  &#125;,
+  &quot;componentPlaceholder&quot;: &#123;
+    &quot;button&quot;: &quot;view&quot;,
+    &quot;list&quot;: &quot;simple-list&quot;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>说明 <strong>跨分包引用自定义组件</strong> 是不需要单独处理的，小程序会自行下载使用到的跨包组件。我们只需要关注在跨包组件下载完成之前的占位和展示即可了。</p>
+<h3 id="2-跨分包-JS-代码的引用"><a href="#2-跨分包-JS-代码的引用" class="headerlink" title="2. 跨分包 JS 代码的引用"></a>2. 跨分包 <code>JS</code> 代码的引用</h3><p>跨分包 <code>JS</code> 代码引用和上边的跨包组件引用不一样了，提供了专门的 <code>async</code> 方法 或者 使用回调的方式解决。</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// subPackageA/index.js</span>
+<span class="token comment">// 使用回调函数风格的调用</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../subPackageB/utils.js'</span><span class="token punctuation">,</span> <span class="token parameter">utils</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>utils<span class="token punctuation">.</span>whoami<span class="token punctuation">)</span> <span class="token comment">// Wechat MiniProgram</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token comment">// 或者使用 Promise 风格的调用</span>
+require<span class="token punctuation">.</span><span class="token function">async</span><span class="token punctuation">(</span><span class="token string">'../commonPackage/index.js'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">pkg</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  pkg<span class="token punctuation">.</span><span class="token function">getPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 'common'</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个就很容易理解了，需要等待代码加载完成，所以是异步操作，和跨包组件一样，这个也是自动完成的，不需要单独在外部申明。</p>
+<hr>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>其实小程序分包还挺简单的，就是对已经开发完成的项目再进行分包就会比较麻烦，所有的路由和资源加载路径都需要相应调整一遍。</p>
+<h4 id="Q1：主包使用到的分包组件是否只能放到主包内？"><a href="#Q1：主包使用到的分包组件是否只能放到主包内？" class="headerlink" title="Q1：主包使用到的分包组件是否只能放到主包内？"></a>Q1：主包使用到的分包组件是否只能放到主包内？</h4><p>其实可以从 <a href="#%E5%88%86%E5%8C%85%E5%BC%82%E6%AD%A5%E5%8C%96">分包异步化</a> 部分看到，并不需要把跨包调用的内容全部放到公共组件下，对于这些 <code>自定义组件</code> 和 <code>JS</code> 文件 ，我们可以直接放到子包目录下减少主包的体积，然后使用占位组件去预展示就行了，小程序会自动的加载这些内容。</p>
+<h4 id="Q2-主包与分包的体积都在-1M-以内，上传时提示体积过大"><a href="#Q2-主包与分包的体积都在-1M-以内，上传时提示体积过大" class="headerlink" title="Q2: 主包与分包的体积都在 1M 以内，上传时提示体积过大"></a>Q2: 主包与分包的体积都在 1M 以内，上传时提示体积过大</h4><p>不是分包过大，是分包预加载规则设定的有问题，分包设置预加载的分包超过规定大小了，<br><strong>同一个分包中的页面享有共同的预下载大小限额 2M</strong>，这个限制在上边的 <a href="#%E5%88%86%E5%8C%85%E9%A2%84%E4%B8%8B%E8%BD%BD">分包预下载</a> 中提到了</p>
+<p><small>- 问题来源：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/doc/00026ab2e94ec8c3363c86fdd51400">主包与分包的体积都在1M以内，上传时为什么会提示体积过大？ | 微信开放社区</a></small></p>
+<hr>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages.html">分包加载 | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages/independent.html">独立分包 | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages/preload.html">分包预下载 | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/placeholder.html">占位组件 | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/684490419136259687">滴滴出行小程序体积优化实践 - 掘金</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a href="/2022/what-do-side-effect-mean/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">编程中的&#34;副作用&#34;是什么意思？</div>
+    </a>
+  
+  
+    <a href="/2021/miniprogram-flex-height-collapse-in-ios/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">记小程序flex布局垂直排列出现高度崩塌的问题</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2021-12-04"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">ODIN.INC</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/what-do-side-effect-mean/">编程中的&#34;副作用&#34;是什么意思？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-08-subpackages/">微信小程序学习日记 L08 分包加载</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-flex-height-collapse-in-ios/">记小程序flex布局垂直排列出现高度崩塌的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-07-eventChannel/">微信小程序学习日记 L07 eventChannel 页面事件通信通道</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-06-slot/">微信小程序学习日记 L06 组件插槽</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2022 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
