@@ -802,14 +802,14 @@
 
   
   <url>
-    <loc>https://yogwang.site/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/</loc>
+    <loc>https://yogwang.site/tags/CSS/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yogwang.site/tags/CSS/</loc>
+    <loc>https://yogwang.site/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -830,13 +830,6 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/tags/PHP/</loc>
-    <lastmod>2022-01-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yogwang.site/tags/HTML/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
@@ -844,28 +837,7 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/tags/WebSocket/</loc>
-    <lastmod>2022-01-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/</loc>
-    <lastmod>2022-01-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/tags/BetterScrol-js/</loc>
-    <lastmod>2022-01-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/tags/%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://yogwang.site/tags/PHP/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -886,7 +858,42 @@
   </url>
   
   <url>
+    <loc>https://yogwang.site/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/</loc>
+    <lastmod>2022-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/tags/WebSocket/</loc>
+    <lastmod>2022-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/tags/BetterScrol-js/</loc>
+    <lastmod>2022-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/tags/%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2022-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yogwang.site/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/</loc>
+    <lastmod>2022-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/tags/Hexo/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -901,13 +908,6 @@
   
   <url>
     <loc>https://yogwang.site/tags/Electron/</loc>
-    <lastmod>2022-01-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yogwang.site/tags/Hexo/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -984,13 +984,6 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/tags/Git/</loc>
-    <lastmod>2022-01-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yogwang.site/tags/Server/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
@@ -999,6 +992,13 @@
   
   <url>
     <loc>https://yogwang.site/tags/DigitalOcean/</loc>
+    <lastmod>2022-01-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yogwang.site/tags/Git/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1019,14 +1019,14 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/tags/tinyMCE/</loc>
+    <loc>https://yogwang.site/tags/Axios/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yogwang.site/tags/Axios/</loc>
+    <loc>https://yogwang.site/tags/tinyMCE/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1061,14 +1061,14 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/tags/PHPOK/</loc>
+    <loc>https://yogwang.site/tags/Apache/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yogwang.site/tags/Apache/</loc>
+    <loc>https://yogwang.site/tags/PHPOK/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1110,14 +1110,14 @@
   </url>
   
   <url>
-    <loc>https://yogwang.site/tags/Webpack/</loc>
+    <loc>https://yogwang.site/tags/web/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yogwang.site/tags/web/</loc>
+    <loc>https://yogwang.site/tags/Webpack/</loc>
     <lastmod>2022-01-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Hexo 主题开发制作 | blog [ YOG WANG ]</title>
+  <title>NVM | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
@@ -47,217 +47,55 @@
 </header>
 
     <div id="wrap">
-      <!-- 文章页 post detail page -->
+      <!-- 标签页 tags page -->
+<!-- 文章列表页面 post list page -->
 <main id="container">
-  <!-- 文章详情 Post Detail -->
-<div
-  id="post-hexo_theme"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-      <div class="article-meta">
-        <div>
-          
+  <!-- 文章分类列表 archives list -->
+<div class="archives-wrap">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NVM/" rel="tag">NVM</a></li></ul>
+
+        
   <div class="article-category">
-    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E5%BB%B6%E4%BC%B8/">工作延伸</a></li></ul>
   </div>
 
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
-
-        </div>
-         
-<div class="article-date">
-  <time datetime="2019-07-11T07:34:10.000Z" itemprop="datePublished">2019-07-11</time>
-</div>
       </div>
       
   
-    <h1 class="article-title" itemprop="name">
-      Hexo 主题开发制作
-    </h1>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2020/nvm-install-use/">NVM 的安装和使用</a>
+    </h2>
   
 
-      <div class="article-updated">
-        
-      </div>
     </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      <div id="expired-tag"></div>
-      <!-- 文章内容 article body -->
+    <!-- 文章内容 article body -->
  
-  <article class="article-content">
-    <h2 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 的安装就不讲了，直接开始我在制作 Hexo 主题遇到的一些问题。</p>
-</blockquote>
-<p>首先<br>在使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-cli">Hexo cli</a> 脚手架创建完 <code>Hexo</code> 项目后会有一个默认官方主题 <a target="_blank" rel="noopener" href="https://hexojs.github.io/hexo-theme-landscape/">landscape</a> 在 <code>themes</code> 目录中复制一份出来重命名成自己的名称，例如我的就是改成了 <code>yogwang</code>，并且在根目录中的 <code>_config.yml</code> 中修改主题为自己的主题</p>
-<span id="more"></span>
-
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Extensions
-## Plugins: https:&#x2F;&#x2F;hexo.io&#x2F;plugins&#x2F;
-## Themes: https:&#x2F;&#x2F;hexo.io&#x2F;themes&#x2F;
-theme: yogwang &#x2F;&#x2F;这里修改成自己的主题<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h4 id="完全展开主题目录："><a href="#完全展开主题目录：" class="headerlink" title="完全展开主题目录："></a>完全展开主题目录：</h4><pre class="line-numbers language-none"><code class="language-none">─yogwang
-  ├─languages     &#x2F;&#x2F; 国际化(i18n)让网站以不同语言呈现
-  │  └─...
-  ├─layout        &#x2F;&#x2F; 布局文件
-  │  ├─_partial     &#x2F;&#x2F; 局部组件
-  │  │  ├─post      &#x2F;&#x2F; 文章组件
-  │  │  └─...
-  │  ├─_widget      &#x2F;&#x2F; 侧边栏部件
-  │  └─...
-  ├─scripts       &#x2F;&#x2F; 启动时自动载入的Js脚本
-  ├─source        &#x2F;&#x2F; 资源文件夹
-  │  ├─css          &#x2F;&#x2F; CSS样式
-  │  │  ├─fonts     &#x2F;&#x2F; 字体
-  │  │  ├─images    &#x2F;&#x2F; 图片
-  │  │  ├─_partial  &#x2F;&#x2F; 局部组件CSS
-  │  │  ├─_util     &#x2F;&#x2F; 分栏&amp;Mixin
-  │  │  └─...
-  │  ├─fancybox     &#x2F;&#x2F; fancybox插件
-  │  └─js           &#x2F;&#x2F; JS脚本
-  ├─_config.yml   &#x2F;&#x2F; 主题配置文件
-  ├─.gitignore    &#x2F;&#x2F; Git忽略配置
-  ├─Gruntfile.js  &#x2F;&#x2F; Grunt项目文件
-  ├─LICENSE       &#x2F;&#x2F; 授权条款
-  ├─package.json  &#x2F;&#x2F; 包管理配置文件
-  └─README.md     &#x2F;&#x2F; 项目手册<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>因为我是完全重新创作一个主题，所以需要保留下来的目录如下</p>
-<h4 id="保留下来的目录"><a href="#保留下来的目录" class="headerlink" title="保留下来的目录"></a>保留下来的目录</h4><pre class="line-numbers language-none"><code class="language-none">─yogwang
-  ├─layout
-  │  ├─_partial
-  │  │  └─post
-  │  │  └─...
-  │  ├─_widget
-  │  └─...
-  ├─scripts
-  ├─source
-  │  ├─css
-  │  └─js
-  ├─_config.yml
-  ├─.gitignore
-  ├─package.json
-  └─README.md<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>因为仅自己使用所以 <code>languages</code>、<code>Gruntfile.js</code> 和 <code>LICENSE</code> 没有保留，</p>
-<p>保留下了 <code>layout</code> 布局文件夹的全部文件，</p>
-<p>清空了 <code>scripts</code> 和 <code>source</code> 目录下文件仅保留目录;</p>
-<p><code>README.md</code> 作为备忘录。</p>
-<h2 id="制作"><a href="#制作" class="headerlink" title="制作"></a>制作</h2><p>因为保留下了官方主题的布局文件，所以只需要在原有基础上调整就可以制作一个主题雏形。</p>
-<h4 id="调整后的目录："><a href="#调整后的目录：" class="headerlink" title="调整后的目录："></a>调整后的目录：</h4><pre class="line-numbers language-none"><code class="language-none">Layout
-│  archive.ejs    &#x2F;&#x2F; 所有归档文章列表
-│  category.ejs   &#x2F;&#x2F; 归档时间来分类的列表
-│  index.ejs      &#x2F;&#x2F; 主页
-│  layout.ejs     &#x2F;&#x2F; 通用布局模板
-│  page.ejs       &#x2F;&#x2F; 单页模板
-│  post.ejs       &#x2F;&#x2F; 文章模板
-│  tag.ejs        &#x2F;&#x2F; 标签归档列表页
-├─_partial        &#x2F;&#x2F; 私有组件
-│  │  archive-post.ejs      &#x2F;&#x2F; 列表页文章预览
-│  │  archive.ejs           &#x2F;&#x2F; 文章列表
-│  │  article.ejs           &#x2F;&#x2F; 文章详情
-│  │  footer.ejs            &#x2F;&#x2F; 尾部模板
-│  │  meta.ejs              &#x2F;&#x2F; 页面META部分
-│  │  header.ejs            &#x2F;&#x2F; 头部模板
-│  │  sidebar.ejs           &#x2F;&#x2F; 侧边栏
-│  └─posts      &#x2F;&#x2F; 文章组件
-│          category.ejs     &#x2F;&#x2F; 文章分类归档
-│          date.ejs         &#x2F;&#x2F; 文章创建时间
-│          nav.ejs          &#x2F;&#x2F; 文章分页
-│          tag.ejs          &#x2F;&#x2F; 文章Tag
-│          title.ejs        &#x2F;&#x2F; 文章标题
-└─_widget      &#x2F;&#x2F; 侧边栏部件
-        archive.ejs         &#x2F;&#x2F; 分类列表部件
-        category.ejs        &#x2F;&#x2F; 时间归档部件
-        recent_posts.ejs    &#x2F;&#x2F; 最后发布部件
-        tag.ejs             &#x2F;&#x2F; 标签分类部件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<blockquote>
-<p>书写样式直接跳过,以下是一些制作完成之后遇到的问题</p>
-</blockquote>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="在主题配置文件中添加个人信息并输出到页面"><a href="#在主题配置文件中添加个人信息并输出到页面" class="headerlink" title="在主题配置文件中添加个人信息并输出到页面"></a>在主题配置文件中添加个人信息并输出到页面</h3><p>打开 thems 目录下对应主题的 <code>_config.yml</code> 文件，参考官方模板中的 <code>Menu</code> 属性同样创建 <code>userinfo</code></p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># userinfo
-user:
-  nickname: 王阳阳
-  bio: &#39;久之须自见得&#39;
-  commpany: ODIN.INC
-  address: Jiaxing,China
-follow:
-  github: https:&#x2F;&#x2F;github.com&#x2F;yogwang
-  weibo: http:&#x2F;&#x2F;weibo.com&#x2F;yooooooge<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>如何在页面中输出？？<br>在页面对应位置 <code>&lt;%= theme.user.nickname %&gt;</code> 即可，也可以循环输出</p>
-<pre class="line-numbers language-ejs" data-language="ejs"><code class="language-ejs">&lt;% for (var i in theme.follow)&#123; %&gt;
-  &lt;a href&#x3D;&quot;&lt;%&#x3D; theme.follow[i] %&gt;&quot; target&#x3D;&quot;_blank&quot;&gt;&lt;&#x2F;a&gt;
-&lt;% &#125; %&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p><em>其实也可以在 Hexo 根目录下的 <code>_config.yml</code> 文件配置</em> 输出标签如 <code>&lt;%= config.LABEL %&gt;</code></p>
-<h3 id="不知道怎么生成-‘关于我’-单页面"><a href="#不知道怎么生成-‘关于我’-单页面" class="headerlink" title="不知道怎么生成 ‘关于我’ 单页面"></a>不知道怎么生成 ‘关于我’ 单页面</h3><p>在 <code>Layout</code> 中编写完 <code>about.ejs</code> 模板之后,我想使用这个布局来创建关于我的单页面</p>
-<p>在 <code>Hexo.io</code> 官方文档中是这样写的</p>
-<blockquote>
-<p><code>hexo new [layout] &lt;title&gt;</code></p>
-<p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
-</blockquote>
-<p>使用 <code>hexo new</code> 命令，创建<code>关于我</code>单页面</p>
-<pre class="line-numbers language-none"><code class="language-none">PS E:\yogwang.github.io&gt; hexo new about aboutme
-INFO  Created: E:\yogwang.github.io\source\_posts\aboutme.md<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>这样就会生成一篇使用 <code>about.ejs</code> 来布局的 <code>文章</code> 并生成在_posts 文件夹下。注意哦，生成的是文章会在文章列表中显示。</p>
-<p><em>那么问题来了，我怎么创建一个使用 <code>about.ejs</code> 布局，且不在文章列表中显示的单页面呢</em></p>
-<blockquote>
-<p>Hexo 有 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/writing">三种默认布局</a> ：<code>post</code>、<code>page</code> 和 <code>draft</code>，它们分别对应不同的路径，自定义的其他布局和 <code>post</code> 相同，草稿文件都将储存到 <code>source/_posts</code> 文件夹。</p>
-</blockquote>
-<p>所以在 <code>hexo new</code> 页面的时候先使用 <code>hexo new page about</code></p>
-<pre class="line-numbers language-none"><code class="language-none">PS E:\yogwang.github.io&gt; hexo new page about
-INFO  Created: E:\yogwang.github.io\source\about\index.md<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>这样会在 <code>source</code> 目录下创建 <code>about</code> 目录，并生成 <code>index.md</code> 文件，打开它在 <code>Front-matter</code> 中添加 <code>layout: about</code></p>
-<pre class="line-numbers language-md" data-language="md"><code class="language-md">---
-title: 我
-date: 2019-07-11 15:10:39
-layout: about
----<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
- 
+  <article class="article-excerpt">
+    <p>今天后端同学那边遇到了一个问题，那边跑一个react项目，<code>npm install</code> 直接报错，但是在我这边并没有报异常，后来发现他的 NPM 版本为 <code>3.10.10</code>， 我猜测是 NPM 版本太低的缘故，就顺便看了下 Node 的版本，版本是 <code>v6.10.0</code>, 所以直接给他更新了 NodeJS，正当我以为问题解决了的时候，后端同学又和我说，现在的项目可以跑起来了，但是之前的项目他跑不起来了。</p>
+<p>emmmm…..我又过去看了下报错信息，这会问题是 Node 给我更新掉了，版本太高项目跑不起来了….<br>所以，有了这篇关于 Node Version Manager (NVM) for Windows 的文章</p>
   </article>
-
-
-    </div>
+  <div class="article-more-link">
+    <a href="/2020/nvm-install-use/#more">阅读全文</a>
   </div>
-   
-<nav id="article-nav">
-  
-    <a href="/2019/BetterScrol-mouse-wheel/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">BetterScrol 2.x Mouse-whell 没效果</div>
-    </a>
-  
-  
-    <a href="/2019/CSS-WaterFull/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">纯CSS实现瀑布流布局</div>
-    </a>
-  
-</nav>
- 
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2020-07-15T08:40:22.000Z" itemprop="datePublished">2020/07/15</time>
+</div>
+  </div>
 </div>
 
-<script>
-const postDate = "2019-07-11"
-const difference = moment().diff(postDate, 'days')
-const isExpired = difference > 300
-if (isExpired){
-  const el = document.querySelector("#expired-tag")
-  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
-  el.innerHTML = expiredText
-} 
-</script>
+</div>
+<!-- 列表分页 list paginator -->
+
 
 </main>
 <!-- 侧边栏 sidebar -->
@@ -287,7 +125,7 @@ if (isExpired){
   <!-- 快捷分类菜单 shortcut menu -->
   <section class="widget-wrap shortcut-menu">
     
-      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+      <a href="/categories/前端分享/" class="shortcut-menu-item" >前端分享</a>
     
       <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
     
