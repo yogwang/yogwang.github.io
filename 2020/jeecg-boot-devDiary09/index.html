@@ -361,6 +361,26 @@ methods<span class="token operator">:</span><span class="token punctuation">&#12
 <li>保存校验所有字段，并且需要匹配所有规则。</li>
 </ul>
 <p>暂时还没有想好，现阶段分开两个函数，存为草稿是在 <code>validateFields</code> 中的规则内填写需要校验的字段，并且在<code>if(!err)</code> 中，使用 <code>getFieldsValue</code> 获取整个表单数据</p>
+<hr>
+<h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><h4 id="1-在表单中使用-lt-a-switch-gt-组件时控制台出现警告"><a href="#1-在表单中使用-lt-a-switch-gt-组件时控制台出现警告" class="headerlink" title="#1. 在表单中使用 &lt;a-switch /&gt; 组件时控制台出现警告"></a>#1. 在表单中使用 <code>&lt;a-switch /&gt;</code> 组件时控制台出现警告</h4><pre class="line-numbers language-none"><code class="language-none">Warning: [antd: Checkbox] &#96;value&#96; is not validate prop, do you mean &#96;checked&#96;?<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>其原因是，没有设置 <code>valuePropName</code> 属性，直接使用 <code>v-decorator</code> 进行绑定时，就会出现这个问题。<br>为其设置 <code>valuePropName</code> 属性为 <code>checked</code> 即可。</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-form</span> <span class="token attr-name">:form</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-form-item</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Switch<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-switch</span>
+        <span class="token attr-name">v-decorator</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[
+          <span class="token punctuation">'</span>switch<span class="token punctuation">'</span>,
+          &#123;
+            rules: [],
+            valuePropName: <span class="token punctuation">'</span>checked<span class="token punctuation">'</span>, // 增加此项
+            initialValue: false
+          &#125;
+        ]<span class="token punctuation">"</span></span>
+      <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-form-item</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-form</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>具体可以查看 <code>AntD Vue</code> 的文档 <a target="_blank" rel="noopener" href="https://www.antdv.com/components/form-cn/#this.form.getFieldDecorator(id,-options)-%E5%92%8C-v-decorator=%22[id,-options]%22">此处</a></p>
 <h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><ul>
 <li><code>AntD Vue</code> 1.5.0+ 增加了新组件<a target="_blank" rel="noopener" href="https://www.antdv.com/components/form-model-cn/">FormModel 表单</a> 可以通过 <code>v-model</code> 绑定收集数据，并且校验数据了</li>
 </ul>
