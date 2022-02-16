@@ -1,0 +1,277 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>flex 容器宽度被内容撑开的问题 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!-- 文章详情 Post Detail -->
+<div
+  id="post-flex-container-stretched-by-content"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2022-02-15T07:49:17.000Z" itemprop="datePublished">2022-02-15</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      flex 容器宽度被内容撑开的问题
+    </h1>
+  
+
+      <div class="article-updated">
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <blockquote>
+<p>在弹性布局中，一个 <code>flex</code> 子项的最终尺寸是基础尺寸（或内容尺寸）、弹性增长或收缩、最大最小尺寸共同作用的结果。<br>最终尺寸计算的优先级是：<br><strong>最大最小尺寸限制 &gt; 弹性增长或收缩 &gt; 基础尺寸</strong></p>
+<ul>
+<li>基础尺寸由 <code>flex-base</code> 属性或 <code>width</code> 属性，以及 <code>box-sizing</code> 盒模型共同决定；</li>
+<li>内容尺寸最指最大内容宽度，当没有设置基础尺寸是会顶替基础尺寸的角色；</li>
+<li>弹性增长指的是 <code>flex-grow</code> 属性，弹性收缩指的是 <code>flex-shrink</code> 属性；</li>
+<li>最大尺寸主要受 <code>max-width</code> 属性限制；最小尺寸则比较复杂，受最小内容宽度、<code>width</code> 属性和 <code>min-width</code> 属性共同影响。 </li>
+</ul>
+</blockquote>
+<p><img src="/2022/flex-container-stretched-by-content/problem_preview.png#center" alt="flex 容器宽度被内容撑开的问题"></p>
+<p>很早之前就遇到过这个问题但没有整理，当时处理完问题之后就没有管了。昨天又遇到了同样的问题，因为嵌套的层次很深折腾了有2个小时，所以还是需要记录下来以免未来又忘了。</p>
+<blockquote>
+<p>其实很简单，容器使用 <code>width:0;flex:1;</code> 即可解决问题。</p>
+</blockquote>
+<p>但是稍微有点没有理解的是：为什么设置宽度为 <code>0</code> 时，使用 <code>flex-grow:1</code> 可以使容器放大，但是设置宽度为 <code>100%</code> 时，使用 <code>flex-shrink:1</code> 并不会让容器缩小。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="先来看一下问题复现吧"><a href="#先来看一下问题复现吧" class="headerlink" title="先来看一下问题复现吧:"></a>先来看一下问题复现吧:</h2><iframe id="cp_embed_YzErENN" src="//codepen.io/yogwang/embed/YzErENN?height=600&theme-id=dark&slug-hash=YzErENN&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+<p>在正常内容的时候不会出现问题（可以点击 Demo 的 <a target="_blank" rel="noopener" href="https://codepen.io/yogwang/pen/YzErENN">EDIT ON CODEPEN</a> 最大化预览正常情况），但当元素内部的文字内容增多时，或者视窗缩小时 <code>flex</code> 容器的宽度就会被内容撑开。</p>
+<p>看起来是不是十分复杂？因为我嵌套了 2 层 <code>flex</code> 容器，最内部的容器 <code>.list-item</code> 因为内容太多被撑开了，并没有如愿按照剩余空间缩小子元素 <code>.text</code> 的宽度，同时宽度变大的 <code>.list-item</code> 导致外部的 <code>.container</code> 和 <code>.wrap</code> 也被撑开了。</p>
+<p>被撑开的 <code>flex</code> 容器比较多，不好说明，那么看一下简略版的复现 Demo 👇</p>
+<iframe id="cp_embed_oNoGEqK" src="//codepen.io/yogwang/embed/oNoGEqK?height=600&theme-id=dark&slug-hash=oNoGEqK&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+<p>这个就很简单明了了，因为 <code>.text</code> 的内容太多，致使 <code>.container</code> 容器被撑开了，并且 <code>.container</code> 的宽度变大使 <code>.wrap</code> 的宽度也增大了，并不是按照设想的 <code>100vw</code>。同时文本标题超出省略的样式也没有应用到。</p>
+<p><strong>其实解决问题很简单，容器使用 <code>width:0;flex:1;</code> 即可解决问题。</strong></p>
+<hr>
+<p>但是我疑惑的是，为什么宽度设置为 <code>0</code>，flex布局可以使容器放大，设置为 <code>100%</code> 就不能实现缩小了。找了一圈也没见原因，问了一下肉大，他说可能和内容宽度有关系，让我看看张大佬的《CSS新世界》。</p>
+<h3 id="🎉-果然在-6-2-12-这一节找到了类似的例子，并在-6-3-这一节中找到了具体解释。"><a href="#🎉-果然在-6-2-12-这一节找到了类似的例子，并在-6-3-这一节中找到了具体解释。" class="headerlink" title="🎉 果然在 6.2.12 这一节找到了类似的例子，并在 6.3 这一节中找到了具体解释。"></a>🎉 果然在 <code>6.2.12</code> 这一节找到了类似的例子，并在 <code>6.3</code> 这一节中找到了具体解释。</h3><h4 id="那设置了-flex-1-属性（挖坑：简写的-flex-1-具体代表了什么？）后，容器为什么和预期表现不一致？"><a href="#那设置了-flex-1-属性（挖坑：简写的-flex-1-具体代表了什么？）后，容器为什么和预期表现不一致？" class="headerlink" title="那设置了 flex:1 属性（挖坑：简写的 flex:1 具体代表了什么？）后，容器为什么和预期表现不一致？"></a>那设置了 <code>flex:1</code> 属性<small>（挖坑：简写的 flex:1 具体代表了什么？）</small>后，容器为什么和预期表现不一致？</h4><!-- [简写的 flex:1 具体代表了什么？](/2022/what-happens-when-set-flex-1) -->
+<p>因为设置了 <code>flex-basis</code> 属性的元素的最小尺寸是最小内容的宽度（文字内容在所有换行点换行后的尺寸），而我设置了标题不换行导致最小尺寸比较大，最终尺寸大于 <code>flex:1</code> 给到的 <code>flex-basis:0%</code>。(如果我们把标题设置会换行容器就不会被撑开了）。<br>具体解释为：</p>
+<blockquote>
+<p><code>flex-basis</code> 属性下的最小尺寸是由内容决定的，而 <code>width</code> 属性下的最小尺寸是由 <code>width</code> 属性的计算值决定的。</p>
+</blockquote>
+<p>这里出现的 <strong>“最小尺寸”</strong> 表示最终尺寸的最小值，所以在标题不换行的时候如果不设置 <code>width</code> 为 <code>0</code> 那么，<code>flex</code> 容器的宽度就会被内容撑开。当设置 <code>width:0</code> 之后，最小尺寸就为设置的 <code>width</code> 值了，就可以被 <code>flex-grow:1</code> 放大。</p>
+<p>ok，以上就是 <code>flex</code> 容器被内容撑开的全部内容了，有条件的小伙伴可以入手一本 <a target="_blank" rel="noopener" href="https://item.jd.com/13356308.html">《CSS新世界》</a> 看看，里边的内容有很多讲些CSS新特性的实用例子，确实可以节约不少时间。</p>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a target="_blank" rel="noopener" href="https://item.jd.com/13356308.html">《CSS新世界》- 张鑫旭</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex">flex - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-basis">flex-basis - CSS（层叠样式表） | MDN</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a href="/2022/miniprogram-fail-navigate-back-intercepted/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">微信小程序返回键被劫持点击无效</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2022-02-15"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">ODIN.INC</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/flex-container-stretched-by-content/">flex 容器宽度被内容撑开的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2022/miniprogram-fail-navigate-back-intercepted/">微信小程序返回键被劫持点击无效</a>
+          </li>
+        
+          <li>
+            <a href="/2022/what-do-side-effect-mean/">编程中的&#34;副作用&#34;是什么意思？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-devDiary-08-subpackages/">微信小程序学习日记 L08 分包加载</a>
+          </li>
+        
+          <li>
+            <a href="/2021/miniprogram-flex-height-collapse-in-ios/">记小程序flex布局垂直排列出现高度崩塌的问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2022 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
