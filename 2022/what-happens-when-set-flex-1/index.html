@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>简单设置Video标签的播放倍速 | blog [ YOG WANG ]</title>
+  <title>简写的 flex:1 具体简写了写什么？ | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
@@ -51,7 +51,7 @@
 <main id="container">
   <!-- 文章详情 Post Detail -->
 <div
-  id="post-html5-set_videoSpeed"
+  id="post-what-happens-when-set-flex-1"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,18 +67,18 @@
   </div>
 
           
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li></ul>
 
         </div>
          
 <div class="article-date">
-  <time datetime="2019-07-21T08:21:58.000Z" itemprop="datePublished">2019-07-21</time>
+  <time datetime="2022-02-16T09:53:27.000Z" itemprop="datePublished">2022-02-16</time>
 </div>
       </div>
       
   
     <h1 class="article-title" itemprop="name">
-      简单设置Video标签的播放倍速
+      简写的 flex:1 具体简写了写什么？
     </h1>
   
 
@@ -92,22 +92,99 @@
       <!-- 文章内容 article body -->
  
   <article class="article-content">
-    <p>在 <a target="_blank" rel="noopener" href="https://www.bilibili.com/">B 站</a> 看视频教学的时候，发现最快只有 2 倍速,</p>
-<p>我觉得太慢了，在百度之后发现有 <code>video</code> 标签有 <code>playbackRate</code> 属性可以设置倍速。</p>
+    <p>前几天写 <a href="/2022/flex-container-stretched-by-content/">flex 容器宽度被内容撑开的问题</a> 查文章的时候，看到了一篇 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136223806">flex:1 到底代表什么?</a>，确实很多时候只是知道 <code>flex:1</code> 的作用，并不清楚他具体代表了什么。<br>和那篇帖子一样，我原先理解的也是 <code>flex:1</code> 应该是 <code>flex:1 1 auto</code> 的简写。因为设置了 <code>flex:1</code> 之后就可以让容器扩张了。既然 <code>flex</code> 的默认值是 <code>0 1 auto</code> 那么理所当然的就这样认为了。</p>
+<p>看完了这个帖子之后发现其实并不是这样。<br>简写的 <code>flex:1</code> 其实是 <code>flex:1 1 0%</code>，其中的 <code>flex-basis</code> 的值从默认值变成了 <code>0%</code> ，但是文章并没有说明为什么会这样。</p>
+<p>确实这个东西不值得深入研究为什么，只需要知道和理解就可以了。<br>但，正好昨天在翻《CSS新世界》的时候看到了这部分内容！</p>
 <span id="more"></span>
 
-<p>应该适用使用 <code>HTML5</code> 的 <code>video</code> 标签来为播放器的在线视频站。</p>
-<p>记一下省的以后再百度</p>
-<p>在控制台输入即可：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 获取视频元素</span>
-<span class="token keyword">var</span> video <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// 设置播放倍率</span>
-video<span class="token punctuation">.</span>playbackRate <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">// 设置为10倍速</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <blockquote>
-<p>07/30/2019 补：只有 Google Chrome 和 Safari 支持 playbackRate 属性。<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_playbackrate.asp">[ w3school ]</a></p>
+<p>为何 <code>flex</code> 属性会有这样与众不同的行为呢？按照CSS规范的说法，这样设计的目的是为了让 <code>flex</code> 属性的表现更符合我们日常开发需要的效果。意思就是，当我们使用 <code>flex:1</code> 的时候，正常情况就是需要 <code>flex-basis</code> 为 <code>0%</code>，即基础尺寸为 <code>0</code>；当我们使用 <code>flex:100px</code> 的时候，正常情况就是需要 <code>flex-grow</code> 为 <code>1</code>，也就是尺寸保持向外的弹性。<br><code>flex</code> 属性站在实用主义的角度对计算值进行了优化， 我认为这是 <code>CSS</code> 规范一种友善的处理，而这种友善在 <code>flex</code> 的关键字属性值中体现的更加明显。<br><small>——《CSS新世界》</small></p>
 </blockquote>
+<p>正如书里说的，真正使用 <code>flex</code> 的时候没有几个人可以记清楚哪个值对应哪一个属性，<code>flex</code> <strong>单值缩写语法的作用就是为了让</strong> <code>flex</code> <strong>属性的作用语义化和表面化。</strong></p>
+<h2 id="比如说-flex-的正式语法为："><a href="#比如说-flex-的正式语法为：" class="headerlink" title="比如说 flex 的正式语法为："></a>比如说 <code>flex</code> 的正式语法为：</h2><p><code>flex: none | [ &lt;&#39;flex-grow&#39;&gt; &lt;&#39;flex-shrink&#39;&gt;? || &lt;&#39;flex-basis&#39;&gt; ]</code></p>
+<p><strong><code>flex: none</code></strong> 很好理解，元素会根据自身宽高来设置尺寸。它是完全非弹性的：既不会缩短，也不会伸长来适应 <code>flex</code> 容器。相当于将属性设置为 <code>flex: 0 0 auto</code>。</p>
+<h2 id="我们关注书内的重点说明的-flex-属性的多值语法："><a href="#我们关注书内的重点说明的-flex-属性的多值语法：" class="headerlink" title="我们关注书内的重点说明的 flex 属性的多值语法："></a>我们关注书内的重点说明的 <code>flex</code> 属性的多值语法：</h2><p><strong><code>&lt;&#39;flex-grow&#39;&gt; &lt;&#39;flex-shrink&#39;&gt;? || &lt;&#39;flex-basis&#39;&gt;</code></strong></p>
+<blockquote>
+<p><strong>(1)</strong> 如果 <code>flex</code> 的属性值只有 <strong>1</strong> 个值，则具体规则如下：</p>
+<ul>
+<li>如果是<strong>数值</strong>，如 <code>flex:1</code>，则这个 <code>1</code> 为 <code>flex-grow</code> 属性的值，此时 <code>flex-shrink</code> 属性和 <code>flex-basis</code> 属性的值分别是 <code>1</code> 和 <code>0%</code>。注意，这里的 <code>flex-basis</code> 属性是 <code>0%</code>，而不是默认值 <code>auto</code>。</li>
+<li>如果是<strong>长度值</strong>，如 <code>flex:100px</code>，则这个 <code>100px</code> 显然为 <code>flex-basis</code> 属性的值，因为 <strong>3</strong> 个缩写的 CSS 属性中只有 <code>flex-basis</code> 的属性值支持<strong>长度值</strong>。此时 <code>flex-grow</code> 属性和 <code>flex-shrink</code> 属性的值都是 <code>1</code>，注意，这里的 <code>flex-grow</code> 属性的值是 <code>1</code>，而不是默认值 <code>0</code>。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>(2)</strong> 如果 <code>flex</code> 的属性值有 <strong>2</strong> 个值，则第一个值一定是 <code>flex-grow</code> 属性值（因为表示0个或1个的问号 <code>?</code> 在 <code>flex-shrink</code> 的后面 <sub>[<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Value_definition_syntax">CSS属性值定义语法可以看这里</a>]</sub>），第二个值根据值的类型不同对应不同的CSS属性，具体规则如下。</p>
+<ul>
+<li>如果第二个值是<strong>数值</strong>，例如 <code>flex:1 2</code>，则这个 <code>2</code> 是 <code>flex-shrink</code> 属性的值，此时 <code>flex-basis</code> 属性计算值是 <code>0%</code>，并非默认值 <code>auto</code>。</li>
+<li>如果第二个值是<strong>长度值</strong>，例如 <code>flex:1 100px</code>，则这个 <code>100px</code> 为 <code>flex-basis</code> 属性值。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>(3)</strong> 如果 <code>flex</code> 属性值有 <strong>3</strong> 个值，则<strong>长度值</strong>为 <code>flex-basis</code> 属性值，其余两个<strong>数值</strong>分别为 <code>flex-grow</code> 和 <code>flex-shrink</code> 的属性值。下面两行CSS语法都是合法的，且含义也是一样的：</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/* 下面两行的CSS语句含义是一样的 */</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> 1 2 50%<span class="token punctuation">;</span>
+<span class="token property">flex</span><span class="token punctuation">:</span>50% 1 2<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<h2 id="所以在简写的时候其实对应的计算值是这样的"><a href="#所以在简写的时候其实对应的计算值是这样的" class="headerlink" title="所以在简写的时候其实对应的计算值是这样的"></a>所以在简写的时候其实对应的计算值是这样的</h2><!-- | 简写 | 等同于 | 备注 |
+| ---- | ---- | ---- |
+| `flex: initial` | `flex: 0 1 auto` | 元素不会扩张，但会收缩，元素宽度为**最大内容宽度** |
+| `flex: 0` | `flex: 0 1 0%` | 元素不会扩张，但会收缩，元素宽度为**最小内容宽度** |
+| `flex: none` | `flex: 0 0 auto` | 元素不会扩张，同时不会收缩，元素宽度为**最大内容宽度** |
+| `flex: 1` | `flex: 1 1 0%` | 元素会等分扩张，同时也会收缩，元素宽度为**最小内容宽度** |
+| `flex: auto` | `flex: 1 1 auto` | 会基于元素宽度扩张，同时也会收缩，元素宽度为**最大内容宽度** | -->
+<table>
+<thead>
+<tr>
+<th>简写</th>
+<th>等同于</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>flex: initial</code></td>
+<td><code>flex: 0 1 auto</code></td>
+</tr>
+<tr>
+<td><code>flex: 0</code></td>
+<td><code>flex: 0 1 0%</code></td>
+</tr>
+<tr>
+<td><code>flex: none</code></td>
+<td><code>flex: 0 0 auto</code></td>
+</tr>
+<tr>
+<td><code>flex: 1</code></td>
+<td><code>flex: 1 1 0%</code></td>
+</tr>
+<tr>
+<td><code>flex: auto</code></td>
+<td><code>flex: 1 1 auto</code></td>
+</tr>
+</tbody></table>
+<p>具体效果可以查看张大佬随书写的这个例子 <a target="_blank" rel="noopener" href="https://demo.cssworld.cn/new/6/2-11.php">🔗 flex关键字属性值基本效果示意实例页面</a></p>
+<h3 id="简单来说："><a href="#简单来说：" class="headerlink" title="简单来说："></a>简单来说：</h3><ul>
+<li>如果想保持元素<strong>按照其宽度平铺换行</strong>的话，可以使用 <code>flex:initial</code>，比如说不定宽的小标签、小图标列表；</li>
+<li>如果想保持元素<strong>不随容器宽度放大和缩小</strong>，可以使用　<code>flex:none</code> 来实现，比如说上一篇文章中的定宽侧边栏；</li>
+<li>如果想要让各元素之间<strong>等比放大和缩小</strong>的话，可以使用 <code>flex:1</code> 来实现；</li>
+<li>如果想要元素<strong>根据内容的宽度</strong>来占据容器剩余空间或者缩小的话，可以使用 <code>flex:auto</code> 来实现；</li>
+<li><code>flex:0</code> 暂时没有想到应用场景。</li>
+</ul>
+<hr>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><h3 id="🎈-问题1：不同的-flex-basis-的值，会对元素造成什么影响？"><a href="#🎈-问题1：不同的-flex-basis-的值，会对元素造成什么影响？" class="headerlink" title="🎈 问题1：不同的 flex-basis 的值，会对元素造成什么影响？"></a>🎈 问题1：不同的 <code>flex-basis</code> 的值，会对元素造成什么影响？</h3><h4 id="对比1：-flex-0-和-flex-initial-的区别"><a href="#对比1：-flex-0-和-flex-initial-的区别" class="headerlink" title="对比1： flex:0 和 flex:initial 的区别"></a>对比1： <code>flex:0</code> 和 <code>flex:initial</code> 的区别</h4><ul>
+<li>他们都不会扩张，即都不会占据剩余空间。</li>
+<li><strong><code>flex:0</code></strong> 的元素宽度为 <strong>最小内容宽度</strong>，缩放时按照 <strong>最小内容宽度</strong> 占据空间。</li>
+<li><strong><code>flex:initial</code></strong> 的元素宽度为 <strong>最大内容宽度</strong>，缩放时按照<strong>自身内容的宽度</strong>缩小自身宽度。</li>
+</ul>
+<h4 id="对比2：-flex-1-和-flex-auto-的区别"><a href="#对比2：-flex-1-和-flex-auto-的区别" class="headerlink" title="对比2： flex:1 和 flex:auto 的区别"></a>对比2： <code>flex:1</code> 和 <code>flex:auto</code> 的区别</h4><ul>
+<li>他们都会扩张和缩小，即都会占据剩余空间。</li>
+<li><strong><code>flex:1</code></strong> 的元素宽度，可视为<strong>等分</strong>剩余空间，或者各元素之间<strong>等比</strong>缩小。</li>
+<li><strong><code>flex:auto</code></strong> 的元素宽度，按照<strong>自身内容的宽度</strong>进行分配剩余空间，或者缩小自身宽度。</li>
+</ul>
+<h3 id="看着有些懵逼的话，可以看如下具体示例"><a href="#看着有些懵逼的话，可以看如下具体示例" class="headerlink" title="看着有些懵逼的话，可以看如下具体示例:"></a>看着有些懵逼的话，可以看如下具体示例:</h3><iframe id="cp_embed_JjOLzKv" src="//codepen.io/yogwang/embed/JjOLzKv?height=800&theme-id=dark&slug-hash=JjOLzKv&default-tab=result" scrolling="no" frameborder="no" height="800" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+<p>比较不容易理解的是，如果同时设置了 <code>flex-basis</code> 属性的值和 <code>width</code> 属性的值时，具体是哪一个属性来应用。这个我需要再挖一个坑来说明了，因为内容还是比较多的。</p>
+<hr>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136223806">flex:1 到底代表什么?</a><br><a target="_blank" rel="noopener" href="https://item.jd.com/13356308.html">《CSS新世界》- 张鑫旭</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex">flex - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-grow">flex-grow - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-basis">flex-basis - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-flexbox-1/#flex-common">CSS Flexible Box Layout Module Level 1</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Value_definition_syntax">CSS属性值定义语法 - CSS（层叠样式表） | MDN</a></p>
  
   </article>
 
@@ -117,15 +194,10 @@ video<span class="token punctuation">.</span>playbackRate <span class="token ope
    
 <nav id="article-nav">
   
-    <a href="/2019/php-VirtualHost/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">Apache 配置虚拟域名</div>
-    </a>
   
-  
-    <a href="/2019/Electron04-ElectronBuilder-ElectronUpdater/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/flex-container-stretched-by-content/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Electron:Electron-builder+Electron-updater 完成Electron应用的自升级</div>
+      <div class="article-nav-title">flex 容器宽度被内容撑开的问题</div>
     </a>
   
 </nav>
@@ -133,7 +205,7 @@ video<span class="token punctuation">.</span>playbackRate <span class="token ope
 </div>
 
 <script>
-const postDate = "2019-07-21"
+const postDate = "2022-02-16"
 const difference = moment().diff(postDate, 'days')
 const isExpired = difference > 300
 if (isExpired){
