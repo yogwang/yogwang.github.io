@@ -121,13 +121,13 @@
 <p><strong>其实解决问题很简单，容器使用 <code>width:0;flex:1;</code> 即可解决问题。</strong></p>
 <hr>
 <p>但是我疑惑的是，为什么宽度设置为 <code>0</code>，flex布局可以使容器放大，设置为 <code>100%</code> 就不能实现缩小了。找了一圈也没见原因，问了一下肉大，他说可能和内容宽度有关系，让我看看张大佬的《CSS新世界》。</p>
-<h3 id="🎉-果然在-6-2-12-这一节找到了类似的例子，并在-6-3-这一节中找到了具体解释。"><a href="#🎉-果然在-6-2-12-这一节找到了类似的例子，并在-6-3-这一节中找到了具体解释。" class="headerlink" title="🎉 果然在 6.2.12 这一节找到了类似的例子，并在 6.3 这一节中找到了具体解释。"></a>🎉 果然在 <code>6.2.12</code> 这一节找到了类似的例子，并在 <code>6.3</code> 这一节中找到了具体解释。</h3><h4 id="那设置了-flex-1-属性（挖坑：简写的-flex-1-具体代表了什么？）后，容器为什么和预期表现不一致？"><a href="#那设置了-flex-1-属性（挖坑：简写的-flex-1-具体代表了什么？）后，容器为什么和预期表现不一致？" class="headerlink" title="那设置了 flex:1 属性（挖坑：简写的 flex:1 具体代表了什么？）后，容器为什么和预期表现不一致？"></a>那设置了 <code>flex:1</code> 属性<small>（挖坑：简写的 flex:1 具体代表了什么？）</small>后，容器为什么和预期表现不一致？</h4><!-- [简写的 flex:1 具体代表了什么？](/2022/what-happens-when-set-flex-1) -->
-<p>因为设置了 <code>flex-basis</code> 属性的元素的最小尺寸是最小内容的宽度（文字内容在所有换行点换行后的尺寸），而我设置了标题不换行导致最小尺寸比较大，最终尺寸大于 <code>flex:1</code> 给到的 <code>flex-basis:0%</code>。(如果我们把标题设置会换行容器就不会被撑开了）。<br>具体解释为：</p>
+<h3 id="🎉-果然在-6-2-12-这一节找到了类似的例子，并在-6-3-这一节中找到了具体解释。"><a href="#🎉-果然在-6-2-12-这一节找到了类似的例子，并在-6-3-这一节中找到了具体解释。" class="headerlink" title="🎉 果然在 6.2.12 这一节找到了类似的例子，并在 6.3 这一节中找到了具体解释。"></a>🎉 果然在 <code>6.2.12</code> 这一节找到了类似的例子，并在 <code>6.3</code> 这一节中找到了具体解释。</h3><h4 id="那设置了-flex-1-属性（简写的-flex-1-具体简写了写什么？）后，容器为什么和预期表现不一致？"><a href="#那设置了-flex-1-属性（简写的-flex-1-具体简写了写什么？）后，容器为什么和预期表现不一致？" class="headerlink" title="那设置了 flex:1 属性（简写的 flex:1 具体简写了写什么？）后，容器为什么和预期表现不一致？"></a>那设置了 <code>flex:1</code> 属性<small>（<a href="/2022/what-happens-when-set-flex-1">简写的 flex:1 具体简写了写什么？</a>）</small>后，容器为什么和预期表现不一致？</h4><p>因为设置了 <code>flex-basis</code> 属性的元素的最小尺寸是最小内容的宽度（文字内容在所有换行点换行后的尺寸），而我设置了标题不换行导致最小尺寸比较大，最终尺寸大于 <code>flex:1</code> 给到的 <code>flex-basis:0%</code>。(如果我们把标题设置会换行容器就不会被撑开了）。<br>具体解释为：</p>
 <blockquote>
 <p><code>flex-basis</code> 属性下的最小尺寸是由内容决定的，而 <code>width</code> 属性下的最小尺寸是由 <code>width</code> 属性的计算值决定的。</p>
 </blockquote>
 <p>这里出现的 <strong>“最小尺寸”</strong> 表示最终尺寸的最小值，所以在标题不换行的时候如果不设置 <code>width</code> 为 <code>0</code> 那么，<code>flex</code> 容器的宽度就会被内容撑开。当设置 <code>width:0</code> 之后，最小尺寸就为设置的 <code>width</code> 值了，就可以被 <code>flex-grow:1</code> 放大。</p>
 <p>ok，以上就是 <code>flex</code> 容器被内容撑开的全部内容了，有条件的小伙伴可以入手一本 <a target="_blank" rel="noopener" href="https://item.jd.com/13356308.html">《CSS新世界》</a> 看看，里边的内容有很多讲些CSS新特性的实用例子，确实可以节约不少时间。</p>
+<hr>
 <h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a target="_blank" rel="noopener" href="https://item.jd.com/13356308.html">《CSS新世界》- 张鑫旭</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex">flex - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-basis">flex-basis - CSS（层叠样式表） | MDN</a></p>
  
   </article>
