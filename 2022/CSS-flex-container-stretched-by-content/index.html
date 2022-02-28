@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>简写的 flex:1 具体简写了写什么？ | blog [ YOG WANG ]</title>
+  <title>flex 容器宽度被内容撑开的问题 | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
@@ -51,7 +51,7 @@
 <main id="container">
   <!-- 文章详情 Post Detail -->
 <div
-  id="post-what-happens-when-set-flex-1"
+  id="post-CSS-flex-container-stretched-by-content"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,18 +67,18 @@
   </div>
 
           
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
 
         </div>
          
 <div class="article-date">
-  <time datetime="2022-02-16T09:53:27.000Z" itemprop="datePublished">2022-02-16</time>
+  <time datetime="2022-02-15T07:49:17.000Z" itemprop="datePublished">2022-02-15</time>
 </div>
       </div>
       
   
     <h1 class="article-title" itemprop="name">
-      简写的 flex:1 具体简写了写什么？
+      flex 容器宽度被内容撑开的问题
     </h1>
   
 
@@ -92,99 +92,43 @@
       <!-- 文章内容 article body -->
  
   <article class="article-content">
-    <p>前几天写 <a href="/2022/flex-container-stretched-by-content/">flex 容器宽度被内容撑开的问题</a> 查文章的时候，看到了一篇 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136223806">flex:1 到底代表什么?</a>，确实很多时候只是知道 <code>flex:1</code> 的作用，并不清楚他具体代表了什么。<br>和那篇帖子一样，我原先理解的也是 <code>flex:1</code> 应该是 <code>flex:1 1 auto</code> 的简写。因为设置了 <code>flex:1</code> 之后就可以让容器扩张了。既然 <code>flex</code> 的默认值是 <code>0 1 auto</code> 那么理所当然的就这样认为了。</p>
-<p>看完了这个帖子之后发现其实并不是这样。<br>简写的 <code>flex:1</code> 其实是 <code>flex:1 1 0%</code>，其中的 <code>flex-basis</code> 的值从默认值变成了 <code>0%</code> ，但是文章并没有说明为什么会这样。</p>
-<p>确实这个东西不值得深入研究为什么，只需要知道和理解就可以了。<br>但，正好昨天在翻《CSS新世界》的时候看到了这部分内容！</p>
+    <blockquote>
+<p>在弹性布局中，一个 <code>flex</code> 子项的最终尺寸是基础尺寸（或内容尺寸）、弹性增长或收缩、最大最小尺寸共同作用的结果。<br>最终尺寸计算的优先级是：<br><strong>最大最小尺寸限制 &gt; 弹性增长或收缩 &gt; 基础尺寸</strong></p>
+<ul>
+<li>基础尺寸由 <code>flex-base</code> 属性或 <code>width</code> 属性，以及 <code>box-sizing</code> 盒模型共同决定；</li>
+<li>内容尺寸最指最大内容宽度，当没有设置基础尺寸是会顶替基础尺寸的角色；</li>
+<li>弹性增长指的是 <code>flex-grow</code> 属性，弹性收缩指的是 <code>flex-shrink</code> 属性；</li>
+<li>最大尺寸主要受 <code>max-width</code> 属性限制；最小尺寸则比较复杂，受最小内容宽度、<code>width</code> 属性和 <code>min-width</code> 属性共同影响。 </li>
+</ul>
+</blockquote>
+<p><img src="/2022/CSS-flex-container-stretched-by-content/problem_preview.png#center" alt="flex 容器宽度被内容撑开的问题"></p>
+<p>很早之前就遇到过这个问题但没有整理，当时处理完问题之后就没有管了。昨天又遇到了同样的问题，因为嵌套的层次很深折腾了有2个小时，所以还是需要记录下来以免未来又忘了。</p>
+<blockquote>
+<p>其实很简单，容器使用 <code>width:0;flex:1;</code> 即可解决问题。</p>
+</blockquote>
+<p>但是稍微有点没有理解的是：为什么设置宽度为 <code>0</code> 时，使用 <code>flex-grow:1</code> 可以使容器放大，但是设置宽度为 <code>100%</code> 时，使用 <code>flex-shrink:1</code> 并不会让容器缩小。</p>
 <span id="more"></span>
 
-<blockquote>
-<p>为何 <code>flex</code> 属性会有这样与众不同的行为呢？按照CSS规范的说法，这样设计的目的是为了让 <code>flex</code> 属性的表现更符合我们日常开发需要的效果。意思就是，当我们使用 <code>flex:1</code> 的时候，正常情况就是需要 <code>flex-basis</code> 为 <code>0%</code>，即基础尺寸为 <code>0</code>；当我们使用 <code>flex:100px</code> 的时候，正常情况就是需要 <code>flex-grow</code> 为 <code>1</code>，也就是尺寸保持向外的弹性。<br><code>flex</code> 属性站在实用主义的角度对计算值进行了优化， 我认为这是 <code>CSS</code> 规范一种友善的处理，而这种友善在 <code>flex</code> 的关键字属性值中体现的更加明显。<br><small>——《CSS新世界》</small></p>
-</blockquote>
-<p>正如书里说的，真正使用 <code>flex</code> 的时候没有几个人可以记清楚哪个值对应哪一个属性，<code>flex</code> <strong>单值缩写语法的作用就是为了让</strong> <code>flex</code> <strong>属性的作用语义化和表面化。</strong></p>
-<h2 id="比如说-flex-的正式语法为："><a href="#比如说-flex-的正式语法为：" class="headerlink" title="比如说 flex 的正式语法为："></a>比如说 <code>flex</code> 的正式语法为：</h2><p><code>flex: none | [ &lt;&#39;flex-grow&#39;&gt; &lt;&#39;flex-shrink&#39;&gt;? || &lt;&#39;flex-basis&#39;&gt; ]</code></p>
-<p><strong><code>flex: none</code></strong> 很好理解，元素会根据自身宽高来设置尺寸。它是完全非弹性的：既不会缩短，也不会伸长来适应 <code>flex</code> 容器。相当于将属性设置为 <code>flex: 0 0 auto</code>。</p>
-<h2 id="我们关注书内的重点说明的-flex-属性的多值语法："><a href="#我们关注书内的重点说明的-flex-属性的多值语法：" class="headerlink" title="我们关注书内的重点说明的 flex 属性的多值语法："></a>我们关注书内的重点说明的 <code>flex</code> 属性的多值语法：</h2><p><strong><code>&lt;&#39;flex-grow&#39;&gt; &lt;&#39;flex-shrink&#39;&gt;? || &lt;&#39;flex-basis&#39;&gt;</code></strong></p>
-<blockquote>
-<p><strong>(1)</strong> 如果 <code>flex</code> 的属性值只有 <strong>1</strong> 个值，则具体规则如下：</p>
-<ul>
-<li>如果是<strong>数值</strong>，如 <code>flex:1</code>，则这个 <code>1</code> 为 <code>flex-grow</code> 属性的值，此时 <code>flex-shrink</code> 属性和 <code>flex-basis</code> 属性的值分别是 <code>1</code> 和 <code>0%</code>。注意，这里的 <code>flex-basis</code> 属性是 <code>0%</code>，而不是默认值 <code>auto</code>。</li>
-<li>如果是<strong>长度值</strong>，如 <code>flex:100px</code>，则这个 <code>100px</code> 显然为 <code>flex-basis</code> 属性的值，因为 <strong>3</strong> 个缩写的 CSS 属性中只有 <code>flex-basis</code> 的属性值支持<strong>长度值</strong>。此时 <code>flex-grow</code> 属性和 <code>flex-shrink</code> 属性的值都是 <code>1</code>，注意，这里的 <code>flex-grow</code> 属性的值是 <code>1</code>，而不是默认值 <code>0</code>。</li>
-</ul>
-</blockquote>
-<blockquote>
-<p><strong>(2)</strong> 如果 <code>flex</code> 的属性值有 <strong>2</strong> 个值，则第一个值一定是 <code>flex-grow</code> 属性值（因为表示0个或1个的问号 <code>?</code> 在 <code>flex-shrink</code> 的后面 <sub>[<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Value_definition_syntax">CSS属性值定义语法可以看这里</a>]</sub>），第二个值根据值的类型不同对应不同的CSS属性，具体规则如下。</p>
-<ul>
-<li>如果第二个值是<strong>数值</strong>，例如 <code>flex:1 2</code>，则这个 <code>2</code> 是 <code>flex-shrink</code> 属性的值，此时 <code>flex-basis</code> 属性计算值是 <code>0%</code>，并非默认值 <code>auto</code>。</li>
-<li>如果第二个值是<strong>长度值</strong>，例如 <code>flex:1 100px</code>，则这个 <code>100px</code> 为 <code>flex-basis</code> 属性值。</li>
-</ul>
-</blockquote>
-<blockquote>
-<p><strong>(3)</strong> 如果 <code>flex</code> 属性值有 <strong>3</strong> 个值，则<strong>长度值</strong>为 <code>flex-basis</code> 属性值，其余两个<strong>数值</strong>分别为 <code>flex-grow</code> 和 <code>flex-shrink</code> 的属性值。下面两行CSS语法都是合法的，且含义也是一样的：</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/* 下面两行的CSS语句含义是一样的 */</span>
-<span class="token property">flex</span><span class="token punctuation">:</span> 1 2 50%<span class="token punctuation">;</span>
-<span class="token property">flex</span><span class="token punctuation">:</span>50% 1 2<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</blockquote>
-<h2 id="所以在简写的时候其实对应的计算值是这样的"><a href="#所以在简写的时候其实对应的计算值是这样的" class="headerlink" title="所以在简写的时候其实对应的计算值是这样的"></a>所以在简写的时候其实对应的计算值是这样的</h2><!-- | 简写 | 等同于 | 备注 |
-| ---- | ---- | ---- |
-| `flex: initial` | `flex: 0 1 auto` | 元素不会扩张，但会收缩，元素宽度为**最大内容宽度** |
-| `flex: 0` | `flex: 0 1 0%` | 元素不会扩张，但会收缩，元素宽度为**最小内容宽度** |
-| `flex: none` | `flex: 0 0 auto` | 元素不会扩张，同时不会收缩，元素宽度为**最大内容宽度** |
-| `flex: 1` | `flex: 1 1 0%` | 元素会等分扩张，同时也会收缩，元素宽度为**最小内容宽度** |
-| `flex: auto` | `flex: 1 1 auto` | 会基于元素宽度扩张，同时也会收缩，元素宽度为**最大内容宽度** | -->
-<table>
-<thead>
-<tr>
-<th>简写</th>
-<th>等同于</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>flex: initial</code></td>
-<td><code>flex: 0 1 auto</code></td>
-</tr>
-<tr>
-<td><code>flex: 0</code></td>
-<td><code>flex: 0 1 0%</code></td>
-</tr>
-<tr>
-<td><code>flex: none</code></td>
-<td><code>flex: 0 0 auto</code></td>
-</tr>
-<tr>
-<td><code>flex: 1</code></td>
-<td><code>flex: 1 1 0%</code></td>
-</tr>
-<tr>
-<td><code>flex: auto</code></td>
-<td><code>flex: 1 1 auto</code></td>
-</tr>
-</tbody></table>
-<p>具体效果可以查看张大佬随书写的这个例子 <a target="_blank" rel="noopener" href="https://demo.cssworld.cn/new/6/2-11.php">🔗 flex关键字属性值基本效果示意实例页面</a></p>
-<h3 id="简单来说："><a href="#简单来说：" class="headerlink" title="简单来说："></a>简单来说：</h3><ul>
-<li>如果想保持元素<strong>按照其宽度平铺换行</strong>的话，可以使用 <code>flex:initial</code>，比如说不定宽的小标签、小图标列表；</li>
-<li>如果想保持元素<strong>不随容器宽度放大和缩小</strong>，可以使用　<code>flex:none</code> 来实现，比如说上一篇文章中的定宽侧边栏；</li>
-<li>如果想要让各元素之间<strong>等比放大和缩小</strong>的话，可以使用 <code>flex:1</code> 来实现；</li>
-<li>如果想要元素<strong>根据内容的宽度</strong>来占据容器剩余空间或者缩小的话，可以使用 <code>flex:auto</code> 来实现；</li>
-<li><code>flex:0</code> 暂时没有想到应用场景。</li>
-</ul>
 <hr>
-<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><h3 id="🎈-问题1：不同的-flex-basis-的值，会对元素造成什么影响？"><a href="#🎈-问题1：不同的-flex-basis-的值，会对元素造成什么影响？" class="headerlink" title="🎈 问题1：不同的 flex-basis 的值，会对元素造成什么影响？"></a>🎈 问题1：不同的 <code>flex-basis</code> 的值，会对元素造成什么影响？</h3><h4 id="对比1：-flex-0-和-flex-initial-的区别"><a href="#对比1：-flex-0-和-flex-initial-的区别" class="headerlink" title="对比1： flex:0 和 flex:initial 的区别"></a>对比1： <code>flex:0</code> 和 <code>flex:initial</code> 的区别</h4><ul>
-<li>他们都不会扩张，即都不会占据剩余空间。</li>
-<li><strong><code>flex:0</code></strong> 的元素宽度为 <strong>最小内容宽度</strong>，缩放时按照 <strong>最小内容宽度</strong> 占据空间。</li>
-<li><strong><code>flex:initial</code></strong> 的元素宽度为 <strong>最大内容宽度</strong>，缩放时按照<strong>自身内容的宽度</strong>缩小自身宽度。</li>
-</ul>
-<h4 id="对比2：-flex-1-和-flex-auto-的区别"><a href="#对比2：-flex-1-和-flex-auto-的区别" class="headerlink" title="对比2： flex:1 和 flex:auto 的区别"></a>对比2： <code>flex:1</code> 和 <code>flex:auto</code> 的区别</h4><ul>
-<li>他们都会扩张和缩小，即都会占据剩余空间。</li>
-<li><strong><code>flex:1</code></strong> 的元素宽度，可视为<strong>等分</strong>剩余空间，或者各元素之间<strong>等比</strong>缩小。</li>
-<li><strong><code>flex:auto</code></strong> 的元素宽度，按照<strong>自身内容的宽度</strong>进行分配剩余空间，或者缩小自身宽度。</li>
-</ul>
-<h3 id="看着有些懵逼的话，可以看如下具体示例"><a href="#看着有些懵逼的话，可以看如下具体示例" class="headerlink" title="看着有些懵逼的话，可以看如下具体示例:"></a>看着有些懵逼的话，可以看如下具体示例:</h3><iframe id="cp_embed_JjOLzKv" src="//codepen.io/yogwang/embed/JjOLzKv?height=800&theme-id=dark&slug-hash=JjOLzKv&default-tab=result" scrolling="no" frameborder="no" height="800" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<h2 id="先来看一下问题复现吧"><a href="#先来看一下问题复现吧" class="headerlink" title="先来看一下问题复现吧:"></a>先来看一下问题复现吧:</h2><iframe id="cp_embed_YzErENN" src="//codepen.io/yogwang/embed/YzErENN?height=600&theme-id=dark&slug-hash=YzErENN&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
-<p>比较不容易理解的是，如果同时设置了 <code>flex-basis</code> 属性的值和 <code>width</code> 属性的值时，具体是哪一个属性来应用。这个我需要再挖一个坑来说明了，因为内容还是比较多的，或者可以直接看 《CSS新世界》 <strong>第六章</strong> 中的 <code>6.2.12</code> 节。</p>
+<p>在正常内容的时候不会出现问题（可以点击 Demo 的 <a target="_blank" rel="noopener" href="https://codepen.io/yogwang/pen/YzErENN">EDIT ON CODEPEN</a> 最大化预览正常情况），但当元素内部的文字内容增多时，或者视窗缩小时 <code>flex</code> 容器的宽度就会被内容撑开。</p>
+<p>看起来是不是十分复杂？因为我嵌套了 2 层 <code>flex</code> 容器，最内部的容器 <code>.list-item</code> 因为内容太多被撑开了，并没有如愿按照剩余空间缩小子元素 <code>.text</code> 的宽度，同时宽度变大的 <code>.list-item</code> 导致外部的 <code>.container</code> 和 <code>.wrap</code> 也被撑开了。</p>
+<p>被撑开的 <code>flex</code> 容器比较多，不好说明，那么看一下简略版的复现 Demo 👇</p>
+<iframe id="cp_embed_oNoGEqK" src="//codepen.io/yogwang/embed/oNoGEqK?height=600&theme-id=dark&slug-hash=oNoGEqK&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+
+<p>这个就很简单明了了，因为 <code>.text</code> 的内容太多，致使 <code>.container</code> 容器被撑开了，并且 <code>.container</code> 的宽度变大使 <code>.wrap</code> 的宽度也增大了，并不是按照设想的 <code>100vw</code>。同时文本标题超出省略的样式也没有应用到。</p>
+<p><strong>其实解决问题很简单，容器使用 <code>width:0;flex:1;</code> 即可解决问题。</strong></p>
 <hr>
-<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136223806">flex:1 到底代表什么?</a><br><a target="_blank" rel="noopener" href="https://item.jd.com/13356308.html">《CSS新世界》- 张鑫旭</a></p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex">flex - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-grow">flex-grow - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-basis">flex-basis - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://www.w3.org/TR/css-flexbox-1/#flex-common">CSS Flexible Box Layout Module Level 1</a></p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Value_definition_syntax">CSS属性值定义语法 - CSS（层叠样式表） | MDN</a></p>
+<p>但是我疑惑的是，为什么宽度设置为 <code>0</code>，flex布局可以使容器放大，设置为 <code>100%</code> 就不能实现缩小了。找了一圈也没见原因，问了一下肉大，他说可能和内容宽度有关系，让我看看张大佬的《CSS新世界》。</p>
+<h3 id="🎉-果然在-6-2-12-这一节找到了类似的例子，并在-6-3-这一节中找到了具体解释。"><a href="#🎉-果然在-6-2-12-这一节找到了类似的例子，并在-6-3-这一节中找到了具体解释。" class="headerlink" title="🎉 果然在 6.2.12 这一节找到了类似的例子，并在 6.3 这一节中找到了具体解释。"></a>🎉 果然在 <code>6.2.12</code> 这一节找到了类似的例子，并在 <code>6.3</code> 这一节中找到了具体解释。</h3><h4 id="那设置了-flex-1-属性（简写的-flex-1-具体简写了些什么？）后，容器为什么和预期表现不一致？"><a href="#那设置了-flex-1-属性（简写的-flex-1-具体简写了些什么？）后，容器为什么和预期表现不一致？" class="headerlink" title="那设置了 flex:1 属性（简写的 flex:1 具体简写了些什么？）后，容器为什么和预期表现不一致？"></a>那设置了 <code>flex:1</code> 属性<small>（<a href="/2022/CSS-what-happens-when-set-flex-1">简写的 flex:1 具体简写了些什么？</a>）</small>后，容器为什么和预期表现不一致？</h4><p>因为设置了 <code>flex-basis</code> 属性的元素的最小尺寸是最小内容的宽度（文字内容在所有换行点换行后的尺寸），而我设置了标题不换行导致最小尺寸比较大，最终尺寸大于 <code>flex:1</code> 给到的 <code>flex-basis:0%</code>。(如果我们把标题设置会换行容器就不会被撑开了）。<br>具体解释为：</p>
+<blockquote>
+<p><code>flex-basis</code> 属性下的最小尺寸是由内容决定的，而 <code>width</code> 属性下的最小尺寸是由 <code>width</code> 属性的计算值决定的。</p>
+</blockquote>
+<p>这里出现的 <strong>“最小尺寸”</strong> 表示最终尺寸的最小值，所以在标题不换行的时候如果不设置 <code>width</code> 为 <code>0</code> 那么，<code>flex</code> 容器的宽度就会被内容撑开。当设置 <code>width:0</code> 之后，最小尺寸就为设置的 <code>width</code> 值了，就可以被 <code>flex-grow:1</code> 放大。</p>
+<p>ok，以上就是 <code>flex</code> 容器被内容撑开的全部内容了，有条件的小伙伴可以入手一本 <a target="_blank" rel="noopener" href="https://item.jd.com/13356308.html">《CSS新世界》</a> 看看，里边的内容有很多讲些CSS新特性的实用例子，确实可以节约不少时间。</p>
+<hr>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a target="_blank" rel="noopener" href="https://item.jd.com/13356308.html">《CSS新世界》- 张鑫旭</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex">flex - CSS（层叠样式表） | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-basis">flex-basis - CSS（层叠样式表） | MDN</a></p>
  
   </article>
 
@@ -194,10 +138,15 @@
    
 <nav id="article-nav">
   
+    <a href="/2022/CSS-what-happens-when-set-flex-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">简写的 flex:1 具体简写了些什么？</div>
+    </a>
   
-    <a href="/2022/flex-container-stretched-by-content/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2022/miniprogram-fail-navigate-back-intercepted/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">flex 容器宽度被内容撑开的问题</div>
+      <div class="article-nav-title">微信小程序返回键被劫持点击无效</div>
     </a>
   
 </nav>
@@ -205,7 +154,7 @@
 </div>
 
 <script>
-const postDate = "2022-02-16"
+const postDate = "2022-02-15"
 const difference = moment().diff(postDate, 'days')
 const isExpired = difference > 300
 if (isExpired){
@@ -263,11 +212,11 @@ if (isExpired){
       <ul>
         
           <li>
-            <a href="/2022/what-happens-when-set-flex-1/">简写的 flex:1 具体简写了写什么？</a>
+            <a href="/2022/CSS-what-happens-when-set-flex-1/">简写的 flex:1 具体简写了些什么？</a>
           </li>
         
           <li>
-            <a href="/2022/flex-container-stretched-by-content/">flex 容器宽度被内容撑开的问题</a>
+            <a href="/2022/CSS-flex-container-stretched-by-content/">flex 容器宽度被内容撑开的问题</a>
           </li>
         
           <li>
