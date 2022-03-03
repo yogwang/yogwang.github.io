@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>微信小程序学习日记 L08 消息推送 | blog [ YOG WANG ]</title>
+  <title>微信小程序学习日记 L09 消息推送 | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
@@ -78,7 +78,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      微信小程序学习日记 L08 消息推送
+      微信小程序学习日记 L09 消息推送
     </h1>
   
 
@@ -98,7 +98,7 @@
 <p>所以肯定是先尝试最简单的小程序订阅消息啦！</p>
 <span id="more"></span>
 
-<h2 id="小程序订阅消息"><a href="#小程序订阅消息" class="headerlink" title="小程序订阅消息"></a>小程序订阅消息</h2><p>首先在公众号平台登陆小程序管理后台，从侧边栏找到 【功能】栏目下的【订阅消息】，首次进入使用需要开启一下功能。</p>
+<h2 id="🍕-小程序订阅消息"><a href="#🍕-小程序订阅消息" class="headerlink" title="🍕 小程序订阅消息"></a>🍕 小程序订阅消息</h2><p>首先在公众号平台登陆小程序管理后台，从侧边栏找到 【功能】栏目下的【订阅消息】，首次进入使用需要开启一下功能。</p>
 <p>开启功能之后在【公共模板库】里边找到自己需要的消息模板。</p>
 <blockquote>
 <p>不知道为什么我开启之后看不到添加消息模板的按钮，只能从模板库里选择。</p>
@@ -124,10 +124,10 @@
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="未完成"><a href="#未完成" class="headerlink" title="未完成"></a>未完成</h1><hr>
+<h2 id="🍕-服务号模板消息"><a href="#🍕-服务号模板消息" class="headerlink" title="🍕 服务号模板消息"></a>🍕 服务号模板消息</h2><hr>
 <h2 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h2><h4 id="1-如果了用户勾选-“总是保持以上选择，不再询问”-之后，下次订阅调用-wx-requestSubscribeMessage-还会不会弹窗"><a href="#1-如果了用户勾选-“总是保持以上选择，不再询问”-之后，下次订阅调用-wx-requestSubscribeMessage-还会不会弹窗" class="headerlink" title="1. 如果了用户勾选 “总是保持以上选择，不再询问” 之后，下次订阅调用 wx.requestSubscribeMessage 还会不会弹窗"></a>1. 如果了用户勾选 “总是保持以上选择，不再询问” 之后，下次订阅调用 <code>wx.requestSubscribeMessage</code> 还会不会弹窗</h4><p>勾选之后，下次调用将不会弹窗，除非用户进入 【小程序 - 右上角 “···” - 设置 - 订阅消息】 内修改设置。 </p>
-<h4 id="2-小程序订阅消息-为什么只有一次性订阅消息，没有找到长期订阅消息"><a href="#2-小程序订阅消息-为什么只有一次性订阅消息，没有找到长期订阅消息" class="headerlink" title="2. 小程序订阅消息 为什么只有一次性订阅消息，没有找到长期订阅消息"></a>2. <code>小程序订阅消息</code> 为什么只有一次性订阅消息，没有找到长期订阅消息</h4><p>我也没有找到，并且我只能从消息模板库里边添加订阅消息模板，不能自定义添加消息模板。<br>可能是因为非民生，非政务的缘故吧。微信官方暂时<strong>仅向政务民生、医疗、交通、金融、教育等线下公共服务开放</strong>长期提醒</p>
-<h4 id="3-小程序订阅消息-只能出现在-服务通知-内吗"><a href="#3-小程序订阅消息-只能出现在-服务通知-内吗" class="headerlink" title="3. 小程序订阅消息 只能出现在 服务通知 内吗"></a>3. <code>小程序订阅消息</code> 只能出现在 <code>服务通知</code> 内吗</h4><p>只会出现在服务通知内。如果需要暂时在服务号内需要使用 <code>服务号模板消息</code></p>
+<h4 id="2-小程序订阅消息-为什么只有一次性订阅消息，没有找到长期订阅消息"><a href="#2-小程序订阅消息-为什么只有一次性订阅消息，没有找到长期订阅消息" class="headerlink" title="2. 小程序订阅消息 为什么只有一次性订阅消息，没有找到长期订阅消息"></a>2. <code>小程序订阅消息</code> 为什么只有一次性订阅消息，没有找到长期订阅消息</h4><p>我也没有找到，并且我只能从消息模板库里边添加订阅消息模板，不能自定义添加消息模板。<br>可能是因为非民生，非政务的缘故吧。微信官方暂时<strong>仅向政务民生、医疗、交通、金融、教育等线下公共服务开放</strong>长期提醒。</p>
+<h4 id="3-小程序订阅消息-只能出现在-服务通知-内吗"><a href="#3-小程序订阅消息-只能出现在-服务通知-内吗" class="headerlink" title="3. 小程序订阅消息 只能出现在 服务通知 内吗"></a>3. <code>小程序订阅消息</code> 只能出现在 <code>服务通知</code> 内吗</h4><p>只会出现在服务通知内。如果需要展示在服务号内需要使用 <code>服务号模板消息</code>。</p>
 <h4 id="4-服务号模板消息-是否需要授权"><a href="#4-服务号模板消息-是否需要授权" class="headerlink" title="4. 服务号模板消息 是否需要授权"></a>4. <code>服务号模板消息</code> 是否需要授权</h4><h4 id="5-如果用户未关注公众号消息如何推送"><a href="#5-如果用户未关注公众号消息如何推送" class="headerlink" title="5. 如果用户未关注公众号消息如何推送"></a>5. 如果用户未关注公众号消息如何推送</h4><h4 id="6-每次订阅都需要唤起弹窗，如何处理"><a href="#6-每次订阅都需要唤起弹窗，如何处理" class="headerlink" title="6. 每次订阅都需要唤起弹窗，如何处理"></a>6. 每次订阅都需要唤起弹窗，如何处理</h4><h4 id="7-如果选择关注服务号进行推送，如何绑定多端用户数据"><a href="#7-如果选择关注服务号进行推送，如何绑定多端用户数据" class="headerlink" title="7. 如果选择关注服务号进行推送，如何绑定多端用户数据"></a>7. 如果选择关注服务号进行推送，如何绑定多端用户数据</h4><hr>
 <h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/subscribe-message.html">小程序订阅消息 | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/subscribe-message/wx.requestSubscribeMessage.html">wx.requestSubscribeMessage(Object object) | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/subscribe-message/subscribeMessage.send.html">subscribeMessage.send | 微信开放文档</a></p>
 <p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Template_Message_Interface.html">模板消息 | 微信开放文档</a></p>
@@ -210,7 +210,7 @@ if (isExpired){
       <ul>
         
           <li>
-            <a href="/2022/miniprogram-devDiary-09-subscribe-message/">微信小程序学习日记 L08 消息推送</a>
+            <a href="/2022/miniprogram-devDiary-09-subscribe-message/">微信小程序学习日记 L09 消息推送</a>
           </li>
         
           <li>
