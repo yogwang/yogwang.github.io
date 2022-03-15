@@ -123,7 +123,7 @@
     <span class="token comment">// 'accept'表示用户同意订阅该条id对应的模板消息，'reject'表示用户拒绝订阅该条id对应的模板消息，'ban'表示已被后台封禁，'filter'表示该模板因为模板标题同名被后台过滤。</span>
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<p>但是我们的需求是要推送 <strong>1~3</strong> 的消息，所以小程序订阅消息就没办法完全满足需求，只能考虑使用服务号模板消息来实现了。</p>
 <h2 id="🙄-疑惑"><a href="#🙄-疑惑" class="headerlink" title="🙄 疑惑"></a>🙄 疑惑</h2><h4 id="1-如果了用户勾选-“总是保持以上选择，不再询问”-之后，下次调用订阅API还会不会弹窗"><a href="#1-如果了用户勾选-“总是保持以上选择，不再询问”-之后，下次调用订阅API还会不会弹窗" class="headerlink" title="1. 如果了用户勾选 “总是保持以上选择，不再询问” 之后，下次调用订阅API还会不会弹窗"></a>1. 如果了用户勾选 “总是保持以上选择，不再询问” 之后，下次调用订阅API还会不会弹窗</h4><p>勾选之后，下次调用将不会弹窗，除非用户进入 【小程序 - 右上角 “···” - 设置 - 订阅消息】 内修改设置。 </p>
 <h4 id="2-小程序订阅消息-为什么只有一次性订阅消息，没有找到长期订阅消息"><a href="#2-小程序订阅消息-为什么只有一次性订阅消息，没有找到长期订阅消息" class="headerlink" title="2. 小程序订阅消息 为什么只有一次性订阅消息，没有找到长期订阅消息"></a>2. <code>小程序订阅消息</code> 为什么只有一次性订阅消息，没有找到长期订阅消息</h4><p>我也没有找到，并且我只能从消息模板库里边添加订阅消息模板，不能自定义添加消息模板。<br>可能是因为非民生，非政务的缘故吧。微信官方暂时<strong>仅向政务民生、医疗、交通、金融、教育等线下公共服务开放</strong>长期提醒。</p>
 <h4 id="3-小程序订阅消息-只能出现在-服务通知-内吗"><a href="#3-小程序订阅消息-只能出现在-服务通知-内吗" class="headerlink" title="3. 小程序订阅消息 只能出现在 服务通知 内吗"></a>3. <code>小程序订阅消息</code> 只能出现在 <code>服务通知</code> 内吗</h4><p>只会出现在服务通知内，如果需要展示在服务号内需要使用 <code>服务号模板消息</code>。</p>
@@ -137,12 +137,15 @@
 <li><small>如果没办法长按扫码，在图片标签增加 <code>show-menu-by-longpress</code> 属性即可（小程序2.7.0开始支持 <sub><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/image.html">🔗 文档链接</a></sub>）</small></li>
 </ul>
 </li>
-<li>使用 客服消息按钮组件 <code>&lt;button open-type=&quot;contact&quot;&gt;</code> 推送关注消息 <sub><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/customer-message/customer-message.html">客服消息 | 微信开放文档</a></sub></li>
+<li>使用 客服消息按钮组件 <code>&lt;button open-type=&quot;contact&quot;&gt;</code> 推送关注消息(需要开启服务) <sub><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/customer-message/customer-message.html">客服消息 | 微信开放文档</a></sub></li>
 <li>使用 <code>&lt;webview /&gt;</code> 组件展示公众号中引导用户关注的文章（里边的图片可以长按扫码）。</li>
 </ol>
 <p>具体方式我就不赘述了，网上一抓一大把。</p>
 <blockquote>
 <p>需要注意的是使用<strong>公众号关注组件</strong>的话进入场景要求的<strong>只有符合的场景</strong>才会展示，比如说从APP唤起小程序的话就不会展示关注卡片，需要考虑使用其它三种方式来适配。</p>
+</blockquote>
+<blockquote>
+<p>在线客服会话开启之后服务端<strong>不能主动推送消息</strong>了，需要<strong>用户发送消息之</strong>后才可以向用户下发客服消息</p>
 </blockquote>
 <p>引导用户关注完成之后，后端同学就可以凭借消息模板 <code>template_id</code> 及用户 <code>openId</code> 来推送模板消息了。</p>
 <p><strong>P.S. 现在新增自定义模板消息时审核不通过，会提醒让使用服务号的订阅消息。</strong>但是如果使用订阅消息会特别麻烦，用户点击授权之后才可以发送一次性订阅消息，长期订阅依旧如小程序<strong>非民生类</strong>不可使用。</p>
@@ -150,8 +153,9 @@
 <p>剩下的就是我这边需求内的多端数据关联了……就不再这篇文章中展开描述了</p>
 <h2 id="🙄-疑惑-1"><a href="#🙄-疑惑-1" class="headerlink" title="🙄 疑惑"></a>🙄 疑惑</h2><h4 id="1-服务号模板消息-是否需要授权"><a href="#1-服务号模板消息-是否需要授权" class="headerlink" title="1. 服务号模板消息 是否需要授权"></a>1. <code>服务号模板消息</code> 是否需要授权</h4><p>模板消息不需要，但是如果使用 <code>服务号订阅通知</code> 需要用户主动订阅。</p>
 <h4 id="2-已拥有用户OpenID，但用户未关注服务号消息是否会推送"><a href="#2-已拥有用户OpenID，但用户未关注服务号消息是否会推送" class="headerlink" title="2. 已拥有用户OpenID，但用户未关注服务号消息是否会推送"></a>2. 已拥有用户OpenID，但用户未关注服务号消息是否会推送</h4><p>不能推送，需要引导用户关注服务号。</p>
-<h4 id="4-小程序客服消息能否判断不同进入场景"><a href="#4-小程序客服消息能否判断不同进入场景" class="headerlink" title="4. 小程序客服消息能否判断不同进入场景"></a>4. 小程序客服消息能否判断不同进入场景</h4><p>可以，后端会接收到3种类型的请求： <strong>开启会话</strong>、<strong>发送小程序卡片</strong>、<strong>发送文本消息</strong><br>开启会话会有 <code>SessionFrom</code> 字段来区分，文本消息就是文本内容、小程序卡片会有 <code>AppId</code>、<code>Title</code>、<code>PagePath</code>之类的字段可以获取。<br>以下是三种请求的 <code>xml</code> 数据截图：<br><img src="/2022/miniprogram-devDiary-09-subscribe-message/server_console.png" alt="控制台日志"><br>具体每个字段对应的什么意思，可以看这篇文档 👉 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/customer-message/receive.html">接收消息和事件 | 微信开放文档</a><br>如果要做到开启会话就自动回复指定消息，可以在开启会话的按钮上设置指定的 <code>session-from</code> 值来让后端判断。</p>
-<h4 id="5-APP唤起小程序是否可以打开指定页面并携带参数？"><a href="#5-APP唤起小程序是否可以打开指定页面并携带参数？" class="headerlink" title="5. APP唤起小程序是否可以打开指定页面并携带参数？"></a>5. APP唤起小程序是否可以打开指定页面并携带参数？</h4><p>可以，在 <code>path</code> 参数中填写路径即可打开指定页面，需要携带参数可以在路径后以 <code>query</code> 的形式拼接，例如 <code>/pages/test?foo=bar</code></p>
+<h4 id="4-小程序客服消息能否判断不同进入场景"><a href="#4-小程序客服消息能否判断不同进入场景" class="headerlink" title="4. 小程序客服消息能否判断不同进入场景"></a>4. 小程序客服消息能否判断不同进入场景</h4><p>可以，后端会接收到4种类型的请求： <strong>开启会话</strong>、<strong>发送小程序卡片</strong>、<strong>发送文本消息</strong>、<strong>发送图片消息</strong><br>开启会话会有 <code>SessionFrom</code> 字段可以自定义，文本消息就是发送的文本内容 <code>Content</code>、图片消息会有一个 <code>PicUrl</code> 和 <code>MediaId</code> 来获取图片、小程序卡片会有 <code>AppId</code>、<code>Title</code>、<code>PagePath</code>之类的字段可以获取。<br>以下是三种请求的 <code>xml</code> 数据截图，图片消息忘记要截图了：<br><img src="/2022/miniprogram-devDiary-09-subscribe-message/server_console.png" alt="控制台日志"><br>具体每个字段对应的什么意思，可以看这篇文档 👉 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/customer-message/receive.html">接收消息和事件 | 微信开放文档</a><br>如果要做到开启会话就自动回复指定消息，可以在开启会话的按钮上设置指定的 <code>session-from</code> 值来让后端判断。</p>
+<h4 id="5-“如果用户在会话中点击了小程序消息，则会返回到小程序”-中的小程序消息是什么意思"><a href="#5-“如果用户在会话中点击了小程序消息，则会返回到小程序”-中的小程序消息是什么意思" class="headerlink" title="5. “如果用户在会话中点击了小程序消息，则会返回到小程序” 中的小程序消息是什么意思"></a>5. “如果用户在会话中点击了小程序消息，则会返回到小程序” 中的<code>小程序消息</code>是什么意思</h4><p>其实就是客服会话中客服发送了小程序卡片，用户点击之后会直接返回打开会话之前的页面（如果如果是页面中点击按钮开启的会话），并不会直接跳转到目标页面，需要开发者自己去做跳转。<br>但如果之前没有打开会小程序会进入到卡片对应的页面。</p>
+<h4 id="6-APP唤起小程序是否可以打开指定页面并携带参数？"><a href="#6-APP唤起小程序是否可以打开指定页面并携带参数？" class="headerlink" title="6. APP唤起小程序是否可以打开指定页面并携带参数？"></a>6. APP唤起小程序是否可以打开指定页面并携带参数？</h4><p>可以，在 <code>path</code> 参数中填写路径即可打开指定页面，需要携带参数可以在路径后以 <code>query</code> 的形式拼接，例如 <code>/pages/test?foo=bar</code></p>
 <hr>
 <h2 id="🍕-服务号订阅消息"><a href="#🍕-服务号订阅消息" class="headerlink" title="🍕 服务号订阅消息"></a>🍕 服务号订阅消息</h2><p>这个我就不说了，和模板消息的步骤一样的，而且只能发送一次性订阅消息，而且订阅过程很麻烦，需要在公号文章中添加订阅按钮用户主动订阅才可以推送 <strong>1次</strong> 消息。</p>
 <hr>
@@ -173,6 +177,7 @@
 <li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/customer-message/receive.html">接收消息和事件 | 微信开放文档</a></li>
 <li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Asset_Management/New_temporary_materials.html">新增临时素材 | 微信开放文档</a></li>
 <li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/customer-message/customerServiceMessage.uploadTempMedia.html">customerServiceMessage.uploadTempMedia | 微信开放文档</a> <sub>上传图片获取 <code>media_id</code></sub></li>
+<li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/introduction/custom.html#%E4%B8%8B%E5%8F%91%E6%9D%A1%E4%BB%B6%E8%AF%B4%E6%98%8E">客服消息使用指南 | 微信开放文档</a></li>
 </ul>
 <p><strong>APP唤起</strong></p>
 <ul>
