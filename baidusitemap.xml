@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2022/JS-i18n-number-format/</loc>
+    <lastmod>2022-07-02</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2022/JS-padStart-padEnd/</loc>
+    <lastmod>2022-07-02</lastmod>
+  </url>
+  <url>
     <loc>https://yogwang.site/2022/miniprogram-fail-navigate-back-intercepted/</loc>
     <lastmod>2022-04-26</lastmod>
   </url>
