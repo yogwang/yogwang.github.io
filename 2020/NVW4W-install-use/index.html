@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>NVM 的安装和使用 | blog [ YOG WANG ]</title>
+  <title>NVM for Windows 的安装和使用 | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
@@ -51,7 +51,7 @@
 <main id="container">
   <!-- 文章详情 Post Detail -->
 <div
-  id="post-nvm-install-use"
+  id="post-NVW4W-install-use"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,7 +67,7 @@
   </div>
 
           
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NVM/" rel="tag">NVM</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NVM/" rel="tag">NVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a></li></ul>
 
         </div>
          
@@ -78,11 +78,13 @@
       
   
     <h1 class="article-title" itemprop="name">
-      NVM 的安装和使用
+      NVM for Windows 的安装和使用
     </h1>
   
 
       <div class="article-updated">
+        
+        最后更新：<time datetime="2022-07-24T18:19:56.286Z" itemprop="datePublished">2022-07-25 02:19</time>
         
       </div>
     </header>
@@ -98,10 +100,10 @@
 
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>NVM 安装很简单，直接去Github上边找 <code>nvm-windows</code> 的 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/releases">releases</a>，直接下载最新那版的zip就可以了。有免安装和安装版可以选择(我选择了安装版)。</p>
 <p>安装过程中选择一下 NVM 安装目录以及之后 NodeJS 的管理目录。</p>
-<p><img src="/2020/nvm-install-use/install.jpg" alt="选择目录"></p>
+<p><img src="/2020/NVW4W-install-use/install.jpg" alt="选择目录"></p>
 <p>之前有安装 NodeJS 记得指定到之前安装的目录下，就可以使用 NVM 管理之前安装的Node版本了。<br>如果是NodeJS使用的是绿色版的话，之后可能需要使用NVM 重新下载安装。</p>
 <p>然后就等待安装完成就可以了。<br>完成之后在终端输入 <code>nvm</code> 检查版本确认是否安装成功(当前版本1.1.7)</p>
-<p><img src="/2020/nvm-install-use/check.jpg" alt="检查版本"></p>
+<p><img src="/2020/NVW4W-install-use/check.jpg" alt="检查版本"></p>
 <hr>
 <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
 <li><p><strong>查看 NVM 下已经安装的 Node 版本号</strong><br>显示当前已安装 Node 版本列表，缩写为 <code>ls</code>， 当前使用的版本会在前标识 <code>*</code> ，<br>在末尾加上 <code>available</code> 显示可供下载的所有版本列表</p>
@@ -187,11 +189,26 @@ This is a partial list. For a complete list, visit https:&#x2F;&#x2F;nodejs.org&
 </li>
 </ol>
 <hr>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="安装完成之后使用-nvm-ls-没有看到之前已经安装的NodeJS版本"><a href="#安装完成之后使用-nvm-ls-没有看到之前已经安装的NodeJS版本" class="headerlink" title="安装完成之后使用 nvm ls 没有看到之前已经安装的NodeJS版本"></a>安装完成之后使用 <code>nvm ls</code> 没有看到之前已经安装的NodeJS版本</h3><p>我在使用的过程中没有遇到这个问题，但是同事在安装之后遇到了，这个问题。有可能是因为安装时指定的Node目录错误了，可以卸载之前安装的 NodeJS，然后使用 <code>nvm install &lt;version&gt;</code> 重新安装对应版本的 NodeJS</p>
-<h3 id="切换版本之后全局依赖丢失"><a href="#切换版本之后全局依赖丢失" class="headerlink" title="切换版本之后全局依赖丢失"></a>切换版本之后全局依赖丢失</h3><p>今天小伙伴问题，切换了新版本之后他以前安装的全局依赖都没了，又要重新安装，然后切换到老版本之后和新安装的全局依赖版本还不一样，问我怎么解决的。</p>
-<p>这个问题，是因为切换了版本之后其实是切换软链接路径，然后你又重新配置过依赖项安装位置了，比如指向到了NodsJs目录下，所以现在指向到的是新的NodeJs下的目录，肯定目录下就没有老的全局依赖了。<br>所以重新切换到外部就好了，比如说我是在 <code>NVM</code> 目录下新建一个 <code>dependencies</code> 文件夹，然后重新 <code>npm set prefix</code> 到这个目录就好了，和以前切换<code>npm</code>安装路径一样，记得也同时修改一下缓存位置。<br>对了，最后记得修改系统的环境变量，分别在用户变量和系统变量的 <code>path</code> 中，只不过我是单独配置了一个 <code>prefix</code> 项，所以就不展示了。</p>
-<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
+<h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><h3 id="安装完成之后使用-nvm-ls-没有看到之前已经安装的NodeJS版本"><a href="#安装完成之后使用-nvm-ls-没有看到之前已经安装的NodeJS版本" class="headerlink" title="# 安装完成之后使用 nvm ls 没有看到之前已经安装的NodeJS版本"></a># 安装完成之后使用 <code>nvm ls</code> 没有看到之前已经安装的NodeJS版本</h3><p>我在使用的过程中没有遇到这个问题，但是同事在安装之后遇到了，这个问题。有可能是因为安装时指定的Node目录错误了，可以卸载之前安装的 NodeJS，然后使用 <code>nvm install &lt;version&gt;</code> 重新安装对应版本的 NodeJS</p>
+<h3 id="切换版本之后全局依赖丢失"><a href="#切换版本之后全局依赖丢失" class="headerlink" title="# 切换版本之后全局依赖丢失"></a># 切换版本之后全局依赖丢失</h3><p>今天小伙伴问题，切换了新版本之后他以前安装的全局依赖都没了，又要重新安装，然后切换到老版本之后和新安装的全局依赖版本还不一样，问我怎么解决的。</p>
+<p>这个问题，是因为切换了版本之后其实是切换软链接路径，然后你又重新配置过依赖项安装位置了，比如指向到了NodsJs目录下，所以现在指向到的是新的NodeJs下的目录，肯定目录下就没有老的全局依赖了。<br>所以重新切换到外部就好了，比如说我是在 <code>NVM</code> 目录下新建一个 <code>dependencies</code> 文件夹，然后重新 <code>npm set prefix</code> 到这个目录就好了，和以前切换<code>npm</code>安装路径一样，记得也同时修改一下缓存位置。<br>对了，最后记得修改系统的环境变量，把新的全局依赖路径添加到系统变量的 <code>path</code> 中，只不过我是单独配置了一个 <code>prefix</code> 项，所以就不展示了。</p>
+<h3 id="使用-nvm-use-x-y-z-遇到报错-exit-status-1-Access-is-denied-的情况。"><a href="#使用-nvm-use-x-y-z-遇到报错-exit-status-1-Access-is-denied-的情况。" class="headerlink" title="# 使用 nvm use x.y.z 遇到报错 exit status 1: Access is denied. 的情况。"></a># 使用 <code>nvm use x.y.z</code> 遇到报错 <code>exit status 1: Access is denied.</code> 的情况。</h3><blockquote>
+<h2 id="Permissions-Exit-1-Exit-5-Access-Denied-Exit-145"><a href="#Permissions-Exit-1-Exit-5-Access-Denied-Exit-145" class="headerlink" title="Permissions (Exit 1, Exit 5, Access Denied, Exit 145)"></a>Permissions (Exit 1, Exit 5, Access Denied, Exit 145)</h2><p>If you do not run the nvm.exe file with appropriate permissions, you may receive an exit 1, exit 5, or Access Denied error. These come straight from Windows, indicating the user account does not have permissions to do what you’re trying to do.<br>The most common permission issue has to do with creating symlinks. NVM4W uses symlinks (mklink is used in nvm use) to redirect the Node installation path to the appropriate installation. Windows requires elevated administrative privileges to create symlinks, but developer mode eases these restrictions.<br>It’s best to enable developer mode on Windows 10, which will grant your user account slightly elevated permissions. See how to <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development#:~:text=Enable%20Developer%20Mode%20in%20Windows%2010%201%20From,click%20Yes%20to%20accept%20the%20change.%20See%20More.">Enable Your Device for Development</a></p>
+</blockquote>
+<p>因为 NVM 切换版本实质上是在创建 <code>symlinks</code>，而创建 <code>symlinks</code> 需要系统管理员权限，所以会被拒绝。<br>可以通过以下三种方式规避：</p>
+<ol>
+<li>开启开发人员模式： <b>[Windows设置] - [更新和安全] - [开发者选项] - [开启开发人员模式]</b>；</li>
+<li>使用<strong>管理员权限</strong>打开终端；</li>
+<li>降低 <code>NVM</code> 版本到 <code>v1.1.17</code> 来绕过这个问题； <small>（操作来源：<a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/issues/700">Access is denied · Issue #700 · coreybutler/nvm-windows</a>)</small></li>
+</ol>
+<p>不过<strong>第三种方式</strong>这个我没测试，你们可以尝试一下，我猜测是不行的，因为会弹 <code>UAC</code> 确认，主要是用公司配发的电脑尝试的话太麻烦了（懒，也怕麻烦 <strong>IT Admin</strong>）。<br>如果有人尝试了的话，希望可以 <a href="mailto:yogwang@foxmail.com?subject=NVM修改版本失败降版到1.1.7的尝试反馈">反馈结果</a> 给我，那将十分感谢！🙇‍<br><br></p>
+<p>* 如果你是使用的公司配发的电脑 <em>（corporate-owned computer）</em>，并且无法获取到系统管理员权限，可以尝试切换到 <a target="_blank" rel="noopener" href="https://github.com/jasongin/nvs">NVS</a> 来管理 <code>NodeJS</code> 版本，以此来规避权限问题。</p>
+<p>具体可以查看我的这篇文章 <a href="/2022/NVS-Node-Version-Switcher/">切换到NVS(NodeVersionSwitcher)来管理NodeJS版本</a> 了解切换到 <code>NVS</code> 的<strong>迁移成本</strong>。</p>
+<hr>
+<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">nvm-windows - Github</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/70210917/nvm-use-exit-status-1-access-is-denied">nvm use exit status 1: Access is denied - Stack Overflow</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/wiki/Common-Issues">Common Issues · coreybutler/nvm-windows Wiki</a></li>
 </ul>
  
   </article>
@@ -230,7 +247,7 @@ This is a partial list. For a complete list, visit https:&#x2F;&#x2F;nodejs.org&
 </div>
 
 <script>
-const postDate = "2020-07-15"
+const postDate = "2022-07-22"
 const difference = moment().diff(postDate, 'days')
 const isExpired = difference > 300
 if (isExpired){
@@ -289,6 +306,16 @@ if (isExpired){
         
           <li>
             <a 
+              href="/2022/NVS-Node-Version-Switcher/" 
+              title="迁移到NVS(NodeVersionSwitcher)来管理NodeJS版本" 
+              alt="迁移到NVS(NodeVersionSwitcher)来管理NodeJS版本"
+            >
+              迁移到NVS(NodeVersionSwitcher)来管理NodeJS版本
+            </a>
+          </li>
+        
+          <li>
+            <a 
               href="/2022/antd-aform-magic-usage/" 
               title="AntD of Vue 中 &lt;AForm&gt; 表单域组件化使用的尝试" 
               alt="AntD of Vue 中 &lt;AForm&gt; 表单域组件化使用的尝试"
@@ -327,16 +354,6 @@ if (isExpired){
             </a>
           </li>
         
-          <li>
-            <a 
-              href="/2022/CSS-what-happens-when-set-flex-1/" 
-              title="简写的 flex:1 具体简写了些什么？" 
-              alt="简写的 flex:1 具体简写了些什么？"
-            >
-              简写的 flex:1 具体简写了些什么？
-            </a>
-          </li>
-        
       </ul>
     </div>
   </section>
@@ -347,7 +364,7 @@ if (isExpired){
   <section class="widget-wrap shadow">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </section>
 

@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2022/NVS-Node-Version-Switcher/</loc>
+    <lastmod>2022-07-24</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
+    <lastmod>2022-07-24</lastmod>
+  </url>
+  <url>
     <loc>https://yogwang.site/2022/antd-aform-magic-usage/</loc>
-    <lastmod>2022-07-09</lastmod>
+    <lastmod>2022-07-24</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2020/NVW4W-install-use/</loc>
+    <lastmod>2022-07-24</lastmod>
   </url>
   <url>
     <loc>https://yogwang.site/2022/JS-i18n-number-format/</loc>
@@ -217,10 +229,6 @@
     <lastmod>2021-05-29</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2020/nvm-install-use/</loc>
-    <lastmod>2021-05-29</lastmod>
-  </url>
-  <url>
     <loc>https://yogwang.site/2019/php-VirtualHost/</loc>
     <lastmod>2021-05-29</lastmod>
   </url>
@@ -386,10 +394,6 @@
   </url>
   <url>
     <loc>https://yogwang.site/2020/jeecg-boot-devDiary10/</loc>
-    <lastmod>2021-05-29</lastmod>
-  </url>
-  <url>
-    <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
     <lastmod>2021-05-29</lastmod>
   </url>
   <url>
