@@ -101,7 +101,7 @@
       <!-- 文章内容 article body -->
  
   <article class="article-content">
-    <p>本周来了一个新的需求，需要前端生成打印内容，每一项数据占据一张 A4 纸，选择多项就是分多张打印，所以需要打印指定内容区域，并且使用 <code>page-break</code> 来控制打印区域的分页。<br>以前就只使用 CSS 控制过打印时样式，隐藏一些不需要打印的觑域，还尝没有试过打印指定区域内容，并且控制打印内容强制分页，所以记录一下。</p>
+    <p>本周来了一个新的需求，需要前端生成打印内容，每一项数据占据一张 A4 纸，选择多项就是分多张打印，所以需要打印指定内容区域，并且使用 <code>page-break</code> 来控制打印区域的分页。<br>以前就只使用 CSS 控制过打印时样式，隐藏一些不需要打印的区域，还尝没有试过打印指定区域内容，并且控制打印内容强制分页，所以记录一下。</p>
 <span id="more"></span>
 
 <hr>
@@ -136,7 +136,7 @@
 </ul>
 <p><strong>简单配置一下页面打印样式，然后开始写打印内容样式。</strong>因为实际上可以配置的属性真的不多，而且各浏览器支持的程度也参差不齐，如果高定制化的话会很容易自闭。</p>
 <h2 id="3-页面内容样式"><a href="#3-页面内容样式" class="headerlink" title="#3 页面内容样式"></a>#3 页面内容样式</h2><p>这块内容就是正常写CSS样式了，有一部分在打印时的特殊样式搭配使用 <code>@media print</code> 来匹配就可以了，一遍调整一边使用浏览器的打印预览功能查看实际效果即可，所以就不赘述了。</p>
-<h2 id="4-分页打印内容"><a href="#4-分页打印内容" class="headerlink" title="#4 分页打印内容"></a>#4 分页打印内容</h2><p>分页的话，使用在前文中提到的 <code>page-break</code>，给占据整页/整块觑域的内容增加 <code>break-before</code> 或者 <code>break-after</code> 属性即可。<br>也可以给单独的类似 <code>&lt;hr /&gt;</code> 这样的水平线元素增加 <code>page-break</code> 属性。然后再搭配 <code>@media print</code> 给水平线在打印时隐藏，这样的话可以在查看页面的时候就知道哪些部分他会分页，并且在打印时也不会印象打印内容排版。</p>
+<h2 id="4-分页打印内容"><a href="#4-分页打印内容" class="headerlink" title="#4 分页打印内容"></a>#4 分页打印内容</h2><p>分页的话，使用在前文中提到的 <code>page-break</code>，给占据整页/整块区域的内容增加 <code>break-before</code> 或者 <code>break-after</code> 属性即可。<br>也可以给单独的类似 <code>&lt;hr /&gt;</code> 这样的水平线元素增加 <code>page-break</code> 属性。然后再搭配 <code>@media print</code> 给水平线在打印时隐藏，这样的话可以在查看页面的时候就知道哪些部分他会分页，并且在打印时也不会印象打印内容排版。</p>
 <blockquote>
 <p>注意：如果要在打印时隐藏 <code>&lt;hr/&gt;</code> 元素并且保持分页功能，需要使用 <code>visibility: hidden;</code> 来隐藏，不能使用 <code>display:none</code> 不然分页属性不会生效。</p>
 </blockquote>
