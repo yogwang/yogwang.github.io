@@ -1,0 +1,355 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>HTML API + CSS 控制页面打印内容和样式 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-html-css-ctrl-page-print"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2022-07-22T08:35:21.000Z" itemprop="datePublished">2022-07-22</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      HTML API + CSS 控制页面打印内容和样式
+    </h1>
+  
+
+      <div class="article-updated">
+        
+        最后更新：<time datetime="2022-07-25T14:27:02.000Z" itemprop="datePublished">2022-07-25</time>
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <p>本周来了一个新的需求，需要前端生成打印内容，每一项数据占据一张 A4 纸，选择多项就是分多张打印，所以需要打印指定内容区域，并且使用 <code>page-break</code> 来控制打印区域的分页。<br>以前就只使用 CSS 控制过打印时样式，隐藏一些不需要打印的觑域，还尝没有试过打印指定区域内容，并且控制打印内容强制分页，所以记录一下。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="1-选择打印区域"><a href="#1-选择打印区域" class="headerlink" title="#1 选择打印区域"></a>#1 选择打印区域</h2><p>局部打印的方式据我了解到的有三种：</p>
+<blockquote>
+<ol>
+<li>通过<strong>开始、结束标记</strong>来控制打印范围；<ul>
+<li><code>&lt;!--startprint--&gt;</code> 和 <code>&lt;!--endprint--&gt;</code></li>
+</ul>
+</li>
+<li>通过把局部内容赋值给<code>body</code>，打印整个页面，而后再把原页面内容重复覆盖回来；</li>
+<li>通过动态创建<code>&lt;iframe&gt;</code>来打印；<br><small>window.print()局部打印三种方式 - 硅谷工具人</small></li>
+</ol>
+</blockquote>
+<p>比较推荐的是<strong>第一种</strong>和<strong>第三种</strong>方法。不过我选择去<code>NPM</code>上找一个现成的轮子 😁。<br>其实也不是我找的，其实小伙伴再之前已经做完了局部打印功能，只是后来提了新的需求这回要求打印内容的样式，所以由我来接手了。<br>选择的库是 <a target="_blank" rel="noopener" href="https://github.com/Power-kxLee/vue-print-nb">vue-print-nb</a>，我看了一下源码其实现方式是上面提到的第三种。</p>
+<p>首先通过 <code>documentCreateElement(&#39;iframe&#39;)</code> 创建一个 <code>&lt;iframe&gt;</code>  元素；再通过 <code>document.getElementById()</code> 拿到需要打印的区域内容，同时把获取到需要打印的区域内容通过 <code>Node.cloneNode()</code> 复制到创建的 <code>&lt;iframe&gt;</code> 当中；最后用 <code>window.print()</code> 这个API打开打印对话框打印当前文档，就可以实现打印原先指定的区域内容了。</p>
+<p>更详细的方法可以查看仓库源码或者查看文章尾部的参考资源中的对应文章，我这里就不现学现卖了。</p>
+<h2 id="2-配置页面打印样式"><a href="#2-配置页面打印样式" class="headerlink" title="#2 配置页面打印样式"></a>#2 配置页面打印样式</h2><p>通过 CSS 的 <code>@page</code> 规则可以控制打印时的页面样式，但是可配置的内容不多。</p>
+<blockquote>
+<p><code>@page</code> 规则用于在打印文档时修改某些 <strong>CSS</strong> 属性。你不能用 <code>@page</code> 规则来修改所有的 <strong>CSS</strong> 属性，而是只能修改 <code>margin</code>,<code>orphans</code>,<code>widow</code> 和 <code>page breaks of the document</code>。对其他属性的修改是无效的。<br><small>@page - MDN</small></p>
+</blockquote>
+<p>暂时我能用到的就只有 <code>margin</code> 、 <code>size</code> 以及 <code>page-break</code> 了，使用方式很简单和正常的CSS一样使用，例如：</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token atrule"><span class="token rule">@page</span></span> <span class="token punctuation">&#123;</span>
+	<span class="token property">margin</span><span class="token punctuation">:</span> 1cm<span class="token punctuation">;</span> // 设置打印页边距；
+	<span class="token property">size</span><span class="token punctuation">:</span> A4 portrait<span class="token punctuation">;</span> // 指定打印时纸张大小和方向
+	<span class="token property">break-after</span><span class="token punctuation">:</span> page<span class="token punctuation">;</span> // 分页属性
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以把 <code>@page</code> 规则理解成打印时的对象去设置，并不和 <code>@media print</code> 相似。<br>并且我在尝试使用 <code>size</code> 指定纸张的大小时（别名）， <strong>Chrome</strong>、 <strong>FireFox</strong> 和 <strong>Edge</strong> 都没有生效。指定纸张方向是可以的。</p>
+<ul>
+<li><small>使用别名指定纸张大小时， <code>Edge</code> 中甚至影响到了 <code>margin</code> 属性的生效，所以最好 <code>size</code> 只指定方向 (2022 年 7 月 25 日)。</small></li>
+<li><small>使用具体数值指定纸张大小时，<code>Chrome</code> 和 <code>FireFox</code> 中指定的纸张方向失效了 (2022 年 7 月 25 日)。</small></li>
+</ul>
+<p><strong>简单配置一下页面打印样式，然后开始写打印内容样式。</strong>因为实际上可以配置的属性真的不多，而且各浏览器支持的程度也参差不齐，如果高定制化的话会很容易自闭。</p>
+<h2 id="3-页面内容样式"><a href="#3-页面内容样式" class="headerlink" title="#3 页面内容样式"></a>#3 页面内容样式</h2><p>这块内容就是正常写CSS样式了，有一部分在打印时的特殊样式搭配使用 <code>@media print</code> 来匹配就可以了，一遍调整一边使用浏览器的打印预览功能查看实际效果即可，所以就不赘述了。</p>
+<h2 id="4-分页打印内容"><a href="#4-分页打印内容" class="headerlink" title="#4 分页打印内容"></a>#4 分页打印内容</h2><p>分页的话，使用在前文中提到的 <code>page-break</code>，给占据整页/整块觑域的内容增加 <code>break-before</code> 或者 <code>break-after</code> 属性即可。<br>也可以给单独的类似 <code>&lt;hr /&gt;</code> 这样的水平线元素增加 <code>page-break</code> 属性。然后再搭配 <code>@media print</code> 给水平线在打印时隐藏，这样的话可以在查看页面的时候就知道哪些部分他会分页，并且在打印时也不会印象打印内容排版。</p>
+<blockquote>
+<p>注意：如果要在打印时隐藏 <code>&lt;hr/&gt;</code> 元素并且保持分页功能，需要使用 <code>visibility: hidden;</code> 来隐藏，不能使用 <code>display:none</code> 不然分页属性不会生效。</p>
+</blockquote>
+<hr>
+<h2 id="💥-遇到问题"><a href="#💥-遇到问题" class="headerlink" title="💥 遇到问题"></a>💥 遇到问题</h2><h4 id="1-使用-page-break-after-是内容分页但在打印时不生效"><a href="#1-使用-page-break-after-是内容分页但在打印时不生效" class="headerlink" title="1. 使用 page-break-after 是内容分页但在打印时不生效"></a>1. 使用 <code>page-break-after</code> 是内容分页但在打印时不生效</h4><p>因为 <code>page-break-after</code> 被 <code>break-after</code> 替代了。相对应的 <code>page-break-before</code> 也被 <code>break-before</code> 属性替代了。<br>也有可能是因为你的值设置错了，设置为 <code>page</code> 就好了。</p>
+<blockquote>
+<ul>
+<li>常规中断值有：<code>auto</code>,<code>avoid</code>,<code>always</code>,<code>all</code>;</li>
+<li>分页使用的值有：<code>avoid-page</code>,<code>page</code>,<code>left</code>,<code>right</code>,<code>recto</code>,<code>verso</code>;</li>
+<li>分栏使用的值有：<code>avoid-column</code>,<code>column</code>;</li>
+<li>分区使用的值有：<code>avoid-region</code>,<code>region</code>;<br><small>《CSS新世界》</small></li>
+</ul>
+</blockquote>
+<p>我看张鑫旭大佬说 <code>region</code> 相关的属性现代浏览器已经不再支持了，所以可以忽略。</p>
+<h3 id="2-设置的背景色没有被打印。"><a href="#2-设置的背景色没有被打印。" class="headerlink" title="2. 设置的背景色没有被打印。"></a>2. 设置的背景色没有被打印。</h3><p>因为默认打印页面时<strong>为了节约墨水</strong>，所以<strong>默认情况下是不会打印背景色的</strong>，如果希望打印的时候保留背景色可以只用 <code>color-adjust</code> 属性来控制。</p>
+<blockquote>
+<p>但 <code>color-adjust</code> 属性并非一个标准属性，所以在使用时需要查看一下各浏览器的兼容程度。有的浏览器需要增加私有前缀（比如 <code>-webkit-print-color-adjust</code>)。</p>
+</blockquote>
+<hr>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>现在很多和打印相关的规则和API还都是草案，很多规则都没有固定下来成为标准，不同的浏览器也有自己的实现方式，有些属性还是部分支持（比如：<code>size</code> 属性）或者需要私有前缀。<br>尽量先查看一下最新的文档，不要照搬笔记或者文章，因为谁也不知道啥时候就改变了，我在写这篇笔记时看到草案的修订时间是 <strong>2022年5月24日</strong>，不知道你们看到的时候会是第几个版本了。</p>
+<p>那就这样吧，以上。</p>
+<h2 id="📚-文档"><a href="#📚-文档" class="headerlink" title="📚 文档"></a>📚 文档</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Paged_Media">Paged media - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@page">@page - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@page/size">size - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/page-break-after">page-break-after - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/break-after">break-after - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/print-color-adjust">print-color-adjust - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/print">window.print - Web API | MDN</a><br><a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-page/#page-size-prop">CSS Paged Media Module Level 3 | W3C Editor’s Draft</a></p>
+<p><a target="_blank" rel="noopener" href="https://css-tricks.com/almanac/properties/p/page-break/">page-break | CSS-Tricks - CSS-Tricks</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1664049/can-i-force-a-page-break-in-html-printing">Can I force a page break in HTML printing? - Stack Overflow</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000010145260">CSS 打印 - SegmentFault 思否</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/74309692">记CSS中break-after的一个坑 - 知乎</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/30go/p/9788990.html">window.print()局部打印三种方式 - 硅谷工具人 - 博客园</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/ZHANGLIZENG/article/details/91865007">window.print()打印时根据页面高度设置居中显示、设置打印布局（纵向、横向）_清云青云的博客 - CSDN</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a 
+      id="article-nav-newer"
+      class="article-nav-link-wrap" 
+      href="/2022/MSEdge-alt-tab-display-all-browser-tabs/" 
+      title="使用Alt+Tab切换窗口时会显示Edge打开的所有页签" 
+      alt="使用Alt+Tab切换窗口时会显示Edge打开的所有页签"
+    >
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">使用Alt+Tab切换窗口时会显示Edge打开的所有页签</div>
+    </a>
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2022/NVS-Node-Version-Switcher/" 
+      title="迁移到NVS(NodeVersionSwitcher)来管理NodeJS版本" 
+      alt="迁移到NVS(NodeVersionSwitcher)来管理NodeJS版本"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">迁移到NVS(NodeVersionSwitcher)来管理NodeJS版本</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2022-07-25"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2022/MSEdge-alt-tab-display-all-browser-tabs/" 
+              title="使用Alt+Tab切换窗口时会显示Edge打开的所有页签" 
+              alt="使用Alt+Tab切换窗口时会显示Edge打开的所有页签"
+            >
+              使用Alt+Tab切换窗口时会显示Edge打开的所有页签
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/html-css-ctrl-page-print/" 
+              title="HTML API + CSS 控制页面打印内容和样式" 
+              alt="HTML API + CSS 控制页面打印内容和样式"
+            >
+              HTML API + CSS 控制页面打印内容和样式
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/NVS-Node-Version-Switcher/" 
+              title="迁移到NVS(NodeVersionSwitcher)来管理NodeJS版本" 
+              alt="迁移到NVS(NodeVersionSwitcher)来管理NodeJS版本"
+            >
+              迁移到NVS(NodeVersionSwitcher)来管理NodeJS版本
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/antd-aform-magic-usage/" 
+              title="AntD of Vue 中 &lt;AForm&gt; 表单域组件化使用的尝试" 
+              alt="AntD of Vue 中 &lt;AForm&gt; 表单域组件化使用的尝试"
+            >
+              AntD of Vue 中 &lt;AForm&gt; 表单域组件化使用的尝试
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/JS-i18n-number-format/" 
+              title="JS中的数字格式化和大位数缩写" 
+              alt="JS中的数字格式化和大位数缩写"
+            >
+              JS中的数字格式化和大位数缩写
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">26</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2022 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
