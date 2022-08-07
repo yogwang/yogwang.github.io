@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2022/vue-provide-inject/</loc>
+    <lastmod>2022-08-07</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2022/how-to-determine-variable-is-array/</loc>
+    <lastmod>2022-08-07</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2022/NVS-Node-Version-Switcher/</loc>
+    <lastmod>2022-08-07</lastmod>
+  </url>
+  <url>
     <loc>https://yogwang.site/2022/CSS-frosted-glass/</loc>
-    <lastmod>2022-07-26</lastmod>
+    <lastmod>2022-08-07</lastmod>
   </url>
   <url>
     <loc>https://yogwang.site/2022/html-css-ctrl-page-print/</loc>
@@ -15,10 +27,6 @@
   <url>
     <loc>https://yogwang.site/2020/How-to-make-GithubPage-included-by-Baidu/</loc>
     <lastmod>2022-07-25</lastmod>
-  </url>
-  <url>
-    <loc>https://yogwang.site/2022/NVS-Node-Version-Switcher/</loc>
-    <lastmod>2022-07-24</lastmod>
   </url>
   <url>
     <loc>https://yogwang.site/2020/jeecg-boot-devDiary11/</loc>
