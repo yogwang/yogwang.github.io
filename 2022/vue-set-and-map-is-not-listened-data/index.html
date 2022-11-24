@@ -1,0 +1,316 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Set &amp; Map 数据结构是无法被 Vue 监听的 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-vue-set-and-map-is-not-listened-data"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2022-09-14T08:45:06.000Z" itemprop="datePublished">2022-09-14</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Set &amp; Map 数据结构是无法被 Vue 监听的
+    </h1>
+  
+
+      <div class="article-updated">
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <p>这次在写业务的时候因为是无限层级的递归表单，用了 <code>provide/inject</code> 来暴露注册以便收集数据。所以就想要用 <code>Map</code> 数据结构来处理数据的收集等等功能。直接使用 记录ID 作为键名就可以了，这样也可以直接去重。但是写完了业务代码之后发现我把后代的表单注册进来并没有触发响应，导致数据回填失败。</p>
+<p>所以想着是不是 <code>Vue 2x</code> 无法监听 <code>Map</code> 或者 <code>Set</code> 的数据变更的。就去检索了一下相关的信息，发现 <code>Vue 2x</code> 真的无法监听 <code>Map</code> 以及 <code>Set</code> 俩兄弟。只能够通过修改其他变量来曲线救国。</p>
+<p><code>Vue 3x</code> 通过 <code>Proxy</code> 来代理就没有了这个问题。</p>
+<span id="more"></span>
+
+<hr>
+<p>想要在 <code>Vue2</code> 中来实现我上面的需求的话：</p>
+<h3 id="方法1-改写成-数组-对象。每次去-find-一下是否已经存在上级元素，然后插入到-child-中，但是对于层级比较深的就不是特别好使了，需要递归才行。"><a href="#方法1-改写成-数组-对象。每次去-find-一下是否已经存在上级元素，然后插入到-child-中，但是对于层级比较深的就不是特别好使了，需要递归才行。" class="headerlink" title="#方法1. 改写成 数组 对象。每次去 find 一下是否已经存在上级元素，然后插入到 child 中，但是对于层级比较深的就不是特别好使了，需要递归才行。"></a>#方法1. 改写成 数组 对象。每次去 <code>find</code> 一下是否已经存在上级元素，然后插入到 <code>child</code> 中，但是对于层级比较深的就不是特别好使了，需要递归才行。</h3><p>所以我先 <code>const list = []</code> 声明了一个数组对象，同时也 <code>const tmpMapper = new Map()</code> 声明一个 <code>Map</code> 数据对象把这些 一级祖先 <code>.set</code> 进去，因为是同一个引用所以 数组内的数据 和 <code>Map</code> 内的数是同一个，直接修改 <code>Map</code> 内的属性 数组内的元素也会变更。<br>然后开始遍历通过 <code>parentId</code> 关联的平级结构列表，因为是从前往后正序排列的，所以直接通过 <code>tmpMapper.get(item.parentId)</code> 就可以获取到父级了，然后 <code>push</code> 当前元素到父级的 <code>child</code> 当中，同时也 <code>.set</code> 到 <code>tmpMapper</code> 当中。如此往复，这样就可以把通过 <code>parentId</code> 关联的平级结构列表转成树结构了。最后再把 <code>list</code> 赋值给在 <code>data</code> 中提前声明好的数组变量就可以了。</p>
+<p>只是后续操作修改的时候都会比较麻烦。不过好在我只有初始化的时候需要这样创建一次就行了。之后通过转换成树状的数组递归渲染即可。</p>
+<h3 id="方法2-添加一个标识符，在每次操作-Map-对象的时候去给这个标识符-1，这样通过监听数字标识符的变更来触发更新。"><a href="#方法2-添加一个标识符，在每次操作-Map-对象的时候去给这个标识符-1，这样通过监听数字标识符的变更来触发更新。" class="headerlink" title="#方法2. 添加一个标识符，在每次操作 Map 对象的时候去给这个标识符 +1，这样通过监听数字标识符的变更来触发更新。"></a>#方法2. 添加一个标识符，在每次操作 <code>Map</code> 对象的时候去给这个标识符 <code>+1</code>，这样通过监听数字标识符的变更来触发更新。</h3><p>一般来说这样都是通过 <code>computed</code> 来把 <code>Map</code> 对象转为数组。因为其实最终在 <code>template</code> 中循环的时候其实也是一个可递归的变量，所以使用 <code>Array.form()</code> 直接转换成数组使用就行了。</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  mySetChangeTracker<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  mySet<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  
+computed<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">mySetAsList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+    <span class="token comment">// By using `mySetChangeTracker` we tell Vue that this property depends on it,</span>
+    <span class="token comment">// so it gets re-evaluated whenever `mySetChangeTracker` changes</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>mySetChangeTracker <span class="token operator">&amp;&amp;</span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>mySet<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+
+methods<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Trigger Vue updates</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>mySetChangeTracker <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h3 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h3><p><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/issues/1319#issuecomment-162742130">[Feature]: Add support of the iterator protocol (es6) for v-for directive (map, weakset, weakmap) · Issue #1319 · vuejs/vue</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/issues/5241#issuecomment-288057627">vuejs doesn’t support Sets as backing fields for binding (nor maps, weakmap, weakset reactivity) · Issue #5241 · vuejs/vue</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/issues/2410#issuecomment-318487855">Support more collection data types in v-for · Issue #2410 · vuejs/vue</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2022/vue-props-type-validation-with-Null-and-undefined/" 
+      title="Vue中接收没有声明的Prop属性[null/undefined]的接收问题" 
+      alt="Vue中接收没有声明的Prop属性[null/undefined]的接收问题"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vue中接收没有声明的Prop属性[null/undefined]的接收问题</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2022-09-14"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2022/vue-set-and-map-is-not-listened-data/" 
+              title="Set &amp; Map 数据结构是无法被 Vue 监听的" 
+              alt="Set &amp; Map 数据结构是无法被 Vue 监听的"
+            >
+              Set &amp; Map 数据结构是无法被 Vue 监听的
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/vue-props-type-validation-with-Null-and-undefined/" 
+              title="Vue中接收没有声明的Prop属性[null/undefined]的接收问题" 
+              alt="Vue中接收没有声明的Prop属性[null/undefined]的接收问题"
+            >
+              Vue中接收没有声明的Prop属性[null/undefined]的接收问题
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/vue-reused-components-debounce-problem/" 
+              title="聊一个复用组件中使用debounce时遇到的问题" 
+              alt="聊一个复用组件中使用debounce时遇到的问题"
+            >
+              聊一个复用组件中使用debounce时遇到的问题
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/CSS-frosted-glass/" 
+              title="CSS实现毛玻璃效果的一种新方式" 
+              alt="CSS实现毛玻璃效果的一种新方式"
+            >
+              CSS实现毛玻璃效果的一种新方式
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/MSEdge-alt-tab-display-all-browser-tabs/" 
+              title="使用Alt+Tab切换窗口时会显示Edge打开的所有页签" 
+              alt="使用Alt+Tab切换窗口时会显示Edge打开的所有页签"
+            >
+              使用Alt+Tab切换窗口时会显示Edge打开的所有页签
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">28</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2022 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
