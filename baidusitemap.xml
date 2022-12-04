@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2022/regular-test-with-global-respectively-return-true-and-false/</loc>
+    <lastmod>2022-12-04</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2022/use-css-filter-remove-page-color/</loc>
+    <lastmod>2022-12-04</lastmod>
+  </url>
+  <url>
     <loc>https://yogwang.site/2022/vue-set-and-map-is-not-listened-data/</loc>
     <lastmod>2022-11-24</lastmod>
   </url>
