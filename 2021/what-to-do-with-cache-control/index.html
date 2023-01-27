@@ -1,0 +1,318 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>页面的缓存到底应该怎么做? | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-what-to-do-with-cache-control"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cache/" rel="tag">Cache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2021-09-19T16:31:26.000Z" itemprop="datePublished">2021-09-20</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      页面的缓存到底应该怎么做?
+    </h1>
+  
+
+      <div class="article-updated">
+        
+        最后更新：<time datetime="2023-01-14T08:50:26.000Z" itemprop="datePublished">2023-01-14</time>
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Cache-Control<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-cache, no-store, must-revalidate<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Pragma<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-cache<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Expires<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>赶巧不巧，正好在假期第一天遇到了修改接口地址的问题 —— 节前最后一个工作日后端兄弟自己修改了编译后的 Js 文件中的接口地址，但是并没有生效，只不过当时没发现，今天电话过来问应该怎么处理，奈何电脑没带在身边，只能让他修改了接口地址之后重新编辑被修改的 Js 文件名中的 <code>hash</code> 值随便改一位，同时修改一下 <code>index.html</code> 中的引入路径。<br>可是没多久又发来消息说，不行还是请求旧地址，没有被修改。我怀疑是页面被缓存了，于是让他确认了一下页面源代码中是否有 <code>no-cache</code> 的 <code>meta</code> ，他说有，但是页面还是被缓存了，看到引入 Js 文件的路径还是他修改前的旧路径。<br>于是我就纳闷了，好像浏览器跳过了设置的机制，并没有重新请求服务器获取最新的 <code>index</code> 文件。</p>
+<span id="more"></span>
+
+<p>正常来说，前端为了加快页面加载，只会在 <code>index.html</code> 页面的 <code>&lt;meta&gt;</code> 中设置 <strong>不缓存</strong>，而其他类型的资源文件再HTTP服务上设为一个缓存时间，从而加快首屏加载速度。<br>如果资源文件有变动则通过修改资源文件路径的 <code>hash</code> 值来让浏览器认为是新文件，从而重新请求服务器获取最新的资源。</p>
+<p>所以遇到这个问题的时候我是很蒙蔽的，我很早之前就已经给 <code>HTML</code> 页面添加上了不缓存的 <code>&lt;meta&gt;</code> 头，当时自测的时候是正常的。就一边翻文档一边写DEMO，不论怎么做都一直复现不了，实在是研究不好了，又问了一下后端兄弟，答：<strong>客户使用的微信打开的链接。</strong> ，他暂时先改了一下把页面重定向到了二级目录解决了问题。</p>
+<p>所以问题其实是因为微信内置的X5浏览器，马上去微信社区找了一下，果然！一下就找到了，<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/doc/00040e04ac41b887b80978f7c5b800?highLine=%25E9%25A1%25B5%25E9%259D%25A2%25E7%25BC%2593%25E5%25AD%2598">微信公众号页面缓存问题 | 微信开放社区</a></p>
+<p>大概反馈如下：</p>
+<ul>
+<li><p>x5内核好像没有协商缓存</p>
+</li>
+<li><p>点刷新就访问到新的网页了，第二次进来又是旧的</p>
+</li>
+</ul>
+<p>微信内置的浏览器他不按套路出牌啊，没有协商缓存的同时为了加快访问速度还直接给你缓存了页面。所以之前可能是后端小伙伴没有去配置HTTP服务的不缓存，结果用户访问了页面被缓存起来了。<br>一般来说服务器端后续把不缓存的配置添加上就好了，结果后期添加上了不缓存的响应头还是没有办法获取到最新的 <code>HTML</code> 入口文件。暂时没有什么好的解决办法了，后端小伙伴已经暂时解决了就先不管了。</p>
+<h2 id="🎈-其它问题"><a href="#🎈-其它问题" class="headerlink" title="🎈 其它问题"></a>🎈 其它问题</h2><h4 id="1-HTML的-lt-meta-gt-标签中设置了不缓存，后端返回头中设置了缓存时间页面会缓存吗？"><a href="#1-HTML的-lt-meta-gt-标签中设置了不缓存，后端返回头中设置了缓存时间页面会缓存吗？" class="headerlink" title="1. HTML的 &lt;meta&gt; 标签中设置了不缓存，后端返回头中设置了缓存时间页面会缓存吗？"></a>1. HTML的 <code>&lt;meta&gt;</code> 标签中设置了不缓存，后端返回头中设置了缓存时间页面会缓存吗？</h4><h4 id="2-HTML的-lt-meta-gt-的不缓存设置的应用范围？"><a href="#2-HTML的-lt-meta-gt-的不缓存设置的应用范围？" class="headerlink" title="2. HTML的 &lt;meta&gt; 的不缓存设置的应用范围？"></a>2. HTML的 <code>&lt;meta&gt;</code> 的不缓存设置的应用范围？</h4><p><code>HTML</code> 页面中的 <code>&lt;meta&gt;</code> 信息头只会应用在当前 <code>HTML</code> 页面的请求头上，并不会影响 <code>HTML</code> 页面发起的其他 <code>HTTP</code> 请求</p>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control">Cache-Control - HTTP | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching">HTTP 缓存 - HTTP | MDN</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49547/how-do-we-control-web-page-caching-across-all-browsers">http - How do we control web page caching, across all browsers? - Stack Overflow</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/29075375/cache-control-max-age-0-no-cache-but-browser-bypasses-server-query-and-hits">google chrome - “Cache-Control: max-age=0, no-cache” but browser bypasses server query (and hits cache)? - Stack Overflow</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1046966/whats-the-difference-between-cache-control-max-age-0-and-no-cache/1383359#1383359">http - What’s the difference between Cache-Control: max-age=0 and no-cache? - Stack Overflow</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/18148884/difference-between-no-cache-and-must-revalidate">http - Difference between no-cache and must-revalidate - Stack Overflow</a><br><a target="_blank" rel="noopener" href="https://web.archive.org/web/20140811162719/http://palizine.plynt.com/issues/2008Jul/cache-control-attributes/">Cache Control Directives Demystified : Palisade</a><br><a target="_blank" rel="noopener" href="http://www.mnot.net/cache_docs/">Caching Tutorial for Web Authors and Webmasters - mnot</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/vajoy/p/5341664.html">浅谈浏览器http的缓存机制 - vajoy - 博客园</a><br><a target="_blank" rel="noopener" href="https://mser.xyz/2019/05/14/browser_cache/">理解浏览器缓存机制 [ 没事儿 ]</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7172498623727403045">微信服务号H5开发去除缓存方案 Wechat WebCache Killer - 掘金</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a 
+      id="article-nav-newer"
+      class="article-nav-link-wrap" 
+      href="/2021/miniprogram-flex-height-collapse-in-ios/" 
+      title="记小程序flex布局垂直排列出现高度崩塌的问题" 
+      alt="记小程序flex布局垂直排列出现高度崩塌的问题"
+    >
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">记小程序flex布局垂直排列出现高度崩塌的问题</div>
+    </a>
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2021/miniprogram-devDiary-07-eventChannel/" 
+      title="微信小程序学习日记 L07 eventChannel 页面事件通信通道" 
+      alt="微信小程序学习日记 L07 eventChannel 页面事件通信通道"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">微信小程序学习日记 L07 eventChannel 页面事件通信通道</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2023-01-14"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2023/summary-at-the-end-of-2022/" 
+              title="👋 告别挣扎的 2022 年" 
+              alt="👋 告别挣扎的 2022 年"
+            >
+              👋 告别挣扎的 2022 年
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2023/JS-crypto-random-uuid/" 
+              title="生成UUID的方法 Crypto.randomUUID()" 
+              alt="生成UUID的方法 Crypto.randomUUID()"
+            >
+              生成UUID的方法 Crypto.randomUUID()
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/use-css-filter-remove-page-color/" 
+              title="使用 CSS 滤镜将站点置灰以及把如何排除图片" 
+              alt="使用 CSS 滤镜将站点置灰以及把如何排除图片"
+            >
+              使用 CSS 滤镜将站点置灰以及把如何排除图片
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/regular-test-with-global-respectively-return-true-and-false/" 
+              title="记 RegExp.test() 方法使用全局匹配时一会返回 true 一会返回 false 的问题" 
+              alt="记 RegExp.test() 方法使用全局匹配时一会返回 true 一会返回 false 的问题"
+            >
+              记 RegExp.test() 方法使用全局匹配时一会返回 true 一会返回 false 的问题
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/vue-set-and-map-is-not-listened-data/" 
+              title="Set &amp; Map 数据结构是无法被 Vue 监听的" 
+              alt="Set &amp; Map 数据结构是无法被 Vue 监听的"
+            >
+              Set &amp; Map 数据结构是无法被 Vue 监听的
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2023 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
