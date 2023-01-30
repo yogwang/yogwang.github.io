@@ -1,0 +1,325 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>总是记不清的重排/回流(reflow)和重绘(repaint) | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-what-the-repaint-and-reflow"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2022-05-11T11:55:33.000Z" itemprop="datePublished">2022-05-11</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      总是记不清的重排/回流(reflow)和重绘(repaint)
+    </h1>
+  
+
+      <div class="article-updated">
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <blockquote>
+<p>重排会导致重绘，重绘不会导致重排 。</p>
+</blockquote>
+<p>中文环境下面的 <strong>重排</strong> 会有另外一种称呼方式叫做 <strong><code>回流</code><strong>。以前一直不理解</strong>为什么重排叫回流</strong>（直译的 <code>reflow</code>），导致我在记忆的过程中我总是会把他们混在一起，分不清回流是重排还是重绘。</p>
+<p>他们对应的含义我倒是分的还是比较清楚的。简单来说就是，牵扯页面布局的页面更新是重排，重绘就只是一些不影响布局的样式更新……</p>
+<span id="more"></span>
+
+<h2 id="💥-触发机制"><a href="#💥-触发机制" class="headerlink" title="💥 触发机制"></a>💥 触发机制</h2><h2 id="重排的触发机制我归类为以下三类："><a href="#重排的触发机制我归类为以下三类：" class="headerlink" title="重排的触发机制我归类为以下三类："></a>重排的触发机制我归类为以下三类：</h2><ul>
+<li>视窗大小发生改变；</li>
+<li>DOM的操作（可见元素）；</li>
+<li>元素几何样式和定位方式被改变；</li>
+<li>部分获取元素属性和API的调用；</li>
+</ul>
+<p><strong>视窗大小发生改变</strong> 和 <strong>DOM的操作</strong> 都很容易理解，可视区域的改变、DOM元素的增/删/改都会触发重排。</p>
+<p>需要注意的是 <strong>元素几何样式的改变</strong> 和 <strong>获取元素属性和API的调用</strong> 这两块。</p>
+<h4 id="1-元素几何样式的改变"><a href="#1-元素几何样式的改变" class="headerlink" title="1. 元素几何样式的改变"></a>1. 元素几何样式的改变</h4><p>元素宽高和位置这些属性的变更肯定会触发重排，但是修改<strong>字体</strong>和<strong>字号</strong>也是会触发重排的。因为会改变容器的宽高，从而影响到页面布局。</p>
+<h4 id="2-部分获取元素属性和API的调用"><a href="#2-部分获取元素属性和API的调用" class="headerlink" title="2. 部分获取元素属性和API的调用"></a>2. 部分获取元素属性和API的调用</h4><p>分为两类，一类是访问特定属性，比如说获取元素的盒模型信息。<br>一类是API的访问，例如 <code>getClientRects()</code>、<code>scrollTo()</code>、<code>、getComputedStyle()</code> 这类API，它们会访问某个元素尺寸和定位的属性，为了保证拿到的是精确值，不得不提前触发一次重排。</p>
+<p>更详细的可以阅读 <a target="_blank" rel="noopener" href="https://github.com/ascoders/weekly/blob/master/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/242.%E7%B2%BE%E8%AF%BB%E3%80%8Aweb%20reflow%E3%80%8B.md">精读《web reflow》</a> 这篇文章。</p>
+<blockquote>
+<p>当然也不是每次访问元素位置都会触发 <code>reflow</code>，在浏览器触发 <code>reflow</code> 后，所有已有元素位置都会记录快照，只要不再触发位置等变化，第二次开始访问位置就不会触发 <code>reflow</code>。<br><small>精读《web reflow》</small></p>
+</blockquote>
+<hr>
+<h2 id="🎨-关于重绘的部分"><a href="#🎨-关于重绘的部分" class="headerlink" title="🎨 关于重绘的部分"></a>🎨 关于重绘的部分</h2><p>关于重绘我认为其实就是影响布局的样式修改的元素外观更新，都可以认为是重绘。但是有部分会影响到元素位置/宽高的变更、显示/隐藏的CSS属性并不会触发重排。比如说：</p>
+<ul>
+<li>使用 <code>transform</code> 属性使元素平移、形变等变换；</li>
+<li>使用 <code>visible</code> 和 <code>opacity</code> 属性显示/隐藏元素；</li>
+</ul>
+<p>甚至有一部分的属性可以使直接跳过重排重绘的步骤，直接进入合成(<code>Composite</code>)阶段，还有关于重排重绘的优化我就不过多赘述了，感兴趣可以直接查看 <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903734951018504">《你真的了解回流和重绘吗》</a> 这篇文章。</p>
+<hr>
+<h2 id="🧐-一些疑问"><a href="#🧐-一些疑问" class="headerlink" title="🧐 一些疑问"></a>🧐 一些疑问</h2><h4 id="使用-absolute-或-fixed-脱离文档流后，修改元素定位等原来会触发重排属性还会触发重排吗？"><a href="#使用-absolute-或-fixed-脱离文档流后，修改元素定位等原来会触发重排属性还会触发重排吗？" class="headerlink" title="使用 absolute 或 fixed 脱离文档流后，修改元素定位等原来会触发重排属性还会触发重排吗？"></a>使用 <code>absolute</code> 或 <code>fixed</code> 脱离文档流后，修改元素定位等原来会触发重排属性还会触发重排吗？</h4><p>会，但是因为不会影响父级和兄弟元素的定位，所以它的重排会非常的快。但是使用 <code>float</code> 来脱离文档流还使其它元素内的文本进行环绕，所以可能会发生大规模重排。</p>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a target="_blank" rel="noopener" href="https://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">Rendering: repaint, reflow/relayout, restyle / Stoyan’s phpied.com</a><br><a target="_blank" rel="noopener" href="https://github.com/ascoders/weekly/blob/master/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/242.%E7%B2%BE%E8%AF%BB%E3%80%8Aweb%20reflow%E3%80%8B.md">weekly/242.精读《web reflow》 · ascoders/weekly</a><br><a target="_blank" rel="noopener" href="https://github.com/ascoders/weekly/blob/master/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/221.%E7%B2%BE%E8%AF%BB%E3%80%8A%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%89%E3%80%8B.md">weekly/221.精读《深入了解现代浏览器三》 · ascoders/weekly</a><br><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/140703">渲染流水线：CSS如何影响首次加载时的白屏时间？| 浏览器工作原理与实践</a><br><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/141842">分层和合成机制：为什么CSS动画比JavaScript高效？| 浏览器工作原理与实践</a><br><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/a8bedc099254cbe20757032bc">HTML回流与重绘_ 空城机</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/468581105">介绍回流与重绘（Reflow &amp; Repaint），以及如何进行优化? - 知乎</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903734951018504">你真的了解回流和重绘吗 - 掘金</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7033673328820748325">既不要重排也不要重绘，合成：transform如何实现动画效果？ - 掘金</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a 
+      id="article-nav-newer"
+      class="article-nav-link-wrap" 
+      href="/2022/JS-array-map-and-foreach-will-be-change-source-data/" 
+      title="数组的 .map() 和 .forEach() 是否会修改原数组" 
+      alt="数组的 .map() 和 .forEach() 是否会修改原数组"
+    >
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">数组的 .map() 和 .forEach() 是否会修改原数组</div>
+    </a>
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2022/vue-provide-inject/" 
+      title="Provide/Inject - 我在Vue中很少使用到的一种父子通讯方式" 
+      alt="Provide/Inject - 我在Vue中很少使用到的一种父子通讯方式"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Provide/Inject - 我在Vue中很少使用到的一种父子通讯方式</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2022-05-11"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2023/summary-at-the-end-of-2022/" 
+              title="👋 告别挣扎的 2022 年" 
+              alt="👋 告别挣扎的 2022 年"
+            >
+              👋 告别挣扎的 2022 年
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2023/JS-crypto-random-uuid/" 
+              title="生成UUID的方法 Crypto.randomUUID()" 
+              alt="生成UUID的方法 Crypto.randomUUID()"
+            >
+              生成UUID的方法 Crypto.randomUUID()
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/use-css-filter-remove-page-color/" 
+              title="使用 CSS 滤镜将站点置灰以及把如何排除图片" 
+              alt="使用 CSS 滤镜将站点置灰以及把如何排除图片"
+            >
+              使用 CSS 滤镜将站点置灰以及把如何排除图片
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/regular-test-with-global-respectively-return-true-and-false/" 
+              title="记 RegExp.test() 方法使用全局匹配时一会返回 true 一会返回 false 的问题" 
+              alt="记 RegExp.test() 方法使用全局匹配时一会返回 true 一会返回 false 的问题"
+            >
+              记 RegExp.test() 方法使用全局匹配时一会返回 true 一会返回 false 的问题
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2022/vue-set-and-map-is-not-listened-data/" 
+              title="Set &amp; Map 数据结构是无法被 Vue 监听的" 
+              alt="Set &amp; Map 数据结构是无法被 Vue 监听的"
+            >
+              Set &amp; Map 数据结构是无法被 Vue 监听的
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2023 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>

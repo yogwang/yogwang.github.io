@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2022/what-the-repaint-and-reflow/</loc>
+    <lastmod>2023-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2022/vue-provide-inject/</loc>
+    <lastmod>2023-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2022/how-to-determine-variable-is-array/</loc>
+    <lastmod>2023-01-30</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2022/JS-array-map-and-foreach-will-be-change-source-data/</loc>
+    <lastmod>2023-01-30</lastmod>
+  </url>
+  <url>
     <loc>https://yogwang.site/2023/summary-at-the-end-of-2022/</loc>
     <lastmod>2023-01-27</lastmod>
   </url>
@@ -37,10 +53,6 @@
     <lastmod>2022-11-24</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2022/JS-array-map-and-foreach-will-be-change-source-data/</loc>
-    <lastmod>2022-11-24</lastmod>
-  </url>
-  <url>
     <loc>https://yogwang.site/2022/CSS-frosted-glass/</loc>
     <lastmod>2022-11-24</lastmod>
   </url>
@@ -55,14 +67,6 @@
   <url>
     <loc>https://yogwang.site/2022/CSS-what-happens-when-set-flex-1/</loc>
     <lastmod>2022-08-28</lastmod>
-  </url>
-  <url>
-    <loc>https://yogwang.site/2022/vue-provide-inject/</loc>
-    <lastmod>2022-08-07</lastmod>
-  </url>
-  <url>
-    <loc>https://yogwang.site/2022/how-to-determine-variable-is-array/</loc>
-    <lastmod>2022-08-07</lastmod>
   </url>
   <url>
     <loc>https://yogwang.site/2022/NVS-Node-Version-Switcher/</loc>
