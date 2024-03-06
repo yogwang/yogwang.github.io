@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -79,15 +82,15 @@
  
   <article class="article-excerpt">
     <p>今天小伙伴问了一个奇怪的问题，他在使用 <code>RegExp.test()</code> 方法时使用全局匹配时会依次返回 <code>true</code> 和 <code>false</code> 的现象。<br>比如说:</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> t <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">#</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// false</span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> t = <span class="hljs-regexp">/#/g</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// false</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// false</span></code></pre>
 <p>我一开始以为是他正则写的不对，让他把其它的匹配规则都去掉再试试，结果问题还是依旧。<br>后来让他把 <code>/g</code> 的 <code>g</code> 去掉试了下发现没问题了。但还是没有怀疑到<strong>全局匹配</strong>的问题上，以为是他哪里覆写掉了的 <code>test()</code> 方法。让他使用空白页测试，依旧有这样的问题。</p>
   </article>
   <div class="article-more-link">
@@ -210,7 +213,7 @@ t<span class="token punctuation">.</span><span class="token function">test</span
  
   <article class="article-excerpt">
     <p>最近在写基础组件，同事一直反馈说组件总是提示警告：</p>
-<pre class="line-numbers language-console" data-language="console"><code class="language-console">[Vue warn]: Invalid prop: type check failed for prop &quot;value&quot;. Expected String, Array, got Null<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs console">[Vue warn]: Invalid prop: type check failed for prop &quot;value&quot;. Expected String, Array, got Null</code></pre>
 <p>一开始以为是接收的问题，把定义的<code>props</code>加上了工厂函数后没有报异常就没再管了。<br>今天再去看的时候发现还是有报错，检查了一下组件代码没发现问题，在查看业务代码的时候发现同事喜欢<b>给声明的变量默认赋值为 <code>null</code></b>。而不是声明正确的基础类型。所以我就想应该如何把这个问题彻底解决掉。</p>
 <h3 id="🔔-其实这个提示为了提醒可能你绑定的变量并不一定存在。"><a href="#🔔-其实这个提示为了提醒可能你绑定的变量并不一定存在。" class="headerlink" title="🔔 其实这个提示为了提醒可能你绑定的变量并不一定存在。"></a>🔔 其实这个提示为了提醒可能你绑定的变量并不一定存在。</h3>
   </article>

@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -100,9 +103,9 @@
  
   <article class="article-content">
     <h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a><code>git log</code></h3><p>基础查看提交日志</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git log
+<pre><code class="hljs plaintext">$ git log
 
-commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin&#x2F;master)
+commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)
 Author: yogwang &lt;yogwang@yog.red&gt;
 Date:   Mon Jun 17 12:10:01 2019 +0800
 
@@ -118,27 +121,27 @@ commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2
 Author: yogwang &lt;yogwang@yog.red&gt;
 Date:   Mon Jun 17 09:50:33 2019 +0800
 
-    wrote a readme file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    wrote a readme file</code></pre>
 
 <span id="more"></span>
 
 <h3 id="git-log-oneline"><a href="#git-log-oneline" class="headerlink" title="git log --oneline"></a><code>git log --oneline</code></h3><p>精简模式显示</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git log --oneline
+<pre><code class="hljs plaintext">$ git log --oneline
 
-2c8fcc8 (HEAD -&gt; master, origin&#x2F;master) wrote a readme file
+2c8fcc8 (HEAD -&gt; master, origin/master) wrote a readme file
 87c9d12 add distributed
-77ac955 wrote a readme file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+77ac955 wrote a readme file</code></pre>
 
 <h3 id="git-log-pretty-oneline"><a href="#git-log-pretty-oneline" class="headerlink" title="git log --pretty=oneline"></a><code>git log --pretty=oneline</code></h3><p>精简模式并显示完整版本号</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git log --pretty&#x3D;oneline
+<pre><code class="hljs plaintext">$ git log --pretty=oneline
 
-2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin&#x2F;master) wrote a readme file
+2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master) wrote a readme file
 87c9d12bdd979859811fc224c7f9ade7b97b0d13 add distributed
-77ac9552a7fb2e8d1f57d324d991de11efa897f2 wrote a readme file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+77ac9552a7fb2e8d1f57d324d991de11efa897f2 wrote a readme file</code></pre>
 
 <h3 id="git-log-graph"><a href="#git-log-graph" class="headerlink" title="git log --graph"></a><code>git log --graph</code></h3><p>图形模式显示</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git log --graph
-* commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin&#x2F;master)
+<pre><code class="hljs plaintext">$ git log --graph
+* commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)
 | Author: yogwang &lt;yogwang@yog.red&gt;
 | Date:   Mon Jun 17 12:10:01 2019 +0800
 |
@@ -154,17 +157,17 @@ Date:   Mon Jun 17 09:50:33 2019 +0800
   Author: yogwang &lt;yogwang@yog.red&gt;
   Date:   Mon Jun 17 09:50:33 2019 +0800
 
-      wrote a readme file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      wrote a readme file</code></pre>
 
 <h3 id="git-log-stat"><a href="#git-log-stat" class="headerlink" title="git log --stat"></a><code>git log --stat</code></h3><p>显示文件更改列表</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git log --stat
-commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin&#x2F;master)
+<pre><code class="hljs plaintext">$ git log --stat
+commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)
 Author: yogwang &lt;yogwang@yog.red&gt;
 Date:   Mon Jun 17 12:10:01 2019 +0800
 
     wrote a readme file
 
- demo&#x2F;reademe.txt | 2 ++
+ demo/reademe.txt | 2 ++
  1 file changed, 2 insertions(+)
 
 commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13
@@ -183,13 +186,13 @@ Date:   Mon Jun 17 09:50:33 2019 +0800
     wrote a readme file
 
  readme.txt | 2 ++
- 1 file changed, 2 insertions(+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ 1 file changed, 2 insertions(+)</code></pre>
 
 <h3 id="git-log-author-name"><a href="#git-log-author-name" class="headerlink" title="git log --author=_name"></a><code>git log --author=_name</code></h3><p>根据作者筛选</p>
 <p>_name：作者名</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git log --author&#x3D;yogwang
+<pre><code class="hljs plaintext">$ git log --author=yogwang
 
-commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin&#x2F;master)
+commit 2c8fcc81f23aa96073250e1d052473337c968d88 (HEAD -&gt; master, origin/master)
 Author: yogwang &lt;yogwang@yog.red&gt;
 Date:   Mon Jun 17 12:10:01 2019 +0800
 
@@ -205,11 +208,11 @@ commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2
 Author: yogwang &lt;yogwang@yog.red&gt;
 Date:   Mon Jun 17 09:50:33 2019 +0800
 
-    wrote a readme file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    wrote a readme file</code></pre>
 
 <h3 id="git-log-p-file-name"><a href="#git-log-p-file-name" class="headerlink" title="git log -p file_name"></a><code>git log -p file_name</code></h3><p>查看某个文件的详细修改   有详细内容</p>
 <p>file_name：文件名</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git log -p readme.txt
+<pre><code class="hljs plaintext">$ git log -p readme.txt
 
 commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13
 Author: yogwang &lt;yogwang@yog.red&gt;
@@ -217,10 +220,10 @@ Date:   Mon Jun 17 09:52:50 2019 +0800
 
     add distributed
 
-diff --git a&#x2F;readme.txt b&#x2F;readme.txt
+diff --git a/readme.txt b/readme.txt
 index d8036c1..013b5bc 100644
---- a&#x2F;readme.txt
-+++ b&#x2F;readme.txt
+--- a/readme.txt
++++ b/readme.txt
 @@ -1,2 +1,2 @@
 -Git is a version control system.
 +Git is a distributed version control system.
@@ -233,21 +236,21 @@ Date:   Mon Jun 17 09:50:33 2019 +0800
 
     wrote a readme file
 
-diff --git a&#x2F;readme.txt b&#x2F;readme.txt
+diff --git a/readme.txt b/readme.txt
 new file mode 100644
 index 0000000..d8036c1
---- &#x2F;dev&#x2F;null
-+++ b&#x2F;readme.txt
+--- /dev/null
++++ b/readme.txt
 @@ -0,0 +1,2 @@
 +Git is a version control system.
 +Git is free software.
-\ No newline at end of file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+\ No newline at end of file</code></pre>
 
 <h3 id="git-log-L-start-end-file-name"><a href="#git-log-L-start-end-file-name" class="headerlink" title="git log -L start,end:file_name"></a><code>git log -L start,end:file_name</code></h3><p>查看某个文件某几行范围内的修改记录</p>
 <p>start:开始行号</p>
 <p>end:结束行号</p>
 <p>file_name:文件名</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git log -L 1,2:readme.txt
+<pre><code class="hljs plaintext">$ git log -L 1,2:readme.txt
 
 commit 87c9d12bdd979859811fc224c7f9ade7b97b0d13
 Author: yogwang &lt;yogwang@yog.red&gt;
@@ -255,9 +258,9 @@ Date:   Mon Jun 17 09:52:50 2019 +0800
 
     add distributed
 
-diff --git a&#x2F;readme.txt b&#x2F;readme.txt
---- a&#x2F;readme.txt
-+++ b&#x2F;readme.txt
+diff --git a/readme.txt b/readme.txt
+--- a/readme.txt
++++ b/readme.txt
 @@ -1,2 +1,2 @@
 -Git is a version control system.
 +Git is a distributed version control system.
@@ -270,17 +273,17 @@ Date:   Mon Jun 17 09:50:33 2019 +0800
 
     wrote a readme file
 
-diff --git a&#x2F;readme.txt b&#x2F;readme.txt
---- &#x2F;dev&#x2F;null
-+++ b&#x2F;readme.txt
+diff --git a/readme.txt b/readme.txt
+--- /dev/null
++++ b/readme.txt
 @@ -0,0 +1,2 @@
 +Git is a version control system.
 +Git is free software.
-\ No newline at end of file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+\ No newline at end of file</code></pre>
 
 <h3 id="git-log-stat-commit-id"><a href="#git-log-stat-commit-id" class="headerlink" title="git log --stat commit_id"></a><code>git log --stat commit_id</code></h3><p>根本版本号查看提交修改列表</p>
 <p>commit_id：提交版本号</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git log --stat 77ac
+<pre><code class="hljs plaintext">$ git log --stat 77ac
 commit 77ac9552a7fb2e8d1f57d324d991de11efa897f2
 Author: yogwang &lt;yogwang@yog.red&gt;
 Date:   Mon Jun 17 09:50:33 2019 +0800
@@ -289,7 +292,7 @@ Date:   Mon Jun 17 09:50:33 2019 +0800
 
  readme.txt | 2 ++
  1 file changed, 2 insertions(+)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
  
   </article>
 

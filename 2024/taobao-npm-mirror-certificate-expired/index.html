@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -91,6 +94,8 @@
 
       <div class="article-updated">
         
+        最后更新：<time datetime="2024-02-09T17:38:00.000Z" itemprop="datePublished">2024-02-10</time>
+        
       </div>
     </header>
     
@@ -103,14 +108,17 @@
 <p>😂 很明显就是 <code>npm.taobao.org</code> 的域名证书过期了，一看果然。已经在1月22日的时候过期了。</p>
 <p><img src="/2024/taobao-npm-mirror-certificate-expired/certificate_expired_chrome.jpeg" alt="域名过期-浏览器截图"></p>
 <p>所以切换到的“<strong>新</strong>”的域名上面就好了：</p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">$ npm config set registry https:&#x2F;&#x2F;registry.npmmirror.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs cmd">$ npm config <span class="hljs-built_in">set</span> registry https://registry.npmmirror.com</code></pre>
 
 <p>也可以使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/nrm">NRM</a> 来切换。</p>
+<span id="more"></span>
+
 <p>顺便也检查了一下 <code>registry.npm.taobao.org</code> 这个域名，这个还是可以使用的，做了 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/301">301跳转</a> 的。会直接重定向到 <code>registry.npmmirror.com</code> 上面。所以使用是没问题的，但还是早点切换吧。<br>至于为什么一个做了 <code>301</code> 一个没做那就不得而知了😂</p>
 <hr>
 <p>马上就想到了好多年前发布的一篇文章 👉 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/430580607">【望周知】淘宝 NPM 镜像站喊你切换新域名啦</a></p>
 <p>各位前端同学，除了日常工作之外，还是需要多关注一下自己使用的工具链讯息的。我记得天猪大佬当时在各个平台都有发布切换域名通知的。</p>
 <p>更具体地一些 <strong>受到的影响和处理方式</strong> 可以直接在链接的通知文章里面了解到。</p>
+<h3 id="Edit"><a href="#Edit" class="headerlink" title="Edit"></a>Edit</h3><p>补充，有一些同学可能是给比较早期的项目更新迭代。在安装依赖的时候，即使使用 <code>npm config set registry https://registry.npmmirror.com</code> 切换到了正确的镜像域名上边，使用 <code>npm install</code> 安装依赖时仍旧会提示 <code>certificate has expired</code> 的情况。<br>这个时候就需要使用 <code>npm config get registry</code> 查看是否正确切换了镜像地址。如果已经正确切换了，那么就需要检查当前项目下的依赖锁文件了（<code>package-lock.json</code>、 <code>yarn.lock</code>、<code>pnpm-lock.yaml</code>），多半是由于它们导致的，删除之后重新安装依赖即可。nn</p>
  
   </article>
 
@@ -137,7 +145,7 @@
 </div>
 
 <script>
-const postDate = "2024-02-02"
+const postDate = "2024-02-10"
 const difference = moment().diff(postDate, 'days')
 const isExpired = difference > 300
 if (isExpired){

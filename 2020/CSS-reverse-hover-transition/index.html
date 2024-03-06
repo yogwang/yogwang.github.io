@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -104,57 +107,57 @@
 <p>看了一些回复有些答非所问，或者推荐用 Js 的。<br>最开始想的是，<code>animation</code> 是不是有一个 <code>direction</code> 属性可以设置反向么，<br>就想看 <code>transition</code> 是不是也有，但是并没有。<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition">CSS transition - MDN</a><br>所以就想着用 <code>:hover</code> 来覆盖原先的 <code>transition</code></p>
 <span id="more"></span>
 
-<h3 id="精简后的-CSS-片段"><a href="#精简后的-CSS-片段" class="headerlink" title="精简后的 CSS 片段"></a>精简后的 CSS 片段</h3><pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/* 导航元素 */</span>
-<span class="token selector">.nav-item</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 125px<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> 45px<span class="token punctuation">;</span>
-  <span class="token comment">/* 默认鼠标移出的补间 width 延迟.5s height 延时.3s */</span>
-  <span class="token property">transition</span><span class="token punctuation">:</span> width 0.4s 0.5s<span class="token punctuation">,</span> height 0.4s 0.3s<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token selector">.nav-item:hover</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> 83px<span class="token punctuation">;</span>
-  <span class="token comment">/* 鼠标移入的补间 width 无延迟 height 延时.3s*/</span>
-  <span class="token property">transition</span><span class="token punctuation">:</span> width 0.4s<span class="token punctuation">,</span> height 0.4s 0.3s<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<h3 id="精简后的-CSS-片段"><a href="#精简后的-CSS-片段" class="headerlink" title="精简后的 CSS 片段"></a>精简后的 CSS 片段</h3><pre><code class="hljs css"><span class="hljs-comment">/* 导航元素 */</span>
+<span class="hljs-selector-class">.nav-item</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">125px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">45px</span>;
+  <span class="hljs-comment">/* 默认鼠标移出的补间 width 延迟.5s height 延时.3s */</span>
+  <span class="hljs-attribute">transition</span>: width <span class="hljs-number">0.4s</span> <span class="hljs-number">0.5s</span>, height <span class="hljs-number">0.4s</span> <span class="hljs-number">0.3s</span>;
+&#125;
+<span class="hljs-selector-class">.nav-item</span><span class="hljs-selector-pseudo">:hover</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">83px</span>;
+  <span class="hljs-comment">/* 鼠标移入的补间 width 无延迟 height 延时.3s*/</span>
+  <span class="hljs-attribute">transition</span>: width <span class="hljs-number">0.4s</span>, height <span class="hljs-number">0.4s</span> <span class="hljs-number">0.3s</span>;
+&#125;
 
-<span class="token comment">/* 子元素 */</span>
-<span class="token selector">.nav-item a</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">opacity</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
-  <span class="token comment">/* 默认的补间 opacity 无延迟 */</span>
-  <span class="token property">transition</span><span class="token punctuation">:</span> opacity 0.4s<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token selector">.nav-item:hover a</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">opacity</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
-  <span class="token comment">/* 鼠标移入的补间 opacity 延迟.5s */</span>
-  <span class="token property">transition</span><span class="token punctuation">:</span> opacity 0.4s 0.5s<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">/* 子元素 */</span>
+<span class="hljs-selector-class">.nav-item</span> <span class="hljs-selector-tag">a</span> &#123;
+  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-comment">/* 默认的补间 opacity 无延迟 */</span>
+  <span class="hljs-attribute">transition</span>: opacity <span class="hljs-number">0.4s</span>;
+&#125;
+<span class="hljs-selector-class">.nav-item</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-selector-tag">a</span> &#123;
+  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-comment">/* 鼠标移入的补间 opacity 延迟.5s */</span>
+  <span class="hljs-attribute">transition</span>: opacity <span class="hljs-number">0.4s</span> <span class="hljs-number">0.5s</span>;
+&#125;</code></pre>
 
 <p><code>:hover</code> 内的是鼠标移入补间，默认的是鼠标移出的补间，<br>并且配合 <code>transition-delay</code> 来达成补间动画执行的顺序。</p>
 <p>当鼠标移入 <code>nav-item</code> 时 <code>:hover</code> 内的 <code>transition</code> 会覆盖原先的补间，<br>所以先是 <code>无延时</code> 的宽度改变，然后是 <code>.3s</code> 延时的高度改变，最后是 <code>.5s</code> 延时的子元素透明度补间。</p>
 <p>等鼠标离开 <code>nav-item</code> 时 <code>transition</code> 就恢复成默认的，先改变 <code>无延时</code> 的子元素透明度，然后是 <code>.3s</code> 的高度改变，最后是 <code>.5s</code> 延时的宽度改变。</p>
 <p>当然可以随意修改 <code>transition-delay</code> 来达到不同的补间动画执行顺序。</p>
-<h3 id="来看一下完成之后的-DEMO-吧！"><a href="#来看一下完成之后的-DEMO-吧！" class="headerlink" title="来看一下完成之后的 DEMO 吧！"></a>来看一下完成之后的 DEMO 吧！</h3><iframe id="cp_embed_ExaRrYd" src="//codepen.io/yogwang/embed/ExaRrYd?height=400&theme-id=dark&slug-hash=ExaRrYd&default-tab=css,result" scrolling="no" frameborder="no" height="400" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<h3 id="来看一下完成之后的-DEMO-吧！"><a href="#来看一下完成之后的-DEMO-吧！" class="headerlink" title="来看一下完成之后的 DEMO 吧！"></a>来看一下完成之后的 DEMO 吧！</h3><iframe id="cp_embed_ExaRrYd" src="//codepen.io/yogwang/embed/ExaRrYd?height=400&theme-id=dark&slug-hash=ExaRrYd&default-tab=css,result" scrolling="no" frameborder="no" height="400" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 <h4 id="附"><a href="#附" class="headerlink" title="附"></a>附</h4><p><code>transition</code> CSS 属性是 <code>transition-property</code>，<code>transition-duration</code>，<code>transition-timing-function</code> 和 <code>transition-delay</code> 的一个简写属性。</p>
 <p>所以使用时尽量按照此顺序书写</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.tween</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">transition</span><span class="token punctuation">:</span> margin-right 2s ease-in-out 0.5s<span class="token punctuation">;</span>
-  <span class="token comment">/* 依次为:需要过渡的属性,持续时间,变化曲线,开始之前的等待时间 */</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">/* 等同于 */</span>
-<span class="token selector">.tween</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">transition-property</span><span class="token punctuation">:</span> margin-right<span class="token punctuation">;</span> <span class="token comment">/* 需要过渡的属性 */</span>
-  <span class="token property">transition-duration</span><span class="token punctuation">:</span> 2s<span class="token punctuation">;</span> <span class="token comment">/* 持续时间 */</span>
-  <span class="token property">transition-timing-function</span><span class="token punctuation">:</span> ease-in-out<span class="token punctuation">;</span> <span class="token comment">/* 变化曲线 可以忽略不写 默认为 ease */</span>
-  <span class="token property">transition-delay</span><span class="token punctuation">:</span> 0.5s<span class="token punctuation">;</span> <span class="token comment">/* 开始之前的等待时间 可以忽略不写 默认为 0 */</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-class">.tween</span> &#123;
+  <span class="hljs-attribute">transition</span>: margin-right <span class="hljs-number">2s</span> ease-in-out <span class="hljs-number">0.5s</span>;
+  <span class="hljs-comment">/* 依次为:需要过渡的属性,持续时间,变化曲线,开始之前的等待时间 */</span>
+&#125;
+<span class="hljs-comment">/* 等同于 */</span>
+<span class="hljs-selector-class">.tween</span> &#123;
+  <span class="hljs-attribute">transition-property</span>: margin-right; <span class="hljs-comment">/* 需要过渡的属性 */</span>
+  <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">2s</span>; <span class="hljs-comment">/* 持续时间 */</span>
+  <span class="hljs-attribute">transition-timing-function</span>: ease-in-out; <span class="hljs-comment">/* 变化曲线 可以忽略不写 默认为 ease */</span>
+  <span class="hljs-attribute">transition-delay</span>: <span class="hljs-number">0.5s</span>; <span class="hljs-comment">/* 开始之前的等待时间 可以忽略不写 默认为 0 */</span>
+&#125;</code></pre>
 
 <p>如果需要用到多个过度属性可以使用 <code>all</code> 来设置 <code>transition-property</code>，<br>但是如果过度效果是不同的需要单独设置并且使用 <code>,</code> 来分割。</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token comment">/* 设置多个不同过度属性 */</span>
-<span class="token selector">.tween</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">transition</span><span class="token punctuation">:</span> width 0.4s<span class="token punctuation">,</span> height 1s 0.3s<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-comment">/* 设置多个不同过度属性 */</span>
+<span class="hljs-selector-class">.tween</span> &#123;
+  <span class="hljs-attribute">transition</span>: width <span class="hljs-number">0.4s</span>, height <span class="hljs-number">1s</span> <span class="hljs-number">0.3s</span>;
+&#125;</code></pre>
  
   </article>
 

@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -76,21 +79,18 @@
     </header>
     <!-- 文章内容 article body -->
  
-  <article class="article-content">
+  <article class="article-excerpt">
     <p>最近社区和社群里面有好多小伙伴在说怎么 <code>npm</code> 用不了，安装不了依赖了。<br>一看报错信息：<code>request to https://npm.taobao.org/xxx failed, reason: certificate has expired</code></p>
 <p>😂 很明显就是 <code>npm.taobao.org</code> 的域名证书过期了，一看果然。已经在1月22日的时候过期了。</p>
 <p><img src="/2024/taobao-npm-mirror-certificate-expired/certificate_expired_chrome.jpeg" alt="域名过期-浏览器截图"></p>
 <p>所以切换到的“<strong>新</strong>”的域名上面就好了：</p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">$ npm config set registry https:&#x2F;&#x2F;registry.npmmirror.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs cmd">$ npm config <span class="hljs-built_in">set</span> registry https://registry.npmmirror.com</code></pre>
 
 <p>也可以使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/nrm">NRM</a> 来切换。</p>
-<p>顺便也检查了一下 <code>registry.npm.taobao.org</code> 这个域名，这个还是可以使用的，做了 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/301">301跳转</a> 的。会直接重定向到 <code>registry.npmmirror.com</code> 上面。所以使用是没问题的，但还是早点切换吧。<br>至于为什么一个做了 <code>301</code> 一个没做那就不得而知了😂</p>
-<hr>
-<p>马上就想到了好多年前发布的一篇文章 👉 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/430580607">【望周知】淘宝 NPM 镜像站喊你切换新域名啦</a></p>
-<p>各位前端同学，除了日常工作之外，还是需要多关注一下自己使用的工具链讯息的。我记得天猪大佬当时在各个平台都有发布切换域名通知的。</p>
-<p>更具体地一些 <strong>受到的影响和处理方式</strong> 可以直接在链接的通知文章里面了解到。</p>
- 
   </article>
+  <div class="article-more-link">
+    <a href="/2024/taobao-npm-mirror-certificate-expired/#more">阅读全文</a>
+  </div>
 
 
      
@@ -127,7 +127,7 @@
   <article class="article-excerpt">
     <p>昨天刷到在思否遇到一个<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000044521029">想要限制CPU性能的问题</a>。在我的认知里对于 <code>DevTools</code> 的使用是没办法限制CPU性能的，认为只能够限制网络条件（也就是在 <code>Network</code> 面板中通过修改 <code>throttling</code> 设置来限制网络条件，也错误的把OP的截图当成了调整网络条件的设置了）。<br>所以会想着通过系统自带的”节电模式”之类的来实现性能限制，或者借助外部的软件来调整CPU、GPU、内存相关的功率来实现性能限制。</p>
 <p>但是OP在傍晚自己找到了<a target="_blank" rel="noopener" href="https://dev.to/kaziusan/i-wanna-make-cpu-slower-than-default-setting-in-chrome-devtool--3bb">解决办法</a>，我才知道原来 <code>DevTools</code> 也可以限制CPU的。</p>
-<p><img src="/2024/make-cpu-slower-with-chrome-devtools/settings.jpeg#center" alt="设置截图"></p>
+<p><img src="/2024/make-cpu-slower-with-chrome-devtools/settings.jpeg" alt="设置截图"></p>
   </article>
   <div class="article-more-link">
     <a href="/2024/make-cpu-slower-with-chrome-devtools/#more">阅读全文</a>
@@ -171,7 +171,7 @@
 </blockquote>
 <p>在这次接盘的3D可视化项目中就遇到了这个问题。因为模型文件体积比较大，在实际使用中经常会反馈说载入时间过长。所以在拿到服务器权限之后就改了一下 <code>Nginx</code> 的配置文件开启了静态资源的 <code>HTTP cache</code>，以为完事大吉就和一线说载入时间慢的问题解决好了。现在进入项目会使用本地缓存，在第一次载入的时候会慢一些，后面再次进入就会快很多了。</p>
 <p>但是实际使用中反馈过来的时依旧会有很长的载入时间。以为是 <code>Nginx</code> 的配置项写错了，就又去确认了一下。确实是开启了缓存的，首页的各种静态资源也是会被缓存，但是等我进入到模型展示页的时候就发现问题了！<br>最外层展示的模型是可以被缓存的，但是操作数据下钻之后开始展示内部模型从 <code>Network</code> 面板中看到的 <code>glb</code> 模型文件不是每一个都会从 <code>disk cache</code> 读取，有一些模型依旧会发起请求。</p>
-<p><img src="/2023/http-cache-limit-and-service-worker-cache/network_snipaste.jpeg#center" alt="面板截图"></p>
+<p><img src="/2023/http-cache-limit-and-service-worker-cache/network_snipaste.jpeg" alt="面板截图"></p>
 <p>所以就想着浏览器是不是可以有配置项可以修改，但是并没有（可以通过给快捷方式添加启动命令来修改，但不可能要求所有设备都这样做）。所以只能想其他法子来解决这个问题，自然就找到了 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers">Service Worker</a></p>
   </article>
   <div class="article-more-link">
@@ -212,23 +212,23 @@
  
   <article class="article-excerpt">
     <p>今天在刷思否的时候遇到这样的一个问题：</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">:value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inputValue<span class="token punctuation">"</span></span> <span class="token attr-name">@input</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleInput<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;inputValue&quot;</span> @<span class="hljs-attr">input</span>=<span class="hljs-string">&quot;handleInput&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
-<span class="token keyword">const</span> inputValue <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">const</span> val <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
-  <span class="token keyword">const</span> reg <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\d*$</span><span class="token regex-delimiter">/</span></span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>reg<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    inputValue<span class="token punctuation">.</span>value <span class="token operator">=</span> val
-  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-    inputValue<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">''</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span>
+<span class="language-javascript"><span class="hljs-keyword">const</span> inputValue = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)</span>
+<span class="language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleInput</span> = (<span class="hljs-params">e</span>) =&gt; &#123;</span>
+<span class="language-javascript">  <span class="hljs-keyword">const</span> val = e.<span class="hljs-property">target</span>.<span class="hljs-property">value</span></span>
+<span class="language-javascript">  <span class="hljs-keyword">const</span> reg = <span class="hljs-regexp">/^\d*$/</span></span>
+<span class="language-javascript">  <span class="hljs-keyword">if</span> (reg.<span class="hljs-title function_">test</span>(val)) &#123;</span>
+<span class="language-javascript">    inputValue.<span class="hljs-property">value</span> = val</span>
+<span class="language-javascript">  &#125; <span class="hljs-keyword">else</span> &#123;</span>
+<span class="language-javascript">    inputValue.<span class="hljs-property">value</span> = <span class="hljs-string">&#x27;&#x27;</span></span>
+<span class="language-javascript">  &#125;</span>
+<span class="language-javascript">&#125;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 <p>题主希望通过正则校验去限制输入框只能输入数字类型的值，但是只有在<strong>先输入数字</strong>再输入非数字的情况下才会被正确置空。如果一开始就是输入非数字的内容，后续即使继续输入非数字内容，输入框中的内容并不会清空。</p>
 <p>我们可以在 <a target="_blank" rel="noopener" href="https://play.vuejs.org/#eNp9kU9rwzAMxb+KMYMkoySH3kpa9oceusM2trGTGYRUSdM5trHlrqP0u092SNvDKASC3u9FeZIO/N6YfOeBz3iJ0BtZISyEYqzslPHI8NfAXHCEPQrOZrtK+lBH+BkKUu9iReqmUmsJq1CRXFCfsrhoSqWrbWeQOUBvSOl6oy2yA7PQsCNrrO5ZQmkSoWqtHLLzf9g8mNIkyUZ28TeCKWRsvmCHkH3glJV0yLGyLWAeo5+phZZo8SXE+vamCHrXsJTUHMFhSu4sG7oROaUYutCH9A7syEA6uOJLaBSyCUVPWQzjL/iEo6MYTdfmW6cVLT92ELzWvekk2BeDHcUUfDb2FrySUv88RQ2th8mo1xuov//Rt24fNMFfLTiwOzrViQ07GfDy/Tle9wR7vfaS3FfgGzgtfcg42B58uIW98MW0q3jfTrUfbrlHUG4cKgSNi4l+wenmj1dGP8ed5tNxofz4B7M06Sw=">Vue SFC Playground</a> 中体验这个现象。</p>
   </article>
@@ -273,21 +273,21 @@
 <p><code>v-model</code> 仅仅只是 <code>v-bind:value=&quot;value&quot;</code> 和 <code>@input=&quot;value = $event.target.value&quot;</code> 的语法糖吗？</p>
 </blockquote>
 <p>一直以来我都喜欢在Vue中声明对象变量的时候给变量赋值一个空对象，而不是把所有的属性值一起声明好。<br>比如说：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// vue2.x form demo</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 我喜欢这样声明</span>
-      formData<span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token comment">// 而不是这样在声明时把所有的属性一起书写好 </span>
-      formData<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        username<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
-        password<span class="token operator">:</span> <span class="token string">''</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>也可以从我之前关于 <code>props</code> 属性的笔记中察觉到 👉 <a target="_blank" rel="noopener" href="http://localhost:4000/2022/vue-props-type-validation-with-Null-and-undefined/">Vue中接收没有声明的Prop属性[null/undefined]的接收问题</a></p>
+<pre><code class="hljs js"><span class="hljs-comment">// vue2.x form demo</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">return</span> &#123;
+      <span class="hljs-comment">// 我喜欢这样声明</span>
+      <span class="hljs-attr">formData</span>: &#123;&#125;,
+      <span class="hljs-comment">// 而不是这样在声明时把所有的属性一起书写好 </span>
+      <span class="hljs-attr">formData</span>: &#123;
+        <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;&#x27;</span>
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre>
+<p>也可以从我之前关于 <code>props</code> 属性的笔记中察觉到 👉 <a target="_blank" rel="noopener" href="http://localhost:4000/2022/vue-props-type-validation-with-Null-and-undefined/">Vue中接收没有声明的Prop属性[null&#x2F;undefined]的接收问题</a></p>
 <p>因为我在写业务的时候如果 <code>props</code> 的属性值不存在，传入的会是一个 <code>undefined</code> 而不是 <code>null</code> 或者 <code>&#39;&#39;</code> 这样的预设。因为我期望使用组件 <code>props</code> 中声明的<strong>默认值</strong>，而不是在外部预设的<strong>空值</strong>。<br>所以一直以来我都在和小伙伴交流的时候也是推荐直接给变量一个空对象即可，除了一些数组属性需要单独声明。</p>
 <p>但前段时间一位小伙伴向我提问：他在组件生命周期函数中给表单属性赋值了一个预设值，后续再使用 <code>v-model</code> 对表单属性修改时发现<strong>丢失了响应</strong>……</p>
   </article>
@@ -330,7 +330,7 @@
   <article class="article-excerpt">
     <p>最近没有什么面试经历，上一次面试已经是将近一年前了，所以没办法有效回忆到当时面试的状况。好在近期肉大(<a target="_blank" rel="noopener" href="https://segmentfault.com/u/meathill">@meathill</a>)有在做一个模拟面试的选题，就可以另辟蹊径写一篇旁观其他人面试的文章。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/lt502676921">奥利奥同学</a> 是一位能力非常强的前端开发者。最开始了解到他是他在群里分享了自己使用 <code>ThreeJS</code> 开发的一个<a target="_blank" rel="noopener" href="https://github.com/lt502676921/oreo-homepage">可交互3D汽车展厅项目</a> 的开发经历，非常吸引眼球并且完成了<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1P14y1J7Ha/?share_source=copy_web&vd_source=6372ca8912724d38d0612b4ceb9e9652">配套的讲解教程</a>，可以说是非常用心和细致的一个开发者了。</p>
-<p>所以这一次我们就来<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wM4y1X73g/?share_source=copy_web&vd_source=6372ca8912724d38d0612b4ceb9e9652">旁观他的一次模拟面试</a>，🏃‍🏃‍🏃‍</p>
+<h2 id="所以这一次我们就来旁观他的一次模拟面试，🏃‍🏃‍🏃‍"><a href="#所以这一次我们就来旁观他的一次模拟面试，🏃‍🏃‍🏃‍" class="headerlink" title="所以这一次我们就来旁观他的一次模拟面试，🏃‍🏃‍🏃‍"></a>所以这一次我们就来<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wM4y1X73g/?share_source=copy_web&vd_source=6372ca8912724d38d0612b4ceb9e9652">旁观他的一次模拟面试</a>，🏃‍🏃‍🏃‍<br>
   </article>
   <div class="article-more-link">
     <a href="/2023/sf-observing-elses-tech-interview/#more">阅读全文</a>
@@ -499,7 +499,7 @@
 </blockquote>
 <p><img src="/2023/summary-at-the-end-of-2022/banner.jpg" alt="code stats for 2022"></p>
 <p>正如标题所说 2022 年是很多人感觉到挣扎的一年，看到很多小伙伴因为经济下滑而被辞退、或者被迫倒闭的消息。突然的解封也打了大家一个措手不及，陆陆续续也听到很多人离世的消息。</p>
-<h2 id="💼-失业-amp-面试-amp-入职"><a href="#💼-失业-amp-面试-amp-入职" class="headerlink" title="💼 失业&amp;面试&amp;入职"></a>💼 失业&amp;面试&amp;入职</h2><p>自自然我也没有躲过，刚刚过完年没多久就收到前公司决定解散的通知，虽然很突然但也算是意料之中。没有和前司纠结赔偿的问题，拿了离职证明休息了两天就开始找工作……</p>
+<h2 id="💼-失业-面试-入职"><a href="#💼-失业-面试-入职" class="headerlink" title="💼 失业&amp;面试&amp;入职"></a>💼 失业&amp;面试&amp;入职</h2><p>自自然我也没有躲过，刚刚过完年没多久就收到前公司决定解散的通知，虽然很突然但也算是意料之中。没有和前司纠结赔偿的问题，拿了离职证明休息了两天就开始找工作……
   </article>
   <div class="article-more-link">
     <a href="/2023/summary-at-the-end-of-2022/#more">阅读全文</a>

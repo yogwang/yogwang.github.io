@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,46 +106,46 @@
 <p>从MDN上边，找到了 <strong>四种</strong> for 循环，分别是：<code>for</code>、<code>for...in</code>、<code>for...of</code> 和 <code>for await...of</code></p>
 <span id="more"></span>
 <h2 id="1-for-原始-for-循环语句"><a href="#1-for-原始-for-循环语句" class="headerlink" title="1. for 原始 for 循环语句"></a>1. <code>for</code> 原始 for 循环语句</h2><p>经典的 <code>for</code> 循环，所有新手一开始都会写的 demo 基本都会用到的 for 循环吧，我就不多讲了，上一个学生时代（伪）的*号金字塔吧。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> max <span class="token operator">=</span> <span class="token number">5</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> n <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> n <span class="token operator">&lt;</span> max<span class="token punctuation">;</span> n<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">''</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> max <span class="token operator">-</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    str <span class="token operator">+=</span> <span class="token string">' '</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">2</span> <span class="token operator">*</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    str <span class="token operator">+=</span> <span class="token string">'*'</span>
-  <span class="token punctuation">&#125;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">//    *</span>
-<span class="token comment">//   ***</span>
-<span class="token comment">//  *****</span>
-<span class="token comment">// *******</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> max = <span class="hljs-number">5</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> n = <span class="hljs-number">1</span>; n &lt; max; n++) &#123;
+  <span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;&#x27;</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; max - n; i++) &#123;
+    str += <span class="hljs-string">&#x27; &#x27;</span>
+  &#125;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span>; j &lt; <span class="hljs-number">2</span> * n; j++) &#123;
+    str += <span class="hljs-string">&#x27;*&#x27;</span>
+  &#125;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str);
+&#125;
+<span class="hljs-comment">//    *</span>
+<span class="hljs-comment">//   ***</span>
+<span class="hljs-comment">//  *****</span>
+<span class="hljs-comment">// *******</span></code></pre>
 
 <hr>
 <h2 id="2-for-in-为遍历对象属性而构建的-for-循环"><a href="#2-for-in-为遍历对象属性而构建的-for-循环" class="headerlink" title="2. for...in 为遍历对象属性而构建的 for 循环"></a>2. <code>for...in</code> 为遍历对象属性而构建的 for 循环</h2><blockquote>
 <p><code>for...in</code> 语句以任意顺序遍历一个对象的除<code>Symbol</code>以外的可枚举属性。<br><small>啥？你问我 <code>Symbol</code> 是啥？<a target="_blank" rel="noopener" href="http://localhost:4000/2020/JS-ES6-Symbol/">看这里</a></small></p>
 </blockquote>
 <p>上 demo 配合着来看，先是对象</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span> a<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> c<span class="token operator">:</span> <span class="token number">3</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> obj = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">c</span>: <span class="hljs-number">3</span> &#125;;
 
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> prop <span class="token keyword">in</span> obj<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>prop<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> prop <span class="hljs-keyword">in</span> obj) &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(prop);
+&#125;
 
-<span class="token comment">// a</span>
-<span class="token comment">// b</span>
-<span class="token comment">// c</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// a</span>
+<span class="hljs-comment">// b</span>
+<span class="hljs-comment">// c</span></code></pre>
 <p>再看一下用它来遍历数组</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>];
 
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> prop <span class="token keyword">in</span> arr<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>prop<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> prop <span class="hljs-keyword">in</span> arr) &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(prop);
+&#125;
 
-<span class="token comment">// 0</span>
-<span class="token comment">// 1</span>
-<span class="token comment">// 2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// 0</span>
+<span class="hljs-comment">// 1</span>
+<span class="hljs-comment">// 2</span></code></pre>
 <p>可以看到，它遍历对象的属性名，MDN最后有一句：</p>
 <blockquote>
 <p>“它最常用的地方应该是用于调试，可以更方便的去检查对象属性（通过输出到控制台或其他方式）”</p>
@@ -150,23 +153,23 @@
 <p>？？？？？ ，可我实一般调试时都是直接把整个对象都打印出来啊</p>
 <h3 id="所以-for-in-是为遍历对象属性而构建的-for-循环，虽然数组可以用，但是并没有Dio用…"><a href="#所以-for-in-是为遍历对象属性而构建的-for-循环，虽然数组可以用，但是并没有Dio用…" class="headerlink" title="所以 for...in 是为遍历对象属性而构建的 for 循环，虽然数组可以用，但是并没有Dio用…."></a>所以 <code>for...in</code> 是为遍历<code>对象属性</code>而构建的 for 循环，虽然数组可以用，但是并没有Dio用….</h3><p><strong>并且</strong>它会枚举所有属性，包含了被迭代的对象的原型，实际工作开发，这些对象很可能是不需要出现的属性，比如VueJS的 <code>__ob_</code>。</p>
 <p>虽然可以配合使用 <code>hasOwnProperty()</code> 来处理，但是太蛮烦了，最好用的场景可能就是这个同时输出键名和键值的场景</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> triangle <span class="token operator">=</span> <span class="token punctuation">&#123;</span>a<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> c<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> triangle = &#123;<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">c</span>: <span class="hljs-number">3</span>&#125;;
 
-<span class="token keyword">function</span> <span class="token function">ColoredTriangle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">this</span><span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">ColoredTriangle</span>(<span class="hljs-params"></span>) &#123;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">color</span> = <span class="hljs-string">&#x27;red&#x27;</span>;
+&#125;
 
-<span class="token class-name">ColoredTriangle</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> triangle<span class="token punctuation">;</span>
+<span class="hljs-title class_">ColoredTriangle</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = triangle;
 
-<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ColoredTriangle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">const</span> obj = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ColoredTriangle</span>();
 
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> prop <span class="token keyword">in</span> obj<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>prop<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">obj.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>prop<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string"> = </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>obj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span> 
-<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> prop <span class="hljs-keyword">in</span> obj) &#123;
+  <span class="hljs-keyword">if</span> (obj.<span class="hljs-title function_">hasOwnProperty</span>(prop)) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`obj.<span class="hljs-subst">$&#123;prop&#125;</span> = <span class="hljs-subst">$&#123;obj[prop]&#125;</span>`</span>);
+  &#125; 
+&#125;
 
-<span class="token comment">// obj.color = red</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// obj.color = red</span></code></pre>
 
 <hr>
 <h2 id="3-for-of-遍历可迭代对象的可枚举属性"><a href="#3-for-of-遍历可迭代对象的可枚举属性" class="headerlink" title="3. for...of 遍历可迭代对象的可枚举属性"></a>3. <code>for...of</code> 遍历可迭代对象的可枚举属性</h2><p><code>for...of</code> 可迭代的对象就多了（包括 Array，Map，Set，String，TypedArray，arguments 对象，DOM 集合等等，但是 <strong>不包括Object</strong> 哦），在这些 <strong>可迭代</strong> 对象上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句，具体可以看MDN的文档。<small><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of">for…of - MDN</a></small></p>
@@ -178,55 +181,55 @@
 </ul>
 </blockquote>
 <p>配合着demo来看吧。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 为对象和数组原型增加方法</span>
-<span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">objCustom</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-<span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">arrCustom</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-comment">// 为对象和数组原型增加方法</span>
+<span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">objCustom</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;&#125;;
+<span class="hljs-title class_">Array</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">arrCustom</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;&#125;;
 
-<span class="token comment">// 声明数组并赋值</span>
-<span class="token keyword">let</span> iterable <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-iterable<span class="token punctuation">.</span>foo <span class="token operator">=</span> <span class="token string">'hello'</span><span class="token punctuation">;</span>
+<span class="hljs-comment">// 声明数组并赋值</span>
+<span class="hljs-keyword">let</span> iterable = [<span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>];
+iterable.<span class="hljs-property">foo</span> = <span class="hljs-string">&#x27;hello&#x27;</span>;
 
-<span class="token comment">// for...in 遍历输出属性名</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token keyword">in</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0, 1, 2, "foo", "arrCustom", "objCustom"</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-comment">// for...in 遍历输出属性名</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> iterable) &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i); <span class="hljs-comment">// 0, 1, 2, &quot;foo&quot;, &quot;arrCustom&quot;, &quot;objCustom&quot;</span>
+&#125;
 
-<span class="token comment">// for...in 判断是否拥有属性并输出属性名</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token keyword">in</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>iterable<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0, 1, 2, "foo"</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// arrCustom和objCustom不会被输出，因为它们是继承的，并非自身的属性</span>
+<span class="hljs-comment">// for...in 判断是否拥有属性并输出属性名</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> iterable) &#123;
+  <span class="hljs-keyword">if</span> (iterable.<span class="hljs-title function_">hasOwnProperty</span>(i)) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i); <span class="hljs-comment">// 0, 1, 2, &quot;foo&quot;</span>
+  &#125;
+&#125;
+<span class="hljs-comment">// arrCustom和objCustom不会被输出，因为它们是继承的，并非自身的属性</span>
 
-<span class="token comment">// for..of 输出可迭代数据</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token keyword">of</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3, 5, 7</span>
-  <span class="token comment">// 仅仅输出可迭代对象数组定义的元素值</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// for..of 输出可迭代数据</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> iterable) &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i); <span class="hljs-comment">// 3, 5, 7</span>
+  <span class="hljs-comment">// 仅仅输出可迭代对象数组定义的元素值</span>
+&#125;</code></pre>
 <p>每个对象将继承 <code>objCustom</code> 属性，并且作为 <code>Array</code> 的每个对象将继承 <code>arrCustom</code> 属性，因为将这些属性添加到 <code>Object.prototype</code> 和 <code>Array.prototype</code>。<br>由于继承和原型链，对象 <code>iterable</code> 继承属性 <code>objCustom</code> 和 <code>arrCustom</code>。<br>所以 <code>for...in</code> 会遍历出所有属性名，包括数组元素的下标和继承下来的属性，而 <code>for...of</code> 只遍历了可迭代的数组元素值。</p>
 <hr>
 <h2 id="4-for-await-of"><a href="#4-for-await-of" class="headerlink" title="4. for await...of"></a>4. <code>for await...of</code></h2><p>ES9的内容？？？我先看看文档：</p>
 <blockquote>
-<p><code>for await...of</code> 语句创建一个循环，该循环遍历异步可迭代对象以及同步可迭代对象，包括: 内置的 <code>String</code>, <code>Array</code>，类似数组对象 (例如 <code>arguments</code> 或 <code>NodeList</code>)，<code>TypedArray</code>, <code>Map</code>, <code>Set</code> 和用户定义的异步/同步迭代器。它使用对象的每个不同属性的值调用要执行的语句来调用自定义迭代钩子。</p>
+<p><code>for await...of</code> 语句创建一个循环，该循环遍历异步可迭代对象以及同步可迭代对象，包括: 内置的 <code>String</code>, <code>Array</code>，类似数组对象 (例如 <code>arguments</code> 或 <code>NodeList</code>)，<code>TypedArray</code>, <code>Map</code>, <code>Set</code> 和用户定义的异步&#x2F;同步迭代器。它使用对象的每个不同属性的值调用要执行的语句来调用自定义迭代钩子。</p>
 </blockquote>
 <p>然后</p>
 <blockquote>
 <p>类似于 <code>await</code> 运算符一样，该语句只能在一个 <code>async function</code> 内部使用。</p>
 </blockquote>
 <p>简单的用 <code>generator</code> 举一个例子：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">async</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">asyncGenerator</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-  <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">yield</span> i<span class="token operator">++</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span>* asyncGenerator () &#123;
+  <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">3</span>) &#123;
+    <span class="hljs-keyword">yield</span> i++;
+  &#125;
+&#125;
 
-<span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">for</span> <span class="token keyword">await</span> <span class="token punctuation">(</span>num <span class="token keyword">of</span> <span class="token function">asyncGenerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+(<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;
+  <span class="hljs-keyword">for</span> <span class="hljs-keyword">await</span> (num <span class="hljs-keyword">of</span> <span class="hljs-title function_">asyncGenerator</span>()) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num);
+  &#125;
+&#125;)()</code></pre>
 <p>但是没有想到有食用的业务场景，可能循环的异步调用？<br>类似依次调用函数读取文件列表进行处理？？？等以后遇到了合适场景再展开了解吧。</p>
 <p>以上</p>
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><ul>

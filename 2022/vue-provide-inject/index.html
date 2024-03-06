@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -101,7 +104,7 @@
       <!-- 文章内容 article body -->
  
   <article class="article-content">
-    <p>也算是经典面试题的一部分了，对于父子间的通讯很多时候的使用我都是限于 <code>props</code>/<code>$emit</code> 来处理，或者 <code>Vuex</code>/<code>EventBus</code> 这种方式，很少会用到 <code>Provide</code>/<code>Inject</code> 来处理。其实这是一个很实用的跨级组件间通讯的方式。</p>
+    <p>也算是经典面试题的一部分了，对于父子间的通讯很多时候的使用我都是限于 <code>props</code>&#x2F;<code>$emit</code> 来处理，或者 <code>Vuex</code>&#x2F;<code>EventBus</code> 这种方式，很少会用到 <code>Provide</code>&#x2F;<code>Inject</code> 来处理。其实这是一个很实用的跨级组件间通讯的方式。</p>
 <blockquote>
 <p>这对选项需要一起使用，以允许一个<strong>祖先组件向其所有子孙后代</strong>注入一个依赖，不论组件层次有多深，并在其上下游关系成立的时间里始终生效。</p>
 </blockquote>
@@ -112,82 +115,82 @@
 
 <p>在使用的过程中主要会遇到的问题基本上是以下两种：</p>
 <h2 id="1-注入一个方法给后代组件使用："><a href="#1-注入一个方法给后代组件使用：" class="headerlink" title="#1 注入一个方法给后代组件使用："></a>#1 注入一个方法给后代组件使用：</h2><p>注入一个方法给后代组件使用，只需要在 <code>provide</code> 返回的对象中声明想要暴露的方法即可。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 父级组件提供 'fn'</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  <span class="token comment">// 如果想要提供当前组件中的一些属性和方法，需要使用 return 一个对象来指定 this 的指向.</span>
-  <span class="token comment">// 不然会提示 `Cannot read properties of undefined` 或者 `xxx is not defined`。</span>
-  <span class="token function">provide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      fn<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>customFn
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  methods<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-    <span class="token function">customFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      <span class="token comment">// ....</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token comment">// ...</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 子组件注入 'fn'</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  inject<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'fn'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token comment">// ...</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 父级组件提供 &#x27;fn&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-comment">// 如果想要提供当前组件中的一些属性和方法，需要使用 return 一个对象来指定 this 的指向.</span>
+  <span class="hljs-comment">// 不然会提示 `Cannot read properties of undefined` 或者 `xxx is not defined`。</span>
+  <span class="hljs-title function_">provide</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">return</span> &#123;
+      <span class="hljs-attr">fn</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">customFn</span>
+    &#125;
+  &#125;,
+  <span class="hljs-attr">methods</span>:&#123;
+    <span class="hljs-title function_">customFn</span>(<span class="hljs-params"></span>)&#123;
+      <span class="hljs-comment">// ....</span>
+    &#125;
+  &#125;
+  <span class="hljs-comment">// ...</span>
+&#125;</code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 子组件注入 &#x27;fn&#x27;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-attr">inject</span>: [<span class="hljs-string">&#x27;fn&#x27;</span>],
+  <span class="hljs-comment">// ...</span>
+&#125;</code></pre>
 <h2 id="2-注入一个可响应的对象给后代组件使用："><a href="#2-注入一个可响应的对象给后代组件使用：" class="headerlink" title="#2 注入一个可响应的对象给后代组件使用："></a>#2 注入一个可响应的对象给后代组件使用：</h2><p>其实也不复杂，查看官网的提示就可以知道应该如何操作了。</p>
 <blockquote>
 <p>提示：<code>provide</code> 和 <code>inject</code> 绑定并不是可响应的。这是刻意为之的。然而，如果你传入了一个可监听的对象，那么其对象的 <code>property</code> 还是可响应的。</p>
 </blockquote>
 <p>注入一个被监听的对象即可，比如说在 <code>data</code> 或者 <code>computed</code> 中声明的 <strong>对象</strong>、<strong>对象数组</strong>。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 父级组件提供被监听的对象</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">provide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      testObj<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>testObj<span class="token punctuation">,</span>
-      testObjArray<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>testObjArray
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 对象</span>
-      testObj<span class="token operator">:</span><span class="token punctuation">&#123;</span> a<span class="token operator">:</span><span class="token string">'aa'</span><span class="token punctuation">,</span> b<span class="token operator">:</span><span class="token string">'bb'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token comment">// 对象数组</span>
-      testObjArray<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> c<span class="token operator">:</span><span class="token string">'ccc'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> d<span class="token operator">:</span><span class="token string">'ddd'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">]</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token comment">// 子组件初始化后修改变量值</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$nextTick</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">&#123;</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">changeData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  methods<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-    <span class="token comment">// 修改变量值</span>
-    <span class="token function">changeData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>testObj<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token string">'Lorem Ipsum'</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$set</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>testObjArray<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> c<span class="token operator">:</span> <span class="token string">'new Value'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 子组件注入并监听</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  inject<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'testObj'</span><span class="token punctuation">,</span><span class="token string">'testObjArray'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  watch<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-    testObj<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-      <span class="token function">handler</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'child watcher: testObj changed'</span><span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      deep<span class="token operator">:</span><span class="token boolean">true</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token function">testObjArray</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'child watcher: testObjArray changed'</span><span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 父级组件提供被监听的对象</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-title function_">provide</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">return</span> &#123;
+      <span class="hljs-attr">testObj</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">testObj</span>,
+      <span class="hljs-attr">testObjArray</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">testObjArray</span>
+    &#125;
+  &#125;,
+  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-keyword">return</span> &#123;
+      <span class="hljs-comment">// 对象</span>
+      <span class="hljs-attr">testObj</span>:&#123; <span class="hljs-attr">a</span>:<span class="hljs-string">&#x27;aa&#x27;</span>, <span class="hljs-attr">b</span>:<span class="hljs-string">&#x27;bb&#x27;</span> &#125;,
+      <span class="hljs-comment">// 对象数组</span>
+      <span class="hljs-attr">testObjArray</span>: [&#123; <span class="hljs-attr">c</span>:<span class="hljs-string">&#x27;ccc&#x27;</span> &#125;, &#123; <span class="hljs-attr">d</span>:<span class="hljs-string">&#x27;ddd&#x27;</span> &#125;]
+    &#125;
+  &#125;,
+  <span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-comment">// 子组件初始化后修改变量值</span>
+    <span class="hljs-variable language_">this</span>.$nextTick(<span class="hljs-function">()=&gt;</span>&#123;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">changeData</span>()
+    &#125;)
+  &#125;,
+  <span class="hljs-attr">methods</span>:&#123;
+    <span class="hljs-comment">// 修改变量值</span>
+    <span class="hljs-title function_">changeData</span>(<span class="hljs-params"></span>)&#123;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">testObj</span>.<span class="hljs-property">a</span> = <span class="hljs-string">&#x27;Lorem Ipsum&#x27;</span>
+      <span class="hljs-variable language_">this</span>.$set(<span class="hljs-variable language_">this</span>.<span class="hljs-property">testObjArray</span>, <span class="hljs-number">0</span>, &#123; <span class="hljs-attr">c</span>: <span class="hljs-string">&#x27;new Value&#x27;</span>&#125;)
+    &#125;
+  &#125;
+&#125;</code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 子组件注入并监听</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-attr">inject</span>: [<span class="hljs-string">&#x27;testObj&#x27;</span>,<span class="hljs-string">&#x27;testObjArray&#x27;</span>],
+  <span class="hljs-attr">watch</span>:&#123;
+    <span class="hljs-attr">testObj</span>:&#123;
+      <span class="hljs-title function_">handler</span>(<span class="hljs-params">val</span>)&#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;child watcher: testObj changed&#x27;</span>, val);
+      &#125;,
+      <span class="hljs-attr">deep</span>:<span class="hljs-literal">true</span>
+    &#125;,
+    <span class="hljs-title function_">testObjArray</span>(<span class="hljs-params">val</span>)&#123;
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;child watcher: testObjArray changed&#x27;</span>, val);
+    &#125;
+  &#125;
+&#125;</code></pre>
 
 
 <h2 id="😣-遇到问题"><a href="#😣-遇到问题" class="headerlink" title="😣 遇到问题"></a>😣 遇到问题</h2><p><strong>#1 有些人可能会问为啥我修改了被监听的对象，但是没有触发子组件的监听事件？</strong><br>一看问出这个问题的就是没有好好读文档，建议重新读一遍关于 <code>watch</code> 的<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#watch">文档</a>。<br>其实通过 <code>deep</code> 或者<strong>传入回调数组</strong>监听某一个用到的属性值即就行了，我上方的示例中也写了 <code>watch</code> 监听对象的方式，多仔细看看好吧。</p>
 <hr>
-<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#provide-inject">provide/inject - API — Vue.js 2.x</a><br><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/api/composition-api.html#provide-inject">Provide/Inject - 组合式 API | Vue.js 3.x</a></p>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#provide-inject">provide&#x2F;inject - API — Vue.js 2.x</a><br><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/api/composition-api.html#provide-inject">Provide&#x2F;Inject - 组合式 API | Vue.js 3.x</a></p>
  
   </article>
 

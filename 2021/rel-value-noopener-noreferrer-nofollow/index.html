@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -113,9 +116,9 @@
 <span id="more"></span>
 
 <hr>
-<p>先顺着开头的 <strong>阻断权重传递</strong> 聊聊叭，老前端都知道，如果要做SEO，就会需要投放大量的站外链接到自己的站点，作为引流以及获得权重。在开发者社群中，也会相互交换友链来达到这个目的。<br>但是在一些比较大型的社交平台中，他们并不希望这些链接被搜索引擎的 <strong>spider</strong> 所爬取，并且将权重传递给那些可能是低质量/违法的页面。</p>
+<p>先顺着开头的 <strong>阻断权重传递</strong> 聊聊叭，老前端都知道，如果要做SEO，就会需要投放大量的站外链接到自己的站点，作为引流以及获得权重。在开发者社群中，也会相互交换友链来达到这个目的。<br>但是在一些比较大型的社交平台中，他们并不希望这些链接被搜索引擎的 <strong>spider</strong> 所爬取，并且将权重传递给那些可能是低质量&#x2F;违法的页面。</p>
 <p>开头那篇帖子中提到的 “安全中心” 就是为了达到上述目的，我们可以从案例 “知乎” 当中看到 UGC 中的外链其实是这样的：</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://link.zhihu.com/?target=https%3A//yogwang.site<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span> wrap external<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>nofollow noreferrer<span class="token punctuation">"</span></span> <span class="token attr-name">data-za-detail-view-id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1234<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>一个测试外链<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://link.zhihu.com/?target=https%3A//yogwang.site&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot; wrap external&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;nofollow noreferrer&quot;</span> <span class="hljs-attr">data-za-detail-view-id</span>=<span class="hljs-string">&quot;1234&quot;</span>&gt;</span>一个测试外链<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre>
 <p>我们添加的外链其实已经变成了指向到 “安全中心” 页面，彻底就封死了权重传递的问题，并且避免了直接跳转链接导致的意外的安全问题，比如说钓鱼网站以及不合规内容的免责。</p>
 <h2 id="🔖-nofollow"><a href="#🔖-nofollow" class="headerlink" title="🔖 nofollow"></a>🔖 nofollow</h2><p>告知搜索引擎这是一个不被认可的链接，并且不想把权重传递给此页面。<small>( P.S. 其实就算使用了 <code>nofollow</code> 其实也并不是完全没有排名影响，具体可以查看 <a target="_blank" rel="noopener" href="https://backlinko.com/nofollow-link">这篇文章</a> 其中有举了例子)</small></p>
 <h2 id="🔖-noreferrer"><a href="#🔖-noreferrer" class="headerlink" title="🔖 noreferrer"></a>🔖 noreferrer</h2><p>这个值其实已经在上边的 “安全中心” 链接当中看到了这个属性的出现，起到的 <strong>目的</strong> 也就是为了去除头部中的 <code>referrer</code> (来源)信息，说是另外限制了部分 <code>window.opener</code> 的访问权限，但是我感觉和没有限制一样。</p>
@@ -130,11 +133,11 @@
 </blockquote>
 <p>并且我发现在 Chrome 93 中打开新页面中输出 <code>window.opener</code> 为 <code>null</code>，即使我没有使用 <code>noopener</code>，需要特意声明 <code>rel=&quot;opener&quot;</code> 才可以获取 <code>opener</code> 对象，但是我还没有找到明确的变更日志，只在后续的查阅的过程中找到一个疑似的工作组 PR。</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/whatwg/html/pull/4330">Make target=_blank imply noopener; support opener by annevk · Pull Request #4330 · whatwg/html</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/whatwg/html/pull/4330">Make target&#x3D;_blank imply noopener; support opener by annevk · Pull Request #4330 · whatwg&#x2F;html</a></li>
 </ul>
 <hr>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel">HTML attribute: rel - HTML: HyperText Markup Language | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/noopener">Link types: noopener - HTML: HyperText Markup Language | MDN</a></p>
-<p><a target="_blank" rel="noopener" href="https://backlinko.com/nofollow-link">What Is a Nofollow Link? Here’s A Simple Plain English Answer</a><br><a target="_blank" rel="noopener" href="https://pointjupiter.com/what-noopener-noreferrer-nofollow-explained/">Explained: noopener, noreferrer, and nofollow Values - Point Jupiter</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/528f7BS4uR04WNVK70m0QA">外链用了 target=”_blank” 结果悲剧了 | 1024译站</a><br><a target="_blank" rel="noopener" href="https://www.tutorialdocs.com/article/html-opener-blank.html">The Hidden Dangers You Have Never Noticed: target = “_blank” and “opener” - TutorialDocs</a><br><a target="_blank" rel="noopener" href="https://css-tricks.com/use-target_blank/">When to use target=”_blank” | CSS-Tricks</a><br><a target="_blank" rel="noopener" href="https://mathiasbynens.github.io/rel-noopener/">About rel=noopener</a></p>
+<p><a target="_blank" rel="noopener" href="https://backlinko.com/nofollow-link">What Is a Nofollow Link? Here’s A Simple Plain English Answer</a><br><a target="_blank" rel="noopener" href="https://pointjupiter.com/what-noopener-noreferrer-nofollow-explained/">Explained: noopener, noreferrer, and nofollow Values - Point Jupiter</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/528f7BS4uR04WNVK70m0QA">外链用了 target&#x3D;”_blank” 结果悲剧了 | 1024译站</a><br><a target="_blank" rel="noopener" href="https://www.tutorialdocs.com/article/html-opener-blank.html">The Hidden Dangers You Have Never Noticed: target &#x3D; “_blank” and “opener” - TutorialDocs</a><br><a target="_blank" rel="noopener" href="https://css-tricks.com/use-target_blank/">When to use target&#x3D;”_blank” | CSS-Tricks</a><br><a target="_blank" rel="noopener" href="https://mathiasbynens.github.io/rel-noopener/">About rel&#x3D;noopener</a></p>
  
   </article>
 

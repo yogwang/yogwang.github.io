@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -78,7 +81,7 @@
  
   <article class="article-excerpt">
     <p>最近在写基础组件，同事一直反馈说组件总是提示警告：</p>
-<pre class="line-numbers language-console" data-language="console"><code class="language-console">[Vue warn]: Invalid prop: type check failed for prop &quot;value&quot;. Expected String, Array, got Null<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs console">[Vue warn]: Invalid prop: type check failed for prop &quot;value&quot;. Expected String, Array, got Null</code></pre>
 <p>一开始以为是接收的问题，把定义的<code>props</code>加上了工厂函数后没有报异常就没再管了。<br>今天再去看的时候发现还是有报错，检查了一下组件代码没发现问题，在查看业务代码的时候发现同事喜欢<b>给声明的变量默认赋值为 <code>null</code></b>。而不是声明正确的基础类型。所以我就想应该如何把这个问题彻底解决掉。</p>
 <h3 id="🔔-其实这个提示为了提醒可能你绑定的变量并不一定存在。"><a href="#🔔-其实这个提示为了提醒可能你绑定的变量并不一定存在。" class="headerlink" title="🔔 其实这个提示为了提醒可能你绑定的变量并不一定存在。"></a>🔔 其实这个提示为了提醒可能你绑定的变量并不一定存在。</h3>
   </article>

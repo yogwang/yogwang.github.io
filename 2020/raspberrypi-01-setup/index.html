@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -105,21 +108,21 @@
 <p>今天到货了，开始折腾一下….</p>
 <span id="more"></span>
 
-<h2 id="📦-喜闻乐见的开箱环节"><a href="#📦-喜闻乐见的开箱环节" class="headerlink" title="📦 喜闻乐见的开箱环节"></a>📦 喜闻乐见的开箱环节</h2><p><img src="/2020/raspberrypi-01-setup/photo.jpg" alt="开箱照"></p>
+<h2 id="📦-喜闻乐见的开箱环节"><a href="#📦-喜闻乐见的开箱环节" class="headerlink" title="📦 喜闻乐见的开箱环节"></a>📦 喜闻乐见的开箱环节</h2><p><img src="/./raspberrypi-01-setup/photo.jpg" alt="开箱照"></p>
 <p>我买的是官方的国内代理，其实就是淘宝店，然后买的 【 官方配件基础套餐 】，里边有一个板子然后一些配件(电源，散热贴片，外壳，TF卡(16G)，读卡器)</p>
 <hr>
 <h2 id="💾-安装镜像"><a href="#💾-安装镜像" class="headerlink" title="💾 安装镜像"></a>💾 安装镜像</h2><p>安装镜像没什么好说的，使用<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/software/">官方文档</a>上的软件，格式化SD卡以及写入系统镜像即可。</p>
-<h3 id="意外情况："><a href="#意外情况：" class="headerlink" title="意外情况："></a>意外情况：</h3><p><img src="/2020/raspberrypi-01-setup/writing0.jpg" alt="Writing..0%"><br>如果一直卡在 <strong>Writing..0%</strong> 的界面的话，直接到官网手动下载需要的镜像，<br>然后在 <code>CHOOSE OS</code> 中选择 <code>Use custom</code> 选项，然后找到下载的镜像文件再写入就可以了。</p>
+<h3 id="意外情况："><a href="#意外情况：" class="headerlink" title="意外情况："></a>意外情况：</h3><p><img src="/./raspberrypi-01-setup/writing0.jpg" alt="Writing..0%"><br>如果一直卡在 <strong>Writing..0%</strong> 的界面的话，直接到官网手动下载需要的镜像，<br>然后在 <code>CHOOSE OS</code> 中选择 <code>Use custom</code> 选项，然后找到下载的镜像文件再写入就可以了。</p>
 <p>安装完成之后在 <strong>Boot</strong> 分区下创建 <code>ssh</code> 文件(开启SSH)和 <code>wpa_supplicant.conf</code> 文件(自动连接WiFi)，然后把TF卡插回树莓派，接入电源后使用 <code>SSH</code> 链接就可以连接到树莓派了，默认用户名（<code>pi</code>）和密码（<code>raspberry</code>）。</p>
 <p>如果要使用桌面的话，如果使用 <code>VNC Viewer</code> 来访问的话，直接查看<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/remote-access/vnc/README.md">官方的文档</a>即可。</p>
 <p>我的话，直接就通过 Win10 自带的远程连接的话，就不能按照文档照搬了，</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get install xrdp tightvncserver<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs shell">sudo apt-get install xrdp tightvncserver</code></pre>
 <p>安装完成后键入 <code>sudo /etc/init.d/xrdp start</code> 启动 <code>xrdp</code>，这个时候就已经可直接使用远程连接访问树莓派了。<br>但是浏览网页明显感觉到卡顿，不知道是不是远程链接的问题。</p>
 <blockquote>
 <p>2020年11月17日更新，使用 <code>Ubuntu Server</code> 安装 Desktop 之后就没有感觉很卡了。</p>
 </blockquote>
 <hr>
-<h2 id="💥遇问题"><a href="#💥遇问题" class="headerlink" title="💥遇问题"></a>💥遇问题</h2><h3 id="1、没有外接显示器，直接使用SSH连接的时候遇到-Connection-refused"><a href="#1、没有外接显示器，直接使用SSH连接的时候遇到-Connection-refused" class="headerlink" title="1、没有外接显示器，直接使用SSH连接的时候遇到 Connection refused"></a>1、没有外接显示器，直接使用SSH连接的时候遇到 <code>Connection refused</code></h3><p><img src="/2020/raspberrypi-01-setup/err_connection_refused.jpg" alt="Connection refused"><br>因为中午在办公室开箱的，所以在午休的时候捣鼓，写入系统之后发现怎么都连接不上，以为是没有镜像没有写入好，所以又重新格式化又写了一遍，之后发现还是连不上，就Google了一下，发现是SSH没有开启的问题。</p>
+<h2 id="💥遇问题"><a href="#💥遇问题" class="headerlink" title="💥遇问题"></a>💥遇问题</h2><h3 id="1、没有外接显示器，直接使用SSH连接的时候遇到-Connection-refused"><a href="#1、没有外接显示器，直接使用SSH连接的时候遇到-Connection-refused" class="headerlink" title="1、没有外接显示器，直接使用SSH连接的时候遇到 Connection refused"></a>1、没有外接显示器，直接使用SSH连接的时候遇到 <code>Connection refused</code></h3><p><img src="/./raspberrypi-01-setup/err_connection_refused.jpg" alt="Connection refused"><br>因为中午在办公室开箱的，所以在午休的时候捣鼓，写入系统之后发现怎么都连接不上，以为是没有镜像没有写入好，所以又重新格式化又写了一遍，之后发现还是连不上，就Google了一下，发现是SSH没有开启的问题。</p>
 <blockquote>
 <p>As of the November 2016 release, Raspberry Pi OS has the SSH server disabled by default.</p>
 </blockquote>

@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -83,7 +86,7 @@
 </blockquote>
 <p>在这次接盘的3D可视化项目中就遇到了这个问题。因为模型文件体积比较大，在实际使用中经常会反馈说载入时间过长。所以在拿到服务器权限之后就改了一下 <code>Nginx</code> 的配置文件开启了静态资源的 <code>HTTP cache</code>，以为完事大吉就和一线说载入时间慢的问题解决好了。现在进入项目会使用本地缓存，在第一次载入的时候会慢一些，后面再次进入就会快很多了。</p>
 <p>但是实际使用中反馈过来的时依旧会有很长的载入时间。以为是 <code>Nginx</code> 的配置项写错了，就又去确认了一下。确实是开启了缓存的，首页的各种静态资源也是会被缓存，但是等我进入到模型展示页的时候就发现问题了！<br>最外层展示的模型是可以被缓存的，但是操作数据下钻之后开始展示内部模型从 <code>Network</code> 面板中看到的 <code>glb</code> 模型文件不是每一个都会从 <code>disk cache</code> 读取，有一些模型依旧会发起请求。</p>
-<p><img src="/2023/http-cache-limit-and-service-worker-cache/network_snipaste.jpeg#center" alt="面板截图"></p>
+<p><img src="/2023/http-cache-limit-and-service-worker-cache/network_snipaste.jpeg" alt="面板截图"></p>
 <p>所以就想着浏览器是不是可以有配置项可以修改，但是并没有（可以通过给快捷方式添加启动命令来修改，但不可能要求所有设备都这样做）。所以只能想其他法子来解决这个问题，自然就找到了 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers">Service Worker</a></p>
   </article>
   <div class="article-more-link">
@@ -123,9 +126,9 @@
     <!-- 文章内容 article body -->
  
   <article class="article-excerpt">
-    <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Cache-Control<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-cache, no-store, must-revalidate<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Pragma<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-cache<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Expires<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    <pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Cache-Control&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;no-cache, no-store, must-revalidate&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Pragma&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;no-cache&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Expires&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;0&quot;</span> /&gt;</span></code></pre>
 
 <p>赶巧不巧，正好在假期第一天遇到了修改接口地址的问题 —— 节前最后一个工作日后端兄弟自己修改了编译后的 Js 文件中的接口地址，但是并没有生效，只不过当时没发现，今天电话过来问应该怎么处理，奈何电脑没带在身边，只能让他修改了接口地址之后重新编辑被修改的 Js 文件名中的 <code>hash</code> 值随便改一位，同时修改一下 <code>index.html</code> 中的引入路径。<br>可是没多久又发来消息说，不行还是请求旧地址，没有被修改。我怀疑是页面被缓存了，于是让他确认了一下页面源代码中是否有 <code>no-cache</code> 的 <code>meta</code> ，他说有，但是页面还是被缓存了，看到引入 Js 文件的路径还是他修改前的旧路径。<br>于是我就纳闷了，好像浏览器跳过了设置的机制，并没有重新请求服务器获取最新的 <code>index</code> 文件。</p>
   </article>

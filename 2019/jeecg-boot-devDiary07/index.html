@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -105,72 +108,72 @@
 <span id="more"></span>
 
 <p>在交流群里询问了很久，终于有人回答了，让我去看一下 <code>@/permission.js</code></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token operator">...</span> <span class="token keyword">from</span> <span class="token string">'xxx'</span> <span class="token comment">// 一些引入</span>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> ... <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;xxx&#x27;</span> <span class="hljs-comment">// 一些引入</span>
 
-NProgress<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> showSpinner<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span> <span class="token comment">// NProgress Configuration</span>
+<span class="hljs-title class_">NProgress</span>.<span class="hljs-title function_">configure</span>(&#123; <span class="hljs-attr">showSpinner</span>: <span class="hljs-literal">false</span> &#125;) <span class="hljs-comment">// NProgress Configuration</span>
 
-<span class="token keyword">const</span> whiteList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'/user/login'</span><span class="token punctuation">,</span> <span class="token string">'/user/register'</span><span class="token punctuation">,</span> <span class="token string">'/user/register-result'</span><span class="token punctuation">,</span><span class="token string">'/user/alteration'</span><span class="token punctuation">]</span> <span class="token comment">// no redirect whitelist</span>
+<span class="hljs-keyword">const</span> whiteList = [<span class="hljs-string">&#x27;/user/login&#x27;</span>, <span class="hljs-string">&#x27;/user/register&#x27;</span>, <span class="hljs-string">&#x27;/user/register-result&#x27;</span>,<span class="hljs-string">&#x27;/user/alteration&#x27;</span>] <span class="hljs-comment">// no redirect whitelist</span>
 
-router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> <span class="token keyword">from</span><span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  NProgress<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// start progress bar</span>
+router.<span class="hljs-title function_">beforeEach</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, next</span>) =&gt;</span> &#123;
+  <span class="hljs-title class_">NProgress</span>.<span class="hljs-title function_">start</span>() <span class="hljs-comment">// start progress bar</span>
 
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>Vue<span class="token punctuation">.</span>ls<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token constant">ACCESS_TOKEN</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">/* has token */</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>to<span class="token punctuation">.</span>path <span class="token operator">===</span> <span class="token string">'/user/login'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> path<span class="token operator">:</span> <span class="token string">'/dashboard/workplace'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-      NProgress<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>store<span class="token punctuation">.</span>getters<span class="token punctuation">.</span>permissionList<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">'GetPermissionList'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-              <span class="token keyword">const</span> menuData <span class="token operator">=</span> res<span class="token punctuation">.</span>result<span class="token punctuation">.</span>menu<span class="token punctuation">;</span>
-              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>message<span class="token punctuation">)</span>
-              <span class="token keyword">if</span> <span class="token punctuation">(</span>menuData <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">||</span> menuData <span class="token operator">===</span> <span class="token string">""</span> <span class="token operator">||</span> menuData <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">return</span><span class="token punctuation">;</span>
-              <span class="token punctuation">&#125;</span>
-              <span class="token keyword">let</span> constRoutes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-              constRoutes <span class="token operator">=</span> <span class="token function">generateIndexRouter</span><span class="token punctuation">(</span>menuData<span class="token punctuation">)</span><span class="token punctuation">;</span>
-              <span class="token comment">// 添加主界面路由</span>
-              store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">'UpdateAppRouter'</span><span class="token punctuation">,</span>  <span class="token punctuation">&#123;</span> constRoutes <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-                <span class="token comment">// 根据roles权限生成可访问的路由表</span>
-                <span class="token comment">// 动态添加可访问路由表</span>
-                router<span class="token punctuation">.</span><span class="token function">addRoutes</span><span class="token punctuation">(</span>store<span class="token punctuation">.</span>getters<span class="token punctuation">.</span>addRouters<span class="token punctuation">)</span>
-                <span class="token keyword">const</span> redirect <span class="token operator">=</span> <span class="token function">decodeURIComponent</span><span class="token punctuation">(</span><span class="token keyword">from</span><span class="token punctuation">.</span>query<span class="token punctuation">.</span>redirect <span class="token operator">||</span> to<span class="token punctuation">.</span>path<span class="token punctuation">)</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>to<span class="token punctuation">.</span>path <span class="token operator">===</span> redirect<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                  <span class="token comment">// hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record</span>
-                  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token operator">...</span>to<span class="token punctuation">,</span> replace<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                  <span class="token comment">// 跳转到目的路由</span>
-                  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> path<span class="token operator">:</span> redirect <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-                <span class="token punctuation">&#125;</span>
-              <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-          <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-           <span class="token comment">/* notification.error(&#123;
-              message: '系统提示',
-              description: '请求用户信息失败，请重试！'
-            &#125;)*/</span>
-            store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">'Logout'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-              <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> path<span class="token operator">:</span> <span class="token string">'/user/login'</span><span class="token punctuation">,</span> query<span class="token operator">:</span> <span class="token punctuation">&#123;</span> redirect<span class="token operator">:</span> to<span class="token punctuation">.</span>fullPath <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-          <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-      <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-        <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>whiteList<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>path<span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 在免登录白名单，直接进入</span>
-      <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-      <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> path<span class="token operator">:</span> <span class="token string">'/user/login'</span><span class="token punctuation">,</span> query<span class="token operator">:</span> <span class="token punctuation">&#123;</span> redirect<span class="token operator">:</span> to<span class="token punctuation">.</span>fullPath <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-      NProgress<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// if current page is login will not trigger afterEach hook, so manually handle it</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-router<span class="token punctuation">.</span><span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  NProgress<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// finish progress bar</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Vue</span>.<span class="hljs-property">ls</span>.<span class="hljs-title function_">get</span>(<span class="hljs-variable constant_">ACCESS_TOKEN</span>)) &#123;
+    <span class="hljs-comment">/* has token */</span>
+    <span class="hljs-keyword">if</span> (to.<span class="hljs-property">path</span> === <span class="hljs-string">&#x27;/user/login&#x27;</span>) &#123;
+      <span class="hljs-title function_">next</span>(&#123; <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/dashboard/workplace&#x27;</span> &#125;)
+      <span class="hljs-title class_">NProgress</span>.<span class="hljs-title function_">done</span>()
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      <span class="hljs-keyword">if</span> (store.<span class="hljs-property">getters</span>.<span class="hljs-property">permissionList</span>.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) &#123;
+        store.<span class="hljs-title function_">dispatch</span>(<span class="hljs-string">&#x27;GetPermissionList&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;
+              <span class="hljs-keyword">const</span> menuData = res.<span class="hljs-property">result</span>.<span class="hljs-property">menu</span>;
+              <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">message</span>)
+              <span class="hljs-keyword">if</span> (menuData === <span class="hljs-literal">null</span> || menuData === <span class="hljs-string">&quot;&quot;</span> || menuData === <span class="hljs-literal">undefined</span>) &#123;
+                <span class="hljs-keyword">return</span>;
+              &#125;
+              <span class="hljs-keyword">let</span> constRoutes = [];
+              constRoutes = <span class="hljs-title function_">generateIndexRouter</span>(menuData);
+              <span class="hljs-comment">// 添加主界面路由</span>
+              store.<span class="hljs-title function_">dispatch</span>(<span class="hljs-string">&#x27;UpdateAppRouter&#x27;</span>,  &#123; constRoutes &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> &#123;
+                <span class="hljs-comment">// 根据roles权限生成可访问的路由表</span>
+                <span class="hljs-comment">// 动态添加可访问路由表</span>
+                router.<span class="hljs-title function_">addRoutes</span>(store.<span class="hljs-property">getters</span>.<span class="hljs-property">addRouters</span>)
+                <span class="hljs-keyword">const</span> redirect = <span class="hljs-built_in">decodeURIComponent</span>(<span class="hljs-keyword">from</span>.<span class="hljs-property">query</span>.<span class="hljs-property">redirect</span> || to.<span class="hljs-property">path</span>)
+                <span class="hljs-keyword">if</span> (to.<span class="hljs-property">path</span> === redirect) &#123;
+                  <span class="hljs-comment">// hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record</span>
+                  <span class="hljs-title function_">next</span>(&#123; ...to, <span class="hljs-attr">replace</span>: <span class="hljs-literal">true</span> &#125;)
+                &#125; <span class="hljs-keyword">else</span> &#123;
+                  <span class="hljs-comment">// 跳转到目的路由</span>
+                  <span class="hljs-title function_">next</span>(&#123; <span class="hljs-attr">path</span>: redirect &#125;)
+                &#125;
+              &#125;)
+            &#125;)
+          .<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =&gt;</span> &#123;
+           <span class="hljs-comment">/* notification.error(&#123;</span>
+<span class="hljs-comment">              message: &#x27;系统提示&#x27;,</span>
+<span class="hljs-comment">              description: &#x27;请求用户信息失败，请重试！&#x27;</span>
+<span class="hljs-comment">            &#125;)*/</span>
+            store.<span class="hljs-title function_">dispatch</span>(<span class="hljs-string">&#x27;Logout&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> &#123;
+              <span class="hljs-title function_">next</span>(&#123; <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/user/login&#x27;</span>, <span class="hljs-attr">query</span>: &#123; <span class="hljs-attr">redirect</span>: to.<span class="hljs-property">fullPath</span> &#125; &#125;)
+            &#125;)
+          &#125;)
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-title function_">next</span>()
+      &#125;
+    &#125;
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-keyword">if</span> (whiteList.<span class="hljs-title function_">indexOf</span>(to.<span class="hljs-property">path</span>) !== -<span class="hljs-number">1</span>) &#123;
+      <span class="hljs-comment">// 在免登录白名单，直接进入</span>
+      <span class="hljs-title function_">next</span>()
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      <span class="hljs-title function_">next</span>(&#123; <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/user/login&#x27;</span>, <span class="hljs-attr">query</span>: &#123; <span class="hljs-attr">redirect</span>: to.<span class="hljs-property">fullPath</span> &#125; &#125;)
+      <span class="hljs-title class_">NProgress</span>.<span class="hljs-title function_">done</span>() <span class="hljs-comment">// if current page is login will not trigger afterEach hook, so manually handle it</span>
+    &#125;
+  &#125;
+&#125;)
+router.<span class="hljs-title function_">afterEach</span>(<span class="hljs-function">() =&gt;</span> &#123;
+  <span class="hljs-title class_">NProgress</span>.<span class="hljs-title function_">done</span>() <span class="hljs-comment">// finish progress bar</span>
+&#125;)
+</code></pre>
 
 <p>一打开我就看到了硕大的几个字 <code>whiteList</code> ….</p>
 <p>好吧，原来有设置了白名单，如果不在白名单之内，如果没有权限会直接跳转到 <code>/user/login</code> 然后跳转之前的路径会保存在 <code>query</code> 内的 <code>redirect</code> 中，就出现了路由没有效果的情况</p>

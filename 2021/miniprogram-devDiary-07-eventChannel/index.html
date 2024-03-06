@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -105,62 +108,62 @@
 
 <p>首先我们需要通过 <code>wx.navigateTo</code> 打开下一个页面，然后看你需要做怎么样的功能，</p>
 <ol>
-<li>如果是想下一个页面传递数据，那么简单的几个参数你可以 <code>query</code> 的形式拼接在 <code>url</code> 上，<br>然后在 被打开的页面中 的 <code>onLoad</code> 中接受 <code>option</code> 中接收 <code>query</code> 数据</li>
-</ol>
-<ol start="2">
-<li>如果需要传递复杂的数据，那么可以在 <code>success</code> 回调中执行 <code>eventChannel.emit()</code> 向打开的页面传递。<br>然后在 被打开的页面中 的中使用 <code>this.getOpenerEventChannel()</code> 方法来获得一个 <code>EventChannel</code> 对象，通过该对象的 <code>on</code> 方法获取上一页面通过 <code>eventChannel</code> 传送到当前页面的数据</li>
+<li><p>如果是想下一个页面传递数据，那么简单的几个参数你可以 <code>query</code> 的形式拼接在 <code>url</code> 上，<br>然后在 被打开的页面中 的 <code>onLoad</code> 中接受 <code>option</code> 中接收 <code>query</code> 数据</p>
+</li>
+<li><p>如果需要传递复杂的数据，那么可以在 <code>success</code> 回调中执行 <code>eventChannel.emit()</code> 向打开的页面传递。<br>然后在 被打开的页面中 的中使用 <code>this.getOpenerEventChannel()</code> 方法来获得一个 <code>EventChannel</code> 对象，通过该对象的 <code>on</code> 方法获取上一页面通过 <code>eventChannel</code> 传送到当前页面的数据</p>
+</li>
 </ol>
 <p>具体示例如下：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// Opener</span>
-wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  url<span class="token operator">:</span> <span class="token string">'test?id=1'</span><span class="token punctuation">,</span> <span class="token comment">// 增加query参数</span>
-  <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 通过eventChannel向被打开页面传送数据 </span>
-    <span class="token comment">// 这个 acceptDataFromOpenerPage 事件名可以自定义</span>
-    e<span class="token punctuation">.</span>eventChannel<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'acceptDataFromOpenerPage'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> data<span class="token operator">:</span> <span class="token string">'test'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// Opened</span>
-<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  <span class="token function-variable function">onLoad</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">option</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>option<span class="token punctuation">.</span>query<span class="token punctuation">)</span> <span class="token comment">// 接收上一级页面传递的query参数</span>
+<pre><code class="hljs js"><span class="hljs-comment">// Opener</span>
+wx.<span class="hljs-title function_">navigateTo</span>(&#123;
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;test?id=1&#x27;</span>, <span class="hljs-comment">// 增加query参数</span>
+  <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) &#123;
+    <span class="hljs-comment">// 通过eventChannel向被打开页面传送数据 </span>
+    <span class="hljs-comment">// 这个 acceptDataFromOpenerPage 事件名可以自定义</span>
+    e.<span class="hljs-property">eventChannel</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;acceptDataFromOpenerPage&#x27;</span>, &#123; <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;test&#x27;</span> &#125;)
+  &#125;
+&#125;)</code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// Opened</span>
+<span class="hljs-title class_">Page</span>(&#123;
+  <span class="hljs-attr">onLoad</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">option</span>)&#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(option.<span class="hljs-property">query</span>) <span class="hljs-comment">// 接收上一级页面传递的query参数</span>
 
-    <span class="token keyword">const</span> eventChannel <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getOpenerEventChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token comment">// 监听 Opener 页面 emit 的时间名称 "acceptDataFromOpenerPage" 事件，</span>
-    <span class="token comment">// 来获取上一页面通过eventChannel传送到当前页面的数据</span>
-    eventChannel<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'acceptDataFromOpenerPage'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-      <span class="token comment">// log => &#123; data: 'text' &#125;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="hljs-keyword">const</span> eventChannel = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getOpenerEventChannel</span>()
+    <span class="hljs-comment">// 监听 Opener 页面 emit 的时间名称 &quot;acceptDataFromOpenerPage&quot; 事件，</span>
+    <span class="hljs-comment">// 来获取上一页面通过eventChannel传送到当前页面的数据</span>
+    eventChannel.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;acceptDataFromOpenerPage&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) &#123;
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)
+      <span class="hljs-comment">// log =&gt; &#123; data: &#x27;text&#x27; &#125;</span>
+    &#125;)
+  &#125;
+&#125;)</code></pre>
 
 <hr>
 <p>如果想要从 被打开的页面(<code>Opened</code>) 向 上一页(<code>Opener</code>) 传递数据，和 <strong>接受 上一页 传递过来的参数</strong> 一样使用 <code>this.getOpenerEventChannel()</code> 方法来获得一个 <code>EventChannel</code> 对象，然后通过<br><code>emit</code> 事件向上一页提交数据。<br>然后再上一页的 <code>wx.navigateTo</code> 方法中的 <code>events</code> 属性中添加一个监听器，获取被打开页面传送到当前页面的数据。</p>
 <p>具体示例如下：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// Opener</span>
-wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  events<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据</span>
-    <span class="token function-variable function">acceptDataFromOpenedPage</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-      <span class="token comment">// log => &#123; data: 'text' &#125;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token function-variable function">someEvent</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-      <span class="token comment">// log => &#123; data: 'text' &#125;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token operator">...</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// Opened</span>
-<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  <span class="token function-variable function">onLoad</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> eventChannel <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getOpenerEventChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    eventChannel<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'acceptDataFromOpenedPage'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>data<span class="token operator">:</span> <span class="token string">'test'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    eventChannel<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'someEvent'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>data<span class="token operator">:</span> <span class="token string">'test'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// Opener</span>
+wx.<span class="hljs-title function_">navigateTo</span>(&#123;
+  <span class="hljs-attr">events</span>: &#123;
+    <span class="hljs-comment">// 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据</span>
+    <span class="hljs-attr">acceptDataFromOpenedPage</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) &#123;
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)
+      <span class="hljs-comment">// log =&gt; &#123; data: &#x27;text&#x27; &#125;</span>
+    &#125;,
+    <span class="hljs-attr">someEvent</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) &#123;
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)
+      <span class="hljs-comment">// log =&gt; &#123; data: &#x27;text&#x27; &#125;</span>
+    &#125;
+    ...
+  &#125;,
+&#125;)</code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// Opened</span>
+<span class="hljs-title class_">Page</span>(&#123;
+  <span class="hljs-attr">onLoad</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-keyword">const</span> eventChannel = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getOpenerEventChannel</span>()
+    eventChannel.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;acceptDataFromOpenedPage&#x27;</span>, &#123;<span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;test&#x27;</span>&#125;);
+    eventChannel.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;someEvent&#x27;</span>, &#123;<span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;test&#x27;</span>&#125;);
+  &#125;
+&#125;)</code></pre>
 
 
 <h3 id="其实就那么简单"><a href="#其实就那么简单" class="headerlink" title="其实就那么简单"></a>其实就那么简单</h3><blockquote>

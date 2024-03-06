@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,7 +106,7 @@
 <p>左侧显示时间线，滑动会显示不同的年份和月份，<br>右侧显示不同月份的统计数据。</p>
 <span id="more"></span>
 
-<p><img src="/2019/JS-navigation-detection/view.jpg" alt="view"></p>
+<p><img src="/./JS-navigation-detection/view.jpg" alt="view"></p>
 <p>为了显示这个想法不是很蠢，所以需要做的很 <em><strong>酷炫</strong></em> ，<br>其实就是交互友好些，左右块都有相应的交互动作。</p>
 <hr>
 <h3 id="预想的效果"><a href="#预想的效果" class="headerlink" title="预想的效果"></a>预想的效果</h3><p>设想的是，点击左侧月份之后右侧会快速滚动到相应的月份，方便用户操作。<br>当然右侧下滑操作的时候左侧的时间线也会对应的滚动。</p>
@@ -111,104 +114,104 @@
 <p>去翻阅了一下 <code>BootStrap</code> 的 <code>Scrollspy</code> 源码，其实就是用到了内容元素的 <code>offsetTop</code> 和滚动条的监听</p>
 <hr>
 <p>后端给的数据格式是类似这样的</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-  date:&#39;2020-01&#39;,
-  detail:&#123;
-    a:100,
-    b:78,
-    total:178,
-    machines:967
-  &#125;,
-  note:&#39;some text of 2020-01&#39;
-&#125;,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+  date<span class="hljs-punctuation">:</span>&#x27;<span class="hljs-number">2020</span><span class="hljs-number">-01</span>&#x27;<span class="hljs-punctuation">,</span>
+  detail<span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span>
+    a<span class="hljs-punctuation">:</span><span class="hljs-number">100</span><span class="hljs-punctuation">,</span>
+    b<span class="hljs-punctuation">:</span><span class="hljs-number">78</span><span class="hljs-punctuation">,</span>
+    total<span class="hljs-punctuation">:</span><span class="hljs-number">178</span><span class="hljs-punctuation">,</span>
+    machines<span class="hljs-punctuation">:</span><span class="hljs-number">967</span>
+  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+  note<span class="hljs-punctuation">:</span>&#x27;some text of <span class="hljs-number">2020</span><span class="hljs-number">-01</span>&#x27;
+<span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span></code></pre>
 
 <p>所以可以直接使用 computed 返回所有的月份，对，我使用的 Vue 作为框架。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">computed<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">timeline</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">let</span> list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sourceData<span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>data<span class="token punctuation">)</span> <span class="token keyword">return</span> list<span class="token punctuation">;</span>
-    data<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">const</span> date <span class="token operator">=</span> item<span class="token punctuation">.</span>date<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">const</span> year <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item<span class="token punctuation">.</span>year <span class="token operator">===</span> date<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>year<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        year<span class="token punctuation">.</span>months<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>date<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-        list<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-          year<span class="token operator">:</span> date<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-          months<span class="token operator">:</span> <span class="token punctuation">[</span>date<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> list<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-attr">computed</span>: &#123;
+  <span class="hljs-title function_">timeline</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">let</span> list = [];
+    <span class="hljs-keyword">const</span> data = <span class="hljs-variable language_">this</span>.<span class="hljs-property">sourceData</span>;
+    <span class="hljs-keyword">if</span> (!data) <span class="hljs-keyword">return</span> list;
+    data.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;
+      <span class="hljs-keyword">const</span> date = item.<span class="hljs-property">date</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;-&quot;</span>);
+      <span class="hljs-keyword">const</span> year = list.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">year</span> === date[<span class="hljs-number">0</span>]);
+      <span class="hljs-keyword">if</span> (year) &#123;
+        year.<span class="hljs-property">months</span>.<span class="hljs-title function_">push</span>(date[<span class="hljs-number">1</span>]);
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        list.<span class="hljs-title function_">push</span>(&#123;
+          <span class="hljs-attr">year</span>: date[<span class="hljs-number">0</span>],
+          <span class="hljs-attr">months</span>: [date[<span class="hljs-number">1</span>]]
+        &#125;);
+      &#125;
+    &#125;);
+    <span class="hljs-keyword">return</span> list;
+  &#125;,
+&#125;,</code></pre>
 
 <p>尝试过直接使用对象，用年份作为字段名，但是使用 <code>v-for</code> 循环的时候会按照升序打印出来，<br>折腾了有一会放弃了，还是使用数组，记不得前段时间自己是怎么直接用对象实现的时间分组的了 😂 -&gt; <a href="/2020/JS-Object-attribute-sort/">Js 对象 调整属性排序是否有意义</a><br>其实差不多只是匹配的时候稍微麻烦点需要用到 <code>find()</code> 方法。</p>
 <p>然后也根据后台返回的数据来计算右侧内容部分每一个月份的 <code>offsetTop</code></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">computed<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-  <span class="token function">offsetList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">[</span><span class="token string">"month-detail"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">let</span> data <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">el</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-        date<span class="token operator">:</span> el<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"date"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        offset<span class="token operator">:</span> el<span class="token punctuation">.</span>offsetTop <span class="token operator">-</span> <span class="token number">100</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> data<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-attr">computed</span>:&#123;
+  <span class="hljs-title function_">offsetList</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">const</span> list = <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>[<span class="hljs-string">&quot;month-detail&quot;</span>];
+    <span class="hljs-keyword">let</span> data = list.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">el</span> =&gt;</span> &#123;
+      <span class="hljs-keyword">return</span> &#123;
+        <span class="hljs-attr">date</span>: el.<span class="hljs-title function_">getAttribute</span>(<span class="hljs-string">&quot;date&quot;</span>),
+        <span class="hljs-attr">offset</span>: el.<span class="hljs-property">offsetTop</span> - <span class="hljs-number">100</span>
+      &#125;;
+    &#125;);
+    <span class="hljs-keyword">return</span> data;
+  &#125;
+&#125;</code></pre>
 
 <p>这块其实很简单，直接在循环输出的时候注册 <code>ref</code> 即可，然后直接遍历 DOM 元素数组保存 <code>offsetTop</code> 。（但是如果是动态改变的DOM就不能使用 <code>computed</code> 来计算了，具体查看 <a href="/2020/vue-computed-DOM-element-attributes/">使用VueJS的计算属性监听DOM元素属性的问题</a>）</p>
 <p>然后是点击左侧时间轴右侧内容部分滚动到对应的月份，</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">methods<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-  <span class="token comment">// 跳转到对应月份</span>
-  <span class="token function">toMonth</span><span class="token punctuation">(</span><span class="token parameter">year<span class="token punctuation">,</span> month</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>currTime <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>year<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>month<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> detailItem <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>offsetList<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
-      <span class="token parameter">item</span> <span class="token operator">=></span> item<span class="token punctuation">.</span>date <span class="token operator">===</span> <span class="token keyword">this</span><span class="token punctuation">.</span>currTime
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">[</span><span class="token string">"wrap"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">scrollTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-      top<span class="token operator">:</span> detailItem<span class="token punctuation">.</span>offset<span class="token punctuation">,</span>
-      behavior<span class="token operator">:</span> <span class="token string">"smooth"</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-attr">methods</span>:&#123;
+  <span class="hljs-comment">// 跳转到对应月份</span>
+  <span class="hljs-title function_">toMonth</span>(<span class="hljs-params">year, month</span>) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">currTime</span> = <span class="hljs-string">`<span class="hljs-subst">$&#123;year&#125;</span>-<span class="hljs-subst">$&#123;month&#125;</span>`</span>;
+    <span class="hljs-keyword">const</span> detailItem = <span class="hljs-variable language_">this</span>.<span class="hljs-property">offsetList</span>.<span class="hljs-title function_">find</span>(
+      <span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">date</span> === <span class="hljs-variable language_">this</span>.<span class="hljs-property">currTime</span>
+    );
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>[<span class="hljs-string">&quot;wrap&quot;</span>].<span class="hljs-title function_">scrollTo</span>(&#123;
+      <span class="hljs-attr">top</span>: detailItem.<span class="hljs-property">offset</span>,
+      <span class="hljs-attr">behavior</span>: <span class="hljs-string">&quot;smooth&quot;</span>
+    &#125;);
+  &#125;,
+&#125;</code></pre>
 
 <p>这里有一个 Js 的新东西 <code>behavior: &quot;smooth&quot;</code> 是原生滚动的一个新 API，应该是新 API 哈，以前都没有见到过，这次才发现有这个 Option，也可以考虑使用 CSS 来实现，但是听说兼容性堪忧。<br>最后加上右侧内容的滚动事件绑定 <code>&lt;div class=&quot;wrap&quot; ref=&quot;wrap&quot; @scroll=&quot;scrollSpyNav&quot;&gt;</code></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">watch<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">currTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">scrollTimeline</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-methods<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-  <span class="token comment">// 滚动侦测导航</span>
-  <span class="token function">scrollSpyNav</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token function">clearTimeout</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> offsetTop <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>scrollTop<span class="token punctuation">;</span>
-    <span class="token keyword">const</span> curr <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>offsetList<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item<span class="token punctuation">.</span>offset <span class="token operator">>=</span> offsetTop<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>timer <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>currTime <span class="token operator">=</span> curr<span class="token punctuation">.</span>date<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token comment">// 滚动左侧时间线</span>
-  <span class="token function">scrollTimeline</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> el <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">[</span><span class="token string">"month-block"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>
-      <span class="token parameter">item</span> <span class="token operator">=></span> item<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"date"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token keyword">this</span><span class="token punctuation">.</span>currTime
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">[</span><span class="token string">"timeline"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">scrollTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-      top<span class="token operator">:</span> el<span class="token punctuation">.</span>offsetTop <span class="token operator">-</span> <span class="token number">50</span><span class="token punctuation">,</span>
-      behavior<span class="token operator">:</span> <span class="token string">"smooth"</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-attr">watch</span>: &#123;
+  <span class="hljs-title function_">currTime</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">scrollTimeline</span>();
+  &#125;
+&#125;,
+<span class="hljs-attr">methods</span>:&#123;
+  <span class="hljs-comment">// 滚动侦测导航</span>
+  <span class="hljs-title function_">scrollSpyNav</span>(<span class="hljs-params">e</span>) &#123;
+    <span class="hljs-built_in">clearTimeout</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">timer</span>);
+    <span class="hljs-keyword">const</span> offsetTop = e.<span class="hljs-property">target</span>.<span class="hljs-property">scrollTop</span>;
+    <span class="hljs-keyword">const</span> curr = <span class="hljs-variable language_">this</span>.<span class="hljs-property">offsetList</span>.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">offset</span> &gt;= offsetTop);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">timer</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">currTime</span> = curr.<span class="hljs-property">date</span>;
+    &#125;, <span class="hljs-number">300</span>);
+  &#125;,
+  <span class="hljs-comment">// 滚动左侧时间线</span>
+  <span class="hljs-title function_">scrollTimeline</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">const</span> el = <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>[<span class="hljs-string">&quot;month-block&quot;</span>].<span class="hljs-title function_">find</span>(
+      <span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-title function_">getAttribute</span>(<span class="hljs-string">&quot;date&quot;</span>) === <span class="hljs-variable language_">this</span>.<span class="hljs-property">currTime</span>
+    );
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>[<span class="hljs-string">&quot;timeline&quot;</span>].<span class="hljs-title function_">scrollTo</span>(&#123;
+      <span class="hljs-attr">top</span>: el.<span class="hljs-property">offsetTop</span> - <span class="hljs-number">50</span>,
+      <span class="hljs-attr">behavior</span>: <span class="hljs-string">&quot;smooth&quot;</span>
+    &#125;);
+  &#125;,
+&#125;</code></pre>
 
 <p>直接使用了 <code>watch</code> 来侦听的了日期的改变，来触发左侧时间线的滚动，也实现了点击时间轴自动置顶当前月份的效果。<br>顺带写了个计时器，防止抖动….</p>
-<h3 id="🌰-DEMO"><a href="#🌰-DEMO" class="headerlink" title="🌰 DEMO"></a>🌰 DEMO</h3><iframe id="cp_embed_GRgMzxV" src="//codepen.io/yogwang/embed/GRgMzxV?height=800&theme-id=dark&slug-hash=GRgMzxV&default-tab=result" scrolling="no" frameborder="no" height="800" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<h3 id="🌰-DEMO"><a href="#🌰-DEMO" class="headerlink" title="🌰 DEMO"></a>🌰 DEMO</h3><iframe id="cp_embed_GRgMzxV" src="//codepen.io/yogwang/embed/GRgMzxV?height=800&theme-id=dark&slug-hash=GRgMzxV&default-tab=result" scrolling="no" frameborder="no" height="800" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 <h3 id="兼容"><a href="#兼容" class="headerlink" title="兼容"></a>兼容</h3><ul>
-<li>JavaScript - scrollTo [<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/scrollTo">MDN</a>]<br><img src="/2019/JS-navigation-detection/support.jpg" alt="scrollTo"></li>
-<li>CSS - scroll-behavior:smooth [<a target="_blank" rel="noopener" href="https://www.caniuse.com/#search=scroll-behavior">Can I use</a>]<br><img src="/2019/JS-navigation-detection/support2.jpg" alt="scroll-behavior"></li>
+<li>JavaScript - scrollTo [<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/scrollTo">MDN</a>]<br><img src="/./JS-navigation-detection/support.jpg" alt="scrollTo"></li>
+<li>CSS - scroll-behavior:smooth [<a target="_blank" rel="noopener" href="https://www.caniuse.com/#search=scroll-behavior">Can I use</a>]<br><img src="/./JS-navigation-detection/support2.jpg" alt="scroll-behavior"></li>
 </ul>
  
   </article>

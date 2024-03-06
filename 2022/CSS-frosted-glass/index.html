@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -104,12 +107,12 @@
 <p>好了，不多废话直接开始正题。</p>
 <span id="more"></span>
 
-<iframe id="cp_embed_mdxBeaG" src="//codepen.io/yogwang/embed/mdxBeaG?height=600&theme-id=dark&slug-hash=mdxBeaG&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>  
+<iframe id="cp_embed_mdxBeaG" src="//codepen.io/yogwang/embed/mdxBeaG?height=600&theme-id=dark&slug-hash=mdxBeaG&default-tab=result" scrolling="no" frameborder="no" height="600" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>  
 <p><small><em>CodePen 上的 <a target="_blank" rel="noopener" href="https://codepen.io/kylewetton/pen/bGbaazX">原 Demo</a> 写的比较杂乱，有很多无关的样式内容，我简化处理了一下。</em></small></p>
 <p>早年最初的毛玻璃效果就是上面的 <strong>Demo</strong> 这样的，先在外部容器上添加背景图，并且在当前 <strong>“窗口”</strong> 上设置一样的背景图，再利用 <code>filter: blur()</code> 属性模糊遮罩层的背景。  </p>
 <p>但是这个会有一个问题，就是需要把滤镜属性 <code>filter: blur()</code> 设置在一个单独的背景元素或者伪类上，不然会把 <strong>窗口</strong> 内部的内容也给模糊了。并且会受限制这个我们在后面说。</p>
 <p>而是使用新滤镜属性 <code>backdrop-filter: blur()</code> 后的呢，就十分的简单了，可以看下方 <strong>演示Demo</strong>：</p>
-<iframe id="cp_embed_VwXMeqO" src="//codepen.io/yogwang/embed/VwXMeqO?height=600&theme-id=dark&slug-hash=VwXMeqO&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<iframe id="cp_embed_VwXMeqO" src="//codepen.io/yogwang/embed/VwXMeqO?height=600&theme-id=dark&slug-hash=VwXMeqO&default-tab=result" scrolling="no" frameborder="no" height="600" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 <p>可以看到，比最初的毛玻璃实现方式少了一个伪类元素，并且他会直接把遮住的部分添加滤镜效果，不需要考虑被遮住的内容了，也不会影响内部元素。也就是说<strong>可以“不受限制”的实现毛玻璃效果</strong>。例如在文章最开始提到的，给整个页面元素都加上遮罩。 </p>
 <p><img src="/2022/CSS-frosted-glass/preview.png" alt="整个页面添加毛玻璃效果"></p>
 <p>这在以前只能通过 <code>canvas</code> 成当前页面快照的方式生来实现，可以很明显的感觉到早些时候投入和回报的不成比例，但是现在使用 <code>filter: blur()</code> 可以很轻松的就实现了，<strong>投入产出比极高</strong>！</p>

@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -118,7 +121,7 @@
     <!-- 文章内容 article body -->
  
   <article class="article-excerpt">
-    <p>一直以来，我对于 VueJS 中对于使用 <code>ref</code> 注册的组件，在使用 <code>$refs</code> 调用时，为什么有时候是一个 DOM元素/组件实例，是时候会是一个实例<strong>数组</strong>。</p>
+    <p>一直以来，我对于 VueJS 中对于使用 <code>ref</code> 注册的组件，在使用 <code>$refs</code> 调用时，为什么有时候是一个 DOM元素&#x2F;组件实例，是时候会是一个实例<strong>数组</strong>。</p>
 <p>所以在很长一段时间内我觉得 <code>ref</code> 注册的的组件在使用 <code>$refs</code> 调用时有很大的不确定性，虽然我的弹窗组件一直都是用的 <code>$refs.modal.open()</code> 来打开的。</p>
 <p>直到前一段时间，我在一个场景下想在 <code>v-for</code> 循环渲染的组件下 <code>slot</code> 模板中想使用 <code>ref</code> 注册成一个实例集合来调用时，发现怎么样重写返回的都只是一个组件实例，而不是一个组件实例集合。</p>
 <p>所以有了这样一篇笔记。</p>
@@ -245,7 +248,7 @@
 <p>其实我在打这行字的时候就突然想起来区别是什么了😂，所以我把标题改了</p>
 </blockquote>
 <p>相对于 <code>some()</code> 方法， 我知道 <code>find()</code> 方法会更加早一些，不知道为何，🤔明明 <code>find()</code> 方法才是更加新的特性( 也许因为子龙提到的因为jQuery？) </p>
-<p>所以今天我们来聊一聊 <code>find</code>/<code>findIndex</code>/<code>some</code> 以及 <code>every</code> 这4个使用起来感觉差不多的方法。</p>
+<h2 id="所以今天我们来聊一聊-find-findIndex-some-以及-every-这4个使用起来感觉差不多的方法。"><a href="#所以今天我们来聊一聊-find-findIndex-some-以及-every-这4个使用起来感觉差不多的方法。" class="headerlink" title="所以今天我们来聊一聊 find&#x2F;findIndex&#x2F;some 以及 every 这4个使用起来感觉差不多的方法。"></a>所以今天我们来聊一聊 <code>find</code>&#x2F;<code>findIndex</code>&#x2F;<code>some</code> 以及 <code>every</code> 这4个使用起来感觉差不多的方法。<br>
   </article>
   <div class="article-more-link">
     <a href="/2020/JS-array-find-some-every/#more">阅读全文</a>
@@ -371,14 +374,14 @@
 <p>函数和对其周围状态（lexical environment，词法环境）的引用捆绑在一起构成闭包（closure）。也就是说，闭包可以让你从内部函数访问外部函数作用域。在 JavaScript 中，每当函数被创建，就会在函数生成时生成闭包。</p>
 </blockquote>
 <p>先拿 MDN 上的一个简单的 🌰 来说：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">"Mozilla"</span><span class="token punctuation">;</span> <span class="token comment">// name 是一个被 init 创建的局部变量</span>
-    <span class="token keyword">function</span> <span class="token function">displayName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// displayName() 是内部函数，一个闭包</span>
-        <span class="token function">alert</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 使用了父函数中声明的变量</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token function">displayName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;Mozilla&quot;</span>; <span class="hljs-comment">// name 是一个被 init 创建的局部变量</span>
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">displayName</span>(<span class="hljs-params"></span>) &#123; <span class="hljs-comment">// displayName() 是内部函数，一个闭包</span>
+        <span class="hljs-title function_">alert</span>(name); <span class="hljs-comment">// 使用了父函数中声明的变量</span>
+    &#125;
+    <span class="hljs-title function_">displayName</span>();
+&#125;
+<span class="hljs-title function_">init</span>();</code></pre>
 <p><code>init()</code> 创建了一个局部变量 <code>name</code> 和一个名为 <code>displayName()</code> 的函数。<br><code>displayName()</code> 是定义在 <code>init()</code> 里的内部函数（仅在 <code>init()</code> 函数体内可用），它没有自己的局部变量，<br>然而它可以访问到外部函数的变量，所以 <code>displayName()</code> 可以使用父函数 <code>init()</code> 中声明的变量 <code>name</code> 。</p>
   </article>
   <div class="article-more-link">
@@ -462,9 +465,9 @@
  
   <article class="article-excerpt">
     <p>今天在读一个开源框架的时候看到了一行</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">export</span> <span class="token punctuation">&#123;</span> installer <span class="token keyword">as</span> VueAxios<span class="token punctuation">,</span> service <span class="token keyword">as</span> axios <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">export</span> &#123; installer <span class="hljs-keyword">as</span> <span class="hljs-title class_">VueAxios</span>, service <span class="hljs-keyword">as</span> axios &#125;;</code></pre>
 <p>然后我就 <code>? ? ?</code>，以前一直都不知道这个 <code>as</code>，然后就赶紧百度，结果没有一个匹配的结果。</p>
-<p>然后就只能从阮一峰老师的ES6入门里边找…</p>
+<h2 id="然后就只能从阮一峰老师的ES6入门里边找…"><a href="#然后就只能从阮一峰老师的ES6入门里边找…" class="headerlink" title="然后就只能从阮一峰老师的ES6入门里边找…"></a>然后就只能从阮一峰老师的ES6入门里边找…<br>
   </article>
   <div class="article-more-link">
     <a href="/2020/what-the-export-x-as-x/#more">阅读全文</a>

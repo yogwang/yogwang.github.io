@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -77,7 +80,7 @@
     <!-- 文章内容 article body -->
  
   <article class="article-excerpt">
-    <p>不知不觉庚子年已经过完了，都不知道怎么就过完了看似艰难的一年，甚至觉得中间缺失另一部分的时间，还有很多想做的事情还没来得及做，可能年纪大了吧，真像别人说的，现在的一年只占用了 <strong>1/27</strong> 份的记忆空间，所以回忆起来觉得时间过得特别快，以后也只会越来越快。<br>说实话去年没有什么好回顾的，所以一直拖到正月都过完了都不想动手写，很多事情都不顺心，也出现了很多计划之外的事情。不管是工作还是生活上，特别是感情上，导致全年大部分的时间情绪都不高涨，先回顾一下去年吧。</p>
+    <h2 id="不知不觉庚子年已经过完了，都不知道怎么就过完了看似艰难的一年，甚至觉得中间缺失另一部分的时间，还有很多想做的事情还没来得及做，可能年纪大了吧，真像别人说的，现在的一年只占用了-1-27-份的记忆空间，所以回忆起来觉得时间过得特别快，以后也只会越来越快。说实话去年没有什么好回顾的，所以一直拖到正月都过完了都不想动手写，很多事情都不顺心，也出现了很多计划之外的事情。不管是工作还是生活上，特别是感情上，导致全年大部分的时间情绪都不高涨，先回顾一下去年吧。"><a href="#不知不觉庚子年已经过完了，都不知道怎么就过完了看似艰难的一年，甚至觉得中间缺失另一部分的时间，还有很多想做的事情还没来得及做，可能年纪大了吧，真像别人说的，现在的一年只占用了-1-27-份的记忆空间，所以回忆起来觉得时间过得特别快，以后也只会越来越快。说实话去年没有什么好回顾的，所以一直拖到正月都过完了都不想动手写，很多事情都不顺心，也出现了很多计划之外的事情。不管是工作还是生活上，特别是感情上，导致全年大部分的时间情绪都不高涨，先回顾一下去年吧。" class="headerlink" title="不知不觉庚子年已经过完了，都不知道怎么就过完了看似艰难的一年，甚至觉得中间缺失另一部分的时间，还有很多想做的事情还没来得及做，可能年纪大了吧，真像别人说的，现在的一年只占用了 1&#x2F;27 份的记忆空间，所以回忆起来觉得时间过得特别快，以后也只会越来越快。说实话去年没有什么好回顾的，所以一直拖到正月都过完了都不想动手写，很多事情都不顺心，也出现了很多计划之外的事情。不管是工作还是生活上，特别是感情上，导致全年大部分的时间情绪都不高涨，先回顾一下去年吧。"></a>不知不觉庚子年已经过完了，都不知道怎么就过完了看似艰难的一年，甚至觉得中间缺失另一部分的时间，还有很多想做的事情还没来得及做，可能年纪大了吧，真像别人说的，现在的一年只占用了 <strong>1&#x2F;27</strong> 份的记忆空间，所以回忆起来觉得时间过得特别快，以后也只会越来越快。<br>说实话去年没有什么好回顾的，所以一直拖到正月都过完了都不想动手写，很多事情都不顺心，也出现了很多计划之外的事情。不管是工作还是生活上，特别是感情上，导致全年大部分的时间情绪都不高涨，先回顾一下去年吧。<br>
   </article>
   <div class="article-more-link">
     <a href="/2021/summary-at-the-end-of-2020/#more">阅读全文</a>
@@ -199,20 +202,20 @@
   <article class="article-excerpt">
     <p>这段时间项目迭代比较快，所以很多时候对于记录的状态和类型判断我都是使用的 <strong>魔术字符串</strong> 的形式，但是这样就与代码形成了 “强耦合”， <strong>不利于后期的维护</strong>。</p>
 <p>例如这样的代码结构：</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- 用vue template来举例 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">></span></span>
-        <span class="token comment">&lt;!-- 其它结构 --></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>
-            <span class="token comment">&lt;!-- 直接使用状态值判断 --></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>record.status === 0<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>操作A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-            <span class="token comment">&lt;!-- 使用数组下标判断 --></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span> <span class="token attr-name">v-eles-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>record.status === status[1].key<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>操作B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span> <span class="token attr-name">v-else'</span><span class="token punctuation">></span></span>其他操作<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
-        <span class="token comment">&lt;!-- 其它结构 --></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 用vue template来举例 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 其它结构 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- 直接使用状态值判断 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&#x27;xxx&#x27;</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&#x27;record.status === 0&#x27;</span>&gt;</span>操作A<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- 使用数组下标判断 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&#x27;xxx&#x27;</span> <span class="hljs-attr">v-eles-if</span>=<span class="hljs-string">&#x27;record.status === status[1].key&#x27;</span>&gt;</span>操作B<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&#x27;xxx&#x27;</span> <span class="hljs-attr">v-else</span>&#x27;&gt;</span>其他操作<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 其它结构 --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></code></pre>
 <p>特别是最近一整个分类的类型和状态的都变更了，所以在业务逻辑内的魔术字符串也需要一个一个文件去同步修改，大部分的都被替换了，但还有一些零碎的地方没有被修改到，导致不断有 BUG 被提上来，这就很头疼了。</p>
 <p>所以我就想者怎么把业务逻辑内的魔术字符串使用一种方式替换掉，最开始我想法是把状态集中起来进行管理</p>
   </article>
@@ -254,11 +257,11 @@
  
   <article class="article-excerpt">
     <p>最近在一些 Demo 中经常会看到 <code>Symbol()</code> 这个东西，例如:</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> race <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-  protoss<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  terran<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  zerg<span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> race = &#123;
+  <span class="hljs-attr">protoss</span>: <span class="hljs-title class_">Symbol</span>(),
+  <span class="hljs-attr">terran</span>: <span class="hljs-title class_">Symbol</span>(),
+  <span class="hljs-attr">zerg</span>: <span class="hljs-title class_">Symbol</span>()
+&#125;</code></pre>
 <p>就只能记得大概了，就是赋值一个独特的值，但是这个值具体是什么我想不起来了。<br>所以还是记个笔记加深下印象，省的看了又忘。</p>
 <blockquote>
 <p>ES6 引入了一种新的原始数据类型<code>Symbol</code>，表示独一无二的值。它是 JavaScript 语言的第七种数据类型</p>
@@ -337,7 +340,7 @@
     <!-- 文章内容 article body -->
  
   <article class="article-excerpt">
-    <p><img src="/2020/vue-coding-style-and-lint/banner.jpg" alt="横幅"></p>
+    <p><img src="/./vue-coding-style-and-lint/banner.jpg" alt="横幅"></p>
 <p>最近在考虑把遍码习惯整理一下，一个良好的遍码习惯可以有效减少一个项目的维护成本，<br>因为不可能在整个项目的生命周期中，均由最初的开发人员来维护，或者所有的代码都是由你一个人写出来的，<br>改善代码的可读性，可以让开发人员尽快理解历史的业务代码。</p>
 <p>之前也有研究过 <a href="/2020/choose-the-ESLint-formatting-rule-that-suits-you/">ESlint的格式化风格</a> 选择一款适合自己的来规范自己，但是了解的越多，越觉得还是需要团队互相讨论来找一个大家能都接受的妥协结果，所以最后还是选择了 <code>Prettier</code> ，因为我觉得其它两种风格相对来说太严苛了，很多项目都是自己开发并没有多人合作开发的情况出现，所以使用 Prettier 相对来说所自由一些…</p>
   </article>
@@ -459,7 +462,7 @@
     <!-- 文章内容 article body -->
  
   <article class="article-excerpt">
-    <p>一直以来，我对于 VueJS 中对于使用 <code>ref</code> 注册的组件，在使用 <code>$refs</code> 调用时，为什么有时候是一个 DOM元素/组件实例，是时候会是一个实例<strong>数组</strong>。</p>
+    <p>一直以来，我对于 VueJS 中对于使用 <code>ref</code> 注册的组件，在使用 <code>$refs</code> 调用时，为什么有时候是一个 DOM元素&#x2F;组件实例，是时候会是一个实例<strong>数组</strong>。</p>
 <p>所以在很长一段时间内我觉得 <code>ref</code> 注册的的组件在使用 <code>$refs</code> 调用时有很大的不确定性，虽然我的弹窗组件一直都是用的 <code>$refs.modal.open()</code> 来打开的。</p>
 <p>直到前一段时间，我在一个场景下想在 <code>v-for</code> 循环渲染的组件下 <code>slot</code> 模板中想使用 <code>ref</code> 注册成一个实例集合来调用时，发现怎么样重写返回的都只是一个组件实例，而不是一个组件实例集合。</p>
 <p>所以有了这样一篇笔记。</p>

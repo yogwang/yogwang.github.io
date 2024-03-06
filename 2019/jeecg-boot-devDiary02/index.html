@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -113,176 +116,176 @@
 <h3 id="AntD-官方-DEMO"><a href="#AntD-官方-DEMO" class="headerlink" title="AntD 官方 DEMO"></a>AntD 官方 DEMO</h3><blockquote>
 <p>点击上传用户头像，并使用 beforeUpload 限制用户上传的图片格式和大小。beforeUpload 的返回值可以是一个 Promise 以支持异步处理，如服务端校验等</p>
 </blockquote>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-upload</span>
-    <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>avatar<span class="token punctuation">"</span></span>
-    <span class="token attr-name">listType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>picture-card<span class="token punctuation">"</span></span>
-    <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>avatar-uploader<span class="token punctuation">"</span></span>
-    <span class="token attr-name">:showUploadList</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span>
-    <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://www.mocky.io/v2/5cc8019d300000980a055e76<span class="token punctuation">"</span></span>
-    <span class="token attr-name">:beforeUpload</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>beforeUpload<span class="token punctuation">"</span></span>
-    <span class="token attr-name">@change</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleChange<span class="token punctuation">"</span></span>
-  <span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>imageUrl<span class="token punctuation">"</span></span> <span class="token attr-name">:src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>imageUrl<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>avatar<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-else</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-icon</span> <span class="token attr-name">:type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loading ? <span class="token punctuation">'</span>loading<span class="token punctuation">'</span> : <span class="token punctuation">'</span>plus<span class="token punctuation">'</span><span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ant-upload-text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Upload<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-upload</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-  <span class="token keyword">function</span> <span class="token function">getBase64</span><span class="token punctuation">(</span><span class="token parameter">img<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    reader<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"load"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">callback</span><span class="token punctuation">(</span>reader<span class="token punctuation">.</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    reader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>img<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-        loading<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-        imageUrl<span class="token operator">:</span> <span class="token string">""</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      <span class="token function">handleChange</span><span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">"uploading"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-          <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">"done"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token comment">// Get this url from response in real world.</span>
-          <span class="token function">getBase64</span><span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>originFileObj<span class="token punctuation">,</span> <span class="token parameter">imageUrl</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>imageUrl <span class="token operator">=</span> imageUrl<span class="token punctuation">;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-          <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token function">beforeUpload</span><span class="token punctuation">(</span><span class="token parameter">file</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">const</span> isJPG <span class="token operator">=</span> file<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">"image/jpeg"</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isJPG<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span>$message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"You can only upload JPG file!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">const</span> isLt2M <span class="token operator">=</span> file<span class="token punctuation">.</span>size <span class="token operator">/</span> <span class="token number">1024</span> <span class="token operator">/</span> <span class="token number">1024</span> <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isLt2M<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span>$message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"Image must smaller than 2MB!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> isJPG <span class="token operator">&amp;&amp;</span> isLt2M<span class="token punctuation">;</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a-upload</span></span>
+<span class="hljs-tag">    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;avatar&quot;</span></span>
+<span class="hljs-tag">    <span class="hljs-attr">listType</span>=<span class="hljs-string">&quot;picture-card&quot;</span></span>
+<span class="hljs-tag">    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;avatar-uploader&quot;</span></span>
+<span class="hljs-tag">    <span class="hljs-attr">:showUploadList</span>=<span class="hljs-string">&quot;false&quot;</span></span>
+<span class="hljs-tag">    <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;https://www.mocky.io/v2/5cc8019d300000980a055e76&quot;</span></span>
+<span class="hljs-tag">    <span class="hljs-attr">:beforeUpload</span>=<span class="hljs-string">&quot;beforeUpload&quot;</span></span>
+<span class="hljs-tag">    @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;handleChange&quot;</span></span>
+<span class="hljs-tag">  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;imageUrl&quot;</span> <span class="hljs-attr">:src</span>=<span class="hljs-string">&quot;imageUrl&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;avatar&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a-icon</span> <span class="hljs-attr">:type</span>=<span class="hljs-string">&quot;loading ? &#x27;loading&#x27; : &#x27;plus&#x27;&quot;</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ant-upload-text&quot;</span>&gt;</span>Upload<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a-upload</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript">  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getBase64</span>(<span class="hljs-params">img, callback</span>) &#123;</span>
+<span class="language-javascript">    <span class="hljs-keyword">const</span> reader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>();</span>
+<span class="language-javascript">    reader.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;load&quot;</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">callback</span>(reader.<span class="hljs-property">result</span>));</span>
+<span class="language-javascript">    reader.<span class="hljs-title function_">readAsDataURL</span>(img);</span>
+<span class="language-javascript">  &#125;</span>
+<span class="language-javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="language-javascript">    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">      <span class="hljs-keyword">return</span> &#123;</span>
+<span class="language-javascript">        <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>,</span>
+<span class="language-javascript">        <span class="hljs-attr">imageUrl</span>: <span class="hljs-string">&quot;&quot;</span></span>
+<span class="language-javascript">      &#125;;</span>
+<span class="language-javascript">    &#125;,</span>
+<span class="language-javascript">    <span class="hljs-attr">methods</span>: &#123;</span>
+<span class="language-javascript">      <span class="hljs-title function_">handleChange</span>(<span class="hljs-params">info</span>) &#123;</span>
+<span class="language-javascript">        <span class="hljs-keyword">if</span> (info.<span class="hljs-property">file</span>.<span class="hljs-property">status</span> === <span class="hljs-string">&quot;uploading&quot;</span>) &#123;</span>
+<span class="language-javascript">          <span class="hljs-variable language_">this</span>.<span class="hljs-property">loading</span> = <span class="hljs-literal">true</span>;</span>
+<span class="language-javascript">          <span class="hljs-keyword">return</span>;</span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">        <span class="hljs-keyword">if</span> (info.<span class="hljs-property">file</span>.<span class="hljs-property">status</span> === <span class="hljs-string">&quot;done&quot;</span>) &#123;</span>
+<span class="language-javascript">          <span class="hljs-comment">// Get this url from response in real world.</span></span>
+<span class="language-javascript">          <span class="hljs-title function_">getBase64</span>(info.<span class="hljs-property">file</span>.<span class="hljs-property">originFileObj</span>, <span class="hljs-function"><span class="hljs-params">imageUrl</span> =&gt;</span> &#123;</span>
+<span class="language-javascript">            <span class="hljs-variable language_">this</span>.<span class="hljs-property">imageUrl</span> = imageUrl;</span>
+<span class="language-javascript">            <span class="hljs-variable language_">this</span>.<span class="hljs-property">loading</span> = <span class="hljs-literal">false</span>;</span>
+<span class="language-javascript">          &#125;);</span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">      &#125;,</span>
+<span class="language-javascript">      <span class="hljs-title function_">beforeUpload</span>(<span class="hljs-params">file</span>) &#123;</span>
+<span class="language-javascript">        <span class="hljs-keyword">const</span> isJPG = file.<span class="hljs-property">type</span> === <span class="hljs-string">&quot;image/jpeg&quot;</span>;</span>
+<span class="language-javascript">        <span class="hljs-keyword">if</span> (!isJPG) &#123;</span>
+<span class="language-javascript">          <span class="hljs-variable language_">this</span>.<span class="hljs-property">$message</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;You can only upload JPG file!&quot;</span>);</span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">        <span class="hljs-keyword">const</span> isLt2M = file.<span class="hljs-property">size</span> / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span> &lt; <span class="hljs-number">2</span>;</span>
+<span class="language-javascript">        <span class="hljs-keyword">if</span> (!isLt2M) &#123;</span>
+<span class="language-javascript">          <span class="hljs-variable language_">this</span>.<span class="hljs-property">$message</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Image must smaller than 2MB!&quot;</span>);</span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">        <span class="hljs-keyword">return</span> isJPG &amp;&amp; isLt2M;</span>
+<span class="language-javascript">      &#125;</span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>
   // css style...
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></code></pre>
 
 <p>第一天的时候，我直接复制的 <a target="_blank" rel="noopener" href="https://vue.ant.design/components/upload-cn/#%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F">用户头像 DEMO</a>，然后直接使用了 <code>defaultFileList</code> 设置默认头像但是没效果，依然是空白。</p>
 <p>找啊找啊找，发现 DEMO 上设置了 <code>:showUploadList=&quot;false&quot;</code>，删之…🙄 还是不行，继续查问题。</p>
 <p>发现 <code>defaultFileList</code> 是不能异步设置的，要在组件初始化完成之前就设置好，或者使用 <code>fileList</code> 来设置默认头像 🙃，</p>
 <p>emmm….怎么还有一个空白头像，原来还有一个 <code>img</code> 标签，删之。</p>
 <p>现在的 <code>upload</code> 组件是这样的：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span>a<span class="token operator">-</span>upload
-  action<span class="token operator">=</span><span class="token string">"https://www.mocky.io/v2/5cc8019d300000980a055e76"</span>
-  listType<span class="token operator">=</span><span class="token string">"picture-card"</span>
-  <span class="token operator">:</span>defaultFileList<span class="token operator">=</span><span class="token string">"fileList"</span>
-  @change<span class="token operator">=</span><span class="token string">"handleChange"</span>
-<span class="token operator">></span>
-  <span class="token operator">&lt;</span>div v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">"fileList.length &lt; 1"</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span>a<span class="token operator">-</span>icon <span class="token operator">:</span>type<span class="token operator">=</span><span class="token string">"loading ? 'loading' : 'plus'"</span> <span class="token operator">/</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"ant-upload-text"</span><span class="token operator">></span>Upload<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">-</span>upload<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js">&lt;a-upload
+  action=<span class="hljs-string">&quot;https://www.mocky.io/v2/5cc8019d300000980a055e76&quot;</span>
+  listType=<span class="hljs-string">&quot;picture-card&quot;</span>
+  :defaultFileList=<span class="hljs-string">&quot;fileList&quot;</span>
+  @change=<span class="hljs-string">&quot;handleChange&quot;</span>
+&gt;
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;fileList.length &lt; 1&quot;</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">a-icon</span> <span class="hljs-attr">:type</span>=<span class="hljs-string">&quot;loading ? &#x27;loading&#x27; : &#x27;plus&#x27;&quot;</span> /&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ant-upload-text&quot;</span>&gt;</span>Upload<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+&lt;/a-upload&gt;</code></pre>
 
 <p>好，现在基本显示没问题了，但是先要删除原先的头像再上传</p>
 <p>等等..删除了头像怎么没出现上传头像按钮？handleChange 事件要修改成：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">handleChange</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">&#123;</span> fileList <span class="token punctuation">&#125;</span></span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">this</span><span class="token punctuation">.</span>fileList <span class="token operator">=</span> fileList<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-title function_">handleChange</span>(<span class="hljs-params">&#123; fileList &#125;</span>) &#123;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">fileList</span> = fileList;
+&#125;,</code></pre>
 
 <p>完事，基本完成。<br>但是…</p>
 <blockquote>
 <p>需求：点击头像就能修改，而不是先要删除原先的头像再上传</p>
 </blockquote>
 <p>所以结合两个官方 DEMO，最后修改如下：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span>template<span class="token operator">></span>
-  <span class="token comment">// 上下文...</span>
-  <span class="token operator">&lt;</span>a<span class="token operator">-</span>upload
-    listType<span class="token operator">=</span><span class="token string">"picture-card"</span>
-    <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"avatar-uploader"</span>
-    <span class="token operator">:</span>showUploadList<span class="token operator">=</span><span class="token string">"false"</span>
-    <span class="token operator">:</span>action<span class="token operator">=</span><span class="token string">"uploadURL"</span>
-    <span class="token operator">:</span>beforeUpload<span class="token operator">=</span><span class="token string">"beforeUpload"</span>
-    @change<span class="token operator">=</span><span class="token string">"handleChange"</span>
-  <span class="token operator">></span>
-    <span class="token operator">&lt;</span>img v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">"imageUrl"</span> <span class="token operator">:</span>src<span class="token operator">=</span><span class="token string">"imageUrl"</span> alt<span class="token operator">=</span><span class="token string">"avatar"</span> style<span class="token operator">=</span><span class="token string">"width:100%;"</span> <span class="token operator">/</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span>div v<span class="token operator">-</span><span class="token keyword">else</span><span class="token operator">></span>
-      <span class="token operator">&lt;</span>a<span class="token operator">-</span>icon <span class="token operator">:</span>type<span class="token operator">=</span><span class="token string">"loading ? 'loading' : 'plus'"</span> <span class="token operator">/</span><span class="token operator">></span>
-      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"ant-upload-text"</span><span class="token operator">></span>Upload<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-  <span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">-</span>upload<span class="token operator">></span>
-  <span class="token comment">// 上下文...</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span>
-<span class="token operator">&lt;</span>script<span class="token operator">></span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      url<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-        upload<span class="token operator">:</span> <span class="token string">'/project/upload'</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-
-      imageUrl<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
-      loading<span class="token operator">:</span> <span class="token boolean">false</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  computed<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    <span class="token function">uploadURL</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>window<span class="token punctuation">.</span>_CONFIG<span class="token punctuation">[</span><span class="token string">'domianURL'</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span><span class="token keyword">this</span><span class="token punctuation">.</span>url<span class="token punctuation">.</span>upload<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  methods<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-    <span class="token function">handleChange</span><span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">'uploading'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">true</span>
-        <span class="token keyword">return</span>
-      <span class="token punctuation">&#125;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">'done'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token function">getBase64</span><span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>originFileObj<span class="token punctuation">,</span> <span class="token parameter">imageUrl</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span>imageUrl <span class="token operator">=</span> imageUrl
-          <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">false</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-        <span class="token comment">// 这里可以放上传成功后台返回的图片url的表单赋值，使用 form.setFieldsValue 给表单赋值</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token function">beforeUpload</span><span class="token punctuation">(</span><span class="token parameter">file</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">const</span> isJPG <span class="token operator">=</span> file<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'image/jpeg'</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isJPG<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>$message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'You can only upload JPG file!'</span><span class="token punctuation">)</span>
-      <span class="token punctuation">&#125;</span>
-      <span class="token keyword">const</span> isLt2M <span class="token operator">=</span> file<span class="token punctuation">.</span>size <span class="token operator">/</span> <span class="token number">1024</span> <span class="token operator">/</span> <span class="token number">1024</span> <span class="token operator">&lt;</span> <span class="token number">2</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isLt2M<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>$message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'Image must smaller than 2MB!'</span><span class="token punctuation">)</span>
-      <span class="token punctuation">&#125;</span>
-      <span class="token keyword">return</span> isJPG <span class="token operator">&amp;&amp;</span> isLt2M
-    <span class="token punctuation">&#125;</span>
-    <span class="token comment">// 初始图片赋值等方法</span>
-    <span class="token operator">...</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
-<span class="token operator">&lt;</span>style<span class="token operator">></span>
-<span class="token comment">// css style...</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js">&lt;template&gt;
+  <span class="hljs-comment">// 上下文...</span>
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">a-upload</span></span></span>
+<span class="hljs-tag"><span class="language-xml">    <span class="hljs-attr">listType</span>=<span class="hljs-string">&quot;picture-card&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;avatar-uploader&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">    <span class="hljs-attr">:showUploadList</span>=<span class="hljs-string">&quot;false&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">    <span class="hljs-attr">:action</span>=<span class="hljs-string">&quot;uploadURL&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">    <span class="hljs-attr">:beforeUpload</span>=<span class="hljs-string">&quot;beforeUpload&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">    @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;handleChange&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">  &gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;imageUrl&quot;</span> <span class="hljs-attr">:src</span>=<span class="hljs-string">&quot;imageUrl&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;avatar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width:100%;&quot;</span> /&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">a-icon</span> <span class="hljs-attr">:type</span>=<span class="hljs-string">&quot;loading ? &#x27;loading&#x27; : &#x27;plus&#x27;&quot;</span> /&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ant-upload-text&quot;</span>&gt;</span>Upload<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">a-upload</span>&gt;</span></span>
+  <span class="hljs-comment">// 上下文...</span>
+&lt;/template&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span>()&#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">url</span>:&#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">upload</span>: <span class="hljs-string">&#x27;/project/upload&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml"></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">imageUrl</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span></span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">computed</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">uploadURL</span>(<span class="hljs-params"></span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;<span class="hljs-variable language_">window</span>._CONFIG[<span class="hljs-string">&#x27;domianURL&#x27;</span>]&#125;</span><span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.url.upload&#125;</span>`</span></span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">methods</span>:&#123;</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">handleChange</span>(<span class="hljs-params">info</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">if</span> (info.<span class="hljs-property">file</span>.<span class="hljs-property">status</span> === <span class="hljs-string">&#x27;uploading&#x27;</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">this</span>.<span class="hljs-property">loading</span> = <span class="hljs-literal">true</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">return</span></span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">if</span> (info.<span class="hljs-property">file</span>.<span class="hljs-property">status</span> === <span class="hljs-string">&#x27;done&#x27;</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-title function_">getBase64</span>(info.<span class="hljs-property">file</span>.<span class="hljs-property">originFileObj</span>, <span class="hljs-function"><span class="hljs-params">imageUrl</span> =&gt;</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-variable language_">this</span>.<span class="hljs-property">imageUrl</span> = imageUrl</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-variable language_">this</span>.<span class="hljs-property">loading</span> = <span class="hljs-literal">false</span></span></span>
+<span class="language-javascript"><span class="language-xml">        &#125;)</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// 这里可以放上传成功后台返回的图片url的表单赋值，使用 form.setFieldsValue 给表单赋值</span></span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">beforeUpload</span>(<span class="hljs-params">file</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">const</span> isJPG = file.<span class="hljs-property">type</span> === <span class="hljs-string">&#x27;image/jpeg&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">if</span> (!isJPG) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">this</span>.<span class="hljs-property">$message</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;You can only upload JPG file!&#x27;</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">const</span> isLt2M = file.<span class="hljs-property">size</span> / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span> &lt; <span class="hljs-number">2</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">if</span> (!isLt2M) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">this</span>.<span class="hljs-property">$message</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Image must smaller than 2MB!&#x27;</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">return</span> isJPG &amp;&amp; isLt2M</span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// 初始图片赋值等方法</span></span></span>
+<span class="language-javascript"><span class="language-xml">    ...</span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;</span></span>
+<span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span>
+<span class="language-xml">// css style...</span>
+<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span></code></pre>
 
 <h2 id="弹出框的表单值是怎么设置的？"><a href="#弹出框的表单值是怎么设置的？" class="headerlink" title="弹出框的表单值是怎么设置的？"></a>弹出框的表单值是怎么设置的？</h2><p>在 <code>edit()</code> 方法中传入了当前对象 <code>record</code>。</p>
 <p>AntD 封装了表单域 <code>&lt;Form.Item /&gt;</code> ，需要使用 <code>Form.create</code> 来创建表单实例，<br>而且设置表单的值要用 <code>form.setFieldsValue</code> （有些时候需要确保子组件完成渲染 <code>$nextTick()</code> 后才执行赋值操作）</p>
-<p>且使用 <code>pick()</code><sup><a href="#1">[1]</a></sup> 函数从指定的对象中挑选出需要的任意 <code>key</code> 属性。</p>
-<p>特殊控件(select,radio,checkbox)需要使用 <code>v-decorator</code> 来绑定数据 <sup><a href="#2">[2]</a></sup></p>
+<p>且使用 <code>pick()</code><sup><a href='#1'>[1]</a></sup> 函数从指定的对象中挑选出需要的任意 <code>key</code> 属性。</p>
+<p>特殊控件(select,radio,checkbox)需要使用 <code>v-decorator</code> 来绑定数据 <sup><a href='#2'>[2]</a></sup></p>
 <h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><ul>
 <li>1,官方 DEMO 的代码差异比较大，特别是 <code>handleChange</code> 部分，需要细看。</li>
 <li>2,对后台返回的数据有要求。</li>
 <li>3,表单修改需要使用 <code>setFieldsValue</code> 来动态设置其他控件的值。</li>
 </ul>
 <hr>
-<p><per id="1"> [ 注 1 ]: <code>pick()</code> 的坑待填，用的 lodash.pick 函数</per></p>
-<p><per id="2"> [ 注 2 ]: 这里的 <code>v-decorator</code> 挖坑，看后边什么时候填上</per></p>
+<p><per id='1'> [ 注 1 ]: <code>pick()</code> 的坑待填，用的 lodash.pick 函数</per></p>
+<p><per id='2'> [ 注 2 ]: 这里的 <code>v-decorator</code> 挖坑，看后边什么时候填上</per></p>
  
   </article>
 

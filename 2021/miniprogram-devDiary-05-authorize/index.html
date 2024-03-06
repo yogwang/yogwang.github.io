@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -106,29 +109,29 @@
 
 <h2 id="开放接口"><a href="#开放接口" class="headerlink" title="开放接口"></a>开放接口</h2><h4 id="1、-微信登陆"><a href="#1、-微信登陆" class="headerlink" title="1、 微信登陆"></a>1、 微信登陆</h4><p>如果只是单纯需要获取用户的微信 <code>openId</code> 来<strong>关联</strong>用户账户，则可以直接调用 <code>wx.login()</code> 方法，把获取的 <code>code</code>(登录凭证) 传递给后端就可以，后端可以根据 <code>code</code> 请求微信的服务器端Api来换取 [ <code>openid</code>, <code>unionid</code>, <code>session_key</code> ]</p>
 <p>一个简单的示例：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// login.js</span>
-<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  <span class="token function">onLoad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token comment">// 可以绑定在页面中的某个按钮上，也可以页面载入后就直接请求</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onWechatLogin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token comment">// 微信登陆操作</span>
-  <span class="token function">onWechatLogin</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 请求微信登陆api</span>
-    wx<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-      <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">wxRes</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-          code<span class="token operator">:</span> wxRes<span class="token punctuation">.</span>code
-        <span class="token punctuation">&#125;</span>
-        <span class="token comment">// 请求后端登陆API，这个方法是我自己封装的请求函数，</span>
-        <span class="token comment">// 具体请看 小程序学习日记 L04 网络请求</span>
-        <span class="token function">postAction</span><span class="token punctuation">(</span><span class="token string">"/pub/weChat/login"</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-          <span class="token comment">// 服务器返回数据后的操作</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// login.js</span>
+<span class="hljs-title class_">Page</span>(&#123;
+  <span class="hljs-title function_">onLoad</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-comment">// 可以绑定在页面中的某个按钮上，也可以页面载入后就直接请求</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">onWechatLogin</span>()
+  &#125;
+  <span class="hljs-comment">// 微信登陆操作</span>
+  onWechatLogin () &#123;
+    <span class="hljs-comment">// 请求微信登陆api</span>
+    wx.<span class="hljs-title function_">login</span>(&#123;
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">wxRes</span>) =&gt;</span> &#123;
+        <span class="hljs-keyword">const</span> data = &#123;
+          <span class="hljs-attr">code</span>: wxRes.<span class="hljs-property">code</span>
+        &#125;
+        <span class="hljs-comment">// 请求后端登陆API，这个方法是我自己封装的请求函数，</span>
+        <span class="hljs-comment">// 具体请看 小程序学习日记 L04 网络请求</span>
+        <span class="hljs-title function_">postAction</span>(<span class="hljs-string">&quot;/pub/weChat/login&quot;</span>, data).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;
+          <span class="hljs-comment">// 服务器返回数据后的操作</span>
+        &#125;)
+      &#125;
+    &#125;)
+  &#125;,
+&#125;)</code></pre>
 
 <ul>
 <li>登陆接口文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html">wx.login | 微信开放文档</a></li>
@@ -136,90 +139,90 @@
 <li>服务器端文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/login/auth.code2Session.html">auth.code2Session | 微信开放文档</a></li>
 </ul>
 <h4 id="2、-获取用户资料"><a href="#2、-获取用户资料" class="headerlink" title="2、 获取用户资料"></a>2、 获取用户资料</h4><p>在早些时候是调用微信的 <code>wx.getUserInfo</code> 接口，但是从我开始写小程序的时间，正好是 <code>wx.getUserProfile()</code> 更新替代的时候，所以我的获取用户资料的demo就直接使用 <code>wx.getUserProfile()</code> 接口。<br>其实如果不需要保存用户头像和昵称，可以使用微信新提供的 <code>&lt;open-data&gt;</code> 组件直接在界面中展示 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/s/vbdmRcmV67YB">预览代码片段</a>。</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- 直接使用 open-data 组件展示用户头像和昵称 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>open-data</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>userAvatarUrl<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>open-data</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>open-data</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>userNickName<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>open-data</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 直接使用 open-data 组件展示用户头像和昵称 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">open-data</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;userAvatarUrl&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">open-data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">open-data</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;userNickName&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">open-data</span>&gt;</span></code></pre>
 <p>然后需要做头像固定宽高圆角之类样式的，给 <code>&lt;open-data&gt;</code> 添加 <code>className</code> 就可以了。<br>不过这不在拉取授权的范畴内，所以只是举例，如果需要获取用户资料的需要以下方式来唤起授权</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!--  page.wxml --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token comment">&lt;!-- 需要在按钮上绑定获取用户信息的事件来触发 wx.getUserProfile --></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">bindtap</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>getUserProfile<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">wx:</span>if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&#123;&#123;!hasUserInfo&#125;&#125;<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> 获取头像昵称 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name"><span class="token namespace">wx:</span>else</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>image</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&#123;&#123; userInfo.avatarUrl &#125;&#125;<span class="token punctuation">"</span></span> <span class="token attr-name">mode</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>cover<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>image</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>text</span><span class="token punctuation">></span></span>&#123;&#123; userInfo.nickName &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>text</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// page.js</span>
-<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  data<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    userInfo<span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    hasUserInfo<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function">getUserProfile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 要直接在按钮绑定的方法内调用 wx.getUserProfile</span>
-    <span class="token comment">// 不能在 callback 或者在 promise.then 中调用</span>
-    wx<span class="token punctuation">.</span><span class="token function">getUserProfile</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-      desc<span class="token operator">:</span> <span class="token string">'用于完善会员资料'</span><span class="token punctuation">,</span> 
-      <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-          userInfo<span class="token operator">:</span> res<span class="token punctuation">.</span>userInfo<span class="token punctuation">,</span>
-          hasUserInfo<span class="token operator">:</span> <span class="token boolean">true</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!--  page.wxml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- 需要在按钮上绑定获取用户信息的事件来触发 wx.getUserProfile --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;getUserProfile&quot;</span> <span class="hljs-attr">wx:if</span>=<span class="hljs-string">&quot;&#123;&#123;!hasUserInfo&#125;&#125;&quot;</span>&gt;</span> 获取头像昵称 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:else</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">image</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&#123;&#123; userInfo.avatarUrl &#125;&#125;&quot;</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">&quot;cover&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">image</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>&#123;&#123; userInfo.nickName &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// page.js</span>
+<span class="hljs-title class_">Page</span>(&#123;
+  <span class="hljs-attr">data</span>: &#123;
+    <span class="hljs-attr">userInfo</span>: &#123;&#125;,
+    <span class="hljs-attr">hasUserInfo</span>: <span class="hljs-literal">false</span>,
+  &#125;,
+  <span class="hljs-title function_">getUserProfile</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// 要直接在按钮绑定的方法内调用 wx.getUserProfile</span>
+    <span class="hljs-comment">// 不能在 callback 或者在 promise.then 中调用</span>
+    wx.<span class="hljs-title function_">getUserProfile</span>(&#123;
+      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;用于完善会员资料&#x27;</span>, 
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(&#123;
+          <span class="hljs-attr">userInfo</span>: res.<span class="hljs-property">userInfo</span>,
+          <span class="hljs-attr">hasUserInfo</span>: <span class="hljs-literal">true</span>
+        &#125;)
+      &#125;
+    &#125;)
+  &#125;,
+&#125;)</code></pre>
 
 <ul>
 <li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/user-info/wx.getUserProfile.html">用户信息 | 微信开放文档</a></li>
 <li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html">open-data | 微信开放文档</a></li>
 </ul>
 <h4 id="3、-获取用户手机号"><a href="#3、-获取用户手机号" class="headerlink" title="3、 获取用户手机号"></a>3、 获取用户手机号</h4><p>和以前的 <code>wx.getUserInfo</code> 获取微信用户个人信息一样，需要指定 <code>open-type</code> 的值为 <code>getPhoneNumber</code>，以及使用 <code>bindgetphonenumber</code> 绑定事件。<br>在用户确认授权之后可以在 <code>event</code> 获取到加密后的 用户信息（<code>encryptedData</code>），以及加密向量（<code>iv</code>）等信息，最后就看需不需要回填到前台，如果不需要就直接在后端处理就可以了。</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- page.wxml --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">open-type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>getPhoneNumber<span class="token punctuation">"</span></span> <span class="token attr-name">bindgetphonenumber</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>getPhoneNumber<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>获取手机号<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// page.js</span>
-<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  <span class="token function">getPhoneNumber</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 检查服务器端 sessionKey 是否过期</span>
-    wx<span class="token punctuation">.</span><span class="token function">checkSession</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-      <span class="token function">success</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// sessionKey 未过期</span>
-        <span class="token keyword">const</span> <span class="token punctuation">&#123;</span> iv<span class="token punctuation">,</span> encryptedData <span class="token punctuation">&#125;</span> <span class="token operator">=</span> e<span class="token punctuation">.</span>detail
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>iv<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          wx<span class="token punctuation">.</span><span class="token function">showToast</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> title<span class="token operator">:</span><span class="token string">'授权失败请重试'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-          <span class="token keyword">return</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-          iv<span class="token operator">:</span>iv<span class="token punctuation">,</span> <span class="token comment">// 加密算法的初始向量</span>
-          encryptedData<span class="token operator">:</span>encryptedData <span class="token comment">// 加密后的用户信息</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token comment">// 请求服务端解密手机号</span>
-        <span class="token function">postAction</span><span class="token punctuation">(</span><span class="token string">"/user/weChat/getPhoneNumber"</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token operator">=></span><span class="token punctuation">&#123;</span>
-          <span class="token comment">// 根据是否需要回填手机号做对应操作</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token function">fail</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// sessionKey过期，重新做登录动作，</span>
-        <span class="token comment">// 让后端更新 sessionKey，并提示用户重新授权</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- page.wxml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">open-type</span>=<span class="hljs-string">&quot;getPhoneNumber&quot;</span> <span class="hljs-attr">bindgetphonenumber</span>=<span class="hljs-string">&quot;getPhoneNumber&quot;</span>&gt;</span>获取手机号<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// page.js</span>
+<span class="hljs-title class_">Page</span>(&#123;
+  getPhoneNumber (e) &#123;
+    <span class="hljs-comment">// 检查服务器端 sessionKey 是否过期</span>
+    wx.<span class="hljs-title function_">checkSession</span>(&#123;
+      success () &#123;
+        <span class="hljs-comment">// sessionKey 未过期</span>
+        <span class="hljs-keyword">const</span> &#123; iv, encryptedData &#125; = e.<span class="hljs-property">detail</span>
+        <span class="hljs-keyword">if</span>(!iv) &#123;
+          wx.<span class="hljs-title function_">showToast</span>(&#123; <span class="hljs-attr">title</span>:<span class="hljs-string">&#x27;授权失败请重试&#x27;</span> &#125;)
+          <span class="hljs-keyword">return</span>
+        &#125;
+        <span class="hljs-keyword">const</span> data = &#123;
+          <span class="hljs-attr">iv</span>:iv, <span class="hljs-comment">// 加密算法的初始向量</span>
+          <span class="hljs-attr">encryptedData</span>:encryptedData <span class="hljs-comment">// 加密后的用户信息</span>
+        &#125;
+        <span class="hljs-comment">// 请求服务端解密手机号</span>
+        <span class="hljs-title function_">postAction</span>(<span class="hljs-string">&quot;/user/weChat/getPhoneNumber&quot;</span>, data).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
+          <span class="hljs-comment">// 根据是否需要回填手机号做对应操作</span>
+        &#125;)
+      &#125;,
+      fail () &#123;
+        <span class="hljs-comment">// sessionKey过期，重新做登录动作，</span>
+        <span class="hljs-comment">// 让后端更新 sessionKey，并提示用户重新授权</span>
+      &#125;
+    &#125;)
+  &#125;
+&#125;)</code></pre>
 
 <blockquote>
 <p><strong>注意</strong>：在回调中调用 <code>wx.login</code> 登录，可能会刷新登录态。此时服务器使用 <code>code</code> 换取的 <code>sessionKey</code> 不是加密时使用的 <code>sessionKey</code>，导致解密失败。建议开发者提前进行 <code>login</code>；或者在回调中先使用 <code>checkSession</code> 进行登录态检查，避免 <code>login</code> 刷新登录态。</p>
 </blockquote>
 <p>解密后的数据为：</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-  &quot;phoneNumber&quot;: &quot;13580006666&quot;, &#x2F;&#x2F; 用户绑定的手机号（国外手机号会有国际区号）
-  &quot;purePhoneNumber&quot;: &quot;13580006666&quot;, &#x2F;&#x2F; 没有国际区号的手机号
-  &quot;countryCode&quot;: &quot;86&quot;, &#x2F;&#x2F; 国际区号
-  &quot;watermark&quot;: &#x2F;&#x2F; 数据水印
-  &#123;
-    &quot;appid&quot;:&quot;APPID&quot;, &#x2F;&#x2F; 归属小程序appid
-    &quot;timestamp&quot;: TIMESTAMP &#x2F;&#x2F; 数据获取的时间戳
-  &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;phoneNumber&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;13580006666&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 用户绑定的手机号（国外手机号会有国际区号）</span>
+  <span class="hljs-attr">&quot;purePhoneNumber&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;13580006666&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 没有国际区号的手机号</span>
+  <span class="hljs-attr">&quot;countryCode&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;86&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 国际区号</span>
+  <span class="hljs-attr">&quot;watermark&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-comment">// 数据水印</span>
+  <span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;appid&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;APPID&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 归属小程序appid</span>
+    <span class="hljs-attr">&quot;timestamp&quot;</span><span class="hljs-punctuation">:</span> TIMESTAMP <span class="hljs-comment">// 数据获取的时间戳</span>
+  <span class="hljs-punctuation">&#125;</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html">获取手机号 | 微信开放文档</a></li>
 <li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.checkSession.html">wx.checkSession | 微信开放文档</a></li>
@@ -229,7 +232,7 @@
 <h4 id="5、-获取收货地址"><a href="#5、-获取收货地址" class="headerlink" title="5、 获取收货地址"></a>5、 获取收货地址</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/address/wx.chooseAddress.html">收货地址 | 微信开放文档</a></p>
 <h4 id="6、-获取微信运动"><a href="#6、-获取微信运动" class="headerlink" title="6、 获取微信运动"></a>6、 获取微信运动</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/werun/wx.shareToWeRun.html">微信运动 | 微信开放文档</a></p>
 <h4 id="7、-获取自定义权限"><a href="#7、-获取自定义权限" class="headerlink" title="7、 获取自定义权限"></a>7、 获取自定义权限</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/authorize/wx.authorize.html">wx.authorize | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/authorize.html">授权 | 微信开放文档</a></p>
-<h1 id="————–-未完成-—————"><a href="#————–-未完成-—————" class="headerlink" title="————– 未完成 —————"></a>————– 未完成 —————</h1><h2 id="🔊-尾声"><a href="#🔊-尾声" class="headerlink" title="🔊 尾声"></a>🔊 尾声</h2><h4 id="●-2021-04-15后（基础库2-10-4起）-微信调整了-wx-getUserInfo-接口"><a href="#●-2021-04-15后（基础库2-10-4起）-微信调整了-wx-getUserInfo-接口" class="headerlink" title="● 2021/04/15后（基础库2.10.4起） 微信调整了 wx.getUserInfo 接口"></a>● 2021/04/15后（基础库2.10.4起） 微信调整了 <code>wx.getUserInfo</code> 接口</h4><p>现在已经<strong>只会返回匿名用户信息</strong>了，加密信息（<code>encryptedData</code>）中的 <code>openID</code>和<code>unionID</code>还可以获取，如果要获取用户个人信息，则需要使用 <code>wx.getUserProfile</code> 来代替，会唤起微信的授权窗口。<br>调整说明 👉 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/doc/000cacfa20ce88df04cb468bc52801">小程序登录、用户信息相关接口调整说明 | 微信开放社区</a></p>
+<h1 id="————–-未完成-—————"><a href="#————–-未完成-—————" class="headerlink" title="————– 未完成 —————"></a>————– 未完成 —————</h1><h2 id="🔊-尾声"><a href="#🔊-尾声" class="headerlink" title="🔊 尾声"></a>🔊 尾声</h2><h4 id="●-2021-04-15后（基础库2-10-4起）-微信调整了-wx-getUserInfo-接口"><a href="#●-2021-04-15后（基础库2-10-4起）-微信调整了-wx-getUserInfo-接口" class="headerlink" title="● 2021&#x2F;04&#x2F;15后（基础库2.10.4起） 微信调整了 wx.getUserInfo 接口"></a>● 2021&#x2F;04&#x2F;15后（基础库2.10.4起） 微信调整了 <code>wx.getUserInfo</code> 接口</h4><p>现在已经<strong>只会返回匿名用户信息</strong>了，加密信息（<code>encryptedData</code>）中的 <code>openID</code>和<code>unionID</code>还可以获取，如果要获取用户个人信息，则需要使用 <code>wx.getUserProfile</code> 来代替，会唤起微信的授权窗口。<br>调整说明 👉 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/doc/000cacfa20ce88df04cb468bc52801">小程序登录、用户信息相关接口调整说明 | 微信开放社区</a></p>
 <h2 id="资源-📚"><a href="#资源-📚" class="headerlink" title="资源 📚"></a>资源 📚</h2><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html">开放接口 | 微信开放文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api-backend/">服务端 | 微信开放文档</a></p>
  
   </article>

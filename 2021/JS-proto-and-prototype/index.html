@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -105,19 +108,19 @@
 <p>一句话解释：<strong>对象 <code>__proto__</code> 属性是JS内置的，它所对应值是原型对象的 <code>prototype</code> ；而 <code>prototype</code> 就是你自己写的原型属性、方法 加上 JS原型内置的属性、方法</strong></p>
 <span id="more"></span>
 
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> one <span class="token operator">=</span> <span class="token punctuation">&#123;</span>x<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> two <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> one = &#123;<span class="hljs-attr">x</span>: <span class="hljs-number">1</span>&#125;;
+<span class="hljs-keyword">var</span> two = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>();
 
-one<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype <span class="token comment">// true</span>
-Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>one<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype <span class="token comment">// true</span>
+one.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> <span class="hljs-comment">// true</span>
+<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getPrototypeOf</span>(one) === <span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> <span class="hljs-comment">// true</span>
 
-two<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype <span class="token comment">// true</span>
-Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>two<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype <span class="token comment">// true</span>
+two.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> <span class="hljs-comment">// true</span>
+<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getPrototypeOf</span>(two) === <span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> <span class="hljs-comment">// true</span>
 
-one<span class="token punctuation">.</span>toString <span class="token operator">===</span> one<span class="token punctuation">.</span>__proto__<span class="token punctuation">.</span>toString <span class="token comment">// true</span>
-two<span class="token punctuation">.</span>toString <span class="token operator">===</span> two<span class="token punctuation">.</span>__proto__<span class="token punctuation">.</span>toString <span class="token comment">// true</span>
+one.<span class="hljs-property">toString</span> === one.<span class="hljs-property">__proto__</span>.<span class="hljs-property">toString</span> <span class="hljs-comment">// true</span>
+two.<span class="hljs-property">toString</span> === two.<span class="hljs-property">__proto__</span>.<span class="hljs-property">toString</span> <span class="hljs-comment">// true</span>
 
-two<span class="token punctuation">.</span>toString <span class="token operator">===</span> one<span class="token punctuation">.</span>__proto__<span class="token punctuation">.</span>toString <span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+two.<span class="hljs-property">toString</span> === one.<span class="hljs-property">__proto__</span>.<span class="hljs-property">toString</span> <span class="hljs-comment">// true</span></code></pre>
 <h4 id="那现在的疑问就是-proto-和-prototype-的使用"><a href="#那现在的疑问就是-proto-和-prototype-的使用" class="headerlink" title="那现在的疑问就是 __proto__ 和 prototype 的使用"></a>那现在的疑问就是 <code>__proto__</code> 和 <code>prototype</code> 的使用</h4><ol>
 <li><code>__proto__</code> 不是ES的标准，单纯是为了方便让用户可以直接获取，推荐通过 <code>Object.getPrototypeOf()</code> 来获取，并不推荐直接通过这方法来修改原型</li>
 <li><code>prototype</code> 是创建函数时，JS为这个函数自动添加的属性，通过手动配置 <code>prototype</code> 属性，或者指向现存的对象来继承该对象。</li>
@@ -134,65 +137,65 @@ two<span class="token punctuation">.</span>toString <span class="token operator"
 <p>注意: 理解对象的原型（<code>__proto__</code>属性）与 构造函数的 <code>prototype</code> 属性之间的区别是很重要的。前者是每个<strong>实例</strong>上都有的<strong>属性</strong>，后者是<strong>构造函数</strong>的<strong>属性</strong>。</p>
 </blockquote>
 <p>在JavaScript中，函数可以有属性。 每个函数都有一个特殊的属性叫作 <code>prototype</code> (原型)，通过给 <code>prototype</code> 添加属性和方法，来为以这个 函数 为 <strong>基础模型</strong> 的 <strong>实例对象</strong> 继承下来函数上所有的属性。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 从函数里创建一个对象</span>
-<span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token keyword">this</span><span class="token punctuation">.</span>b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// 在f函数的原型上定义属性</span>
-f<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>b <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-f<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>c <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-comment">// 从函数里创建一个对象</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">f</span>(<span class="hljs-params"></span>) &#123;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">a</span> = <span class="hljs-number">1</span>;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">b</span> = <span class="hljs-number">2</span>;
+&#125;
+<span class="hljs-comment">// 在f函数的原型上定义属性</span>
+f.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">b</span> = <span class="hljs-number">3</span>;
+f.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">c</span> = <span class="hljs-number">4</span>;
 
-<span class="token comment">// 通过new操作符来创建基于f()的对象实例</span>
-<span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// 输出一下 对象o</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span>
-<span class="token comment">/* log
- ƒ &#123; a:1, b:2 &#125;
-    a: 1
-    b: 2
-    __proto__:
-      b: 3
-      c: 4
-      constructor: ƒ f()
-        arguments: null
-        caller: null
-        length: 0
-        name: "f"
-        prototype: &#123;b: 3, c: 4, constructor: ƒ&#125;
-        __proto__: ƒ ()
-        [[FunctionLocation]]: VM510:2
-        [[Scopes]]: Scopes[2]
-      __proto__: Object
-*/</span>
+<span class="hljs-comment">// 通过new操作符来创建基于f()的对象实例</span>
+<span class="hljs-keyword">let</span> o = <span class="hljs-keyword">new</span> <span class="hljs-title function_">f</span>();
+<span class="hljs-comment">// 输出一下 对象o</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(o)
+<span class="hljs-comment">/* log</span>
+<span class="hljs-comment"> ƒ &#123; a:1, b:2 &#125;</span>
+<span class="hljs-comment">    a: 1</span>
+<span class="hljs-comment">    b: 2</span>
+<span class="hljs-comment">    __proto__:</span>
+<span class="hljs-comment">      b: 3</span>
+<span class="hljs-comment">      c: 4</span>
+<span class="hljs-comment">      constructor: ƒ f()</span>
+<span class="hljs-comment">        arguments: null</span>
+<span class="hljs-comment">        caller: null</span>
+<span class="hljs-comment">        length: 0</span>
+<span class="hljs-comment">        name: &quot;f&quot;</span>
+<span class="hljs-comment">        prototype: &#123;b: 3, c: 4, constructor: ƒ&#125;</span>
+<span class="hljs-comment">        __proto__: ƒ ()</span>
+<span class="hljs-comment">        [[FunctionLocation]]: VM510:2</span>
+<span class="hljs-comment">        [[Scopes]]: Scopes[2]</span>
+<span class="hljs-comment">      __proto__: Object</span>
+<span class="hljs-comment">*/</span>
 
-<span class="token comment">// 更多熟悉调用demo</span>
+<span class="hljs-comment">// 更多熟悉调用demo</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
-<span class="token comment">// a是o的自身属性吗？是的，该属性的值为 1</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(o.<span class="hljs-property">a</span>); <span class="hljs-comment">// 1</span>
+<span class="hljs-comment">// a是o的自身属性吗？是的，该属性的值为 1</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
-<span class="token comment">// b是o的自身属性吗？是的，该属性的值为 2</span>
-<span class="token comment">// 原型上也有一个'b'属性，但是它不会被访问到。</span>
-<span class="token comment">// 这种情况被称为"属性遮蔽 (property shadowing)"</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(o.<span class="hljs-property">b</span>); <span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// b是o的自身属性吗？是的，该属性的值为 2</span>
+<span class="hljs-comment">// 原型上也有一个&#x27;b&#x27;属性，但是它不会被访问到。</span>
+<span class="hljs-comment">// 这种情况被称为&quot;属性遮蔽 (property shadowing)&quot;</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
-<span class="token comment">// c是o的自身属性吗？不是，那看看它的原型上有没有</span>
-<span class="token comment">// c是o.[[Prototype]]的属性吗？是的，该属性的值为 4</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(o.<span class="hljs-property">c</span>); <span class="hljs-comment">// 4</span>
+<span class="hljs-comment">// c是o的自身属性吗？不是，那看看它的原型上有没有</span>
+<span class="hljs-comment">// c是o.[[Prototype]]的属性吗？是的，该属性的值为 4</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span>d<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span>
-<span class="token comment">// d 是 o 的自身属性吗？不是，那看看它的原型上有没有</span>
-<span class="token comment">// d 是 o.[[Prototype]] 的属性吗？不是，那看看它的原型上有没有</span>
-<span class="token comment">// o.[[Prototype]].[[Prototype]] 为 null，停止搜索</span>
-<span class="token comment">// 找不到 d 属性，返回 undefined</span>
-<span class="token comment">// o.__proto__.__proto__.__proto__ => null</span>
-<span class="token comment">// Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(o))) => null</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(o.<span class="hljs-property">d</span>); <span class="hljs-comment">// undefined</span>
+<span class="hljs-comment">// d 是 o 的自身属性吗？不是，那看看它的原型上有没有</span>
+<span class="hljs-comment">// d 是 o.[[Prototype]] 的属性吗？不是，那看看它的原型上有没有</span>
+<span class="hljs-comment">// o.[[Prototype]].[[Prototype]] 为 null，停止搜索</span>
+<span class="hljs-comment">// 找不到 d 属性，返回 undefined</span>
+<span class="hljs-comment">// o.__proto__.__proto__.__proto__ =&gt; null</span>
+<span class="hljs-comment">// Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(o))) =&gt; null</span></code></pre>
 <p>如果想知道 <code>new</code> 操作符做了那些事，可以查看这篇笔记 👉 <a href="/2021/JS-what-dose-new-operators-do/">JS中的 new 关键字做了什么？</a></p>
 <h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p><strong>- 使用不同的方法来创建对象和生成原型链？</strong><br>这个我就不多说了，直接看MDN上的示例就好 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain#%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E6%96%B9%E6%B3%95%E6%9D%A5%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%94%9F%E6%88%90%E5%8E%9F%E5%9E%8B%E9%93%BE">使用不同的方法来创建对象和生成原型链 - 继承与原型链 | MDN</a>，<br>知乎上也有，直接搜就好了。</p>
 <p><strong>- 简单的说，原型链 其实算是面向对象思想中的继承部分，以方便根据需求拆分功能，完成特定的工作职责</strong></p>
 <p><strong>- ES6 提出了 类(<code>Class</code>) 这个概念</strong><br>让对象原型的写法更加清晰，更像面向对象编程的语法，并且同样有着 <code>prototype</code> 这个属性。</p>
 <h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Object_prototypes">对象原型 - 学习 Web 开发 | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">继承与原型链 - JavaScript | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/proto">Object.prototype.__proto__ - JavaScript | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf">Object.getPrototypeOf() - JavaScript | MDN</a><br><a target="_blank" rel="noopener" href="http://www.mollypages.org/tutorials/js.mp">Javascript Object Hierarchy</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/56770432/answer/315342130">JS 中 __proto__ 和 prototype 存在的意义是什么？ - 知乎</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000011801127">傻傻分不清的__proto__与prototype - SegmentFault 思否</a><br><a target="_blank" rel="noopener" href="https://github.com/creeperyang/blog/issues/9">从__proto__和prototype来深入理解JS对象和原型链 · Issue #9 · creeperyang/blog</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/56770432/answer/315342130">JS 中 __proto__ 和 prototype 存在的意义是什么？ - 知乎</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000011801127">傻傻分不清的__proto__与prototype - SegmentFault 思否</a><br><a target="_blank" rel="noopener" href="https://github.com/creeperyang/blog/issues/9">从__proto__和prototype来深入理解JS对象和原型链 · Issue #9 · creeperyang&#x2F;blog</a></p>
  
   </article>
 

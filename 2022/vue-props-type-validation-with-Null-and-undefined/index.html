@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -100,7 +103,7 @@
  
   <article class="article-content">
     <p>最近在写基础组件，同事一直反馈说组件总是提示警告：</p>
-<pre class="line-numbers language-console" data-language="console"><code class="language-console">[Vue warn]: Invalid prop: type check failed for prop &quot;value&quot;. Expected String, Array, got Null<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs console">[Vue warn]: Invalid prop: type check failed for prop &quot;value&quot;. Expected String, Array, got Null</code></pre>
 <p>一开始以为是接收的问题，把定义的<code>props</code>加上了工厂函数后没有报异常就没再管了。<br>今天再去看的时候发现还是有报错，检查了一下组件代码没发现问题，在查看业务代码的时候发现同事喜欢<b>给声明的变量默认赋值为 <code>null</code></b>。而不是声明正确的基础类型。所以我就想应该如何把这个问题彻底解决掉。</p>
 <h3 id="🔔-其实这个提示为了提醒可能你绑定的变量并不一定存在。"><a href="#🔔-其实这个提示为了提醒可能你绑定的变量并不一定存在。" class="headerlink" title="🔔 其实这个提示为了提醒可能你绑定的变量并不一定存在。"></a>🔔 其实这个提示为了提醒可能你绑定的变量并不一定存在。</h3><span id="more"></span>
 <hr>
@@ -111,7 +114,7 @@
 <p>但是实际上如果你给 <code>props</code> 属性<strong>声明了必填（<code>required</code>）</strong> 的话，那么 <code>null</code> 将无法通过类型验证。</p>
 <p>尤大也在相关的Issue里面说明了这个情况：</p>
 <blockquote>
-<p>This is because your prop doesn’t have <code>required: true</code>. For optional props, <code>null</code> will bypass the type check.<br><small>yyx990803 - Issue #6768 · vuejs/vue</small></p>
+<p>This is because your prop doesn’t have <code>required: true</code>. For optional props, <code>null</code> will bypass the type check.<br><small>yyx990803 - Issue #6768 · vuejs&#x2F;vue</small></p>
 </blockquote>
 <p>所以要解决我开头的这个问题，<strong>只要把 <code>required</code> 声明去掉就可以了</strong>。但是如果我确实需要这个属性必填呢，那么就没办法了需要你在<strong>父级声明合法默认值或者直接不声明</strong>。<br>因为在没有声明具体属性的时会传入的时 <code>undefined</code>，而 <code>undefined</code> 是会使用预设的默认值的。 </p>
 <hr>
@@ -120,7 +123,7 @@
 <p>而 <code>undefined</code> 则有些不一样:</p>
 <ul>
 <li>如果你<strong>设置了默认值</strong>，那么将会使用预设的默认值，并且可以通过类型校验。</li>
-<li>如果<strong>没有设置默认值</strong>，那么将无法通过类型校验，并且与 <code>null</code> 一样在控制台提示异常:  <pre class="line-numbers language-console" data-language="console"><code class="language-console">[Vue warn]: Invalid prop: type check failed for prop &quot;value&quot;. Expected String, Array, got Undefined <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>如果<strong>没有设置默认值</strong>，那么将无法通过类型校验，并且与 <code>null</code> 一样在控制台提示异常:  <pre><code class="hljs console">[Vue warn]: Invalid prop: type check failed for prop &quot;value&quot;. Expected String, Array, got Undefined</code></pre></li>
 </ul>
 <p>按照尤大的原话的话:</p>
 <blockquote>
@@ -133,7 +136,7 @@
 <p>从<a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/d6bdff890322bc87792094a1690bcd16373cf82d/src/core/util/props.ts#L46">源码层面</a>也可以看到 <code>value === undefined</code> 时才会去获取声明的默认值。</p>
 <hr>
 <h2 id="文档资源"><a href="#文档资源" class="headerlink" title="文档资源"></a>文档资源</h2><p><a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/api/#props">#props | API — Vue.js</a><br><a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/components-props.html#Prop-%E7%B1%BB%E5%9E%8B">Prop — Vue.js</a></p>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/59125043/vuejs-using-prop-type-validation-with-null-and-undefined-values">VueJS Using Prop Type Validation With NULL and ‘undefined’ Values? - Stack Overflow</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010227042/article/details/121660080">Vue Prop中的 null vs undefined_PrinciplesMan的博客-CSDN博客</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/issues/6768#issuecomment-335527318">No warning when string property value is `null` · Issue #6768 · vuejs/vue</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000040642394">vue的props接收object类型的变量，当该变量为null的时候默认值是不生效的吗？ - SegmentFault 思否</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/d6bdff890322bc87792094a1690bcd16373cf82d/src/core/util/props.ts#L46">vue/props.ts at d6bdff890322bc87792094a1690bcd16373cf82d · vuejs/vue</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/59125043/vuejs-using-prop-type-validation-with-null-and-undefined-values">VueJS Using Prop Type Validation With NULL and ‘undefined’ Values? - Stack Overflow</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010227042/article/details/121660080">Vue Prop中的 null vs undefined_PrinciplesMan的博客-CSDN博客</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/issues/6768#issuecomment-335527318">No warning when string property value is `null` · Issue #6768 · vuejs&#x2F;vue</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000040642394">vue的props接收object类型的变量，当该变量为null的时候默认值是不生效的吗？ - SegmentFault 思否</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/d6bdff890322bc87792094a1690bcd16373cf82d/src/core/util/props.ts#L46">vue&#x2F;props.ts at d6bdff890322bc87792094a1690bcd16373cf82d · vuejs&#x2F;vue</a></p>
  
   </article>
 

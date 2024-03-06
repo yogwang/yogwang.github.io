@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -111,25 +114,25 @@
 <p>不知道为什么我开启之后看不到添加消息模板的按钮，只能从模板库里选择。</p>
 </blockquote>
 <p>选择好之后可以看到模板提供了一些关键字，可以选择自己需要用到的展示字段，我这边用到了3个。<br>填写完 “场景说明” 之后就可以提交保存了。</p>
-<p>添加完成之后模板列表中，找到刚刚添加的模板点击【详情】，就可以看到<strong>消息模板的ID</strong> 和 <strong>消息参数字段</strong>了<br><img src="/2022/miniprogram-devDiary-09-subscribe-message/tmp_info.png#center" alt="模板详情"></p>
+<p>添加完成之后模板列表中，找到刚刚添加的模板点击【详情】，就可以看到<strong>消息模板的ID</strong> 和 <strong>消息参数字段</strong>了<br><img src="/2022/miniprogram-devDiary-09-subscribe-message/tmp_info.png" alt="模板详情"></p>
 <p>后端如何使用订阅消息参数，可以查看这篇文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/subscribe-message/subscribeMessage.send.html">🔗 subscribeMessage.send | 微信开放文档</a> </p>
 <p>拿到<strong>消息模板ID</strong>之后，回到小程序需要使用的页面当中，使用以下 API 就可以唤起订阅授权了。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">requestSubscribeMessage</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  tmplIds<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">''</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 息模板的id的集合，一次调用最多可订阅3条消息</span>
-  <span class="token function">success</span> <span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2022/miniprogram-devDiary-09-subscribe-message/request-subscribe-message.jpg#center" alt="唤起订阅授权"></p>
+<pre><code class="hljs js">wx.<span class="hljs-title function_">requestSubscribeMessage</span>(&#123;
+  <span class="hljs-attr">tmplIds</span>: [<span class="hljs-string">&#x27;&#x27;</span>], <span class="hljs-comment">// 息模板的id的集合，一次调用最多可订阅3条消息</span>
+  success (res) &#123; &#125;
+&#125;)</code></pre>
+<p><img src="/2022/miniprogram-devDiary-09-subscribe-message/request-subscribe-message.jpg" alt="唤起订阅授权"></p>
 <p>是不是很简单，这样小程序部分的就结束了，通知后端可以发送订阅消息就可行，用户授权完成之后，后端可以 <strong>不限时间</strong> 地下发一条或对应的服务消息了。<br>需要关注的是，比如说唤起首全弹窗之后所有的操作都会执行 <code>success</code> 回调，其实用户点击了取消，所以需要区分一下<code>res</code> 参数内消息模板的不同状态</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">requestSubscribeMessage</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  tmplIds<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'abcdefg'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 消息模板的id的集合，一次调用最多可订阅3条消息</span>
-  <span class="token function">success</span> <span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>errMsg<span class="token punctuation">)</span>
-    <span class="token comment">// log 'requestSubscribeMessage:ok'</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">[</span><span class="token string">'abcdefg'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 为什么需要把模板id当成键名，因为可能会同时订阅多个消息模板</span>
-    <span class="token comment">// log 'accept'、'reject'、'ban' 或 'filter'。</span>
-    <span class="token comment">// 'accept'表示用户同意订阅该条id对应的模板消息，'reject'表示用户拒绝订阅该条id对应的模板消息，'ban'表示已被后台封禁，'filter'表示该模板因为模板标题同名被后台过滤。</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js">wx.<span class="hljs-title function_">requestSubscribeMessage</span>(&#123;
+  <span class="hljs-attr">tmplIds</span>: [<span class="hljs-string">&#x27;abcdefg&#x27;</span>], <span class="hljs-comment">// 消息模板的id的集合，一次调用最多可订阅3条消息</span>
+  success (res) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">errMsg</span>)
+    <span class="hljs-comment">// log &#x27;requestSubscribeMessage:ok&#x27;</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res[<span class="hljs-string">&#x27;abcdefg&#x27;</span>]) <span class="hljs-comment">// 为什么需要把模板id当成键名，因为可能会同时订阅多个消息模板</span>
+    <span class="hljs-comment">// log &#x27;accept&#x27;、&#x27;reject&#x27;、&#x27;ban&#x27; 或 &#x27;filter&#x27;。</span>
+    <span class="hljs-comment">// &#x27;accept&#x27;表示用户同意订阅该条id对应的模板消息，&#x27;reject&#x27;表示用户拒绝订阅该条id对应的模板消息，&#x27;ban&#x27;表示已被后台封禁，&#x27;filter&#x27;表示该模板因为模板标题同名被后台过滤。</span>
+  &#125;
+&#125;)</code></pre>
 <p>但是我们的需求是要推送 <strong>1~3</strong> 的消息，所以小程序订阅消息就没办法完全满足需求，只能考虑使用服务号模板消息来实现了。</p>
 <h2 id="🙄-疑惑"><a href="#🙄-疑惑" class="headerlink" title="🙄 疑惑"></a>🙄 疑惑</h2><h4 id="1-如果了用户勾选-“总是保持以上选择，不再询问”-之后，下次调用订阅API还会不会弹窗"><a href="#1-如果了用户勾选-“总是保持以上选择，不再询问”-之后，下次调用订阅API还会不会弹窗" class="headerlink" title="1. 如果了用户勾选 “总是保持以上选择，不再询问” 之后，下次调用订阅API还会不会弹窗"></a>1. 如果了用户勾选 “总是保持以上选择，不再询问” 之后，下次调用订阅API还会不会弹窗</h4><p>勾选之后，下次调用将不会弹窗，除非用户进入 【小程序 - 右上角 “···” - 设置 - 订阅消息】 内修改设置。 </p>
 <h4 id="2-小程序订阅消息-为什么只有一次性订阅消息，没有找到长期订阅消息"><a href="#2-小程序订阅消息-为什么只有一次性订阅消息，没有找到长期订阅消息" class="headerlink" title="2. 小程序订阅消息 为什么只有一次性订阅消息，没有找到长期订阅消息"></a>2. <code>小程序订阅消息</code> 为什么只有一次性订阅消息，没有找到长期订阅消息</h4><p>我也没有找到，并且我只能从消息模板库里边添加订阅消息模板，不能自定义添加消息模板。<br>可能是因为非民生，非政务的缘故吧。微信官方暂时<strong>仅向政务民生、医疗、交通、金融、教育等线下公共服务开放</strong>长期提醒。</p>

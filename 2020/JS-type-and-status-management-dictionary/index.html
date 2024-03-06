@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -101,33 +104,33 @@
   <article class="article-content">
     <p>这段时间项目迭代比较快，所以很多时候对于记录的状态和类型判断我都是使用的 <strong>魔术字符串</strong> 的形式，但是这样就与代码形成了 “强耦合”， <strong>不利于后期的维护</strong>。</p>
 <p>例如这样的代码结构：</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- 用vue template来举例 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">></span></span>
-        <span class="token comment">&lt;!-- 其它结构 --></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>
-            <span class="token comment">&lt;!-- 直接使用状态值判断 --></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>record.status === 0<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>操作A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-            <span class="token comment">&lt;!-- 使用数组下标判断 --></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span> <span class="token attr-name">v-eles-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>record.status === status[1].key<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>操作B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span> <span class="token attr-name">v-else'</span><span class="token punctuation">></span></span>其他操作<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
-        <span class="token comment">&lt;!-- 其它结构 --></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 用vue template来举例 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 其它结构 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- 直接使用状态值判断 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&#x27;xxx&#x27;</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&#x27;record.status === 0&#x27;</span>&gt;</span>操作A<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- 使用数组下标判断 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&#x27;xxx&#x27;</span> <span class="hljs-attr">v-eles-if</span>=<span class="hljs-string">&#x27;record.status === status[1].key&#x27;</span>&gt;</span>操作B<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&#x27;xxx&#x27;</span> <span class="hljs-attr">v-else</span>&#x27;&gt;</span>其他操作<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 其它结构 --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></code></pre>
 <p>特别是最近一整个分类的类型和状态的都变更了，所以在业务逻辑内的魔术字符串也需要一个一个文件去同步修改，大部分的都被替换了，但还有一些零碎的地方没有被修改到，导致不断有 BUG 被提上来，这就很头疼了。</p>
 <p>所以我就想者怎么把业务逻辑内的魔术字符串使用一种方式替换掉，最开始我想法是把状态集中起来进行管理</p>
 <span id="more"></span>
 <hr>
 <h2 id="阶段一：使用数组来管理-方式-①"><a href="#阶段一：使用数组来管理-方式-①" class="headerlink" title="阶段一：使用数组来管理 方式 ①"></a>阶段一：使用数组来管理 方式 ①</h2><p>在数组中枚举所有状态，然后调用数组下标的方式去使用。<br>例如这个示例：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// order.js</span>
-<span class="token keyword">const</span> statusLabels <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'已创建'</span><span class="token punctuation">,</span> <span class="token string">'申请中'</span><span class="token punctuation">,</span> <span class="token string">'通过审核'</span><span class="token punctuation">,</span> <span class="token string">'....'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// order.js</span>
+<span class="hljs-keyword">const</span> statusLabels = [<span class="hljs-string">&#x27;已创建&#x27;</span>, <span class="hljs-string">&#x27;申请中&#x27;</span>, <span class="hljs-string">&#x27;通过审核&#x27;</span>, <span class="hljs-string">&#x27;....&#x27;</span>]</code></pre>
 
 <p>就可以这样使用 <code>statusLabels[index]</code> 来转换 <code>key</code> 值为 <code>label</code> ，但是这样很明显会有一些问题，比如说：</p>
 <ol>
 <li><p>这个 <code>key</code> 值不能是负数，虽然可以通过下面的方式来处理，但是有点蠢….<br>如果最小的 key 值 为 <code>-2</code> 时，把对应的 状态名 放到数组首位，通过这样转换 <code>status[index + 2]</code>；</p>
 </li>
-<li><p>依旧强耦合，在组件的条件判断中还是会使用 key 值，例如：<code>&lt;a @click=&#39;xxx&#39; v-if=&#39;record.status === 0&#39;&gt;编辑&lt;/a&gt;</code>,<br>如果将来 <strong>增加/删除</strong> 状态的时候会还是需要一个一个文件修改。</p>
+<li><p>依旧强耦合，在组件的条件判断中还是会使用 key 值，例如：<code>&lt;a @click=&#39;xxx&#39; v-if=&#39;record.status === 0&#39;&gt;编辑&lt;/a&gt;</code>,<br>如果将来 <strong>增加&#x2F;删除</strong> 状态的时候会还是需要一个一个文件修改。</p>
 </li>
 <li><p>只能处理 <code>key - label</code> 的转换，并不能增加其他属性</p>
 </li>
@@ -135,61 +138,61 @@
 <p>当然如果单纯只是转换 <code>key</code> 和 <code>label</code> 可以这样使用，这个是项目一开始所使用的方式，后来陆续修改成了 方式 ② 的形式。</p>
 <hr>
 <h2 id="阶段二：数组管理-方式-②"><a href="#阶段二：数组管理-方式-②" class="headerlink" title="阶段二：数组管理 方式 ②"></a>阶段二：数组管理 方式 ②</h2><p>这个阶段因为很多组件复用了订单状态表，并且增加了很多属性，比如说图标等。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// order.js</span>
-<span class="token keyword">const</span> status <span class="token operator">=</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">&#123;</span>
-        label<span class="token operator">:</span><span class="token string">'已创建'</span><span class="token punctuation">,</span>
-        key<span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span>
-        icon<span class="token operator">:</span> <span class="token string">'exclamation-circle'</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#123;</span>
-        label<span class="token operator">:</span><span class="token string">'申请中'</span><span class="token punctuation">,</span>
-        key<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>
-        icon<span class="token operator">:</span> <span class="token string">'clock-circle'</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#123;</span>
-        label<span class="token operator">:</span><span class="token string">'通过审核'</span><span class="token punctuation">,</span>
-        key<span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">,</span>
-        icon<span class="token operator">:</span> <span class="token string">'check-circle'</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token comment">// .....</span>
-<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// order.js</span>
+<span class="hljs-keyword">const</span> status = [
+    &#123;
+        <span class="hljs-attr">label</span>:<span class="hljs-string">&#x27;已创建&#x27;</span>,
+        <span class="hljs-attr">key</span>:<span class="hljs-number">0</span>,
+        <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;exclamation-circle&#x27;</span>,
+    &#125;,
+    &#123;
+        <span class="hljs-attr">label</span>:<span class="hljs-string">&#x27;申请中&#x27;</span>,
+        <span class="hljs-attr">key</span>:<span class="hljs-number">1</span>,
+        <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;clock-circle&#x27;</span>,
+    &#125;,
+    &#123;
+        <span class="hljs-attr">label</span>:<span class="hljs-string">&#x27;通过审核&#x27;</span>,
+        <span class="hljs-attr">key</span>:<span class="hljs-number">2</span>,
+        <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;check-circle&#x27;</span>,
+    &#125;,
+    <span class="hljs-comment">// .....</span>
+]</code></pre>
 <blockquote>
 <p>转换 <code>key</code> 值为 <code>label</code> 就可以这样使用 <code>status.find(r =&gt; r.key===record.status)</code>，然后通过 <code>.属性名</code> 的方式来使用需要的属性，但是这样也会有一些问题，比如说：</p>
 <ol>
 <li>条件判断中语义不明，会出现这样的代码，<code>&lt;a @click=&#39;xxx&#39; v-if=&#39;record.status === status[1].key&#39;&gt;编辑&lt;/a&gt;</code>，除了我之外其他人并不知道 <code>status[1]</code> 是什么意思；</li>
-<li>如果将来 <strong>增加/删除</strong> 状态的时候会还是需要去同步修改使用下标的组件，不然可能下标错位，当然可以直接追加在最后，但是我有代码洁癖的所以就没办法了。</li>
+<li>如果将来 <strong>增加&#x2F;删除</strong> 状态的时候会还是需要去同步修改使用下标的组件，不然可能下标错位，当然可以直接追加在最后，但是我有代码洁癖的所以就没办法了。</li>
 </ol>
 </blockquote>
 <p>这个阶段就是我写这篇笔记时的管理，因为项目的 v1.2.x 版本 状态码整体调整了一次，后续状态码一直有小范围的改动，所以出现了需要大面积替换魔术字符串的情况。</p>
 <p>那么我就在考虑如何在状态管理的文件中 <strong>枚举一次</strong> 所有状态，来处理转换状态标签和操作的判断条件，如果后续如果状态码有改动也方便维护的处理方式，就有之后两个阶段的处理方式</p>
 <h2 id="阶段三：使用对象来管理"><a href="#阶段三：使用对象来管理" class="headerlink" title="阶段三：使用对象来管理"></a>阶段三：使用对象来管理</h2><p>这个阶段有考虑过使用 <strong>Map 数据结构</strong> 因为可以遍历，但是在取值的时候会比较麻烦，并不能直接使用 <strong>链式</strong>（变量属性）来使用。</p>
 <p>所以使用对象来管理，并且使用 <code>Object.values</code> 来返回所有状态数组，例如以下示例：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// order.js</span>
-<span class="token keyword">const</span> status <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-    created<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-        label<span class="token operator">:</span><span class="token string">'已创建'</span><span class="token punctuation">,</span>
-        key<span class="token operator">:</span><span class="token number">0</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    pending<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-        label<span class="token operator">:</span><span class="token string">'申请中'</span><span class="token punctuation">,</span>
-        key<span class="token operator">:</span><span class="token number">1</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    approved<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-        label<span class="token operator">:</span><span class="token string">'通过审核'</span><span class="token punctuation">,</span>
-        key<span class="token operator">:</span><span class="token number">12</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token comment">// .....</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">const</span> statusList <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span>status<span class="token punctuation">)</span>
+<pre><code class="hljs js"><span class="hljs-comment">// order.js</span>
+<span class="hljs-keyword">const</span> status = &#123;
+    <span class="hljs-attr">created</span>:&#123;
+        <span class="hljs-attr">label</span>:<span class="hljs-string">&#x27;已创建&#x27;</span>,
+        <span class="hljs-attr">key</span>:<span class="hljs-number">0</span>
+    &#125;,
+    <span class="hljs-attr">pending</span>:&#123;
+        <span class="hljs-attr">label</span>:<span class="hljs-string">&#x27;申请中&#x27;</span>,
+        <span class="hljs-attr">key</span>:<span class="hljs-number">1</span>
+    &#125;,
+    <span class="hljs-attr">approved</span>:&#123;
+        <span class="hljs-attr">label</span>:<span class="hljs-string">&#x27;通过审核&#x27;</span>,
+        <span class="hljs-attr">key</span>:<span class="hljs-number">12</span>
+    &#125;,
+    <span class="hljs-comment">// .....</span>
+&#125;
+<span class="hljs-keyword">const</span> statusList = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(status)
 
-<span class="token comment">// 转换</span>
-<span class="token keyword">const</span> <span class="token function-variable function">getOrderStatus</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  <span class="token keyword">const</span> f <span class="token operator">=</span> statusList<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item<span class="token punctuation">.</span>key <span class="token operator">===</span> key<span class="token punctuation">)</span>
-  <span class="token keyword">return</span> f <span class="token operator">||</span> status<span class="token punctuation">.</span>created
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// 转换</span>
+<span class="hljs-keyword">const</span> getOrderStatus = <span class="hljs-keyword">function</span>(<span class="hljs-params">key</span>)&#123;
+  <span class="hljs-keyword">const</span> f = statusList.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">key</span> === key)
+  <span class="hljs-keyword">return</span> f || status.<span class="hljs-property">created</span>
+&#125;</code></pre>
 <p>这个时候可以通过 <code>getOrderStatus</code> 函数来处理 <code>key-label</code> 的转换，并且可以使用 <strong>链式</strong>（变量属性）的方式去处理判断条件。</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>record.status === status.created.key<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>编辑<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&#x27;xxx&#x27;</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&#x27;record.status === status.created.key&#x27;</span>&gt;</span>编辑<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre>
 <p>那这样就可以很方便的来 转换状态 和 在判断条件中使用，并且不用担心语义化的问题。</p>
 <p>但是这边又出现了一个问题，比如说：</p>
 <blockquote>
@@ -198,55 +201,55 @@
 <p>所以！</p>
 <h2 id="阶段四：对集中管理文件中的对象拆分"><a href="#阶段四：对集中管理文件中的对象拆分" class="headerlink" title="阶段四：对集中管理文件中的对象拆分"></a>阶段四：对集中管理文件中的对象拆分</h2><p>因为如果同一个列别中有多级分类的话，就类似上边的例子，<code>user.customer.member</code> 这种用户类别。所以这个时候就把 <code>user.js</code> 拆分成多个文件，然后再 <code>import</code> 进来，这样既可以在状态判断和label转换的时候引入需要的文件就可以了。</p>
 <p>示例：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// customer.js</span>
-<span class="token keyword">const</span> customer <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-    normal<span class="token operator">:</span><span class="token punctuation">&#123;</span> <span class="token comment">/*...*/</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    member<span class="token operator">:</span><span class="token punctuation">&#123;</span> <span class="token comment">/*...*/</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token comment">// ...</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">const</span> customerTypes <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span>customer<span class="token punctuation">)</span>
-<span class="token keyword">const</span> <span class="token function-variable function">getCustomerType</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">const</span> record <span class="token operator">=</span> customerTypes<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token parameter">record</span> <span class="token operator">=></span> record<span class="token punctuation">.</span>key <span class="token operator">===</span> key<span class="token punctuation">)</span>
-  <span class="token keyword">return</span> record <span class="token operator">||</span> <span class="token punctuation">&#123;</span> label<span class="token operator">:</span> <span class="token string">'未指定'</span><span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">export</span> <span class="token punctuation">&#123;</span> customer<span class="token punctuation">,</span> customerTypes<span class="token punctuation">,</span> getCustomerType <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// agent.js</span>
-<span class="token keyword">const</span> agent <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-    province<span class="token operator">:</span><span class="token punctuation">&#123;</span> <span class="token comment">/*...*/</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    area<span class="token operator">:</span><span class="token punctuation">&#123;</span> <span class="token comment">/*...*/</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token comment">// ...</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">const</span> agentTypes <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span>agent<span class="token punctuation">)</span>
+<pre><code class="hljs js"><span class="hljs-comment">// customer.js</span>
+<span class="hljs-keyword">const</span> customer = &#123;
+    <span class="hljs-attr">normal</span>:&#123; <span class="hljs-comment">/*...*/</span> &#125;,
+    <span class="hljs-attr">member</span>:&#123; <span class="hljs-comment">/*...*/</span> &#125;,
+    <span class="hljs-comment">// ...</span>
+&#125;
+<span class="hljs-keyword">const</span> customerTypes = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(customer)
+<span class="hljs-keyword">const</span> getCustomerType = <span class="hljs-keyword">function</span> (<span class="hljs-params">key</span>) &#123;
+  <span class="hljs-keyword">const</span> record = customerTypes.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">record</span> =&gt;</span> record.<span class="hljs-property">key</span> === key)
+  <span class="hljs-keyword">return</span> record || &#123; <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;未指定&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-number">0</span> &#125;
+&#125;
+<span class="hljs-keyword">export</span> &#123; customer, customerTypes, getCustomerType &#125;</code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// agent.js</span>
+<span class="hljs-keyword">const</span> agent = &#123;
+    <span class="hljs-attr">province</span>:&#123; <span class="hljs-comment">/*...*/</span> &#125;,
+    <span class="hljs-attr">area</span>:&#123; <span class="hljs-comment">/*...*/</span> &#125;,
+    <span class="hljs-comment">// ...</span>
+&#125;
+<span class="hljs-keyword">const</span> agentTypes = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(agent)
 
-<span class="token keyword">const</span> <span class="token function-variable function">getAgentType</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">const</span> record <span class="token operator">=</span> agentTypes<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token parameter">record</span> <span class="token operator">=></span> record<span class="token punctuation">.</span>key <span class="token operator">===</span> key<span class="token punctuation">)</span>
-  <span class="token keyword">return</span> record <span class="token operator">||</span> <span class="token punctuation">&#123;</span> label<span class="token operator">:</span> <span class="token string">'未指定'</span><span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">export</span> <span class="token punctuation">&#123;</span> agent<span class="token punctuation">,</span> agentTypes<span class="token punctuation">,</span> getAgentType <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// user.js</span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> customer<span class="token punctuation">,</span> customerTypes <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"./customer.js"</span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> agent<span class="token punctuation">,</span> agentTypes <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"./agent.js"</span>
+<span class="hljs-keyword">const</span> getAgentType = <span class="hljs-keyword">function</span> (<span class="hljs-params">key</span>) &#123;
+  <span class="hljs-keyword">const</span> record = agentTypes.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">record</span> =&gt;</span> record.<span class="hljs-property">key</span> === key)
+  <span class="hljs-keyword">return</span> record || &#123; <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;未指定&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-number">0</span> &#125;
+&#125;
+<span class="hljs-keyword">export</span> &#123; agent, agentTypes, getAgentType &#125;</code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// user.js</span>
+<span class="hljs-keyword">import</span> &#123; customer, customerTypes &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./customer.js&quot;</span>
+<span class="hljs-keyword">import</span> &#123; agent, agentTypes &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./agent.js&quot;</span>
 
-<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-  customer<span class="token operator">:</span>customer<span class="token punctuation">,</span>
-  agent<span class="token operator">:</span>agent<span class="token punctuation">,</span>
-  <span class="token comment">// 一些单独的其它类型</span>
-  xxxx<span class="token operator">:</span><span class="token punctuation">&#123;</span> <span class="token comment">/*...*/</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  xxxx<span class="token operator">:</span><span class="token punctuation">&#123;</span> <span class="token comment">/*...*/</span> <span class="token punctuation">&#125;</span>
-  <span class="token comment">// ...</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">const</span> allUserTypeList <span class="token operator">=</span> <span class="token punctuation">[</span>
-  <span class="token operator">...</span>customerTypes<span class="token punctuation">,</span>
-  <span class="token operator">...</span>agentTypes<span class="token punctuation">,</span>
-  users<span class="token punctuation">.</span>xxxx<span class="token punctuation">,</span>
-  users<span class="token punctuation">.</span>xxxx<span class="token punctuation">,</span>
-<span class="token punctuation">]</span>
+<span class="hljs-keyword">const</span> user = &#123;
+  <span class="hljs-attr">customer</span>:customer,
+  <span class="hljs-attr">agent</span>:agent,
+  <span class="hljs-comment">// 一些单独的其它类型</span>
+  <span class="hljs-attr">xxxx</span>:&#123; <span class="hljs-comment">/*...*/</span> &#125;,
+  <span class="hljs-attr">xxxx</span>:&#123; <span class="hljs-comment">/*...*/</span> &#125;
+  <span class="hljs-comment">// ...</span>
+&#125;
+<span class="hljs-keyword">const</span> allUserTypeList = [
+  ...customerTypes,
+  ...agentTypes,
+  users.<span class="hljs-property">xxxx</span>,
+  users.<span class="hljs-property">xxxx</span>,
+]
 
-<span class="token comment">// 获取账户角色类型</span>
-<span class="token keyword">const</span> <span class="token function-variable function">getAccountType</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>type<span class="token punctuation">,</span> key <span class="token operator">=</span> <span class="token string">'key'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">const</span> finder <span class="token operator">=</span> allUserTypeList<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">===</span> type<span class="token punctuation">)</span>
-  <span class="token keyword">return</span> finder <span class="token operator">||</span> <span class="token punctuation">&#123;</span> label<span class="token operator">:</span> <span class="token string">'未指定'</span><span class="token punctuation">,</span> key<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// 获取账户角色类型</span>
+<span class="hljs-keyword">const</span> getAccountType = <span class="hljs-keyword">function</span> (<span class="hljs-params">type, key = <span class="hljs-string">&#x27;key&#x27;</span></span>) &#123;
+  <span class="hljs-keyword">const</span> finder = allUserTypeList.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item[key] === type)
+  <span class="hljs-keyword">return</span> finder || &#123; <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;未指定&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-number">0</span> &#125;,
+&#125;</code></pre>
 
 <p>确定是用户类型的时候，只需要 <code>import</code> 对应的 <strong>角色.js</strong> 的就可以，如果不确定类型的时候就可以使用 <code>user.js</code> 来使用 <code>user.xxx.xxx</code> 来使用对应的角色类型数据，或者用 <code>getAccountType</code> 来获取类型。</p>
 <p>现在我是用这种方式来管理状态的，但是我觉得还是有一些问题，准备看一下前人是否已经总结出来这种模式，所以准备把之前买来的设计模式大概翻看一下，看看有没有可用的，也算把自己的基础能力完善起来。</p>

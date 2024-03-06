@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -107,9 +110,9 @@
 <hr>
 <p>其实就是通过我说的遍历匹配所有的元素，只是他通过了 <code>:not(:has</code> 去匹配了所有后代不包含 <code>img</code> 元素的所有元素。<br>只不过 <code>:has()</code> 我只是粗略的看了一下张大佬早些时候些的<a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2022/08/css-has-pseudo-class/">相关文章</a>，还不知道可以去搭配 <code>:not()</code> 来实现这样的效果。果然CSS需要脑洞大开啊，未来可能单独去写以下 <code>:has()</code> 和 <code>:not()</code> 两个伪类选择器的笔记。</p>
 <p>好了废话不多说，直接贴上来实现的代码：</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">:not(:has(img)):not(img)</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">grayscale</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:has</span>(<span class="hljs-selector-tag">img</span>))<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-tag">img</span>) &#123;
+  <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">grayscale</span>(<span class="hljs-number">1</span>);
+&#125;</code></pre>
 <p>所以其实不只是图片元素，其它的 <code>canvas</code> 和 <code>video</code> 元素也是可以的是使用这样的方法的。</p>
 <p>你们也可以通过点击下方的这写按钮来体验效果。</p>
 <div id="test">
@@ -149,14 +152,14 @@ $("#exclude-img").click(function(e){
 
 <p><img src="https://yogwang.github.io/img/userimg.jpg" alt="预览图"></p>
 <p>这个效果我是通过 <code>jQuery</code> 来动态给 <code>html</code> 元素添加了一个CSS类名，CSS的代码是这样的：</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">// 全部置灰
-.gray-filter</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">grayscale</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token selector">// 排除图片元素之外全部置灰
-.gray-filter-exclude-img :not(:has(img)):not(img)</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">grayscale</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css">// 全部置灰
+<span class="hljs-selector-class">.gray-filter</span> &#123;
+  <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">grayscale</span>(<span class="hljs-number">1</span>);
+&#125;
+// 排除图片元素之外全部置灰
+<span class="hljs-selector-class">.gray-filter-exclude-img</span> <span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:has</span>(<span class="hljs-selector-tag">img</span>))<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-tag">img</span>) &#123;
+  <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">grayscale</span>(<span class="hljs-number">1</span>);
+&#125;</code></pre>
 
 <hr>
 <h3 id="✍-尾声"><a href="#✍-尾声" class="headerlink" title="✍ 尾声"></a>✍ 尾声</h3><p>下班之后在家里补完这篇文章的时候，发现了张大佬已经把这个<strong>如何实现除了图片以外都置灰</strong>的处理方法补充上来了。看了一下回复的时间，应该当初在思否问答贴内回复这个方法的人也是从这里看到的，我看描述的文案都是一样的。</p>

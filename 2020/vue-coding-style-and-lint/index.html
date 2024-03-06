@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -95,7 +98,7 @@
       <!-- 文章内容 article body -->
  
   <article class="article-content">
-    <p><img src="/2020/vue-coding-style-and-lint/banner.jpg" alt="横幅"></p>
+    <p><img src="/./vue-coding-style-and-lint/banner.jpg" alt="横幅"></p>
 <p>最近在考虑把遍码习惯整理一下，一个良好的遍码习惯可以有效减少一个项目的维护成本，<br>因为不可能在整个项目的生命周期中，均由最初的开发人员来维护，或者所有的代码都是由你一个人写出来的，<br>改善代码的可读性，可以让开发人员尽快理解历史的业务代码。</p>
 <p>之前也有研究过 <a href="/2020/choose-the-ESLint-formatting-rule-that-suits-you/">ESlint的格式化风格</a> 选择一款适合自己的来规范自己，但是了解的越多，越觉得还是需要团队互相讨论来找一个大家能都接受的妥协结果，所以最后还是选择了 <code>Prettier</code> ，因为我觉得其它两种风格相对来说太严苛了，很多项目都是自己开发并没有多人合作开发的情况出现，所以使用 Prettier 相对来说所自由一些…</p>
 <span id="more"></span>
@@ -110,7 +113,7 @@
 </ul>
 </blockquote>
 <p>虽然有他们的道理，但是我并不是很喜欢，当然会根据不同团队做出改变。所以保持业务代码的可读性就好，<br>我没有按部就班的使用，项目也只是启用了 <code>Prettier</code> 的默认设置。</p>
-<p><strong>概念隔离</strong>：不同的的概念/逻辑代码使用空行隔离</p>
+<p><strong>概念隔离</strong>：不同的的概念&#x2F;逻辑代码使用空行隔离</p>
 <h2 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h2><p>代码注释我这边还没有很明确到很精细的规范，很自由。<br>只是要求了在 <strong>文件头</strong>、<strong>函数声明时</strong> 以及 <strong>函数内一些关键的部分</strong> 进行补充说明，因为有时候只是代码的语义化并不能很好的说明情况。<br>虽然自己也经常会忘记在一些复杂场景下补充注释，但是事后记得补全就好。</p>
 <p>哦，对了，记得增加提示信息，防止出现踩坑事件，例如使用 <code>TODO</code> 等标记未来得及完成的部分，并且安装 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree">TODO Tree</a> 插件确保自己不会遗忘填坑。</p>
 <hr>
@@ -133,15 +136,14 @@
 </blockquote>
 <p><strong>优先级 A</strong> 的就不需要说了吧，必要的这块内容，应该在学习 Vue 的时候就已经从官方给出的 Demo 感受到了，比如 <strong>组件名为多个单词</strong>，以及 <strong>组件的 data 必须是一个函数</strong>。虽然有一些规范在 Vue3 中已经被修改了，但是在 Vue2 中还是适用的。</p>
 <p><strong>优先级 B</strong> 这一类的内容是为了增加代码可读性的，所以尽最大可能的保证使用以及一贯性，基本都是一些命名和书写规范，刻意保持一段时间就习惯了。</p>
-<p><strong>优先级 C</strong> 这块内容是比较自由的，官方也设定为<strong>推荐</strong>级别，其中提到的 <strong>组件/实例的选项的顺序</strong>，我觉得重要性还是很高的，在Cooding时保持和官方文档一样的排列顺序。</p>
+<p><strong>优先级 C</strong> 这块内容是比较自由的，官方也设定为<strong>推荐</strong>级别，其中提到的 <strong>组件&#x2F;实例的选项的顺序</strong>，我觉得重要性还是很高的，在Cooding时保持和官方文档一样的排列顺序。</p>
 <p>最近我就出现了同事把 <code>created</code> 代码放到组件最后，我在增加功能的时候在头部也增加了 <code>created</code> ，发现自己的 <code>created</code> 钩子没有执行。当然这个锅其实有一部分是编辑器的，我这边没有对重复声明的对象属性进行错误高亮。</p>
 <p><strong>优先级 D</strong> 中的内容是警告内容，这块内容在良好的编码习惯下一般是不会出现的。</p>
 <hr>
 <p>当然如果你觉得官方的Lint的风格很好，那么你可以使用他们提供的 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/eslint-plugin-vue">eslint-plugin-vue</a> 这个依赖项，来规范和格式化代码。</p>
 <p>最后的最后我对之前 Vue 官方指导没有提到的一些地方进行补充：</p>
 <ol>
-<li>每一个组件都要有 <code>name</code> 属性。</li>
-<li>你需要了解 <code>mixins</code> 和 <code>extends</code>。</li>
+<li>每一个组件都要有 <code>name</code> 属性。<br>2.你需要了解 <code>mixins</code> 和 <code>extends</code>。</li>
 <li>使用 <code>computed</code> 来计算一些属性，比如路由信息 <code>$route</code>中的一些传递参数，或者在代码中出现频率很高的深层属性。</li>
 <li>在生命周期钩子中，保证不出现业务代码，如果一块内容超过<code>6</code>行那就单独拿出来写成函数放到 <code>methods</code> 中，尽量减少生命周期钩子中的代码量。</li>
 <li>业务代码都在 <code>methods</code> 中，或者取成 <code>功能名称.js</code>文件。</li>
@@ -149,7 +151,7 @@
 <li>保持Lint开启。</li>
 <li>使用环境变量。</li>
 </ol>
-<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/style-guide/">风格指南 — Vue.js</a><br><a target="_blank" rel="noopener" href="https://eslint.vuejs.org/rules/order-in-components.html">vue/order-in-components | eslint-plugin-vue</a></p>
+<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/style-guide/">风格指南 — Vue.js</a><br><a target="_blank" rel="noopener" href="https://eslint.vuejs.org/rules/order-in-components.html">vue&#x2F;order-in-components | eslint-plugin-vue</a></p>
 <p><a target="_blank" rel="noopener" href="https://eslint.vuejs.org/">Introduction | eslint-plugin-vue</a></p>
  
   </article>

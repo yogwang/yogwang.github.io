@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -107,19 +110,19 @@
 <p>今天早上心有点静不下来，就去 SegmentFault 上看了看文章，有一篇文章 <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000020966360">【“寒冬”三年经验前端面试总结之 CSS 篇】</a>，<br>里边的 <code>垂直居中的方法四</code> 我觉得挺奇怪的。</p>
 <span id="more"></span>
 
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.outer</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token selector">.inner</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-  <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
-  <span class="token property">right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
-  <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
-  <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
-  <span class="token property">margin</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-class">.outer</span> &#123;
+  <span class="hljs-attribute">position</span>: relative;
+&#125;
+<span class="hljs-selector-class">.inner</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: auto;
+&#125;</code></pre>
 
 <p>为什么在 <code>position:absolute</code> 时，<code>top,right,bottom,left</code> 都为 <code>0</code> 时，使用 <code>margin:auto</code> 可以实现垂直居中。</p>
 <p>是因为脱离文档流了还是因为别的？然后在群里讨论了下。</p>
@@ -128,7 +131,7 @@
 <p>只有 <code>absolute</code> 和 <code>fixed</code> 这种脱离文档流的可以使用 <code>margin:auto</code>来居中。</p>
 <p>设置了 <code>left</code>，<code>right</code>为 <code>0</code> 所以可以水平居中，<code>top</code>，<code>bottom</code>为 <code>0</code> 可以使其垂直居中</p>
 <p>归根结底是因为 <code>margin:auto</code> 填充了外部空间，然后定位是按照合模型最边界开始定位，即从 <code>margin</code> 开始。</p>
-<p><img src="/2019/CSS-position/box.jpg" alt="box"></p>
+<p><img src="/CSS-position/box.jpg" alt="box"></p>
 <h4 id="另外还把自己一直以来记错的给掰了回来："><a href="#另外还把自己一直以来记错的给掰了回来：" class="headerlink" title="另外还把自己一直以来记错的给掰了回来："></a>另外还把自己一直以来记错的给掰了回来：</h4><ul>
 <li><code>position:relative</code> 是相对未定位前的元素自身来定位的。</li>
 </ul>
@@ -139,20 +142,20 @@
 <h3 id="2021年7月31日更新："><a href="#2021年7月31日更新：" class="headerlink" title="2021年7月31日更新："></a>2021年7月31日更新：</h3><p>今天在写 <a href="/2021/border-style-of-special-border-box/">数据大屏 “炫酷” 容器边框实现</a> 的时候，突然发现 <code>position:absolute</code> 的定位起始点其实不是从<strong>定位祖先</strong>的左上角开始的，而是去除 <code>border-width</code> 的，小伙伴们请留意哦。</p>
 <p>演示例子 <a target="_blank" rel="noopener" href="https://codepen.io/yogwang/pen/JjNvxdB">🌰 CodePen link</a></p>
 <p>顺便在补充一下，如果定位的值是百分比，那么这个百分比值是通过其 <strong>定位祖先</strong> 的 <code>content</code> + <code>padding</code> 值来计算得出的，比如说：</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.father</span><span class="token punctuation">&#123;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 1000px<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> 1000px<span class="token punctuation">;</span>
-  <span class="token property">padding</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
-  <span class="token property">border</span><span class="token punctuation">:</span> 50px solid red<span class="token punctuation">;</span>
-  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
-  <span class="token property">box-sizing</span><span class="token punctuation">:</span> content-box<span class="token punctuation">;</span>  <span class="token comment">/* 默认盒模型 */</span>
-<span class="token punctuation">&#125;</span>
-<span class="token selector">.sub</span><span class="token punctuation">&#123;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-  <span class="token property">left</span><span class="token punctuation">:</span> 10%<span class="token punctuation">;</span> <span class="token comment">/* 等同于 left:110px */</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-class">.father</span>&#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">1000px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">1000px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">50px</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">50px</span> solid red;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">box-sizing</span>: content-box;  <span class="hljs-comment">/* 默认盒模型 */</span>
+&#125;
+<span class="hljs-selector-class">.sub</span>&#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">10%</span>; <span class="hljs-comment">/* 等同于 left:110px */</span>
+&#125;</code></pre>
 <p>为什么等于 <code>left:20px</code>？因为父级容器的 <code>width</code> 被 <code>border-area</code> 和 <code>padding-area</code> 撑开了，但是不计算 <code>border-area</code>，<br>所以 <code>left = (contentWidth + paddingWidth*2) * 10% = (1000px + 50px*2) * 10% = 110px</code>   </p>
 <hr>
 <p>如果把上边的例子的 <code>.father</code> 的盒模型改成 <code>border-box</code> 那么：<code>left: 10%</code> 就等于 <code>left: 90px</code> 了。</p>

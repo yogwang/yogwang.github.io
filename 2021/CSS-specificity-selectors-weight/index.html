@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -110,20 +113,20 @@
 <span id="more"></span>
 <hr>
 <p>大部分人想到CSS权重应该会首先想到这个图</p>
-<p><img src="/2021/CSS-specificity-selectors-weight/simple.jpg" alt="简单计算"><br><small>图片来源: <a target="_blank" rel="noopener" href="http://www.nowamagic.net/">简明现代魔法</a></small></p>
+<p><img src="/./CSS-specificity-selectors-weight/simple.jpg" alt="简单计算"><br><small>图片来源: <a target="_blank" rel="noopener" href="http://www.nowamagic.net/">简明现代魔法</a></small></p>
 <p>然后简单的按照这里的权重去计算出来结果去比较</p>
-<p>例如：<br><img src="/2021/CSS-specificity-selectors-weight/demo.jpg" alt="计算DEMO"></p>
+<p>例如：<br><img src="/./CSS-specificity-selectors-weight/demo.jpg" alt="计算DEMO"></p>
 <h2 id="但是！"><a href="#但是！" class="headerlink" title="但是！"></a>但是！</h2><p>这样的计算会有一个问题，就是如果说某一项选择器超过了10个，那么是不是就会造成疑问，是否会晋级<br>例如</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">// 1个ID选择器
-#demo</span> <span class="token punctuation">&#123;</span> 
-  <span class="token property">color</span><span class="token punctuation">:</span>green
-<span class="token punctuation">&#125;</span>
-<span class="token selector">// 11个class选择器
-.demo1 .demo2 .demo3 .demo4 .demo5 .demo6 .demo7 .demo8 .demo9 .demo10 .demo11</span> <span class="token punctuation">&#123;</span> 
-  <span class="token property">color</span><span class="token punctuation">:</span>red
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css">// <span class="hljs-number">1</span>个ID选择器
+<span class="hljs-selector-id">#demo</span> &#123; 
+  <span class="hljs-attribute">color</span>:green
+&#125;
+// <span class="hljs-number">11</span>个class选择器
+<span class="hljs-selector-class">.demo1</span> <span class="hljs-selector-class">.demo2</span> <span class="hljs-selector-class">.demo3</span> <span class="hljs-selector-class">.demo4</span> <span class="hljs-selector-class">.demo5</span> <span class="hljs-selector-class">.demo6</span> <span class="hljs-selector-class">.demo7</span> <span class="hljs-selector-class">.demo8</span> <span class="hljs-selector-class">.demo9</span> <span class="hljs-selector-class">.demo10</span> <span class="hljs-selector-class">.demo11</span> &#123; 
+  <span class="hljs-attribute">color</span>:red
+&#125;</code></pre>
 <p>按照上边的计算方式，得出的结果就是 <code>100 ：110</code>，但是实际并不会被11个类选择器所覆盖。</p>
-<p><img src="/2021/CSS-specificity-selectors-weight/eg11class.jpg" alt="单ID和11个Class"></p>
+<p><img src="/./CSS-specificity-selectors-weight/eg11class.jpg" alt="单ID和11个Class"></p>
 <p>所以其实，是一个类似数组的形式，其计算结果为 <code>[0, 1, 0, 0]</code> 比上 <code>[0, 0, 11, 0]</code>，</p>
 <p>这点可以从 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/CSS2/cascade.html#specificity">W3C规范</a> 上看到，其实是分为 <code>[A, B, C, D]</code> 四类，然后去一对一去比较，并不会被 <strong>进位</strong> 所影响。</p>
 <h2 id="⭐-important"><a href="#⭐-important" class="headerlink" title="⭐ !important"></a>⭐ <code>!important</code></h2><hr>
@@ -134,22 +137,22 @@
 <p>将简写属性（例如’<code>background</code>‘）声明为 “<code>!important</code>“ 等同于将其所有子属性声明为 “<code>!important</code>“ 。</p>
 </blockquote>
 <p>接下来看一个完整的例子 <code>&lt;div class=&quot;demo-class1 demo-class2&quot;&gt;&lt;span&gt;测试文字ABC&lt;/span&gt;&lt;/div&gt;</code> 的元素样式：</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.demo-class1</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">font</span><span class="token punctuation">:</span> italic 12pt sans-serif <span class="token important">!important</span><span class="token punctuation">;</span>
-  <span class="token property">text-indent</span><span class="token punctuation">:</span> 1em ! important<span class="token punctuation">;</span> // 被覆盖
-<span class="token punctuation">&#125;</span>
-<span class="token selector">.demo-class2</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span> // 未生效
-  <span class="token property">font-size</span><span class="token punctuation">:</span> 24pt<span class="token punctuation">;</span> // 未生效
-  <span class="token property">line-height</span><span class="token punctuation">:</span> 1.2 <span class="token important">!important</span><span class="token punctuation">;</span> // 生效
-  <span class="token property">text-indent</span><span class="token punctuation">:</span> 1.5em <span class="token important">!important</span><span class="token punctuation">;</span> // 生效
-<span class="token punctuation">&#125;</span>
-<span class="token selector">.demo-class2 span</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">font-style</span><span class="token punctuation">:</span> normal // 生效
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-class">.demo-class1</span> &#123;
+  <span class="hljs-attribute">font</span>: italic <span class="hljs-number">12pt</span> sans-serif <span class="hljs-meta">!important</span>;
+  <span class="hljs-attribute">text-indent</span>: <span class="hljs-number">1em</span> ! important; // 被覆盖
+&#125;
+<span class="hljs-selector-class">.demo-class2</span> &#123;
+  <span class="hljs-attribute">font-weight</span>: bold; // 未生效
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24pt</span>; // 未生效
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.2</span> <span class="hljs-meta">!important</span>; // 生效
+  <span class="hljs-attribute">text-indent</span>: <span class="hljs-number">1.5em</span> <span class="hljs-meta">!important</span>; // 生效
+&#125;
+<span class="hljs-selector-class">.demo-class2</span> <span class="hljs-selector-tag">span</span> &#123;
+  <span class="hljs-attribute">font-style</span>: normal // 生效
+&#125;</code></pre>
 
 <hr>
-<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><h4 id="我所推荐的权重计算图"><a href="#我所推荐的权重计算图" class="headerlink" title="我所推荐的权重计算图"></a>我所推荐的权重计算图</h4><p><img src="/2021/CSS-specificity-selectors-weight/specificity-calculationbase.png" alt="新权重计算图"></p>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><h4 id="我所推荐的权重计算图"><a href="#我所推荐的权重计算图" class="headerlink" title="我所推荐的权重计算图"></a>我所推荐的权重计算图</h4><p><img src="/./CSS-specificity-selectors-weight/specificity-calculationbase.png" alt="新权重计算图"></p>
 <h4 id="新版本中的选择器权重修改"><a href="#新版本中的选择器权重修改" class="headerlink" title="新版本中的选择器权重修改"></a>新版本中的选择器权重修改</h4><p>在 W3C 最新版的 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/selectors/#specificity">选择器文档</a> 中，行内样式已经从权重中移出了，权重变成了三类 [<code>#ID</code>, <code>.Class</code>, <code>Element</code>]</p>
 <h4 id="在阅读-W3C-规范中，发现有中有这样一句话"><a href="#在阅读-W3C-规范中，发现有中有这样一句话" class="headerlink" title="在阅读 W3C 规范中，发现有中有这样一句话"></a>在阅读 W3C 规范中，发现有中有这样一句话</h4><blockquote>
 <p>By default, rules in author style sheets have more weight than rules in user style sheets. Precedence is reversed, however, for “!important” rules. All user and author rules have more weight than rules in the UA’s default style sheet.</p>

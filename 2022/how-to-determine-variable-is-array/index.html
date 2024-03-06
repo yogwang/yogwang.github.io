@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -113,21 +116,21 @@
 <span id="more"></span>
 
 <p>按照谷歌出来的答案，<strong>一共有4种判断方式</strong>，那就按照我回答的和我后续了解到的顺序来列举吧！</p>
-<h2 id="第一种，就是通过原型链上的-constructor-来判断："><a href="#第一种，就是通过原型链上的-constructor-来判断：" class="headerlink" title="第一种，就是通过原型链上的 constructor 来判断："></a>第一种，就是通过原型链上的 <code>constructor</code> 来判断：</h2><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-a<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Array
-<span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="第一种，就是通过原型链上的-constructor-来判断："><a href="#第一种，就是通过原型链上的-constructor-来判断：" class="headerlink" title="第一种，就是通过原型链上的 constructor 来判断："></a>第一种，就是通过原型链上的 <code>constructor</code> 来判断：</h2><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = []
+a.<span class="hljs-property">constructor</span> === <span class="hljs-title class_">Array</span>
+<span class="hljs-comment">// true</span></code></pre>
 <p>就很简单，其实不加上  <code>=== Array</code> 直接使用 <code>a.constructor</code> 就会输出 <em><code>ƒ Array() &#123; [native code] &#125;</code></em> 就可以知道是否会是数组了，不过是为了判断嘛，所以还是加上了。</p>
-<h2 id="第二种，通过-instanceof-来判断："><a href="#第二种，通过-instanceof-来判断：" class="headerlink" title="第二种，通过 instanceof 来判断："></a>第二种，通过 <code>instanceof</code> 来判断：</h2><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-a <span class="token keyword">instanceof</span> <span class="token class-name">Array</span>
-<span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="第二种，通过-instanceof-来判断："><a href="#第二种，通过-instanceof-来判断：" class="headerlink" title="第二种，通过 instanceof 来判断："></a>第二种，通过 <code>instanceof</code> 来判断：</h2><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = []
+a <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Array</span>
+<span class="hljs-comment">// true</span></code></pre>
 <p>这个也很容易，其实其原理就和我上面提到的<strong>通过原型链上的 <code>constructor</code></strong> 来判断类似，<code>instanceof</code> 会去检测构造函数的 <strong><code>prototype</code> 属性是否出现在实例对象的原型链上。</strong></p>
-<h2 id="第三种，通过-isArray-来判断"><a href="#第三种，通过-isArray-来判断" class="headerlink" title="第三种，通过 isArray 来判断"></a>第三种，通过 <code>isArray</code> 来判断</h2><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-<span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="第三种，通过-isArray-来判断"><a href="#第三种，通过-isArray-来判断" class="headerlink" title="第三种，通过 isArray 来判断"></a>第三种，通过 <code>isArray</code> 来判断</h2><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = []
+<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(a)
+<span class="hljs-comment">// true</span></code></pre>
 <p>😄 和 <code>instanceof</code> 一样简单，但 <code>isArray</code> 是优于 <code>instanceof</code> 的。其原因是<strong>不同的全局环境（页面、frame）下 Array 构造函数是不同的，使用 <code>instanceof</code> 来判断是否为数组得保证创建数组的 Array 构造函数是同一个才可以。</strong> 不过无伤大雅一般都不会出现这种问题，大家知道即可。</p>
-<h2 id="第四种，通过-Object-prototype-toString-来判断："><a href="#第四种，通过-Object-prototype-toString-来判断：" class="headerlink" title="第四种，通过 Object.prototype.toString 来判断："></a>第四种，通过 <code>Object.prototype.toString</code> 来判断：</h2><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'[object Array]'</span>
-<span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="第四种，通过-Object-prototype-toString-来判断："><a href="#第四种，通过-Object-prototype-toString-来判断：" class="headerlink" title="第四种，通过 Object.prototype.toString 来判断："></a>第四种，通过 <code>Object.prototype.toString</code> 来判断：</h2><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = [];
+<span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">toString</span>.<span class="hljs-title function_">call</span>(a) === <span class="hljs-string">&#x27;[object Array]&#x27;</span>
+<span class="hljs-comment">// true</span></code></pre>
 
 <p>这种就是属于比较花里胡哨的了，用到了 <code>Object.prototype.toString</code> 方法，再使用 <code>call</code> 来指定 <code>this</code> 的指向。虽然他很强，可以判断几乎所有类型，但是我觉得不是很靠谱。<br>毕竟 <code>instanceof</code> 都可能因为不同全局环境而导致判断出错。让我觉得依赖于原型上的属性和方法都有可能会有问题。</p>
 <p>不过现在已经有了 <code>Array.isArray()</code> 了，就不用再考虑再纠结这些问题了，实践中使用它就行了。我们大概知道有过多少种判断数组的方式即可。<br>以上。</p>

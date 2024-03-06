@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -102,14 +105,14 @@
     <p>做一个功能，可能提交了 10 多次，会不会有一些崩溃？单纯这么多次的 commit 就可能出现有无用，或者可以合并的 commit，就很让人不舒服。</p>
 <p>基于上面所说问题，不难想到：每一次功能开发， 对多个 commit 进行合并或者删除处理，这时候就需要用到 <code>git rebase</code> 修改提交的历史 Commit</p>
 <h4 id="Eg"><a href="#Eg" class="headerlink" title="Eg:"></a>Eg:</h4><p>修改最近的 4 次提交纪录</p>
-<pre class="line-numbers language-none"><code class="language-none">git rebase -i HEAD~4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs plaintext">git rebase -i HEAD~4</code></pre>
 
 <ul>
 <li><code>-i</code> 是 <code>--interactive</code> 的缩写 - 交互的意思；</li>
 <li><code>HEAD~4</code> 修改最近的 4 次提交记录；<span id="more"></span>
 然后在弹出的编辑器中显示 <code>git-rebase-todo</code> 文件，在 <code>rebase-todo</code> 中修改列表中的 pick 命令。</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">pick f77a6e7 version 0.1.3
+<pre><code class="hljs plaintext">pick f77a6e7 version 0.1.3
 pick 434a2f2 version 0.1.4
 pick 094263b version 0.1.5
 pick 9135476 version 0.1.5 change XXXX
@@ -117,18 +120,18 @@ pick 9135476 version 0.1.5 change XXXX
 # Rebase 50adf2a..9135476 onto 50adf2a (4 commands)
 #
 # Commands:
-# p, pick &lt;commit&gt; &#x3D; use commit   &#x2F;&#x2F; 保留该commit
-# r, reword &lt;commit&gt; &#x3D; use commit, but edit the commit message  &#x2F;&#x2F; 保留该commit，但修改该commit的注释
-# e, edit &lt;commit&gt; &#x3D; use commit, but stop for amending  &#x2F;&#x2F; 保留该commit, 但我要停下来修改该commit
-# s, squash &lt;commit&gt; &#x3D; use commit, but meld into previous commit  &#x2F;&#x2F; 将该commit合并到前一个commit
-# f, fixup &lt;commit&gt; &#x3D; like &quot;squash&quot;, but discard this commit&#39;s log message  &#x2F;&#x2F; 将该commit合并到前一个commit，并不要保留该提交的注释信息
-# x, exec &lt;command&gt; &#x3D; run command (the rest of the line) using shell  &#x2F;&#x2F; 执行后边的shell命令
-# b, break &#x3D; stop here (continue rebase later with &#39;git rebase --continue&#39;)   &#x2F;&#x2F;在这里停止，稍后使用 --continue 继续
-# d, drop &lt;commit&gt; &#x3D; remove commit  &#x2F;&#x2F; 清除该commit
-# l, label &lt;label&gt; &#x3D; label current HEAD with a name &#x2F;&#x2F; 使用label标记当前HEAD
-# t, reset &lt;label&gt; &#x3D; reset HEAD to a label  &#x2F;&#x2F; 设置HEAD到标记的label
-# m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]  &#x2F;&#x2F; 合并分支
-# .       create a merge commit using the original merge commit&#39;s
+# p, pick &lt;commit&gt; = use commit   // 保留该commit
+# r, reword &lt;commit&gt; = use commit, but edit the commit message  // 保留该commit，但修改该commit的注释
+# e, edit &lt;commit&gt; = use commit, but stop for amending  // 保留该commit, 但我要停下来修改该commit
+# s, squash &lt;commit&gt; = use commit, but meld into previous commit  // 将该commit合并到前一个commit
+# f, fixup &lt;commit&gt; = like &quot;squash&quot;, but discard this commit&#x27;s log message  // 将该commit合并到前一个commit，并不要保留该提交的注释信息
+# x, exec &lt;command&gt; = run command (the rest of the line) using shell  // 执行后边的shell命令
+# b, break = stop here (continue rebase later with &#x27;git rebase --continue&#x27;)   //在这里停止，稍后使用 --continue 继续
+# d, drop &lt;commit&gt; = remove commit  // 清除该commit
+# l, label &lt;label&gt; = label current HEAD with a name // 使用label标记当前HEAD
+# t, reset &lt;label&gt; = reset HEAD to a label  // 设置HEAD到标记的label
+# m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]  // 合并分支
+# .       create a merge commit using the original merge commit&#x27;s
 # .       message (or the oneline, if no original merge commit was
 # .       specified). Use -c &lt;commit&gt; to reword the commit message.
 #
@@ -139,21 +142,21 @@ pick 9135476 version 0.1.5 change XXXX
 # However, if you remove everything, the rebase will be aborted.
 #
 # Note that empty commits are commented out
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 
 <h4 id="Eg-1"><a href="#Eg-1" class="headerlink" title="Eg:"></a>Eg:</h4><p>我需要修改第二行和第三行的 Commit，那我将第二行和第三行的 pick 改成 edit 或 e，保存并退出。</p>
 <p>git 会依次执行上面的操作，当操作为 pick 时，直接 commit。当操作为 edit 时，会中断，并提示</p>
-<pre class="line-numbers language-none"><code class="language-none">You can amend the commit now, with  &#x2F;&#x2F; 你可以使用 git commit --amend 来修改此次提交
+<pre><code class="hljs plaintext">You can amend the commit now, with  // 你可以使用 git commit --amend 来修改此次提交
 
     git commit --amend
 
-Once you are satisfied with your changes, run &#x2F;&#x2F; 修改以后满意了，执行 git rebase --continue 继续剩下的流程
+Once you are satisfied with your changes, run // 修改以后满意了，执行 git rebase --continue 继续剩下的流程
 
-    git rebase --continue<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    git rebase --continue</code></pre>
 
 <p>全部修改完成以后提示如下：</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git rebase --continue
-Successfully rebased and updated refs&#x2F;heads&#x2F;master.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs plaintext">$ git rebase --continue
+Successfully rebased and updated refs/heads/master.</code></pre>
 
 <h3 id="如果需要把修改的历史-commit-push-到远程库中"><a href="#如果需要把修改的历史-commit-push-到远程库中" class="headerlink" title="如果需要把修改的历史 commit push 到远程库中"></a>如果需要把修改的历史 commit push 到远程库中</h3><p>使用 <code>git push -f</code> 命令即可</p>
 <h3 id="如果意外关闭了弹出的编辑窗口"><a href="#如果意外关闭了弹出的编辑窗口" class="headerlink" title="如果意外关闭了弹出的编辑窗口"></a>如果意外关闭了弹出的编辑窗口</h3><p>如果 git 没有执行完操作，<code>git rebase --edit-todo</code> 命令可以返回编辑</p>

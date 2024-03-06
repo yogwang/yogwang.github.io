@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -124,7 +127,7 @@
 <p>目前小程序分包大小有以下限制：</p>
 <ul>
 <li>整个小程序所有分包大小不超过 20M</li>
-<li>单个分包/主包大小不能超过 2M</li>
+<li>单个分包&#x2F;主包大小不能超过 2M</li>
 </ul>
 </blockquote>
 <p>随着项目的不断迭代，小程序的主包会越来越大， 终究会有一天会超过 <code>2M</code> 的主包限制，首先考虑到的就是图片资源放到 <code>CDN</code> 或者 <code>OSS</code>，起初会很奏效，但是随着一些JS库的加入就没办法了，即使使用了 <code>.min</code> 版本，或者精简了类库代码，主包还会很大，这时候就会用到项目分包了。</p>
@@ -206,18 +209,18 @@
  
   <article class="article-excerpt">
     <p>小程序的插槽用法和 <code>Vue</code> 的 <code>slot</code> 几乎一模一样，现在组件内需要的地方加入插槽（<code>&lt;slot&gt;</code>）节点就行了。也可以直接查看小程序提供的 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/s/1udXLnmi6KY2">🔗 代码片段</a></p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- 组件模板 P.S. 设置语言类型为html是因为wxml没有高亮 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrapper<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span><span class="token punctuation">></span></span>这里是组件的内部节点<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>slot</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- 引用组件的页面模板 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>component-tag-name</span><span class="token punctuation">></span></span>
-    <span class="token comment">&lt;!-- 这部分内容将被放置在组件 &lt;slot> 的位置上 --></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span><span class="token punctuation">></span></span>这里是插入到组件slot中的内容<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>component-tag-name</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 组件模板 P.S. 设置语言类型为html是因为wxml没有高亮 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wrapper&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>这里是组件的内部节点<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></code></pre>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 引用组件的页面模板 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">component-tag-name</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 这部分内容将被放置在组件 &lt;slot&gt; 的位置上 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>这里是插入到组件slot中的内容<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">component-tag-name</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></code></pre>
 
 <p>是不是很简单，需要使用到具名插槽的话，只需要在组件的 <code>options</code> 中开启 <strong>多slot支持</strong> <code>multipleSlots</code> 就可以了。</p>
   </article>
@@ -428,7 +431,7 @@
  
   <article class="article-excerpt">
     <p>小程序包含一个描述整体程序的 <code>app</code> 和多个描述各自页面的 <code>page</code>。<br>刚刚接触到小程序，使用 微信开发者工具 新建完项目之后，会有一个这样的初始结构：</p>
-<pre class="line-numbers language-none"><code class="language-none">├─pages
+<pre><code class="hljs plaintext">├─pages
 │  ├─index
 │  │     index.js
 │  │     index.json
@@ -447,7 +450,7 @@
 ├─ app.json
 ├─ app.wxss
 ├─ project.config.json
-└─ sitemap.json<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+└─ sitemap.json</code></pre>
   </article>
   <div class="article-more-link">
     <a href="/2021/miniprogram-devDiary-01-structure/#more">阅读全文</a>

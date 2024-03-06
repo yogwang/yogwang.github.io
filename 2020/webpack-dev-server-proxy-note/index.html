@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,25 +106,25 @@
 <p>所以就用到了 <code>webpack-dev-server</code> 的 <code>proxy</code>，但是有一些部分我并没有整明白，所以写一篇文章梳理一下。</p>
 <p>最简单的就是直接在 <code>webpack</code> 的配置文件中启用 proxy 就可以了，</p>
 <span id="more"></span>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-  publicPath<span class="token operator">:</span> <span class="token string">"./"</span><span class="token punctuation">,</span>
-  outputDir<span class="token operator">:</span> <span class="token string">"./dist"</span><span class="token punctuation">,</span>
-  lintOnSave<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  css<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    loaderOptions<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      <span class="token operator">...</span><span class="token punctuation">.</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  devServer<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    proxy<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      <span class="token string">"/api"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 这里的api可以是 / 也可以是具体的path也可以配置多个</span>
-        target<span class="token operator">:</span> <span class="token string">"http://www.domain.com/"</span><span class="token punctuation">,</span> <span class="token comment">//对应自己的api接口</span>
-        changeOrigin<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 如果接口跨域，需要配置这个参数</span>
-        secure<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 如果是https接口，需要配置这个参数</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
+  <span class="hljs-attr">publicPath</span>: <span class="hljs-string">&quot;./&quot;</span>,
+  <span class="hljs-attr">outputDir</span>: <span class="hljs-string">&quot;./dist&quot;</span>,
+  <span class="hljs-attr">lintOnSave</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">css</span>: &#123;
+    <span class="hljs-attr">loaderOptions</span>: &#123;
+      ....
+    &#125;,
+  &#125;,
+  <span class="hljs-attr">devServer</span>: &#123;
+    <span class="hljs-attr">proxy</span>: &#123;
+      <span class="hljs-string">&quot;/api&quot;</span>: &#123; <span class="hljs-comment">// 这里的api可以是 / 也可以是具体的path也可以配置多个</span>
+        <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;http://www.domain.com/&quot;</span>, <span class="hljs-comment">//对应自己的api接口</span>
+        <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 如果接口跨域，需要配置这个参数</span>
+        <span class="hljs-attr">secure</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 如果是https接口，需要配置这个参数</span>
+      &#125;,
+    &#125;,
+  &#125;,
+&#125;;</code></pre>
 <p>然后再请求的配置文件中修改地址为启动的服务地址就可以初步实现了。<br>改编成生产环境的时候就需要去修改配置文件，我就觉得很麻烦，一点也不优雅，所以就需要用到环境变量来配置代里。</p>
 <p>VueCLI 4x中通过为 <code>.env</code> 文件增加后缀来设置某个模式下特有的环境变量，例如在项目根目录创建一个名为 <code>.env.development</code> 的文件，那么在这个文件里声明过的变量就只会在 <code>development</code> 模式下被载入。</p>
 <blockquote>
@@ -129,7 +132,7 @@
 </blockquote>
 <p>所以默认你不需要配就可以在 <code>run serve</code> 时读取 <code>.env.development</code> 的配置，同理 <code>build</code> 时会读取 <code>.env.production</code> 的配置。</p>
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p>只有以 <code>VUE_APP_</code> 开头的变量会被 <code>webpack.DefinePlugin</code> 静态嵌入到客户端侧的包中。你可以在应用的代码中这样访问它们：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">VUE_APP_SECRET</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">VUE_APP_SECRET</span>)</code></pre>
 <p>在构建过程中，<code>process.env.VUE_APP_SECRET</code> 将会被相应的值所取代。在 <code>VUE_APP_SECRET=secret</code> 的情况下，它会被替换为 “secret”。</p>
 <p>除了 <code>VUE_APP_*</code> 变量之外，在你的应用代码中始终可用的还有两个特殊的变量：</p>
 <p><code>NODE_ENV</code> - 会是 <code>&quot;development&quot;</code>、<code>&quot;production&quot;</code> 或 <code>&quot;test&quot;</code> 中的一个。具体的值取决于应用运行的模式。<br><code>BASE_URL</code> - 会和 <code>vue.config.js</code> 中的 <code>publicPath</code> 选项相符，即你的应用会部署到的基础路径。</p>

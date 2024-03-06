@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -107,37 +110,37 @@
 <p><code>Intl.NumberFormat</code> 是对语言敏感的格式化数字类的构造器类。<br>语法：<br><code>new Intl.NumberFormat([locales[, options]])</code></p>
 </blockquote>
 <p>是不是很简单，并且可以从参数中看到，这个API是支持设置本地化的，那就快速来过一遍示例：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 直接格式化</span>
-<span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token number">123456789</span><span class="token punctuation">)</span>
-<span class="token comment">// ’123,456,789</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 直接格式化</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">NumberFormat</span>().<span class="hljs-title function_">format</span>(<span class="hljs-number">123456789</span>)
+<span class="hljs-comment">// ’123,456,789</span></code></pre>
 
 <p>使用 <code>locales</code> 本地化数字：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 英语环境下的数字格式化</span>
-<span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'en'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token number">123456.789</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// '123,456.789'</span>
-<span class="token comment">// 中文环境下的数字格式化</span>
-<span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'zh'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token number">123456.789</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// '123,456.789'</span>
-<span class="token comment">// 德语环境使用逗号(,)作为小数点，使用句号(.)作为千位分隔符</span>
-<span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'de-DE'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token number">123456.789</span><span class="token punctuation">)</span>
-<span class="token comment">// '123.456,789'</span>
-<span class="token comment">// 阿拉伯语国家使用阿拉伯语数字</span>
-<span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'ar-EG'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token number">123456.789</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// '١٢٣٬٤٥٦٫٧٨٩'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 英语环境下的数字格式化</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">NumberFormat</span>(<span class="hljs-string">&#x27;en&#x27;</span>).<span class="hljs-title function_">format</span>(<span class="hljs-number">123456.789</span>);
+<span class="hljs-comment">// &#x27;123,456.789&#x27;</span>
+<span class="hljs-comment">// 中文环境下的数字格式化</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">NumberFormat</span>(<span class="hljs-string">&#x27;zh&#x27;</span>).<span class="hljs-title function_">format</span>(<span class="hljs-number">123456.789</span>);
+<span class="hljs-comment">// &#x27;123,456.789&#x27;</span>
+<span class="hljs-comment">// 德语环境使用逗号(,)作为小数点，使用句号(.)作为千位分隔符</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">NumberFormat</span>(<span class="hljs-string">&#x27;de-DE&#x27;</span>).<span class="hljs-title function_">format</span>(<span class="hljs-number">123456.789</span>)
+<span class="hljs-comment">// &#x27;123.456,789&#x27;</span>
+<span class="hljs-comment">// 阿拉伯语国家使用阿拉伯语数字</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">NumberFormat</span>(<span class="hljs-string">&#x27;ar-EG&#x27;</span>).<span class="hljs-title function_">format</span>(<span class="hljs-number">123456.789</span>);
+<span class="hljs-comment">// &#x27;١٢٣٬٤٥٦٫٧٨٩&#x27;</span></code></pre>
 
 <p>配置紧凑型(<code>&#123;notation:&quot;compact&quot;&#125;</code>) 可以将大位数缩写:</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'en'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>notation<span class="token operator">:</span><span class="token string">"compact"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token number">123456789</span><span class="token punctuation">)</span>
-<span class="token comment">// '123M'</span>
-<span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'en'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>notation<span class="token operator">:</span><span class="token string">"compact"</span><span class="token punctuation">,</span> compactDisplay<span class="token operator">:</span> <span class="token string">"long"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token number">123456789</span><span class="token punctuation">)</span>
-<span class="token comment">// '123 million'</span>
-<span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'zh'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>notation<span class="token operator">:</span><span class="token string">"compact"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token number">123456789</span><span class="token punctuation">)</span>
-<span class="token comment">// '1.2亿'</span>
-<span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'zh'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>notation<span class="token operator">:</span><span class="token string">"compact"</span><span class="token punctuation">,</span> compactDisplay<span class="token operator">:</span> <span class="token string">"long"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token number">123456789</span><span class="token punctuation">)</span>
-<span class="token comment">// '1.2亿'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'zh-Hans-CN-u-nu-hanidec'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>notation<span class="token operator">:</span> <span class="token string">"compact"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token number">123456789</span><span class="token punctuation">)</span>
-<span class="token comment">// 一.二亿</span>
-<span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'zh-Hans-CN-u-nu-hanidec'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>notation<span class="token operator">:</span> <span class="token string">"compact"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token number">1234567890</span><span class="token punctuation">)</span>
-<span class="token comment">// '一二亿'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">NumberFormat</span>(<span class="hljs-string">&#x27;en&#x27;</span>, &#123;<span class="hljs-attr">notation</span>:<span class="hljs-string">&quot;compact&quot;</span>&#125;).<span class="hljs-title function_">format</span>(<span class="hljs-number">123456789</span>)
+<span class="hljs-comment">// &#x27;123M&#x27;</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">NumberFormat</span>(<span class="hljs-string">&#x27;en&#x27;</span>, &#123;<span class="hljs-attr">notation</span>:<span class="hljs-string">&quot;compact&quot;</span>, <span class="hljs-attr">compactDisplay</span>: <span class="hljs-string">&quot;long&quot;</span>&#125;).<span class="hljs-title function_">format</span>(<span class="hljs-number">123456789</span>)
+<span class="hljs-comment">// &#x27;123 million&#x27;</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">NumberFormat</span>(<span class="hljs-string">&#x27;zh&#x27;</span>, &#123;<span class="hljs-attr">notation</span>:<span class="hljs-string">&quot;compact&quot;</span>&#125;).<span class="hljs-title function_">format</span>(<span class="hljs-number">123456789</span>)
+<span class="hljs-comment">// &#x27;1.2亿&#x27;</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">NumberFormat</span>(<span class="hljs-string">&#x27;zh&#x27;</span>, &#123;<span class="hljs-attr">notation</span>:<span class="hljs-string">&quot;compact&quot;</span>, <span class="hljs-attr">compactDisplay</span>: <span class="hljs-string">&quot;long&quot;</span>&#125;).<span class="hljs-title function_">format</span>(<span class="hljs-number">123456789</span>)
+<span class="hljs-comment">// &#x27;1.2亿&#x27;</span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">NumberFormat</span>(<span class="hljs-string">&#x27;zh-Hans-CN-u-nu-hanidec&#x27;</span>, &#123;<span class="hljs-attr">notation</span>: <span class="hljs-string">&quot;compact&quot;</span>&#125;).<span class="hljs-title function_">format</span>(<span class="hljs-number">123456789</span>)
+<span class="hljs-comment">// 一.二亿</span>
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">NumberFormat</span>(<span class="hljs-string">&#x27;zh-Hans-CN-u-nu-hanidec&#x27;</span>, &#123;<span class="hljs-attr">notation</span>: <span class="hljs-string">&quot;compact&quot;</span>&#125;).<span class="hljs-title function_">format</span>(<span class="hljs-number">1234567890</span>)
+<span class="hljs-comment">// &#x27;一二亿&#x27;</span></code></pre>
 <p>可以看到使用<strong>中文十进制数字</strong>，还是稍微有点问题的，不过直接使用阿拉伯数字展示也不是不行对吧。</p>
 <p>其他扩展用法查看MDN的文档就行，里面有详细的示例，我就不一一举例了。</p>
 <h2 id="😫-关于兼容性"><a href="#😫-关于兼容性" class="headerlink" title="😫 关于兼容性"></a>😫 关于兼容性</h2><p>兼容性问题是有很多人关注的，作为一个在2012年被提出的规范（<code>ECMA-402 1.0</code>），从 <code>IE 11</code> 开始被支持（不持支大位数缩写），其它的现代浏览器都是支持的，当然处在实验阶段的属性实现程度不一致，不过 <code>format</code> 和 <code>locales</code> 以及 <code>notation</code> 都是支持的，所以正常使用已经足够了。</p>

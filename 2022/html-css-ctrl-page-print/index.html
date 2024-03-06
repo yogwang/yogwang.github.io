@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -108,10 +111,12 @@
 <h2 id="1-选择打印区域"><a href="#1-选择打印区域" class="headerlink" title="#1 选择打印区域"></a>#1 选择打印区域</h2><p>局部打印的方式据我了解到的有三种：</p>
 <blockquote>
 <ol>
-<li>通过<strong>开始、结束标记</strong>来控制打印范围；<ul>
+<li>通过<strong>开始、结束标记</strong>来控制打印范围；</li>
+</ol>
+<ul>
 <li><code>&lt;!--startprint--&gt;</code> 和 <code>&lt;!--endprint--&gt;</code></li>
 </ul>
-</li>
+<ol start="2">
 <li>通过把局部内容赋值给<code>body</code>，打印整个页面，而后再把原页面内容重复覆盖回来；</li>
 <li>通过动态创建<code>&lt;iframe&gt;</code>来打印；<br><small>window.print()局部打印三种方式 - 硅谷工具人</small></li>
 </ol>
@@ -124,11 +129,11 @@
 <p><code>@page</code> 规则用于在打印文档时修改某些 <strong>CSS</strong> 属性。你不能用 <code>@page</code> 规则来修改所有的 <strong>CSS</strong> 属性，而是只能修改 <code>margin</code>,<code>orphans</code>,<code>widow</code> 和 <code>page breaks of the document</code>。对其他属性的修改是无效的。<br><small>@page - MDN</small></p>
 </blockquote>
 <p>暂时我能用到的就只有 <code>margin</code> 、 <code>size</code> 以及 <code>page-break</code> 了，使用方式很简单和正常的CSS一样使用，例如：</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token atrule"><span class="token rule">@page</span></span> <span class="token punctuation">&#123;</span>
-	<span class="token property">margin</span><span class="token punctuation">:</span> 1cm<span class="token punctuation">;</span> // 设置打印页边距；
-	<span class="token property">size</span><span class="token punctuation">:</span> A4 portrait<span class="token punctuation">;</span> // 指定打印时纸张大小和方向
-	<span class="token property">break-after</span><span class="token punctuation">:</span> page<span class="token punctuation">;</span> // 分页属性
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-keyword">@page</span> &#123;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">1cm</span>; // 设置打印页边距；
+  size: A4 portrait; // 指定打印时纸张大小和方向
+  <span class="hljs-attribute">break-after</span>: page; // 分页属性
+&#125;</code></pre>
 <p>可以把 <code>@page</code> 规则理解成打印时的对象去设置，并不和 <code>@media print</code> 相似。<br>并且我在尝试使用 <code>size</code> 指定纸张的大小时（别名）， <strong>Chrome</strong>、 <strong>FireFox</strong> 和 <strong>Edge</strong> 都没有生效。指定纸张方向是可以的。</p>
 <ul>
 <li><small>使用别名指定纸张大小时， <code>Edge</code> 中甚至影响到了 <code>margin</code> 属性的生效，所以最好 <code>size</code> 只指定方向 (2022 年 7 月 25 日)。</small></li>
@@ -136,7 +141,7 @@
 </ul>
 <p><strong>简单配置一下页面打印样式，然后开始写打印内容样式。</strong>因为实际上可以配置的属性真的不多，而且各浏览器支持的程度也参差不齐，如果高定制化的话会很容易自闭。</p>
 <h2 id="3-页面内容样式"><a href="#3-页面内容样式" class="headerlink" title="#3 页面内容样式"></a>#3 页面内容样式</h2><p>这块内容就是正常写CSS样式了，有一部分在打印时的特殊样式搭配使用 <code>@media print</code> 来匹配就可以了，一遍调整一边使用浏览器的打印预览功能查看实际效果即可，所以就不赘述了。</p>
-<h2 id="4-分页打印内容"><a href="#4-分页打印内容" class="headerlink" title="#4 分页打印内容"></a>#4 分页打印内容</h2><p>分页的话，使用在前文中提到的 <code>page-break</code>，给占据整页/整块区域的内容增加 <code>break-before</code> 或者 <code>break-after</code> 属性即可。<br>也可以给单独的类似 <code>&lt;hr /&gt;</code> 这样的水平线元素增加 <code>page-break</code> 属性。然后再搭配 <code>@media print</code> 给水平线在打印时隐藏，这样的话可以在查看页面的时候就知道哪些部分他会分页，并且在打印时也不会印象打印内容排版。</p>
+<h2 id="4-分页打印内容"><a href="#4-分页打印内容" class="headerlink" title="#4 分页打印内容"></a>#4 分页打印内容</h2><p>分页的话，使用在前文中提到的 <code>page-break</code>，给占据整页&#x2F;整块区域的内容增加 <code>break-before</code> 或者 <code>break-after</code> 属性即可。<br>也可以给单独的类似 <code>&lt;hr /&gt;</code> 这样的水平线元素增加 <code>page-break</code> 属性。然后再搭配 <code>@media print</code> 给水平线在打印时隐藏，这样的话可以在查看页面的时候就知道哪些部分他会分页，并且在打印时也不会印象打印内容排版。</p>
 <blockquote>
 <p>注意：如果要在打印时隐藏 <code>&lt;hr/&gt;</code> 元素并且保持分页功能，需要使用 <code>visibility: hidden;</code> 来隐藏，不能使用 <code>display:none</code> 不然分页属性不会生效。</p>
 </blockquote>
@@ -162,7 +167,7 @@
 </ul>
 </li>
 <li>在弹出的打印窗口中找到对应的打印机设备，点击<strong>首选项</strong>；</li>
-<li>选择<strong>纸张/输出</strong>卡片，找到<strong>色彩模式</strong>修改为<strong>彩色</strong>；</li>
+<li>选择<strong>纸张&#x2F;输出</strong>卡片，找到<strong>色彩模式</strong>修改为<strong>彩色</strong>；</li>
 <li>最后点击<strong>确定</strong>保存并<strong>应用</strong>设置，再点击<strong>打印</strong>尝试打印；</li>
 </ol>
 <hr>

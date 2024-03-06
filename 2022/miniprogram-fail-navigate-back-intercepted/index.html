@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -104,7 +107,7 @@
 <hr>
 <p>结果从 <strong>详情页</strong> 返回 <strong>列表页</strong> 之后，<strong>返回按钮</strong>点上去没反应了！！！页面中添加一个自定义按钮调用 <code>wx.navigateBack</code> 返回也不行。</p>
 <p>监听了 <code>wx.navigateBack</code> 的 <code>success</code>、<code>fail</code>、<code>complete</code> 三个回调之后发现，<code>success</code> 和 <code>fail</code> 都不执行，只执行了 <code>complete</code> 的回调，输出为：</p>
-<pre class="line-numbers language-log" data-language="log"><code class="language-log">complete: &#123;errMsg: &quot;fail:navigateBack intercepted&quot;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs log">complete: &#123;errMsg: &quot;fail:navigateBack intercepted&quot;&#125;</code></pre>
 <span id="more"></span>
 
 <p>很明显，返回按钮被劫持了，但是我这几个页面都没有劫持过路由，就在我一筹莫展之时，从微信社区找到了一个问题反馈 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/doc/0008ec00e90cf86ab91c0bc9f51800">关于page-container，返回键被锁死？</a>。</p>
@@ -116,22 +119,22 @@
 <h3 id="🧠-解决问题"><a href="#🧠-解决问题" class="headerlink" title="🧠 解决问题"></a>🧠 解决问题</h3><p>把跳转到添加页的业务修改成先执行 <code>wx.navigateBack</code> 之后再跳转，发现还是有这个问题，放在 <code>wx.navigateBack()</code> 的回调里边执行，依旧有这个问题。</p>
 <p>重新尝试把路由跳转放到 <code>wx.setData()</code> 的回调中执行也不能解决问题。<strong>说明不能同时去执行这两个操作，即使通过回调来执行。</strong></p>
 <p>所以只能按照这个 <strong>问题贴</strong> 中的办法，使用 <code>setTimeout</code> 来避免返回按钮被 <code>page-container</code> 劫持。</p>
-<h3 id="📑-解决方案："><a href="#📑-解决方案：" class="headerlink" title="📑 解决方案："></a>📑 解决方案：</h3><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 关闭半屏弹出</span>
-<span class="token function">onCloseDialog</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-    dialogVisible<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token comment">// 跳转到添加页面</span>
-<span class="token function">navigateToAddPage</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onCloseDialog</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token keyword">const</span> timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-    <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span>
-    wx<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-      url<span class="token operator">:</span> addPagesPath<span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="📑-解决方案："><a href="#📑-解决方案：" class="headerlink" title="📑 解决方案："></a>📑 解决方案：</h3><pre><code class="hljs js"><span class="hljs-comment">// 关闭半屏弹出</span>
+onCloseDialog () &#123;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(&#123;
+    <span class="hljs-attr">dialogVisible</span>: <span class="hljs-literal">false</span>,
+  &#125;)
+&#125;,
+<span class="hljs-comment">// 跳转到添加页面</span>
+navigateToAddPage () &#123;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">onCloseDialog</span>()
+  <span class="hljs-keyword">const</span> timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;
+    <span class="hljs-built_in">clearTimeout</span>(timer)
+    wx.<span class="hljs-title function_">navigateTo</span>(&#123;
+      <span class="hljs-attr">url</span>: addPagesPath,
+    &#125;)
+  &#125;,<span class="hljs-number">200</span>)
+&#125;</code></pre>
 <hr>
 <p>具体为什么 <code>page-container</code> 通过修改 <code>show</code> 关闭，或者是通过 <code>navigateBack</code> 关闭，页面返回操作还是会被劫持，我就没办法解答了。看看微信官方是否后续会解决这个问题吧。</p>
 <h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><ul>

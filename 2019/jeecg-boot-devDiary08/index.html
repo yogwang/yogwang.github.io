@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -108,65 +111,65 @@
 <span id="more"></span>
 
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装依赖总不用说了把，不管你用那种，反正包名没错就对了。</p>
-<h4 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h4><pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">$ npm install vue-baidu-map --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h4><pre><code class="hljs cmd">$ npm install vue-baidu-map --save</code></pre>
 
-<h4 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h4><pre class="line-numbers language-none"><code class="language-none">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;vue-baidu-map&quot;&gt;&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h4><pre><code class="hljs plaintext">&lt;script src=&quot;https://unpkg.com/vue-baidu-map&quot;&gt;&lt;/script&gt;</code></pre>
 
-<h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><h3 id="全局注册"><a href="#全局注册" class="headerlink" title="全局注册"></a>全局注册</h3><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">"vue"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> BaiduMap <span class="token keyword">from</span> <span class="token string">"vue-baidu-map"</span><span class="token punctuation">;</span>
+<h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><h3 id="全局注册"><a href="#全局注册" class="headerlink" title="全局注册"></a>全局注册</h3><pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">BaiduMap</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-baidu-map&quot;</span>;
 
-Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>BaiduMap<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
-  ak<span class="token operator">:</span> <span class="token string">"YOUR_APP_KEY"</span> <span class="token comment">// ak 是在百度地图开发者平台申请的密钥</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">BaiduMap</span>, &#123;
+  <span class="hljs-attr">ak</span>: <span class="hljs-string">&quot;YOUR_APP_KEY&quot;</span> <span class="hljs-comment">// ak 是在百度地图开发者平台申请的密钥</span>
+&#125;);</code></pre>
 
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>baidu-map</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bm-view<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>baidu-map</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">baidu-map</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bm-view&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">baidu-map</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
-  <span class="token selector">.bm-view</span> <span class="token punctuation">&#123;</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span>
+<span class="language-css">  <span class="hljs-selector-class">.bm-view</span> &#123;</span>
+<span class="language-css">    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span>
+<span class="language-css">    <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;</span>
+<span class="language-css">  &#125;</span>
+<span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></code></pre>
 
 <h3 id="局部调用"><a href="#局部调用" class="headerlink" title="局部调用"></a>局部调用</h3><blockquote>
-<p>如果有按需引入组件的需要，可以选择局部注册百度地图组件，这将减少工程打包后的容量尺寸。<br>局部注册的 BaiduMap 组件必须声明 ak 属性。<br>所有的独立组件均存放在 vue-baidu-map/components 文件夹下，按需引用即可。</p>
+<p>如果有按需引入组件的需要，可以选择局部注册百度地图组件，这将减少工程打包后的容量尺寸。<br>局部注册的 BaiduMap 组件必须声明 ak 属性。<br>所有的独立组件均存放在 vue-baidu-map&#x2F;components 文件夹下，按需引用即可。</p>
 </blockquote>
 <blockquote>
 <p>由于未编译的 ES 模块不能在大多数浏览器中直接运行，如果引入组件时发生运行时错误，请检查 webpack 的 loader 配置，确认 include 和 exclude 选项命中了组件库。</p>
 </blockquote>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>baidu-map</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bm-view<span class="token punctuation">"</span></span> <span class="token attr-name">ak</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>YOUR_APP_KEY<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>baidu-map</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">baidu-map</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bm-view&quot;</span> <span class="hljs-attr">ak</span>=<span class="hljs-string">&quot;YOUR_APP_KEY&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">baidu-map</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-  <span class="token keyword">import</span> BaiduMap <span class="token keyword">from</span> <span class="token string">"vue-baidu-map/components/map/Map.vue"</span><span class="token punctuation">;</span>
-  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-    components<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      BaiduMap
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript">  <span class="hljs-keyword">import</span> <span class="hljs-title class_">BaiduMap</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-baidu-map/components/map/Map.vue&quot;</span>;</span>
+<span class="language-javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="language-javascript">    <span class="hljs-attr">components</span>: &#123;</span>
+<span class="language-javascript">      <span class="hljs-title class_">BaiduMap</span></span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
-  <span class="token selector">.bm-view</span> <span class="token punctuation">&#123;</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span>
+<span class="language-css">  <span class="hljs-selector-class">.bm-view</span> &#123;</span>
+<span class="language-css">    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span>
+<span class="language-css">    <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;</span>
+<span class="language-css">  &#125;</span>
+<span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></code></pre>
 
 <h2 id="好，安装完成，让我们-Run-起来。"><a href="#好，安装完成，让我们-Run-起来。" class="headerlink" title="好，安装完成，让我们 Run 起来。"></a>好，安装完成，让我们 Run 起来。</h2><p>卧槽，怎么是白的？地图呢？</p>
 <p>👇</p>
-<p><img src="/2019/jeecg-boot-devDiary08/run1.jpg" alt="初次运行"></p>
+<p><img src="/jeecg-boot-devDiary08/run1.jpg" alt="初次运行"></p>
 <p>好，继续查看文档….</p>
 <blockquote>
 <p>没有设置 <code>center</code> 和 <code>zoom</code> 属性的地图组件是不进行地图渲染的。<br>当 center 属性为合法地名字符串时例外，因为百度地图会根据地名自动调整 zoom 的值。</p>
 </blockquote>
 <p>所以按照例子，在 <code>&lt;baidu-map&gt;</code> 加上 <code>center=&quot;北京&quot;</code> ：</p>
-<p><img src="/2019/jeecg-boot-devDiary08/demo1.jpg" alt="center=&quot;北京&quot;"><br>ok，跑起来了，</p>
+<p><img src="/jeecg-boot-devDiary08/demo1.jpg" alt="center=&quot;北京&quot;"><br>ok，跑起来了，</p>
 <p>让我们试试另外一种方法，单独设置 <code>center</code> 和 <code>zoom</code> ：</p>
-<p><img src="/2019/jeecg-boot-devDiary08/demo2.jpg" alt="@ready=&quot;handler&quot;"></p>
+<p><img src="/jeecg-boot-devDiary08/demo2.jpg" alt="@ready=&quot;handler&quot;"></p>
 <p>好，快速启动已经没有问题了。</p>
 <h2 id="扩展应用"><a href="#扩展应用" class="headerlink" title="扩展应用"></a>扩展应用</h2><p>时间有限，先把链接放上来，不能同步测试写文档的了。<br>项目完成之后开始写</p>
 <h4 id="自动定位"><a href="#自动定位" class="headerlink" title="自动定位"></a>自动定位</h4><p><a target="_blank" rel="noopener" href="https://dafrok.github.io/vue-baidu-map/#/zh/control/geolocation">https://dafrok.github.io/vue-baidu-map/#/zh/control/geolocation</a></p>

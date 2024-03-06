@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,7 +106,7 @@
 <p>想要自定义一个 Hexo 主题大概需要了解一个 <strong>模板引擎</strong>，Hexo 内置了 <code>Swig</code>，我所用的是默认安装的 <code>EJS</code>，反正都差不多，都提供了一些模板语法，书写还是按照Js的方法来的。<br>然后先按照文档创建完主体目录结构和模板组件，就可以开始开发了，我比较偷懒没有使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/yo">yeoman</a> + <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/generator-hexo-theme">generator-hexo-theme</a> 来创建，直接复制了原先的 <code>landscape</code> 主题。</p>
 <p>哦，对了！还要选择一个CSS预编译器，我还是没有选择适用了默认安装的 <code>Stylus</code>，你也可以按照习惯去安装，并且 <code>install</code> 对应的 Hexo 插件。</p>
 <span id="more"></span>
-<pre class="line-numbers language-node" data-language="node"><code class="language-node"># Templates
+<pre><code class="hljs node"># Templates
 $ npm install --save hexo-renderer-ejs
 $ npm install --save hexo-renderer-pug
 $ npm install --save hexo-renderer-haml
@@ -111,7 +114,7 @@ $ npm install --save hexo-renderer-haml
 # Styles
 $ npm install --save hexo-renderer-less
 $ npm install --save hexo-renderer-sass
-$ npm install --save hexo-renderer-stylus<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ npm install --save hexo-renderer-stylus</code></pre>
 <p>然后不需要配置，Hexo 会自动按照文件后缀名使用对应的拓展编译文件。</p>
 <h3 id="📚-前置学习"><a href="#📚-前置学习" class="headerlink" title="📚 前置学习"></a>📚 前置学习</h3><ul>
 <li>了解主题目录结构 👉 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/themes">主题 | Hexo</a></li>
@@ -121,7 +124,7 @@ $ npm install --save hexo-renderer-stylus<span aria-hidden="true" class="line-nu
 </ul>
 <p>以上四个文档希望你可以阅读完，特别是辅助函数，会在制作过程中反复用到，也是最关键的部分，我相信大家已经对 [<code>html</code>, <code>css</code>, <code>js</code>] 三剑客很熟悉了，所以就不提他们了。</p>
 <p>完整目录如下：</p>
-<pre class="line-numbers language-dir_tree" data-language="dir_tree"><code class="language-dir_tree">│
+<pre><code class="hljs dir_tree">│
 ├─ layout    # 布局文件夹
 │   ├─ partials  # 局部模版
 │   │   └─ recent-posts.ejs # 列表页文章Item
@@ -142,24 +145,24 @@ $ npm install --save hexo-renderer-stylus<span aria-hidden="true" class="line-nu
 │
 ├─ .editorconfig  # 编辑器配置文件
 ├─ _config.yml    # 主题配置文件
-└─ package.json   # 项目包管理文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+└─ package.json   # 项目包管理文件</code></pre>
 <h2 id="Part1-主题模板开发"><a href="#Part1-主题模板开发" class="headerlink" title="Part1. 主题模板开发"></a>Part1. 主题模板开发</h2><p>首先会想到要着手的肯定是首页，但是直接开发首页肯定是不行的，还需要先把网页的结构搭完，好比现在 <strong>SPA</strong> 项目的 <code>index.html</code> 文件。<br>那么就会先就需要调整 <code>layout.ejs</code> 这个模板文件，打开的话，可以看到一个简单的 <code>html</code> 结构，这个时候就是需要按照自己的想法来搭建主题的公共部分了，<br>比如说 <strong>页首</strong> 与 <strong>页尾</strong>，然后使用 <code>&lt;%- partial(path, [locals], [option])  %&gt;</code> 来引入组件 <small><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/helpers#partial">locals和option的可接收参数文档</a></small>。<br>我把 <code>meta</code> 信息也提取成部件了，完成大概是这样的结构。</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- layout page --></span>
-<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&lt;%= config.language =><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  &lt;%- partial('_partial/meta') %>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-    &lt;%- partial('_partial/header', null, &#123;cache: true&#125;) %>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrap<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-      &lt;%- body %><span class="token comment">&lt;!-- body变量，用于输出页面内容 --></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    &lt;%- partial('_partial/footer', null, &#123;cache: true&#125;) %>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- layout page --&gt;</span>
+<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;&lt;%= config.language =&gt;&quot;</span>&gt;</span>
+  &lt;%- partial(&#x27;_partial/meta&#x27;) %&gt;
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    &lt;%- partial(&#x27;_partial/header&#x27;, null, &#123;cache: true&#125;) %&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;wrap&quot;</span>&gt;</span>
+      &lt;%- body %&gt;<span class="hljs-comment">&lt;!-- body变量，用于输出页面内容 --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    &lt;%- partial(&#x27;_partial/footer&#x27;, null, &#123;cache: true&#125;) %&gt;
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
 <p>然后开始编辑 <code>index.ejs</code> 这个文件，开始可以按照自己的喜好编辑首页了，记得使用 <code>hexo s</code> 命令开打开发模式查看效果。<br>我是顺着上一版本的主页，只是展示文章，所以直接把文章卡片抽成组件了，从 <code>page.posts</code> 接收到文章列表，使用 <code>forEach()</code> 循环出列表，然后使用 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/helpers#paginator">paginator()函数</a> 把分页组件也写好了</p>
 <p>呃….好像也没有什么好说的，就是和过去 <strong>CMS</strong> 时代用模板语法来写 <code>template</code> 那样，只是以前是嵌入 <code>php</code> 的代码然后用 <code>php</code> 来执行渲染，而 <strong>Hexo</strong> 是用 <code>JS</code> 来编译成静态文件。</p>
 <p>我这边大概完成主题之后的目录结构如下：</p>
-<pre class="line-numbers language-file_directory" data-language="file_directory"><code class="language-file_directory">layout
+<pre><code class="hljs file_directory">layout
  ├─_partial                    # 小部件
  │    │  archive.ejs             # 文章分类列表组件
  │    │  archive_post.ejs        # 列表页文章卡片组件
@@ -194,7 +197,7 @@ $ npm install --save hexo-renderer-stylus<span aria-hidden="true" class="line-nu
  │  layout.ejs        # 布局模板
  │  page.ejs          # 单页模板
  │  post.ejs          # 文章详情模板
- └─ tag.ejs           # 标签页模板<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ └─ tag.ejs           # 标签页模板</code></pre>
 <p>需要注意的是一些默认的模板名称，<code>hexo</code> 会自动去寻找这些模板来生成对应的页面。<small><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/templates">模板文档 - Hexo</a></small></p>
 <table>
 <thead>
@@ -263,21 +266,21 @@ $ npm install --save hexo-renderer-stylus<span aria-hidden="true" class="line-nu
 <li><code>length</code> 文章数</li>
 <li><code>random</code> 随机排列</li>
 </ul>
-<p><strong># 空白主题不支持 <code>markdown</code> 的 <code>table</code> 语法/看不到表格</strong><br>因为没有设置 <code>&lt;table&gt;</code> 的样式，自己使用CSS写一个表格样式就好。</p>
+<p><strong># 空白主题不支持 <code>markdown</code> 的 <code>table</code> 语法&#x2F;看不到表格</strong><br>因为没有设置 <code>&lt;table&gt;</code> 的样式，自己使用CSS写一个表格样式就好。</p>
 <p><strong># 使用 <code>hexo-prism-plugin</code> 进行代码高亮处理，但是在列表页的预览内容中的代码块不会被处理</strong><br>其实会被处理，只是我在用 <code>hexo-theme-unit-test</code> 测试的时候有使用 <code>代码块标签插件</code> 的测试文章，类似这样：</p>
-<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">&#123;% codeblock lang:js mark:1,7-8,10 %&#125;
-const http &#x3D; require(&#39;http&#39;);
+<pre><code class="hljs markdown">&#123;% codeblock lang:js mark:1,7-8,10 %&#125;
+const http = require(&#x27;http&#x27;);
 
-const hostname &#x3D; &#39;127.0.0.1&#39;;
-const port &#x3D; 1337;
+const hostname = &#x27;127.0.0.1&#x27;;
+const port = 1337;
 
-http.createServer((req, res) &#x3D;&gt; &#123;
-  res.writeHead(200, &#123; &#39;Content-Type&#39;: &#39;text&#x2F;plain&#39; &#125;);
-  res.end(&#39;Hello World\n&#39;);
-&#125;).listen(port, hostname, () &#x3D;&gt; &#123;
-  console.log(&#96;Server running at http:&#x2F;&#x2F;$&#123;hostname&#125;:$&#123;port&#125;&#x2F;&#96;);
+http.createServer((req, res) =&gt; &#123;
+  res.writeHead(200, &#123; &#x27;Content-Type&#x27;: &#x27;text/plain&#x27; &#125;);
+  res.end(&#x27;Hello World\n&#x27;);
+&#125;).listen(port, hostname, () =&gt; &#123;
+  console.log(<span class="hljs-code">`Server running at http://$&#123;hostname&#125;:$&#123;port&#125;/`</span>);
 &#125;);
-&#123;% endcodeblock %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#123;% endcodeblock %&#125;</code></pre>
 
 <p>需要开启 <code>prismjs</code>，默认是关闭的，在 <code>_config.yml</code> 中开启即可。</p>
 <h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><ul>
@@ -285,7 +288,7 @@ http.createServer((req, res) &#x3D;&gt; &#123;
 <li><a target="_blank" rel="noopener" href="https://ejs.co/">EJS – Embedded JavaScript templates</a></li>
 <li><a target="_blank" rel="noopener" href="https://pugjs.org/api/getting-started.html">Pug - Getting Started</a></li>
 <li><a target="_blank" rel="noopener" href="http://haml.info/">Haml</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/site">hexojs/site: The website for Hexo.</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/site">hexojs&#x2F;site: The website for Hexo.</a></li>
 </ul>
  
   </article>

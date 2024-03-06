@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -115,77 +118,77 @@
 </ol>
 <p>那如果说我要使用多个过滤器呢？<br>例如：<code>&#123;&#123; message | filterA | filterB &#125;&#125;</code> 会先传入 <code>filterA</code> 去处理，<code>filterA</code> 返回的结果继续传入给 <code>filterB</code> 最后展示的值就是 <code>filterB</code> 返回的结果。</p>
 <p>🌰 DEMO:</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>&#123;&#123; price | NumberFormat | FilterDollarSign &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> 
-    <span class="token comment">&lt;!-- 渲染结果是 $ 199,999,999 --></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      price<span class="token operator">:</span><span class="token number">199999999</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  filters<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-    <span class="token function">NumberFormat</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>value<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">'0'</span>
-      <span class="token keyword">const</span> intPartFormat <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">(\d)(?=(?:\d&#123;3&#125;)+$)</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">'$1,'</span><span class="token punctuation">)</span>
-      <span class="token keyword">return</span> intPartFormat
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token function">FilterDollarSign</span><span class="token punctuation">(</span><span class="token parameter">price</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">$ </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>price<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123; price | NumberFormat | FilterDollarSign &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> 
+    <span class="hljs-comment">&lt;!-- 渲染结果是 $ 199,999,999 --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="language-javascript">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">    <span class="hljs-keyword">return</span> &#123;</span>
+<span class="language-javascript">      <span class="hljs-attr">price</span>:<span class="hljs-number">199999999</span>,</span>
+<span class="language-javascript">    &#125;;</span>
+<span class="language-javascript">  &#125;,</span>
+<span class="language-javascript">  <span class="hljs-attr">filters</span>:&#123;</span>
+<span class="language-javascript">    <span class="hljs-title class_">NumberFormat</span>(value) &#123;</span>
+<span class="language-javascript">      <span class="hljs-keyword">if</span> (!value) <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;0&#x27;</span></span>
+<span class="language-javascript">      <span class="hljs-keyword">const</span> intPartFormat = value.<span class="hljs-title function_">toString</span>().<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/(\d)(?=(?:\d&#123;3&#125;)+$)/g</span>, <span class="hljs-string">&#x27;$1,&#x27;</span>)</span>
+<span class="language-javascript">      <span class="hljs-keyword">return</span> intPartFormat</span>
+<span class="language-javascript">    &#125;,</span>
+<span class="language-javascript">    <span class="hljs-title class_">FilterDollarSign</span>(price)&#123;</span>
+<span class="language-javascript">      <span class="hljs-keyword">return</span> <span class="hljs-string">`$ <span class="hljs-subst">$&#123;price&#125;</span>`</span></span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;,</span>
+<span class="language-javascript">&#125;;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 
 <h4 id="✨-多参数-过滤器-的情况"><a href="#✨-多参数-过滤器-的情况" class="headerlink" title="✨ 多参数 过滤器 的情况"></a>✨ 多参数 过滤器 的情况</h4><p>例如，需要传入 <strong>两个参数</strong> 的过滤器，刨开第一个默认传入的参数，键入第二个参数即可： <code>&#123;&#123; price | NumberFormat(2) &#125;&#125;</code> , 三个参数： <code>&#123;&#123; price | NumberFormat(2, '$') &#125;&#125;</code>，更多参数以此类推。</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>&#123;&#123; price | NumberFormat(2, '$') &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> 
-    <span class="token comment">&lt;!-- 渲染结果是 $ 0.67 --></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      price<span class="token operator">:</span><span class="token number">0.6666</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  filters<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-    <span class="token function">NumberFormat</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> limit<span class="token punctuation">,</span> sign</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>value<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">'0'</span>
-      <span class="token keyword">const</span> intPartFormat <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span>limit<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>sign<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">  </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>intPartFormat<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123; price | NumberFormat(2, &#x27;$&#x27;) &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> 
+    <span class="hljs-comment">&lt;!-- 渲染结果是 $ 0.67 --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="language-javascript">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">    <span class="hljs-keyword">return</span> &#123;</span>
+<span class="language-javascript">      <span class="hljs-attr">price</span>:<span class="hljs-number">0.6666</span>,</span>
+<span class="language-javascript">    &#125;;</span>
+<span class="language-javascript">  &#125;,</span>
+<span class="language-javascript">  <span class="hljs-attr">filters</span>:&#123;</span>
+<span class="language-javascript">    <span class="hljs-title class_">NumberFormat</span>(value, limit, sign) &#123;</span>
+<span class="language-javascript">      <span class="hljs-keyword">if</span> (!value) <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;0&#x27;</span></span>
+<span class="language-javascript">      <span class="hljs-keyword">const</span> intPartFormat = value.<span class="hljs-title function_">toFixed</span>(limit).<span class="hljs-title function_">toString</span>()</span>
+<span class="language-javascript">      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;sign&#125;</span>  <span class="hljs-subst">$&#123;intPartFormat&#125;</span>`</span></span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;,</span>
+<span class="language-javascript">&#125;;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 
 <hr>
 <h2 id="更进一步：使用全局过滤器"><a href="#更进一步：使用全局过滤器" class="headerlink" title="更进一步：使用全局过滤器"></a>更进一步：使用全局过滤器</h2><p>在项目的不断完善中，会有出现一些重复使用的过滤器，如果每次都重新声明就很麻烦，就可以注册 <strong>全局过滤器</strong> <code>vue.filter</code></p>
 <p>🌰 栗子：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// main.js</span>
-Vue<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token string">'NumberFormat'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token string">'0'</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">const</span> intPartFormat <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">(\d)(?=(?:\d&#123;3&#125;)+$)</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">'$1,'</span><span class="token punctuation">)</span>
-  <span class="token keyword">return</span> intPartFormat
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-<span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  <span class="token comment">// options</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// main.js</span>
+<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-string">&#x27;NumberFormat&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) &#123;
+  <span class="hljs-keyword">if</span> (!value) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;0&#x27;</span>
+  &#125;
+  <span class="hljs-keyword">const</span> intPartFormat = value.<span class="hljs-title function_">toString</span>().<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/(\d)(?=(?:\d&#123;3&#125;)+$)/g</span>, <span class="hljs-string">&#x27;$1,&#x27;</span>)
+  <span class="hljs-keyword">return</span> intPartFormat
+&#125;)
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;
+  <span class="hljs-comment">// options</span>
+&#125;).$mount(<span class="hljs-string">&#x27;#app&#x27;</span>)</code></pre>
 
 <p>然后就可以在全局直接使用这个过滤器了，<strong>不需要单独再声明或者引入</strong>。</p>
-<p>当然如果全部都直接在 <code>main.js</code> 当中书写很多过滤器就很容易让 <code>main.js</code> 内容过多，所以可以提取出来，例如 <a target="_blank" rel="noopener" href="https://github.com/vueComponent/ant-design-vue-pro/blob/master/src/utils/filter.js">ant-design-vue-pro/filter.js</a>，然后再 <code>import</code> 进来就可以了 <a target="_blank" rel="noopener" href="https://github.com/vueComponent/ant-design-vue-pro/blob/master/src/main.js#L21">ant-design-vue-pro/main.js </a></p>
+<p>当然如果全部都直接在 <code>main.js</code> 当中书写很多过滤器就很容易让 <code>main.js</code> 内容过多，所以可以提取出来，例如 <a target="_blank" rel="noopener" href="https://github.com/vueComponent/ant-design-vue-pro/blob/master/src/utils/filter.js">ant-design-vue-pro&#x2F;filter.js</a>，然后再 <code>import</code> 进来就可以了 <a target="_blank" rel="noopener" href="https://github.com/vueComponent/ant-design-vue-pro/blob/master/src/main.js#L21">ant-design-vue-pro&#x2F;main.js </a></p>
 <h4 id="✨-全局和局步同名冲突"><a href="#✨-全局和局步同名冲突" class="headerlink" title="✨ 全局和局步同名冲突"></a>✨ 全局和局步同名冲突</h4><blockquote>
 <p>当全局过滤器和局部过滤器重名时，会采用局部过滤器。</p>
 </blockquote>
-<h3 id="✨-以上说的都是在-lt-template-gt-当中使用过滤器，如果我想在-methods-当中使用呢"><a href="#✨-以上说的都是在-lt-template-gt-当中使用过滤器，如果我想在-methods-当中使用呢" class="headerlink" title="✨ 以上说的都是在 &lt;template&gt; 当中使用过滤器，如果我想在 methods 当中使用呢?"></a>✨ 以上说的都是在 <code>&lt;template&gt;</code> 当中使用过滤器，如果我想在 <code>methods</code> 当中使用呢?</h3><p>全局过滤器的话，可以直接使用文档中的　<code>var myFilter = Vue.filter(&#39;my-filter&#39;)</code> 来获取，然后就可以把 <code>myFilter</code> 当成一个函数使用了，<br>如果时当前组件的过滤器的，可以使用　<code>this.$options.filters[&#39;my-filter&#39;]</code>　来获取，调用方式和上边一样。</p>
+<h3 id="✨-以上说的都是在-当中使用过滤器，如果我想在-methods-当中使用呢"><a href="#✨-以上说的都是在-当中使用过滤器，如果我想在-methods-当中使用呢" class="headerlink" title="✨ 以上说的都是在 &lt;template&gt; 当中使用过滤器，如果我想在 methods 当中使用呢?"></a>✨ 以上说的都是在 <code>&lt;template&gt;</code> 当中使用过滤器，如果我想在 <code>methods</code> 当中使用呢?</h3><p>全局过滤器的话，可以直接使用文档中的　<code>var myFilter = Vue.filter(&#39;my-filter&#39;)</code> 来获取，然后就可以把 <code>myFilter</code> 当成一个函数使用了，<br>如果时当前组件的过滤器的，可以使用　<code>this.$options.filters[&#39;my-filter&#39;]</code>　来获取，调用方式和上边一样。</p>
 <h2 id="🎐-尾声"><a href="#🎐-尾声" class="headerlink" title="🎐 尾声"></a>🎐 尾声</h2><h4 id="适合过滤器的场景"><a href="#适合过滤器的场景" class="headerlink" title="适合过滤器的场景"></a>适合过滤器的场景</h4><p>一般是<strong>简单的字符串处理</strong>，例如上边提到的添加数字千分号、把 <strong>状态key</strong> 转换成 <strong>状态label</strong> 之类的。</p>
 <h4 id="过滤器中如何使用当前组件的-data-或者-methods-之类"><a href="#过滤器中如何使用当前组件的-data-或者-methods-之类" class="headerlink" title="过滤器中如何使用当前组件的 data 或者 methods 之类"></a>过滤器中如何使用当前组件的 <code>data</code> 或者 <code>methods</code> 之类</h4><p>参看上条，如果需要使用 <code>data</code>、<code>computed</code> 和 <code>methods</code> 之类请使用 <code>computed</code> 替代 <code>filter</code> </p>
 <h4 id="VueJS-3-x-当中的-filter-已删除"><a href="#VueJS-3-x-当中的-filter-已删除" class="headerlink" title="VueJS 3.x 当中的 filter 已删除"></a>VueJS 3.x 当中的 <code>filter</code> 已删除</h4><blockquote>

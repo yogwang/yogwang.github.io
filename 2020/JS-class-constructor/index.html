@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -106,152 +109,152 @@
 </blockquote>
 <span id="more"></span>
 <h2 id="Constructor-方法"><a href="#Constructor-方法" class="headerlink" title="Constructor 方法"></a>Constructor 方法</h2><p>首先, 在继承的类中 <code>constructor</code> 可以省略不写(会被默认添加)</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">echo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hi!'</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token keyword">extends</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">B</span>
-b<span class="token punctuation">.</span><span class="token function">echo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Hi!</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;
+  echo () &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Hi!&#x27;</span>)
+  &#125;
+&#125;
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">A</span> &#123;
+&#125;
+<span class="hljs-keyword">let</span> b = <span class="hljs-keyword">new</span> B
+b.<span class="hljs-title function_">echo</span>() <span class="hljs-comment">// Hi!</span></code></pre>
 
 <p>但是如果写了 <code>constructor</code> 就必须要在内部调用 <code>super()</code> , 否则在创建实例的过程中会报错</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">echo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hi!'</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token keyword">extends</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">B</span>
-b<span class="token punctuation">.</span><span class="token function">echo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment">// ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;
+  echo () &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Hi!&#x27;</span>)
+  &#125;
+&#125;
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;
+  &#125;
+&#125;
+<span class="hljs-keyword">let</span> b = <span class="hljs-keyword">new</span> B
+b.<span class="hljs-title function_">echo</span>()
+<span class="hljs-comment">// ReferenceError: Must call super constructor in derived class before accessing &#x27;this&#x27; or returning from derived constructor</span></code></pre>
 <p>从提示中就能看到, 必须调用 <code>super()</code> 才能完成塑造</p>
 <blockquote>
 <p>阮一峰: 这是因为子类自己的this对象，必须先通过父类的构造函数完成塑造，得到与父类同样的实例属性和方法，然后再对其进行加工，加上子类自己的实例属性和方法。如果不调用super方法，子类就得不到this对象。</p>
 </blockquote>
 <p>从阮一峰老师的解释中也可以得出, 如果要在继承类中使用 <code>this</code> 就必须要先使用 <code>super()</code>, 那么对应的属性声明也需要放到 <code>super()</code> 之后才行:</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> x<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>y <span class="token operator">=</span> y<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">x, y</span>) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> = x;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">y</span> = y;
+  &#125;
+&#125;
 
-<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token keyword">extends</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>z <span class="token operator">=</span> z<span class="token punctuation">;</span>  <span class="token comment">// ReferenceError</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>z <span class="token operator">=</span> z<span class="token punctuation">;</span>  <span class="token comment">// Success</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">B</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">x, y, z</span>) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">z</span> = z;  <span class="hljs-comment">// ReferenceError</span>
+    <span class="hljs-variable language_">super</span>(x, y);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">z</span> = z;  <span class="hljs-comment">// Success</span>
+  &#125;
+&#125;
+<span class="hljs-keyword">let</span> b = <span class="hljs-keyword">new</span> B
+</code></pre>
 
 <h3 id="注意，super-虽然代表了父类A的构造函数，但是返回的是子类B的实例，即-super-内部的-this-指的是B的实例，因此-super-在这里相当于-A-prototype-constructor-call-this-。"><a href="#注意，super-虽然代表了父类A的构造函数，但是返回的是子类B的实例，即-super-内部的-this-指的是B的实例，因此-super-在这里相当于-A-prototype-constructor-call-this-。" class="headerlink" title="注意，super() 虽然代表了父类A的构造函数，但是返回的是子类B的实例，即 super() 内部的 this 指的是B的实例，因此 super() 在这里相当于 A.prototype.constructor.call(this)。"></a>注意，<code>super()</code> 虽然代表了父类A的构造函数，但是返回的是子类B的实例，即 <code>super()</code> 内部的 <code>this</code> 指的是B的实例，因此 <code>super()</code> 在这里相当于 <code>A.prototype.constructor.call(this)。</code></h3><hr>
 <h2 id="super-关键字"><a href="#super-关键字" class="headerlink" title="super 关键字"></a><code>super</code> 关键字</h2><p>除了在 <code>constructor</code> 中被当作父类的构造函数使用( <code>super()</code> ),<br>也可以当成对象( <code>super</code> )使用, 指向父类的原型对象, 相当于 <code>A.prototype</code>, 但是在静态方法中 <code>super</code> 之中指向于父类</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-<span class="token class-name">A</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;&#125;
+A.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">x</span> = <span class="hljs-number">2</span>;
 
-<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token keyword">extends</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">super</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token comment">// 2</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">super</span>();
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">super</span>.<span class="hljs-property">x</span>) <span class="hljs-comment">// 2</span>
+  &#125;
+&#125;
 
-<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">let</span> b = <span class="hljs-keyword">new</span> <span class="hljs-title function_">B</span>();</code></pre>
 
-<h3 id="这里需要注意，由于-super-指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过-super-调用的。"><a href="#这里需要注意，由于-super-指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过-super-调用的。" class="headerlink" title="这里需要注意，由于 super 指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过 super 调用的。"></a>这里需要注意，由于 <code>super</code> 指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过 <code>super</code> 调用的。</h3><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<h3 id="这里需要注意，由于-super-指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过-super-调用的。"><a href="#这里需要注意，由于-super-指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过-super-调用的。" class="headerlink" title="这里需要注意，由于 super 指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过 super 调用的。"></a>这里需要注意，由于 <code>super</code> 指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过 <code>super</code> 调用的。</h3><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> = <span class="hljs-number">1</span>;
+  &#125;
+&#125;
 
-<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token keyword">extends</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    <span class="token keyword">super</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">super</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 3</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">super</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> = <span class="hljs-number">2</span>;
+    <span class="hljs-variable language_">super</span>.<span class="hljs-property">x</span> = <span class="hljs-number">3</span>;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">super</span>.<span class="hljs-property">x</span>); <span class="hljs-comment">// undefined</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span>);  <span class="hljs-comment">// 3</span>
+  &#125;
+&#125;
 
-<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">let</span> b = <span class="hljs-keyword">new</span> <span class="hljs-title function_">B</span>();</code></pre>
 
 <p>另外 ES6 规定，在子类普通方法中通过 <code>super</code> 调用父类的方法时，方法内部的 <code>this</code> 指向当前的子类实例。</p>
 <p>所以通过 <code>super</code> 修改的是当前子类实例的属性,父类的属性并不会被修改</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;
   
-<span class="token punctuation">&#125;</span>
-<span class="token class-name">A</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+&#125;
+A.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">x</span> = <span class="hljs-number">2</span>;
 
-<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token keyword">extends</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">super</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">super</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 3</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">super</span>();
+    <span class="hljs-variable language_">super</span>.<span class="hljs-property">x</span> = <span class="hljs-number">3</span>;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">super</span>.<span class="hljs-property">x</span>); <span class="hljs-comment">// 2</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span>);  <span class="hljs-comment">// 3</span>
+  &#125;
+&#125;
 
-<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">A</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token comment">// 2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">let</span> b = <span class="hljs-keyword">new</span> <span class="hljs-title function_">B</span>();
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(A.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">x</span>) <span class="hljs-comment">// 2</span></code></pre>
 
 <h4 id="静态方法中的-super"><a href="#静态方法中的-super" class="headerlink" title="静态方法中的 super"></a>静态方法中的 <code>super</code></h4><p>虽然静态方法中的 <code>super</code> 就是按照字面的理解就行, 但是可能对于不是特别熟悉 <code>Class</code> 的朋友来说, 还是会有一点迷糊.那么就还是用阮一峰老师的例子来说</p>
 <p><small><em>如果对于静态方法还不是特别清楚的, 请先阅读阮一峰老师的 <a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/class#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95">ES6 入门 - Class 章节</a></em></small></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Parent</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">static</span> <span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'static'</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'instance'</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Parent</span> &#123;
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">myMethod</span>(<span class="hljs-params">msg</span>) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;static&#x27;</span>, msg);
+  &#125;
+  <span class="hljs-title function_">myMethod</span>(<span class="hljs-params">msg</span>) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;instance&#x27;</span>, msg);
+  &#125;
+&#125;
 
-<span class="token keyword">class</span> <span class="token class-name">Child</span> <span class="token keyword">extends</span> <span class="token class-name">Parent</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">static</span> <span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">myMethod</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">myMethod</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Child</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Parent</span> &#123;
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">myMethod</span>(<span class="hljs-params">msg</span>) &#123;
+    <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">myMethod</span>(msg);
+  &#125;
+  <span class="hljs-title function_">myMethod</span>(<span class="hljs-params">msg</span>) &#123;
+    <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">myMethod</span>(msg);
+  &#125;
+&#125;
 
-Child<span class="token punctuation">.</span><span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// static 1</span>
+<span class="hljs-title class_">Child</span>.<span class="hljs-title function_">myMethod</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// static 1</span>
 
-<span class="token keyword">let</span> child <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Child</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-child<span class="token punctuation">.</span><span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// instance 2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">let</span> child = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Child</span>();
+child.<span class="hljs-title function_">myMethod</span>(<span class="hljs-number">2</span>); <span class="hljs-comment">// instance 2</span></code></pre>
 
 <p>以上这个例子中, <code>Child.myMethod(1)</code> 是调用的调用的是 <code>Child</code> 类的静态方法 <code>static</code>, 在静态方法中 <code>super</code> 指向于父类 <code>Parent</code> 并不是父类原型, 故输出的是 <code>static 1</code></p>
 <blockquote>
 <p>另外，在子类的静态方法中通过 <code>super</code> 调用父类的方法时，方法内部的this指向当前的子类，而不是子类的实例。</p>
 </blockquote>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">static</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> = <span class="hljs-number">1</span>;
+  &#125;
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">print</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span>);
+  &#125;
+&#125;
 
-<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token keyword">extends</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">static</span> <span class="token function">m</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">super</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> = <span class="hljs-number">2</span>;
+  &#125;
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">m</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">print</span>();
+  &#125;
+&#125;
 
-<span class="token constant">B</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-<span class="token constant">B</span><span class="token punctuation">.</span><span class="token function">m</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+B.<span class="hljs-property">x</span> = <span class="hljs-number">3</span>;
+B.<span class="hljs-title function_">m</span>() <span class="hljs-comment">// 3</span></code></pre>
 <p>个人觉得这个例子还是好的, 如果不这样写, 可能就会有朋友会误以为会输出 2, 其实并不是, 这里的 <code>this</code> 指向的是 <strong>子类</strong>, 并不是 <strong>子类实例</strong></p>
 <h2 id="🌰-举个对于初学者容易摸不着头脑的例子"><a href="#🌰-举个对于初学者容易摸不着头脑的例子" class="headerlink" title="🌰 举个对于初学者容易摸不着头脑的例子"></a>🌰 举个对于初学者容易摸不着头脑的例子</h2><hr>
 <p>我先把已知定义列出来: </p>
@@ -267,23 +270,23 @@ child<span class="token punctuation">.</span><span class="token function">myMeth
 </li>
 </ul>
 <h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example #1"></a>Example #1</h2><p>为什么可以赋值,但是读取的时候是 <code>undefined</code></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> = <span class="hljs-number">1</span>;
+  &#125;
+&#125;
 
-<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token keyword">extends</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    <span class="token keyword">super</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">super</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 3</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">super</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> = <span class="hljs-number">2</span>;
+    <span class="hljs-variable language_">super</span>.<span class="hljs-property">x</span> = <span class="hljs-number">3</span>;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">super</span>.<span class="hljs-property">x</span>); <span class="hljs-comment">// undefined</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span>);  <span class="hljs-comment">// 3</span>
+  &#125;
+&#125;
 
-<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">let</span> b = <span class="hljs-keyword">new</span> <span class="hljs-title function_">B</span>();</code></pre>
 
 <p><code>super</code> 作为对象使用时提到过, 普通方法中 <code>super</code> 指向父类的原型对象,那么可以知道:</p>
 <ul>
@@ -291,27 +294,27 @@ child<span class="token punctuation">.</span><span class="token function">myMeth
 </ul>
 <p>那为什么可以赋值呢?</p>
 <p>我们先来看一下之前我故意跳过然后在这里讲的例子 👇</p>
-<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example #2"></a>Example #2</h2><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example #2"></a>Example #2</h2><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> = <span class="hljs-number">1</span>;
+  &#125;
+  <span class="hljs-title function_">print</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span>);
+  &#125;
+&#125;
 
-<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token keyword">extends</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token function">m_print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">A</span> &#123;
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">super</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">x</span> = <span class="hljs-number">2</span>;
+  &#125;
+  <span class="hljs-title function_">m_print</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">super</span>.<span class="hljs-title function_">print</span>();
+  &#125;
+&#125;
 
-<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-b<span class="token punctuation">.</span><span class="token function">m</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">let</span> b = <span class="hljs-keyword">new</span> <span class="hljs-title function_">B</span>();
+b.<span class="hljs-title function_">m</span>() <span class="hljs-comment">// 2</span></code></pre>
 <p><code>super.print()</code> 虽然调用的是 <code>A.prototype.print()</code>, 但是 <code>A.prototype.print()</code> 内部的 <code>this</code> 指向 子类B 的实例，导致输出的是 2 , 而不是 1 . 也就是说, 实际上执行的是 <code>super.print.call(this)</code></p>
 <p><strong>所以在 <code>Example #2</code> 中</strong>, 由于 <code>this</code> 指向子类实例，赋值操作的时候属性会变成子类实例的属性, 所以修改的其实是 <code>this.x</code>.</p>
 <h2 id="番外"><a href="#番外" class="headerlink" title="番外"></a>番外</h2><p>在讨论的过程中我与小伙伴都有几个问题</p>

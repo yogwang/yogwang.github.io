@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -107,75 +110,79 @@
 
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>NVM 安装很简单，直接去Github上边找 <code>nvm-windows</code> 的 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/releases">releases</a>，直接下载最新那版的zip就可以了。有免安装和安装版可以选择(我选择了安装版)。</p>
 <p>安装过程中选择一下 NVM 安装目录以及之后 NodeJS 的管理目录。</p>
-<p><img src="/2020/NVW4W-install-use/install.jpg" alt="选择目录"></p>
+<p><img src="/./nvm-install-use/install.jpg" alt="选择目录"></p>
 <p>之前有安装 NodeJS 记得指定到之前安装的目录下，就可以使用 NVM 管理之前安装的Node版本了。<br>如果是NodeJS使用的是绿色版的话，之后可能需要使用NVM 重新下载安装。</p>
 <p>然后就等待安装完成就可以了。<br>完成之后在终端输入 <code>nvm</code> 检查版本确认是否安装成功(当前版本1.1.7)</p>
-<p><img src="/2020/NVW4W-install-use/check.jpg" alt="检查版本"></p>
+<p><img src="/./nvm-install-use/check.jpg" alt="检查版本"></p>
 <hr>
 <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ul>
 <li><p><strong>查看 NVM 下已经安装的 Node 版本号</strong><br>显示当前已安装 Node 版本列表，缩写为 <code>ls</code>， 当前使用的版本会在前标识 <code>*</code> ，<br>在末尾加上 <code>available</code> 显示可供下载的所有版本列表</p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">PS C:\Users\yog\Desktop&gt; nvm list &#x2F;&#x2F; 简写为 nvm ls
-    14.5.0
-  * 12.12.0 (Currently using 64-bit executable)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<pre><code class="hljs cmd">PS C:\Users\yog\Desktop&gt; nvm list // 简写为 nvm ls
+    <span class="hljs-number">14</span>.<span class="hljs-number">5</span>.<span class="hljs-number">0</span>
+  * <span class="hljs-number">12</span>.<span class="hljs-number">12</span>.<span class="hljs-number">0</span> (Currently using <span class="hljs-number">64</span>-bit executable)</code></pre>
+</li>
 <li><p><strong>切换到指定的 Node 版本</strong></p>
 <blockquote>
 <p><code>nvm use [version] [arch]</code></p>
 </blockquote>
 <p>一般先使用 <code>nvm ls</code> 输出已经安装的版本，然后再根据可选项切换版本。</p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">PS C:\Users\yog\Desktop&gt; nvm use 12.12.0 &#x2F;&#x2F; 具体版本号
-Now using node v12.12.0 (64-bit)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>设置 <code>[arch]</code> 可指定 32/64位结构。<br>如果不填版本号只填写 32( <code>nvm use 32</code> )将继续使用当前Node版本，只切换到32位模式。</p>
 </li>
-<li><p><strong>安装指定版本的Node</strong></p>
-<blockquote>
+</ul>
+<pre><code class="hljs cmd">PS C:\Users\yog\Desktop&gt; nvm use <span class="hljs-number">12</span>.<span class="hljs-number">12</span>.<span class="hljs-number">0</span> // 具体版本号
+Now using node v12.<span class="hljs-number">12</span>.<span class="hljs-number">0</span> (<span class="hljs-number">64</span>-bit)</code></pre>
+<p>  设置 <code>[arch]</code> 可指定 32&#x2F;64位结构。<br>  如果不填版本号只填写 32( <code>nvm use 32</code> )将继续使用当前Node版本，只切换到32位模式。</p>
+<ul>
+<li><strong>安装指定版本的Node</strong><blockquote>
 <p><code>nvm install &lt;version&gt; [arch]</code></p>
 </blockquote>
-<p><code>&lt;version&gt;</code> 可以是 <code>具体版本号</code> 也可以是 <code>latest</code> 来安装最新的 <strong>稳定</strong> 版本，<br><code>[arch]</code> 指定安装 32位 还是 64位 版本（默认为系统结构）， 设置为 <code>all</code> 以同时安装32和64位版本。 </p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">PS C:\Users\yog\Desktop&gt; nvm install 6.10.0
-Downloading node.js version 6.10.0 (64-bit)...
+<code>&lt;version&gt;</code> 可以是 <code>具体版本号</code> 也可以是 <code>latest</code> 来安装最新的 <strong>稳定</strong> 版本，<br><code>[arch]</code> 指定安装 32位 还是 64位 版本（默认为系统结构）， 设置为 <code>all</code> 以同时安装32和64位版本。</li>
+</ul>
+<pre><code class="hljs cmd">PS C:\Users\yog\Desktop&gt; nvm install <span class="hljs-number">6</span>.<span class="hljs-number">10</span>.<span class="hljs-number">0</span>
+Downloading node.js version <span class="hljs-number">6</span>.<span class="hljs-number">10</span>.<span class="hljs-number">0</span> (<span class="hljs-number">64</span>-bit)...
 Complete
-Downloading npm version 3.10.10... Complete
-Installing npm v3.10.10...
+Downloading npm version <span class="hljs-number">3</span>.<span class="hljs-number">10</span>.<span class="hljs-number">10</span>... Complete
+Installing npm v3.<span class="hljs-number">10</span>.<span class="hljs-number">10</span>...
 
-Installation complete. If you want to use this version, type
+Installation complete. <span class="hljs-keyword">If</span> you want to use this version, <span class="hljs-built_in">type</span>
 
-nvm use 6.10.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>也可以在末尾添加 <code>--insecure</code> 可以绕过远程下载服务器的SSL验证。</p>
-</li>
+nvm use <span class="hljs-number">6</span>.<span class="hljs-number">10</span>.<span class="hljs-number">0</span></code></pre>
+<p>  也可以在末尾添加 <code>--insecure</code> 可以绕过远程下载服务器的SSL验证。</p>
+<ul>
 <li><p><strong>卸载指定Node版本</strong></p>
 <blockquote>
 <p><code>nvm uninstall &lt;version&gt;</code></p>
 </blockquote>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">PS C:\Users\yog\Desktop&gt; nvm uninstall 6.10.0
-Uninstalling node v6.10.0... done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-</ul>
-<ul>
-<li><strong>查看所有可安装的Node版本</strong><pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">PS C:\Users\yog\Desktop&gt; nvm ls available
+<pre><code class="hljs cmd">PS C:\Users\yog\Desktop&gt; nvm uninstall <span class="hljs-number">6</span>.<span class="hljs-number">10</span>.<span class="hljs-number">0</span>
+Uninstalling node v6.<span class="hljs-number">10</span>.<span class="hljs-number">0</span>... done</code></pre>
+
+</li>
+<li><p><strong>查看所有可安装的Node版本</strong></p>
+<pre><code class="hljs cmd">PS C:\Users\yog\Desktop&gt; nvm ls available
 
 |   CURRENT    |     LTS      |  OLD STABLE  | OLD UNSTABLE |
 |--------------|--------------|--------------|--------------|
-|    14.7.0    |   12.18.3    |   0.12.18    |   0.11.16    |
-|    14.6.0    |   12.18.2    |   0.12.17    |   0.11.15    |
-|    14.5.0    |   12.18.1    |   0.12.16    |   0.11.14    |
-|    14.4.0    |   12.18.0    |   0.12.15    |   0.11.13    |
-|    14.3.0    |   12.17.0    |   0.12.14    |   0.11.12    |
-|    14.2.0    |   12.16.3    |   0.12.13    |   0.11.11    |
-|    14.1.0    |   12.16.2    |   0.12.12    |   0.11.10    |
-|    14.0.0    |   12.16.1    |   0.12.11    |    0.11.9    |
-|   13.14.0    |   12.16.0    |   0.12.10    |    0.11.8    |
-|   13.13.0    |   12.15.0    |    0.12.9    |    0.11.7    |
-|   13.12.0    |   12.14.1    |    0.12.8    |    0.11.6    |
-|   13.11.0    |   12.14.0    |    0.12.7    |    0.11.5    |
-|   13.10.1    |   12.13.1    |    0.12.6    |    0.11.4    |
-|   13.10.0    |   12.13.0    |    0.12.5    |    0.11.3    |
-|    13.9.0    |   10.22.0    |    0.12.4    |    0.11.2    |
-|    13.8.0    |   10.21.0    |    0.12.3    |    0.11.1    |
-|    13.7.0    |   10.20.1    |    0.12.2    |    0.11.0    |
-|    13.6.0    |   10.20.0    |    0.12.1    |    0.9.12    |
-|    13.5.0    |   10.19.0    |    0.12.0    |    0.9.11    |
-|    13.4.0    |   10.18.1    |   0.10.48    |    0.9.10    |
+|    <span class="hljs-number">14</span>.<span class="hljs-number">7</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">18</span>.<span class="hljs-number">3</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">18</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">16</span>    |
+|    <span class="hljs-number">14</span>.<span class="hljs-number">6</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">18</span>.<span class="hljs-number">2</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">17</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">15</span>    |
+|    <span class="hljs-number">14</span>.<span class="hljs-number">5</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">18</span>.<span class="hljs-number">1</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">16</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">14</span>    |
+|    <span class="hljs-number">14</span>.<span class="hljs-number">4</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">18</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">15</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">13</span>    |
+|    <span class="hljs-number">14</span>.<span class="hljs-number">3</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">17</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">14</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">12</span>    |
+|    <span class="hljs-number">14</span>.<span class="hljs-number">2</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">16</span>.<span class="hljs-number">3</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">13</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">11</span>    |
+|    <span class="hljs-number">14</span>.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">16</span>.<span class="hljs-number">2</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">12</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">10</span>    |
+|    <span class="hljs-number">14</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">16</span>.<span class="hljs-number">1</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">11</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">9</span>    |
+|   <span class="hljs-number">13</span>.<span class="hljs-number">14</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">16</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">10</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">8</span>    |
+|   <span class="hljs-number">13</span>.<span class="hljs-number">13</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">15</span>.<span class="hljs-number">0</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">9</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">7</span>    |
+|   <span class="hljs-number">13</span>.<span class="hljs-number">12</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">14</span>.<span class="hljs-number">1</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">8</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">6</span>    |
+|   <span class="hljs-number">13</span>.<span class="hljs-number">11</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">14</span>.<span class="hljs-number">0</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">7</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">5</span>    |
+|   <span class="hljs-number">13</span>.<span class="hljs-number">10</span>.<span class="hljs-number">1</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">13</span>.<span class="hljs-number">1</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">6</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">4</span>    |
+|   <span class="hljs-number">13</span>.<span class="hljs-number">10</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">12</span>.<span class="hljs-number">13</span>.<span class="hljs-number">0</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">5</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">3</span>    |
+|    <span class="hljs-number">13</span>.<span class="hljs-number">9</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">10</span>.<span class="hljs-number">22</span>.<span class="hljs-number">0</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">4</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">2</span>    |
+|    <span class="hljs-number">13</span>.<span class="hljs-number">8</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">10</span>.<span class="hljs-number">21</span>.<span class="hljs-number">0</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">3</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">1</span>    |
+|    <span class="hljs-number">13</span>.<span class="hljs-number">7</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">10</span>.<span class="hljs-number">20</span>.<span class="hljs-number">1</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">2</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">11</span>.<span class="hljs-number">0</span>    |
+|    <span class="hljs-number">13</span>.<span class="hljs-number">6</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">10</span>.<span class="hljs-number">20</span>.<span class="hljs-number">0</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">1</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">9</span>.<span class="hljs-number">12</span>    |
+|    <span class="hljs-number">13</span>.<span class="hljs-number">5</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">10</span>.<span class="hljs-number">19</span>.<span class="hljs-number">0</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">0</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">9</span>.<span class="hljs-number">11</span>    |
+|    <span class="hljs-number">13</span>.<span class="hljs-number">4</span>.<span class="hljs-number">0</span>    |   <span class="hljs-number">10</span>.<span class="hljs-number">18</span>.<span class="hljs-number">1</span>    |   <span class="hljs-number">0</span>.<span class="hljs-number">10</span>.<span class="hljs-number">48</span>    |    <span class="hljs-number">0</span>.<span class="hljs-number">9</span>.<span class="hljs-number">10</span>    |
 
-This is a partial list. For a complete list, visit https:&#x2F;&#x2F;nodejs.org&#x2F;download&#x2F;release<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+This is a partial list. <span class="hljs-keyword">For</span> a complete list, visit https://nodejs.org/download/release</code></pre></li>
 </ul>
 <h2 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h2><ol>
 <li><p><code>nvm arch</code>                 查看 Node 当前运行32位还是64位模式。</p>
@@ -206,7 +213,7 @@ This is a partial list. For a complete list, visit https:&#x2F;&#x2F;nodejs.org&
 <ol>
 <li>开启开发人员模式： <b>[Windows设置] - [更新和安全] - [开发者选项] - [开启开发人员模式]</b>；</li>
 <li>使用<strong>管理员权限</strong>打开终端；</li>
-<li>降低 <code>NVM</code> 版本到 <code>v1.1.17</code> 来绕过这个问题； <small>（操作来源：<a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/issues/700">Access is denied · Issue #700 · coreybutler/nvm-windows</a>)</small></li>
+<li>降低 <code>NVM</code> 版本到 <code>v1.1.17</code> 来绕过这个问题； <small>（操作来源：<a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/issues/700">Access is denied · Issue #700 · coreybutler&#x2F;nvm-windows</a>)</small></li>
 </ol>
 <p>不过<strong>第三种方式</strong>这个我没测试，你们可以尝试一下，我猜测是不行的，因为会弹 <code>UAC</code> 确认，主要是用公司配发的电脑尝试的话太麻烦了（懒，也怕麻烦 <strong>IT Admin</strong>）。<br>如果有人尝试了的话，希望可以 <a href="mailto:yogwang@foxmail.com?subject=NVM修改版本失败降版到1.1.7的尝试反馈">反馈结果</a> 给我，那将十分感谢！🙇‍<br><br></p>
 <p>* 如果你是使用的公司配发的电脑 <em>（corporate-owned computer）</em>，并且无法获取到系统管理员权限，可以尝试切换到 <a target="_blank" rel="noopener" href="https://github.com/jasongin/nvs">NVS</a> 来管理 <code>NodeJS</code> 版本，以此来规避权限问题。</p>
@@ -215,7 +222,7 @@ This is a partial list. For a complete list, visit https:&#x2F;&#x2F;nodejs.org&
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">nvm-windows - Github</a></li>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/70210917/nvm-use-exit-status-1-access-is-denied">nvm use exit status 1: Access is denied - Stack Overflow</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/wiki/Common-Issues">Common Issues · coreybutler/nvm-windows Wiki</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/wiki/Common-Issues">Common Issues · coreybutler&#x2F;nvm-windows Wiki</a></li>
 </ul>
  
   </article>

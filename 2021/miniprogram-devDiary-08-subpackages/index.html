@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,36 +106,36 @@
 <p>目前小程序分包大小有以下限制：</p>
 <ul>
 <li>整个小程序所有分包大小不超过 20M</li>
-<li>单个分包/主包大小不能超过 2M</li>
+<li>单个分包&#x2F;主包大小不能超过 2M</li>
 </ul>
 </blockquote>
 <p>随着项目的不断迭代，小程序的主包会越来越大， 终究会有一天会超过 <code>2M</code> 的主包限制，首先考虑到的就是图片资源放到 <code>CDN</code> 或者 <code>OSS</code>，起初会很奏效，但是随着一些JS库的加入就没办法了，即使使用了 <code>.min</code> 版本，或者精简了类库代码，主包还会很大，这时候就会用到项目分包了。</p>
 <span id="more"></span>
 
 <h2 id="使用分包"><a href="#使用分包" class="headerlink" title="使用分包"></a>使用分包</h2><p>使用分包很简单，在 <code>app.json</code> 当中使用 <code>subpackages</code> 声明项目分包结构就可以。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-  &quot;pages&quot;:[
-    &quot;pages&#x2F;index&quot;,
-    &quot;pages&#x2F;logs&quot;
-  ],
-  &quot;subpackages&quot;: [
-    &#123;
-      &quot;root&quot;: &quot;packageA&quot;, &#x2F;&#x2F; 子包根目录
-      &quot;name&quot;: &quot;pack1&quot;, &#x2F;&#x2F; 别名，预下载时使用
-      &quot;pages&quot;: [ &#x2F;&#x2F; 子包页面（相对于子包根目录）
-        &quot;pages&#x2F;cat&quot;, 
-        &quot;pages&#x2F;dog&quot;
-      ]
-    &#125;, &#123;
-      &quot;root&quot;: &quot;packageB&quot;,
-      &quot;name&quot;: &quot;pack2&quot;,
-      &quot;pages&quot;: [
-        &quot;pages&#x2F;apple&quot;,
-        &quot;pages&#x2F;banana&quot;
-      ]
-    &#125;
-  ]
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span>
+    <span class="hljs-string">&quot;pages/index&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-string">&quot;pages/logs&quot;</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;subpackages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;root&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;packageA&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 子包根目录</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pack1&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 别名，预下载时使用</span>
+      <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span> <span class="hljs-comment">// 子包页面（相对于子包根目录）</span>
+        <span class="hljs-string">&quot;pages/cat&quot;</span><span class="hljs-punctuation">,</span> 
+        <span class="hljs-string">&quot;pages/dog&quot;</span>
+      <span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;root&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;packageB&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pack2&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;pages/apple&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-string">&quot;pages/banana&quot;</span>
+      <span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">&#125;</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
 <p>然后只需要注意2点就好了：</p>
 <ul>
 <li><code>subpackage</code> 的根目录不能是另外一个 <code>subpackage</code> 内的子目录(可以在主包目录下)；</li>
@@ -144,30 +147,30 @@
 <p>独立分包是小程序中一种特殊类型的分包，<strong>可以独立于主包和其他分包运行</strong>。<br>从独立分包中页面进入小程序时，不需要下载主包。当用户进入普通分包或主包内页面时，主包才会被下载。</p>
 </blockquote>
 <p>在上边的分包基础上，给独立分包的子包增加 <code>independent</code> 属性既可。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-  &quot;pages&quot;:[
-    &quot;pages&#x2F;index&quot;,
-    &quot;pages&#x2F;logs&quot;
-  ],
-  &quot;subpackages&quot;: [
-    &#123;
-      &quot;root&quot;: &quot;packageA&quot;, &#x2F;&#x2F; 子包根目录
-      &quot;name&quot;: &quot;pack1&quot;, &#x2F;&#x2F; 别名，可在预下载时使用
-      &quot;pages&quot;: [ &#x2F;&#x2F; 子包页面（相对于子包根目录）
-        &quot;pages&#x2F;cat&quot;, 
-        &quot;pages&#x2F;dog&quot;
-      ]
-    &#125;, &#123;
-      &quot;root&quot;: &quot;packageB&quot;,
-      &quot;name&quot;: &quot;pack2&quot;,
-      &quot;pages&quot;: [
-        &quot;pages&#x2F;apple&quot;,
-        &quot;pages&#x2F;banana&quot;
-      ],
-      &quot;independent&quot;: true
-    &#125;
-  ]
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span>
+    <span class="hljs-string">&quot;pages/index&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-string">&quot;pages/logs&quot;</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;subpackages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;root&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;packageA&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 子包根目录</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pack1&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 别名，可在预下载时使用</span>
+      <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span> <span class="hljs-comment">// 子包页面（相对于子包根目录）</span>
+        <span class="hljs-string">&quot;pages/cat&quot;</span><span class="hljs-punctuation">,</span> 
+        <span class="hljs-string">&quot;pages/dog&quot;</span>
+      <span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;root&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;packageB&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pack2&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;pages/apple&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-string">&quot;pages/banana&quot;</span>
+      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;independent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+    <span class="hljs-punctuation">&#125;</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
 <p>限制和分包一直，并且额外的有3个条件：</p>
 <ul>
 <li>独立分包中不能依赖主包中的内容，即不能使用公共的库和公共样式等资源;</li>
@@ -180,53 +183,53 @@
 <p>开发者可以通过配置，在进入小程序某个页面时，由框架自动预下载可能需要的分包，提升进入后续分包页面时的启动速度。对于独立分包，也可以预下载主包</p>
 </blockquote>
 <p>预下载分包行为在 <strong>进入某个页面时触发</strong>，通过在 <code>app.json</code> 增加 <code>preloadRule</code> 项来配置。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-  &quot;pages&quot;: [
-    &quot;pages&#x2F;index&quot;
-  ],
-  &quot;subpackages&quot;: [
-    &#123;
-      &quot;root&quot;: &quot;subpackage1&quot;,
-      &quot;pages&quot;: [
-        &quot;index&quot;
-      ],
-    &#125;,
-    &#123;
-      &quot;root&quot;: &quot;subpackage2&quot;,
-      &quot;name&quot;: &quot;sub2&quot;,
-      &quot;pages&quot;: [
-        &quot;index&quot;
-      ],
-    &#125;,
-    &#123;
-      &quot;root&quot;: &quot;subpackage3&quot;,
-      &quot;name&quot;: &quot;sub3&quot;,
-      &quot;pages&quot;: [
-        &quot;index&quot;
-      ]
-    &#125;,
-    &#123;
-      &quot;root&quot;: &quot;indep&quot;,
-      &quot;pages&quot;: [
-        &quot;index&quot;
-      ],
-      &quot;independent&quot;: true
-    &#125;
-  ],
-  &quot;preloadRule&quot;: &#123;
-    &quot;pages&#x2F;index&quot;: &#123;
-      &quot;network&quot;: &quot;all&quot;, &#x2F;&#x2F; 所有网络环境均进行预加载
-      &quot;packages&quot;: [&quot;subpackage1&quot;] &#x2F;&#x2F; 进入 pages&#x2F;index 时加载 subpackage1 的内容
-    &#125;,
-    &quot;subpackage1&#x2F;index&quot;: &#123;
-      &quot;packages&quot;: [&quot;sub2&quot;, &quot;sub3&quot;] &#x2F;&#x2F; 进入 subpackage1&#x2F;index 时加载 subpackage2 和 subpackage3 的内容
-    &#125;,
-    &quot;indep&#x2F;index&quot;: &#123;
-      &quot;network&quot;: &quot;wifi&quot;, &#x2F;&#x2F; 仅在wifi环境下预加载
-      &quot;packages&quot;: [&quot;__APP__&quot;] &#x2F;&#x2F; 进入独立分包 indep&#x2F;index 时加载 主包内容
-    &#125;
-  &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-string">&quot;pages/index&quot;</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;subpackages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;root&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;subpackage1&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;index&quot;</span>
+      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;root&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;subpackage2&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sub2&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;index&quot;</span>
+      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;root&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;subpackage3&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sub3&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;index&quot;</span>
+      <span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;root&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;indep&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;index&quot;</span>
+      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;independent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+    <span class="hljs-punctuation">&#125;</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;preloadRule&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;pages/index&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;network&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;all&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 所有网络环境均进行预加载</span>
+      <span class="hljs-attr">&quot;packages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;subpackage1&quot;</span><span class="hljs-punctuation">]</span> <span class="hljs-comment">// 进入 pages/index 时加载 subpackage1 的内容</span>
+    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;subpackage1/index&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;packages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;sub2&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;sub3&quot;</span><span class="hljs-punctuation">]</span> <span class="hljs-comment">// 进入 subpackage1/index 时加载 subpackage2 和 subpackage3 的内容</span>
+    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;indep/index&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;network&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;wifi&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 仅在wifi环境下预加载</span>
+      <span class="hljs-attr">&quot;packages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;__APP__&quot;</span><span class="hljs-punctuation">]</span> <span class="hljs-comment">// 进入独立分包 indep/index 时加载 主包内容</span>
+    <span class="hljs-punctuation">&#125;</span>
+  <span class="hljs-punctuation">&#125;</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
 <h3 id="📍-注意：同一个分包中的页面享有共同的预下载大小限额-2M，限额会在工具中打包时校验。"><a href="#📍-注意：同一个分包中的页面享有共同的预下载大小限额-2M，限额会在工具中打包时校验。" class="headerlink" title="📍 注意：同一个分包中的页面享有共同的预下载大小限额 2M，限额会在工具中打包时校验。"></a>📍 注意：同一个分包中的页面享有共同的预下载大小限额 2M，限额会在工具中打包时校验。</h3><blockquote>
 <p>如，页面 A 和 B 都在同一个分包中，A 中预下载总大小 0.5M 的分包，B中最多只能预下载总大小 1.5M 的分包。</p>
 </blockquote>
@@ -234,29 +237,29 @@
 <h2 id="分包异步化"><a href="#分包异步化" class="headerlink" title="分包异步化"></a>分包异步化</h2><p>在小程序中，不同的分包对应不同的下载单元；因此，除了非独立分包可以依赖主包外，分包之间不能互相使用自定义组件或进行 <code>require</code>。<br><strong>「分包异步化」特性将允许通过一些配置和新的接口，使部分跨分包的内容可以等待下载后异步使用</strong>，从而一定程度上解决这个限制。</p>
 <p>✨ 可以先打开官方给的 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/s/6AYlPZmm7csW">🔗代码片段</a> 然后对照着看。</p>
 <h3 id="1-跨分包自定义组件的引用"><a href="#1-跨分包自定义组件的引用" class="headerlink" title="1. 跨分包自定义组件的引用"></a>1. 跨分包自定义组件的引用</h3><p>首先是跨分包自定义组件引用，我们看示例代码当中并没有提到 <code>分包下载</code> 的内容，演示的代码片段中也没有，只是使用到了 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/placeholder.html">占位组件</a> 进行替代。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#x2F;&#x2F; subPackageA&#x2F;pages&#x2F;index.json
-&#123;
-  &quot;usingComponents&quot;: &#123;
-    &quot;button&quot;: &quot;..&#x2F;..&#x2F;commonPackage&#x2F;components&#x2F;button&quot;,
-    &quot;list&quot;: &quot;..&#x2F;..&#x2F;subPackageB&#x2F;components&#x2F;full-list&quot;,
-    &quot;simple-list&quot;: &quot;..&#x2F;components&#x2F;simple-list&quot;
-  &#125;,
-  &quot;componentPlaceholder&quot;: &#123;
-    &quot;button&quot;: &quot;view&quot;,
-    &quot;list&quot;: &quot;simple-list&quot;
-  &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs json"><span class="hljs-comment">// subPackageA/pages/index.json</span>
+<span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;button&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../../commonPackage/components/button&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;list&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../../subPackageB/components/full-list&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;simple-list&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../components/simple-list&quot;</span>
+  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;componentPlaceholder&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;button&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;view&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;list&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;simple-list&quot;</span>
+  <span class="hljs-punctuation">&#125;</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
 <p>说明 <strong>跨分包引用自定义组件</strong> 是不需要单独处理的，小程序会自行下载使用到的跨包组件。我们只需要关注在跨包组件下载完成之前的占位和展示即可了。</p>
 <h3 id="2-跨分包-JS-代码的引用"><a href="#2-跨分包-JS-代码的引用" class="headerlink" title="2. 跨分包 JS 代码的引用"></a>2. 跨分包 <code>JS</code> 代码的引用</h3><p>跨分包 <code>JS</code> 代码引用和上边的跨包组件引用不一样了，提供了专门的 <code>async</code> 方法 或者 使用回调的方式解决。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// subPackageA/index.js</span>
-<span class="token comment">// 使用回调函数风格的调用</span>
-<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../subPackageB/utils.js'</span><span class="token punctuation">,</span> <span class="token parameter">utils</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>utils<span class="token punctuation">.</span>whoami<span class="token punctuation">)</span> <span class="token comment">// Wechat MiniProgram</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-<span class="token comment">// 或者使用 Promise 风格的调用</span>
-require<span class="token punctuation">.</span><span class="token function">async</span><span class="token punctuation">(</span><span class="token string">'../commonPackage/index.js'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">pkg</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  pkg<span class="token punctuation">.</span><span class="token function">getPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 'common'</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// subPackageA/index.js</span>
+<span class="hljs-comment">// 使用回调函数风格的调用</span>
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../subPackageB/utils.js&#x27;</span>, <span class="hljs-function"><span class="hljs-params">utils</span> =&gt;</span> &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(utils.<span class="hljs-property">whoami</span>) <span class="hljs-comment">// Wechat MiniProgram</span>
+&#125;)
+<span class="hljs-comment">// 或者使用 Promise 风格的调用</span>
+<span class="hljs-built_in">require</span>.<span class="hljs-title function_">async</span>(<span class="hljs-string">&#x27;../commonPackage/index.js&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">pkg</span> =&gt;</span> &#123;
+  pkg.<span class="hljs-title function_">getPackageName</span>() <span class="hljs-comment">// &#x27;common&#x27;</span>
+&#125;)</code></pre>
 <p>这个就很容易理解了，需要等待代码加载完成，所以是异步操作，和跨包组件一样，这个也是自动完成的，不需要单独在外部申明。</p>
 <hr>
 <h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>其实小程序分包还挺简单的，就是对已经开发完成的项目再进行分包就会比较麻烦，所有的路由和资源加载路径都需要相应调整一遍。</p>

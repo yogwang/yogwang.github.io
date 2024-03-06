@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -100,29 +103,29 @@
  
   <article class="article-content">
     <p>今天在刷思否的时候遇到这样的一个问题：</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">:value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inputValue<span class="token punctuation">"</span></span> <span class="token attr-name">@input</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleInput<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;inputValue&quot;</span> @<span class="hljs-attr">input</span>=<span class="hljs-string">&quot;handleInput&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
-<span class="token keyword">const</span> inputValue <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">const</span> val <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
-  <span class="token keyword">const</span> reg <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\d*$</span><span class="token regex-delimiter">/</span></span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>reg<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    inputValue<span class="token punctuation">.</span>value <span class="token operator">=</span> val
-  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-    inputValue<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">''</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span>
+<span class="language-javascript"><span class="hljs-keyword">const</span> inputValue = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)</span>
+<span class="language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleInput</span> = (<span class="hljs-params">e</span>) =&gt; &#123;</span>
+<span class="language-javascript">  <span class="hljs-keyword">const</span> val = e.<span class="hljs-property">target</span>.<span class="hljs-property">value</span></span>
+<span class="language-javascript">  <span class="hljs-keyword">const</span> reg = <span class="hljs-regexp">/^\d*$/</span></span>
+<span class="language-javascript">  <span class="hljs-keyword">if</span> (reg.<span class="hljs-title function_">test</span>(val)) &#123;</span>
+<span class="language-javascript">    inputValue.<span class="hljs-property">value</span> = val</span>
+<span class="language-javascript">  &#125; <span class="hljs-keyword">else</span> &#123;</span>
+<span class="language-javascript">    inputValue.<span class="hljs-property">value</span> = <span class="hljs-string">&#x27;&#x27;</span></span>
+<span class="language-javascript">  &#125;</span>
+<span class="language-javascript">&#125;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 <p>题主希望通过正则校验去限制输入框只能输入数字类型的值，但是只有在<strong>先输入数字</strong>再输入非数字的情况下才会被正确置空。如果一开始就是输入非数字的内容，后续即使继续输入非数字内容，输入框中的内容并不会清空。</p>
 <p>我们可以在 <a target="_blank" rel="noopener" href="https://play.vuejs.org/#eNp9kU9rwzAMxb+KMYMkoySH3kpa9oceusM2trGTGYRUSdM5trHlrqP0u092SNvDKASC3u9FeZIO/N6YfOeBz3iJ0BtZISyEYqzslPHI8NfAXHCEPQrOZrtK+lBH+BkKUu9iReqmUmsJq1CRXFCfsrhoSqWrbWeQOUBvSOl6oy2yA7PQsCNrrO5ZQmkSoWqtHLLzf9g8mNIkyUZ28TeCKWRsvmCHkH3glJV0yLGyLWAeo5+phZZo8SXE+vamCHrXsJTUHMFhSu4sG7oROaUYutCH9A7syEA6uOJLaBSyCUVPWQzjL/iEo6MYTdfmW6cVLT92ELzWvekk2BeDHcUUfDb2FrySUv88RQ2th8mo1xuov//Rt24fNMFfLTiwOzrViQ07GfDy/Tle9wR7vfaS3FfgGzgtfcg42B58uIW98MW0q3jfTrUfbrlHUG4cKgSNi4l+wenmj1dGP8ed5tNxofz4B7M06Sw=">Vue SFC Playground</a> 中体验这个现象。</p>
 <span id="more"></span>
 
 <p>很明显问题是在给 <code>inputValue</code> 赋值为空之后出现了问题。所以我以为是更新时机导致的，就考虑使用强制更新看看。确实引入 <code>$forceUpdate</code> 之后问题解决了，但为什么强制该组件重新渲染才可以呢……</p>
-<p>在 <code>Vue</code> 的仓库中有人发起过一个类似的问题讨论 👉 <a target="_blank" rel="noopener" href="https://github.com/vuejs/core/discussions/7793">vue3中input的value和绑定的ref存在不同的问题 · vuejs/core · Discussion #7793</a><br>虽然问题描述稍有差别，但是本质是一样的，都是在函数处理中操作绑定的 <code>inputValue</code> 值。</p>
+<p>在 <code>Vue</code> 的仓库中有人发起过一个类似的问题讨论 👉 <a target="_blank" rel="noopener" href="https://github.com/vuejs/core/discussions/7793">vue3中input的value和绑定的ref存在不同的问题 · vuejs&#x2F;core · Discussion #7793</a><br>虽然问题描述稍有差别，但是本质是一样的，都是在函数处理中操作绑定的 <code>inputValue</code> 值。</p>
 <p>只不过他的问题是没有修改绑定的 <code>inputValue</code>，在输入的内容长度超过 <code>5</code> 之后直接 <code>return</code> 掉了。但其实使用 <code>slice()</code> 截断了也是一样的结果的。<br><strong>主要的原因出在了 <code>inputValue</code> 的值没有改变，值都没有改变 <code>Vue</code> 自然不会触发视图更新。</strong></p>
 <p>在 👆 上面的讨论贴中其他人解答了关于更新逻辑的解答：</p>
 <blockquote>
@@ -136,28 +139,28 @@
 <li>在 <code>React</code> 中输入框的内容并不会随着用户键入内容而改变。</li>
 </ul>
 <p>例如以下的 🌰Demo，也可以通过<a target="_blank" rel="noopener" href="https://codesandbox.io/p/sandbox/react-dev-53h9xp?file=/src/App.js&layout=%257B%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522rootPanelGroup%2522%253A%257B%2522direction%2522%253A%2522horizontal%2522%252C%2522contentType%2522%253A%2522UNKNOWN%2522%252C%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522id%2522%253A%2522ROOT_LAYOUT%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522UNKNOWN%2522%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522clr0aqxet00062a67v4v3dkq7%2522%252C%2522sizes%2522%253A%255B70%252C30%255D%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522EDITOR%2522%252C%2522direction%2522%253A%2522horizontal%2522%252C%2522id%2522%253A%2522EDITOR%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522EDITOR%2522%252C%2522id%2522%253A%2522clr0aqxet00022a67knbrx651%2522%257D%255D%257D%252C%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522SHELLS%2522%252C%2522direction%2522%253A%2522horizontal%2522%252C%2522id%2522%253A%2522SHELLS%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522SHELLS%2522%252C%2522id%2522%253A%2522clr0aqxet00032a672ze6m35v%2522%257D%255D%252C%2522sizes%2522%253A%255B100%255D%257D%255D%257D%252C%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522DEVTOOLS%2522%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522DEVTOOLS%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522DEVTOOLS%2522%252C%2522id%2522%253A%2522clr0aqxet00052a67qkjbm5sp%2522%257D%255D%252C%2522sizes%2522%253A%255B100%255D%257D%255D%252C%2522sizes%2522%253A%255B50%252C50%255D%257D%252C%2522tabbedPanels%2522%253A%257B%2522clr0aqxet00022a67knbrx651%2522%253A%257B%2522tabs%2522%253A%255B%257B%2522id%2522%253A%2522clr0aqxet00012a672m1iwo74%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522FILE%2522%252C%2522filepath%2522%253A%2522%252Fsrc%252Findex.js%2522%252C%2522state%2522%253A%2522IDLE%2522%257D%252C%257B%2522id%2522%253A%2522clr0ashgb00242a67ih32s3dv%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522FILE%2522%252C%2522filepath%2522%253A%2522%252Fsrc%252FApp.js%2522%252C%2522state%2522%253A%2522IDLE%2522%257D%255D%252C%2522id%2522%253A%2522clr0aqxet00022a67knbrx651%2522%252C%2522activeTabId%2522%253A%2522clr0ashgb00242a67ih32s3dv%2522%257D%252C%2522clr0aqxet00052a67qkjbm5sp%2522%253A%257B%2522tabs%2522%253A%255B%257B%2522id%2522%253A%2522clr0aqxet00042a677pyh42fj%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522UNASSIGNED_PORT%2522%252C%2522port%2522%253A0%252C%2522path%2522%253A%2522%252F%2522%257D%255D%252C%2522id%2522%253A%2522clr0aqxet00052a67qkjbm5sp%2522%252C%2522activeTabId%2522%253A%2522clr0aqxet00042a677pyh42fj%2522%257D%252C%2522clr0aqxet00032a672ze6m35v%2522%253A%257B%2522tabs%2522%253A%255B%255D%252C%2522id%2522%253A%2522clr0aqxet00032a672ze6m35v%2522%257D%257D%252C%2522showDevtools%2522%253Atrue%252C%2522showShells%2522%253Atrue%252C%2522showSidebar%2522%253Atrue%252C%2522sidebarPanelSize%2522%253A15%257D">在线Demo</a>尝试<sub>(CodeSandbox)</sub></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> useState <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
-<span class="token keyword">function</span> <span class="token function">MyInput</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">const</span> <span class="token punctuation">[</span>value<span class="token punctuation">,</span> setValue<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
-  <span class="token keyword">const</span> <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> val <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
-    <span class="token keyword">const</span> reg <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\d*$</span><span class="token regex-delimiter">/</span></span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>reg<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token function">setValue</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-      <span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>input value<span class="token operator">=</span><span class="token punctuation">&#123;</span>value<span class="token punctuation">&#125;</span> onInput<span class="token operator">=</span><span class="token punctuation">&#123;</span>handleInput<span class="token punctuation">&#125;</span> <span class="token operator">/</span><span class="token operator">></span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; useState &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">MyInput</span>(<span class="hljs-params"></span>) &#123;
+  <span class="hljs-keyword">const</span> [value, setValue] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&#x27;&#x27;</span>)
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleInput</span> = (<span class="hljs-params">e</span>) =&gt; &#123;
+    <span class="hljs-keyword">const</span> val = e.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>
+    <span class="hljs-keyword">const</span> reg = <span class="hljs-regexp">/^\d*$/</span>
+    <span class="hljs-keyword">if</span> (reg.<span class="hljs-title function_">test</span>(val)) &#123;
+      <span class="hljs-title function_">setValue</span>(val)
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      <span class="hljs-title function_">setValue</span>(<span class="hljs-string">&#x27;&#x27;</span>)
+    &#125;
+  &#125;
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#123;value&#125;</span> <span class="hljs-attr">onInput</span>=<span class="hljs-string">&#123;handleInput&#125;</span> /&gt;</span></span>
+  )
+&#125;
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">MyApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>MyInput <span class="token operator">/</span><span class="token operator">></span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">MyApp</span>(<span class="hljs-params"></span>) &#123;
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">MyInput</span> /&gt;</span></span>
+  )
+&#125;</code></pre>
 
 <p>输入框的内容并不会随着用户键入内容而改变。会表现出类似 <code>read-only</code> 的状态，并不能继续输入错误内容。Vue 的表现有点类似于在 React 中使用 <code>defaultvalue</code> 的情况，但是又并不是完全相同。</p>
 <p>我就很疑惑为什么会这样，怀疑 Vue 单独做了处理，但是在 Vue 文档中并没有找到关于这段的描写。转而怀疑是 React 做了处理，毕竟 <code>defaultValue</code> 是 React 提出的一个虚拟属性，随后就去翻了 React 的文档，就看到了这样一段提示：</p>
@@ -167,7 +170,7 @@
 </blockquote>
 <p>😂 所以确实是 <code>React</code> 它单独给给做了处理…… 并不是 Vue 表现得不一样，而是 React 不一样。Vue 维持了和原生HTML一样的情况。而 React 为了保持一致性操作了输入框的 <code>Value</code> 值。</p>
 <p>并且如果你没有绑定 <code>onInput</code> 或者 <code>onChange</code> 事件，React 会在控制台抛出异常：</p>
-<pre class="line-numbers language-none"><code class="language-none">Warning: You provided a &#96;value&#96; prop to a form field without an &#96;onChange&#96; handler. This will render a read-only field. If the field should be mutable use &#96;defaultValue&#96;. Otherwise, set either &#96;onChange&#96; or &#96;readOnly&#96;.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs plaintext">Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.</code></pre>
 
 <p>React 引入了 <strong>受控组件</strong> 和 <strong>非受控组件</strong> 的概念，而 Vue 并没有强调这个概念。但是大部分的UI库在实现表单组件的时候会通过受控组件来实现。比如说 <code>Element UI</code> 在 <a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/input">Input 组件</a> 的文档开头就说明了：</p>
 <blockquote>
@@ -176,7 +179,7 @@
 <p>所以会出现我印象中某些情况下给输入框绑定了 <code>value</code> 值时会表现出只读的情况，有些时候又并不是这样。</p>
 <p>至于<strong>受控组件和非受控组件</strong>就以后单独找一个时间来开坑了 😝</p>
 <hr>
-<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a target="_blank" rel="noopener" href="https://github.com/vuejs/core/discussions/7793">vue3中input的value和绑定的ref存在不同的问题 · vuejs/core · Discussion #7793</a><br><a target="_blank" rel="noopener" href="https://zh-hans.react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable">#使用 state 控制输入框 | &lt;input&gt; – React</a><br><a target="_blank" rel="noopener" href="https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key">You Probably Don’t Need Derived State – React Blog</a></p>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a target="_blank" rel="noopener" href="https://github.com/vuejs/core/discussions/7793">vue3中input的value和绑定的ref存在不同的问题 · vuejs&#x2F;core · Discussion #7793</a><br><a target="_blank" rel="noopener" href="https://zh-hans.react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable">#使用 state 控制输入框 | &lt;input&gt; – React</a><br><a target="_blank" rel="noopener" href="https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key">You Probably Don’t Need Derived State – React Blog</a></p>
  
   </article>
 

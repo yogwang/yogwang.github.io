@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -104,11 +107,11 @@
 <span id="more"></span>
 
 <p>这个API使用起来就很方便了，直接 <code>crypto.randomUUID()</code> 就可以了。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">crypto<span class="token punctuation">.</span><span class="token function">randomUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment">// '40b3b1a6-dc1b-477a-bcb8-cadd550a7768'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs js">crypto.<span class="hljs-title function_">randomUUID</span>()
+<span class="hljs-comment">// &#x27;40b3b1a6-dc1b-477a-bcb8-cadd550a7768&#x27;</span></code></pre>
 <p>从文档上面看到 <code>crypto.randomUUID()</code> 生成的 <code>UUID</code> 是 <code>v4</code> 版本的，所以在客户端浏览器普遍比较高的项目里面可以直接用了，比自己写规则或者引入 <a target="_blank" rel="noopener" href="https://github.com/uuidjs/uuid">UUID</a> 这个依赖更方便，生成速度也更快。</p>
 <h2 id="👀-一些问题"><a href="#👀-一些问题" class="headerlink" title="👀 一些问题"></a>👀 一些问题</h2><h4 id="1-crypto-randomUUID-生成的-UUID-出现重复的概率？"><a href="#1-crypto-randomUUID-生成的-UUID-出现重复的概率？" class="headerlink" title="#1. crypto.randomUUID() 生成的 UUID 出现重复的概率？"></a>#1. <code>crypto.randomUUID()</code> 生成的 <code>UUID</code> 出现重复的概率？</h4><blockquote>
-<p>碰撞机率： <strong>p(n) ≈ 1 - e<sup>-n<sup>2</sup>/2x</sup></strong></p>
+<p>碰撞机率： <strong>p(n) ≈ 1 - e<sup>-n<sup>2</sup>&#x2F;2x</sup></strong></p>
 </blockquote>
 <p><strong>2<sup>46</sup></strong> 个<code>UUID</code>当中，出现重复的概率为 <strong>4x10<sup>-16</sup></strong> （<code>0.0000000004</code>）。</p>
 <p>所以使用 <code>crypto.randomUUID()</code> 不会有出现重复的情况，放心大胆用就行。<br>如果是使用 <code>Math.random()</code> 和一定规则创建的 <code>UUID</code> 可能同时创建多条 <code>UUID</code> 的时候会有问题了，特别是一些为了兼容低版本的场景下。</p>

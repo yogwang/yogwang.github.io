@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -115,7 +118,7 @@
 <li>使用 <code>nvs ls-remove</code> 查看可用版本后使用 <code>nvs add x.y.z</code> 来下载指定版本。</li>
 <li>使用 <code>nvs add lts</code> 通过别名快速下载对应版本，可用别名：<code>lts</code>、<code>latest</code>、<code>Argon</code> 等。</li>
 </ol>
-<h2 id="🔓-切换-指定-Node-版本"><a href="#🔓-切换-指定-Node-版本" class="headerlink" title="🔓 切换/指定 Node 版本"></a>🔓 切换/指定 Node 版本</h2><ol>
+<h2 id="🔓-切换-指定-Node-版本"><a href="#🔓-切换-指定-Node-版本" class="headerlink" title="🔓 切换&#x2F;指定 Node 版本"></a>🔓 切换&#x2F;指定 Node 版本</h2><ol>
 <li><strong>指定当前终端的 Node 版本</strong><ul>
 <li><code>nvs use [version]</code></li>
 </ul>
@@ -126,7 +129,7 @@
 </li>
 <li><strong>根据项目自动切换 Node 版本</strong><ul>
 <li>项目目录下如果有 <code>.node-version</code> 或者 <code>.nvmrc</code>，<code>NVS</code> 会自动切换 <strong>Node</strong> 为指定版本；<ul>
-<li>文件中直接指定版本号或者别名都可，具体可以查看 <a target="_blank" rel="noopener" href="https://github.com/jasongin/nvs/blob/master/doc/AUTO.md">doc/AUTO Command</a>;</li>
+<li>文件中直接指定版本号或者别名都可，具体可以查看 <a target="_blank" rel="noopener" href="https://github.com/jasongin/nvs/blob/master/doc/AUTO.md">doc&#x2F;AUTO Command</a>;</li>
 <li>例如直接在文件中键入 <code>lts</code> 并保存。</li>
 </ul>
 </li>
@@ -141,7 +144,7 @@
 </ul>
 <hr>
 <h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><h3 id="使用-nvs-ls-remote-查看可用版本时提示超时"><a href="#使用-nvs-ls-remote-查看可用版本时提示超时" class="headerlink" title="# 使用 nvs ls-remote 查看可用版本时提示超时"></a># 使用 <code>nvs ls-remote</code> 查看可用版本时提示超时</h3><p>远程节点切换到阿里镜像就可以了:</p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">nvs remote node https:&#x2F;&#x2F;npmmirror.com&#x2F;mirrors&#x2F;node&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs cmd">nvs remote node https://npmmirror.com/mirrors/node/</code></pre>
 
 
 <hr>

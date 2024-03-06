@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -166,10 +169,10 @@
 <li>基础尺寸由 <code>flex-base</code> 属性或 <code>width</code> 属性，以及 <code>box-sizing</code> 盒模型共同决定；</li>
 <li>内容尺寸最指最大内容宽度，当没有设置基础尺寸是会顶替基础尺寸的角色；</li>
 <li>弹性增长指的是 <code>flex-grow</code> 属性，弹性收缩指的是 <code>flex-shrink</code> 属性；</li>
-<li>最大尺寸主要受 <code>max-width</code> 属性限制；最小尺寸则比较复杂，受最小内容宽度、<code>width</code> 属性和 <code>min-width</code> 属性共同影响。 </li>
+<li>最大尺寸主要受 <code>max-width</code> 属性限制；最小尺寸则比较复杂，受最小内容宽度、<code>width</code> 属性和 <code>min-width</code> 属性共同影响。</li>
 </ul>
 </blockquote>
-<p><img src="/2022/CSS-flex-container-stretched-by-content/problem_preview.png#center" alt="flex 容器宽度被内容撑开的问题"></p>
+<p><img src="/2022/CSS-flex-container-stretched-by-content/problem_preview.png" alt="flex 容器宽度被内容撑开的问题"></p>
 <p>很早之前就遇到过这个问题但没有整理，当时处理完问题之后就没有管了。昨天又遇到了同样的问题，因为嵌套的层次很深折腾了有2个小时，所以还是需要记录下来以免未来又忘了。</p>
 <blockquote>
 <p>其实很简单，容器使用 <code>width:0;flex:1;</code> 即可解决问题。</p>

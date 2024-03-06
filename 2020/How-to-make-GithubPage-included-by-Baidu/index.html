@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -117,9 +120,9 @@
 <p>这个都不需要多说了吧….直接上链接吧。<a target="_blank" rel="noopener" href="https://e.coding.net/signup">Coding.net SignUp</a></p>
 <h2 id="2、创建代码托管仓库"><a href="#2、创建代码托管仓库" class="headerlink" title="2、创建代码托管仓库"></a>2、创建代码托管仓库</h2><hr>
 <p>注册好了之后和使用 Github 一样，创建一个项目，选择 <code>代码托管项目</code> 。</p>
-<p><img src="/2020/How-to-make-GithubPage-included-by-Baidu/step1.jpg" alt="选择项目模板"></p>
+<p><img src="/./How-to-make-GithubPage-included-by-Baidu/step1.jpg" alt="选择项目模板"></p>
 <p>项目名称随便填写，我直接填写的用户名因为 Github Pages 是这样要求的，但是 Coding 并没有这个要求；<br>项目标识是你的 Git 仓库标识，起一个自己好记得就行。我输入的 <code>blog</code>，其实填写了项目名称会自动填写进去的。（这个是可以修改的，相应的也要修改本地 Git 的 <code>Origin Url</code>）</p>
-<p>然后选择 <code>Git仓库</code><br>项目描述就随便填咯，反正也就自己用，后边不满意了也可以在项目设置里边修改。<br><img src="/2020/How-to-make-GithubPage-included-by-Baidu/step2.jpg" alt="创建项目"></p>
+<p>然后选择 <code>Git仓库</code><br>项目描述就随便填咯，反正也就自己用，后边不满意了也可以在项目设置里边修改。<br><img src="/./How-to-make-GithubPage-included-by-Baidu/step2.jpg" alt="创建项目"></p>
 <h2 id="3、绑定-SSH-公钥"><a href="#3、绑定-SSH-公钥" class="headerlink" title="3、绑定 SSH 公钥"></a>3、绑定 SSH 公钥</h2><hr>
 <p>创建完成之后在个人设置里边添加自己的 SSH 公钥，如果已经配置 Github Pages 的话这个也不用多说了吧</p>
 <ul>
@@ -130,30 +133,30 @@
 <h3 id="途中遇到了-Permission-denied-publickey-这个问题-😂"><a href="#途中遇到了-Permission-denied-publickey-这个问题-😂" class="headerlink" title="途中遇到了 Permission denied (publickey). 这个问题 😂"></a>途中遇到了 <code>Permission denied (publickey).</code> 这个问题 😂</h3><p>原因是自己本地 Git 配置的默认 Keygen 是另外一个，然后忘记自己用的是哪个 Keygen 了，尴尬一直在反复添加我觉得对的那个到 Coding 上，我说怎么一直被拒绝…</p>
 <h2 id="4、在-Hexo-内添加-Coding-net-上的仓库"><a href="#4、在-Hexo-内添加-Coding-net-上的仓库" class="headerlink" title="4、在 Hexo 内添加 Coding.net 上的仓库"></a>4、在 Hexo 内添加 <code>Coding.net</code> 上的仓库</h2><hr>
 <p>打开自己本地的 Hexo 项目目录，找到根目录下的 <code>_config.yml</code> 文件，在最底部找到 <code>deploy</code> 项，<br>修改 <code>repo</code></p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">deploy:
-  type: git
-  repo:
-    github: https:&#x2F;&#x2F;github.com&#x2F;&#123;username&#125;&#x2F;&#123;repositoryname&#125;.github.io
-    coding: https:&#x2F;&#x2F;e.coding.net&#x2F;&#x2F;&#123;repositoryname&#125;&#x2F;&#123;gitname&#125;.git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs yml"><span class="hljs-attr">deploy:</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span>
+  <span class="hljs-attr">repo:</span>
+    <span class="hljs-attr">github:</span> <span class="hljs-string">https://github.com/&#123;username&#125;/&#123;repositoryname&#125;.github.io</span>
+    <span class="hljs-attr">coding:</span> <span class="hljs-string">https://e.coding.net//&#123;repositoryname&#125;/&#123;gitname&#125;.git</span></code></pre>
 
 <blockquote>
 <p>Hexo 提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。</p>
 </blockquote>
-<p>然后直接使用 <code>hexo deploy</code>/<code>hexo d</code> 就可以自动部署到两个远程仓库中了。</p>
+<p>然后直接使用 <code>hexo deploy</code>&#x2F;<code>hexo d</code> 就可以自动部署到两个远程仓库中了。</p>
 <h2 id="5、部署-Coding-Pages"><a href="#5、部署-Coding-Pages" class="headerlink" title="5、部署 Coding Pages"></a>5、部署 Coding Pages</h2><hr>
 <p>回到 Coding.net 项目中 找到项目左侧菜单中的 <code>构建与部署</code> 下的 <code>静态网站</code>项</p>
-<p>点击立即发布静态网站<br><img src="/2020/How-to-make-GithubPage-included-by-Baidu/step3.jpg" alt="部署Coding Pages"></p>
-<p>网站名称不重要，随便填自己能看明白就好；<br>部署来源选择 <code>本项目仓库</code>；<br>触发机制 <code>自动部署</code>；<br>勾选 <code>代码更新时自动部署</code>，选择默认的 <code>推送到 Master 时触发构建</code> 这个是看你需要部署的是主线还是分支了，选择自己用的就好。<br><img src="/2020/How-to-make-GithubPage-included-by-Baidu/step4.jpg" alt="填写静态网站信息"></p>
+<p>点击立即发布静态网站<br><img src="/./How-to-make-GithubPage-included-by-Baidu/step3.jpg" alt="部署Coding Pages"></p>
+<p>网站名称不重要，随便填自己能看明白就好；<br>部署来源选择 <code>本项目仓库</code>；<br>触发机制 <code>自动部署</code>；<br>勾选 <code>代码更新时自动部署</code>，选择默认的 <code>推送到 Master 时触发构建</code> 这个是看你需要部署的是主线还是分支了，选择自己用的就好。<br><img src="/./How-to-make-GithubPage-included-by-Baidu/step4.jpg" alt="填写静态网站信息"></p>
 <p>点击保存，完成创建。</p>
-<p><img src="/2020/How-to-make-GithubPage-included-by-Baidu/step5.jpg" alt="完成部署"><br>这时候在页面中会显示你的 Coding Pages 访问地址，点击立即部署，这时候正常的话就会部署成功了。</p>
+<p><img src="/./How-to-make-GithubPage-included-by-Baidu/step5.jpg" alt="完成部署"><br>这时候在页面中会显示你的 Coding Pages 访问地址，点击立即部署，这时候正常的话就会部署成功了。</p>
 <p>然后点击在右上角的设置，<br>进入 Coding Pages 设置后滑动到底部，将自己的域名添加到自定义域名列表中。</p>
 <h2 id="6、解析域名到-Coding-Pages"><a href="#6、解析域名到-Coding-Pages" class="headerlink" title="6、解析域名到 Coding Pages"></a>6、解析域名到 Coding Pages</h2><hr>
-<p>在自己域名服务商的控制台添加解析记录，类型为 <code>CNAME</code> 这些应该都不用多说了吧。<br>对应之前的解析记录增加不同的解析路线。<br><img src="/2020/How-to-make-GithubPage-included-by-Baidu/step7.jpg" alt="域名解析"></p>
-<p>要注意的是如果只是想让百度蜘蛛爬取 Coding Pages，正常访问还是走的 Github Pages 的话，解析线路要设置成 <strong>百度</strong>。<br>（如果想要国内访问 Coding Pages，海外 Github Pages 的话，Coding 的解析路径设置成<strong>默认</strong>，Github 设置成<strong>海外</strong>）<br><img src="/2020/How-to-make-GithubPage-included-by-Baidu/step6.jpg" alt="添加解析记录"></p>
+<p>在自己域名服务商的控制台添加解析记录，类型为 <code>CNAME</code> 这些应该都不用多说了吧。<br>对应之前的解析记录增加不同的解析路线。<br><img src="/./How-to-make-GithubPage-included-by-Baidu/step7.jpg" alt="域名解析"></p>
+<p>要注意的是如果只是想让百度蜘蛛爬取 Coding Pages，正常访问还是走的 Github Pages 的话，解析线路要设置成 <strong>百度</strong>。<br>（如果想要国内访问 Coding Pages，海外 Github Pages 的话，Coding 的解析路径设置成<strong>默认</strong>，Github 设置成<strong>海外</strong>）<br><img src="/./How-to-make-GithubPage-included-by-Baidu/step6.jpg" alt="添加解析记录"></p>
 <p>等待解析生效就可以在百度的 <a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/">站长平台</a> 提交 <code>sitemap</code> 让百度收录了</p>
 <h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><hr>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="申请-SSL-TLS-证书失败"><a href="#申请-SSL-TLS-证书失败" class="headerlink" title="申请 SSL/TLS 证书失败"></a>申请 SSL/TLS 证书失败</h3><blockquote>
-<p>Coding Pages 是免费提供 ssl/tls 证书的，这样以来部署的博客就支持 https 访问，证书到期前一周，系统自动续签。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="申请-SSL-TLS-证书失败"><a href="#申请-SSL-TLS-证书失败" class="headerlink" title="申请 SSL&#x2F;TLS 证书失败"></a>申请 SSL&#x2F;TLS 证书失败</h3><blockquote>
+<p>Coding Pages 是免费提供 ssl&#x2F;tls 证书的，这样以来部署的博客就支持 https 访问，证书到期前一周，系统自动续签。</p>
 </blockquote>
 <p>但是按照我的这个流程下来申请证书会失败，原因是域名解析的问题，<br>我的默认解析是到 Coding Pages 的，但是海外线路是解析到 Github Pages 上，<br>先停用 Github Pages 的解析再申请，等证书申请成功后再恢复解析即可。</p>
 <h3 id="部署失败-EvilType-21000：综合"><a href="#部署失败-EvilType-21000：综合" class="headerlink" title="部署失败 EvilType: 21000：综合"></a>部署失败 <code>EvilType: 21000：综合</code></h3><p>在最初的 Coding Pages 部署成功之后我在百度站长平台提交了 <code>sitemap.xml</code>，</p>
@@ -163,13 +166,13 @@
 <p>您好，由于相关政策因素，目前 Pages 的部署接入了系统级的自动审核，系统对于 Pages 的内容进行非常严格的排查，若是部署网站中出现涉政，涉黄，广告，<strong>链接</strong> 等内容，系统会自动判别为违规，无法部署成功，具体的违规内容涉及方向您可以参考 T-Sec 天御文本内容安全判别标准进行修正：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/product/tms">https://cloud.tencent.com/product/tms</a> ，给您造成的不便非常抱歉。</p>
 </blockquote>
 <p>我加粗了问题出现的部分，不知道这个 TMS 管控是怎么识别链接的，<br>现阶段的日志文件看只要我的文章内出现了一些引用链接，就会提示 <code>EvilType: 21000：综合</code> ，<br>Coding Pages 的自动部署就会失败：</p>
-<pre class="line-numbers language-log" data-language="log"><code class="language-log">2020&#x2F;01&#x2F;16 15:44:21 Fetching depot archive:
-	Ref: refs&#x2F;heads&#x2F;master
-	CommitSHA: 974e01660df7063b4d703d7286ae1e8f7dbd9538
-2020&#x2F;01&#x2F;16 15:44:23 Extracting depot archive.
-2020&#x2F;01&#x2F;16 15:44:24 The following file contains offending content:
-2020&#x2F;01&#x2F;16 15:44:24 - Path: 2019&#x2F;CSS-text_truncation&#x2F;index.html
-2020&#x2F;01&#x2F;16 15:44:24 - EvilType: 21000：综合<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs log">2020/01/16 15:44:21 Fetching depot archive:
+  Ref: refs/heads/master
+  CommitSHA: 974e01660df7063b4d703d7286ae1e8f7dbd9538
+2020/01/16 15:44:23 Extracting depot archive.
+2020/01/16 15:44:24 The following file contains offending content:
+2020/01/16 15:44:24 - Path: 2019/CSS-text_truncation/index.html
+2020/01/16 15:44:24 - EvilType: 21000：综合</code></pre>
 
 <p>再次询问客服，回复：</p>
 <blockquote>

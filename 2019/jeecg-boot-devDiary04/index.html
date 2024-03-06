@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -114,29 +117,29 @@
 </thead>
 <tbody><tr>
 <td>edit</td>
-<td>新增和删除页签的回调，在 type=”editable-card” 时有效</td>
+<td>新增和删除页签的回调，在 type&#x3D;”editable-card” 时有效</td>
 <td>(targetKey, action): void</td>
 </tr>
 </tbody></table>
 <p>移除 Tab 方法在: <code>@/components/layouts/TabLayout.vue =&gt; remove:117</code></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">editPage</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> action</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">this</span><span class="token punctuation">[</span>action<span class="token punctuation">]</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token function">remove</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">==</span> indexKey<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>$message<span class="token punctuation">.</span><span class="token function">warning</span><span class="token punctuation">(</span><span class="token string">'首页不能关闭!'</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pageList<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>$message<span class="token punctuation">.</span><span class="token function">warning</span><span class="token punctuation">(</span><span class="token string">'这是最后一页，不能再关闭了啦'</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">this</span><span class="token punctuation">.</span>pageList <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>pageList<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item<span class="token punctuation">.</span>fullPath <span class="token operator">!==</span> key<span class="token punctuation">)</span>
-  <span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>linkList<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
-  <span class="token keyword">this</span><span class="token punctuation">.</span>linkList <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>linkList<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item <span class="token operator">!==</span> key<span class="token punctuation">)</span>
-  index <span class="token operator">=</span> index <span class="token operator">>=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>linkList<span class="token punctuation">.</span>length <span class="token operator">?</span> <span class="token keyword">this</span><span class="token punctuation">.</span>linkList<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">:</span> index
-  <span class="token keyword">this</span><span class="token punctuation">.</span>activePage <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>linkList<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-title function_">editPage</span>(<span class="hljs-params">key, action</span>) &#123;
+  <span class="hljs-variable language_">this</span>[action](key)
+&#125;,
+<span class="hljs-title function_">remove</span>(<span class="hljs-params">key</span>) &#123;
+  <span class="hljs-keyword">if</span> (key == indexKey) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">$message</span>.<span class="hljs-title function_">warning</span>(<span class="hljs-string">&#x27;首页不能关闭!&#x27;</span>)
+    <span class="hljs-keyword">return</span>
+  &#125;
+  <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">pageList</span>.<span class="hljs-property">length</span> === <span class="hljs-number">1</span>) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">$message</span>.<span class="hljs-title function_">warning</span>(<span class="hljs-string">&#x27;这是最后一页，不能再关闭了啦&#x27;</span>)
+    <span class="hljs-keyword">return</span>
+  &#125;
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">pageList</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">pageList</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">fullPath</span> !== key)
+  <span class="hljs-keyword">let</span> index = <span class="hljs-variable language_">this</span>.<span class="hljs-property">linkList</span>.<span class="hljs-title function_">indexOf</span>(key)
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">linkList</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">linkList</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item !== key)
+  index = index &gt;= <span class="hljs-variable language_">this</span>.<span class="hljs-property">linkList</span>.<span class="hljs-property">length</span> ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">linkList</span>.<span class="hljs-property">length</span> - <span class="hljs-number">1</span> : index
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">activePage</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">linkList</span>[index]
+&#125;,</code></pre>
 
 <p>没找到好的解决办法，在考虑直接用 vuex 重写了…</p>
  

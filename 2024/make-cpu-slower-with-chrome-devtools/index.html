@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -101,11 +104,11 @@
   <article class="article-content">
     <p>昨天刷到在思否遇到一个<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000044521029">想要限制CPU性能的问题</a>。在我的认知里对于 <code>DevTools</code> 的使用是没办法限制CPU性能的，认为只能够限制网络条件（也就是在 <code>Network</code> 面板中通过修改 <code>throttling</code> 设置来限制网络条件，也错误的把OP的截图当成了调整网络条件的设置了）。<br>所以会想着通过系统自带的”节电模式”之类的来实现性能限制，或者借助外部的软件来调整CPU、GPU、内存相关的功率来实现性能限制。</p>
 <p>但是OP在傍晚自己找到了<a target="_blank" rel="noopener" href="https://dev.to/kaziusan/i-wanna-make-cpu-slower-than-default-setting-in-chrome-devtool--3bb">解决办法</a>，我才知道原来 <code>DevTools</code> 也可以限制CPU的。</p>
-<p><img src="/2024/make-cpu-slower-with-chrome-devtools/settings.jpeg#center" alt="设置截图"></p>
+<p><img src="/2024/make-cpu-slower-with-chrome-devtools/settings.jpeg" alt="设置截图"></p>
 <span id="more"></span>
 
 <p>对于限制的操作就很简单了，进入 <code>Performance</code> 面板就可以在CPU选项中调整了，如果没有看到CPU选项，就点击右上角的齿轮展开更多设置项就可以了。</p>
-<p><img src="/2024/make-cpu-slower-with-chrome-devtools/settings2.jpeg#center" alt="设置截图2"></p>
+<p><img src="/2024/make-cpu-slower-with-chrome-devtools/settings2.jpeg" alt="设置截图2"></p>
 <p>至于更多的一些操作，可以直接看文末连接中的 <code>Chrome DevTools</code> 文档，我就不CV进来了。</p>
 <h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000044521029">如何在 Chrome DevTools 中模拟 10 倍性能降低? - SegmentFault 思否</a></p>
 <p><a target="_blank" rel="noopener" href="https://developer.chrome.com/docs/devtools/device-mode?hl=zh-cn#cpu">#仅限制 CPU 占用率 - 使用 Device Mode 模拟移动设备  |  DevTools  |  Chrome for Developers</a><br><a target="_blank" rel="noopener" href="https://dev.to/kaziusan/i-wanna-make-cpu-slower-than-default-setting-in-chrome-devtool--3bb">I wanna make CPU slower than default setting in chrome devtool 😣! - DEV Community</a><br><a target="_blank" rel="noopener" href="https://zenn.dev/from_host/articles/2d91bf31807b57">Chrome devtool で CPU を もっと制限したい - Zenn</a></p>

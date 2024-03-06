@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -108,23 +111,23 @@
 <span id="more"></span>
 
 <hr>
-<p>我们 <strong>使用管理员权限</strong> 打开终端 <code>CMD</code>。<br>在终端中输入 <code>route print</code> 我们获得以下信息：<br><img src="/2020/intranet-and-extranet-routes/route_print.jpg" alt="route_print"></p>
-<p>可以看到路由表中有两个 <code>0.0.0.0</code> 的路由信息<br><img src="/2020/intranet-and-extranet-routes/0.0.0.0.jpg" alt="重复的路由信息"></p>
+<p>我们 <strong>使用管理员权限</strong> 打开终端 <code>CMD</code>。<br>在终端中输入 <code>route print</code> 我们获得以下信息：<br><img src="/intranet-and-extranet-routes/route_print.jpg" alt="route_print"></p>
+<p>可以看到路由表中有两个 <code>0.0.0.0</code> 的路由信息<br><img src="/intranet-and-extranet-routes/0.0.0.0.jpg" alt="重复的路由信息"></p>
 <p>并且跃点数也是一样的都是 <code>35</code>，这样会路由冲突，只能使用其中一个。</p>
 <p>我们重新配置一下路由信息就可以了，这个时候我们把两个冲突的路由信息复制出来，如果你不嫌麻烦的话上下翻也可以，重新打开一个新的终端也行。</p>
-<h3 id="先把两个-0-0-0-0-路由删掉"><a href="#先把两个-0-0-0-0-路由删掉" class="headerlink" title="先把两个 0.0.0.0 路由删掉"></a>先把两个 <code>0.0.0.0</code> 路由删掉</h3><pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">route delete 0.0.0.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="先把两个-0-0-0-0-路由删掉"><a href="#先把两个-0-0-0-0-路由删掉" class="headerlink" title="先把两个 0.0.0.0 路由删掉"></a>先把两个 <code>0.0.0.0</code> 路由删掉</h3><pre><code class="hljs cmd">route delete <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span></code></pre>
 
 <h3 id="添加外网路由信息"><a href="#添加外网路由信息" class="headerlink" title="添加外网路由信息"></a>添加外网路由信息</h3><p>这里就需要用到之前复制出来的路由信息了，不过只要网关信息</p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">route add 0.0.0.0 mask 0.0.0.0 192.168.200.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs cmd">route add <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> mask <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> <span class="hljs-number">192</span>.<span class="hljs-number">168</span>.<span class="hljs-number">200</span>.<span class="hljs-number">1</span></code></pre>
 
 <h3 id="添加内网路由信息"><a href="#添加内网路由信息" class="headerlink" title="添加内网路由信息"></a>添加内网路由信息</h3><p>这里也需要用到之前复制出来的路由信息，网关 以及 网络掩码（网络掩码这部分一般都是 <code>255.255.255.0</code> 如果不确定的话联系一下网管就可以了）</p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">route add 192.168.1.0 mask 255.255.255.0 192.168.1.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs cmd">route add <span class="hljs-number">192</span>.<span class="hljs-number">168</span>.<span class="hljs-number">1</span>.<span class="hljs-number">0</span> mask <span class="hljs-number">255</span>.<span class="hljs-number">255</span>.<span class="hljs-number">255</span>.<span class="hljs-number">0</span> <span class="hljs-number">192</span>.<span class="hljs-number">168</span>.<span class="hljs-number">1</span>.<span class="hljs-number">1</span></code></pre>
 
-<p>重新查看路由信息，看到新的路由配置已经被加上了<br><img src="/2020/intranet-and-extranet-routes/res.jpg" alt="添加后的路由配置信息"></p>
+<p>重新查看路由信息，看到新的路由配置已经被加上了<br><img src="/intranet-and-extranet-routes/res.jpg" alt="添加后的路由配置信息"></p>
 <p>不过中间我看到 <code>192.168.1.0</code> 出现了两次，并且配置信息是一样的，是不是我这边本来就有这个路由信息的，所以我又把后来添加的信息去掉了。</p>
 <p>各位添加的时候注意检查一下原来的路由表里边是否已经有内网的路由信息了。</p>
 <p>因为是临时网络没有通，所以我就不加永久路由，每天手动调整一下路由就行，如果你这边是固定的内网有网络限制的话，可以在 <code>route</code> 之后添加 <code>-p</code> 就可以实现永久路由了。</p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">route -p add 192.168.1.0 mask 255.255.255.0 192.168.1.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs cmd">route -p add <span class="hljs-number">192</span>.<span class="hljs-number">168</span>.<span class="hljs-number">1</span>.<span class="hljs-number">0</span> mask <span class="hljs-number">255</span>.<span class="hljs-number">255</span>.<span class="hljs-number">255</span>.<span class="hljs-number">0</span> <span class="hljs-number">192</span>.<span class="hljs-number">168</span>.<span class="hljs-number">1</span>.<span class="hljs-number">1</span></code></pre>
 
 <p>以上</p>
  

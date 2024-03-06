@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,59 +106,59 @@
 <p>那么先来整理一下位运算符，最后再说明为什么字符串的处理结果为 <code>0</code></p>
 <span id="more"></span>
 <hr>
-<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><h3 id="按位与-AND-amp"><a href="#按位与-AND-amp" class="headerlink" title="按位与 AND &amp;"></a>按位与 AND <code>&amp;</code></h3><blockquote>
+<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><h3 id="按位与-AND"><a href="#按位与-AND" class="headerlink" title="按位与 AND &amp;"></a>按位与 AND <code>&amp;</code></h3><blockquote>
 <p><code>a &amp; b</code> 在 a, b 的位表示中，每一个对应的位都为 1 则返回 1 ， 否则返回 0。</p>
 </blockquote>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token number">10</span> <span class="token operator">&amp;</span> <span class="token number">5</span> <span class="token comment">// 1010 &amp; 0101 =>  0000</span>
-<span class="token comment">// logs 0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-number">10</span> &amp; <span class="hljs-number">5</span> <span class="hljs-comment">// 1010 &amp; 0101 =&gt;  0000</span>
+<span class="hljs-comment">// logs 0</span></code></pre>
 
 <h3 id="按位或-OR"><a href="#按位或-OR" class="headerlink" title="按位或 OR  |"></a>按位或 OR  <code>|</code></h3><blockquote>
 <p><code>a | b</code> 在 a, b 的位表示中，每一个对应的位，只要有一个为 1 则返回 1 ， 否则返回 0。</p>
 </blockquote>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token number">10</span> <span class="token operator">|</span> <span class="token number">5</span> <span class="token comment">// 1010 | 0101 =>  1111</span>
-<span class="token comment">// logs 15</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-number">10</span> | <span class="hljs-number">5</span> <span class="hljs-comment">// 1010 | 0101 =&gt;  1111</span>
+<span class="hljs-comment">// logs 15</span></code></pre>
 
 <h3 id="按位异或-XOR"><a href="#按位异或-XOR" class="headerlink" title="按位异或 XOR ^"></a>按位异或 XOR <code>^</code></h3><blockquote>
 <p><code>a ^ b</code> 在 a, b 的位表示中，每一个对应的位，两个不相同则返回 1，相同则返回 0。</p>
 </blockquote>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token number">15</span> <span class="token operator">^</span> <span class="token number">5</span> <span class="token comment">// 1111 ^ 0101 => 1010</span>
-<span class="token comment">// logs 10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-number">15</span> ^ <span class="hljs-number">5</span> <span class="hljs-comment">// 1111 ^ 0101 =&gt; 1010</span>
+<span class="hljs-comment">// logs 10</span></code></pre>
 
 <h3 id="按位非-NOT"><a href="#按位非-NOT" class="headerlink" title="按位非 NOT ~"></a>按位非 NOT <code>~</code></h3><blockquote>
 <p><code>~ a</code> 反转被操作数的位。</p>
 </blockquote>
 <p>这里就不能像上边这样简写了，需要完整书写32位，再反转。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">~</span> <span class="token number">1</span> <span class="token comment">// ~ 00000000000000000000000000000001 => 11111111111111111111111111111110</span>
-<span class="token comment">// logs -2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs js">~ <span class="hljs-number">1</span> <span class="hljs-comment">// ~ 00000000000000000000000000000001 =&gt; 11111111111111111111111111111110</span>
+<span class="hljs-comment">// logs -2</span></code></pre>
 <p>就是把运算数转换为 32 位的二进制整数，然后逐位进行取反操作，最后返回十进制浮点数</p>
-<h3 id="左移-shift-lt-lt"><a href="#左移-shift-lt-lt" class="headerlink" title="左移 shift &lt;&lt;"></a>左移 shift <code>&lt;&lt;</code></h3><blockquote>
+<h3 id="左移-shift"><a href="#左移-shift" class="headerlink" title="左移 shift &lt;&lt;"></a>左移 shift <code>&lt;&lt;</code></h3><blockquote>
 <p><code>a &lt;&lt; b</code> 将 a 的二进制串向左移动 b 位,右边移入 0。</p>
 </blockquote>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token number">5</span> <span class="token operator">&lt;&lt;</span> <span class="token number">2</span> <span class="token comment">// 0101 &lt;&lt; 2 => 010100</span>
-<span class="token comment">// logs 20</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-number">5</span> &lt;&lt; <span class="hljs-number">2</span> <span class="hljs-comment">// 0101 &lt;&lt; 2 =&gt; 010100</span>
+<span class="hljs-comment">// logs 20</span></code></pre>
 <p>简单来说就是整个二进制串向左移动，如果超出就被丢弃，然后末尾补充 0，举个负数例子可能会清晰很多</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">-</span><span class="token number">113</span> <span class="token operator">&lt;&lt;</span> <span class="token number">4</span> <span class="token comment">// 11111111111111111111111110001111 &lt;&lt; 4 => 11111111111111111111100011110000</span>
-<span class="token comment">// logs -1808</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs js">-<span class="hljs-number">113</span> &lt;&lt; <span class="hljs-number">4</span> <span class="hljs-comment">// 11111111111111111111111110001111 &lt;&lt; 4 =&gt; 11111111111111111111100011110000</span>
+<span class="hljs-comment">// logs -1808</span></code></pre>
 
-<h3 id="算术右移-gt-gt"><a href="#算术右移-gt-gt" class="headerlink" title="算术右移 &gt;&gt;"></a>算术右移 <code>&gt;&gt;</code></h3><blockquote>
+<h3 id="算术右移"><a href="#算术右移" class="headerlink" title="算术右移 &gt;&gt;"></a>算术右移 <code>&gt;&gt;</code></h3><blockquote>
 <p><code>a &gt;&gt; b</code> 把 a 的二进制表示向右移动 b 位，丢弃被移出的所有位。<br><small>译注:算术右移左边空出的位是根据最高位是 0 和 1 来进行填充的</small></p>
 </blockquote>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token number">10</span> <span class="token operator">>></span> <span class="token number">2</span> <span class="token comment">// 1010 >> 2 => 10</span>
-<span class="token comment">// logs 2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-number">10</span> &gt;&gt; <span class="hljs-number">2</span> <span class="hljs-comment">// 1010 &gt;&gt; 2 =&gt; 10</span>
+<span class="hljs-comment">// logs 2</span></code></pre>
 <p>和左移一样的处理思路，只不过方向反过来，并且<strong>按照首位来填充</strong>，如果是1则填充1，0则填充0</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">-</span><span class="token number">2</span> <span class="token operator">>></span> <span class="token number">4</span> <span class="token comment">// 11111111111111111111111111111110 >> 4 => 11111111111111111111111111111111</span>
-<span class="token comment">// logs -1</span>
-<span class="token number">2147483647</span> <span class="token operator">>></span> <span class="token number">4</span> <span class="token comment">// 01111111111111111111111111111111 >> 4 => 00000111111111111111111111111111</span>
-<span class="token comment">// logs 134217727</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js">-<span class="hljs-number">2</span> &gt;&gt; <span class="hljs-number">4</span> <span class="hljs-comment">// 11111111111111111111111111111110 &gt;&gt; 4 =&gt; 11111111111111111111111111111111</span>
+<span class="hljs-comment">// logs -1</span>
+<span class="hljs-number">2147483647</span> &gt;&gt; <span class="hljs-number">4</span> <span class="hljs-comment">// 01111111111111111111111111111111 &gt;&gt; 4 =&gt; 00000111111111111111111111111111</span>
+<span class="hljs-comment">// logs 134217727</span></code></pre>
 
-<h3 id="无符号右移-gt-gt-gt"><a href="#无符号右移-gt-gt-gt" class="headerlink" title="无符号右移 &gt;&gt;&gt;"></a>无符号右移 <code>&gt;&gt;&gt;</code></h3><blockquote>
+<h3 id="无符号右移"><a href="#无符号右移" class="headerlink" title="无符号右移 &gt;&gt;&gt;"></a>无符号右移 <code>&gt;&gt;&gt;</code></h3><blockquote>
 <p><code>a &gt;&gt;&gt; b</code> 把 a 的二进制表示向右移动 b 位，丢弃被移出的所有位，并把左边空出的位都填充为 0。</p>
 </blockquote>
 <p>这个挺好理解的，比算术右移方便记，只需要填0就好了。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">-</span><span class="token number">2</span> <span class="token operator">>>></span> <span class="token number">4</span> <span class="token comment">// 11111111111111111111111111111110 >> 4 => 00001111111111111111111111111111</span>
-<span class="token comment">// logs 268435455</span>
-<span class="token number">100</span> <span class="token operator">>>></span> <span class="token number">4</span> <span class="token comment">// 1100100 >> 4 => 0000100</span>
-<span class="token comment">// logs 6</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js">-<span class="hljs-number">2</span> &gt;&gt;&gt; <span class="hljs-number">4</span> <span class="hljs-comment">// 11111111111111111111111111111110 &gt;&gt; 4 =&gt; 00001111111111111111111111111111</span>
+<span class="hljs-comment">// logs 268435455</span>
+<span class="hljs-number">100</span> &gt;&gt;&gt; <span class="hljs-number">4</span> <span class="hljs-comment">// 1100100 &gt;&gt; 4 =&gt; 0000100</span>
+<span class="hljs-comment">// logs 6</span></code></pre>
 
 <hr>
 <h2 id="回到最初的问题"><a href="#回到最初的问题" class="headerlink" title="回到最初的问题"></a>回到最初的问题</h2><h3 id="为什么字符串进行位运算的时候返回的结果是-0"><a href="#为什么字符串进行位运算的时候返回的结果是-0" class="headerlink" title="为什么字符串进行位运算的时候返回的结果是 0"></a>为什么字符串进行位运算的时候返回的结果是 <code>0</code></h3><p>位操作符在移位前做了两种转换，第一步，将不是 <code>number</code> 类型的数据转换为 <code>number</code>，第二步，将 <code>number</code> 转换为无符号的 32bit 数据，也就是 Uint32 类型。</p>

@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -99,7 +102,7 @@
       <!-- 文章内容 article body -->
  
   <article class="article-content">
-    <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><pre class="line-numbers language-none"><code class="language-none">$ mkdir my-app
+    <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><pre><code class="hljs plaintext">$ mkdir my-app
 
 $ cd my-app
 
@@ -116,7 +119,7 @@ Wrote to E:\my-app\package.json:
   &quot;keywords&quot;: [],
   &quot;author&quot;: &quot;&quot;,
   &quot;license&quot;: &quot;ISC&quot;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 
 <p>修改入口文件为 <code>main.js</code> 并且添加 <code>start</code> 脚本引导 <strong>Node</strong> 来执行 Electron</p>
 <span id="more"></span>
@@ -124,138 +127,138 @@ Wrote to E:\my-app\package.json:
 <h3 id="2-安装-Electron"><a href="#2-安装-Electron" class="headerlink" title="2. 安装 Electron"></a>2. 安装 Electron</h3><blockquote>
 <p>官方推荐的安装方法是把它作为应用中的开发依赖项，以在不同的应用中使用不同的 Electron 版本。</p>
 </blockquote>
-<pre class="line-numbers language-none"><code class="language-none">npm install electron --save-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs plaintext">npm install electron --save-dev</code></pre>
 
 <h3 id="3-简易的-Electron-主进程"><a href="#3-简易的-Electron-主进程" class="headerlink" title="3. 简易的 Electron 主进程"></a>3. 简易的 Electron 主进程</h3><p>1.在 <code>min.js</code> 中引入 <strong>Electron</strong></p>
 <ul>
 <li>使用所有 API 和功能</li>
 </ul>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> electron <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> electron = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;electron&#x27;</span>)</code></pre>
 
 <ul>
 <li>按需引入</li>
 </ul>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">&#123;</span> app<span class="token punctuation">,</span> BrowserWindow <span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; app, <span class="hljs-title class_">BrowserWindow</span> &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;electron&#x27;</span>)</code></pre>
 
 <blockquote>
 <p>Electron 模块所提供的功能都是通过命名空间暴露出来的</p>
 </blockquote>
 <p>在应用程序准备就绪后打开一个窗口</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">createWindow</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token comment">// 创建浏览器窗口</span>
-  <span class="token keyword">let</span> win <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-    width<span class="token operator">:</span> <span class="token number">800</span><span class="token punctuation">,</span>
-    height<span class="token operator">:</span> <span class="token number">600</span><span class="token punctuation">,</span>
-    webPreferences<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      nodeIntegration<span class="token operator">:</span> <span class="token boolean">true</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">createWindow</span> () &#123;
+  <span class="hljs-comment">// 创建浏览器窗口</span>
+  <span class="hljs-keyword">let</span> win = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BrowserWindow</span>(&#123;
+    <span class="hljs-attr">width</span>: <span class="hljs-number">800</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">600</span>,
+    <span class="hljs-attr">webPreferences</span>: &#123;
+      <span class="hljs-attr">nodeIntegration</span>: <span class="hljs-literal">true</span>
+    &#125;
+  &#125;)
 
-  <span class="token comment">// 加载index.html文件</span>
-  win<span class="token punctuation">.</span><span class="token function">loadFile</span><span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
+  <span class="hljs-comment">// 加载index.html文件</span>
+  win.<span class="hljs-title function_">loadFile</span>(<span class="hljs-string">&#x27;index.html&#x27;</span>)
+&#125;
 
-app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'ready'</span><span class="token punctuation">,</span> createWindow<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+app.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;ready&#x27;</span>, createWindow)</code></pre>
 
 <p>完善上述例子，完善应用可能遇到的所有系统事件，那么一个简单的 <code>main.js</code> 就像下面这样：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">&#123;</span> app<span class="token punctuation">,</span> BrowserWindow <span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'electron'</span><span class="token punctuation">)</span>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; app, <span class="hljs-title class_">BrowserWindow</span> &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;electron&#x27;</span>)
 
-<span class="token comment">// 保持对window对象的全局引用，如果不这么做的话，当JavaScript对象被</span>
-<span class="token comment">// 垃圾回收的时候，window对象将会自动的关闭</span>
-<span class="token keyword">let</span> win
+<span class="hljs-comment">// 保持对window对象的全局引用，如果不这么做的话，当JavaScript对象被</span>
+<span class="hljs-comment">// 垃圾回收的时候，window对象将会自动的关闭</span>
+<span class="hljs-keyword">let</span> win
 
-<span class="token keyword">function</span> <span class="token function">createWindow</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token comment">// 创建浏览器窗口。</span>
-  win <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-    width<span class="token operator">:</span> <span class="token number">800</span><span class="token punctuation">,</span>
-    height<span class="token operator">:</span> <span class="token number">600</span><span class="token punctuation">,</span>
-    webPreferences<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      nodeIntegration<span class="token operator">:</span> <span class="token boolean">true</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">createWindow</span> () &#123;
+  <span class="hljs-comment">// 创建浏览器窗口。</span>
+  win = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BrowserWindow</span>(&#123;
+    <span class="hljs-attr">width</span>: <span class="hljs-number">800</span>,
+    <span class="hljs-attr">height</span>: <span class="hljs-number">600</span>,
+    <span class="hljs-attr">webPreferences</span>: &#123;
+      <span class="hljs-attr">nodeIntegration</span>: <span class="hljs-literal">true</span>
+    &#125;
+  &#125;)
 
-  <span class="token comment">// 加载index.html文件</span>
-  win<span class="token punctuation">.</span><span class="token function">loadFile</span><span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">)</span>
+  <span class="hljs-comment">// 加载index.html文件</span>
+  win.<span class="hljs-title function_">loadFile</span>(<span class="hljs-string">&#x27;index.html&#x27;</span>)
 
-  <span class="token comment">// 打开开发者工具</span>
-  win<span class="token punctuation">.</span>webContents<span class="token punctuation">.</span><span class="token function">openDevTools</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="hljs-comment">// 打开开发者工具</span>
+  win.<span class="hljs-property">webContents</span>.<span class="hljs-title function_">openDevTools</span>()
 
-  <span class="token comment">// 当 window 被关闭，这个事件会被触发。</span>
-  win<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'closed'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 取消引用 window 对象，如果你的应用支持多窗口的话，</span>
-    <span class="token comment">// 通常会把多个 window 对象存放在一个数组里面，</span>
-    <span class="token comment">// 与此同时，你应该删除相应的元素。</span>
-    win <span class="token operator">=</span> <span class="token keyword">null</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
+  <span class="hljs-comment">// 当 window 被关闭，这个事件会被触发。</span>
+  win.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;closed&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;
+    <span class="hljs-comment">// 取消引用 window 对象，如果你的应用支持多窗口的话，</span>
+    <span class="hljs-comment">// 通常会把多个 window 对象存放在一个数组里面，</span>
+    <span class="hljs-comment">// 与此同时，你应该删除相应的元素。</span>
+    win = <span class="hljs-literal">null</span>
+  &#125;)
+&#125;
 
-<span class="token comment">// Electron 会在初始化后并准备</span>
-<span class="token comment">// 创建浏览器窗口时，调用这个函数。</span>
-<span class="token comment">// 部分 API 在 ready 事件触发后才能使用。</span>
-app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'ready'</span><span class="token punctuation">,</span> createWindow<span class="token punctuation">)</span>
+<span class="hljs-comment">// Electron 会在初始化后并准备</span>
+<span class="hljs-comment">// 创建浏览器窗口时，调用这个函数。</span>
+<span class="hljs-comment">// 部分 API 在 ready 事件触发后才能使用。</span>
+app.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;ready&#x27;</span>, createWindow)
 
-<span class="token comment">// 当全部窗口关闭时退出。</span>
-app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'window-all-closed'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  <span class="token comment">// 在 macOS 上，除非用户用 Cmd + Q 确定地退出，</span>
-  <span class="token comment">// 否则绝大部分应用及其菜单栏会保持激活。</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>platform <span class="token operator">!==</span> <span class="token string">'darwin'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    app<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="hljs-comment">// 当全部窗口关闭时退出。</span>
+app.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;window-all-closed&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;
+  <span class="hljs-comment">// 在 macOS 上，除非用户用 Cmd + Q 确定地退出，</span>
+  <span class="hljs-comment">// 否则绝大部分应用及其菜单栏会保持激活。</span>
+  <span class="hljs-keyword">if</span> (process.<span class="hljs-property">platform</span> !== <span class="hljs-string">&#x27;darwin&#x27;</span>) &#123;
+    app.<span class="hljs-title function_">quit</span>()
+  &#125;
+&#125;)
 
-app<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'activate'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  <span class="token comment">// 在macOS上，当单击dock图标并且没有其他窗口打开时，</span>
-  <span class="token comment">// 通常在应用程序中重新创建一个窗口。</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>win <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token function">createWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+app.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;activate&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;
+  <span class="hljs-comment">// 在macOS上，当单击dock图标并且没有其他窗口打开时，</span>
+  <span class="hljs-comment">// 通常在应用程序中重新创建一个窗口。</span>
+  <span class="hljs-keyword">if</span> (win === <span class="hljs-literal">null</span>) &#123;
+    <span class="hljs-title function_">createWindow</span>()
+  &#125;
+&#125;)
 
-<span class="token comment">// 在这个文件中，你可以续写应用剩下主进程代码。</span>
-<span class="token comment">// 也可以拆分成几个文件，然后用 require 导入。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// 在这个文件中，你可以续写应用剩下主进程代码。</span>
+<span class="hljs-comment">// 也可以拆分成几个文件，然后用 require 导入。</span></code></pre>
 
-<h3 id="4-创建想展示的-index-html"><a href="#4-创建想展示的-index-html" class="headerlink" title="4. 创建想展示的 index.html"></a>4. 创建想展示的 index.html</h3><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Hello World!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Hello World!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
-    We are using node <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>versions<span class="token punctuation">.</span>node<span class="token punctuation">)</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>,
-    Chrome <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>versions<span class="token punctuation">.</span>chrome<span class="token punctuation">)</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>,
-    and Electron <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>versions<span class="token punctuation">.</span>electron<span class="token punctuation">)</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>.
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-创建想展示的-index-html"><a href="#4-创建想展示的-index-html" class="headerlink" title="4. 创建想展示的 index.html"></a>4. 创建想展示的 index.html</h3><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    We are using node <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(process.<span class="hljs-property">versions</span>.<span class="hljs-property">node</span>)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>,
+    Chrome <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(process.<span class="hljs-property">versions</span>.<span class="hljs-property">chrome</span>)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>,
+    and Electron <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(process.<span class="hljs-property">versions</span>.<span class="hljs-property">electron</span>)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
 
 <h3 id="5-启动应用"><a href="#5-启动应用" class="headerlink" title="5. 启动应用"></a>5. 启动应用</h3><p>创建并初始化完成 <code>main.js</code> 、 <code>index.html</code> 和 <code>package.json</code> 之后，<br>就可以在当前工程的根目录执行 <code>npm start</code> 命令来启动刚刚编写好的 <strong>Electron</strong> 应用了。</p>
-<pre class="line-numbers language-none"><code class="language-none">$ npm start
+<pre><code class="hljs plaintext">$ npm start
 
 &gt; my-app@1.0.0 start E:\my-app
-&gt; electron .<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+&gt; electron .</code></pre>
 
 <h3 id="基础结构"><a href="#基础结构" class="headerlink" title="基础结构"></a>基础结构</h3><p>所以一个最基础的 <strong>Electron</strong> 应用 应有以下目录结构：</p>
-<pre class="line-numbers language-none"><code class="language-none">my-app&#x2F;
+<pre><code class="hljs plaintext">my-app/
 ├── package.json
 ├── main.js
-└── index.html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+└── index.html</code></pre>
 
-<h2 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h2><h3 id="官方-DEMO-Electron-quick-start"><a href="#官方-DEMO-Electron-quick-start" class="headerlink" title="官方 DEMO Electron-quick-start"></a>官方 DEMO <a target="_blank" rel="noopener" href="https://github.com/electron/electron-quick-start">Electron-quick-start</a></h3><pre class="line-numbers language-none"><code class="language-none"># 克隆示例项目的仓库
-$ git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-quick-start
+<h2 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h2><h3 id="官方-DEMO-Electron-quick-start"><a href="#官方-DEMO-Electron-quick-start" class="headerlink" title="官方 DEMO Electron-quick-start"></a>官方 DEMO <a target="_blank" rel="noopener" href="https://github.com/electron/electron-quick-start">Electron-quick-start</a></h3><pre><code class="hljs plaintext"># 克隆示例项目的仓库
+$ git clone https://github.com/electron/electron-quick-start
 
 # 进入这个仓库
 $ cd electron-quick-start
 
 # 安装依赖并运行
-$ npm install &amp;&amp; npm start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ npm install &amp;&amp; npm start</code></pre>
 
-<h3 id="使用-Electron-forge-创建项目"><a href="#使用-Electron-forge-创建项目" class="headerlink" title="使用 Electron-forge 创建项目"></a>使用 <a target="_blank" rel="noopener" href="https://www.electronforge.io/">Electron-forge</a> 创建项目</h3><pre class="line-numbers language-none"><code class="language-none">$ npm i -g @electron-forge&#x2F;cli
+<h3 id="使用-Electron-forge-创建项目"><a href="#使用-Electron-forge-创建项目" class="headerlink" title="使用 Electron-forge 创建项目"></a>使用 <a target="_blank" rel="noopener" href="https://www.electronforge.io/">Electron-forge</a> 创建项目</h3><pre><code class="hljs plaintext">$ npm i -g @electron-forge/cli
 
 $ electron-forge init my-app
 
 $ cd my-app
 
-$ npm start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ npm start</code></pre>
  
   </article>
 

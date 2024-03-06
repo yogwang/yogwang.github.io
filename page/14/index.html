@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -78,18 +81,18 @@
  
   <article class="article-content">
     <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>yarn add @better-scroll/mouse-wheel@next</code></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre class="line-numbers language-none"><code class="language-none">import BScroll from &#39;@better-scroll&#x2F;core&#39;
-import MouseWheel from &#39;@better-scroll&#x2F;mouse-wheel&#39;
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre><code class="hljs plaintext">import BScroll from &#x27;@better-scroll/core&#x27;
+import MouseWheel from &#x27;@better-scroll/mouse-wheel&#x27;
 BScroll.use(MouseWheel)
 
-new BScroll(&#39;.bs-wrap&#39;, &#123;
-  &#x2F;&#x2F;...
+new BScroll(&#x27;.bs-wrap&#x27;, &#123;
+  //...
   mouseWheel: &#123;
     speed: 20,
     invert: false,
     easeTime: 300
   &#125;
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;)</code></pre>
 
 <h2 id="但是为什么在原有的基础上这样写没有用呢。官方-Demo"><a href="#但是为什么在原有的基础上这样写没有用呢。官方-Demo" class="headerlink" title="但是为什么在原有的基础上这样写没有用呢。官方 Demo"></a>但是为什么在原有的基础上这样写没有用呢。<a target="_blank" rel="noopener" href="https://better-scroll.github.io/docs/zh-CN/plugins/mouse-wheel.html#%E7%A4%BA%E4%BE%8B">官方 Demo</a></h2><p>查看 <code>Demo</code> 源码在 <code>scroll-wrapper</code> 外多了一层 <code>core-mouse-wheel</code> 加上就可以了。</p>
 <h3 id="😂-没仔细看-Demo-源码"><a href="#😂-没仔细看-Demo-源码" class="headerlink" title="😂 没仔细看 Demo 源码"></a>😂 没仔细看 <code>Demo</code> 源码</h3> 
@@ -255,8 +258,8 @@ new BScroll(&#39;.bs-wrap&#39;, &#123;
   <article class="article-excerpt">
     <p>把刚刚提交到的版本库的操作撤销掉,并将正确的版本提交 这时我们就需要用到 <code>git commit –-amend</code> 命令</p>
 <p>我们把文件修改为正确的，然后 <code>git add</code> 到暂存区 再使用 <code>git commit -–amend</code> 命令<br>这时 <code>Bash</code> 会提示</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git commit --amend
-hint: Waiting for your editor to close the file...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs plaintext">$ git commit --amend
+hint: Waiting for your editor to close the file...</code></pre>
   </article>
   <div class="article-more-link">
     <a href="/2019/git_commit--amend/#more">阅读全文</a>
@@ -298,11 +301,11 @@ hint: Waiting for your editor to close the file...<span aria-hidden="true" class
     <p>做一个功能，可能提交了 10 多次，会不会有一些崩溃？单纯这么多次的 commit 就可能出现有无用，或者可以合并的 commit，就很让人不舒服。</p>
 <p>基于上面所说问题，不难想到：每一次功能开发， 对多个 commit 进行合并或者删除处理，这时候就需要用到 <code>git rebase</code> 修改提交的历史 Commit</p>
 <h4 id="Eg"><a href="#Eg" class="headerlink" title="Eg:"></a>Eg:</h4><p>修改最近的 4 次提交纪录</p>
-<pre class="line-numbers language-none"><code class="language-none">git rebase -i HEAD~4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs plaintext">git rebase -i HEAD~4</code></pre>
 
 <ul>
 <li><code>-i</code> 是 <code>--interactive</code> 的缩写 - 交互的意思；</li>
-<li><code>HEAD~4</code> 修改最近的 4 次提交记录；</li></ul>
+<li><code>HEAD~4</code> 修改最近的 4 次提交记录；
   </article>
   <div class="article-more-link">
     <a href="/2019/git_rebase/#more">阅读全文</a>
@@ -395,7 +398,7 @@ hint: Waiting for your editor to close the file...<span aria-hidden="true" class
 <li>不能退出、终止当前命令？</li>
 <li>想要删除提交的历史 Commit?</li>
 <li>合并与删除历史提交的 Commit ?</li>
-<li>操作失误，退回操作之前的版本库</li></ul>
+<li>操作失误，退回操作之前的版本库
   </article>
   <div class="article-more-link">
     <a href="/2019/git_question/#more">阅读全文</a>
@@ -434,15 +437,15 @@ hint: Waiting for your editor to close the file...<span aria-hidden="true" class
     <!-- 文章内容 article body -->
  
   <article class="article-excerpt">
-    <h2 id="安装-Electron-builder"><a href="#安装-Electron-builder" class="headerlink" title="安装 Electron-builder"></a>安装 Electron-builder</h2><pre class="line-numbers language-none"><code class="language-none">$ git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-quick-start
+    <h2 id="安装-Electron-builder"><a href="#安装-Electron-builder" class="headerlink" title="安装 Electron-builder"></a>安装 Electron-builder</h2><pre><code class="hljs plaintext">$ git clone https://github.com/electron/electron-quick-start
 
 $ cd electron-quick-start
 
-$ yarn add electron-builder --dev &#x2F;&#x2F; 官方推荐
+$ yarn add electron-builder --dev // 官方推荐
 
 or
 
-$ npm install elctron-builder --save-dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ npm install elctron-builder --save-dev</code></pre>
   </article>
   <div class="article-more-link">
     <a href="/2019/Electron03-Electron-builder/#more">阅读全文</a>
@@ -484,14 +487,14 @@ $ npm install elctron-builder --save-dev<span aria-hidden="true" class="line-num
     <h2 id="安装-Electron-packager"><a href="#安装-Electron-packager" class="headerlink" title="安装 Electron-packager"></a>安装 <a target="_blank" rel="noopener" href="https://github.com/electron-userland/electron-packager">Electron-packager</a></h2><blockquote>
 <p>需要 Node.js 6.0 或更高版本</p>
 </blockquote>
-<pre class="line-numbers language-none"><code class="language-none">npm install electron-packager --save-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs plaintext">npm install electron-packager --save-dev</code></pre>
 
 <p><a target="_blank" rel="noopener" href="https://github.com/electron-userland/electron-packager/blob/master/docs/api.md">electron-packager API</a></p>
-<h2 id="使用命令行打包"><a href="#使用命令行打包" class="headerlink" title="使用命令行打包"></a>使用命令行打包</h2><pre class="line-numbers language-none"><code class="language-none">electron-packager &lt;sourcedir&gt; &lt;appname&gt; --platform&#x3D;&lt;platform&gt; --arch&#x3D;&lt;arch&gt; [optional flags...]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="使用命令行打包"><a href="#使用命令行打包" class="headerlink" title="使用命令行打包"></a>使用命令行打包</h2><pre><code class="hljs plaintext">electron-packager &lt;sourcedir&gt; &lt;appname&gt; --platform=&lt;platform&gt; --arch=&lt;arch&gt; [optional flags...]</code></pre>
 
 <p>必需参数</p>
 <ul>
-<li><p>sourcedir - 应用程序源</p></li></ul>
+<li><p>sourcedir - 应用程序源</p>
   </article>
   <div class="article-more-link">
     <a href="/2019/Electron02-Electron-parkager/#more">阅读全文</a>
