@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -104,28 +107,28 @@
 <span id="more"></span>
 <hr>
 <p>先来最简单的demo来说明 <strong><code>this</code> 的最终指向的是那个调用它的对象</strong></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">t1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token punctuation">&#125;</span>
-<span class="token function">t1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// logs Window</span>
-<span class="token comment">// 其实等同于 window.t1()</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> t2 <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-  name<span class="token operator">:</span><span class="token string">'t2'</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">fn</span><span class="token operator">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-t2<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs &#123;name: "t2", fn: ƒ&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> t3 <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-  a<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>
-  b<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-    <span class="token function-variable function">fn</span><span class="token operator">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>   
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-t3<span class="token punctuation">.</span>b<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// logs undefined</span>
-<span class="token comment">// t3.b中并没有属性a</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">t1</span>(<span class="hljs-params"></span>)&#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>); 
+&#125;
+<span class="hljs-title function_">t1</span>() <span class="hljs-comment">// logs Window</span>
+<span class="hljs-comment">// 其实等同于 window.t1()</span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> t2 = &#123;
+  <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;t2&#x27;</span>,
+  <span class="hljs-attr">fn</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>);
+ &#125;
+&#125;
+t2.<span class="hljs-title function_">fn</span>(); <span class="hljs-comment">// logs &#123;name: &quot;t2&quot;, fn: ƒ&#125;</span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> t3 = &#123;
+  <span class="hljs-attr">a</span>:<span class="hljs-number">1</span>,
+  <span class="hljs-attr">b</span>:&#123;
+    <span class="hljs-attr">fn</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">a</span>)
+    &#125;   
+  &#125;
+&#125;
+t3.<span class="hljs-property">b</span>.<span class="hljs-title function_">fn</span>() <span class="hljs-comment">// logs undefined</span>
+<span class="hljs-comment">// t3.b中并没有属性a</span></code></pre>
 <p>这样就很好理解了，就是从谁的身上点出来的方法，这个 <code>this</code> 就是在指向谁的。如果没有默认就是 <code>window</code>（严格模式下稍有不同是 <code>undefined</code>），例如 <code>t1()</code></p>
 <h2 id="构造函数中的-this"><a href="#构造函数中的-this" class="headerlink" title="# 构造函数中的 this"></a># 构造函数中的 <code>this</code></h2><h2 id="Call-Apply-Bind-影响下的-this"><a href="#Call-Apply-Bind-影响下的-this" class="headerlink" title="# Call, Apply, Bind 影响下的 this"></a># <code>Call</code>, <code>Apply</code>, <code>Bind</code> 影响下的 <code>this</code></h2><h2 id="Class-下的-this"><a href="#Class-下的-this" class="headerlink" title="# Class 下的 this"></a># <code>Class</code> 下的 <code>this</code></h2><hr>
 <h2 id="未完成"><a href="#未完成" class="headerlink" title="未完成"></a>未完成</h2><p>突然发现之前还有一个坑没有填，我先去把旧坑填完。</p>

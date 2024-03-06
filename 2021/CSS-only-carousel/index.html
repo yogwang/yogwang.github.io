@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -114,7 +117,7 @@
 </ol>
 </blockquote>
 <p><small><strong><code>P.S.</code></strong> 以下笔记内容将逐步实现目标文章示例，会复原目标文章内的元素样式，稍微有点改动但变化不大，因为自己想的样式太丑了。</small></p>
-<iframe id="cp_embed_YzQxjaV" src="//codepen.io/yogwang/embed/YzQxjaV?height=600&theme-id=dark&slug-hash=YzQxjaV&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<iframe id="cp_embed_YzQxjaV" src="//codepen.io/yogwang/embed/YzQxjaV?height=600&theme-id=dark&slug-hash=YzQxjaV&default-tab=result" scrolling="no" frameborder="no" height="600" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 <h3 id="讲解："><a href="#讲解：" class="headerlink" title="讲解："></a>讲解：</h3><p>可以点开上方示例中的选项卡查看实现代码，</p>
 <ol>
@@ -123,13 +126,13 @@
 <li>在 <code>css</code> 利用 <code>scroll-behavior:smooth</code> 这个属性，来达到切换卡片的平滑滚动效果。</li>
 </ol>
 <p>但是缺少了切换前进后退按钮，接下来我们就来实现这个功能</p>
-<iframe id="cp_embed_WNOEgJb" src="//codepen.io/yogwang/embed/WNOEgJb?height=600&theme-id=dark&slug-hash=WNOEgJb&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<iframe id="cp_embed_WNOEgJb" src="//codepen.io/yogwang/embed/WNOEgJb?height=600&theme-id=dark&slug-hash=WNOEgJb&default-tab=result" scrolling="no" frameborder="no" height="600" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 <h3 id="讲解"><a href="#讲解" class="headerlink" title="讲解:"></a>讲解:</h3><p>其实很憨，直接为每一个卡片添加了前进后退按钮的 <code>&lt;a&gt;</code> 标签而已。<br>稍微有点麻烦的就是 <strong>如何让这两个按钮随着卡片的切换而改变</strong>，而不被后一个卡片的按钮所覆盖，因为这两个按钮是不会随着卡片切换所移动的，这里就需要脑洞大开了！</p>
 <p>正常思路来说，肯定是会尝试修改 <strong>前进后退按钮</strong> 的父级的定位方式。<br>确实，会需要修改成 <code>position:relative</code>，但是这个其实是为了每次切换卡片后变更对应的锚链接的。</p>
 <p>原示例是从轮播组件的最外层容器创建了 <code>::before</code> 和 <code>::after</code> 两个伪类，给他们设置的切换按钮的样式，并且设置为点击穿透，然后把轮播卡片内的 <strong>前进后退按钮</strong> 为 <code>透明</code> 底色。<br>这样所展示的 <strong>“按钮”</strong> 就不会随卡片所以移动了，而<strong>实际</strong>的切换按钮会随着卡片所移动，只是不会被浏览者发现。</p>
 <p>功能基本实现了，然后我们复原一下原示例的样式。</p>
-<iframe id="cp_embed_vYZJQaJ" src="//codepen.io/yogwang/embed/vYZJQaJ?height=600&theme-id=dark&slug-hash=vYZJQaJ&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<iframe id="cp_embed_vYZJQaJ" src="//codepen.io/yogwang/embed/vYZJQaJ?height=600&theme-id=dark&slug-hash=vYZJQaJ&default-tab=result" scrolling="no" frameborder="no" height="600" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 
 
@@ -145,7 +148,7 @@
 </blockquote>
 <p>看起来有点不易懂，但是其实并不复杂的。</p>
 <p>其实就是利用了 <code>scroll-snap</code> 会使滚动容器的捕捉点变更为你设定的元素对齐位置(<code>scroll-snap-align</code>)，然后通过修改 <code>left</code> 属性值使滚动容器向右滚动实现向后滚动的效果，然后通过修改当前元素的对齐位置为 <code>none</code>, 让滚动容器捕捉到下一个元素的对齐位置，以此来达到自动轮播的效果，那么让我们来实现一下吧！</p>
-<iframe id="cp_embed_LYLzKdp" src="//codepen.io/yogwang/embed/LYLzKdp?height=600&theme-id=dark&slug-hash=LYLzKdp&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<iframe id="cp_embed_LYLzKdp" src="//codepen.io/yogwang/embed/LYLzKdp?height=600&theme-id=dark&slug-hash=LYLzKdp&default-tab=result" scrolling="no" frameborder="no" height="600" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 <p>但是我还没有增加悬停停止自动轮播和一些其他的优化，有兴趣的可以自己实现一下，用到的CSS属性：</p>
 <ul>
@@ -154,7 +157,7 @@
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media/prefers-reduced-motion">prefers-reduced-motion - CSS | MDN</a></li>
 </ul>
 <p>完整复现一下原示例吧！</p>
-<iframe id="cp_embed_gORvyBG" src="//codepen.io/yogwang/embed/gORvyBG?height=600&theme-id=dark&slug-hash=gORvyBG&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<iframe id="cp_embed_gORvyBG" src="//codepen.io/yogwang/embed/gORvyBG?height=600&theme-id=dark&slug-hash=gORvyBG&default-tab=result" scrolling="no" frameborder="no" height="600" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 
 <h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>其实一开始我是不知道他如何实现的视差滚动的，结果在研究自动轮播的时候，突然就通了，所以就加上来了</p>

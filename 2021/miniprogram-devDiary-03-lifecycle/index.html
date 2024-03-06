@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -121,7 +124,7 @@
 <li>一个页面在一个生命周期中只会调用一次</li>
 <li>可以在 <code>options</code> 中获取打开当前页面路径中的参数。</li>
 </ul>
-<h3 id="2-onShow-页面显示-切入前台时触发"><a href="#2-onShow-页面显示-切入前台时触发" class="headerlink" title="2. onShow() 页面显示/切入前台时触发"></a>2. <code>onShow()</code> 页面显示/切入前台时触发</h3><ul>
+<h3 id="2-onShow-页面显示-切入前台时触发"><a href="#2-onShow-页面显示-切入前台时触发" class="headerlink" title="2. onShow() 页面显示&#x2F;切入前台时触发"></a>2. <code>onShow()</code> 页面显示&#x2F;切入前台时触发</h3><ul>
 <li>一般的接口请求我会在这边调用</li>
 </ul>
 <h3 id="3-onReady-页面初次渲染完成时触发"><a href="#3-onReady-页面初次渲染完成时触发" class="headerlink" title="3. onReady() 页面初次渲染完成时触发"></a>3. <code>onReady()</code> 页面初次渲染完成时触发</h3><blockquote>
@@ -131,56 +134,56 @@
 <li>一个页面只会调用一次</li>
 <li>注意：对界面内容进行设置的 API 如 <code>wx.setNavigationBarTitle</code>，请在 <code>onReady</code> 之后进行。</li>
 </ul>
-<h3 id="4-onHide-页面隐藏-切入后台时触发"><a href="#4-onHide-页面隐藏-切入后台时触发" class="headerlink" title="4. onHide() 页面隐藏/切入后台时触发"></a>4. <code>onHide()</code> 页面隐藏/切入后台时触发</h3><ul>
+<h3 id="4-onHide-页面隐藏-切入后台时触发"><a href="#4-onHide-页面隐藏-切入后台时触发" class="headerlink" title="4. onHide() 页面隐藏&#x2F;切入后台时触发"></a>4. <code>onHide()</code> 页面隐藏&#x2F;切入后台时触发</h3><ul>
 <li>触发时机： 如 <code>wx.navigateTo</code> 或底部 <code>tab</code> 切换到其他页面，小程序切入后台等。</li>
 </ul>
 <h3 id="5-onUnload-页面卸载时触发"><a href="#5-onUnload-页面卸载时触发" class="headerlink" title="5. onUnload() 页面卸载时触发"></a>5. <code>onUnload()</code> 页面卸载时触发</h3><ul>
 <li>触发时机：如 <code>wx.redirectTo</code> 或 <code>wx.navigateBack</code> 到其他页面时</li>
 </ul>
 <p>示例代码：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  data<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    text<span class="token operator">:</span> <span class="token string">"This is page data."</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">onLoad</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// Do some initialize when page load.</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">onShow</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// Do something when page show.</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">onReady</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// Do something when page ready.</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">onHide</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// Do something when page hide.</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">onUnload</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// Do something when page close.</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">onPullDownRefresh</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// Do something when pull down.</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">onReachBottom</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// Do something when page reach bottom.</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">onShareAppMessage</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// return custom share data when user share.</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">onPageScroll</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// Do something when page scroll</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">onResize</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// Do something when page resize</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token comment">// 自定义函数</span>
-  <span class="token function-variable function">onCustomMethod</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-      text<span class="token operator">:</span> <span class="token string">'Set some data for updating view.'</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// this is setData callback</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-title class_">Page</span>(&#123;
+  <span class="hljs-attr">data</span>: &#123;
+    <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;This is page data.&quot;</span>
+  &#125;,
+  <span class="hljs-attr">onLoad</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">options</span>) &#123;
+    <span class="hljs-comment">// Do some initialize when page load.</span>
+  &#125;,
+  <span class="hljs-attr">onShow</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// Do something when page show.</span>
+  &#125;,
+  <span class="hljs-attr">onReady</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// Do something when page ready.</span>
+  &#125;,
+  <span class="hljs-attr">onHide</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// Do something when page hide.</span>
+  &#125;,
+  <span class="hljs-attr">onUnload</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// Do something when page close.</span>
+  &#125;,
+  <span class="hljs-attr">onPullDownRefresh</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// Do something when pull down.</span>
+  &#125;,
+  <span class="hljs-attr">onReachBottom</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// Do something when page reach bottom.</span>
+  &#125;,
+  <span class="hljs-attr">onShareAppMessage</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// return custom share data when user share.</span>
+  &#125;,
+  <span class="hljs-attr">onPageScroll</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// Do something when page scroll</span>
+  &#125;,
+  <span class="hljs-attr">onResize</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// Do something when page resize</span>
+  &#125;,
+  <span class="hljs-comment">// 自定义函数</span>
+  <span class="hljs-attr">onCustomMethod</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(&#123;
+      <span class="hljs-attr">text</span>: <span class="hljs-string">&#x27;Set some data for updating view.&#x27;</span>
+    &#125;, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+      <span class="hljs-comment">// this is setData callback</span>
+    &#125;)
+  &#125;,
+&#125;)</code></pre>
 
 <h2 id="📑-组件中的生命周期回调函数-组件生命周期-微信开放文档"><a href="#📑-组件中的生命周期回调函数-组件生命周期-微信开放文档" class="headerlink" title="📑 组件中的生命周期回调函数 组件生命周期 | 微信开放文档"></a>📑 组件中的生命周期回调函数 <small><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/lifetimes.html">组件生命周期 | 微信开放文档</a></small></h2><h3 id="1-created-在组件实例刚刚被创建时执行"><a href="#1-created-在组件实例刚刚被创建时执行" class="headerlink" title="1. created() 在组件实例刚刚被创建时执行"></a>1. <code>created()</code> 在组件实例刚刚被创建时执行</h3><ul>
 <li>组件实例刚刚被创建好时， <code>created</code> 生命周期被触发。</li>
@@ -196,13 +199,13 @@
 <h3 id="4-moved-在组件实例被移动到节点树另一个位置时执行"><a href="#4-moved-在组件实例被移动到节点树另一个位置时执行" class="headerlink" title="4. moved() 在组件实例被移动到节点树另一个位置时执行"></a>4. <code>moved()</code> 在组件实例被移动到节点树另一个位置时执行</h3><ul>
 <li>没有一个很合适的场景，在小程序中也有人提问这个函数的执行时机，我写了一个片段可以查看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/s/ywB8fjmR7mqQ">🔖代码片段</a></li>
 </ul>
-<h3 id="5-detached-在组件实例被从页面节点树移除时执行"><a href="#5-detached-在组件实例被从页面节点树移除时执行" class="headerlink" title="5. detached()     在组件实例被从页面节点树移除时执行"></a>5. <code>detached()</code>     在组件实例被从页面节点树移除时执行</h3><ul>
+<h3 id="5-detached-在组件实例被从页面节点树移除时执行"><a href="#5-detached-在组件实例被从页面节点树移除时执行" class="headerlink" title="5. detached() 	在组件实例被从页面节点树移除时执行"></a>5. <code>detached()</code> 	在组件实例被从页面节点树移除时执行</h3><ul>
 <li>退出一个页面时，如果组件还在页面节点树中，则 <code>detached</code> 会被触发。</li>
 </ul>
 <h4 id="🧷-组件所在页面的生命周期："><a href="#🧷-组件所在页面的生命周期：" class="headerlink" title="🧷 组件所在页面的生命周期："></a>🧷 <strong>组件所在页面</strong>的生命周期：</h4><blockquote>
 <p> 还有一些特殊的生命周期，它们并非与组件有很强的关联，但有时组件需要获知，以便组件内部处理。这样的生命周期称为“<strong>组件所在页面的生命周期</strong>”，在 <code>pageLifetimes</code> 定义段中定义。</p>
 </blockquote>
-<h3 id="1-show-组件所在的页面被展示时执行"><a href="#1-show-组件所在的页面被展示时执行" class="headerlink" title="1. show() 组件所在的页面被展示时执行"></a>1. <code>show()</code> 组件所在的页面被展示时执行</h3><h3 id="2-hide-组件所在的页面被隐藏时执行"><a href="#2-hide-组件所在的页面被隐藏时执行" class="headerlink" title="2. hide()     组件所在的页面被隐藏时执行"></a>2. <code>hide()</code>     组件所在的页面被隐藏时执行</h3><h3 id="3-resize-size-组件所在的页面尺寸变化时执行"><a href="#3-resize-size-组件所在的页面尺寸变化时执行" class="headerlink" title="3. resize(size) 组件所在的页面尺寸变化时执行"></a>3. <code>resize(size)</code> 组件所在的页面尺寸变化时执行</h3><ul>
+<h3 id="1-show-组件所在的页面被展示时执行"><a href="#1-show-组件所在的页面被展示时执行" class="headerlink" title="1. show() 组件所在的页面被展示时执行"></a>1. <code>show()</code> 组件所在的页面被展示时执行</h3><h3 id="2-hide-组件所在的页面被隐藏时执行"><a href="#2-hide-组件所在的页面被隐藏时执行" class="headerlink" title="2. hide() 	组件所在的页面被隐藏时执行"></a>2. <code>hide()</code> 	组件所在的页面被隐藏时执行</h3><h3 id="3-resize-size-组件所在的页面尺寸变化时执行"><a href="#3-resize-size-组件所在的页面尺寸变化时执行" class="headerlink" title="3. resize(size) 组件所在的页面尺寸变化时执行"></a>3. <code>resize(size)</code> 组件所在的页面尺寸变化时执行</h3><ul>
 <li>可以接收一个 <code>size</code> 参数</li>
 </ul>
 <blockquote>
@@ -211,39 +214,36 @@
 <blockquote>
 <p>在 <code>behaviors</code> 中也可以编写生命周期方法，同时不会与其他 <code>behaviors</code> 中的同名生命周期相互覆盖。但要注意，如果一个组件多次直接或间接引用同一个 <code>behavior</code> ，这个 <code>behavior</code> 中的生命周期函数在一个执行时机内只会执行一次。</p>
 </blockquote>
-<p>🌰 组件生命周期完整示例</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  <span class="token comment">// 推荐组件生命周期函数定义方式</span>
-  lifetimes<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    <span class="token function-variable function">attached</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 在组件实例进入页面节点树时执行</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token function-variable function">detached</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 在组件实例被从页面节点树移除时执行</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token comment">// 以下是旧式的定义方式，可以保持对小于 2.2.3 版本基础库的兼容</span>
-  <span class="token function-variable function">attached</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 在组件实例进入页面节点树时执行</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">detached</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 在组件实例被从页面节点树移除时执行</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token comment">// 组件所在页面的生命周期回调</span>
-  pageLifetimes<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    <span class="token function-variable function">show</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 页面被展示</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token function-variable function">hide</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 页面被隐藏</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token function-variable function">resize</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">size</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 页面尺寸变化</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><h4 id="🎇-在组件中有提到-behavior-这个东西的一些疑问"><a href="#🎇-在组件中有提到-behavior-这个东西的一些疑问" class="headerlink" title="🎇 在组件中有提到 behavior 这个东西的一些疑问"></a>🎇 在组件中有提到 <code>behavior</code> 这个东西的一些疑问</h4><p><code>behavior</code> 直译过来就是<strong>行为</strong>，有点不是很明确，只能看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/behaviors.html">behaviors | 微信开放文档</a> 上的解释：</p>
+<h2 id="🌰-组件生命周期完整示例"><a href="#🌰-组件生命周期完整示例" class="headerlink" title="🌰 组件生命周期完整示例"></a>🌰 组件生命周期完整示例<br><pre><code class="hljs js"><span class="hljs-title class_">Component</span>(&#123;
+  <span class="hljs-comment">// 推荐组件生命周期函数定义方式</span>
+  <span class="hljs-attr">lifetimes</span>: &#123;
+    <span class="hljs-attr">attached</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+      <span class="hljs-comment">// 在组件实例进入页面节点树时执行</span>
+    &#125;,
+    <span class="hljs-attr">detached</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+      <span class="hljs-comment">// 在组件实例被从页面节点树移除时执行</span>
+    &#125;,
+  &#125;,
+  <span class="hljs-comment">// 以下是旧式的定义方式，可以保持对小于 2.2.3 版本基础库的兼容</span>
+  <span class="hljs-attr">attached</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// 在组件实例进入页面节点树时执行</span>
+  &#125;,
+  <span class="hljs-attr">detached</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// 在组件实例被从页面节点树移除时执行</span>
+  &#125;,
+  <span class="hljs-comment">// 组件所在页面的生命周期回调</span>
+  <span class="hljs-attr">pageLifetimes</span>: &#123;
+    <span class="hljs-attr">show</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+      <span class="hljs-comment">// 页面被展示</span>
+    &#125;,
+    <span class="hljs-attr">hide</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+      <span class="hljs-comment">// 页面被隐藏</span>
+    &#125;,
+    <span class="hljs-attr">resize</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">size</span>) &#123;
+      <span class="hljs-comment">// 页面尺寸变化</span>
+    &#125;
+  &#125;
+&#125;)</code></pre></h2><h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><h4 id="🎇-在组件中有提到-behavior-这个东西的一些疑问"><a href="#🎇-在组件中有提到-behavior-这个东西的一些疑问" class="headerlink" title="🎇 在组件中有提到 behavior 这个东西的一些疑问"></a>🎇 在组件中有提到 <code>behavior</code> 这个东西的一些疑问</h4><p><code>behavior</code> 直译过来就是<strong>行为</strong>，有点不是很明确，只能看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/behaviors.html">behaviors | 微信开放文档</a> 上的解释：</p>
 <blockquote>
 <p><code>behaviors</code> 是用于组件间代码共享的特性，类似于一些编程语言中的 “<code>mixins</code>” 或 “<code>traits</code>”。</p>
 </blockquote>

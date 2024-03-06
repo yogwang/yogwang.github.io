@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -109,25 +112,25 @@
 
 <p>我一直觉得 Grid 布局的属性太多，而且早期的兼容性很差，相对于 Flex 布局 我觉得最好用的属性就是 <code>grid-gap</code>，因为 <code>flex</code> 只有 5 种对齐属性，如果需要做间距的话就很麻烦，只能使用 <code>margin</code>。<br>今年年初的时候一大波的公众号在推送 <code>flex</code> 已经可以使用 <code>gap</code> 属性了，正好趁着这段时间博客主题改版，正好有用上。 </p>
 <h3 id="🔨-使用方式"><a href="#🔨-使用方式" class="headerlink" title="🔨 使用方式"></a>🔨 使用方式</h3><p>在 <code>grid</code> 与 <code>multi-column</code> 种使用、表现形式是和原先是一样的</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">#grid-box</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
-  <span class="token property">grid-template</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span>3<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span> / <span class="token function">repeat</span><span class="token punctuation">(</span>3<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token property">gap</span><span class="token punctuation">:</span> 15px 20px<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-id">#grid-box</span> &#123;
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+  <span class="hljs-attribute">grid-template</span>: <span class="hljs-built_in">repeat</span>(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>fr) / <span class="hljs-built_in">repeat</span>(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>fr);
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">15px</span> <span class="hljs-number">20px</span>;
+&#125;</code></pre>
 <p><img src="/2021/CSS-use-gap-in-flex-layout/gap_in_grid.jpg" alt="gap in grid"></p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">#column-box</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">column-count</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
-  <span class="token property">gap</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-id">#column-box</span> &#123;
+  <span class="hljs-attribute">column-count</span>: <span class="hljs-number">3</span>;
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">20px</span>;
+&#125;</code></pre>
 <p><img src="/2021/CSS-use-gap-in-flex-layout/gap_in_column.jpg" alt="gap in column"></p>
 <p>在 <code>flex</code> 中用法与 <code>grid</code> 中一样，并且同时可以使用 <code>justify-content</code> 和 <code>align-content</code></p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">#flex-box</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
-  <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span>
-  <span class="token property">gap</span><span class="token punctuation">:</span> 20px 20px<span class="token punctuation">;</span>
-  <span class="token property">justify-content</span><span class="token punctuation">:</span> space-between<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-id">#flex-box</span> &#123;
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">20px</span> <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">justify-content</span>: space-between;
+&#125;</code></pre>
 <p><img src="/2021/CSS-use-gap-in-flex-layout/gap_in_flex.jpg" alt="gap in flex"></p>
 <h4 id="✨-gap-可接收的值："><a href="#✨-gap-可接收的值：" class="headerlink" title="✨ gap 可接收的值："></a>✨ <code>gap</code> 可接收的值：</h4><ol>
 <li><code>normal</code>：默认值，默认为0px，在 <code>multi-column-layout</code> 中为 <code>1em</code>;</li>
@@ -145,7 +148,7 @@
 <li><a target="_blank" rel="noopener" href="https://caniuse.com/mdn-css_properties_gap_grid_context">CSS property: gap: Supported in Grid Layout</a></li>
 </ul>
 </li>
-<li><p><strong>Flex布局</strong> 对于 <code>gap</code> 属性的支持，还处于草案阶段 <small> [2021/6/3] </small>，如果需要在生产环境使用，可能需要进行考量，虽说主流浏览器全部都已经支持了。</p>
+<li><p><strong>Flex布局</strong> 对于 <code>gap</code> 属性的支持，还处于草案阶段 <small> [2021&#x2F;6&#x2F;3] </small>，如果需要在生产环境使用，可能需要进行考量，虽说主流浏览器全部都已经支持了。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://caniuse.com/mdn-css_properties_gap_flex_context">CSS property: gap: Supported in Flex Layout</a></li>
 </ul>

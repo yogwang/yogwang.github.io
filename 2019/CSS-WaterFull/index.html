@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -114,47 +117,47 @@
 <ul>
 <li><h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4></li>
 </ul>
-<pre class="line-numbers language-Pug" data-language="Pug"><code class="language-Pug">html5
-  div#container &#x2F;&#x2F; 外部容器
-    ul#waterfall &#x2F;&#x2F; 瀑布流容器
-     - for(let i&#x3D;0;i&lt;12;i++ )
-      li.item &#x2F;&#x2F; 内部项目
-        &#x2F;&#x2F; 生成随机高度
-        - let height &#x3D; Math.ceil(Math.random() *(150+1-500)+500)
-          &#x2F;&#x2F; 模拟不同高度图片
-          div(class&#x3D;&#39;img&#39;,style&#x3D;&#39;height:&#39;+height+&#39;px&#39;)
-          &#x2F;&#x2F; 模拟介绍文本
+<pre><code class="hljs Pug">html5
+  div#container // 外部容器
+    ul#waterfall // 瀑布流容器
+     - for(let i=0;i&lt;12;i++ )
+      li.item // 内部项目
+        // 生成随机高度
+        - let height = Math.ceil(Math.random() *(150+1-500)+500)
+          // 模拟不同高度图片
+          div(class=&#x27;img&#x27;,style=&#x27;height:&#x27;+height+&#x27;px&#x27;)
+          // 模拟介绍文本
           p Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus culpa cupiditate a aperiam libero aspernatur unde
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 
 <ul>
 <li><h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4></li>
 </ul>
-<pre class="line-numbers language-Stylus" data-language="Stylus"><code class="language-Stylus">&#x2F;&#x2F;reset
+<pre><code class="hljs Stylus"><span class="hljs-comment">//reset</span>
 *
- padding 0
- margin 0
-&#x2F;&#x2F; 外部容器
-#container
-  width 1200px
-  margin 30px auto
-  &#x2F;&#x2F; 瀑布流容器
-  #waterfall
-    column-count 3
-    list-style-type none
-    &#x2F;&#x2F; 内部项目
-    .item
-      padding 10px
-      margin 0 10px 20px
-      break-inside avoid
-      border: 2px solid #000
-      div.img
-        background red
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ <span class="hljs-attribute">padding</span> <span class="hljs-number">0</span>
+ <span class="hljs-attribute">margin</span> <span class="hljs-number">0</span>
+<span class="hljs-comment">// 外部容器</span>
+<span class="hljs-selector-id">#container</span>
+  <span class="hljs-attribute">width</span> <span class="hljs-number">1200px</span>
+  <span class="hljs-attribute">margin</span> <span class="hljs-number">30px</span> auto
+  <span class="hljs-comment">// 瀑布流容器</span>
+  <span class="hljs-selector-id">#waterfall</span>
+    <span class="hljs-attribute">column-count</span> <span class="hljs-number">3</span>
+    <span class="hljs-attribute">list-style-type</span> none
+    <span class="hljs-comment">// 内部项目</span>
+    <span class="hljs-selector-class">.item</span>
+      <span class="hljs-attribute">padding</span> <span class="hljs-number">10px</span>
+      <span class="hljs-attribute">margin</span> <span class="hljs-number">0</span> <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>
+      <span class="hljs-attribute">break-inside</span> avoid
+      <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid <span class="hljs-number">#000</span>
+      <span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.img</span>
+        <span class="hljs-attribute">background</span> red
+</code></pre>
 
-<h2 id="✨-更新-2021年11月2日"><a href="#✨-更新-2021年11月2日" class="headerlink" title="✨ 更新 2021年11月2日"></a>✨ 更新 <small>2021年11月2日</small></h2><p>以前一直不知道 <code>break-inside: avoid</code> 如果不加的话，<strong>“可能会影响布局效果”</strong> 所描述的 <strong>影响</strong> 是怎么样的，过去了那么多年终于让我遇到了一次，可以很明显的从下图看到第二列的首个元素被截断了。<br><img src="/2019/CSS-WaterFull/preview1.jpg#center" alt="问题截图"></p>
+<h2 id="✨-更新-2021年11月2日"><a href="#✨-更新-2021年11月2日" class="headerlink" title="✨ 更新 2021年11月2日"></a>✨ 更新 <small>2021年11月2日</small></h2><p>以前一直不知道 <code>break-inside: avoid</code> 如果不加的话，<strong>“可能会影响布局效果”</strong> 所描述的 <strong>影响</strong> 是怎么样的，过去了那么多年终于让我遇到了一次，可以很明显的从下图看到第二列的首个元素被截断了。<br><img src="/2019/CSS-WaterFull/preview1.jpg" alt="问题截图"></p>
 <p>一开始我一直以为是背景色是白色的缘故，直到我看到了列表最尾部，那段被截掉的头部。那么让我们给子元素加上 <code>break-inside: avoid</code> 看看效果。</p>
-<p><img src="/2019/CSS-WaterFull/preview2.jpg#center" alt="加上break-inside:avoid之后"></p>
+<p><img src="/2019/CSS-WaterFull/preview2.jpg" alt="加上break-inside:avoid之后"></p>
 <blockquote>
 <p><strong>记得是给 子元素 这个属性哦，不是瀑布流容器。</strong></p>
 </blockquote>

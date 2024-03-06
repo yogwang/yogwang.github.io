@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -110,23 +113,23 @@
 <span id="more"></span>
 
 <p>So:</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">...
-$(this).ajaxSubmit(&#123;
-    &#39;url&#39;:api_url(&#39;post&#39;,&#39;save&#39;,&#39;id&#x3D;book&#39;)+&#39;&amp;siteId&#x3D;1&#39;,
-    &#39;type&#39;:&#39;post&#39;,
-    &#39;data&#39;: &#123;
-        &#39;title&#39;: name,
-        &#39;fullname&#39;: name,
-        &#39;tel&#39;: tel
+<pre><code class="hljs php">...
+$(this).<span class="hljs-title function_ invoke__">ajaxSubmit</span>(&#123;
+    <span class="hljs-string">&#x27;url&#x27;</span>:<span class="hljs-title function_ invoke__">api_url</span>(<span class="hljs-string">&#x27;post&#x27;</span>,<span class="hljs-string">&#x27;save&#x27;</span>,<span class="hljs-string">&#x27;id=book&#x27;</span>)+<span class="hljs-string">&#x27;&amp;siteId=1&#x27;</span>,
+    <span class="hljs-string">&#x27;type&#x27;</span>:<span class="hljs-string">&#x27;post&#x27;</span>,
+    <span class="hljs-string">&#x27;data&#x27;</span>: &#123;
+        <span class="hljs-string">&#x27;title&#x27;</span>: name,
+        <span class="hljs-string">&#x27;fullname&#x27;</span>: name,
+        <span class="hljs-string">&#x27;tel&#x27;</span>: tel
     &#125;,
-    &#39;dataType&#39;:&#39;json&#39;,
-    &#39;success&#39;:function(res)&#123;
-        &#x2F;&#x2F; Do sth...
+    <span class="hljs-string">&#x27;dataType&#x27;</span>:<span class="hljs-string">&#x27;json&#x27;</span>,
+    <span class="hljs-string">&#x27;success&#x27;</span>:function(res)&#123;
+        <span class="hljs-comment">// Do sth...</span>
     &#125;
-&#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;);</code></pre>
 
 <p><code>api_url</code> 为框架内置方法，所以只能拼接字符串了。</p>
-<p>后台查看：<br><img src="/2019/phpok-Guestbook/img.png" alt="后台查看效果"></p>
+<p>后台查看：<br><img src="/phpok-Guestbook/img.png" alt="后台查看效果"></p>
  
   </article>
 

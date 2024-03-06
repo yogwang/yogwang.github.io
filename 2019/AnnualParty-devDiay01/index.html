@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -107,226 +110,226 @@
 <p>中间不断重写和踩坑的过程就省略了，主要自己也记不得了….</p>
 <p>ThreeJS 的 examples 中有一个 Demo 和需求简直一摸一样 👉 <a target="_blank" rel="noopener" href="https://threejs.org/examples/?q=css3#css3d_periodictable">CSS3D - Periodic Table</a></p>
 <p>读了一下源码并且添加了释。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> <span class="token constant">THREE</span> <span class="token keyword">from</span> <span class="token string">'../build/three.module.js'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> <span class="token constant">TWEEN</span> <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./jsm/libs/tween.module.min.js'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> TrackballControls <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./jsm/controls/TrackballControls.js'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> CSS3DRenderer<span class="token punctuation">,</span> CSS3DObject <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./jsm/renderers/CSS3DRenderer.js'</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> table <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> <span class="hljs-variable constant_">THREE</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../build/three.module.js&#x27;</span>;
+<span class="hljs-keyword">import</span> &#123; <span class="hljs-variable constant_">TWEEN</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./jsm/libs/tween.module.min.js&#x27;</span>;
+<span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">TrackballControls</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./jsm/controls/TrackballControls.js&#x27;</span>;
+<span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">CSS3DRenderer</span>, <span class="hljs-title class_">CSS3DObject</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./jsm/renderers/CSS3DRenderer.js&#x27;</span>;
+<span class="hljs-keyword">var</span> table = [...];
 
-<span class="token keyword">var</span> camera<span class="token punctuation">,</span> scene<span class="token punctuation">,</span> renderer<span class="token punctuation">;</span>
-<span class="token keyword">var</span> controls<span class="token punctuation">;</span>
-<span class="token keyword">var</span> objects <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> targets <span class="token operator">=</span> <span class="token punctuation">&#123;</span> table<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sphere<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> helix<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> grid<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">var</span> camera, scene, renderer;
+<span class="hljs-keyword">var</span> controls;
+<span class="hljs-keyword">var</span> objects = [];
+<span class="hljs-keyword">var</span> targets = &#123; <span class="hljs-attr">table</span>: [], <span class="hljs-attr">sphere</span>: [], <span class="hljs-attr">helix</span>: [], <span class="hljs-attr">grid</span>: [] &#125;;
 
-<span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">animate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-title function_">init</span>();
+<span class="hljs-title function_">animate</span>();
 
-<span class="token keyword">function</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token comment">// 创建一个透视相机 视角40，宽高比窗口内宽度/高度，近场1，远场1000</span>
-  camera <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>PerspectiveCamera</span><span class="token punctuation">(</span> <span class="token number">40</span><span class="token punctuation">,</span> window<span class="token punctuation">.</span>innerWidth <span class="token operator">/</span> window<span class="token punctuation">.</span>innerHeight<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10000</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  camera<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">;</span> <span class="token comment">// 相机置于 z - 3000</span>
-  scene <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>Scene</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建场景对象</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>) &#123;
+  <span class="hljs-comment">// 创建一个透视相机 视角40，宽高比窗口内宽度/高度，近场1，远场1000</span>
+  camera = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">PerspectiveCamera</span>( <span class="hljs-number">40</span>, <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span> / <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10000</span> );
+  camera.<span class="hljs-property">position</span>.<span class="hljs-property">z</span> = <span class="hljs-number">3000</span>; <span class="hljs-comment">// 相机置于 z - 3000</span>
+  scene = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Scene</span>(); <span class="hljs-comment">// 创建场景对象</span>
 
-  <span class="token comment">// table 元素周期表</span>
+  <span class="hljs-comment">// table 元素周期表</span>
 
-  <span class="token comment">// 循环创建所有数据</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> table<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">5</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="hljs-comment">// 循环创建所有数据</span>
+  <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; table.<span class="hljs-property">length</span>; i += <span class="hljs-number">5</span> ) &#123;
 
-    <span class="token comment">// 创建一个新的div元素</span>
-    <span class="token keyword">var</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span> <span class="token string">'div'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    element<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'element'</span><span class="token punctuation">;</span> <span class="token comment">// 设置类名为 element</span>
-    element<span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token string">'rgba(0,127,127,'</span> <span class="token operator">+</span> <span class="token punctuation">(</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.5</span> <span class="token operator">+</span> <span class="token number">0.25</span> <span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">')'</span><span class="token punctuation">;</span> <span class="token comment">// div.element 设置背景色 rgba</span>
+    <span class="hljs-comment">// 创建一个新的div元素</span>
+    <span class="hljs-keyword">var</span> element = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>( <span class="hljs-string">&#x27;div&#x27;</span> );
+    element.<span class="hljs-property">className</span> = <span class="hljs-string">&#x27;element&#x27;</span>; <span class="hljs-comment">// 设置类名为 element</span>
+    element.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundColor</span> = <span class="hljs-string">&#x27;rgba(0,127,127,&#x27;</span> + ( <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">0.5</span> + <span class="hljs-number">0.25</span> ) + <span class="hljs-string">&#x27;)&#x27;</span>; <span class="hljs-comment">// div.element 设置背景色 rgba</span>
 
-    <span class="token comment">// 创建一个新的div元素</span>
-    <span class="token keyword">var</span> number <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span> <span class="token string">'div'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    number<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'number'</span><span class="token punctuation">;</span> <span class="token comment">// 设置类名为 number</span>
-    number<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token punctuation">(</span> i <span class="token operator">/</span> <span class="token number">5</span> <span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// div.number 设置文本内容为 i/5 +1</span>
-    element<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span> number <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 把 div.number 添加到 div.element 内</span>
+    <span class="hljs-comment">// 创建一个新的div元素</span>
+    <span class="hljs-keyword">var</span> number = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>( <span class="hljs-string">&#x27;div&#x27;</span> );
+    number.<span class="hljs-property">className</span> = <span class="hljs-string">&#x27;number&#x27;</span>; <span class="hljs-comment">// 设置类名为 number</span>
+    number.<span class="hljs-property">textContent</span> = ( i / <span class="hljs-number">5</span> ) + <span class="hljs-number">1</span>; <span class="hljs-comment">// div.number 设置文本内容为 i/5 +1</span>
+    element.<span class="hljs-title function_">appendChild</span>( number ); <span class="hljs-comment">// 把 div.number 添加到 div.element 内</span>
 
-    <span class="token comment">// 创建一个新的div元素</span>
-    <span class="token keyword">var</span> symbol <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span> <span class="token string">'div'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    symbol<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'symbol'</span><span class="token punctuation">;</span> <span class="token comment">// div.symbol 设置类名为symbol</span>
-    symbol<span class="token punctuation">.</span>textContent <span class="token operator">=</span> table<span class="token punctuation">[</span> i <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// div.symbol 的文本内容为 table[i]的内容</span>
-    element<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span> symbol <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 把 div.symbol 添加到 div.element 内</span>
+    <span class="hljs-comment">// 创建一个新的div元素</span>
+    <span class="hljs-keyword">var</span> symbol = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>( <span class="hljs-string">&#x27;div&#x27;</span> );
+    symbol.<span class="hljs-property">className</span> = <span class="hljs-string">&#x27;symbol&#x27;</span>; <span class="hljs-comment">// div.symbol 设置类名为symbol</span>
+    symbol.<span class="hljs-property">textContent</span> = table[ i ]; <span class="hljs-comment">// div.symbol 的文本内容为 table[i]的内容</span>
+    element.<span class="hljs-title function_">appendChild</span>( symbol ); <span class="hljs-comment">// 把 div.symbol 添加到 div.element 内</span>
 
-    <span class="token comment">// 创建一个新的div元素</span>
-    <span class="token keyword">var</span> details <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span> <span class="token string">'div'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    details<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'details'</span><span class="token punctuation">;</span> <span class="token comment">// 设置类名为 details</span>
-    <span class="token comment">// div.details 的 html 赋值为 table[ i + 1 ] + '&lt;br>' + table[ i + 2 ]</span>
-    details<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> table<span class="token punctuation">[</span> i <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'&lt;br>'</span> <span class="token operator">+</span> table<span class="token punctuation">[</span> i <span class="token operator">+</span> <span class="token number">2</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
-    element<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span> details <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 把 div.details 添加到 div.element 内</span>
+    <span class="hljs-comment">// 创建一个新的div元素</span>
+    <span class="hljs-keyword">var</span> details = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>( <span class="hljs-string">&#x27;div&#x27;</span> );
+    details.<span class="hljs-property">className</span> = <span class="hljs-string">&#x27;details&#x27;</span>; <span class="hljs-comment">// 设置类名为 details</span>
+    <span class="hljs-comment">// div.details 的 html 赋值为 table[ i + 1 ] + &#x27;&lt;br&gt;&#x27; + table[ i + 2 ]</span>
+    details.<span class="hljs-property">innerHTML</span> = table[ i + <span class="hljs-number">1</span> ] + <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span> + table[ i + <span class="hljs-number">2</span> ];
+    element.<span class="hljs-title function_">appendChild</span>( details ); <span class="hljs-comment">// 把 div.details 添加到 div.element 内</span>
 
-    <span class="token comment">// 创建一个新的 CSS3D 对象</span>
-    <span class="token keyword">var</span> object <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CSS3DObject</span><span class="token punctuation">(</span> element <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    object<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">4000</span> <span class="token operator">-</span> <span class="token number">2000</span><span class="token punctuation">;</span> <span class="token comment">// 设置 3D对象的 x轴 位置 区间 -2000 ~ 2000</span>
-    object<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">4000</span> <span class="token operator">-</span> <span class="token number">2000</span><span class="token punctuation">;</span> <span class="token comment">// 设置 3D对象的 y轴 位置</span>
-    object<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">4000</span> <span class="token operator">-</span> <span class="token number">2000</span><span class="token punctuation">;</span> <span class="token comment">// 设置 3D对象的 z轴 位置</span>
+    <span class="hljs-comment">// 创建一个新的 CSS3D 对象</span>
+    <span class="hljs-keyword">var</span> object = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CSS3DObject</span>( element );
+    object.<span class="hljs-property">position</span>.<span class="hljs-property">x</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">4000</span> - <span class="hljs-number">2000</span>; <span class="hljs-comment">// 设置 3D对象的 x轴 位置 区间 -2000 ~ 2000</span>
+    object.<span class="hljs-property">position</span>.<span class="hljs-property">y</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">4000</span> - <span class="hljs-number">2000</span>; <span class="hljs-comment">// 设置 3D对象的 y轴 位置</span>
+    object.<span class="hljs-property">position</span>.<span class="hljs-property">z</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">4000</span> - <span class="hljs-number">2000</span>; <span class="hljs-comment">// 设置 3D对象的 z轴 位置</span>
 
-    scene<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span> object <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// CSS3D 添加对象到场景中</span>
-    objects<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span> object <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 把 CSS3D 填加到 objects 中</span>
+    scene.<span class="hljs-title function_">add</span>( object ); <span class="hljs-comment">// CSS3D 添加对象到场景中</span>
+    objects.<span class="hljs-title function_">push</span>( object ); <span class="hljs-comment">// 把 CSS3D 填加到 objects 中</span>
 
-    <span class="token comment">// Object3D</span>
-    <span class="token comment">// New一个新的三维对象</span>
-    <span class="token keyword">var</span> object <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>Object3D</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    object<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token punctuation">(</span> table<span class="token punctuation">[</span> i <span class="token operator">+</span> <span class="token number">3</span> <span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">140</span> <span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1330</span><span class="token punctuation">;</span> <span class="token comment">// 设置物体的 x轴 位置</span>
-    object<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token operator">-</span> <span class="token punctuation">(</span> table<span class="token punctuation">[</span> i <span class="token operator">+</span> <span class="token number">4</span> <span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">180</span> <span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">990</span><span class="token punctuation">;</span> <span class="token comment">// 设置物体的 y轴 位置</span>
+    <span class="hljs-comment">// Object3D</span>
+    <span class="hljs-comment">// New一个新的三维对象</span>
+    <span class="hljs-keyword">var</span> object = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Object3D</span>();
+    object.<span class="hljs-property">position</span>.<span class="hljs-property">x</span> = ( table[ i + <span class="hljs-number">3</span> ] * <span class="hljs-number">140</span> ) - <span class="hljs-number">1330</span>; <span class="hljs-comment">// 设置物体的 x轴 位置</span>
+    object.<span class="hljs-property">position</span>.<span class="hljs-property">y</span> = - ( table[ i + <span class="hljs-number">4</span> ] * <span class="hljs-number">180</span> ) + <span class="hljs-number">990</span>; <span class="hljs-comment">// 设置物体的 y轴 位置</span>
 
-    targets<span class="token punctuation">.</span>table<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span> object <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 把object添加到 targets.table 中</span>
+    targets.<span class="hljs-property">table</span>.<span class="hljs-title function_">push</span>( object ); <span class="hljs-comment">// 把object添加到 targets.table 中</span>
 
-  <span class="token punctuation">&#125;</span>
+  &#125;
 
-  <span class="token comment">// sphere 球形数据</span>
-  <span class="token keyword">var</span> vector <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>Vector3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建一个新的三维向量</span>
-  <span class="token comment">// 循环创建所有数据</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> l <span class="token operator">=</span> objects<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> l<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="hljs-comment">// sphere 球形数据</span>
+  <span class="hljs-keyword">var</span> vector = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>(); <span class="hljs-comment">// 创建一个新的三维向量</span>
+  <span class="hljs-comment">// 循环创建所有数据</span>
+  <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, l = objects.<span class="hljs-property">length</span>; i &lt; l; i ++ ) &#123;
 
-    <span class="token keyword">var</span> phi <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">acos</span><span class="token punctuation">(</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token punctuation">(</span> <span class="token number">2</span> <span class="token operator">*</span> i <span class="token punctuation">)</span> <span class="token operator">/</span> l <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置 分割比/phi</span>
-    <span class="token keyword">var</span> theta <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span> l <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token punctuation">)</span> <span class="token operator">*</span> phi<span class="token punctuation">;</span> <span class="token comment">// 设置 半径/l 角度/theta</span>
+    <span class="hljs-keyword">var</span> phi = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">acos</span>( - <span class="hljs-number">1</span> + ( <span class="hljs-number">2</span> * i ) / l ); <span class="hljs-comment">// 设置 分割比/phi</span>
+    <span class="hljs-keyword">var</span> theta = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sqrt</span>( l * <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> ) * phi; <span class="hljs-comment">// 设置 半径/l 角度/theta</span>
 
-    <span class="token comment">// 创建一个新的三维对象</span>
-    <span class="token keyword">var</span> object <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>Object3D</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="hljs-comment">// 创建一个新的三维对象</span>
+    <span class="hljs-keyword">var</span> object = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Object3D</span>();
 
-    object<span class="token punctuation">.</span>position<span class="token punctuation">.</span><span class="token function">setFromSphericalCoords</span><span class="token punctuation">(</span> <span class="token number">800</span><span class="token punctuation">,</span> phi<span class="token punctuation">,</span> theta <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置向量 在球体坐标中</span>
-    vector<span class="token punctuation">.</span><span class="token function">copy</span><span class="token punctuation">(</span> object<span class="token punctuation">.</span>position <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">multiplyScalar</span><span class="token punctuation">(</span> <span class="token number">2</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 复制向量给 object，将该向量与 2 相乘。</span>
+    object.<span class="hljs-property">position</span>.<span class="hljs-title function_">setFromSphericalCoords</span>( <span class="hljs-number">800</span>, phi, theta ); <span class="hljs-comment">// 设置向量 在球体坐标中</span>
+    vector.<span class="hljs-title function_">copy</span>( object.<span class="hljs-property">position</span> ).<span class="hljs-title function_">multiplyScalar</span>( <span class="hljs-number">2</span> ); <span class="hljs-comment">// 复制向量给 object，将该向量与 2 相乘。</span>
 
-    object<span class="token punctuation">.</span><span class="token function">lookAt</span><span class="token punctuation">(</span> vector <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将 object 朝向三维向量的方向</span>
-    targets<span class="token punctuation">.</span>sphere<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span> object <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 把 object 添加到 targets.sphere 中</span>
-  <span class="token punctuation">&#125;</span>
+    object.<span class="hljs-title function_">lookAt</span>( vector ); <span class="hljs-comment">// 将 object 朝向三维向量的方向</span>
+    targets.<span class="hljs-property">sphere</span>.<span class="hljs-title function_">push</span>( object ); <span class="hljs-comment">// 把 object 添加到 targets.sphere 中</span>
+  &#125;
 
-  <span class="token comment">// helix 螺旋圆柱的数据</span>
+  <span class="hljs-comment">// helix 螺旋圆柱的数据</span>
 
-  <span class="token keyword">var</span> vector <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>Vector3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建一个新的三维向量</span>
+  <span class="hljs-keyword">var</span> vector = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Vector3</span>(); <span class="hljs-comment">// 创建一个新的三维向量</span>
 
-  <span class="token comment">// 循环创建所有数据</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> l <span class="token operator">=</span> objects<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> l<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="hljs-comment">// 循环创建所有数据</span>
+  <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, l = objects.<span class="hljs-property">length</span>; i &lt; l; i ++ ) &#123;
 
-    <span class="token keyword">var</span> theta <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">0.175</span> <span class="token operator">+</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span><span class="token punctuation">;</span> <span class="token comment">// 设置 角度 theta</span>
-    <span class="token keyword">var</span> y <span class="token operator">=</span> <span class="token operator">-</span> <span class="token punctuation">(</span> i <span class="token operator">*</span> <span class="token number">8</span> <span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">450</span><span class="token punctuation">;</span> <span class="token comment">//  设置 y 这边我修改成了 y = i * 1 - (l * 1) / 2 按对象数量去修改y值</span>
+    <span class="hljs-keyword">var</span> theta = i * <span class="hljs-number">0.175</span> + <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>; <span class="hljs-comment">// 设置 角度 theta</span>
+    <span class="hljs-keyword">var</span> y = - ( i * <span class="hljs-number">8</span> ) + <span class="hljs-number">450</span>; <span class="hljs-comment">//  设置 y 这边我修改成了 y = i * 1 - (l * 1) / 2 按对象数量去修改y值</span>
 
-    <span class="token comment">// 创建一个新的三维对象</span>
-    <span class="token keyword">var</span> object <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>Object3D</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="hljs-comment">// 创建一个新的三维对象</span>
+    <span class="hljs-keyword">var</span> object = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Object3D</span>();
 
-    object<span class="token punctuation">.</span>position<span class="token punctuation">.</span><span class="token function">setFromCylindricalCoords</span><span class="token punctuation">(</span> <span class="token number">900</span><span class="token punctuation">,</span> theta<span class="token punctuation">,</span> y <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置向量 在圆柱体中 900为半径 y为x-z平面以上的高度</span>
-    vector<span class="token punctuation">.</span>x <span class="token operator">=</span> object<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 设置 x轴 位置</span>
-    vector<span class="token punctuation">.</span>y <span class="token operator">=</span> object<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y<span class="token punctuation">;</span> <span class="token comment">// 设置 y轴 位置</span>
-    vector<span class="token punctuation">.</span>z <span class="token operator">=</span> object<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 设置 z轴 位置</span>
+    object.<span class="hljs-property">position</span>.<span class="hljs-title function_">setFromCylindricalCoords</span>( <span class="hljs-number">900</span>, theta, y ); <span class="hljs-comment">// 设置向量 在圆柱体中 900为半径 y为x-z平面以上的高度</span>
+    vector.<span class="hljs-property">x</span> = object.<span class="hljs-property">position</span>.<span class="hljs-property">x</span> * <span class="hljs-number">2</span>; <span class="hljs-comment">// 设置 x轴 位置</span>
+    vector.<span class="hljs-property">y</span> = object.<span class="hljs-property">position</span>.<span class="hljs-property">y</span>; <span class="hljs-comment">// 设置 y轴 位置</span>
+    vector.<span class="hljs-property">z</span> = object.<span class="hljs-property">position</span>.<span class="hljs-property">z</span> * <span class="hljs-number">2</span>; <span class="hljs-comment">// 设置 z轴 位置</span>
 
-    object<span class="token punctuation">.</span><span class="token function">lookAt</span><span class="token punctuation">(</span> vector <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将object朝向三维向量的方向</span>
-    targets<span class="token punctuation">.</span>helix<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span> object <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 把object添加到 targets.helix 中</span>
-  <span class="token punctuation">&#125;</span>
+    object.<span class="hljs-title function_">lookAt</span>( vector ); <span class="hljs-comment">// 将object朝向三维向量的方向</span>
+    targets.<span class="hljs-property">helix</span>.<span class="hljs-title function_">push</span>( object ); <span class="hljs-comment">// 把object添加到 targets.helix 中</span>
+  &#125;
 
-  <span class="token comment">// grid 栅格的数据</span>
+  <span class="hljs-comment">// grid 栅格的数据</span>
 
-  <span class="token comment">// 循环创建所有数据</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> objects<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="hljs-comment">// 循环创建所有数据</span>
+  <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; objects.<span class="hljs-property">length</span>; i ++ ) &#123;
 
-    <span class="token comment">// 创建一个新的三维对象</span>
-    <span class="token keyword">var</span> object <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">THREE<span class="token punctuation">.</span>Object3D</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="hljs-comment">// 创建一个新的三维对象</span>
+    <span class="hljs-keyword">var</span> object = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Object3D</span>();
 
-    object<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span> i <span class="token operator">%</span> <span class="token number">5</span> <span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">400</span> <span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">800</span><span class="token punctuation">;</span> <span class="token comment">// 设置 x轴 位置 %5为行数 400为间隔</span>
-    object<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token operator">-</span> <span class="token punctuation">(</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span> i <span class="token operator">/</span> <span class="token number">5</span> <span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">5</span> <span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">400</span> <span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">800</span><span class="token punctuation">;</span> <span class="token comment">// 设置 y轴 位置 %5为列数 400为间隔</span>
-    object<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token operator">=</span> <span class="token punctuation">(</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span> i <span class="token operator">/</span> <span class="token number">25</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1000</span> <span class="token operator">-</span> <span class="token number">2000</span><span class="token punctuation">;</span> <span class="token comment">// 设置 z轴 位置 25为一个平面的元素数量</span>
-    <span class="token comment">/*
-    * @description 如果要自己修改行列数，可以修改成
-    * @param &#123;Integer&#125; row - 行数.
-    * @param &#123;Integer&#125; col - 列数.
-    * @param &#123;Integer&#125; interval - 间隔.
-    *  const row = 4
-    *  const col = 8
-    *  const interval = 40
-    *  object.position.x = (i % row) * interval - (row * interval) / 2 + interval / 2;
-    *  object.position.y = (Math.floor(i / row) % col) * interval - (col * interval) / 2 + interval / 2;
-    *  object.position.z = -Math.floor(i / row / col) * interval;
-    *
-    */</span>
-    targets<span class="token punctuation">.</span>grid<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span> object <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 把object添加到 targets.grid 中</span>
+    object.<span class="hljs-property">position</span>.<span class="hljs-property">x</span> = ( ( i % <span class="hljs-number">5</span> ) * <span class="hljs-number">400</span> ) - <span class="hljs-number">800</span>; <span class="hljs-comment">// 设置 x轴 位置 %5为行数 400为间隔</span>
+    object.<span class="hljs-property">position</span>.<span class="hljs-property">y</span> = ( - ( <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>( i / <span class="hljs-number">5</span> ) % <span class="hljs-number">5</span> ) * <span class="hljs-number">400</span> ) + <span class="hljs-number">800</span>; <span class="hljs-comment">// 设置 y轴 位置 %5为列数 400为间隔</span>
+    object.<span class="hljs-property">position</span>.<span class="hljs-property">z</span> = ( <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>( i / <span class="hljs-number">25</span> ) ) * <span class="hljs-number">1000</span> - <span class="hljs-number">2000</span>; <span class="hljs-comment">// 设置 z轴 位置 25为一个平面的元素数量</span>
+    <span class="hljs-comment">/*</span>
+<span class="hljs-comment">    * @description 如果要自己修改行列数，可以修改成</span>
+<span class="hljs-comment">    * @param &#123;Integer&#125; row - 行数.</span>
+<span class="hljs-comment">    * @param &#123;Integer&#125; col - 列数.</span>
+<span class="hljs-comment">    * @param &#123;Integer&#125; interval - 间隔.</span>
+<span class="hljs-comment">    *  const row = 4</span>
+<span class="hljs-comment">    *  const col = 8</span>
+<span class="hljs-comment">    *  const interval = 40</span>
+<span class="hljs-comment">    *  object.position.x = (i % row) * interval - (row * interval) / 2 + interval / 2;</span>
+<span class="hljs-comment">    *  object.position.y = (Math.floor(i / row) % col) * interval - (col * interval) / 2 + interval / 2;</span>
+<span class="hljs-comment">    *  object.position.z = -Math.floor(i / row / col) * interval;</span>
+<span class="hljs-comment">    *</span>
+<span class="hljs-comment">    */</span>
+    targets.<span class="hljs-property">grid</span>.<span class="hljs-title function_">push</span>( object ); <span class="hljs-comment">// 把object添加到 targets.grid 中</span>
 
-  <span class="token punctuation">&#125;</span>
+  &#125;
 
-  <span class="token comment">// renderer</span>
-  renderer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CSS3DRenderer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建一个新的CSS 3D渲染器</span>
-  renderer<span class="token punctuation">.</span><span class="token function">setSize</span><span class="token punctuation">(</span> window<span class="token punctuation">.</span>innerWidth<span class="token punctuation">,</span> window<span class="token punctuation">.</span>innerHeight <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将渲染器尺寸重新调整为 innerWidth innerHeight</span>
-  document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span> <span class="token string">'container'</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span> renderer<span class="token punctuation">.</span>domElement <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将渲染器添加到容器.container 中</span>
+  <span class="hljs-comment">// renderer</span>
+  renderer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CSS3DRenderer</span>(); <span class="hljs-comment">// 创建一个新的CSS 3D渲染器</span>
+  renderer.<span class="hljs-title function_">setSize</span>( <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span>, <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span> ); <span class="hljs-comment">// 将渲染器尺寸重新调整为 innerWidth innerHeight</span>
+  <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>( <span class="hljs-string">&#x27;container&#x27;</span> ).<span class="hljs-title function_">appendChild</span>( renderer.<span class="hljs-property">domElement</span> ); <span class="hljs-comment">// 将渲染器添加到容器.container 中</span>
 
-  <span class="token comment">// controls</span>
-  controls <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrackballControls</span><span class="token punctuation">(</span> camera<span class="token punctuation">,</span> renderer<span class="token punctuation">.</span>domElement <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建一个新的轨迹球控件</span>
-  controls<span class="token punctuation">.</span>minDistance <span class="token operator">=</span> <span class="token number">500</span><span class="token punctuation">;</span> <span class="token comment">// 设置最小缩放数</span>
-  controls<span class="token punctuation">.</span>maxDistance <span class="token operator">=</span> <span class="token number">6000</span><span class="token punctuation">;</span> <span class="token comment">// 设置最大缩放数</span>
-  controls<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span> <span class="token string">'change'</span><span class="token punctuation">,</span> render <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 添加 change 事件监听，触发render事件</span>
+  <span class="hljs-comment">// controls</span>
+  controls = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TrackballControls</span>( camera, renderer.<span class="hljs-property">domElement</span> ); <span class="hljs-comment">// 创建一个新的轨迹球控件</span>
+  controls.<span class="hljs-property">minDistance</span> = <span class="hljs-number">500</span>; <span class="hljs-comment">// 设置最小缩放数</span>
+  controls.<span class="hljs-property">maxDistance</span> = <span class="hljs-number">6000</span>; <span class="hljs-comment">// 设置最大缩放数</span>
+  controls.<span class="hljs-title function_">addEventListener</span>( <span class="hljs-string">&#x27;change&#x27;</span>, render ); <span class="hljs-comment">// 添加 change 事件监听，触发render事件</span>
 
-  <span class="token keyword">var</span> button <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span> <span class="token string">'table'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 把 #table 赋值给 button 变量</span>
-  button<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span> <span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 给 button 添加点击事件监听，点击后 触发 transform 事件</span>
-    <span class="token function">transform</span><span class="token punctuation">(</span> targets<span class="token punctuation">.</span>table<span class="token punctuation">,</span> <span class="token number">2000</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="hljs-keyword">var</span> button = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>( <span class="hljs-string">&#x27;table&#x27;</span> ); <span class="hljs-comment">// 把 #table 赋值给 button 变量</span>
+  button.<span class="hljs-title function_">addEventListener</span>( <span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123; <span class="hljs-comment">// 给 button 添加点击事件监听，点击后 触发 transform 事件</span>
+    <span class="hljs-title function_">transform</span>( targets.<span class="hljs-property">table</span>, <span class="hljs-number">2000</span> );
+  &#125;, <span class="hljs-literal">false</span> );
 
-  <span class="token keyword">var</span> button <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span> <span class="token string">'sphere'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 把 #sphere 赋值给 button 变量</span>
-  button<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span> <span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 给 button 添加点击事件监听，点击后 触发 transform 事件</span>
-    <span class="token function">transform</span><span class="token punctuation">(</span> targets<span class="token punctuation">.</span>sphere<span class="token punctuation">,</span> <span class="token number">2000</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="hljs-keyword">var</span> button = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>( <span class="hljs-string">&#x27;sphere&#x27;</span> ); <span class="hljs-comment">// 把 #sphere 赋值给 button 变量</span>
+  button.<span class="hljs-title function_">addEventListener</span>( <span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123; <span class="hljs-comment">// 给 button 添加点击事件监听，点击后 触发 transform 事件</span>
+    <span class="hljs-title function_">transform</span>( targets.<span class="hljs-property">sphere</span>, <span class="hljs-number">2000</span> );
+  &#125;, <span class="hljs-literal">false</span> );
 
-  <span class="token keyword">var</span> button <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span> <span class="token string">'helix'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 把 #sphere 赋值给 button 变量</span>
-  button<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span> <span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 给 button 添加点击事件监听，点击后 触发 transform 事件</span>
-    <span class="token function">transform</span><span class="token punctuation">(</span> targets<span class="token punctuation">.</span>helix<span class="token punctuation">,</span> <span class="token number">2000</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="hljs-keyword">var</span> button = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>( <span class="hljs-string">&#x27;helix&#x27;</span> ); <span class="hljs-comment">// 把 #sphere 赋值给 button 变量</span>
+  button.<span class="hljs-title function_">addEventListener</span>( <span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123; <span class="hljs-comment">// 给 button 添加点击事件监听，点击后 触发 transform 事件</span>
+    <span class="hljs-title function_">transform</span>( targets.<span class="hljs-property">helix</span>, <span class="hljs-number">2000</span> );
+  &#125;, <span class="hljs-literal">false</span> );
 
-  <span class="token keyword">var</span> button <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span> <span class="token string">'grid'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 把 #grid 赋值给 button 变量</span>
-  button<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span> <span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 给 button 添加点击事件监听，点击后 触发 transform 事件</span>
-    <span class="token function">transform</span><span class="token punctuation">(</span> targets<span class="token punctuation">.</span>grid<span class="token punctuation">,</span> <span class="token number">2000</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="hljs-keyword">var</span> button = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>( <span class="hljs-string">&#x27;grid&#x27;</span> ); <span class="hljs-comment">// 把 #grid 赋值给 button 变量</span>
+  button.<span class="hljs-title function_">addEventListener</span>( <span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123; <span class="hljs-comment">// 给 button 添加点击事件监听，点击后 触发 transform 事件</span>
+    <span class="hljs-title function_">transform</span>( targets.<span class="hljs-property">grid</span>, <span class="hljs-number">2000</span> );
+  &#125;, <span class="hljs-literal">false</span> );
 
-  <span class="token function">transform</span><span class="token punctuation">(</span> targets<span class="token punctuation">.</span>table<span class="token punctuation">,</span> <span class="token number">2000</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 切换到 table 效果，动作时间为 2000 ms</span>
+  <span class="hljs-title function_">transform</span>( targets.<span class="hljs-property">table</span>, <span class="hljs-number">2000</span> ); <span class="hljs-comment">// 切换到 table 效果，动作时间为 2000 ms</span>
 
-  <span class="token comment">//</span>
+  <span class="hljs-comment">//</span>
 
-  window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span> <span class="token string">'resize'</span><span class="token punctuation">,</span> onWindowResize<span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 监听视窗的 resize 事件，每次改变窗口大小是触发 onWindowResize 事件</span>
+  <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>( <span class="hljs-string">&#x27;resize&#x27;</span>, onWindowResize, <span class="hljs-literal">false</span> ); <span class="hljs-comment">// 监听视窗的 resize 事件，每次改变窗口大小是触发 onWindowResize 事件</span>
 
-<span class="token punctuation">&#125;</span>
+&#125;
 
-<span class="token comment">// transform</span>
-<span class="token keyword">function</span> <span class="token function">transform</span><span class="token punctuation">(</span> <span class="token parameter">targets<span class="token punctuation">,</span> duration</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token constant">TWEEN</span><span class="token punctuation">.</span><span class="token function">removeAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 移除所有补间数据</span>
-  <span class="token comment">// 循环所有数据</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> objects<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> object <span class="token operator">=</span> objects<span class="token punctuation">[</span> i <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 获取当前对象</span>
-    <span class="token keyword">var</span> target <span class="token operator">=</span> targets<span class="token punctuation">[</span> i <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 获取当前对象对应形状的数据</span>
-    <span class="token comment">// 创建坐标轴移动补间动画，to(目标坐标，动画持续时间) easing(弹性值) start()开始</span>
-    <span class="token keyword">new</span> <span class="token class-name">TWEEN<span class="token punctuation">.</span>Tween</span><span class="token punctuation">(</span> object<span class="token punctuation">.</span>position <span class="token punctuation">)</span>
-      <span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> x<span class="token operator">:</span> target<span class="token punctuation">.</span>position<span class="token punctuation">.</span>x<span class="token punctuation">,</span> y<span class="token operator">:</span> target<span class="token punctuation">.</span>position<span class="token punctuation">.</span>y<span class="token punctuation">,</span> z<span class="token operator">:</span> target<span class="token punctuation">.</span>position<span class="token punctuation">.</span>z <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> duration <span class="token operator">+</span> duration <span class="token punctuation">)</span>
-      <span class="token punctuation">.</span><span class="token function">easing</span><span class="token punctuation">(</span> <span class="token constant">TWEEN</span><span class="token punctuation">.</span>Easing<span class="token punctuation">.</span>Exponential<span class="token punctuation">.</span>InOut <span class="token punctuation">)</span>
-      <span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">// 创建旋转角度补间动画，to(目标坐标，动画持续时间) easing(弹性值) start()开始</span>
-    <span class="token keyword">new</span> <span class="token class-name">TWEEN<span class="token punctuation">.</span>Tween</span><span class="token punctuation">(</span> object<span class="token punctuation">.</span>rotation <span class="token punctuation">)</span>
-      <span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span> x<span class="token operator">:</span> target<span class="token punctuation">.</span>rotation<span class="token punctuation">.</span>x<span class="token punctuation">,</span> y<span class="token operator">:</span> target<span class="token punctuation">.</span>rotation<span class="token punctuation">.</span>y<span class="token punctuation">,</span> z<span class="token operator">:</span> target<span class="token punctuation">.</span>rotation<span class="token punctuation">.</span>z <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> duration <span class="token operator">+</span> duration <span class="token punctuation">)</span>
-      <span class="token punctuation">.</span><span class="token function">easing</span><span class="token punctuation">(</span> <span class="token constant">TWEEN</span><span class="token punctuation">.</span>Easing<span class="token punctuation">.</span>Exponential<span class="token punctuation">.</span>InOut <span class="token punctuation">)</span>
-      <span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token comment">// 设置数据更新时render事件，优化render 这里其实我没有怎么明白。</span>
-  <span class="token keyword">new</span> <span class="token class-name">TWEEN<span class="token punctuation">.</span>Tween</span><span class="token punctuation">(</span> <span class="token keyword">this</span> <span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> duration <span class="token operator">*</span> <span class="token number">2</span> <span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">onUpdate</span><span class="token punctuation">(</span> render <span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// 窗口大小改变时</span>
-<span class="token keyword">function</span> <span class="token function">onWindowResize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  camera<span class="token punctuation">.</span>aspect <span class="token operator">=</span> window<span class="token punctuation">.</span>innerWidth <span class="token operator">/</span> window<span class="token punctuation">.</span>innerHeight<span class="token punctuation">;</span> <span class="token comment">// 重新设置相机宽高比</span>
-  camera<span class="token punctuation">.</span><span class="token function">updateProjectionMatrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 更新投影矩阵</span>
-  renderer<span class="token punctuation">.</span><span class="token function">setSize</span><span class="token punctuation">(</span> window<span class="token punctuation">.</span>innerWidth<span class="token punctuation">,</span> window<span class="token punctuation">.</span>innerHeight <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 重新设置场景渲染器大小</span>
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 触发渲染更新</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// 动画事件触发渲染更新</span>
-<span class="token keyword">function</span> <span class="token function">animate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token comment">// 每次帧动画更新是触发本身</span>
-  <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span> animate <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token comment">// 补间动画刷新</span>
-  <span class="token constant">TWEEN</span><span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token comment">// 控制器刷新</span>
-  controls<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// 渲染函数</span>
-<span class="token keyword">function</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token comment">// 渲染当前场景</span>
-  renderer<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span> scene<span class="token punctuation">,</span> camera <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// transform</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">transform</span>(<span class="hljs-params"> targets, duration </span>) &#123;
+  <span class="hljs-variable constant_">TWEEN</span>.<span class="hljs-title function_">removeAll</span>(); <span class="hljs-comment">// 移除所有补间数据</span>
+  <span class="hljs-comment">// 循环所有数据</span>
+  <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; objects.<span class="hljs-property">length</span>; i ++ ) &#123;
+    <span class="hljs-keyword">var</span> object = objects[ i ]; <span class="hljs-comment">// 获取当前对象</span>
+    <span class="hljs-keyword">var</span> target = targets[ i ]; <span class="hljs-comment">// 获取当前对象对应形状的数据</span>
+    <span class="hljs-comment">// 创建坐标轴移动补间动画，to(目标坐标，动画持续时间) easing(弹性值) start()开始</span>
+    <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">TWEEN</span>.<span class="hljs-title class_">Tween</span>( object.<span class="hljs-property">position</span> )
+      .<span class="hljs-title function_">to</span>( &#123; <span class="hljs-attr">x</span>: target.<span class="hljs-property">position</span>.<span class="hljs-property">x</span>, <span class="hljs-attr">y</span>: target.<span class="hljs-property">position</span>.<span class="hljs-property">y</span>, <span class="hljs-attr">z</span>: target.<span class="hljs-property">position</span>.<span class="hljs-property">z</span> &#125;, <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * duration + duration )
+      .<span class="hljs-title function_">easing</span>( <span class="hljs-variable constant_">TWEEN</span>.<span class="hljs-property">Easing</span>.<span class="hljs-property">Exponential</span>.<span class="hljs-property">InOut</span> )
+      .<span class="hljs-title function_">start</span>();
+    <span class="hljs-comment">// 创建旋转角度补间动画，to(目标坐标，动画持续时间) easing(弹性值) start()开始</span>
+    <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">TWEEN</span>.<span class="hljs-title class_">Tween</span>( object.<span class="hljs-property">rotation</span> )
+      .<span class="hljs-title function_">to</span>( &#123; <span class="hljs-attr">x</span>: target.<span class="hljs-property">rotation</span>.<span class="hljs-property">x</span>, <span class="hljs-attr">y</span>: target.<span class="hljs-property">rotation</span>.<span class="hljs-property">y</span>, <span class="hljs-attr">z</span>: target.<span class="hljs-property">rotation</span>.<span class="hljs-property">z</span> &#125;, <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * duration + duration )
+      .<span class="hljs-title function_">easing</span>( <span class="hljs-variable constant_">TWEEN</span>.<span class="hljs-property">Easing</span>.<span class="hljs-property">Exponential</span>.<span class="hljs-property">InOut</span> )
+      .<span class="hljs-title function_">start</span>();
+  &#125;
+  <span class="hljs-comment">// 设置数据更新时render事件，优化render 这里其实我没有怎么明白。</span>
+  <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">TWEEN</span>.<span class="hljs-title class_">Tween</span>( <span class="hljs-variable language_">this</span> )
+    .<span class="hljs-title function_">to</span>( &#123;&#125;, duration * <span class="hljs-number">2</span> )
+    .<span class="hljs-title function_">onUpdate</span>( render )
+    .<span class="hljs-title function_">start</span>();
+&#125;
+<span class="hljs-comment">// 窗口大小改变时</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">onWindowResize</span>(<span class="hljs-params"></span>) &#123;
+  camera.<span class="hljs-property">aspect</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span> / <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span>; <span class="hljs-comment">// 重新设置相机宽高比</span>
+  camera.<span class="hljs-title function_">updateProjectionMatrix</span>(); <span class="hljs-comment">// 更新投影矩阵</span>
+  renderer.<span class="hljs-title function_">setSize</span>( <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span>, <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span> ); <span class="hljs-comment">// 重新设置场景渲染器大小</span>
+  <span class="hljs-title function_">render</span>(); <span class="hljs-comment">// 触发渲染更新</span>
+&#125;
+<span class="hljs-comment">// 动画事件触发渲染更新</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">animate</span>(<span class="hljs-params"></span>) &#123;
+  <span class="hljs-comment">// 每次帧动画更新是触发本身</span>
+  <span class="hljs-title function_">requestAnimationFrame</span>( animate );
+  <span class="hljs-comment">// 补间动画刷新</span>
+  <span class="hljs-variable constant_">TWEEN</span>.<span class="hljs-title function_">update</span>();
+  <span class="hljs-comment">// 控制器刷新</span>
+  controls.<span class="hljs-title function_">update</span>();
+&#125;
+<span class="hljs-comment">// 渲染函数</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) &#123;
+  <span class="hljs-comment">// 渲染当前场景</span>
+  renderer.<span class="hljs-title function_">render</span>( scene, camera );
+&#125;</code></pre>
 
 <p>感觉都不用怎么说了。稍微修改一下 <code>element</code> 元素内的内容就可以了。</p>
 <p>但是元素不宜多，不然元素移动的时候严重掉帧。</p>

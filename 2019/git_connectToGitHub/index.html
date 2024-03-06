@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -100,73 +103,73 @@
  
   <article class="article-content">
     <h2 id="创建-SSH-Keygen"><a href="#创建-SSH-Keygen" class="headerlink" title="创建 SSH Keygen"></a>创建 SSH Keygen</h2><p>使用<code>ssh-keygen</code>生成私钥和公钥</p>
-<pre class="line-numbers language-none"><code class="language-none">$ ssh-keygen -t rsa
+<pre><code class="hljs plaintext">$ ssh-keygen -t rsa
 
-Generating public&#x2F;private rsa key pair.
-Enter file in which to save the key (&#x2F;c&#x2F;Users&#x2F;yog&#x2F;.ssh&#x2F;id_rsa):
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/yog/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved in &#x2F;c&#x2F;Users&#x2F;yog&#x2F;.ssh&#x2F;id_rsa.
-Your public key has been saved in &#x2F;c&#x2F;Users&#x2F;yog&#x2F;.ssh&#x2F;id_rsa.pub.
+Your identification has been saved in /c/Users/yog/.ssh/id_rsa.
+Your public key has been saved in /c/Users/yog/.ssh/id_rsa.pub.
 The key fingerprint is:
-SHA256:0ZYdnPILyMbV9xpgRE&#x2F;hWf1MayqhoEYquZTuOMr8EcE yog@YOG-DESKTOP
-The key&#39;s randomart image is:
+SHA256:0ZYdnPILyMbV9xpgRE/hWf1MayqhoEYquZTuOMr8EcE yog@YOG-DESKTOP
+The key&#x27;s randomart image is:
 +---[RSA 3072]----+
-|           &#x3D;+.o.o|
-|  .      .oo*&#x3D;.oo|
+|           =+.o.o|
+|  .      .oo*=.oo|
 |   E   o.o++.o++o|
-|    .. .&#x3D;o... .o+|
+|    .. .=o... .o+|
 |  o.o ..S ....oo |
-| &#x3D; ..o   . ....  |
+| = ..o   . ....  |
 |o o..       .    |
-|&#x3D;o  .            |
-|&#x3D;&#x3D;..             |
+|=o  .            |
+|==..             |
 +----[SHA256]-----+
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 
 <span id="more"></span>
 
 <p>找到 SSH 公钥输出内容，也可以用资源管理器打开复制</p>
-<pre class="line-numbers language-none"><code class="language-none">$ cd ~&#x2F;.ssh
+<pre><code class="hljs plaintext">$ cd ~/.ssh
 $ pwd
-&#x2F;c&#x2F;Users&#x2F;yog&#x2F;.ssh
+/c/Users/yog/.ssh
 $ cat id_rsa.pub
 
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDb9FSAEzrtUG9bJFt5oaDieFo6FeqBWB9ppX4VCqBnNxKvpnAZbJMjUjxHAIQEFSK2sD9NUXgyuKguilX6kRVGoTq15Lcf12nfqfjoGMUm3qAgNdZlkHPFk7WxBFquaalWV8OOOZNe45W2YcbzPucQMt54iiGSYzuAQLbMW&#x2F;5rn2uF4HPrQNeMmduIvNZ8BxK4gS60IyjnEPTZbyG3RfJ0K5FQBN6wudoSWZZCU4UTcOjFhLRQ3I&#x2F;p5OQTSKXnbBhpoX7nD42Xohijt2xB5GhdLrh42E28AEORchaMJ7OxqenT4U+BDdhQPk87ZBpB254Cv5RCvj60dJv5VjE&#x2F;kTx4bCKslv9kgtV4INyUNPWlDAPhe6dmW1L+9Cl5QUYPvhjlXLLpcXoqne3OlPcS33UwJE0H&#x2F;6++TusANaMTAXxPofD9XCgK&#x2F;ipCNtT+YPxiyWIVJKgVUJ7NKAoieNOqXVN5d09ts&#x2F;hSM5CtBXFbKnFGrPEr9zGiUhfe7HM0gRpWMV0&#x3D; yog@YOG-DESKTOP<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDb9FSAEzrtUG9bJFt5oaDieFo6FeqBWB9ppX4VCqBnNxKvpnAZbJMjUjxHAIQEFSK2sD9NUXgyuKguilX6kRVGoTq15Lcf12nfqfjoGMUm3qAgNdZlkHPFk7WxBFquaalWV8OOOZNe45W2YcbzPucQMt54iiGSYzuAQLbMW/5rn2uF4HPrQNeMmduIvNZ8BxK4gS60IyjnEPTZbyG3RfJ0K5FQBN6wudoSWZZCU4UTcOjFhLRQ3I/p5OQTSKXnbBhpoX7nD42Xohijt2xB5GhdLrh42E28AEORchaMJ7OxqenT4U+BDdhQPk87ZBpB254Cv5RCvj60dJv5VjE/kTx4bCKslv9kgtV4INyUNPWlDAPhe6dmW1L+9Cl5QUYPvhjlXLLpcXoqne3OlPcS33UwJE0H/6++TusANaMTAXxPofD9XCgK/ipCNtT+YPxiyWIVJKgVUJ7NKAoieNOqXVN5d09ts/hSM5CtBXFbKnFGrPEr9zGiUhfe7HM0gRpWMV0= yog@YOG-DESKTOP</code></pre>
 
 <p>复制输出的全部公钥内容</p>
-<h4 id="开坑多个-SSH-Key-多个-GitHub-账户"><a href="#开坑多个-SSH-Key-多个-GitHub-账户" class="headerlink" title="开坑多个 SSH_Key 多个 GitHub 账户"></a>开坑多个 SSH_Key 多个 GitHub 账户</h4><pre class="line-numbers language-none"><code class="language-none">ssh-keygen -t rsa -C &quot;Exam@email.com&quot; -f ~&#x2F;.ssh&#x2F;id_rsa_for_Exam<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="开坑多个-SSH-Key-多个-GitHub-账户"><a href="#开坑多个-SSH-Key-多个-GitHub-账户" class="headerlink" title="开坑多个 SSH_Key 多个 GitHub 账户"></a>开坑多个 SSH_Key 多个 GitHub 账户</h4><pre><code class="hljs plaintext">ssh-keygen -t rsa -C &quot;Exam@email.com&quot; -f ~/.ssh/id_rsa_for_Exam</code></pre>
 
 <h2 id="在-GitHub-上添加-SSH-key"><a href="#在-GitHub-上添加-SSH-key" class="headerlink" title="在 GitHub 上添加 SSH key"></a>在 GitHub 上添加 SSH key</h2><p>登陆 <a target="_blank" rel="noopener" href="https://github.com/">GitHub</a> ,点击右上角头像，在弹出的菜单中选择 <code>Settings</code> 进入设置页</p>
-<img src="/2019/git_connectToGitHub/img_1.png">
+<img src="git_connectToGitHub/img_1.png">
 
 <p>在右侧 <b>Personal settings</b> 中选择 <code>SSH and GPG keys</code></p>
-<img src="/2019/git_connectToGitHub/img_2.png">
+<img src="git_connectToGitHub/img_2.png">
 
-<p>点击 <b>New SSH key</b>，在 Key 中粘贴复制的公钥内容,然后 <b>Add SSH key</b> 完成 <code>SSH key</code> 添加<br><img src="/2019/git_connectToGitHub/img_3.png"></p>
+<p>点击 <b>New SSH key</b>，在 Key 中粘贴复制的公钥内容,然后 <b>Add SSH key</b> 完成 <code>SSH key</code> 添加<br><img src="git_connectToGitHub/img_3.png"></p>
 <h2 id="创建-GitHub-仓库"><a href="#创建-GitHub-仓库" class="headerlink" title="创建 GitHub 仓库"></a>创建 GitHub 仓库</h2><p>同样点击右上角头像，在弹出的菜单中选择 <code>Your repositories</code> 进入资源库页</p>
-<img src="/2019/git_connectToGitHub/img_4.png">
+<img src="git_connectToGitHub/img_4.png">
 <br>
 
 <p>在页面中间靠右点击 <b>New</b> 按钮</p>
-<img src="/2019/git_connectToGitHub/img_5.png">
+<img src="git_connectToGitHub/img_5.png">
 
 <p>输入 <code>Repository name</code> 然后点击 <b>Create repository</b> 按钮</p>
-<img src="/2019/git_connectToGitHub/img_6.png">
+<img src="git_connectToGitHub/img_6.png">
 
 <blockquote>
 <p>Description:可选输入一段描述，仓库选择 Public 和 Private 都可以。</p>
 </blockquote>
-<p>资源库创建完成后，复制页面中的 <code>git remote add</code> 命令，回到 <code>Git Bash</code><br><img src="/2019/git_connectToGitHub/img_7.png"></p>
+<p>资源库创建完成后，复制页面中的 <code>git remote add</code> 命令，回到 <code>Git Bash</code><br><img src="git_connectToGitHub/img_7.png"></p>
 <p>回创建的本地 Git 库中，运行复制的 <code>git remote add</code> 命令，关联本地库到 GitHub 远程库上</p>
-<pre class="line-numbers language-none"><code class="language-none">$ cd E:&#x2F;GitLibrary&#x2F;git_demo
+<pre><code class="hljs plaintext">$ cd E:/GitLibrary/git_demo
 
-$ git remote add origin git@github.com:yogwang&#x2F;demo_repositories.git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+$ git remote add origin git@github.com:yogwang/demo_repositories.git</code></pre>
 
 <p>使用 <code>git push</code> 命令把本地库的所有内容推送到远程库上</p>
-<pre class="line-numbers language-none"><code class="language-none">git push -u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs plaintext">git push -u origin master</code></pre>
 
-<p>然后刷新 GitHub 库页面就可以看到上传的本地库文件了<br><img src="/2019/git_connectToGitHub/img_8.png"></p>
+<p>然后刷新 GitHub 库页面就可以看到上传的本地库文件了<br><img src="git_connectToGitHub/img_8.png"></p>
  
   </article>
 

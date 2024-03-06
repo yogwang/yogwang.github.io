@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -100,74 +103,74 @@
  
   <article class="article-content">
     <p>今天小伙伴问了一个奇怪的问题，他在使用 <code>RegExp.test()</code> 方法时使用全局匹配时会依次返回 <code>true</code> 和 <code>false</code> 的现象。<br>比如说:</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> t <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">#</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// false</span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> t = <span class="hljs-regexp">/#/g</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// false</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// false</span></code></pre>
 <p>我一开始以为是他正则写的不对，让他把其它的匹配规则都去掉再试试，结果问题还是依旧。<br>后来让他把 <code>/g</code> 的 <code>g</code> 去掉试了下发现没问题了。但还是没有怀疑到<strong>全局匹配</strong>的问题上，以为是他哪里覆写掉了的 <code>test()</code> 方法。让他使用空白页测试，依旧有这样的问题。</p>
 <span id="more"></span>
 
 <p>所以应该就是全局匹配的问题。检索了以下相关问题，发现正则表达式使用了 <code>g</code> 全局检索是，其会内置一个 <code>lastIndex</code> 属性，并且这个属性并不会被重置，会在下一次使用时保留（如果<code>index</code>值小于或等于字符串长度时）</p>
 <p>其实在 MDN 文档上面也提到了这个问题 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test#using_test_on_a_regex_with_the_global_flag">Using test() on a regex with the “global” flag</a></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> regex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">foo</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">;</span> <span class="token comment">// the "global" flag is set</span>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> regex = <span class="hljs-regexp">/foo/g</span>; <span class="hljs-comment">// the &quot;global&quot; flag is set</span>
 
-<span class="token comment">// regex.lastIndex is at 0</span>
-regex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="hljs-comment">// regex.lastIndex is at 0</span>
+regex.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;foo&quot;</span>); <span class="hljs-comment">// true</span>
 
-<span class="token comment">// regex.lastIndex is now at 3</span>
-regex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+<span class="hljs-comment">// regex.lastIndex is now at 3</span>
+regex.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;foo&quot;</span>); <span class="hljs-comment">// false</span>
 
-<span class="token comment">// regex.lastIndex is at 0</span>
-regex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"barfoo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="hljs-comment">// regex.lastIndex is at 0</span>
+regex.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;barfoo&quot;</span>); <span class="hljs-comment">// true</span>
 
-<span class="token comment">// regex.lastIndex is at 6</span>
-regex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"foobar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+<span class="hljs-comment">// regex.lastIndex is at 6</span>
+regex.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;foobar&quot;</span>); <span class="hljs-comment">// false</span>
 
-<span class="token comment">// regex.lastIndex is at 0</span>
-regex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"foobarfoo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="hljs-comment">// regex.lastIndex is at 0</span>
+regex.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;foobarfoo&quot;</span>); <span class="hljs-comment">// true</span>
 
-<span class="token comment">// regex.lastIndex is at 3</span>
-regex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"foobarfoo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="hljs-comment">// regex.lastIndex is at 3</span>
+regex.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;foobarfoo&quot;</span>); <span class="hljs-comment">// true</span>
 
-<span class="token comment">// regex.lastIndex is at 9</span>
-regex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"foobarfoo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+<span class="hljs-comment">// regex.lastIndex is at 9</span>
+regex.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;foobarfoo&quot;</span>); <span class="hljs-comment">// false</span>
 
-<span class="token comment">// regex.lastIndex is at 0</span>
-<span class="token comment">// (...and so on)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// regex.lastIndex is at 0</span>
+<span class="hljs-comment">// (...and so on)</span></code></pre>
 
 <p>所以可以通过每次调用后重置掉 <code>lastIndex</code> 值，比如说：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> t <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">#</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-t<span class="token punctuation">.</span>lastIndex <span class="token operator">=</span> <span class="token number">0</span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-t<span class="token punctuation">.</span>lastIndex <span class="token operator">=</span> <span class="token number">0</span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-t<span class="token punctuation">.</span>lastIndex <span class="token operator">=</span> <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> t = <span class="hljs-regexp">/#/g</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+t.<span class="hljs-property">lastIndex</span> = <span class="hljs-number">0</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+t.<span class="hljs-property">lastIndex</span> = <span class="hljs-number">0</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+t.<span class="hljs-property">lastIndex</span> = <span class="hljs-number">0</span></code></pre>
 <p>但是我觉得很不优雅，可以使每次一都使用新的正则，或者封装在一个方法内来避免</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">#</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-<span class="token operator">/</span>#<span class="token operator">/</span>g<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-<span class="token operator">/</span>#<span class="token operator">/</span>g<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  <span class="token keyword">const</span> regex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">#</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
-  <span class="token keyword">return</span> regex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
-<span class="token function">fn</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-<span class="token function">fn</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-<span class="token function">fn</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js">/#/g.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+/#/g.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+/#/g.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params">str</span>)&#123;
+  <span class="hljs-keyword">const</span> regex = <span class="hljs-regexp">/#/g</span>
+  <span class="hljs-keyword">return</span> regex.<span class="hljs-title function_">test</span>(str)
+&#125;
+<span class="hljs-title function_">fn</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+<span class="hljs-title function_">fn</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+<span class="hljs-title function_">fn</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span></code></pre>
 
 <p>其实直接去掉 <code>g</code> 全局匹配的标识就可以了，因为大部分的时间，我们只是想要去测试一下字符串是否匹配我们预设规则而已。</p>
 <p>同时大多数的时候我们并不会遇到这样的情况，因为书写在函数内是我们使用最多的情况，写在全局或者函数外部其实使很少见的。</p>

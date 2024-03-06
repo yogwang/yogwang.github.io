@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -113,11 +116,11 @@
 <p>URI 值会指定一个外部资源（比如图片）。如果该资源或图片不能显示，它就会被忽略或显示一些占位（比如无图片标志）。</p>
 </blockquote>
 <p>先来看一下 DEMO</p>
-<iframe id="cp_embed_oNNoZKj" src="//codepen.io/yogwang/embed/oNNoZKj?height=400&theme-id=dark&slug-hash=oNNoZKj&default-tab=css,result" scrolling="no" frameborder="no" height="400" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<iframe id="cp_embed_oNNoZKj" src="//codepen.io/yogwang/embed/oNNoZKj?height=400&theme-id=dark&slug-hash=oNNoZKj&default-tab=css,result" scrolling="no" frameborder="no" height="400" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 <p>虽然这个方式存在很多问题，但是可以方便很多时候处理图片小图标。</p>
 <p>就不需要先设置 <code>content:&#39;&#39;</code> 然后 <code>display:inline-block</code> 再设置宽高在设置背景图片，<br>直接把图片地址放在 <code>content</code> 里边就可以解决问题。很方便，但是这个方式显示的小图标并不能控制它的宽高。<br>不过把图片裁剪成合适大小就可以解决这个问题，而且兼容性还不错。 👉 <a target="_blank" rel="noopener" href="https://caniuse.com/#feat=css-gencontent">Can I use</a></p>
-<p><img src="/2019/CSS-pseudo-elements-content/caniuse.jpg" alt="兼容性"></p>
+<p><img src="/./CSS-pseudo-elements-content/caniuse.jpg" alt="兼容性"></p>
 <p>你敢信 IE8 都兼容！</p>
  
   </article>

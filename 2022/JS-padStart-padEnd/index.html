@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -101,22 +104,22 @@
   <article class="article-content">
     <p>在日常项目中经常会遇到需要对字符串补位的操作，比如</p>
 <ul>
-<li><strong>向前补0</strong>：例如日期，经常会需要<code>YYYY-MM-DD</code> 的格式，<br>如果不使用日期库，直接获取月份和日期前面是没有0的，需要手动拼接字符串。</li>
+<li><strong>向前补0</strong>：例如日期，经常会需要<code>YYYY-MM-DD</code> 的格式，<br>  如果不使用日期库，直接获取月份和日期前面是没有0的，需要手动拼接字符串。</li>
 </ul>
 <p>正巧今天要搞日历组件，前面缺一个0总感觉少了点感觉，当时懒得自己写补全了，想着百度一个吧，就搜到了张鑫旭大佬的这篇文章 <a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2018/07/js-padstart-padend/">《JS字符串补全方法padStart()和padEnd()简介》</a>，然后就惊了，原来早在4年前 JS 就原生支持了前后补全了（我这几年在干嘛😢）</p>
 <span id="more"></span>
 <hr>
 <h2 id="String-padStart"><a href="#String-padStart" class="headerlink" title="# String.padStart()"></a># String.padStart()</h2><p>如果是以前的话我们就会，先判断一下是参否入小于10，然后再去补全字符串 <code>&quot;0&quot;</code>，而现在就不需要了直接用 <code>.padStart()</code> 就行，他会自己判断输入的字符串长度是否小于指定长度再去补全。<br>而且用法就很简单啊，如果你要在字符串前面补位像下面这样使用就行了：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> month <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getMonth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
-month <span class="token operator">=</span> <span class="token function">String</span><span class="token punctuation">(</span>month<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">padStart</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span> <span class="token comment">// 其实第二位使用数字 0 也是可以的</span>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> month = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">getMonth</span>() + <span class="hljs-number">1</span>
+month = <span class="hljs-title class_">String</span>(month).<span class="hljs-title function_">padStart</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;0&#x27;</span>) <span class="hljs-comment">// 其实第二位使用数字 0 也是可以的</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>month<span class="token punctuation">)</span>
-<span class="token comment">// 06</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(month)
+<span class="hljs-comment">// 06</span></code></pre>
 
 <h2 id="String-padEnd"><a href="#String-padEnd" class="headerlink" title="# String.padEnd()"></a># String.padEnd()</h2><p>和 <code>padStart()</code> 一样，直接这样使用就可以了 <code>&#39;字符串&#39;.padEnd(7,&#39;补全&#39;)</code> 就会把字符串补全为 <code>字符串补全补全</code>，其实我一直没想到向后补位的一个具体示例，这边我使用张大佬的例子：</p>
 <blockquote>
 <p>在JS前端我们处理时间戳的时候单位都是ms毫秒，但是，后端同学返回的时间戳则不一样是毫秒，可能只有10位，以s秒为单位。所以，我们在前端处理这个时间戳的时候，保险起见，要先做一个13位的补全，保证单位是毫秒。使用示意：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">timestamp <span class="token operator">=</span> <span class="token operator">+</span><span class="token function">String</span><span class="token punctuation">(</span>timestamp<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">padEnd</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs js">timestamp = +<span class="hljs-title class_">String</span>(timestamp).<span class="hljs-title function_">padEnd</span>(<span class="hljs-number">13</span>, <span class="hljs-string">&#x27;0&#x27;</span>);</code></pre>
 </blockquote>
 <hr>
 <h2 id="关于兼容性-😫"><a href="#关于兼容性-😫" class="headerlink" title="关于兼容性 😫"></a>关于兼容性 😫</h2><p>作为一个ES2017(ES8) 的内容，兼容IE肯定是不用考虑的，其它现代浏览器都是支持 <code>padStart</code> 和 <code>padEnd</code> 的。<br>如果一定要考虑兼容性问题的话，可以使用 <code>lodash</code> 库中的 <code>_.padStart</code> 和 <code>_.padEnd</code> 来实现前后补全，一直可以兼容到IE9。当然也可以和张大佬一样使用垫片(polyfill)来实现，可以兼容到更低版本的IE</p>

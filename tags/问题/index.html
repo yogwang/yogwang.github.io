@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -79,18 +82,18 @@
  
   <article class="article-content">
     <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>yarn add @better-scroll/mouse-wheel@next</code></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre class="line-numbers language-none"><code class="language-none">import BScroll from &#39;@better-scroll&#x2F;core&#39;
-import MouseWheel from &#39;@better-scroll&#x2F;mouse-wheel&#39;
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre><code class="hljs plaintext">import BScroll from &#x27;@better-scroll/core&#x27;
+import MouseWheel from &#x27;@better-scroll/mouse-wheel&#x27;
 BScroll.use(MouseWheel)
 
-new BScroll(&#39;.bs-wrap&#39;, &#123;
-  &#x2F;&#x2F;...
+new BScroll(&#x27;.bs-wrap&#x27;, &#123;
+  //...
   mouseWheel: &#123;
     speed: 20,
     invert: false,
     easeTime: 300
   &#125;
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;)</code></pre>
 
 <h2 id="但是为什么在原有的基础上这样写没有用呢。官方-Demo"><a href="#但是为什么在原有的基础上这样写没有用呢。官方-Demo" class="headerlink" title="但是为什么在原有的基础上这样写没有用呢。官方 Demo"></a>但是为什么在原有的基础上这样写没有用呢。<a target="_blank" rel="noopener" href="https://better-scroll.github.io/docs/zh-CN/plugins/mouse-wheel.html#%E7%A4%BA%E4%BE%8B">官方 Demo</a></h2><p>查看 <code>Demo</code> 源码在 <code>scroll-wrapper</code> 外多了一层 <code>core-mouse-wheel</code> 加上就可以了。</p>
 <h3 id="😂-没仔细看-Demo-源码"><a href="#😂-没仔细看-Demo-源码" class="headerlink" title="😂 没仔细看 Demo 源码"></a>😂 没仔细看 <code>Demo</code> 源码</h3> 
@@ -183,7 +186,7 @@ new BScroll(&#39;.bs-wrap&#39;, &#123;
 <li>不能退出、终止当前命令？</li>
 <li>想要删除提交的历史 Commit?</li>
 <li>合并与删除历史提交的 Commit ?</li>
-<li>操作失误，退回操作之前的版本库</li></ul>
+<li>操作失误，退回操作之前的版本库
   </article>
   <div class="article-more-link">
     <a href="/2019/git_question/#more">阅读全文</a>

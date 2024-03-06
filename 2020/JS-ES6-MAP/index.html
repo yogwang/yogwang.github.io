@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -134,22 +137,22 @@
 </blockquote>
 <p>先说 <code>Set</code> 数据结构的创建，因为 <code>Set</code> 本身是一个构造函数，所以可以使用 <code>new</code> 命令来创建，然后通过 <code>add()</code> 来添加成员。</p>
 <p>当然也可以通过传入一个数组来进行初始化，或者具有 <code>iterable</code> 接口的其他数据结构。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 直接创建一个Set结构</span>
-<span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-s<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// Set(1) &#123;1&#125;</span>
+<pre><code class="hljs js"><span class="hljs-comment">// 直接创建一个Set结构</span>
+<span class="hljs-keyword">const</span> s = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>();
+s.<span class="hljs-title function_">add</span>(<span class="hljs-number">1</span>);
+<span class="hljs-comment">// Set(1) &#123;1&#125;</span>
 
 
-<span class="token comment">// 传入数组的形式创建Set结构</span>
-<span class="token keyword">const</span> s2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token comment">// Set(4) &#123;1, 2, 3, 4&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// 传入数组的形式创建Set结构</span>
+<span class="hljs-keyword">const</span> s2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>])
+<span class="hljs-comment">// Set(4) &#123;1, 2, 3, 4&#125;</span></code></pre>
 
 <p>既然 <code>Set</code> 函数支持传入数组来进行初始化，并且成员的值都是唯一的，没有重复的值，所以可以使用 <code>Set</code> 来实现一个简短的数组去重方法：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 简单数组去重</span>
-<span class="token keyword">const</span> sourceArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span>
-<span class="token keyword">const</span> newArray <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>sourceArray<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newArray<span class="token punctuation">)</span>
-<span class="token comment">// (8) [1, 2, 3, 4, 5, 6, 7, 8]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 简单数组去重</span>
+<span class="hljs-keyword">const</span> sourceArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>]
+<span class="hljs-keyword">const</span> newArray = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>((<span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>(sourceArray)))
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newArray)
+<span class="hljs-comment">// (8) [1, 2, 3, 4, 5, 6, 7, 8]</span></code></pre>
 <p>另外向 <code>Set</code> 添加成员的时候需要注意几个点:</p>
 <ol>
 <li>添加成员的时候，不会发生类型转换</li>
@@ -157,42 +160,42 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>插入顺序就是遍历顺序，所以能保证按照添加顺序调用（不能直接改变结构）</li>
 </ol>
 <blockquote>
-<p>内部使用的算法叫做 <strong>“Same-value-zero equality”</strong>，类似于精确相等运算符（===）</p>
+<p>内部使用的算法叫做 <strong>“Same-value-zero equality”</strong>，类似于精确相等运算符（&#x3D;&#x3D;&#x3D;）</p>
 </blockquote>
 <p>乍一看可能不明白，我举几个例子🌰</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 插入数字和字符串</span>
-<span class="token keyword">let</span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">)</span>
-<span class="token comment">// Set(2) &#123;1, "1"&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 插入对象</span>
-<span class="token keyword">let</span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">let</span> a1 <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-<span class="token keyword">let</span> a2 <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>a1<span class="token punctuation">)</span>
-set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>a2<span class="token punctuation">)</span>
-set<span class="token punctuation">.</span>size
-<span class="token comment">// 2</span>
+<pre><code class="hljs js"><span class="hljs-comment">// 插入数字和字符串</span>
+<span class="hljs-keyword">let</span> set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>()
+set.<span class="hljs-title function_">add</span>(<span class="hljs-number">1</span>)
+set.<span class="hljs-title function_">add</span>(<span class="hljs-string">&#x27;1&#x27;</span>)
+<span class="hljs-comment">// Set(2) &#123;1, &quot;1&quot;&#125;</span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 插入对象</span>
+<span class="hljs-keyword">let</span> set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>()
+<span class="hljs-keyword">let</span> a1 = &#123;&#125;
+<span class="hljs-keyword">let</span> a2 = &#123;&#125;
+set.<span class="hljs-title function_">add</span>(a1)
+set.<span class="hljs-title function_">add</span>(a2)
+set.<span class="hljs-property">size</span>
+<span class="hljs-comment">// 2</span>
 
-<span class="token comment">// Set(2) &#123;&#123;…&#125;, &#123;…&#125;&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 插入 NaN</span>
-<span class="token keyword">let</span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">let</span> a1 <span class="token operator">=</span> <span class="token number">NaN</span>
-<span class="token keyword">let</span> a2 <span class="token operator">=</span> <span class="token number">NaN</span>
-set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>a1<span class="token punctuation">)</span>
-set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>a2<span class="token punctuation">)</span>
-set<span class="token punctuation">.</span>size
-<span class="token comment">// 1</span>
+<span class="hljs-comment">// Set(2) &#123;&#123;…&#125;, &#123;…&#125;&#125;</span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 插入 NaN</span>
+<span class="hljs-keyword">let</span> set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>()
+<span class="hljs-keyword">let</span> a1 = <span class="hljs-title class_">NaN</span>
+<span class="hljs-keyword">let</span> a2 = <span class="hljs-title class_">NaN</span>
+set.<span class="hljs-title function_">add</span>(a1)
+set.<span class="hljs-title function_">add</span>(a2)
+set.<span class="hljs-property">size</span>
+<span class="hljs-comment">// 1</span>
 
-<span class="token comment">// Set(1) &#123;NaN&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 顺序保持</span>
-<span class="token keyword">let</span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
-set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
-set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
-<span class="token comment">// Set(5) &#123;1, 2, 6, 4, 5&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// Set(1) &#123;NaN&#125;</span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 顺序保持</span>
+<span class="hljs-keyword">let</span> set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>()
+set.<span class="hljs-title function_">add</span>(<span class="hljs-number">1</span>)
+set.<span class="hljs-title function_">add</span>(<span class="hljs-number">2</span>)
+set.<span class="hljs-title function_">add</span>(<span class="hljs-number">6</span>)
+set.<span class="hljs-title function_">add</span>(<span class="hljs-number">4</span>)
+set.<span class="hljs-title function_">add</span>(<span class="hljs-number">5</span>)
+<span class="hljs-comment">// Set(5) &#123;1, 2, 6, 4, 5&#125;</span></code></pre>
 
 <h3 id="接着就是-Set-的遍历方法了，"><a href="#接着就是-Set-的遍历方法了，" class="headerlink" title="接着就是 Set 的遍历方法了，"></a>接着就是 <code>Set</code> 的遍历方法了，</h3><ul>
 <li><p>第一类： <code>keys()</code>，<code>values()</code>，<code>entries()</code></p>
@@ -206,84 +209,84 @@ set<span class="token punctuation">.</span><span class="token function">add</spa
 <li><p>第二类： <code>forEach()</code></p>
 </li>
 </ul>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'red'</span><span class="token punctuation">,</span> <span class="token string">'green'</span><span class="token punctuation">,</span> <span class="token string">'blue'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>([<span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-string">&#x27;green&#x27;</span>, <span class="hljs-string">&#x27;blue&#x27;</span>]);
 
-<span class="token comment">// 返回键名</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> set<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// red</span>
-<span class="token comment">// green</span>
-<span class="token comment">// blue</span>
+<span class="hljs-comment">// 返回键名</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> set.<span class="hljs-title function_">keys</span>()) &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(item);
+&#125;
+<span class="hljs-comment">// red</span>
+<span class="hljs-comment">// green</span>
+<span class="hljs-comment">// blue</span>
 
-<span class="token comment">// 返回键值</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> set<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// red</span>
-<span class="token comment">// green</span>
-<span class="token comment">// blue</span>
+<span class="hljs-comment">// 返回键值</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> set.<span class="hljs-title function_">values</span>()) &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(item);
+&#125;
+<span class="hljs-comment">// red</span>
+<span class="hljs-comment">// green</span>
+<span class="hljs-comment">// blue</span>
 
-<span class="token comment">// 返回键值对</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> set<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// (2)["red", "red"]</span>
-<span class="token comment">// (2)["green", "green"]</span>
-<span class="token comment">// (2)["blue", "blue"]</span>
+<span class="hljs-comment">// 返回键值对</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> set.<span class="hljs-title function_">entries</span>()) &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(item);
+&#125;
+<span class="hljs-comment">// (2)[&quot;red&quot;, &quot;red&quot;]</span>
+<span class="hljs-comment">// (2)[&quot;green&quot;, &quot;green&quot;]</span>
+<span class="hljs-comment">// (2)[&quot;blue&quot;, &quot;blue&quot;]</span>
 
-<span class="token comment">// 直接遍历</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> x <span class="token keyword">of</span> set<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// red</span>
-<span class="token comment">// green</span>
-<span class="token comment">// blue</span>
+<span class="hljs-comment">// 直接遍历</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x <span class="hljs-keyword">of</span> set) &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);
+&#125;
+<span class="hljs-comment">// red</span>
+<span class="hljs-comment">// green</span>
+<span class="hljs-comment">// blue</span>
 
-set<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> key</span><span class="token punctuation">)</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>key <span class="token operator">+</span> <span class="token string">' : '</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment">// red : red</span>
-<span class="token comment">// green : green</span>
-<span class="token comment">// blue : blue</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+set.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">value, key</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(key + <span class="hljs-string">&#x27; : &#x27;</span> + value))
+<span class="hljs-comment">// red : red</span>
+<span class="hljs-comment">// green : green</span>
+<span class="hljs-comment">// blue : blue</span></code></pre>
 
 <hr>
 <h2 id="2-Map-数据结构"><a href="#2-Map-数据结构" class="headerlink" title="2 | Map 数据结构"></a>2 | <code>Map</code> 数据结构</h2><blockquote>
 <p>JavaScript 的对象（<code>Object</code>），本质上是 <strong>键值对</strong> 的集合（<code>Hash</code> 结构），但是传统上只能用 <strong>字符串</strong> 当作键。这给它的使用带来了很大的限制。<br>为了解决这个问题，ES6 提供了 <code>Map</code> 数据结构。它类似于对象，也是 <strong>键值对</strong> 的集合，但是 <strong>“键”</strong> 的范围 <strong>不限于字符串</strong>，各种类型的值（包括对象）都可以当作键。也就是说，<code>Object</code> 结构提供了 <strong>“字符串 — 值”</strong> 的对应，<code>Map</code> 结构提供了 <strong>“值 — 值”</strong> 的对应，是一种更完善的 <code>Hash</code> 结构实现。如果你需要 <strong>“键值对”</strong> 的数据结构，<code>Map</code> 比 <code>Object</code> 更合适。</p>
 </blockquote>
 <p>来一段对比的例子：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> key <span class="token operator">=</span> <span class="token punctuation">&#123;</span> key<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> data = &#123;&#125;;
+<span class="hljs-keyword">const</span> key = &#123; <span class="hljs-attr">key</span>: <span class="hljs-number">1</span> &#125;;
 
-data<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Value'</span><span class="token punctuation">;</span>
+data[key] = <span class="hljs-string">&#x27;Value&#x27;</span>;
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>        <span class="token comment">// &#123; '[object Object]': 'Value' &#125;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>   <span class="token comment">// Value</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)        <span class="hljs-comment">// &#123; &#x27;[object Object]&#x27;: &#x27;Value&#x27; &#125;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data[key])   <span class="hljs-comment">// Value</span>
 
-<span class="token keyword">const</span> key2 <span class="token operator">=</span> <span class="token punctuation">&#123;</span> key<span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-data<span class="token punctuation">[</span>key2<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Key2 Value'</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">const</span> key2 = &#123; <span class="hljs-attr">key</span>: <span class="hljs-number">2</span> &#125;;
+data[key2] = <span class="hljs-string">&#x27;Key2 Value&#x27;</span>;
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>   <span class="token comment">// Key2 Value</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>key2<span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment">// Key2 Value</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>        <span class="token comment">// &#123; '[object Object]': 'Key2 Value' &#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data[key])   <span class="hljs-comment">// Key2 Value</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data[key2])  <span class="hljs-comment">// Key2 Value</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)        <span class="hljs-comment">// &#123; &#x27;[object Object]&#x27;: &#x27;Key2 Value&#x27; &#125;</span></code></pre>
 <p>上面代码原意是将一个 对象<code>key</code> 作为 对象<code>data</code> 的<strong>键</strong>，但是由于对象<strong>只接受字符串</strong>作为键名，所以<code>key</code>被自动转为字符串 <code>[object Object]</code>。<br>虽然也能用 <code>data[key]</code> 来调用，但实质是把 <code>key</code> 自动转换成了字符串 <code>[object Object]</code> 来调用，所以当有设置多个对象作为键的时候就会覆盖原先的属性。</p>
 <p>下边的代码使用 <code>Map</code> 结构的<code>set</code>方法，将上面的代码进行复原：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> key <span class="token operator">=</span> <span class="token punctuation">&#123;</span> key<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> data = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+<span class="hljs-keyword">const</span> key = &#123; <span class="hljs-attr">key</span>: <span class="hljs-number">1</span> &#125;;
 
-m<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token string">'Value'</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>）  <span class="token comment">// "Value"</span>
+m.<span class="hljs-title function_">set</span>(key, <span class="hljs-string">&#x27;Value&#x27;</span>)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(m.<span class="hljs-title function_">get</span>(key)）  <span class="hljs-comment">// &quot;Value&quot;</span>
 
-<span class="token keyword">const</span> key2 <span class="token operator">=</span> <span class="token punctuation">&#123;</span> key<span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-m<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>key2<span class="token punctuation">,</span> <span class="token string">'Key2 Value'</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key2<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// "Key2 Value"</span>
+<span class="hljs-keyword">const</span> key2 = &#123; <span class="hljs-attr">key</span>: <span class="hljs-number">2</span> &#125;;
+m.<span class="hljs-title function_">set</span>(key2, <span class="hljs-string">&#x27;Key2 Value&#x27;</span>)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(m.<span class="hljs-title function_">get</span>(key2))  <span class="hljs-comment">// &quot;Key2 Value&quot;</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-<span class="token comment">// Map &#123; &#123; key: 1 &#125; => 'Value', &#123; key: 2 &#125; => 'Key2 Value' &#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)
+<span class="hljs-comment">// Map &#123; &#123; key: 1 &#125; =&gt; &#x27;Value&#x27;, &#123; key: 2 &#125; =&gt; &#x27;Key2 Value&#x27; &#125;</span></code></pre>
 <p>可以看到 <code>Map</code> 数据结构 可以完美实现原意，使用对象作为 <strong>键</strong>，其它就和对象的结构基本类似。</p>
 <h3 id="Map-结构的实例和-Set-结构一样的属性和相似的操作方法"><a href="#Map-结构的实例和-Set-结构一样的属性和相似的操作方法" class="headerlink" title="Map 结构的实例和 Set 结构一样的属性和相似的操作方法"></a><code>Map</code> 结构的实例和 <code>Set</code> 结构一样的属性和相似的操作方法</h3><blockquote>
 <ul>
 <li>拥有两个属性：<ul>
 <li><code>Map.prototype.constructor</code>：构造函数，返回一个函数，它创建了实例的原型。默认是 <code>Map</code> 函数。</li>
-<li><code>Map.prototype.size</code>：返回 <code>Map</code>对象的键/值对的数量。</li>
+<li><code>Map.prototype.size</code>：返回 <code>Map</code>对象的键&#x2F;值对的数量。</li>
 </ul>
 </li>
 <li>五个操作方法和四个遍历方法：<ul>
@@ -292,7 +295,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li><code>Map.prototype.get(value)</code>：返回键对应的值，如果不存在，则返回 <code>undefined</code>。</li>
 <li><code>Map.prototype.has(value)</code>：返回一个布尔值，表示 Map 实例是否包含键对应的值。</li>
 <li><code>Map.prototype.delete(value)</code>：删除某个元素，返回一个布尔值，表示删除是否成功。</li>
-<li><code>Map.prototype.clear()</code>：移除 Map 对象的所有键/值对，没有返回值。</li>
+<li><code>Map.prototype.clear()</code>：移除 Map 对象的所有键&#x2F;值对，没有返回值。</li>
 </ul>
 </li>
 <li>遍历方法<ul>
@@ -307,83 +310,78 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 </blockquote>
 <p>和 <code>Set</code> 一样，<code>Map</code> 也可以接收传入数组来进行初始化，但是数组内需要是键值对的形式，例如：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 数组 转为 Map</span>
-<span class="token keyword">const</span> data  <span class="token operator">=</span> <span class="token punctuation">[</span>
-  <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'one'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'three'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">]</span>
-<span class="token keyword">const</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span>
-<span class="token comment">// Map(3) &#123;1 => "one", 2 => "two", 3 => "three"&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 数组 转为 Map</span>
+<span class="hljs-keyword">const</span> data  = [
+  [<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;one&#x27;</span>],
+  [<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;two&#x27;</span>],
+  [<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;three&#x27;</span>],
+]
+<span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>(data);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(map)
+<span class="hljs-comment">// Map(3) &#123;1 =&gt; &quot;one&quot;, 2 =&gt; &quot;two&quot;, 3 =&gt; &quot;three&quot;&#125;</span></code></pre>
 <p>对象不是一个可迭代的结构，可以通过 <code>Object.entries()</code> 转换成可迭代结构</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 对象转为 Map</span>
-<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"a"</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span>
-<span class="token comment">// Map(2) &#123;"a" => 1, "b" => 2&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 对象转为 Map</span>
+<span class="hljs-keyword">let</span> obj = &#123;<span class="hljs-string">&quot;a&quot;</span>:<span class="hljs-number">1</span>, <span class="hljs-string">&quot;b&quot;</span>:<span class="hljs-number">2</span>&#125;;
+<span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(obj));
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(map)
+<span class="hljs-comment">// Map(2) &#123;&quot;a&quot; =&gt; 1, &quot;b&quot; =&gt; 2&#125;</span></code></pre>
 
 <p><code>Map</code> 也可以转换回其它数据结构</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// Map 转为数组</span>
-<span class="token keyword">const</span> myMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>foo<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'abc'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-comment">// Map 转为数组</span>
+<span class="hljs-keyword">const</span> myMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>()
+  .<span class="hljs-title function_">set</span>(<span class="hljs-literal">true</span>, <span class="hljs-number">7</span>)
+  .<span class="hljs-title function_">set</span>(&#123;<span class="hljs-attr">foo</span>: <span class="hljs-number">3</span>&#125;, [<span class="hljs-string">&#x27;abc&#x27;</span>]);
 
-<span class="token punctuation">[</span><span class="token operator">...</span>myMap<span class="token punctuation">]</span> <span class="token comment">// 使用 扩展运算符 最简便</span>
-<span class="token comment">// [ [ true, 7 ], [ &#123; foo: 3 &#125;, [ 'abc' ] ] ]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+[...myMap] <span class="hljs-comment">// 使用 扩展运算符 最简便</span>
+<span class="hljs-comment">// [ [ true, 7 ], [ &#123; foo: 3 &#125;, [ &#x27;abc&#x27; ] ] ]</span></code></pre>
 <blockquote>
 <p>如果所有 <code>Map</code> 的键都是字符串，它可以无损地转为对象。</p>
 </blockquote>
 <p>如果有非字符串的键名，那么这个键名会被转成字符串，再作为对象的键名（如本节最开始的Demo所示）</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// Map 转为对象</span>
-<span class="token keyword">function</span> <span class="token function">strMapToObj</span><span class="token punctuation">(</span><span class="token parameter">strMap</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">let</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> <span class="token punctuation">[</span>k<span class="token punctuation">,</span>v<span class="token punctuation">]</span> <span class="token keyword">of</span> strMap<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    obj<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<pre><code class="hljs js"><span class="hljs-comment">// Map 转为对象</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">strMapToObj</span>(<span class="hljs-params">strMap</span>) &#123;
+  <span class="hljs-keyword">let</span> obj = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(<span class="hljs-literal">null</span>);
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> [k,v] <span class="hljs-keyword">of</span> strMap) &#123;
+    obj[k] = v;
+  &#125;
+  <span class="hljs-keyword">return</span> obj;
+&#125;
 
-<span class="token keyword">const</span> myMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'yes'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'no'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">strMapToObj</span><span class="token punctuation">(</span>myMap<span class="token punctuation">)</span>
-<span class="token comment">// &#123; yes: true, no: false &#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">const</span> myMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>()
+  .<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;yes&#x27;</span>, <span class="hljs-literal">true</span>)
+  .<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;no&#x27;</span>, <span class="hljs-literal">false</span>);
+<span class="hljs-title function_">strMapToObj</span>(myMap)
+<span class="hljs-comment">// &#123; yes: true, no: false &#125;</span></code></pre>
 <h3 id="Map-转为-JSON"><a href="#Map-转为-JSON" class="headerlink" title="Map 转为 JSON"></a><code>Map</code> 转为 <code>JSON</code></h3><p><code>Map</code> 转为 <code>JSON</code> 要区分两种情况。一种情况是，<code>Map</code> 的键名 <strong>都是字符串</strong>，这时可以选择转为 对象 <code>JSON</code>。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">strMapToJson</span><span class="token punctuation">(</span><span class="token parameter">strMap</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">return</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token function">strMapToObj</span><span class="token punctuation">(</span>strMap<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">strMapToJson</span>(<span class="hljs-params">strMap</span>) &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-title function_">strMapToObj</span>(strMap));
+&#125;
 
-<span class="token keyword">let</span> myMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'yes'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'no'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">strMapToJson</span><span class="token punctuation">(</span>myMap<span class="token punctuation">)</span>
-<span class="token comment">// '&#123;"yes":true,"no":false&#125;'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">let</span> myMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>().<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;yes&#x27;</span>, <span class="hljs-literal">true</span>).<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;no&#x27;</span>, <span class="hljs-literal">false</span>);
+<span class="hljs-title function_">strMapToJson</span>(myMap)
+<span class="hljs-comment">// &#x27;&#123;&quot;yes&quot;:true,&quot;no&quot;:false&#125;&#x27;</span></code></pre>
 <p>另一种情况是，<code>Map</code> 的键名 <strong>有非字符串</strong>，这时可以选择转为 数组 <code>JSON</code>。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">mapToArrayJson</span><span class="token punctuation">(</span><span class="token parameter">map</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">return</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">...</span>map<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">mapToArrayJson</span>(<span class="hljs-params">map</span>) &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>([...map]);
+&#125;
 
-<span class="token keyword">let</span> myMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>foo<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'abc'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">mapToArrayJson</span><span class="token punctuation">(</span>myMap<span class="token punctuation">)</span>
-<span class="token comment">// '[[true,7],[&#123;"foo":3&#125;,["abc"]]]'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">let</span> myMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>().<span class="hljs-title function_">set</span>(<span class="hljs-literal">true</span>, <span class="hljs-number">7</span>).<span class="hljs-title function_">set</span>(&#123;<span class="hljs-attr">foo</span>: <span class="hljs-number">3</span>&#125;, [<span class="hljs-string">&#x27;abc&#x27;</span>]);
+<span class="hljs-title function_">mapToArrayJson</span>(myMap)
+<span class="hljs-comment">// &#x27;[[true,7],[&#123;&quot;foo&quot;:3&#125;,[&quot;abc&quot;]]]&#x27;</span></code></pre>
 
 <hr>
 <h3 id="JSON-转为-Map"><a href="#JSON-转为-Map" class="headerlink" title="JSON 转为 Map"></a><code>JSON</code> 转为 <code>Map</code></h3><p>这段我直接引用阮一峰老师的文字吧</p>
-<p>正常情况下，所有键名都是字符串。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">jsonToStrMap</span><span class="token punctuation">(</span><span class="token parameter">jsonStr</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">return</span> <span class="token function">objToStrMap</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>jsonStr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<h2 id="正常情况下，所有键名都是字符串。但是，有一种特殊情况，整个-JSON-就是一个数组，且每个数组成员本身，又是一个有两个成员的数组。这时，它可以一一对应地转为-Map。这往往是-Map-转为数组-JSON-的逆操作。"><a href="#正常情况下，所有键名都是字符串。但是，有一种特殊情况，整个-JSON-就是一个数组，且每个数组成员本身，又是一个有两个成员的数组。这时，它可以一一对应地转为-Map。这往往是-Map-转为数组-JSON-的逆操作。" class="headerlink" title="正常情况下，所有键名都是字符串。但是，有一种特殊情况，整个 JSON 就是一个数组，且每个数组成员本身，又是一个有两个成员的数组。这时，它可以一一对应地转为 Map。这往往是 Map 转为数组 JSON 的逆操作。"></a>正常情况下，所有键名都是字符串。<br><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">jsonToStrMap</span>(<span class="hljs-params">jsonStr</span>) &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-title function_">objToStrMap</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(jsonStr));
+&#125;
 
-<span class="token function">jsonToStrMap</span><span class="token punctuation">(</span><span class="token string">'&#123;"yes": true, "no": false&#125;'</span><span class="token punctuation">)</span>
-<span class="token comment">// Map &#123;'yes' => true, 'no' => false&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>但是，有一种特殊情况，整个 <code>JSON</code> 就是一个数组，且每个数组成员本身，又是一个有两个成员的数组。<br>这时，它可以一一对应地转为 <code>Map</code>。这往往是 <code>Map</code> 转为数组 <code>JSON</code> 的逆操作。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">jsonToMap</span><span class="token punctuation">(</span><span class="token parameter">jsonStr</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>jsonStr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<span class="hljs-title function_">jsonToStrMap</span>(<span class="hljs-string">&#x27;&#123;&quot;yes&quot;: true, &quot;no&quot;: false&#125;&#x27;</span>)
+<span class="hljs-comment">// Map &#123;&#x27;yes&#x27; =&gt; true, &#x27;no&#x27; =&gt; false&#125;</span></code></pre><br>但是，有一种特殊情况，整个 <code>JSON</code> 就是一个数组，且每个数组成员本身，又是一个有两个成员的数组。<br>这时，它可以一一对应地转为 <code>Map</code>。这往往是 <code>Map</code> 转为数组 <code>JSON</code> 的逆操作。<br><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">jsonToMap</span>(<span class="hljs-params">jsonStr</span>) &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(jsonStr));
+&#125;
 
-<span class="token function">jsonToMap</span><span class="token punctuation">(</span><span class="token string">'[[true,7],[&#123;"foo":3&#125;,["abc"]]]'</span><span class="token punctuation">)</span>
-<span class="token comment">// Map &#123;true => 7, Object &#123;foo: 3&#125; => ['abc']&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h2 id="3-WeakSet-数据结构"><a href="#3-WeakSet-数据结构" class="headerlink" title="3 | WeakSet 数据结构"></a>3 | <code>WeakSet</code> 数据结构</h2><blockquote>
+<span class="hljs-title function_">jsonToMap</span>(<span class="hljs-string">&#x27;[[true,7],[&#123;&quot;foo&quot;:3&#125;,[&quot;abc&quot;]]]&#x27;</span>)
+<span class="hljs-comment">// Map &#123;true =&gt; 7, Object &#123;foo: 3&#125; =&gt; [&#x27;abc&#x27;]&#125;</span></code></pre></h2><h2 id="3-WeakSet-数据结构"><a href="#3-WeakSet-数据结构" class="headerlink" title="3 | WeakSet 数据结构"></a>3 | <code>WeakSet</code> 数据结构</h2><blockquote>
 <p><code>WeakSet</code> 结构与 <code>Set</code> 类似，也是不重复的值的集合。但是，它与 Set 有两个区别。</p>
 <ol>
 <li><code>WeakSet</code> 的成员只能是 <strong>对象</strong>，而 <strong>不能</strong>是其他类型的值。</li>
@@ -412,44 +410,44 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 <p>我能想到的场景就是判断是否某个对象是否还存在与场景中，🤦‍♂️其它的应用场景我真的想不到了….</p>
 <p>好了，大概看几个演示Demo吧</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-<span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">const</span> arr2 <span class="token operator">=</span> arr
-<span class="token keyword">const</span> arr3 <span class="token operator">=</span> arr
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> ws = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WeakSet</span>();
+<span class="hljs-keyword">const</span> obj = &#123;&#125;
+<span class="hljs-keyword">const</span> arr = []
+<span class="hljs-keyword">const</span> arr2 = arr
+<span class="hljs-keyword">const</span> arr3 = arr
 
-ws<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
-<span class="token comment">// WeakSet &#123;&#123;…&#125;&#125;</span>
-ws<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
-<span class="token comment">// WeakSet &#123;Array(0), &#123;…&#125;&#125;</span>
-ws<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token comment">// Uncaught TypeError: Invalid value used in weak set</span>
-ws<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">)</span>
-<span class="token comment">// Uncaught TypeError: Invalid value used in weak set</span>
+ws.<span class="hljs-title function_">add</span>(obj)
+<span class="hljs-comment">// WeakSet &#123;&#123;…&#125;&#125;</span>
+ws.<span class="hljs-title function_">add</span>(arr)
+<span class="hljs-comment">// WeakSet &#123;Array(0), &#123;…&#125;&#125;</span>
+ws.<span class="hljs-title function_">add</span>(<span class="hljs-number">1</span>)
+<span class="hljs-comment">// Uncaught TypeError: Invalid value used in weak set</span>
+ws.<span class="hljs-title function_">add</span>(<span class="hljs-title class_">NaN</span>)
+<span class="hljs-comment">// Uncaught TypeError: Invalid value used in weak set</span>
 
-ws<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>arr2<span class="token punctuation">)</span>
-<span class="token comment">// WeakSet &#123;Array(0), &#123;…&#125;&#125;</span>
+ws.<span class="hljs-title function_">add</span>(arr2)
+<span class="hljs-comment">// WeakSet &#123;Array(0), &#123;…&#125;&#125;</span>
 
-ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>arr2<span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>arr3<span class="token punctuation">)</span>
-<span class="token comment">// true</span>
+ws.<span class="hljs-title function_">has</span>(obj)
+<span class="hljs-comment">// true</span>
+ws.<span class="hljs-title function_">has</span>(arr)
+<span class="hljs-comment">// true</span>
+ws.<span class="hljs-title function_">has</span>(arr2)
+<span class="hljs-comment">// true</span>
+ws.<span class="hljs-title function_">has</span>(arr3)
+<span class="hljs-comment">// true</span>
 
-ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-<span class="token comment">// false</span>
-ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token comment">// false</span>
+ws.<span class="hljs-title function_">has</span>(&#123;&#125;)
+<span class="hljs-comment">// false</span>
+ws.<span class="hljs-title function_">has</span>([])
+<span class="hljs-comment">// false</span>
 
-ws<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
-<span class="token comment">// false</span>
-ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>arr2<span class="token punctuation">)</span>
-<span class="token comment">// false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ws.<span class="hljs-title function_">delete</span>(arr)
+<span class="hljs-comment">// true</span>
+ws.<span class="hljs-title function_">has</span>(arr)
+<span class="hljs-comment">// false</span>
+ws.<span class="hljs-title function_">has</span>(arr2)
+<span class="hljs-comment">// false</span></code></pre>
 
 
 <hr>
@@ -467,20 +465,20 @@ ws<span class="token punctuation">.</span><span class="token function">has</span
 <p>Vue 的响应式系统不支持 <code>Map</code> 和 <code>Set</code>，也就是说，当 <code>Map</code> 与 <code>Set</code> 里面的元素变化时Vue追踪不到这些变化，因此无法做出响应。</p>
 </blockquote>
 <h3 id="2、为啥把对象设置为Null了，WeakSet-WeakMap-内的成员不会消失"><a href="#2、为啥把对象设置为Null了，WeakSet-WeakMap-内的成员不会消失" class="headerlink" title="2、为啥把对象设置为Null了，WeakSet/WeakMap 内的成员不会消失"></a>2、为啥把对象设置为<code>Null</code>了，<code>WeakSet/WeakMap</code> 内的成员不会消失</h3><p>我在写笔记的时候一直想写一个 WeakSet 的弱引用 Demo，但是一直没有成功，就算把变量设置为 <code>null</code> 了，还能可以能从 <code>WeakSet</code> 里边看到，例如以下代码：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token punctuation">&#123;</span> name<span class="token operator">:</span> <span class="token string">'a'</span> <span class="token punctuation">&#125;</span>
-<span class="token keyword">const</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> a = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;a&#x27;</span> &#125;
+<span class="hljs-keyword">const</span> ws = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WeakSet</span>();
 
-ws<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-<span class="token comment">// WeakSet &#123;&#123;…&#125;&#125;</span>
+ws.<span class="hljs-title function_">add</span>(a)
+<span class="hljs-comment">// WeakSet &#123;&#123;…&#125;&#125;</span>
 
-a <span class="token operator">=</span> <span class="token keyword">null</span>
-<span class="token comment">// null</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ws<span class="token punctuation">)</span>
-<span class="token comment">// WeakSet &#123;&#123;…&#125;&#125;</span>
-<span class="token comment">//  - [[Entries]]</span>
-<span class="token comment">//    - 0:</span>
-<span class="token comment">//      - value: &#123;name: "a"&#125;</span>
-<span class="token comment">// __proto__: WeakSet    </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+a = <span class="hljs-literal">null</span>
+<span class="hljs-comment">// null</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(ws)
+<span class="hljs-comment">// WeakSet &#123;&#123;…&#125;&#125;</span>
+<span class="hljs-comment">//  - [[Entries]]</span>
+<span class="hljs-comment">//    - 0:</span>
+<span class="hljs-comment">//      - value: &#123;name: &quot;a&quot;&#125;</span>
+<span class="hljs-comment">// __proto__: WeakSet    </span></code></pre>
 <p>一个人坐在沙发上纠结了好久，然后还是去群里问了下，得到了一下回复….我是真的没想到🤣</p>
 <blockquote>
 <p>MeatHill：<br>虽然 <code>weak*</code> 允许被回收，但是大多数情况下，<strong>在内存压力不大的时候它不会被回收</strong>，所以一般建议默认它不会被回收。<br>尤其不要在 <code>set</code> 之后立刻看，几乎一定不会被回收。GC (垃圾回收机制)的成本不低，不是时时运转的。</p>

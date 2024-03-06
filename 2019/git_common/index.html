@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -99,45 +102,45 @@
       <!-- 文章内容 article body -->
  
   <article class="article-content">
-    <h2 id="添加文件到仓库-git-add"><a href="#添加文件到仓库-git-add" class="headerlink" title="添加文件到仓库 git add"></a>添加文件到仓库 <code>git add</code></h2><pre class="line-numbers language-none"><code class="language-none">$ git add *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+    <h2 id="添加文件到仓库-git-add"><a href="#添加文件到仓库-git-add" class="headerlink" title="添加文件到仓库 git add"></a>添加文件到仓库 <code>git add</code></h2><pre><code class="hljs plaintext">$ git add *</code></pre>
 
-<h2 id="提交文件到仓库-git-commit"><a href="#提交文件到仓库-git-commit" class="headerlink" title="提交文件到仓库 git commit"></a>提交文件到仓库 <code>git commit</code></h2><pre class="line-numbers language-none"><code class="language-none">$ git commit -m &quot;Here is the message&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="提交文件到仓库-git-commit"><a href="#提交文件到仓库-git-commit" class="headerlink" title="提交文件到仓库 git commit"></a>提交文件到仓库 <code>git commit</code></h2><pre><code class="hljs plaintext">$ git commit -m &quot;Here is the message&quot;</code></pre>
 
 <p><code>commit</code> 命令可以提交多个之前 add 的文件</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git add file1.txt
+<pre><code class="hljs plaintext">$ git add file1.txt
 $ git add file2.txt file3.txt
-$ git commit -m &quot;add 3 files.&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+$ git commit -m &quot;add 3 files.&quot;</code></pre>
 
 <span id="more"></span>
 
 <h2 id="查看当前仓库状态-git-status"><a href="#查看当前仓库状态-git-status" class="headerlink" title="查看当前仓库状态 git status"></a>查看当前仓库状态 <code>git status</code></h2><p>没有需要提交的修改</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git status
+<pre><code class="hljs plaintext">$ git status
 
 On branch master
-nothing to commit, working tree clean<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+nothing to commit, working tree clean</code></pre>
 
 <p>文件有修改</p>
-<pre class="line-numbers language-none"><code class="language-none">$ git status
+<pre><code class="hljs plaintext">$ git status
 
 On branch master
 Changes not staged for commit:
   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
 
-	modified:   readme.txt
+  modified:   readme.txt
 
-no changes added to commit (use &quot;git add&quot; and&#x2F;or &quot;git commit -a&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
 
-<h2 id="查看差异-git-diff"><a href="#查看差异-git-diff" class="headerlink" title="查看差异 git diff"></a>查看差异 <code>git diff</code></h2><pre class="line-numbers language-none"><code class="language-none">$ git diff readme.txt
+<h2 id="查看差异-git-diff"><a href="#查看差异-git-diff" class="headerlink" title="查看差异 git diff"></a>查看差异 <code>git diff</code></h2><pre><code class="hljs plaintext">$ git diff readme.txt
 
-diff --git a&#x2F;readme.txt b&#x2F;readme.txt
+diff --git a/readme.txt b/readme.txt
 index 46d49bf..9247db6 100644
---- a&#x2F;readme.txt
-+++ b&#x2F;readme.txt
+--- a/readme.txt
++++ b/readme.txt
 @@ -1,2 +1,2 @@
 -Git is a version control system.
 +Git is a distributed version control system.
- Git is free software.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ Git is free software.</code></pre>
 
 <h2 id="查看日志-git-log-详细"><a href="#查看日志-git-log-详细" class="headerlink" title="查看日志 git log 详细"></a>查看日志 <code>git log</code> <sub><a target="_blank" rel="noopener" href="http://yogwang.github.io/2019/git_log/">详细</a></sub></h2><ul>
 <li><code>git log</code> 查看提交日志</li>
@@ -155,17 +158,17 @@ index 46d49bf..9247db6 100644
 <p>上上一个版本就是 HEAD^^</p>
 <p>当然往上 n 个版本写 n 个^比较容易数不过来，所以写成 HEAD~n</p>
 <p>~n 相当于连续的 n 个”^”</p>
-<h2 id="git-reset-hard-HEAD"><a href="#git-reset-hard-HEAD" class="headerlink" title="git reset --hard HEAD^"></a><code>git reset --hard HEAD^</code></h2><pre class="line-numbers language-none"><code class="language-none">$ git reset --hard HEAD^
+<h2 id="git-reset-hard-HEAD"><a href="#git-reset-hard-HEAD" class="headerlink" title="git reset --hard HEAD^"></a><code>git reset --hard HEAD^</code></h2><pre><code class="hljs plaintext">$ git reset --hard HEAD^
 
-HEAD is now at e475afc add distributed<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+HEAD is now at e475afc add distributed</code></pre>
 
 <h2 id="git-reset-hard-commit-id"><a href="#git-reset-hard-commit-id" class="headerlink" title="git reset --hard commit_id"></a><code>git reset --hard commit_id</code></h2><p>也可以直接切换到某个版本，版本号可以不写全，前 4 位就可以了，Git 会自动去找，也可以 Tab 补全</p>
-<h2 id="查看操作日志-git-reflog"><a href="#查看操作日志-git-reflog" class="headerlink" title="查看操作日志 git reflog"></a>查看操作日志 <code>git reflog</code></h2><pre class="line-numbers language-none"><code class="language-none">$ git reflog
+<h2 id="查看操作日志-git-reflog"><a href="#查看操作日志-git-reflog" class="headerlink" title="查看操作日志 git reflog"></a>查看操作日志 <code>git reflog</code></h2><pre><code class="hljs plaintext">$ git reflog
 
 77ac955 (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to HEAD~2
-2c8fcc8 (origin&#x2F;master) HEAD@&#123;1&#125;: commit: wrote a readme file
+2c8fcc8 (origin/master) HEAD@&#123;1&#125;: commit: wrote a readme file
 87c9d12 HEAD@&#123;2&#125;: commit: add distributed
-77ac955 (HEAD -&gt; master) HEAD@&#123;3&#125;: commit (initial): wrote a readme file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+77ac955 (HEAD -&gt; master) HEAD@&#123;3&#125;: commit (initial): wrote a readme file</code></pre>
  
   </article>
 

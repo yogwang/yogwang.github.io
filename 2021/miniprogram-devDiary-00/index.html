@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -114,25 +117,25 @@
 <blockquote>
 <p>tips：在小程序中使用npm包前，需先构建 npm</p>
 </blockquote>
-<h4 id="❓-尺寸单位-rpx-应该怎么去理解"><a href="#❓-尺寸单位-rpx-应该怎么去理解" class="headerlink" title="❓ 尺寸单位 rpx 应该怎么去理解"></a>❓ 尺寸单位 <code>rpx</code> 应该怎么去理解</h4><p>正常来说，在网页端我们基本都是使用 <code>px</code>/<code>em</code>/<code>rem</code> 这类的常规单位，然后按照不同的设备尺寸去适配，但是小程序有一个 <code>rpx</code> 单位，可以根据屏幕宽度进行自适应，怎么去理解呢？<br>其实就是<strong>看设计稿</strong>，因为 <code>rpx</code> 默认屏幕宽为 <code>750rpx</code> ，所以如果UI给的设计稿为 <code>750px</code> 则 <code>1rpx</code> 趋近于 <code>0.5px</code> 或者 <code>1pt</code> 因为大部分设备 <code>DPR = 2</code>，如果设计稿是 <code>375px</code> 宽度的则 <strong>1：1</strong> 转换就可。一句话形容就是<strong>按照设计稿的宽度除以 <code>750</code> 再乘以 2 来计算</strong>。</p>
+<h4 id="❓-尺寸单位-rpx-应该怎么去理解"><a href="#❓-尺寸单位-rpx-应该怎么去理解" class="headerlink" title="❓ 尺寸单位 rpx 应该怎么去理解"></a>❓ 尺寸单位 <code>rpx</code> 应该怎么去理解</h4><p>正常来说，在网页端我们基本都是使用 <code>px</code>&#x2F;<code>em</code>&#x2F;<code>rem</code> 这类的常规单位，然后按照不同的设备尺寸去适配，但是小程序有一个 <code>rpx</code> 单位，可以根据屏幕宽度进行自适应，怎么去理解呢？<br>其实就是<strong>看设计稿</strong>，因为 <code>rpx</code> 默认屏幕宽为 <code>750rpx</code> ，所以如果UI给的设计稿为 <code>750px</code> 则 <code>1rpx</code> 趋近于 <code>0.5px</code> 或者 <code>1pt</code> 因为大部分设备 <code>DPR = 2</code>，如果设计稿是 <code>375px</code> 宽度的则 <strong>1：1</strong> 转换就可。一句话形容就是<strong>按照设计稿的宽度除以 <code>750</code> 再乘以 2 来计算</strong>。</p>
 <h4 id="❓-小程序是否支持CSS预处理器"><a href="#❓-小程序是否支持CSS预处理器" class="headerlink" title="❓ 小程序是否支持CSS预处理器"></a>❓ 小程序是否支持CSS预处理器</h4><p>不支持，但是你可以自己处理成 <code>.wxss</code>，具体可以查看这篇文章： 📍<a target="_blank" rel="noopener" href="http://localhost:4000/2021/use-stylus-with-gulp-in-miniprogram/">在小程序中使用CSS预处理器</a></p>
 <h4 id="❓-Component-如何使用-properties-中的-observer"><a href="#❓-Component-如何使用-properties-中的-observer" class="headerlink" title="❓ Component 如何使用 properties 中的 observer"></a>❓ <code>Component</code> 如何使用 <code>properties</code> 中的 <code>observer</code></h4><p>很简单就是在 <code>properties</code> 声明对外属性的时候增加一个 <code>observer</code> ，然后就和 <code>VueJs</code> 当中的 <code>watch</code> 一样使用了。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  properties<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    attr<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      type<span class="token operator">:</span> String<span class="token punctuation">,</span>
-      value<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
-      <span class="token function-variable function">observer</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">newVal<span class="token punctuation">,</span> oldVal</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 属性值变化时执行</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-title class_">Component</span>(&#123;
+  <span class="hljs-attr">properties</span>: &#123;
+    <span class="hljs-attr">attr</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+      <span class="hljs-attr">observer</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">newVal, oldVal</span>) &#123;
+        <span class="hljs-comment">// 属性值变化时执行</span>
+      &#125;
+    &#125;,
+  &#125;
+&#125;)</code></pre>
 <p>然后 自定义组件 下也有一个 <code>observers</code> 参数的，可以监听 <code>properties</code> 和 <code>data</code> 的变化。具体查看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/observer.html">数据监听器 | 微信开放文档</a></p>
 <h4 id="❓-bindtap-绑定的函数怎么传入自定义参数"><a href="#❓-bindtap-绑定的函数怎么传入自定义参数" class="headerlink" title="❓ bindtap 绑定的函数怎么传入自定义参数"></a>❓ <code>bindtap</code> 绑定的函数怎么传入自定义参数</h4><p>使用 <code>dataset</code>，例如：<code>&lt;view id=&quot;tapTest&quot; data-hi=&quot;Weixin&quot; bindtap=&quot;&#123;&#123;tapName&#125;&#125;&quot;&gt; Click me! &lt;/view&gt;</code>，具体可以看 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html#%E4%BA%8B%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F">事件 | 微信开放文档</a>。是不是有点蠢….</p>
 <h4 id="❓-事件如何绑定在按键上"><a href="#❓-事件如何绑定在按键上" class="headerlink" title="❓ 事件如何绑定在按键上"></a>❓ 事件如何绑定在按键上</h4><p>使用 <code>bindtap</code> 等绑定事件 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html#%E4%BA%8B%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F">事件的使用方式</a></p>
 <h4 id="❓-是否有组件-slot"><a href="#❓-是否有组件-slot" class="headerlink" title="❓ 是否有组件 slot"></a>❓ 是否有组件 <code>slot</code></h4><p>有，组件提供一个 <code>&lt;slot&gt;</code> 节点，具体文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html">组件模板和样式 | 微信开放文档</a></p>
-<h4 id="❓-组件间通信方法-事件"><a href="#❓-组件间通信方法-事件" class="headerlink" title="❓ 组件间通信方法/事件"></a>❓ 组件间通信方法/事件</h4><p>类似 <code>Vue</code> 中的 <code>$emit</code> 方法， <code>this.triggerEvent(&quot;myEventName&quot;, myEventDetail, myEventOption)</code>，文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/events.html">组件间通信与事件 | 微信开放文档</a></p>
+<h4 id="❓-组件间通信方法-事件"><a href="#❓-组件间通信方法-事件" class="headerlink" title="❓ 组件间通信方法&#x2F;事件"></a>❓ 组件间通信方法&#x2F;事件</h4><p>类似 <code>Vue</code> 中的 <code>$emit</code> 方法， <code>this.triggerEvent(&quot;myEventName&quot;, myEventDetail, myEventOption)</code>，文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/events.html">组件间通信与事件 | 微信开放文档</a></p>
 <h4 id="❓-双向绑定的-properties-属性变更父级没有同步改变"><a href="#❓-双向绑定的-properties-属性变更父级没有同步改变" class="headerlink" title="❓ 双向绑定的 properties 属性变更父级没有同步改变"></a>❓ 双向绑定的 <code>properties</code> 属性变更父级没有同步改变</h4><p>绑定 <code>properties</code> 的时候不要使用驼峰写法，请使用短横线命名(<code>-</code>分割) </p>
 <h4 id="❓-双向绑定的变量在键盘唤起时不会更新长度改变"><a href="#❓-双向绑定的变量在键盘唤起时不会更新长度改变" class="headerlink" title="❓ 双向绑定的变量在键盘唤起时不会更新长度改变"></a>❓ 双向绑定的变量在键盘唤起时不会更新长度改变</h4><p>在安卓出现这个问题，但是iOS没有复现问题，在视图层直接使用 <code>content.length</code>，在唤起键盘时键入文字，不会实时改变 <code>length</code> 的数字，只有在收起键盘时才会更新。<br><strong>解决办法:</strong> 不使用双向绑定，使用 <code>bindinput</code> 去监听改变手动去 <code>setData</code> 就可以了。</p>
 <h4 id="❓-小程序iOS端不支持-Promise-finally"><a href="#❓-小程序iOS端不支持-Promise-finally" class="headerlink" title="❓ 小程序iOS端不支持 Promise.finally()"></a>❓ 小程序iOS端不支持 <code>Promise.finally()</code></h4><p>Vue 项目中很多时候我都会写 <code>Promise.finally()</code> 来把一些成功失败都会执行的操作放在内部，但是小程序对于 <code>Promise</code> 的支持是不完全的，所以没办法使用 <code>Promise.finally()</code></p>
@@ -142,7 +145,7 @@
 <li><p>更新 <strong>[2021-11-25]</strong> - 现在iOS使用 <code>Promise.finally()</code> 已经不会报错了（基础库 <code>v2.21.0</code>），具体是哪一个版本修复的就不清楚了 😂</p>
 </li>
 </ol>
-<h4 id="❓-小程序开发工具的调试模式能不能热更新-局部刷新，每次重新编译好麻烦"><a href="#❓-小程序开发工具的调试模式能不能热更新-局部刷新，每次重新编译好麻烦" class="headerlink" title="❓ 小程序开发工具的调试模式能不能热更新/局部刷新，每次重新编译好麻烦"></a>❓ 小程序开发工具的调试模式能不能热更新/局部刷新，每次重新编译好麻烦</h4><p>不能，(当前版本<code>v2.16.0</code>)，现在每次改动都会重新编译一次，文件越多编译越慢，如果一直改动比较频繁的话的话，可以在开发者工具顶部的编译模式中添加编译模式选择指定页面以及参数信息，期待以后会支持局步热更新吧….</p>
+<h4 id="❓-小程序开发工具的调试模式能不能热更新-局部刷新，每次重新编译好麻烦"><a href="#❓-小程序开发工具的调试模式能不能热更新-局部刷新，每次重新编译好麻烦" class="headerlink" title="❓ 小程序开发工具的调试模式能不能热更新&#x2F;局部刷新，每次重新编译好麻烦"></a>❓ 小程序开发工具的调试模式能不能热更新&#x2F;局部刷新，每次重新编译好麻烦</h4><p>不能，(当前版本<code>v2.16.0</code>)，现在每次改动都会重新编译一次，文件越多编译越慢，如果一直改动比较频繁的话的话，可以在开发者工具顶部的编译模式中添加编译模式选择指定页面以及参数信息，期待以后会支持局步热更新吧….</p>
 <h4 id="❓-小程序-input-组件设置-letter-spacing-无效"><a href="#❓-小程序-input-组件设置-letter-spacing-无效" class="headerlink" title="❓ 小程序 input 组件设置 letter-spacing 无效"></a>❓ 小程序 <code>input</code> 组件设置 <code>letter-spacing</code> 无效</h4><p>暂时没办法，想着用间隔来实现验证码方块之类的效果，可是不行，官方虽然说可以，但实现不了，暂时增加了输入框宽度，然后 <code>transform</code> 偏移光标部分到可视区域外，然后使用多 <code>view</code> 标签 + CSS样式模拟激活光标和文字间距</p>
 <h4 id="❓-图片内容自适应容器"><a href="#❓-图片内容自适应容器" class="headerlink" title="❓ 图片内容自适应容器"></a>❓ 图片内容自适应容器</h4><p><code>&lt;image mode=&quot;aspectFit&quot;&gt;&lt;/image&gt;</code>，根据 <code>mode</code> 值来达到目标:</p>
 <ul>
@@ -155,11 +158,11 @@
 <h4 id="❓-自定义组件无法应用-app-wxss-中的样式"><a href="#❓-自定义组件无法应用-app-wxss-中的样式" class="headerlink" title="❓ 自定义组件无法应用 app.wxss 中的样式"></a>❓ 自定义组件无法应用 <code>app.wxss</code> 中的样式</h4><blockquote>
 <p>除继承样式外， app.wxss 中的样式、组件所在页面的的样式对自定义组件无效（除非更改组件样式隔离选项）。<br>修改一下组件的 <code>addGlobalClass</code> 选项就可以了。<small><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html#%E7%BB%84%E4%BB%B6%E6%A0%B7%E5%BC%8F%E9%9A%94%E7%A6%BB">具体文档</a></small></p>
 </blockquote>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  options<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    addGlobalClass<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-title class_">Component</span>(&#123;
+  <span class="hljs-attr">options</span>: &#123;
+    <span class="hljs-attr">addGlobalClass</span>: <span class="hljs-literal">true</span>,
+  &#125;
+&#125;)</code></pre>
 
 <h4 id="❓-每次运行都会出现“AppRoute的监听器可能导致内存泄漏”的警告"><a href="#❓-每次运行都会出现“AppRoute的监听器可能导致内存泄漏”的警告" class="headerlink" title="❓ 每次运行都会出现“AppRoute的监听器可能导致内存泄漏”的警告"></a>❓ 每次运行都会出现“AppRoute的监听器可能导致内存泄漏”的警告</h4><blockquote>
 <p>每次运行都会出现该提示： <code>[Event] 21 listeners of event AppRoute have been added, possibly causing memory leak.</code></p>

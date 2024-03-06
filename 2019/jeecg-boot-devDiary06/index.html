@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -100,7 +103,7 @@
  
   <article class="article-content">
     <blockquote>
-<p>这个富文本组件本质是 <code>TinyMCE</code> <a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce">github.com/tinymce/tinymce</a>，<br>在 Vue 项目中使用的封装库 <a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce-vue">github.com/tinymce/tinymce-vue</a></p>
+<p>这个富文本组件本质是 <code>TinyMCE</code> <a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce">github.com&#x2F;tinymce&#x2F;tinymce</a>，<br>在 Vue 项目中使用的封装库 <a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce-vue">github.com&#x2F;tinymce&#x2F;tinymce-vue</a></p>
 </blockquote>
 <p>Github 上有一个人回复了，框架是使用的 <a target="_blank" rel="noopener" href="https://www.tiny.cloud/">TinyMCE</a> 这个富文本编辑器的 <a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce-vue">封装库</a>，<br>所以在其手册里找到了，修改 <a target="_blank" rel="noopener" href="https://www.tiny.cloud/docs/configure/file-image-upload">上传方式的部分</a></p>
 <span id="more"></span>
@@ -116,56 +119,56 @@
 <p>此项使您可以指定上传处理的 URL 地址。 每当调用 <code>editor.uploadImages()</code> 或启用了 <code>automatic_uploads</code> 功能，则会自动触发上传。 上传处理程序应以以下格式返回上传文件的新位置：</p>
 <p><code>&#123; &quot;location&quot;: &quot;folder/sub-folder/new-location.png&quot; &#125;</code></p>
 </blockquote>
-<h4 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h4><pre class="line-numbers language-js" data-language="js"><code class="language-js">tinymce<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  selector<span class="token operator">:</span> <span class="token string">"textarea"</span><span class="token punctuation">,</span> <span class="token comment">// change this value according to your HTML</span>
-  automatic_uploads<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  images_upload_url<span class="token operator">:</span> <span class="token string">"postAcceptor.php"</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h4><pre><code class="hljs js">tinymce.<span class="hljs-title function_">init</span>(&#123;
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&quot;textarea&quot;</span>, <span class="hljs-comment">// change this value according to your HTML</span>
+  <span class="hljs-attr">automatic_uploads</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">images_upload_url</span>: <span class="hljs-string">&quot;postAcceptor.php&quot;</span>
+&#125;);</code></pre>
 
 <h3 id="自动拼接-base-url-在上传成功返回的图片地址之前"><a href="#自动拼接-base-url-在上传成功返回的图片地址之前" class="headerlink" title="自动拼接 base_url 在上传成功返回的图片地址之前"></a>自动拼接 <code>base_url</code> 在上传成功返回的图片地址之前</h3><blockquote>
 <h3 id="images-upload-base-path"><a href="#images-upload-base-path" class="headerlink" title="#images_upload_base_path"></a>#images_upload_base_path</h3><p>This option lets you specify a basepath to prepend to URLs returned from the configured images_upload_url page.</p>
 <p>通过此项，可以指定 <code>base_path</code>，并拼接在 <code>images_upload_url</code> 返回的 URL 之前。</p>
 </blockquote>
-<h4 id="例子：-1"><a href="#例子：-1" class="headerlink" title="例子："></a>例子：</h4><pre class="line-numbers language-js" data-language="js"><code class="language-js">tinymce<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  selector<span class="token operator">:</span> <span class="token string">"textarea"</span><span class="token punctuation">,</span> <span class="token comment">// change this value according to your HTML</span>
-  automatic_uploads<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  images_upload_url<span class="token operator">:</span> <span class="token string">"postAcceptor.php"</span><span class="token punctuation">,</span>
-  images_upload_base_path<span class="token operator">:</span> <span class="token string">"/some/basepath"</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="例子：-1"><a href="#例子：-1" class="headerlink" title="例子："></a>例子：</h4><pre><code class="hljs js">tinymce.<span class="hljs-title function_">init</span>(&#123;
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&quot;textarea&quot;</span>, <span class="hljs-comment">// change this value according to your HTML</span>
+  <span class="hljs-attr">automatic_uploads</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">images_upload_url</span>: <span class="hljs-string">&quot;postAcceptor.php&quot;</span>,
+  <span class="hljs-attr">images_upload_base_path</span>: <span class="hljs-string">&quot;/some/basepath&quot;</span>
+&#125;);</code></pre>
 
 <h2 id="自定义上传方法"><a href="#自定义上传方法" class="headerlink" title="自定义上传方法"></a>自定义上传方法</h2><blockquote>
 <h3 id="images-upload-handler"><a href="#images-upload-handler" class="headerlink" title="#images_upload_handler"></a>#images_upload_handler</h3><p>The images_upload_handler option allows you to specify a function that is used to replace TinyMCE’s default JavaScript upload handler function with custom logic.<br>The upload handler function takes three arguments: blobInfo, a success callback, and a failure callback. When this option is not set, TinyMCE utilizes an XMLHttpRequest to upload images one at a time to the server and calls the success callback with the location of the remote image.</p>
 <p><code>images_upload_handler</code> 可让指定一个函数，该函数用于用自定义逻辑替换 <code>TinyMCE</code> 默认的 JavaScript 上传函数。<br>上传函数采用三个参数：<code>blobInfo</code>, <code>success</code> 回调和 <code>failure</code> 回调，如果此项未设置，则 <code>TinyMCE</code> 会利用 <code>XMLHttpRequest</code> 一次一个将图像上传到服务器，并调用 <code>success</code> 回调 返回的 <code>URL</code> 地址。</p>
 </blockquote>
 <blockquote>
-<p>Note: Please note that when using this option, no other image uploader options are necessary. Additionally, if you would like TinyMCE to replace the <image> tag’s src attribute with the remote location, please use the success callback defined in the images_upload_handler function with the returned JSON object’s location property.</image></p>
+<p>Note: Please note that when using this option, no other image uploader options are necessary. Additionally, if you would like TinyMCE to replace the <image> tag’s src attribute with the remote location, please use the success callback defined in the images_upload_handler function with the returned JSON object’s location property.</p>
 <p>提示：请注意，使用此项时，不要使用其他图像上传器选项。 此外，如果您希望 <code>TinyMCE</code> 将 <code>&lt;image&gt;</code> 标签的 <code>src</code> 属性替换为远程位置，请使用 <code>images_upload_handler</code> 函数中定义的成功回调 和 返回的 <code>JSON</code> 对象的 <code>location</code> 属性。</p>
 </blockquote>
-<h4 id="例子：-2"><a href="#例子：-2" class="headerlink" title="例子："></a>例子：</h4><pre class="line-numbers language-js" data-language="js"><code class="language-js">tinymce<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  selector<span class="token operator">:</span> <span class="token string">"textarea"</span><span class="token punctuation">,</span> <span class="token comment">// change this value according to your HTML</span>
-  <span class="token function-variable function">images_upload_handler</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">blobInfo<span class="token punctuation">,</span> success<span class="token punctuation">,</span> failure</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> xhr<span class="token punctuation">,</span> formData<span class="token punctuation">;</span>
-    xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    xhr<span class="token punctuation">.</span>withCredentials <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token string">"postAcceptor.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    xhr<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">var</span> json<span class="token punctuation">;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">!=</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token function">failure</span><span class="token punctuation">(</span><span class="token string">"HTTP Error: "</span> <span class="token operator">+</span> xhr<span class="token punctuation">.</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span><span class="token punctuation">;</span>
-      <span class="token punctuation">&#125;</span>
-      json <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>json <span class="token operator">||</span> <span class="token keyword">typeof</span> json<span class="token punctuation">.</span>location <span class="token operator">!=</span> <span class="token string">"string"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token function">failure</span><span class="token punctuation">(</span><span class="token string">"Invalid JSON: "</span> <span class="token operator">+</span> xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span><span class="token punctuation">;</span>
-      <span class="token punctuation">&#125;</span>
-      <span class="token function">success</span><span class="token punctuation">(</span>json<span class="token punctuation">.</span>location<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-    formData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    formData<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"file"</span><span class="token punctuation">,</span> blobInfo<span class="token punctuation">.</span><span class="token function">blob</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> blobInfo<span class="token punctuation">.</span><span class="token function">filename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>formData<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="例子：-2"><a href="#例子：-2" class="headerlink" title="例子："></a>例子：</h4><pre><code class="hljs js">tinymce.<span class="hljs-title function_">init</span>(&#123;
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&quot;textarea&quot;</span>, <span class="hljs-comment">// change this value according to your HTML</span>
+  <span class="hljs-attr">images_upload_handler</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">blobInfo, success, failure</span>) &#123;
+    <span class="hljs-keyword">var</span> xhr, formData;
+    xhr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>();
+    xhr.<span class="hljs-property">withCredentials</span> = <span class="hljs-literal">false</span>;
+    xhr.<span class="hljs-title function_">open</span>(<span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;postAcceptor.php&quot;</span>);
+    xhr.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+      <span class="hljs-keyword">var</span> json;
+      <span class="hljs-keyword">if</span> (xhr.<span class="hljs-property">status</span> != <span class="hljs-number">200</span>) &#123;
+        <span class="hljs-title function_">failure</span>(<span class="hljs-string">&quot;HTTP Error: &quot;</span> + xhr.<span class="hljs-property">status</span>);
+        <span class="hljs-keyword">return</span>;
+      &#125;
+      json = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(xhr.<span class="hljs-property">responseText</span>);
+      <span class="hljs-keyword">if</span> (!json || <span class="hljs-keyword">typeof</span> json.<span class="hljs-property">location</span> != <span class="hljs-string">&quot;string&quot;</span>) &#123;
+        <span class="hljs-title function_">failure</span>(<span class="hljs-string">&quot;Invalid JSON: &quot;</span> + xhr.<span class="hljs-property">responseText</span>);
+        <span class="hljs-keyword">return</span>;
+      &#125;
+      <span class="hljs-title function_">success</span>(json.<span class="hljs-property">location</span>);
+    &#125;;
+    formData = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormData</span>();
+    formData.<span class="hljs-title function_">append</span>(<span class="hljs-string">&quot;file&quot;</span>, blobInfo.<span class="hljs-title function_">blob</span>(), blobInfo.<span class="hljs-title function_">filename</span>());
+    xhr.<span class="hljs-title function_">send</span>(formData);
+  &#125;
+&#125;);</code></pre>
 
 <h2 id="疑问？"><a href="#疑问？" class="headerlink" title="疑问？"></a>疑问？</h2><h4 id="1-使用编辑器内置的图片上传方法，为何拼接的是当前的-domain-URL-而不是-base-url"><a href="#1-使用编辑器内置的图片上传方法，为何拼接的是当前的-domain-URL-而不是-base-url" class="headerlink" title="1.使用编辑器内置的图片上传方法，为何拼接的是当前的 domain URL,而不是 base_url"></a>1.使用编辑器内置的图片上传方法，为何拼接的是当前的 <code>domain URL</code>,而不是 <code>base_url</code></h4><ul>
 <li>使用完整的 URL 地址即可 <code>images_upload_url:&#39;http://www.domain.com/project/Controller/fanction&#39;</code></li>
@@ -181,7 +184,7 @@
 <h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot/issues/685">ISSUES_富文本组件使用方法 #685</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.tiny.cloud/">TinyMCE</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce-vue">github.com/tinymce/tinymce-vue</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tinymce/tinymce-vue">github.com&#x2F;tinymce&#x2F;tinymce-vue</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/huffmans/article/details/84381481">TinyMCE 使用绝对路径</a></li>
 </ul>
  

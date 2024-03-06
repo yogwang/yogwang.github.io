@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -104,31 +107,31 @@
 <span id="more"></span>
 
 <p>简单上一个 <code>.forEach</code> 的例子</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
-arr1<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item <span class="token operator">=</span> <span class="token string">'a'</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr1<span class="token punctuation">)</span>
-<span class="token comment">// (3) [1, 2, 3]</span>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+arr1.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item = <span class="hljs-string">&#x27;a&#x27;</span>)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr1)
+<span class="hljs-comment">// (3) [1, 2, 3]</span>
 
-<span class="token keyword">const</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span>
-arr2<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr2<span class="token punctuation">)</span>
-<span class="token comment">// (3) ['a', 'b', 'c']</span>
+<span class="hljs-keyword">const</span> arr2 = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>]
+arr2.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item = <span class="hljs-number">1</span>)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr2)
+<span class="hljs-comment">// (3) [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]</span>
 
-<span class="token keyword">const</span> arr3 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span>a<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>a<span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>a<span class="token operator">:</span><span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span>
-arr3<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token string">'a'</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr3<span class="token punctuation">)</span>
-<span class="token comment">// (3) [&#123;a: 'a'&#125;, &#123;a: 'a'&#125;, &#123;a: 'a'&#125;]</span>
+<span class="hljs-keyword">const</span> arr3 = [&#123;<span class="hljs-attr">a</span>:<span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-attr">a</span>:<span class="hljs-number">2</span>&#125;, &#123;<span class="hljs-attr">a</span>:<span class="hljs-number">3</span>&#125;]
+arr3.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">a</span> = <span class="hljs-string">&#x27;a&#x27;</span>)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr3)
+<span class="hljs-comment">// (3) [&#123;a: &#x27;a&#x27;&#125;, &#123;a: &#x27;a&#x27;&#125;, &#123;a: &#x27;a&#x27;&#125;]</span>
 
-<span class="token keyword">const</span> arr4 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-arr4<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'a'</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr4<span class="token punctuation">)</span>
-<span class="token comment">// (3) [['a'], ['a'], ['a']]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">const</span> arr4 = [[<span class="hljs-number">1</span>], [<span class="hljs-number">2</span>], [<span class="hljs-number">3</span>]]
+arr4.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;a&#x27;</span>)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr4)
+<span class="hljs-comment">// (3) [[&#x27;a&#x27;], [&#x27;a&#x27;], [&#x27;a&#x27;]]</span></code></pre>
 
 <p>从以上例子里面可以很直接的看到结果，把 <code>.forEach()</code> 替换成 <code>.map()</code> 是一样的效果。说简单的一点就是深浅拷贝的问题， <code>.forEach()</code> 和 <code>.map()</code> 都只对第一层进行了复制，其内部的属性还是引用的内存地址。<br>所以其实是如果你是直接修改的整个元素就不会影响到原数组，比如说：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span>a<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>a<span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>a<span class="token operator">:</span><span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span>
-arr<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item <span class="token operator">=</span> <span class="token punctuation">&#123;</span>a<span class="token operator">:</span><span class="token string">'a'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
-<span class="token comment">// (3) [&#123;a: 1&#125;, &#123;a: 2&#125;, &#123;a: 3&#125;]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [&#123;<span class="hljs-attr">a</span>:<span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-attr">a</span>:<span class="hljs-number">2</span>&#125;, &#123;<span class="hljs-attr">a</span>:<span class="hljs-number">3</span>&#125;]
+arr.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item = &#123;<span class="hljs-attr">a</span>:<span class="hljs-string">&#x27;a&#x27;</span>&#125;)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr)
+<span class="hljs-comment">// (3) [&#123;a: 1&#125;, &#123;a: 2&#125;, &#123;a: 3&#125;]</span></code></pre>
 
 <p>最开始的例子当中基本类型的修改不会影响到原数组也是由于这个机制，<strong>基本数据类型的复制是值的复制，复制后两者互相独立。</strong></p>
 <p>所以其实不只是 <code>.map()</code> 和 <code>.forEach()</code>，其他的会对数组进行遍历操作的API（<code>.find()</code>、<code>.filter()</code>、<code>.every()</code>、<code>.some()</code>）也都有类似的问题。</p>

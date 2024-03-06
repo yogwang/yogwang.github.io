@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -104,72 +107,72 @@
 </blockquote>
 <p>在这次接盘的3D可视化项目中就遇到了这个问题。因为模型文件体积比较大，在实际使用中经常会反馈说载入时间过长。所以在拿到服务器权限之后就改了一下 <code>Nginx</code> 的配置文件开启了静态资源的 <code>HTTP cache</code>，以为完事大吉就和一线说载入时间慢的问题解决好了。现在进入项目会使用本地缓存，在第一次载入的时候会慢一些，后面再次进入就会快很多了。</p>
 <p>但是实际使用中反馈过来的时依旧会有很长的载入时间。以为是 <code>Nginx</code> 的配置项写错了，就又去确认了一下。确实是开启了缓存的，首页的各种静态资源也是会被缓存，但是等我进入到模型展示页的时候就发现问题了！<br>最外层展示的模型是可以被缓存的，但是操作数据下钻之后开始展示内部模型从 <code>Network</code> 面板中看到的 <code>glb</code> 模型文件不是每一个都会从 <code>disk cache</code> 读取，有一些模型依旧会发起请求。</p>
-<p><img src="/2023/http-cache-limit-and-service-worker-cache/network_snipaste.jpeg#center" alt="面板截图"></p>
+<p><img src="/2023/http-cache-limit-and-service-worker-cache/network_snipaste.jpeg" alt="面板截图"></p>
 <p>所以就想着浏览器是不是可以有配置项可以修改，但是并没有（可以通过给快捷方式添加启动命令来修改，但不可能要求所有设备都这样做）。所以只能想其他法子来解决这个问题，自然就找到了 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers">Service Worker</a></p>
 <span id="more"></span>
 
 <hr>
 <p>使用 <code>Service Worker</code> 其实很简单，一点也不麻烦，创建好 <code>service-work.js</code> 文件之后，注册一下就可以了直接在浏览器中看到效果了。</p>
 <p>🌰 比如说创建这样的一个 <code>service-work.js</code> 文件：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// service-work.js</span>
-<span class="token comment">// 监听install事件</span>
-<span class="token comment">// self 就是 service worker</span>
-self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'install'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  <span class="token comment">// 安装完成后，使用 addAll 进行文件缓存</span>
-  event<span class="token punctuation">.</span><span class="token function">waitUntil</span><span class="token punctuation">(</span>
-    caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'my-cache'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">cache</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-        <span class="token string">'/static/glb/workshop_a/base.glb'</span><span class="token punctuation">,</span>
-        <span class="token string">'/static/glb/workshop_a/equipment_a.glb'</span><span class="token punctuation">,</span>
-        <span class="token string">'/static/glb/workshop_a/equipment_b.glb'</span><span class="token punctuation">,</span>
-        <span class="token string">'/static/glb/workshop_a/equipment_c.glb'</span><span class="token punctuation">,</span>
-      <span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<pre><code class="hljs js"><span class="hljs-comment">// service-work.js</span>
+<span class="hljs-comment">// 监听install事件</span>
+<span class="hljs-comment">// self 就是 service worker</span>
+self.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;install&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;
+  <span class="hljs-comment">// 安装完成后，使用 addAll 进行文件缓存</span>
+  event.<span class="hljs-title function_">waitUntil</span>(
+    caches.<span class="hljs-title function_">open</span>(<span class="hljs-string">&#x27;my-cache&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">cache</span> =&gt;</span> &#123;
+      <span class="hljs-keyword">return</span> cache.<span class="hljs-title function_">addAll</span>([
+        <span class="hljs-string">&#x27;/static/glb/workshop_a/base.glb&#x27;</span>,
+        <span class="hljs-string">&#x27;/static/glb/workshop_a/equipment_a.glb&#x27;</span>,
+        <span class="hljs-string">&#x27;/static/glb/workshop_a/equipment_b.glb&#x27;</span>,
+        <span class="hljs-string">&#x27;/static/glb/workshop_a/equipment_c.glb&#x27;</span>,
+      ])
+    &#125;)
+  )
+&#125;)
 
-<span class="token comment">// 监听fetch事件</span>
-self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'fetch'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  event<span class="token punctuation">.</span><span class="token function">respondWith</span><span class="token punctuation">(</span>
-    <span class="token comment">// 匹配缓存中是否有相同的请求资源</span>
-    caches<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 如果有相同的资源，则直接返回。否则，通过fetch方法请求资源</span>
-      <span class="token keyword">return</span> response <span class="token operator">||</span> <span class="token function">fetch</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">fetchResponse</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 如果是GLB文件，将其缓存到磁盘</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">.</span>url<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">'.glb'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">return</span> caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'my-cache'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">cache</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// 将请求响应内容复制并添加到缓存中</span>
-            cache<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">,</span> fetchResponse<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment">// 返回请求响应内容</span>
-            <span class="token keyword">return</span> fetchResponse<span class="token punctuation">;</span>
-          <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果不是GLB文件，直接返回请求响应内容</span>
-          <span class="token keyword">return</span> fetchResponse<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// 监听fetch事件</span>
+self.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;fetch&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;
+  event.<span class="hljs-title function_">respondWith</span>(
+    <span class="hljs-comment">// 匹配缓存中是否有相同的请求资源</span>
+    caches.<span class="hljs-title function_">match</span>(event.<span class="hljs-property">request</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> &#123;
+      <span class="hljs-comment">// 如果有相同的资源，则直接返回。否则，通过fetch方法请求资源</span>
+      <span class="hljs-keyword">return</span> response || <span class="hljs-title function_">fetch</span>(event.<span class="hljs-property">request</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">fetchResponse</span> =&gt;</span> &#123;
+        <span class="hljs-comment">// 如果是GLB文件，将其缓存到磁盘</span>
+        <span class="hljs-keyword">if</span> (event.<span class="hljs-property">request</span>.<span class="hljs-property">url</span>.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">&#x27;.glb&#x27;</span>)) &#123;
+          <span class="hljs-keyword">return</span> caches.<span class="hljs-title function_">open</span>(<span class="hljs-string">&#x27;my-cache&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">cache</span> =&gt;</span> &#123;
+            <span class="hljs-comment">// 将请求响应内容复制并添加到缓存中</span>
+            cache.<span class="hljs-title function_">put</span>(event.<span class="hljs-property">request</span>, fetchResponse.<span class="hljs-title function_">clone</span>());
+            <span class="hljs-comment">// 返回请求响应内容</span>
+            <span class="hljs-keyword">return</span> fetchResponse;
+          &#125;);
+        &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 如果不是GLB文件，直接返回请求响应内容</span>
+          <span class="hljs-keyword">return</span> fetchResponse;
+        &#125;
+      &#125;)
+    &#125;)
+  )
+&#125;)</code></pre>
 <p>上面使用了两种方式来缓存，一种是直接在注册的时候通过 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Cache/addAll">cache.addAll</a> 把对应的文件请求并缓存在本地。<br>一种是通过监听 <code>fetch</code> 事件的发起，通过匹配请求的 <code>url</code> 中是否有对应的 <code>.glb</code> 后缀来实现缓存。</p>
 <p>然后到 <code>main.js</code> 中注册一下：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// main.js</span>
-<span class="token comment">// ...其他业务代码</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'serviceWorker'</span> <span class="token keyword">in</span> navigator<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  navigator<span class="token punctuation">.</span>serviceWorker<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token string">'/service-worker.js'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">registration</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Service Worker registered with scope:'</span><span class="token punctuation">,</span> registration<span class="token punctuation">.</span>scope<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-      console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'Service Worker registration failed:'</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// 其他业务代码...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// main.js</span>
+<span class="hljs-comment">// ...其他业务代码</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;serviceWorker&#x27;</span> <span class="hljs-keyword">in</span> navigator) &#123;
+  navigator.<span class="hljs-property">serviceWorker</span>.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;/service-worker.js&#x27;</span>)
+    .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">registration</span> =&gt;</span> &#123;
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Service Worker registered with scope:&#x27;</span>, registration.<span class="hljs-property">scope</span>);
+    &#125;)
+    .<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Service Worker registration failed:&#x27;</span>, error);
+    &#125;);
+&#125;
+<span class="hljs-comment">// 其他业务代码...</span></code></pre>
 
-<p>然后就可以在浏览器的 <code>Network</code> 面板中看到效果了：<br><img src="/2023/http-cache-limit-and-service-worker-cache/network_snipaste_sw.jpeg#center" alt="开启sw的面板截图"></p>
+<p>然后就可以在浏览器的 <code>Network</code> 面板中看到效果了：<br><img src="/2023/http-cache-limit-and-service-worker-cache/network_snipaste_sw.jpeg" alt="开启sw的面板截图"></p>
 <p>模型的加载缩减到了原本耗时的 <code>1/10</code> 左右，但是模型载入的解析事件还是会按照演示时的设备性能有一些编码，因为使用了压缩技术把模型压缩了。</p>
 <hr>
-<h2 id="😫-遇到的问题"><a href="#😫-遇到的问题" class="headerlink" title="😫 遇到的问题"></a>😫 遇到的问题</h2><h4 id="🎃-注册-service-worker-时提示-The-script-has-an-unsupported-MIME-type-39-application-json-39"><a href="#🎃-注册-service-worker-时提示-The-script-has-an-unsupported-MIME-type-39-application-json-39" class="headerlink" title="🎃 注册 service worker 时提示 The script has an unsupported MIME type (&#39;application/json&#39;)."></a>🎃 注册 <code>service worker</code> 时提示 <code>The script has an unsupported MIME type (&#39;application/json&#39;).</code></h4><p>使用 <code>navigator.serviceWorker.register(&#39;./service-worker.js&#39;)</code> 注册时提示:</p>
-<pre class="line-numbers language-none"><code class="language-none">Service Worker registration failed: DOMException: Failed to register a ServiceWorker for scope (&#39;http:&#x2F;&#x2F;localhost&#x2F;&#39;) with script (&#39;http:&#x2F;&#x2F;localhost&#x2F;service-worker.js&#39;): The script has an unsupported MIME type (&#39;application&#x2F;json&#39;).<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="😫-遇到的问题"><a href="#😫-遇到的问题" class="headerlink" title="😫 遇到的问题"></a>😫 遇到的问题</h2><h4 id="🎃-注册-service-worker-时提示-The-script-has-an-unsupported-MIME-type-application-json"><a href="#🎃-注册-service-worker-时提示-The-script-has-an-unsupported-MIME-type-application-json" class="headerlink" title="🎃 注册 service worker 时提示 The script has an unsupported MIME type (&#39;application/json&#39;)."></a>🎃 注册 <code>service worker</code> 时提示 <code>The script has an unsupported MIME type (&#39;application/json&#39;).</code></h4><p>使用 <code>navigator.serviceWorker.register(&#39;./service-worker.js&#39;)</code> 注册时提示:</p>
+<pre><code class="hljs plaintext">Service Worker registration failed: DOMException: Failed to register a ServiceWorker for scope (&#x27;http://localhost/&#x27;) with script (&#x27;http://localhost/service-worker.js&#x27;): The script has an unsupported MIME type (&#x27;application/json&#x27;).</code></pre>
 <p>因为我使用的 Vue 项目，所以把 <code>service-worker.js</code> 移动到 <code>public</code> 目录下，并且改写为绝对路径（<code>navigator.serviceWorker.register(&#39;/service-worker.js&#39;)</code>）解决了问题。</p>
 <h4 id="🎃-需要注意-service-worker-注册的作用域"><a href="#🎃-需要注意-service-worker-注册的作用域" class="headerlink" title="🎃 需要注意 service worker 注册的作用域"></a>🎃 需要注意 <code>service worker</code> 注册的作用域</h4><p><code>Service worker</code> 是有作用域的，如果你把他放到 <code>https://domain.com/js</code> 目录下，那么 <code>service worker</code> 只会在 <code>/js</code> 目录中生效。除非你在注册时声明好 <code>scope</code> 作用域，比如说 <code>navigator.serviceWorker.register(&quot;/service-worker.js&quot;, &#123; scope: &quot;/&quot; &#125;)</code></p>
 <h4 id="🎃-需要开启-HTTPS"><a href="#🎃-需要开启-HTTPS" class="headerlink" title="🎃 需要开启 HTTPS"></a>🎃 需要开启 <code>HTTPS</code></h4><p><code>Service worker</code> 是需要开启 <code>HTTPS</code> 的，如果项目没有开启 <code>HTTPS</code> 那么 <code>Service worker</code> 并不会被激活注册。在本地开发的时候可以通过访问 <code>localhost</code> 这样的特殊域名来测试。</p>

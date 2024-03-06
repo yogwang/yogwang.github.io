@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,264 +106,264 @@
 <p>现在空下来了，重新整理了一下业务代码，总的来说大部分的表单元素都有demo可以对照着看，复杂的部分也只是上传组件或者一些联动的部分。</p>
 <span id="more"></span>
 <h2 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h2><p>使用 <code>this.$form.createForm()</code> 创建的收集器，可以通过 <code>validateFields</code> 和 <code>validateFieldsAndScroll</code> 这两个api对收集器进行<a target="_blank" rel="noopener" href="https://www.antdv.com/components/form-cn/#validateFields/validateFieldsAndScroll">数据校验</a>，当然需要提前在 <code>form-item</code> 中配置<a target="_blank" rel="noopener" href="https://www.antdv.com/components/form-cn/#%E6%A0%A1%E9%AA%8C%E8%A7%84%E5%88%99">校验规则</a>。</p>
-<h5 id="配置校验规则"><a href="#配置校验规则" class="headerlink" title="配置校验规则"></a>配置校验规则</h5><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-form-item</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-input</span>
-    <span class="token attr-name">v-decorator</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[<span class="token punctuation">'</span>email<span class="token punctuation">'</span>,&#123; 
-      rules: [
-          &#123; required: true, message: <span class="token punctuation">'</span>请输入您的电子邮箱!<span class="token punctuation">'</span> &#125;,
-          &#123; type: <span class="token punctuation">'</span>email<span class="token punctuation">'</span>, message: <span class="token punctuation">'</span>请输入正确的电子邮箱号!<span class="token punctuation">'</span> &#125;,
-      ],
-    &#125;]<span class="token punctuation">"</span></span>
-    <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>您的电子邮箱
-  >
-    &lt;a-icon slot=<span class="token punctuation">"</span></span><span class="token attr-name">prefix"</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mail<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-input</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-form-item</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="表单校验"><a href="#表单校验" class="headerlink" title="表单校验"></a>表单校验</h5><pre class="line-numbers language-js" data-language="js"><code class="language-js">methods<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-  <span class="token comment">// 保存</span>
-  <span class="token function">handleSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 触发表单验证</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>form<span class="token punctuation">.</span><span class="token function">validateFields</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'email'</span><span class="token punctuation">,</span> <span class="token string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> values</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// ['email', 'password'] 是需要校验的字段名</span>
-      <span class="token operator">...</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token comment">// 保存</span>
-  <span class="token function">handleSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 触发表单验证</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>form<span class="token punctuation">.</span><span class="token function">validateFields</span><span class="token punctuation">(</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> values</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 也可以直接省略 [fieldNames] 校验全部数据</span>
-      <span class="token operator">...</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="配置校验规则"><a href="#配置校验规则" class="headerlink" title="配置校验规则"></a>配置校验规则</h5><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a-form-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a-input</span></span>
+<span class="hljs-tag">    <span class="hljs-attr">v-decorator</span>=<span class="hljs-string">&quot;[&#x27;email&#x27;,&#123; </span></span>
+<span class="hljs-string"><span class="hljs-tag">      rules: [</span></span>
+<span class="hljs-string"><span class="hljs-tag">          &#123; required: true, message: &#x27;请输入您的电子邮箱!&#x27; &#125;,</span></span>
+<span class="hljs-string"><span class="hljs-tag">          &#123; type: &#x27;email&#x27;, message: &#x27;请输入正确的电子邮箱号!&#x27; &#125;,</span></span>
+<span class="hljs-string"><span class="hljs-tag">      ],</span></span>
+<span class="hljs-string"><span class="hljs-tag">    &#125;]&quot;</span></span>
+<span class="hljs-tag">    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;您的电子邮箱</span></span>
+<span class="hljs-string"><span class="hljs-tag">  &gt;</span></span>
+<span class="hljs-string"><span class="hljs-tag">    &lt;a-icon slot=&quot;</span><span class="hljs-attr">prefix</span>&quot; <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;mail&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a-input</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">a-form-item</span>&gt;</span></code></pre>
+<h5 id="表单校验"><a href="#表单校验" class="headerlink" title="表单校验"></a>表单校验</h5><pre><code class="hljs js"><span class="hljs-attr">methods</span>:&#123;
+  <span class="hljs-comment">// 保存</span>
+  <span class="hljs-title function_">handleSubmit</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// 触发表单验证</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">validateFields</span>([<span class="hljs-string">&#x27;email&#x27;</span>, <span class="hljs-string">&#x27;password&#x27;</span>],<span class="hljs-function">(<span class="hljs-params">err, values</span>) =&gt;</span> &#123;
+      <span class="hljs-comment">// [&#x27;email&#x27;, &#x27;password&#x27;] 是需要校验的字段名</span>
+      ...
+    &#125;)
+  &#125;,
+  <span class="hljs-comment">// 保存</span>
+  <span class="hljs-title function_">handleSubmit</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// 触发表单验证</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">validateFields</span>(,<span class="hljs-function">(<span class="hljs-params">err, values</span>) =&gt;</span> &#123;
+      <span class="hljs-comment">// 也可以直接省略 [fieldNames] 校验全部数据</span>
+      ...
+    &#125;)
+  &#125;,
+&#125;</code></pre>
 <p>这样每次在提交表单时就会触发数据校验，并且在 <code>err</code> 中会返回错误信息，<code>values</code>中返回校验过的数据，搭配 <code>if(!err)</code> 就可以完成业务操作了。</p>
 <h2 id="头像上传组件"><a href="#头像上传组件" class="headerlink" title="头像上传组件"></a>头像上传组件</h2><p>使用 <code>Upload</code> 组件的 <code>picture-card</code> 模式来作为头像上传组件，在@change事件中对 <code>form</code> 进行 <code>setFieldsValue</code> 来赋值给 <code>a-input:hidden</code> 这样就可以进行校验和返回值了。</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-form</span> <span class="token attr-name">:form</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form<span class="token punctuation">"</span></span> <span class="token attr-name">@submit.prevent</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleSubmit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-form-item</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-upload</span>
-        <span class="token attr-name">listType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>picture-card<span class="token punctuation">"</span></span>
-        <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>avatar-uploader<span class="token punctuation">"</span></span>
-        <span class="token attr-name">:headers</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>headers<span class="token punctuation">"</span></span>
-        <span class="token attr-name">:showUploadList</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span>
-        <span class="token attr-name">:action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>uploadURL<span class="token punctuation">"</span></span>
-        <span class="token attr-name">:beforeUpload</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>beforeUpload<span class="token punctuation">"</span></span>
-        <span class="token attr-name">@change</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleChange<span class="token punctuation">"</span></span>
-      <span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>avatar<span class="token punctuation">"</span></span> <span class="token attr-name">:src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>avatar<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>avatar<span class="token punctuation">"</span></span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">width</span><span class="token punctuation">:</span>100%<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span> <span class="token punctuation">/></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-else</span><span class="token punctuation">></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-icon</span> <span class="token attr-name">:type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>loading ? <span class="token punctuation">'</span>loading<span class="token punctuation">'</span> : <span class="token punctuation">'</span>plus<span class="token punctuation">'</span><span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ant-upload-text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Upload<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-upload</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hidden<span class="token punctuation">"</span></span> <span class="token attr-name">v-decorator</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[<span class="token punctuation">'</span>avatar<span class="token punctuation">'</span>, validatorRules.avatar]<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-form-item</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-form-item</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">html-type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">block</span><span class="token punctuation">></span></span>保存<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-button</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-form-item</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-form</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  name<span class="token operator">:</span> <span class="token string">'UserInfoEdit'</span><span class="token punctuation">,</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      avatar<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
-      loading<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      validatorRules<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        avatar<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-          rules<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> message<span class="token operator">:</span> <span class="token string">'请上传头像!'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">]</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      form<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$form<span class="token punctuation">.</span><span class="token function">createForm</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  methods<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-    <span class="token comment">// 头像上传前检查</span>
-    <span class="token function">beforeUpload</span><span class="token punctuation">(</span><span class="token parameter">file</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">const</span> isLt2M <span class="token operator">=</span> file<span class="token punctuation">.</span>size <span class="token operator">/</span> <span class="token number">1024</span> <span class="token operator">/</span> <span class="token number">1024</span> <span class="token operator">&lt;</span> <span class="token number">2</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isLt2M<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>$message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'图片最大限制为2MB！'</span><span class="token punctuation">)</span>
-      <span class="token punctuation">&#125;</span>
-      <span class="token keyword">return</span> isLt2M
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token comment">// 头像修改</span>
-    <span class="token function">handleChange</span><span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">'uploading'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">true</span>
-        <span class="token keyword">return</span>
-      <span class="token punctuation">&#125;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">'done'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>form<span class="token punctuation">.</span><span class="token function">setFieldsValue</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> avatar<span class="token operator">:</span> info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>response<span class="token punctuation">.</span>url <span class="token punctuation">&#125;</span><span class="token punctuation">)</span> <span class="token comment">// 短链接提交给后端的数据</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>avatar <span class="token operator">=</span> info<span class="token punctuation">.</span>file<span class="token punctuation">.</span>response<span class="token punctuation">.</span>thumbUrl <span class="token comment">// 赋值给展示链接展示链接</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">false</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token comment">// 保存</span>
-    <span class="token function">handleSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 触发表单验证</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>form<span class="token punctuation">.</span><span class="token function">validateFields</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> values</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token comment">// 具体业务代码</span>
-        <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a-form</span> <span class="hljs-attr">:form</span>=<span class="hljs-string">&quot;form&quot;</span> @<span class="hljs-attr">submit.prevent</span>=<span class="hljs-string">&quot;handleSubmit&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a-form-item</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a-upload</span></span>
+<span class="hljs-tag">        <span class="hljs-attr">listType</span>=<span class="hljs-string">&quot;picture-card&quot;</span></span>
+<span class="hljs-tag">        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;avatar-uploader&quot;</span></span>
+<span class="hljs-tag">        <span class="hljs-attr">:headers</span>=<span class="hljs-string">&quot;headers&quot;</span></span>
+<span class="hljs-tag">        <span class="hljs-attr">:showUploadList</span>=<span class="hljs-string">&quot;false&quot;</span></span>
+<span class="hljs-tag">        <span class="hljs-attr">:action</span>=<span class="hljs-string">&quot;uploadURL&quot;</span></span>
+<span class="hljs-tag">        <span class="hljs-attr">:beforeUpload</span>=<span class="hljs-string">&quot;beforeUpload&quot;</span></span>
+<span class="hljs-tag">        @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;handleChange&quot;</span></span>
+<span class="hljs-tag">      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;avatar&quot;</span> <span class="hljs-attr">:src</span>=<span class="hljs-string">&quot;avatar&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;avatar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width:100%;&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-else</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a-icon</span> <span class="hljs-attr">:type</span>=<span class="hljs-string">&quot;loading ? &#x27;loading&#x27; : &#x27;plus&#x27;&quot;</span> /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ant-upload-text&quot;</span>&gt;</span>Upload<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">a-upload</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a-input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">v-decorator</span>=<span class="hljs-string">&quot;[&#x27;avatar&#x27;, validatorRules.avatar]&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a-form-item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a-form-item</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">html-type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">block</span>&gt;</span>保存<span class="hljs-tag">&lt;/<span class="hljs-name">a-button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a-form-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a-form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="language-javascript">  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;UserInfoEdit&#x27;</span>,</span>
+<span class="language-javascript">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">    <span class="hljs-keyword">return</span> &#123;</span>
+<span class="language-javascript">      <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span>
+<span class="language-javascript">      <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>,</span>
+<span class="language-javascript">      <span class="hljs-attr">validatorRules</span>: &#123;</span>
+<span class="language-javascript">        <span class="hljs-attr">avatar</span>: &#123;</span>
+<span class="language-javascript">          <span class="hljs-attr">rules</span>: [&#123; <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;请上传头像!&#x27;</span> &#125;]</span>
+<span class="language-javascript">        &#125;,</span>
+<span class="language-javascript">      &#125;,</span>
+<span class="language-javascript">      <span class="hljs-attr">form</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">$form</span>.<span class="hljs-title function_">createForm</span>(<span class="hljs-variable language_">this</span>),</span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;,</span>
+<span class="language-javascript">  <span class="hljs-attr">methods</span>:&#123;</span>
+<span class="language-javascript">    <span class="hljs-comment">// 头像上传前检查</span></span>
+<span class="language-javascript">    <span class="hljs-title function_">beforeUpload</span>(<span class="hljs-params">file</span>) &#123;</span>
+<span class="language-javascript">      <span class="hljs-keyword">const</span> isLt2M = file.<span class="hljs-property">size</span> / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span> &lt; <span class="hljs-number">2</span></span>
+<span class="language-javascript">      <span class="hljs-keyword">if</span> (!isLt2M) &#123;</span>
+<span class="language-javascript">        <span class="hljs-variable language_">this</span>.<span class="hljs-property">$message</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;图片最大限制为2MB！&#x27;</span>)</span>
+<span class="language-javascript">      &#125;</span>
+<span class="language-javascript">      <span class="hljs-keyword">return</span> isLt2M</span>
+<span class="language-javascript">    &#125;,</span>
+<span class="language-javascript">    <span class="hljs-comment">// 头像修改</span></span>
+<span class="language-javascript">    <span class="hljs-title function_">handleChange</span>(<span class="hljs-params">info</span>) &#123;</span>
+<span class="language-javascript">      <span class="hljs-keyword">if</span> (info.<span class="hljs-property">file</span>.<span class="hljs-property">status</span> === <span class="hljs-string">&#x27;uploading&#x27;</span>) &#123;</span>
+<span class="language-javascript">        <span class="hljs-variable language_">this</span>.<span class="hljs-property">loading</span> = <span class="hljs-literal">true</span></span>
+<span class="language-javascript">        <span class="hljs-keyword">return</span></span>
+<span class="language-javascript">      &#125;</span>
+<span class="language-javascript">      <span class="hljs-keyword">if</span> (info.<span class="hljs-property">file</span>.<span class="hljs-property">status</span> === <span class="hljs-string">&#x27;done&#x27;</span>) &#123;</span>
+<span class="language-javascript">        <span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">setFieldsValue</span>(&#123; <span class="hljs-attr">avatar</span>: info.<span class="hljs-property">file</span>.<span class="hljs-property">response</span>.<span class="hljs-property">url</span> &#125;) <span class="hljs-comment">// 短链接提交给后端的数据</span></span>
+<span class="language-javascript">        <span class="hljs-variable language_">this</span>.<span class="hljs-property">avatar</span> = info.<span class="hljs-property">file</span>.<span class="hljs-property">response</span>.<span class="hljs-property">thumbUrl</span> <span class="hljs-comment">// 赋值给展示链接展示链接</span></span>
+<span class="language-javascript">        <span class="hljs-variable language_">this</span>.<span class="hljs-property">loading</span> = <span class="hljs-literal">false</span></span>
+<span class="language-javascript">      &#125;</span>
+<span class="language-javascript">    &#125;,</span>
+<span class="language-javascript">    <span class="hljs-comment">// 保存</span></span>
+<span class="language-javascript">    <span class="hljs-title function_">handleSubmit</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">      <span class="hljs-comment">// 触发表单验证</span></span>
+<span class="language-javascript">      <span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">validateFields</span>(<span class="hljs-function">(<span class="hljs-params">err, values</span>) =&gt;</span> &#123;</span>
+<span class="language-javascript">        <span class="hljs-keyword">if</span> (!err) &#123;</span>
+<span class="language-javascript">          <span class="hljs-comment">// 具体业务代码</span></span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">      &#125;)</span>
+<span class="language-javascript">    &#125;,</span>
+<span class="language-javascript">  &#125;</span>
+<span class="language-javascript">&#125;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 <p>当然也可以直接绑定在 <code>Upload</code> 组件上，我只是偷个懒不想再在验证之后去修改数据了。</p>
 <h2 id="动态校验规则"><a href="#动态校验规则" class="headerlink" title="动态校验规则"></a>动态校验规则</h2><p>比如说，可以修改上传数量限制。这个时候直接修改规则并不会直接重新验证，需要重新修改数据之后才会再次校验。</p>
 <ul>
 <li>如果动态校验，需要校验的时候在 option 中加上 <code>&#123; force: true &#125;</code></li>
 </ul>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 伪代码片段</span>
-methods<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-  <span class="token comment">// 保存</span>
-  <span class="token function">handleSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 触发表单验证</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>form<span class="token punctuation">.</span><span class="token function">validateFields</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> force<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> values</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-      <span class="token operator">...</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 伪代码片段</span>
+<span class="hljs-attr">methods</span>:&#123;
+  <span class="hljs-comment">// 保存</span>
+  <span class="hljs-title function_">handleSubmit</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// 触发表单验证</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">validateFields</span>(&#123; <span class="hljs-attr">force</span>: <span class="hljs-literal">true</span> &#125;,<span class="hljs-function">(<span class="hljs-params">err, values</span>) =&gt;</span> &#123;
+      ...
+    &#125;)
+  &#125;,
+&#125;</code></pre>
 
-<h2 id="一个FormItem中多个被装饰过的表单元素"><a href="#一个FormItem中多个被装饰过的表单元素" class="headerlink" title="一个FormItem中多个被装饰过的表单元素"></a>一个FormItem中多个被装饰过的表单元素</h2><p><img src="/2020/jeecg-boot-devDiary09/FormItemMoreChild.jpg" alt="多个子元素"><br>有时候会遇到这样的的情况，在一个FormItem中有多个Input或者Select联动。</p>
+<h2 id="一个FormItem中多个被装饰过的表单元素"><a href="#一个FormItem中多个被装饰过的表单元素" class="headerlink" title="一个FormItem中多个被装饰过的表单元素"></a>一个FormItem中多个被装饰过的表单元素</h2><p><img src="/./jeecg-boot-devDiary09/FormItemMoreChild.jpg" alt="多个子元素"><br>有时候会遇到这样的的情况，在一个FormItem中有多个Input或者Select联动。</p>
 <p>如果只是使用 <code>v-decorator</code> 来装饰会有警告提示：</p>
-<pre class="line-numbers language-none"><code class="language-none">Warning: [antdv: Form.Item] Cannot generate &#96;validateStatus&#96; and &#96;help&#96; automatically, while there are more than one &#96;getFieldDecorator&#96; in it.&#96;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs plaintext">Warning: [antdv: Form.Item] Cannot generate `validateStatus` and `help` automatically, while there are more than one `getFieldDecorator` in it.`</code></pre>
 <p>反正就是 <em>一个 Form.Item 建议只放一个被 getFieldDecorator 或 v-decorator 装饰过的 child</em><br>如果存在多个就需要自己配置 <code>help</code>, <code>required</code>, <code>validateStatus</code>，这点可以在 <a target="_blank" rel="noopener" href="https://www.antdv.com/components/form-cn/#Form.Item">API文档</a> 中看到。</p>
 <p>如何配置呢？附一个伪代码例子</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-form</span> <span class="token attr-name">:form</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-form-item</span>
-      <span class="token attr-name">:labelCol</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>labelCol<span class="token punctuation">"</span></span>
-      <span class="token attr-name">:wrapperCol</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrapperCol<span class="token punctuation">"</span></span>
-      <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>地址<span class="token punctuation">"</span></span>
-      <span class="token attr-name">:help</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>help<span class="token punctuation">"</span></span>
-      <span class="token attr-name">:validateStatus</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>validateStatus<span class="token punctuation">"</span></span>
-    <span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-input-group</span> <span class="token attr-name">compact</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-select</span>
-          <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">width</span><span class="token punctuation">:</span>33%</span><span class="token punctuation">"</span></span></span>
-          <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span> - <span class="token punctuation">"</span></span>
-          <span class="token attr-name">v-decorator</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[<span class="token punctuation">'</span>provinceId<span class="token punctuation">'</span>, validatorRules.provinceId]<span class="token punctuation">"</span></span>
-          <span class="token attr-name">@change</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleCityChange<span class="token punctuation">"</span></span>
-        <span class="token punctuation">></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-spin</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>regionList.province.fetch<span class="token punctuation">"</span></span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>notFoundContent<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-select-option</span>
-            <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i in regionList.province.list<span class="token punctuation">"</span></span>
-            <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i.id<span class="token punctuation">"</span></span>
-            <span class="token attr-name">:title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i.regionName<span class="token punctuation">"</span></span>
-          <span class="token punctuation">></span></span>&#123;&#123; i.regionName &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-select-option</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-select</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-select</span>
-          <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">width</span><span class="token punctuation">:</span>33%</span><span class="token punctuation">"</span></span></span>
-          <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span> - <span class="token punctuation">"</span></span>
-          <span class="token attr-name">v-decorator</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[<span class="token punctuation">'</span>cityId<span class="token punctuation">'</span>,validatorRules.cityId]<span class="token punctuation">"</span></span>
-          <span class="token attr-name">@change</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleCityChange<span class="token punctuation">"</span></span>
-        <span class="token punctuation">></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-spin</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>regionList.city.fetch<span class="token punctuation">"</span></span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>notFoundContent<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-select-option</span>
-            <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i in regionList.city.list<span class="token punctuation">"</span></span>
-            <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i.id<span class="token punctuation">"</span></span>
-            <span class="token attr-name">:title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i.regionName<span class="token punctuation">"</span></span>
-          <span class="token punctuation">></span></span>&#123;&#123; i.regionName &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-select-option</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-select</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-select</span>
-          <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">width</span><span class="token punctuation">:</span>33%</span><span class="token punctuation">"</span></span></span>
-          <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span> - <span class="token punctuation">"</span></span>
-          <span class="token attr-name">v-decorator</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[<span class="token punctuation">'</span>areaId<span class="token punctuation">'</span>, validatorRules.areaId]<span class="token punctuation">"</span></span>
-        <span class="token punctuation">></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-spin</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>regionList.area.fetch<span class="token punctuation">"</span></span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>notFoundContent<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-select-option</span>
-            <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i in regionList.area.list<span class="token punctuation">"</span></span>
-            <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i.id<span class="token punctuation">"</span></span>
-            <span class="token attr-name">:title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i.regionName<span class="token punctuation">"</span></span>
-          <span class="token punctuation">></span></span>&#123;&#123; i.regionName &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-select-option</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-select</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-input-group</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-form-item</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-form-item</span> <span class="token attr-name">:wrapperCol</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>offsetWrapperCol<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>primary<span class="token punctuation">'</span></span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleSubmit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>提交<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-button</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-form-item</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-form</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a-form</span> <span class="hljs-attr">:form</span>=<span class="hljs-string">&quot;form&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a-form-item</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">:labelCol</span>=<span class="hljs-string">&quot;labelCol&quot;</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">:wrapperCol</span>=<span class="hljs-string">&quot;wrapperCol&quot;</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;地址&quot;</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">:help</span>=<span class="hljs-string">&quot;help&quot;</span></span>
+<span class="hljs-tag">      <span class="hljs-attr">:validateStatus</span>=<span class="hljs-string">&quot;validateStatus&quot;</span></span>
+<span class="hljs-tag">    &gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a-input-group</span> <span class="hljs-attr">compact</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a-select</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width:33%&quot;</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot; - &quot;</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">v-decorator</span>=<span class="hljs-string">&quot;[&#x27;provinceId&#x27;, validatorRules.provinceId]&quot;</span></span>
+<span class="hljs-tag">          @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;handleCityChange&quot;</span></span>
+<span class="hljs-tag">        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a-spin</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;regionList.province.fetch&quot;</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">&quot;notFoundContent&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span> /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a-select-option</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;i in regionList.province.list&quot;</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;i.id&quot;</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">:title</span>=<span class="hljs-string">&quot;i.regionName&quot;</span></span>
+<span class="hljs-tag">          &gt;</span>&#123;&#123; i.regionName &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">a-select-option</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a-select</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a-select</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width:33%&quot;</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot; - &quot;</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">v-decorator</span>=<span class="hljs-string">&quot;[&#x27;cityId&#x27;,validatorRules.cityId]&quot;</span></span>
+<span class="hljs-tag">          @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;handleCityChange&quot;</span></span>
+<span class="hljs-tag">        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a-spin</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;regionList.city.fetch&quot;</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">&quot;notFoundContent&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span> /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a-select-option</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;i in regionList.city.list&quot;</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;i.id&quot;</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">:title</span>=<span class="hljs-string">&quot;i.regionName&quot;</span></span>
+<span class="hljs-tag">          &gt;</span>&#123;&#123; i.regionName &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">a-select-option</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a-select</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a-select</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width:33%&quot;</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot; - &quot;</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">v-decorator</span>=<span class="hljs-string">&quot;[&#x27;areaId&#x27;, validatorRules.areaId]&quot;</span></span>
+<span class="hljs-tag">        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a-spin</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;regionList.area.fetch&quot;</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">&quot;notFoundContent&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span> /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a-select-option</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;i in regionList.area.list&quot;</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;i.id&quot;</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">:title</span>=<span class="hljs-string">&quot;i.regionName&quot;</span></span>
+<span class="hljs-tag">          &gt;</span>&#123;&#123; i.regionName &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">a-select-option</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a-select</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">a-input-group</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a-form-item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a-form-item</span> <span class="hljs-attr">:wrapperCol</span>=<span class="hljs-string">&quot;offsetWrapperCol&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;handleSubmit&quot;</span>&gt;</span>提交<span class="hljs-tag">&lt;/<span class="hljs-name">a-button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a-form-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a-form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  name<span class="token operator">:</span> <span class="token string">'address-modal'</span><span class="token punctuation">,</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 自定义校验信息</span>
-      validateStatus<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
-      help<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
-      form<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$form<span class="token punctuation">.</span><span class="token function">createForm</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      confirmLoading<span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
-      <span class="token comment">// 校验规则</span>
-      validatorRules<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        provinceId<span class="token operator">:</span> <span class="token punctuation">&#123;</span> rules<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> message<span class="token operator">:</span> <span class="token string">'请选择省份'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">]</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-        cityId<span class="token operator">:</span> <span class="token punctuation">&#123;</span> rules<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> message<span class="token operator">:</span> <span class="token string">'请选择城市'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">]</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-        areaId<span class="token operator">:</span> <span class="token punctuation">&#123;</span> rules<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span> required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> message<span class="token operator">:</span> <span class="token string">'请选择地区'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">]</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token comment">// 城市列表数据</span>
-      regionList<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        province<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-          list<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-          fetch<span class="token operator">:</span> <span class="token boolean">false</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-        city<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-          list<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-          fetch<span class="token operator">:</span> <span class="token boolean">false</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-        area<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-          list<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-          fetch<span class="token operator">:</span> <span class="token boolean">false</span>
-        <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token comment">// 表单栅格</span>
-      labelCol<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        xs<span class="token operator">:</span> <span class="token punctuation">&#123;</span> span<span class="token operator">:</span> <span class="token number">24</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-        sm<span class="token operator">:</span> <span class="token punctuation">&#123;</span> span<span class="token operator">:</span> <span class="token number">5</span> <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      wrapperCol<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        xs<span class="token operator">:</span> <span class="token punctuation">&#123;</span> span<span class="token operator">:</span> <span class="token number">24</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-        sm<span class="token operator">:</span> <span class="token punctuation">&#123;</span> span<span class="token operator">:</span> <span class="token number">16</span> <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      offsetWrapperCol<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        xs<span class="token operator">:</span> <span class="token punctuation">&#123;</span> span<span class="token operator">:</span> <span class="token number">24</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-        sm<span class="token operator">:</span> <span class="token punctuation">&#123;</span> span<span class="token operator">:</span> <span class="token number">16</span><span class="token punctuation">,</span> offset<span class="token operator">:</span> <span class="token number">5</span> <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  methods<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    <span class="token function">handleSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 监听表单提交事件，触发表单验证</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>form<span class="token punctuation">.</span><span class="token function">validateFields</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> values</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token comment">// 这里是验证通过之后的操作</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-          <span class="token comment">// 校验失败，自定义校验信息</span>
-          <span class="token comment">// 这边三个值依次取值，返回第一个有错误信息的属性</span>
-          <span class="token keyword">const</span> onErr <span class="token operator">=</span> err<span class="token punctuation">.</span>provinceId <span class="token operator">||</span> err<span class="token punctuation">.</span>cityId <span class="token operator">||</span> err<span class="token punctuation">.</span>areaId 
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>onErr <span class="token operator">&amp;&amp;</span> onErr<span class="token punctuation">.</span>errors<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// 如果有错误信息，设置错误状态</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>validateStatus <span class="token operator">=</span> <span class="token string">'error'</span>
-            <span class="token comment">// 一个错误信息内部是校验内容是以数组的形式返回的，可以在data.validatorRules中的rules中看到顺序</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>help <span class="token operator">=</span> onErr<span class="token punctuation">.</span>errors<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>message
-          <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// 如果没有报错的情况</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>validateStatus <span class="token operator">=</span> <span class="token string">'success'</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>help <span class="token operator">=</span> <span class="token string">''</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token function">handleCityChange</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> option</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 这里是监听改变的业务逻辑，比如获取下级地址列表</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="language-javascript">  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;address-modal&#x27;</span>,</span>
+<span class="language-javascript">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">    <span class="hljs-keyword">return</span> &#123;</span>
+<span class="language-javascript">      <span class="hljs-comment">// 自定义校验信息</span></span>
+<span class="language-javascript">      <span class="hljs-attr">validateStatus</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span>
+<span class="language-javascript">      <span class="hljs-attr">help</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span>
+<span class="language-javascript">      <span class="hljs-attr">form</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">$form</span>.<span class="hljs-title function_">createForm</span>(<span class="hljs-variable language_">this</span>),</span>
+<span class="language-javascript">      <span class="hljs-attr">confirmLoading</span>:<span class="hljs-literal">false</span>,</span>
+<span class="language-javascript">      <span class="hljs-comment">// 校验规则</span></span>
+<span class="language-javascript">      <span class="hljs-attr">validatorRules</span>: &#123;</span>
+<span class="language-javascript">        <span class="hljs-attr">provinceId</span>: &#123; <span class="hljs-attr">rules</span>: [&#123; <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;请选择省份&#x27;</span> &#125;] &#125;,</span>
+<span class="language-javascript">        <span class="hljs-attr">cityId</span>: &#123; <span class="hljs-attr">rules</span>: [&#123; <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;请选择城市&#x27;</span> &#125;] &#125;,</span>
+<span class="language-javascript">        <span class="hljs-attr">areaId</span>: &#123; <span class="hljs-attr">rules</span>: [&#123; <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;请选择地区&#x27;</span> &#125;] &#125;,</span>
+<span class="language-javascript">      &#125;,</span>
+<span class="language-javascript">      <span class="hljs-comment">// 城市列表数据</span></span>
+<span class="language-javascript">      <span class="hljs-attr">regionList</span>: &#123;</span>
+<span class="language-javascript">        <span class="hljs-attr">province</span>: &#123;</span>
+<span class="language-javascript">          <span class="hljs-attr">list</span>: [],</span>
+<span class="language-javascript">          <span class="hljs-attr">fetch</span>: <span class="hljs-literal">false</span></span>
+<span class="language-javascript">        &#125;,</span>
+<span class="language-javascript">        <span class="hljs-attr">city</span>: &#123;</span>
+<span class="language-javascript">          <span class="hljs-attr">list</span>: [],</span>
+<span class="language-javascript">          <span class="hljs-attr">fetch</span>: <span class="hljs-literal">false</span></span>
+<span class="language-javascript">        &#125;,</span>
+<span class="language-javascript">        <span class="hljs-attr">area</span>: &#123;</span>
+<span class="language-javascript">          <span class="hljs-attr">list</span>: [],</span>
+<span class="language-javascript">          <span class="hljs-attr">fetch</span>: <span class="hljs-literal">false</span></span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">      &#125;,</span>
+<span class="language-javascript">      <span class="hljs-comment">// 表单栅格</span></span>
+<span class="language-javascript">      <span class="hljs-attr">labelCol</span>: &#123;</span>
+<span class="language-javascript">        <span class="hljs-attr">xs</span>: &#123; <span class="hljs-attr">span</span>: <span class="hljs-number">24</span> &#125;,</span>
+<span class="language-javascript">        <span class="hljs-attr">sm</span>: &#123; <span class="hljs-attr">span</span>: <span class="hljs-number">5</span> &#125;</span>
+<span class="language-javascript">      &#125;,</span>
+<span class="language-javascript">      <span class="hljs-attr">wrapperCol</span>: &#123;</span>
+<span class="language-javascript">        <span class="hljs-attr">xs</span>: &#123; <span class="hljs-attr">span</span>: <span class="hljs-number">24</span> &#125;,</span>
+<span class="language-javascript">        <span class="hljs-attr">sm</span>: &#123; <span class="hljs-attr">span</span>: <span class="hljs-number">16</span> &#125;</span>
+<span class="language-javascript">      &#125;,</span>
+<span class="language-javascript">      <span class="hljs-attr">offsetWrapperCol</span>: &#123;</span>
+<span class="language-javascript">        <span class="hljs-attr">xs</span>: &#123; <span class="hljs-attr">span</span>: <span class="hljs-number">24</span> &#125;,</span>
+<span class="language-javascript">        <span class="hljs-attr">sm</span>: &#123; <span class="hljs-attr">span</span>: <span class="hljs-number">16</span>, <span class="hljs-attr">offset</span>: <span class="hljs-number">5</span> &#125;</span>
+<span class="language-javascript">      &#125;,</span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;,</span>
+<span class="language-javascript">  <span class="hljs-attr">methods</span>: &#123;</span>
+<span class="language-javascript">    <span class="hljs-title function_">handleSubmit</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">      <span class="hljs-comment">// 监听表单提交事件，触发表单验证</span></span>
+<span class="language-javascript">      <span class="hljs-variable language_">this</span>.<span class="hljs-property">form</span>.<span class="hljs-title function_">validateFields</span>(<span class="hljs-function">(<span class="hljs-params">err, values</span>) =&gt;</span> &#123;</span>
+<span class="language-javascript">        <span class="hljs-keyword">if</span> (!err) &#123;</span>
+<span class="language-javascript">          <span class="hljs-comment">// 这里是验证通过之后的操作</span></span>
+<span class="language-javascript">        &#125; <span class="hljs-keyword">else</span> &#123;</span>
+<span class="language-javascript">          <span class="hljs-comment">// 校验失败，自定义校验信息</span></span>
+<span class="language-javascript">          <span class="hljs-comment">// 这边三个值依次取值，返回第一个有错误信息的属性</span></span>
+<span class="language-javascript">          <span class="hljs-keyword">const</span> onErr = err.<span class="hljs-property">provinceId</span> || err.<span class="hljs-property">cityId</span> || err.<span class="hljs-property">areaId</span> </span>
+<span class="language-javascript">          <span class="hljs-keyword">if</span> (onErr &amp;&amp; onErr.<span class="hljs-property">errors</span>) &#123;</span>
+<span class="language-javascript">            <span class="hljs-comment">// 如果有错误信息，设置错误状态</span></span>
+<span class="language-javascript">            <span class="hljs-variable language_">this</span>.<span class="hljs-property">validateStatus</span> = <span class="hljs-string">&#x27;error&#x27;</span></span>
+<span class="language-javascript">            <span class="hljs-comment">// 一个错误信息内部是校验内容是以数组的形式返回的，可以在data.validatorRules中的rules中看到顺序</span></span>
+<span class="language-javascript">            <span class="hljs-variable language_">this</span>.<span class="hljs-property">help</span> = onErr.<span class="hljs-property">errors</span>[<span class="hljs-number">0</span>].<span class="hljs-property">message</span></span>
+<span class="language-javascript">          &#125; <span class="hljs-keyword">else</span> &#123;</span>
+<span class="language-javascript">            <span class="hljs-comment">// 如果没有报错的情况</span></span>
+<span class="language-javascript">            <span class="hljs-variable language_">this</span>.<span class="hljs-property">validateStatus</span> = <span class="hljs-string">&#x27;success&#x27;</span></span>
+<span class="language-javascript">            <span class="hljs-variable language_">this</span>.<span class="hljs-property">help</span> = <span class="hljs-string">&#x27;&#x27;</span></span>
+<span class="language-javascript">          &#125;</span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">      &#125;)</span>
+<span class="language-javascript">    &#125;,</span>
+<span class="language-javascript">    <span class="hljs-title function_">handleCityChange</span>(<span class="hljs-params">value, option</span>) &#123;</span>
+<span class="language-javascript">      <span class="hljs-comment">// 这里是监听改变的业务逻辑，比如获取下级地址列表</span></span>
+<span class="language-javascript">    &#125;,</span>
+<span class="language-javascript">  &#125;</span>
+<span class="language-javascript">&#125;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 
 <h2 id="两种提交方式（存为草稿和保存发布）"><a href="#两种提交方式（存为草稿和保存发布）" class="headerlink" title="两种提交方式（存为草稿和保存发布）"></a>两种提交方式（存为草稿和保存发布）</h2><p>保存数据分委两种，一种是存为草稿，另一种是保存并发布；</p>
 <ul>
@@ -369,24 +372,24 @@ methods<span class="token operator">:</span><span class="token punctuation">&#12
 </ul>
 <p>暂时还没有想好，现阶段分开两个函数，存为草稿是在 <code>validateFields</code> 中的规则内填写需要校验的字段，并且在<code>if(!err)</code> 中，使用 <code>getFieldsValue</code> 获取整个表单数据</p>
 <hr>
-<h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><h4 id="1-在表单中使用-lt-a-switch-gt-组件时控制台出现警告"><a href="#1-在表单中使用-lt-a-switch-gt-组件时控制台出现警告" class="headerlink" title="#1. 在表单中使用 &lt;a-switch /&gt; 组件时控制台出现警告"></a>#1. 在表单中使用 <code>&lt;a-switch /&gt;</code> 组件时控制台出现警告</h4><pre class="line-numbers language-none"><code class="language-none">Warning: [antd: Checkbox] &#96;value&#96; is not validate prop, do you mean &#96;checked&#96;?<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><h4 id="1-在表单中使用-组件时控制台出现警告"><a href="#1-在表单中使用-组件时控制台出现警告" class="headerlink" title="#1. 在表单中使用 &lt;a-switch /&gt; 组件时控制台出现警告"></a>#1. 在表单中使用 <code>&lt;a-switch /&gt;</code> 组件时控制台出现警告</h4><pre><code class="hljs plaintext">Warning: [antd: Checkbox] `value` is not validate prop, do you mean `checked`?</code></pre>
 <p>其原因是，没有设置 <code>valuePropName</code> 属性，直接使用 <code>v-decorator</code> 进行绑定时，就会出现这个问题。<br>为其设置 <code>valuePropName</code> 属性为 <code>checked</code> 即可。</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-form</span> <span class="token attr-name">:form</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-form-item</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Switch<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a-switch</span>
-        <span class="token attr-name">v-decorator</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[
-          <span class="token punctuation">'</span>switch<span class="token punctuation">'</span>,
-          &#123;
-            rules: [],
-            valuePropName: <span class="token punctuation">'</span>checked<span class="token punctuation">'</span>, // 增加此项
-            initialValue: false
-          &#125;
-        ]<span class="token punctuation">"</span></span>
-      <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-form-item</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a-form</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a-form</span> <span class="hljs-attr">:form</span>=<span class="hljs-string">&quot;form&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a-form-item</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Switch&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a-switch</span></span>
+<span class="hljs-tag">        <span class="hljs-attr">v-decorator</span>=<span class="hljs-string">&quot;[</span></span>
+<span class="hljs-string"><span class="hljs-tag">          &#x27;switch&#x27;,</span></span>
+<span class="hljs-string"><span class="hljs-tag">          &#123;</span></span>
+<span class="hljs-string"><span class="hljs-tag">            rules: [],</span></span>
+<span class="hljs-string"><span class="hljs-tag">            valuePropName: &#x27;checked&#x27;, // 增加此项</span></span>
+<span class="hljs-string"><span class="hljs-tag">            initialValue: false</span></span>
+<span class="hljs-string"><span class="hljs-tag">          &#125;</span></span>
+<span class="hljs-string"><span class="hljs-tag">        ]&quot;</span></span>
+<span class="hljs-tag">      /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a-form-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a-form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></code></pre>
 <p>具体可以查看 <code>AntD Vue</code> 的文档 <a target="_blank" rel="noopener" href="https://www.antdv.com/components/form-cn/#this.form.getFieldDecorator(id,-options)-%E5%92%8C-v-decorator=%22[id,-options]%22">此处</a></p>
 <h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><ul>
 <li><code>AntD Vue</code> 1.5.0+ 增加了新组件<a target="_blank" rel="noopener" href="https://www.antdv.com/components/form-model-cn/">FormModel 表单</a> 可以通过 <code>v-model</code> 绑定收集数据，并且校验数据了</li>

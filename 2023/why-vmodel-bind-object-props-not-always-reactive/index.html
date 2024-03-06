@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,59 +106,59 @@
 <p><code>v-model</code> 仅仅只是 <code>v-bind:value=&quot;value&quot;</code> 和 <code>@input=&quot;value = $event.target.value&quot;</code> 的语法糖吗？</p>
 </blockquote>
 <p>一直以来我都喜欢在Vue中声明对象变量的时候给变量赋值一个空对象，而不是把所有的属性值一起声明好。<br>比如说：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// vue2.x form demo</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 我喜欢这样声明</span>
-      formData<span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token comment">// 而不是这样在声明时把所有的属性一起书写好 </span>
-      formData<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        username<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
-        password<span class="token operator">:</span> <span class="token string">''</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>也可以从我之前关于 <code>props</code> 属性的笔记中察觉到 👉 <a target="_blank" rel="noopener" href="http://localhost:4000/2022/vue-props-type-validation-with-Null-and-undefined/">Vue中接收没有声明的Prop属性[null/undefined]的接收问题</a></p>
+<pre><code class="hljs js"><span class="hljs-comment">// vue2.x form demo</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">return</span> &#123;
+      <span class="hljs-comment">// 我喜欢这样声明</span>
+      <span class="hljs-attr">formData</span>: &#123;&#125;,
+      <span class="hljs-comment">// 而不是这样在声明时把所有的属性一起书写好 </span>
+      <span class="hljs-attr">formData</span>: &#123;
+        <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;&#x27;</span>
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre>
+<p>也可以从我之前关于 <code>props</code> 属性的笔记中察觉到 👉 <a target="_blank" rel="noopener" href="http://localhost:4000/2022/vue-props-type-validation-with-Null-and-undefined/">Vue中接收没有声明的Prop属性[null&#x2F;undefined]的接收问题</a></p>
 <p>因为我在写业务的时候如果 <code>props</code> 的属性值不存在，传入的会是一个 <code>undefined</code> 而不是 <code>null</code> 或者 <code>&#39;&#39;</code> 这样的预设。因为我期望使用组件 <code>props</code> 中声明的<strong>默认值</strong>，而不是在外部预设的<strong>空值</strong>。<br>所以一直以来我都在和小伙伴交流的时候也是推荐直接给变量一个空对象即可，除了一些数组属性需要单独声明。</p>
 <p>但前段时间一位小伙伴向我提问：他在组件生命周期函数中给表单属性赋值了一个预设值，后续再使用 <code>v-model</code> 对表单属性修改时发现<strong>丢失了响应</strong>……</p>
 <span id="more"></span>
 
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- 丢失响应的最小复现 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>formData.username<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>&#123;&#123; formData.username &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      formData<span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>formData<span class="token punctuation">.</span>username <span class="token operator">=</span> <span class="token string">'admin'</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 丢失响应的最小复现 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.username&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123; formData.username &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="language-javascript">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">    <span class="hljs-keyword">return</span> &#123;</span>
+<span class="language-javascript">      <span class="hljs-attr">formData</span>: &#123;&#125;,</span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;,</span>
+<span class="language-javascript">  <span class="hljs-title function_">created</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">    <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">username</span> = <span class="hljs-string">&#x27;admin&#x27;</span></span>
+<span class="language-javascript">  &#125;</span>
+<span class="language-javascript">&#125;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 
 <p>按照思维惯性，我就理所当然的说，如果是变量是属性数组的话，你需要通过 <code>$set</code> 去修改内部的值，一般遇到失去响应都是错误操作数组导致的。但是他说原因不是这个，他自己写了一个最小实现，赋值和修改的都是字符串也会丢失响应。就和我贴在上面的示例一样，就是简单直接的赋值操作。</p>
 <p>那就很奇怪了，在我的理解里应该是不会丢失响应式的，所以我就去看了一下我业务中和他类似的操作：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      formData<span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>formData <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-      username<span class="token operator">:</span> <span class="token string">'admin'</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">return</span> &#123;
+      <span class="hljs-attr">formData</span>: &#123;&#125;,
+    &#125;
+  &#125;,
+  <span class="hljs-title function_">created</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span> = &#123;
+      <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;admin&#x27;</span>
+    &#125;
+  &#125;
+&#125;</code></pre>
 <p>可以看到区别在于我是给 <code>formData</code> 整个重新赋值了，而小伙伴是单独给 <code>formData.username</code> 进行赋值操作，所以问题就是出现在这里。按照Vue手册中的说法是：</p>
 <blockquote>
 <p><code>Vue</code> 无法检测 <code>property</code> 的添加或移除。</p>
@@ -163,46 +166,46 @@
 <p>那么如何添加对象属性呢？ </p>
 <blockquote>
 <p>对于已经创建的实例，<code>Vue</code> 不允许动态添加根级别的响应式 <code>property</code>。但是，可以使用 <code>Vue.set(object, propertyName, value)</code> 方法向嵌套对象添加响应式 <code>property</code>。例如，对于：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">Vue<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>someObject<span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">set</span>(vm.<span class="hljs-property">someObject</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-number">2</span>)</code></pre>
 
 <p>您还可以使用 <code>vm.$set</code> 实例方法，这也是全局 <code>Vue.set</code> 方法的别名：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$set</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>someObject<span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-variable language_">this</span>.$set(<span class="hljs-variable language_">this</span>.<span class="hljs-property">someObject</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-number">2</span>)</code></pre>
 
 <p>有时你可能需要为已有对象赋值多个新 <code>property</code>，比如使用 <code>Object.assign()</code> 或 <code>_.extend()</code>。但是，这样添加到对象上的新 <code>property</code> 不会触发更新。在这种情况下，你应该用原对象与要混合进去的对象的 <code>property</code> 一起创建一个新的对象。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 代替 `Object.assign(this.someObject, &#123; a: 1, b: 2 &#125;)`</span>
-<span class="token keyword">this</span><span class="token punctuation">.</span>someObject <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>someObject<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> a<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-comment">// 代替 `Object.assign(this.someObject, &#123; a: 1, b: 2 &#125;)`</span>
+<span class="hljs-variable language_">this</span>.<span class="hljs-property">someObject</span> = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(&#123;&#125;, <span class="hljs-variable language_">this</span>.<span class="hljs-property">someObject</span>, &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> &#125;)</code></pre>
 </blockquote>
 <p>所以我给 <code>formData</code> 整体赋值方式可以，但是小伙伴单独给 <code>formData</code> 添加 <code>username</code> 不可以。小伙伴调整为 <code>$set()</code> 来赋值方式解决了问题。</p>
 <p>但是小伙伴随后就问了第二个问题：<strong>为什么我们在 <code>data</code> 中声明 <code>formData</code> 为空对象 <code>&#123;&#125;</code>，但是在模板中直接使用 <code>v-model</code> 进行双向绑定时不会丢失响应式呢？</strong><br>比如说：</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>formData.username<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>&#123;&#123; formData.username &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      formData<span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;formData.username&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123; formData.username &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="language-javascript">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">    <span class="hljs-keyword">return</span> &#123;</span>
+<span class="language-javascript">      <span class="hljs-attr">formData</span>: &#123;&#125;,</span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;</span>
+<span class="language-javascript">&#125;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 
-<p>这就问到我的知识盲区了，所以去翻了一下 <code>Vue</code> 仓库中关于 <code>v-model</code> 部分的源码 👉 <a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/main/src/compiler/directives/model.ts#L41">vue/src/compiler/directives/model.ts at master · vuejs/vue</a></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">genAssignmentCode</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token operator">:</span> string<span class="token punctuation">,</span> assignment<span class="token operator">:</span> string</span><span class="token punctuation">)</span><span class="token operator">:</span> string <span class="token punctuation">&#123;</span>
-  <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token function">parseModel</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>key <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>value<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>assignment<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span>
-  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">$set(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>res<span class="token punctuation">.</span>exp<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>res<span class="token punctuation">.</span>key<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>assignment<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">)</span><span class="token template-punctuation string">`</span></span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这就问到我的知识盲区了，所以去翻了一下 <code>Vue</code> 仓库中关于 <code>v-model</code> 部分的源码 👉 <a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/main/src/compiler/directives/model.ts#L41">vue&#x2F;src&#x2F;compiler&#x2F;directives&#x2F;model.ts at master · vuejs&#x2F;vue</a></p>
+<pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">genAssignmentCode</span>(<span class="hljs-params">value: string, assignment: string</span>): string &#123;
+  <span class="hljs-keyword">const</span> res = <span class="hljs-title function_">parseModel</span>(value)
+  <span class="hljs-keyword">if</span> (res.<span class="hljs-property">key</span> === <span class="hljs-literal">null</span>) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;value&#125;</span>=<span class="hljs-subst">$&#123;assignment&#125;</span>`</span>
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`$set(<span class="hljs-subst">$&#123;res.exp&#125;</span>, <span class="hljs-subst">$&#123;res.key&#125;</span>, <span class="hljs-subst">$&#123;assignment&#125;</span>)`</span>
+  &#125;
+&#125;</code></pre>
 
 <p>可以看到其实内部是使用了 <code>$set</code> 去赋值了，而不是简单的使用赋值运算符(<code>=</code>)去赋值。至此，全部的疑惑都解开了。<br>也纠正了我的一个错误理解，之前一直以为我们声明的变量被 <code>Vue</code> 在监听后，变量属性数量改变时也会触发更新的。但其实并不是，单纯只是因为自己的操作习惯正好命中了正确的添加属性操作。所以并不能简单的通过检查变量是否被挂载 <code>ob</code> 来判断是否具有响应式。</p>
 <hr>
-<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/reactivity.html#%E6%A3%80%E6%B5%8B%E5%8F%98%E5%8C%96%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">深入响应式原理 — Vue.js</a><br><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/essentials/forms.html#form-input-bindings">表单输入绑定 | Vue.js</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/master/src/compiler/directives/model.ts">vue/src/compiler/directives/model.ts at master · vuejs/vue</a></p>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/reactivity.html#%E6%A3%80%E6%B5%8B%E5%8F%98%E5%8C%96%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">深入响应式原理 — Vue.js</a><br><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/essentials/forms.html#form-input-bindings">表单输入绑定 | Vue.js</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/master/src/compiler/directives/model.ts">vue&#x2F;src&#x2F;compiler&#x2F;directives&#x2F;model.ts at master · vuejs&#x2F;vue</a></p>
  
   </article>
 

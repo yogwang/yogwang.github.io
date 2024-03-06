@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -112,7 +115,7 @@
 <li>元素几何样式和定位方式被改变；</li>
 <li>部分获取元素属性和API的调用；</li>
 </ul>
-<p><strong>视窗大小发生改变</strong> 和 <strong>DOM的操作</strong> 都很容易理解，可视区域的改变、DOM元素的增/删/改都会触发重排。</p>
+<p><strong>视窗大小发生改变</strong> 和 <strong>DOM的操作</strong> 都很容易理解，可视区域的改变、DOM元素的增&#x2F;删&#x2F;改都会触发重排。</p>
 <p>需要注意的是 <strong>元素几何样式的改变</strong> 和 <strong>获取元素属性和API的调用</strong> 这两块。</p>
 <h4 id="1-元素几何样式的改变"><a href="#1-元素几何样式的改变" class="headerlink" title="1. 元素几何样式的改变"></a>1. 元素几何样式的改变</h4><p>元素宽高和位置这些属性的变更肯定会触发重排，但是修改<strong>字体</strong>和<strong>字号</strong>也是会触发重排的。因为会改变容器的宽高，从而影响到页面布局。</p>
 <h4 id="2-部分获取元素属性和API的调用"><a href="#2-部分获取元素属性和API的调用" class="headerlink" title="2. 部分获取元素属性和API的调用"></a>2. 部分获取元素属性和API的调用</h4><p>分为两类，一类是访问特定属性，比如说获取元素的盒模型信息。<br>一类是API的访问，例如 <code>getClientRects()</code>、<code>scrollTo()</code>、<code>、getComputedStyle()</code> 这类API，它们会访问某个元素尺寸和定位的属性，为了保证拿到的是精确值，不得不提前触发一次重排。</p>
@@ -121,15 +124,15 @@
 <p>当然也不是每次访问元素位置都会触发 <code>reflow</code>，在浏览器触发 <code>reflow</code> 后，所有已有元素位置都会记录快照，只要不再触发位置等变化，第二次开始访问位置就不会触发 <code>reflow</code>。<br><small>精读《web reflow》</small></p>
 </blockquote>
 <hr>
-<h2 id="🎨-关于重绘的部分"><a href="#🎨-关于重绘的部分" class="headerlink" title="🎨 关于重绘的部分"></a>🎨 关于重绘的部分</h2><p>关于重绘我认为其实就是影响布局的样式修改的元素外观更新，都可以认为是重绘。但是有部分会影响到元素位置/宽高的变更、显示/隐藏的CSS属性并不会触发重排。比如说：</p>
+<h2 id="🎨-关于重绘的部分"><a href="#🎨-关于重绘的部分" class="headerlink" title="🎨 关于重绘的部分"></a>🎨 关于重绘的部分</h2><p>关于重绘我认为其实就是影响布局的样式修改的元素外观更新，都可以认为是重绘。但是有部分会影响到元素位置&#x2F;宽高的变更、显示&#x2F;隐藏的CSS属性并不会触发重排。比如说：</p>
 <ul>
 <li>使用 <code>transform</code> 属性使元素平移、形变等变换；</li>
-<li>使用 <code>visible</code> 和 <code>opacity</code> 属性显示/隐藏元素；</li>
+<li>使用 <code>visible</code> 和 <code>opacity</code> 属性显示&#x2F;隐藏元素；</li>
 </ul>
 <p>甚至有一部分的属性可以使直接跳过重排重绘的步骤，直接进入合成(<code>Composite</code>)阶段，还有关于重排重绘的优化我就不过多赘述了，感兴趣可以直接查看 <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903734951018504">《你真的了解回流和重绘吗》</a> 这篇文章。</p>
 <hr>
 <h2 id="🧐-一些疑问"><a href="#🧐-一些疑问" class="headerlink" title="🧐 一些疑问"></a>🧐 一些疑问</h2><h4 id="使用-absolute-或-fixed-脱离文档流后，修改元素定位等原来会触发重排属性还会触发重排吗？"><a href="#使用-absolute-或-fixed-脱离文档流后，修改元素定位等原来会触发重排属性还会触发重排吗？" class="headerlink" title="使用 absolute 或 fixed 脱离文档流后，修改元素定位等原来会触发重排属性还会触发重排吗？"></a>使用 <code>absolute</code> 或 <code>fixed</code> 脱离文档流后，修改元素定位等原来会触发重排属性还会触发重排吗？</h4><p>会，但是因为不会影响父级和兄弟元素的定位，所以它的重排会非常的快。但是使用 <code>float</code> 来脱离文档流还使其它元素内的文本进行环绕，所以可能会发生大规模重排。具体可以参看这篇问答 <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000043366886">修改浮动元素宽高之后是否会触发重排？</a></p>
-<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a target="_blank" rel="noopener" href="https://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">Rendering: repaint, reflow/relayout, restyle / Stoyan’s phpied.com</a><br><a target="_blank" rel="noopener" href="https://github.com/ascoders/weekly/blob/master/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/242.%E7%B2%BE%E8%AF%BB%E3%80%8Aweb%20reflow%E3%80%8B.md">weekly/242.精读《web reflow》 · ascoders/weekly</a><br><a target="_blank" rel="noopener" href="https://github.com/ascoders/weekly/blob/master/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/221.%E7%B2%BE%E8%AF%BB%E3%80%8A%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%89%E3%80%8B.md">weekly/221.精读《深入了解现代浏览器三》 · ascoders/weekly</a><br><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/140703">渲染流水线：CSS如何影响首次加载时的白屏时间？| 浏览器工作原理与实践</a><br><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/141842">分层和合成机制：为什么CSS动画比JavaScript高效？| 浏览器工作原理与实践</a><br><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/a8bedc099254cbe20757032bc">HTML回流与重绘_ 空城机</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/468581105">介绍回流与重绘（Reflow &amp; Repaint），以及如何进行优化? - 知乎</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903734951018504">你真的了解回流和重绘吗 - 掘金</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7033673328820748325">既不要重排也不要重绘，合成：transform如何实现动画效果？ - 掘金</a></p>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a target="_blank" rel="noopener" href="https://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">Rendering: repaint, reflow&#x2F;relayout, restyle &#x2F; Stoyan’s phpied.com</a><br><a target="_blank" rel="noopener" href="https://github.com/ascoders/weekly/blob/master/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/242.%E7%B2%BE%E8%AF%BB%E3%80%8Aweb%20reflow%E3%80%8B.md">weekly&#x2F;242.精读《web reflow》 · ascoders&#x2F;weekly</a><br><a target="_blank" rel="noopener" href="https://github.com/ascoders/weekly/blob/master/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF/221.%E7%B2%BE%E8%AF%BB%E3%80%8A%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%89%E3%80%8B.md">weekly&#x2F;221.精读《深入了解现代浏览器三》 · ascoders&#x2F;weekly</a><br><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/140703">渲染流水线：CSS如何影响首次加载时的白屏时间？| 浏览器工作原理与实践</a><br><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/141842">分层和合成机制：为什么CSS动画比JavaScript高效？| 浏览器工作原理与实践</a><br><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/a8bedc099254cbe20757032bc">HTML回流与重绘_ 空城机</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/468581105">介绍回流与重绘（Reflow &amp; Repaint），以及如何进行优化? - 知乎</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903734951018504">你真的了解回流和重绘吗 - 掘金</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7033673328820748325">既不要重排也不要重绘，合成：transform如何实现动画效果？ - 掘金</a></p>
  
   </article>
 

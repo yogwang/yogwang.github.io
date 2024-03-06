@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -118,16 +121,16 @@
 <h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><ul>
 <li>如果已访问的元素在迭代时被删除了（ 例如使用 <code>.shift()</code> 操作了原数组 ），之后的元素将被跳过</li>
 </ul>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"one"</span><span class="token punctuation">,</span> <span class="token string">"two"</span><span class="token punctuation">,</span> <span class="token string">"three"</span><span class="token punctuation">,</span> <span class="token string">"four"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-words<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">word</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>word <span class="token operator">===</span> <span class="token string">"two"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    words<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// => one</span>
-<span class="token comment">// => two</span>
-<span class="token comment">// => four  // 这里的 three 被跳过了</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> words = [<span class="hljs-string">&quot;one&quot;</span>, <span class="hljs-string">&quot;two&quot;</span>, <span class="hljs-string">&quot;three&quot;</span>, <span class="hljs-string">&quot;four&quot;</span>];
+words.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">word</span>) &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(word);
+  <span class="hljs-keyword">if</span> (word === <span class="hljs-string">&quot;two&quot;</span>) &#123;
+    words.<span class="hljs-title function_">shift</span>();
+  &#125;
+&#125;);
+<span class="hljs-comment">// =&gt; one</span>
+<span class="hljs-comment">// =&gt; two</span>
+<span class="hljs-comment">// =&gt; four  // 这里的 three 被跳过了</span></code></pre>
 
 <ul>
 <li>为什么都说 <code>map</code> 和 <code>forEach</code> 不会改变原数组？<br>因为不管是 <code>map</code> 还是 <code>forEach</code>，当中的 <code>item</code> 都是拷贝的对象，你去直接修改他不会影响原数组，但是你去修改其内部的属性，就会影响。<br>类似于深浅拷贝的问题，所以说不能修改原数组也不是绝对的，看你怎么修改操作数据的。</li>

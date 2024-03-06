@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -105,24 +108,24 @@
 <p>然后去到了 <a target="_blank" rel="noopener" href="https://github.com/tjunnone/npm-check-updates">npm-check-updates</a> 的 Github 上找 Issues 看，是不是有解决办法了，<br>但是相关的问题都被关闭了，然后提到的 Issue 里边答的也不一样，</p>
 <p>最后在 <a target="_blank" rel="noopener" href="https://github.com/tjunnone/npm-check-updates/issues/146">Issue#146</a> 上边看到了一个回答的思路，所以我就自己去查看源码了。</p>
 <p>然后找到了一个问题所在 <code>libs/package-managers/npm.js</code> 中，有一个 <code>defaultPrefix</code> 函数，其中返回了全局依赖的路径，最后返回的数据是错误的。</p>
-<pre class="line-numbers language-none"><code class="language-none">function defaultPrefix(options) &#123;
+<pre><code class="hljs plaintext">function defaultPrefix(options) &#123;
   if (options.prefix) &#123;
     return Promise.resolve(options.prefix);
   &#125;
 
-  const cmd &#x3D; process.platform &#x3D;&#x3D;&#x3D; &quot;win32&quot; ? &quot;npm.cmd&quot; : &quot;npm&quot;;
-  return spawn(cmd, [&quot;config&quot;, &quot;get&quot;, &quot;prefix&quot;]).then(prefix &#x3D;&gt; &#123;
-    &#x2F;&#x2F; FIX: for ncu -g doesn&#39;t work on homebrew or windows #146
-    &#x2F;&#x2F; https:&#x2F;&#x2F;github.com&#x2F;tjunnone&#x2F;npm-check-updates&#x2F;issues&#x2F;146
+  const cmd = process.platform === &quot;win32&quot; ? &quot;npm.cmd&quot; : &quot;npm&quot;;
+  return spawn(cmd, [&quot;config&quot;, &quot;get&quot;, &quot;prefix&quot;]).then(prefix =&gt; &#123;
+    // FIX: for ncu -g doesn&#x27;t work on homebrew or windows #146
+    // https://github.com/tjunnone/npm-check-updates/issues/146
     return options.global &amp;&amp; prefix.match(&quot;Cellar&quot;)
-      ? &quot;&#x2F;usr&#x2F;local&quot;
-      : &#x2F;&#x2F; Workaround: get prefix on windows for global packages
-      &#x2F;&#x2F; Only needed when using npm api directly
-      process.platform &#x3D;&#x3D;&#x3D; &quot;win32&quot; &amp;&amp; options.global &amp;&amp; !process.env.prefix
-      ? &#96;$&#123;process.env.AppData&#125;\\npm&#96;
+      ? &quot;/usr/local&quot;
+      : // Workaround: get prefix on windows for global packages
+      // Only needed when using npm api directly
+      process.platform === &quot;win32&quot; &amp;&amp; options.global &amp;&amp; !process.env.prefix
+      ? `$&#123;process.env.AppData&#125;\\npm`
       : null;
   &#125;);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 
 <p>这个函数查询了一个 <code>prefix</code> 的环境变量，但是在项目的 <code>README</code> 中并没有提到，可能是因为我修改全局依赖的安装目录的时候没有正确的在环境变量中添加新的全局依赖路径，所以他直接获取了默认的 <code>AppData</code> 地址。</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>

@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -80,7 +83,7 @@
   <article class="article-excerpt">
     <p>在日常项目中经常会遇到需要对字符串补位的操作，比如</p>
 <ul>
-<li><strong>向前补0</strong>：例如日期，经常会需要<code>YYYY-MM-DD</code> 的格式，<br>如果不使用日期库，直接获取月份和日期前面是没有0的，需要手动拼接字符串。</li>
+<li><strong>向前补0</strong>：例如日期，经常会需要<code>YYYY-MM-DD</code> 的格式，<br>  如果不使用日期库，直接获取月份和日期前面是没有0的，需要手动拼接字符串。</li>
 </ul>
 <p>正巧今天要搞日历组件，前面缺一个0总感觉少了点感觉，当时懒得自己写补全了，想着百度一个吧，就搜到了张鑫旭大佬的这篇文章 <a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2018/07/js-padstart-padend/">《JS字符串补全方法padStart()和padEnd()简介》</a>，然后就惊了，原来早在4年前 JS 就原生支持了前后补全了（我这几年在干嘛😢）</p>
   </article>
@@ -204,7 +207,7 @@
     <!-- 文章内容 article body -->
  
   <article class="article-excerpt">
-    <p>也算是经典面试题的一部分了，对于父子间的通讯很多时候的使用我都是限于 <code>props</code>/<code>$emit</code> 来处理，或者 <code>Vuex</code>/<code>EventBus</code> 这种方式，很少会用到 <code>Provide</code>/<code>Inject</code> 来处理。其实这是一个很实用的跨级组件间通讯的方式。</p>
+    <p>也算是经典面试题的一部分了，对于父子间的通讯很多时候的使用我都是限于 <code>props</code>&#x2F;<code>$emit</code> 来处理，或者 <code>Vuex</code>&#x2F;<code>EventBus</code> 这种方式，很少会用到 <code>Provide</code>&#x2F;<code>Inject</code> 来处理。其实这是一个很实用的跨级组件间通讯的方式。</p>
 <blockquote>
 <p>这对选项需要一起使用，以允许一个<strong>祖先组件向其所有子孙后代</strong>注入一个依赖，不论组件层次有多深，并在其上下游关系成立的时间里始终生效。</p>
 </blockquote>
@@ -385,10 +388,10 @@
 <li>基础尺寸由 <code>flex-base</code> 属性或 <code>width</code> 属性，以及 <code>box-sizing</code> 盒模型共同决定；</li>
 <li>内容尺寸最指最大内容宽度，当没有设置基础尺寸是会顶替基础尺寸的角色；</li>
 <li>弹性增长指的是 <code>flex-grow</code> 属性，弹性收缩指的是 <code>flex-shrink</code> 属性；</li>
-<li>最大尺寸主要受 <code>max-width</code> 属性限制；最小尺寸则比较复杂，受最小内容宽度、<code>width</code> 属性和 <code>min-width</code> 属性共同影响。 </li>
+<li>最大尺寸主要受 <code>max-width</code> 属性限制；最小尺寸则比较复杂，受最小内容宽度、<code>width</code> 属性和 <code>min-width</code> 属性共同影响。</li>
 </ul>
 </blockquote>
-<p><img src="/2022/CSS-flex-container-stretched-by-content/problem_preview.png#center" alt="flex 容器宽度被内容撑开的问题"></p>
+<p><img src="/2022/CSS-flex-container-stretched-by-content/problem_preview.png" alt="flex 容器宽度被内容撑开的问题"></p>
 <p>很早之前就遇到过这个问题但没有整理，当时处理完问题之后就没有管了。昨天又遇到了同样的问题，因为嵌套的层次很深折腾了有2个小时，所以还是需要记录下来以免未来又忘了。</p>
 <blockquote>
 <p>其实很简单，容器使用 <code>width:0;flex:1;</code> 即可解决问题。</p>
@@ -437,7 +440,7 @@
 <hr>
 <p>结果从 <strong>详情页</strong> 返回 <strong>列表页</strong> 之后，<strong>返回按钮</strong>点上去没反应了！！！页面中添加一个自定义按钮调用 <code>wx.navigateBack</code> 返回也不行。</p>
 <p>监听了 <code>wx.navigateBack</code> 的 <code>success</code>、<code>fail</code>、<code>complete</code> 三个回调之后发现，<code>success</code> 和 <code>fail</code> 都不执行，只执行了 <code>complete</code> 的回调，输出为：</p>
-<pre class="line-numbers language-log" data-language="log"><code class="language-log">complete: &#123;errMsg: &quot;fail:navigateBack intercepted&quot;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs log">complete: &#123;errMsg: &quot;fail:navigateBack intercepted&quot;&#125;</code></pre>
   </article>
   <div class="article-more-link">
     <a href="/2022/miniprogram-fail-navigate-back-intercepted/#more">阅读全文</a>

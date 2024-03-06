@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -102,7 +105,7 @@
     <blockquote>
 <p>这段时间公司有一个项目是用 Jeecg-Boot 开发的，管理平台部分就分配到我这边了。这段时间看了下他们官方的文档，感觉文档有点少，感觉之后大部分时间都要和这个东西杠上了。 _yogwang 2019.10.10 15:28</p>
 </blockquote>
-<h2 id="what-is-the-fuxk-jeecg-boot"><a href="#what-is-the-fuxk-jeecg-boot" class="headerlink" title="what is the fuxk jeecg-boot?"></a>what is the fuxk <a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot">jeecg-boot</a>?</h2><p><img src="/2019/jeecg-boot-devDiary01/jeecg-boot.png" alt="Jeecg-boot"></p>
+<h2 id="what-is-the-fuxk-jeecg-boot"><a href="#what-is-the-fuxk-jeecg-boot" class="headerlink" title="what is the fuxk jeecg-boot?"></a>what is the fuxk <a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot">jeecg-boot</a>?</h2><p><img src="/jeecg-boot-devDiary01/jeecg-boot.png" alt="Jeecg-boot"></p>
 <blockquote>
 <p>Java RAD framework for enterprise web applications</p>
 </blockquote>
@@ -116,11 +119,11 @@
 <li>Shiro</li>
 <li>JWT</li>
 </ul>
-<p><img src="/2019/jeecg-boot-devDiary01/preview.png" alt="界面截图"></p>
-<p>代码生成器让前后端代码一键生成，无需写任何代码，绝对是全栈开发福音！！ （现在看来前端开发者的大坑 - yogwang/2019.10.17）</p>
+<p><img src="/jeecg-boot-devDiary01/preview.png" alt="界面截图"></p>
+<p>代码生成器让前后端代码一键生成，无需写任何代码，绝对是全栈开发福音！！ （现在看来前端开发者的大坑 - yogwang&#x2F;2019.10.17）</p>
 <p>JeecgBoot 的宗旨是提高 UI 能力的同时,降低前后分离的开发成本，（后端确实是很喜欢）</p>
-<h2 id="获取项目"><a href="#获取项目" class="headerlink" title="获取项目"></a>获取项目</h2><pre class="line-numbers language-git" data-language="git"><code class="language-git">git clone https:&#x2F;&#x2F;github.com&#x2F;zhangdaiscott&#x2F;jeecg-boot.git
-cd  jeecg-boot&#x2F;ant-design-jeecg-vue<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="获取项目"><a href="#获取项目" class="headerlink" title="获取项目"></a>获取项目</h2><pre><code class="hljs git">git clone https://github.com/zhangdaiscott/jeecg-boot.git
+cd  jeecg-boot/ant-design-jeecg-vue</code></pre>
 
 <h2 id="前端部分"><a href="#前端部分" class="headerlink" title="前端部分"></a>前端部分</h2><p>基于 <a target="_blank" rel="noopener" href="https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/">Ant Design of Vue</a> 实现的 Ant Design Pro Vue 版</p>
 <h3 id="开发环境和依赖"><a href="#开发环境和依赖" class="headerlink" title="开发环境和依赖"></a>开发环境和依赖</h3><ul>
@@ -132,7 +135,7 @@ cd  jeecg-boot&#x2F;ant-design-jeecg-vue<span aria-hidden="true" class="line-num
 <li>Vuex 3.x</li>
 <li>Axios</li>
 <li>Vue-cropper</li>
-<li>@antv/g2</li>
+<li>@antv&#x2F;g2</li>
 <li>Viser-vue</li>
 <li>vue-print-nb</li>
 <li>less</li>
@@ -152,7 +155,7 @@ cd  jeecg-boot&#x2F;ant-design-jeecg-vue<span aria-hidden="true" class="line-num
 <h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><hr>
 <p>我现在使用的 Jeecg-bot 在项目 <code>README</code> 文档最后，有这么一段。</p>
 <blockquote>
-<p>@vue/cli 升级后，eslint 规则更新了。由于影响到全部 .vue 文件，需要逐个验证。既暂时关闭部分原本不验证的规则，后期维护时，在逐步修正这些 rules</p>
+<p>@vue&#x2F;cli 升级后，eslint 规则更新了。由于影响到全部 .vue 文件，需要逐个验证。既暂时关闭部分原本不验证的规则，后期维护时，在逐步修正这些 rules</p>
 </blockquote>
 <p>也不知道什么时候会有修复，不过我应该是看不到了。</p>
 <h2 id="技术文档"><a href="#技术文档" class="headerlink" title="技术文档"></a>技术文档</h2><ul>
@@ -160,7 +163,7 @@ cd  jeecg-boot&#x2F;ant-design-jeecg-vue<span aria-hidden="true" class="line-num
 </li>
 <li><p><a target="_blank" rel="noopener" href="http://doc.jeecg.com/1273753">开发文档</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot">Jeecg-boot/Github</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot">Jeecg-boot&#x2F;Github</a></p>
 </li>
 <li><p><a target="_blank" rel="noopener" href="http://www.jeecg.org/">Jeecg 社区论坛</a></p>
 </li>
@@ -172,7 +175,7 @@ cd  jeecg-boot&#x2F;ant-design-jeecg-vue<span aria-hidden="true" class="line-num
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide">Vue</a></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot/tree/master/ant-design-jeecg-vue/src/router/README.md">路由/菜单说明</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot/tree/master/ant-design-jeecg-vue/src/router/README.md">路由&#x2F;菜单说明</a></p>
 </li>
 <li><p><a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot/tree/master/ant-design-jeecg-vue/src/defaultSettings.js">ANTD 默认配置项</a></p>
 </li>

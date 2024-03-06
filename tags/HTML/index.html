@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -160,9 +163,9 @@
     <!-- 文章内容 article body -->
  
   <article class="article-excerpt">
-    <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Cache-Control<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-cache, no-store, must-revalidate<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Pragma<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-cache<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Expires<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    <pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Cache-Control&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;no-cache, no-store, must-revalidate&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Pragma&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;no-cache&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Expires&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;0&quot;</span> /&gt;</span></code></pre>
 
 <p>赶巧不巧，正好在假期第一天遇到了修改接口地址的问题 —— 节前最后一个工作日后端兄弟自己修改了编译后的 Js 文件中的接口地址，但是并没有生效，只不过当时没发现，今天电话过来问应该怎么处理，奈何电脑没带在身边，只能让他修改了接口地址之后重新编辑被修改的 Js 文件名中的 <code>hash</code> 值随便改一位，同时修改一下 <code>index.html</code> 中的引入路径。<br>可是没多久又发来消息说，不行还是请求旧地址，没有被修改。我怀疑是页面被缓存了，于是让他确认了一下页面源代码中是否有 <code>no-cache</code> 的 <code>meta</code> ，他说有，但是页面还是被缓存了，看到引入 Js 文件的路径还是他修改前的旧路径。<br>于是我就纳闷了，好像浏览器跳过了设置的机制，并没有重新请求服务器获取最新的 <code>index</code> 文件。</p>
   </article>
@@ -293,7 +296,7 @@
  
   <article class="article-excerpt">
     <p>在 html 中手动输入多个空格，在页面解析的时候都会变成一个空格，<br>如果在开头甚至一个空格都不会显示</p>
-<p>但就是一定要求在开头/中间显示多个空格，这个问题怎么解决呢？</p>
+<p>但就是一定要求在开头&#x2F;中间显示多个空格，这个问题怎么解决呢？</p>
   </article>
   <div class="article-more-link">
     <a href="/2019/html-space-display/#more">阅读全文</a>

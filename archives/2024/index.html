@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -76,21 +79,18 @@
     </header>
     <!-- 文章内容 article body -->
  
-  <article class="article-content">
+  <article class="article-excerpt">
     <p>最近社区和社群里面有好多小伙伴在说怎么 <code>npm</code> 用不了，安装不了依赖了。<br>一看报错信息：<code>request to https://npm.taobao.org/xxx failed, reason: certificate has expired</code></p>
 <p>😂 很明显就是 <code>npm.taobao.org</code> 的域名证书过期了，一看果然。已经在1月22日的时候过期了。</p>
 <p><img src="/2024/taobao-npm-mirror-certificate-expired/certificate_expired_chrome.jpeg" alt="域名过期-浏览器截图"></p>
 <p>所以切换到的“<strong>新</strong>”的域名上面就好了：</p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">$ npm config set registry https:&#x2F;&#x2F;registry.npmmirror.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs cmd">$ npm config <span class="hljs-built_in">set</span> registry https://registry.npmmirror.com</code></pre>
 
 <p>也可以使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/nrm">NRM</a> 来切换。</p>
-<p>顺便也检查了一下 <code>registry.npm.taobao.org</code> 这个域名，这个还是可以使用的，做了 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/301">301跳转</a> 的。会直接重定向到 <code>registry.npmmirror.com</code> 上面。所以使用是没问题的，但还是早点切换吧。<br>至于为什么一个做了 <code>301</code> 一个没做那就不得而知了😂</p>
-<hr>
-<p>马上就想到了好多年前发布的一篇文章 👉 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/430580607">【望周知】淘宝 NPM 镜像站喊你切换新域名啦</a></p>
-<p>各位前端同学，除了日常工作之外，还是需要多关注一下自己使用的工具链讯息的。我记得天猪大佬当时在各个平台都有发布切换域名通知的。</p>
-<p>更具体地一些 <strong>受到的影响和处理方式</strong> 可以直接在链接的通知文章里面了解到。</p>
- 
   </article>
+  <div class="article-more-link">
+    <a href="/2024/taobao-npm-mirror-certificate-expired/#more">阅读全文</a>
+  </div>
 
 
      
@@ -127,7 +127,7 @@
   <article class="article-excerpt">
     <p>昨天刷到在思否遇到一个<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000044521029">想要限制CPU性能的问题</a>。在我的认知里对于 <code>DevTools</code> 的使用是没办法限制CPU性能的，认为只能够限制网络条件（也就是在 <code>Network</code> 面板中通过修改 <code>throttling</code> 设置来限制网络条件，也错误的把OP的截图当成了调整网络条件的设置了）。<br>所以会想着通过系统自带的”节电模式”之类的来实现性能限制，或者借助外部的软件来调整CPU、GPU、内存相关的功率来实现性能限制。</p>
 <p>但是OP在傍晚自己找到了<a target="_blank" rel="noopener" href="https://dev.to/kaziusan/i-wanna-make-cpu-slower-than-default-setting-in-chrome-devtool--3bb">解决办法</a>，我才知道原来 <code>DevTools</code> 也可以限制CPU的。</p>
-<p><img src="/2024/make-cpu-slower-with-chrome-devtools/settings.jpeg#center" alt="设置截图"></p>
+<p><img src="/2024/make-cpu-slower-with-chrome-devtools/settings.jpeg" alt="设置截图"></p>
   </article>
   <div class="article-more-link">
     <a href="/2024/make-cpu-slower-with-chrome-devtools/#more">阅读全文</a>

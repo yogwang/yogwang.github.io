@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -104,80 +107,80 @@
 <span id="more"></span>
 
 <h2 id="使用两个二级域名"><a href="#使用两个二级域名" class="headerlink" title="使用两个二级域名"></a>使用两个二级域名</h2><p>一个顶级域名可以创建很多个二级域名，所以使用两个二级域名就很容易配置了，直接创建两个服务就可以，但是会跨域，因为是不同二级域名，后端单独做一下跨域允许就可以了。</p>
-<pre class="line-numbers language-caddyfile" data-language="caddyfile"><code class="language-caddyfile"># Vue
-https:&#x2F;&#x2F;www.example.com &#123;
-    root &#x2F;var&#x2F;www&#x2F;vue
-    log &#x2F;var&#x2F;log&#x2F;caddy&#x2F;fe.log
-    errors &#x2F;var&#x2F;log&#x2F;caddy&#x2F;fe.errors.log
+<pre><code class="hljs caddyfile"># Vue
+https://www.example.com &#123;
+    root /var/www/vue
+    log /var/log/caddy/fe.log
+    errors /var/log/caddy/fe.errors.log
     gzip
 
     rewrite &#123;
-        to &#123;path&#125; &#x2F;
+        to &#123;path&#125; /
     &#125;
 &#125;
 # Laravel
-https:&#x2F;&#x2F;api.example.com &#123;
-    root &#x2F;var&#x2F;www&#x2F;laravel&#x2F;public
-    log &#x2F;var&#x2F;log&#x2F;caddy&#x2F;bk.log
-    errors &#x2F;var&#x2F;log&#x2F;caddy&#x2F;bk.errors.log
+https://api.example.com &#123;
+    root /var/www/laravel/public
+    log /var/log/caddy/bk.log
+    errors /var/log/caddy/bk.errors.log
     gzip
 
     # PHP-FPM Configuration for Caddy
-    fastcgi &#x2F; &#x2F;run&#x2F;php&#x2F;php7.2-fpm.sock php &#123;
+    fastcgi / /run/php/php7.2-fpm.sock php &#123;
         ext .php
         split .php
         index index.php
     &#125;
 
     rewrite &#123;
-        to &#123;path&#125; &#123;path&#125;&#x2F; &#x2F;index.php?&#123;query&#125;
+        to &#123;path&#125; &#123;path&#125;/ /index.php?&#123;query&#125;
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 
 
 <hr>
 <h2 id="使用同一个域名"><a href="#使用同一个域名" class="headerlink" title="使用同一个域名"></a>使用同一个域名</h2><h3 id="方法一：使用同一域名然后不同路径作为站点地址："><a href="#方法一：使用同一域名然后不同路径作为站点地址：" class="headerlink" title="方法一：使用同一域名然后不同路径作为站点地址："></a>方法一：使用同一域名然后不同路径作为站点地址：</h3><p>我使用 <code>https://www.example.com/</code> 作为 Vue 项目的地址；<br><code>https://www.example.com/api</code> 作为 laravel 项目的站点地址。<br>配置如下</p>
-<pre class="line-numbers language-caddyfile" data-language="caddyfile"><code class="language-caddyfile"># Vue
-https:&#x2F;&#x2F;www.example.com &#123;
-    root &#x2F;var&#x2F;www&#x2F;vue
-    log &#x2F;var&#x2F;log&#x2F;caddy&#x2F;fe.log
-    errors &#x2F;var&#x2F;log&#x2F;caddy&#x2F;fe.errors.log
+<pre><code class="hljs caddyfile"># Vue
+https://www.example.com &#123;
+    root /var/www/vue
+    log /var/log/caddy/fe.log
+    errors /var/log/caddy/fe.errors.log
     gzip
 
     rewrite &#123;
-        to &#123;path&#125; &#x2F;
+        to &#123;path&#125; /
     &#125;
 &#125;
 # Laravel
-https:&#x2F;&#x2F;www.example.com&#x2F;v&#x2F; &#123;
-    root &#x2F;var&#x2F;www&#x2F;laravel&#x2F;public
-    log &#x2F;var&#x2F;log&#x2F;caddy&#x2F;bk.log
-    errors &#x2F;var&#x2F;log&#x2F;caddy&#x2F;bk.errors.log
+https://www.example.com/v/ &#123;
+    root /var/www/laravel/public
+    log /var/log/caddy/bk.log
+    errors /var/log/caddy/bk.errors.log
     gzip
 
     # PHP-FPM Configuration for Caddy
-    fastcgi &#x2F; &#x2F;run&#x2F;php&#x2F;php7.2-fpm.sock php &#123;
+    fastcgi / /run/php/php7.2-fpm.sock php &#123;
         ext .php
         split .php
         index index.php
     &#125;
 
     rewrite &#123;
-        to &#123;path&#125; &#123;path&#125;&#x2F; &#x2F;index.php?&#123;query&#125;
+        to &#123;path&#125; &#123;path&#125;/ /index.php?&#123;query&#125;
     &#125;
 &#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>这个时候访问的地址，后台可以接收到，但是在路由表中找不到对应信息，因为 laravel 部分把 <code>/api</code> 作为路由前缀，修改一下就可以了，例如 <code>https://www.example.com/v</code> ，前端请求的时候使用 <code>/v/api</code> 这个地址</p>
 <h3 id="方法二：使用一个域名作为-Vue-项目站点地址，api接口使用重定向"><a href="#方法二：使用一个域名作为-Vue-项目站点地址，api接口使用重定向" class="headerlink" title="方法二：使用一个域名作为 Vue 项目站点地址，api接口使用重定向"></a>方法二：使用一个域名作为 Vue 项目站点地址，api接口使用重定向</h3><p>这个方法我还没有在Caddy尝试，Nginx倒是知道，等以后尝试看看</p>
 <hr>
 <h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><ul>
-<li><p><strong>配置完之后访问 laravel 提示 [ <code>file not found</code> ]</strong><br>一般来说遇到这个问题的同时，可以在日志文件中查看到 <code>Primary script unknown</code> 的异常，这个问题是由于配置的目录没有写入权限，如果已经配置了写入权限，请确保在 同一用户/组 下运行 <code>Caddy</code> 和<code>php-fpm</code></p>
+<li><p><strong>配置完之后访问 laravel 提示 [ <code>file not found</code> ]</strong><br>一般来说遇到这个问题的同时，可以在日志文件中查看到 <code>Primary script unknown</code> 的异常，这个问题是由于配置的目录没有写入权限，如果已经配置了写入权限，请确保在 同一用户&#x2F;组 下运行 <code>Caddy</code> 和<code>php-fpm</code></p>
 </li>
 <li><p>如果 <code>Vue</code> 项目需要启用 <code>History</code> 路由模式怎么配置Caddy ?<br>当使用 history 模式时，URL 就像正常的 url，例如 <a target="_blank" rel="noopener" href="http://yoursite.com/user/id%EF%BC%8C%E4%B8%8D%E8%BF%87%E8%BF%99%E7%A7%8D%E6%A8%A1%E5%BC%8F%E8%BF%98%E9%9C%80%E8%A6%81%E5%90%8E%E5%8F%B0%E9%85%8D%E7%BD%AE%E6%94%AF%E6%8C%81%E3%80%82">http://yoursite.com/user/id，不过这种模式还需要后台配置支持。</a><br>因为应用是个单页客户端应用，如果后台没有正确的配置，当用户在浏览器直接访问 <a target="_blank" rel="noopener" href="http://oursite.com/user/id">http://oursite.com/user/id</a> 就会返回 404，所以需要在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 index.html 页面，这个页面就是你 app 依赖的页面</p>
-<pre class="line-numbers language-none"><code class="language-none">rewrite &#123;
+<pre><code class="hljs plaintext">rewrite &#123;
     regexp .*
-    to &#123;path&#125; &#x2F;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+    to &#123;path&#125; /
+&#125;</code></pre></li>
 </ul>
 <h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://caddyserver.com/v1/docs">Caddy_v1 官方文档</a></li>

@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -101,14 +104,14 @@
   <article class="article-content">
     <p>今天开发的小程序遇到了一个问题，在 <code>iPhone8 iOS 12.2</code> 的设备上访问出现了高度崩塌的问题，但是在其它的型号的 iOS 和 Android 设备上没有复现，<br>一开始以为是 <strong>微信版本</strong> 的问题，但是更新到了最新还是出现该问题。调试了一下发现问题出在子元素的 <code>display:flex</code> 上，修改为 <code>block</code> 之后高度就不会崩塌了，但是元素的样式就没办法做了。</p>
 <span id="more"></span>
-<p><img src="/2021/miniprogram-flex-height-collapse-in-ios/preview.jpg#center" alt="问题截图"></p>
+<p><img src="/2021/miniprogram-flex-height-collapse-in-ios/preview.jpg" alt="问题截图"></p>
 <p>具体的示例点击 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/s/LHl7SumI7qu1">🔗查看代码片段</a>，可以尝试复现看看，暂且只发现能在 <code>iPhone8 iOS 12.2</code> 的设备(实机)上会复现。</p>
 <p>一下子不知道该如何解决，暂且Google到了一个解决方案：</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 给会出现高度坍缩的元素加上 flex-shrink: 0;
+<pre><code class="hljs plaintext">// 给会出现高度坍缩的元素加上 flex-shrink: 0;
 .item&#123;
-  &#x2F;&#x2F; ...其他样式
+  // ...其他样式
   flex-shrink: 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 
 <p>如果知道为什么会崩塌的大佬，可以前往我在 <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000040894620">思否的提问</a> 或者 <a href="mailto:yogwang@foxmail.com?subject=记小程序flex布局垂直排列出现高度崩塌的问题">Mail 📧给我</a></p>
 <hr>

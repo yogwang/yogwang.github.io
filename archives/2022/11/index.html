@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -78,15 +81,15 @@
  
   <article class="article-excerpt">
     <p>今天小伙伴问了一个奇怪的问题，他在使用 <code>RegExp.test()</code> 方法时使用全局匹配时会依次返回 <code>true</code> 和 <code>false</code> 的现象。<br>比如说:</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> t <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">#</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// false</span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// true</span>
-t<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span>
-<span class="token comment">// false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> t = <span class="hljs-regexp">/#/g</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// false</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// true</span>
+t.<span class="hljs-title function_">test</span>(<span class="hljs-string">&quot;#&quot;</span>)
+<span class="hljs-comment">// false</span></code></pre>
 <p>我一开始以为是他正则写的不对，让他把其它的匹配规则都去掉再试试，结果问题还是依旧。<br>后来让他把 <code>/g</code> 的 <code>g</code> 去掉试了下发现没问题了。但还是没有怀疑到<strong>全局匹配</strong>的问题上，以为是他哪里覆写掉了的 <code>test()</code> 方法。让他使用空白页测试，依旧有这样的问题。</p>
   </article>
   <div class="article-more-link">

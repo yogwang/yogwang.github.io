@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -99,61 +102,61 @@
       <!-- 文章内容 article body -->
  
   <article class="article-content">
-    <h2 id="安装-Electron-builder"><a href="#安装-Electron-builder" class="headerlink" title="安装 Electron-builder"></a>安装 Electron-builder</h2><pre class="line-numbers language-none"><code class="language-none">$ git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-quick-start
+    <h2 id="安装-Electron-builder"><a href="#安装-Electron-builder" class="headerlink" title="安装 Electron-builder"></a>安装 Electron-builder</h2><pre><code class="hljs plaintext">$ git clone https://github.com/electron/electron-quick-start
 
 $ cd electron-quick-start
 
-$ yarn add electron-builder --dev &#x2F;&#x2F; 官方推荐
+$ yarn add electron-builder --dev // 官方推荐
 
 or
 
-$ npm install elctron-builder --save-dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ npm install elctron-builder --save-dev</code></pre>
 
 <span id="more"></span>
 
 <h2 id="配置-Electron-builder"><a href="#配置-Electron-builder" class="headerlink" title="配置 Electron-builder"></a>配置 Electron-builder</h2><p>在 <code>config.json</code> 配置 <strong>build</strong></p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&quot;build&quot;: &#123;
-    &quot;productName&quot;:&quot;xxxx&quot;, &#x2F;&#x2F;  项目名 这也是生成的exe文件的前缀名
-    &quot;appId&quot;: &quot;com.xxx.xxxxx&quot;, &#x2F;&#x2F;  包名
-    &quot;copyright&quot;:&quot;xxxx&quot;, &#x2F;&#x2F;  版权信息
-    &quot;directories&quot;: &#123;  &#x2F;&#x2F; 输出文件夹
-      &quot;output&quot;: &quot;build&quot;
-    &#125;,
-    &#x2F;&#x2F; windows相关的配置
-    &quot;win&quot;: &#123;
-      &quot;icon&quot;: &quot;xxx&#x2F;icon.ico&quot;  &#x2F;&#x2F;  图标路径
-    &#125;,
-    &quot;nsis&quot;: &#123; &#x2F;&#x2F;nsis安装脚本
-      &quot;oneClick&quot;: false, &#x2F;&#x2F; 是否一键安装
-      &quot;allowElevation&quot;: true, &#x2F;&#x2F; 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。
-      &quot;allowToChangeInstallationDirectory&quot;: true, &#x2F;&#x2F; 允许修改安装目录
-      &quot;installerIcon&quot;: &quot;.&#x2F;build&#x2F;icons&#x2F;aaa.ico&quot;,&#x2F;&#x2F; 安装图标
-      &quot;uninstallerIcon&quot;: &quot;.&#x2F;build&#x2F;icons&#x2F;bbb.ico&quot;,&#x2F;&#x2F;卸载图标
-      &quot;installerHeaderIcon&quot;: &quot;.&#x2F;build&#x2F;icons&#x2F;aaa.ico&quot;, &#x2F;&#x2F; 安装时头部图标
-      &quot;createDesktopShortcut&quot;: true, &#x2F;&#x2F; 创建桌面图标
-      &quot;createStartMenuShortcut&quot;: true,&#x2F;&#x2F; 创建开始菜单图标
-      &quot;shortcutName&quot;: &quot;xxxx&quot;, &#x2F;&#x2F; 图标名称
-    &#125;,
-  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs json"><span class="hljs-attr">&quot;build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;productName&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;xxxx&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//  项目名 这也是生成的exe文件的前缀名</span>
+    <span class="hljs-attr">&quot;appId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;com.xxx.xxxxx&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//  包名</span>
+    <span class="hljs-attr">&quot;copyright&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;xxxx&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//  版权信息</span>
+    <span class="hljs-attr">&quot;directories&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>  <span class="hljs-comment">// 输出文件夹</span>
+      <span class="hljs-attr">&quot;output&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;build&quot;</span>
+    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-comment">// windows相关的配置</span>
+    <span class="hljs-attr">&quot;win&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;icon&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;xxx/icon.ico&quot;</span>  <span class="hljs-comment">//  图标路径</span>
+    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;nsis&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span> <span class="hljs-comment">//nsis安装脚本</span>
+      <span class="hljs-attr">&quot;oneClick&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 是否一键安装</span>
+      <span class="hljs-attr">&quot;allowElevation&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。</span>
+      <span class="hljs-attr">&quot;allowToChangeInstallationDirectory&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 允许修改安装目录</span>
+      <span class="hljs-attr">&quot;installerIcon&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./build/icons/aaa.ico&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-comment">// 安装图标</span>
+      <span class="hljs-attr">&quot;uninstallerIcon&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./build/icons/bbb.ico&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-comment">//卸载图标</span>
+      <span class="hljs-attr">&quot;installerHeaderIcon&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./build/icons/aaa.ico&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 安装时头部图标</span>
+      <span class="hljs-attr">&quot;createDesktopShortcut&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 创建桌面图标</span>
+      <span class="hljs-attr">&quot;createStartMenuShortcut&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><span class="hljs-comment">// 创建开始菜单图标</span>
+      <span class="hljs-attr">&quot;shortcutName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;xxxx&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 图标名称</span>
+    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">&#125;</span></code></pre>
 
 <p>增加 <strong>scripts</strong> 脚本到 <code>config.json</code></p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&quot;scripts&quot;: &#123;
-  &quot;pack&quot;: &quot;electron-builder --dir&quot;,
-  &quot;dist&quot;: &quot;electron-builder&quot;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs json"><span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;pack&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;electron-builder --dir&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;dist&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;electron-builder&quot;</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
 
 <p><a target="_blank" rel="noopener" href="https://www.electron.build/configuration/configuration#configuration">其他平台</a></p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#x2F;&#x2F; mac
-&quot;mac&quot;: &#123;
-  &quot;category&quot;: &quot;your.app.category.type&quot;
-&#125;
-&#x2F;&#x2F; linux
-&quot;linux&quot;: &#123;
-  &quot;category&quot;: &quot;your.app.category.type&quot;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs json"><span class="hljs-comment">// mac</span>
+<span class="hljs-attr">&quot;mac&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;category&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;your.app.category.type&quot;</span>
+<span class="hljs-punctuation">&#125;</span>
+<span class="hljs-comment">// linux</span>
+<span class="hljs-attr">&quot;linux&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;category&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;your.app.category.type&quot;</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
 
 <p>…..待完成</p>
-<h2 id="与-Electron-parkager-的差异"><a href="#与-Electron-parkager-的差异" class="headerlink" title="与 Electron-parkager 的差异"></a>与 Electron-parkager 的差异</h2><p>…..待完成<br>2019/6/20</p>
+<h2 id="与-Electron-parkager-的差异"><a href="#与-Electron-parkager-的差异" class="headerlink" title="与 Electron-parkager 的差异"></a>与 Electron-parkager 的差异</h2><p>…..待完成<br>2019&#x2F;6&#x2F;20</p>
  
   </article>
 

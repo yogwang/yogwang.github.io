@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -127,12 +130,12 @@
 </ol>
 <ul>
 <li><code>&#123;*&#125;_begin</code> 表示查询范围开始值</li>
-<li><code>&#123;*&#125;_end</code> 表示查询范围结束值 </li>
+<li><code>&#123;*&#125;_end</code> 表示查询范围结束值</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">举例：
+<pre><code class="hljs plaintext">举例：
 字段名称 orderDate
 查询开始时间 : orderDate_begin
-查询结束时间 : orderDate_end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+查询结束时间 : orderDate_end</code></pre>
 
 <h3 id="注意部分"><a href="#注意部分" class="headerlink" title="注意部分"></a>注意部分</h3><ol>
 <li>数值类型不支持此种 <code>取非查询</code> ,可以将数值字段定义为字符串类型的在查询；</li>
@@ -143,10 +146,10 @@
 </ul>
 <hr>
 <h2 id="高级值规则"><a href="#高级值规则" class="headerlink" title="高级值规则"></a>高级值规则</h2><ol>
-<li><strong>小于查询</strong>：查询内容值规则：”lt+ 空格 + 内容”;<br>🌰：输入值：<code>lt 100</code></li>
-<li><strong>小于等于查询</strong>： 查询内容值规则：”le+ 空格+ 内容”;<br>🌰：输入值：<code>le 100</code></li>
-<li><strong>大于查询</strong>：查询内容值规则：”gt+ 空格+ 内容”;<br>🌰：输入值：<code>gt 100</code></li>
-<li><strong>大于等于查询</strong>： 查询内容值规则：”ge+ 空格+ 内容”;<br>🌰：输入值：<code>ge 100</code></li>
+<li><strong>小于查询</strong>：查询内容值规则：”lt+ 空格 + 内容”;<br>  🌰：输入值：<code>lt 100</code></li>
+<li><strong>小于等于查询</strong>： 查询内容值规则：”le+ 空格+ 内容”;<br>  🌰：输入值：<code>le 100</code></li>
+<li><strong>大于查询</strong>：查询内容值规则：”gt+ 空格+ 内容”;<br>  🌰：输入值：<code>gt 100</code></li>
+<li><strong>大于等于查询</strong>： 查询内容值规则：”ge+ 空格+ 内容”;<br>  🌰：输入值：<code>ge 100</code></li>
 </ol>
 <p><em>高级规则暂时发现不能在 <code>integer</code> 类型中使用，加上 <code>_MultiString</code> 虽然不会报错了，但是返回的数据错误。</em></p>
 <ul>
@@ -161,7 +164,7 @@
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><ul>
 <li><a target="_blank" rel="noopener" href="http://doc.jeecg.com/2043941">查询过滤器用法 · Jeecg-boot 开发文档</a></li>
 <li><a target="_blank" rel="noopener" href="http://doc.jeecg.com/2044154">Online报表排序 · Jeecg-boot 开发文档</a></li>
-<li>因为查询过滤器已经重构多次，版本最好选择 <code>2.2.x</code> 以上，<code>1.x</code> 版本只有全匹配/模糊查询/包含查询/不匹配查询。</li>
+<li>因为查询过滤器已经重构多次，版本最好选择 <code>2.2.x</code> 以上，<code>1.x</code> 版本只有全匹配&#x2F;模糊查询&#x2F;包含查询&#x2F;不匹配查询。</li>
 </ul>
  
   </article>

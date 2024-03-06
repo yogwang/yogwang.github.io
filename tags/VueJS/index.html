@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -79,23 +82,23 @@
  
   <article class="article-excerpt">
     <p>今天在刷思否的时候遇到这样的一个问题：</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">:value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inputValue<span class="token punctuation">"</span></span> <span class="token attr-name">@input</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleInput<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;inputValue&quot;</span> @<span class="hljs-attr">input</span>=<span class="hljs-string">&quot;handleInput&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
-<span class="token keyword">const</span> inputValue <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">const</span> val <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
-  <span class="token keyword">const</span> reg <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\d*$</span><span class="token regex-delimiter">/</span></span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>reg<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    inputValue<span class="token punctuation">.</span>value <span class="token operator">=</span> val
-  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-    inputValue<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">''</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span>
+<span class="language-javascript"><span class="hljs-keyword">const</span> inputValue = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)</span>
+<span class="language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleInput</span> = (<span class="hljs-params">e</span>) =&gt; &#123;</span>
+<span class="language-javascript">  <span class="hljs-keyword">const</span> val = e.<span class="hljs-property">target</span>.<span class="hljs-property">value</span></span>
+<span class="language-javascript">  <span class="hljs-keyword">const</span> reg = <span class="hljs-regexp">/^\d*$/</span></span>
+<span class="language-javascript">  <span class="hljs-keyword">if</span> (reg.<span class="hljs-title function_">test</span>(val)) &#123;</span>
+<span class="language-javascript">    inputValue.<span class="hljs-property">value</span> = val</span>
+<span class="language-javascript">  &#125; <span class="hljs-keyword">else</span> &#123;</span>
+<span class="language-javascript">    inputValue.<span class="hljs-property">value</span> = <span class="hljs-string">&#x27;&#x27;</span></span>
+<span class="language-javascript">  &#125;</span>
+<span class="language-javascript">&#125;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 <p>题主希望通过正则校验去限制输入框只能输入数字类型的值，但是只有在<strong>先输入数字</strong>再输入非数字的情况下才会被正确置空。如果一开始就是输入非数字的内容，后续即使继续输入非数字内容，输入框中的内容并不会清空。</p>
 <p>我们可以在 <a target="_blank" rel="noopener" href="https://play.vuejs.org/#eNp9kU9rwzAMxb+KMYMkoySH3kpa9oceusM2trGTGYRUSdM5trHlrqP0u092SNvDKASC3u9FeZIO/N6YfOeBz3iJ0BtZISyEYqzslPHI8NfAXHCEPQrOZrtK+lBH+BkKUu9iReqmUmsJq1CRXFCfsrhoSqWrbWeQOUBvSOl6oy2yA7PQsCNrrO5ZQmkSoWqtHLLzf9g8mNIkyUZ28TeCKWRsvmCHkH3glJV0yLGyLWAeo5+phZZo8SXE+vamCHrXsJTUHMFhSu4sG7oROaUYutCH9A7syEA6uOJLaBSyCUVPWQzjL/iEo6MYTdfmW6cVLT92ELzWvekk2BeDHcUUfDb2FrySUv88RQ2th8mo1xuov//Rt24fNMFfLTiwOzrViQ07GfDy/Tle9wR7vfaS3FfgGzgtfcg42B58uIW98MW0q3jfTrUfbrlHUG4cKgSNi4l+wenmj1dGP8ed5tNxofz4B7M06Sw=">Vue SFC Playground</a> 中体验这个现象。</p>
   </article>
@@ -140,21 +143,21 @@
 <p><code>v-model</code> 仅仅只是 <code>v-bind:value=&quot;value&quot;</code> 和 <code>@input=&quot;value = $event.target.value&quot;</code> 的语法糖吗？</p>
 </blockquote>
 <p>一直以来我都喜欢在Vue中声明对象变量的时候给变量赋值一个空对象，而不是把所有的属性值一起声明好。<br>比如说：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// vue2.x form demo</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 我喜欢这样声明</span>
-      formData<span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token comment">// 而不是这样在声明时把所有的属性一起书写好 </span>
-      formData<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        username<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
-        password<span class="token operator">:</span> <span class="token string">''</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>也可以从我之前关于 <code>props</code> 属性的笔记中察觉到 👉 <a target="_blank" rel="noopener" href="http://localhost:4000/2022/vue-props-type-validation-with-Null-and-undefined/">Vue中接收没有声明的Prop属性[null/undefined]的接收问题</a></p>
+<pre><code class="hljs js"><span class="hljs-comment">// vue2.x form demo</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">return</span> &#123;
+      <span class="hljs-comment">// 我喜欢这样声明</span>
+      <span class="hljs-attr">formData</span>: &#123;&#125;,
+      <span class="hljs-comment">// 而不是这样在声明时把所有的属性一起书写好 </span>
+      <span class="hljs-attr">formData</span>: &#123;
+        <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;&#x27;</span>
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre>
+<p>也可以从我之前关于 <code>props</code> 属性的笔记中察觉到 👉 <a target="_blank" rel="noopener" href="http://localhost:4000/2022/vue-props-type-validation-with-Null-and-undefined/">Vue中接收没有声明的Prop属性[null&#x2F;undefined]的接收问题</a></p>
 <p>因为我在写业务的时候如果 <code>props</code> 的属性值不存在，传入的会是一个 <code>undefined</code> 而不是 <code>null</code> 或者 <code>&#39;&#39;</code> 这样的预设。因为我期望使用组件 <code>props</code> 中声明的<strong>默认值</strong>，而不是在外部预设的<strong>空值</strong>。<br>所以一直以来我都在和小伙伴交流的时候也是推荐直接给变量一个空对象即可，除了一些数组属性需要单独声明。</p>
 <p>但前段时间一位小伙伴向我提问：他在组件生命周期函数中给表单属性赋值了一个预设值，后续再使用 <code>v-model</code> 对表单属性修改时发现<strong>丢失了响应</strong>……</p>
   </article>
@@ -320,7 +323,7 @@
  
   <article class="article-excerpt">
     <p>最近在写基础组件，同事一直反馈说组件总是提示警告：</p>
-<pre class="line-numbers language-console" data-language="console"><code class="language-console">[Vue warn]: Invalid prop: type check failed for prop &quot;value&quot;. Expected String, Array, got Null<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs console">[Vue warn]: Invalid prop: type check failed for prop &quot;value&quot;. Expected String, Array, got Null</code></pre>
 <p>一开始以为是接收的问题，把定义的<code>props</code>加上了工厂函数后没有报异常就没再管了。<br>今天再去看的时候发现还是有报错，检查了一下组件代码没发现问题，在查看业务代码的时候发现同事喜欢<b>给声明的变量默认赋值为 <code>null</code></b>。而不是声明正确的基础类型。所以我就想应该如何把这个问题彻底解决掉。</p>
 <h3 id="🔔-其实这个提示为了提醒可能你绑定的变量并不一定存在。"><a href="#🔔-其实这个提示为了提醒可能你绑定的变量并不一定存在。" class="headerlink" title="🔔 其实这个提示为了提醒可能你绑定的变量并不一定存在。"></a>🔔 其实这个提示为了提醒可能你绑定的变量并不一定存在。</h3>
   </article>
@@ -442,7 +445,7 @@
     <!-- 文章内容 article body -->
  
   <article class="article-excerpt">
-    <p>也算是经典面试题的一部分了，对于父子间的通讯很多时候的使用我都是限于 <code>props</code>/<code>$emit</code> 来处理，或者 <code>Vuex</code>/<code>EventBus</code> 这种方式，很少会用到 <code>Provide</code>/<code>Inject</code> 来处理。其实这是一个很实用的跨级组件间通讯的方式。</p>
+    <p>也算是经典面试题的一部分了，对于父子间的通讯很多时候的使用我都是限于 <code>props</code>&#x2F;<code>$emit</code> 来处理，或者 <code>Vuex</code>&#x2F;<code>EventBus</code> 这种方式，很少会用到 <code>Provide</code>&#x2F;<code>Inject</code> 来处理。其实这是一个很实用的跨级组件间通讯的方式。</p>
 <blockquote>
 <p>这对选项需要一起使用，以允许一个<strong>祖先组件向其所有子孙后代</strong>注入一个依赖，不论组件层次有多深，并在其上下游关系成立的时间里始终生效。</p>
 </blockquote>

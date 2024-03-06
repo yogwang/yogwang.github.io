@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -82,7 +85,7 @@
 </blockquote>
 <p>在这次接盘的3D可视化项目中就遇到了这个问题。因为模型文件体积比较大，在实际使用中经常会反馈说载入时间过长。所以在拿到服务器权限之后就改了一下 <code>Nginx</code> 的配置文件开启了静态资源的 <code>HTTP cache</code>，以为完事大吉就和一线说载入时间慢的问题解决好了。现在进入项目会使用本地缓存，在第一次载入的时候会慢一些，后面再次进入就会快很多了。</p>
 <p>但是实际使用中反馈过来的时依旧会有很长的载入时间。以为是 <code>Nginx</code> 的配置项写错了，就又去确认了一下。确实是开启了缓存的，首页的各种静态资源也是会被缓存，但是等我进入到模型展示页的时候就发现问题了！<br>最外层展示的模型是可以被缓存的，但是操作数据下钻之后开始展示内部模型从 <code>Network</code> 面板中看到的 <code>glb</code> 模型文件不是每一个都会从 <code>disk cache</code> 读取，有一些模型依旧会发起请求。</p>
-<p><img src="/2023/http-cache-limit-and-service-worker-cache/network_snipaste.jpeg#center" alt="面板截图"></p>
+<p><img src="/2023/http-cache-limit-and-service-worker-cache/network_snipaste.jpeg" alt="面板截图"></p>
 <p>所以就想着浏览器是不是可以有配置项可以修改，但是并没有（可以通过给快捷方式添加启动命令来修改，但不可能要求所有设备都这样做）。所以只能想其他法子来解决这个问题，自然就找到了 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers">Service Worker</a></p>
   </article>
   <div class="article-more-link">
@@ -123,23 +126,23 @@
  
   <article class="article-excerpt">
     <p>今天在刷思否的时候遇到这样的一个问题：</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">:value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inputValue<span class="token punctuation">"</span></span> <span class="token attr-name">@input</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>handleInput<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;inputValue&quot;</span> @<span class="hljs-attr">input</span>=<span class="hljs-string">&quot;handleInput&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
-<span class="token keyword">const</span> inputValue <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">const</span> val <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
-  <span class="token keyword">const</span> reg <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\d*$</span><span class="token regex-delimiter">/</span></span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>reg<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    inputValue<span class="token punctuation">.</span>value <span class="token operator">=</span> val
-  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-    inputValue<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">''</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span>
+<span class="language-javascript"><span class="hljs-keyword">const</span> inputValue = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)</span>
+<span class="language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleInput</span> = (<span class="hljs-params">e</span>) =&gt; &#123;</span>
+<span class="language-javascript">  <span class="hljs-keyword">const</span> val = e.<span class="hljs-property">target</span>.<span class="hljs-property">value</span></span>
+<span class="language-javascript">  <span class="hljs-keyword">const</span> reg = <span class="hljs-regexp">/^\d*$/</span></span>
+<span class="language-javascript">  <span class="hljs-keyword">if</span> (reg.<span class="hljs-title function_">test</span>(val)) &#123;</span>
+<span class="language-javascript">    inputValue.<span class="hljs-property">value</span> = val</span>
+<span class="language-javascript">  &#125; <span class="hljs-keyword">else</span> &#123;</span>
+<span class="language-javascript">    inputValue.<span class="hljs-property">value</span> = <span class="hljs-string">&#x27;&#x27;</span></span>
+<span class="language-javascript">  &#125;</span>
+<span class="language-javascript">&#125;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 <p>题主希望通过正则校验去限制输入框只能输入数字类型的值，但是只有在<strong>先输入数字</strong>再输入非数字的情况下才会被正确置空。如果一开始就是输入非数字的内容，后续即使继续输入非数字内容，输入框中的内容并不会清空。</p>
 <p>我们可以在 <a target="_blank" rel="noopener" href="https://play.vuejs.org/#eNp9kU9rwzAMxb+KMYMkoySH3kpa9oceusM2trGTGYRUSdM5trHlrqP0u092SNvDKASC3u9FeZIO/N6YfOeBz3iJ0BtZISyEYqzslPHI8NfAXHCEPQrOZrtK+lBH+BkKUu9iReqmUmsJq1CRXFCfsrhoSqWrbWeQOUBvSOl6oy2yA7PQsCNrrO5ZQmkSoWqtHLLzf9g8mNIkyUZ28TeCKWRsvmCHkH3glJV0yLGyLWAeo5+phZZo8SXE+vamCHrXsJTUHMFhSu4sG7oROaUYutCH9A7syEA6uOJLaBSyCUVPWQzjL/iEo6MYTdfmW6cVLT92ELzWvekk2BeDHcUUfDb2FrySUv88RQ2th8mo1xuov//Rt24fNMFfLTiwOzrViQ07GfDy/Tle9wR7vfaS3FfgGzgtfcg42B58uIW98MW0q3jfTrUfbrlHUG4cKgSNi4l+wenmj1dGP8ed5tNxofz4B7M06Sw=">Vue SFC Playground</a> 中体验这个现象。</p>
   </article>

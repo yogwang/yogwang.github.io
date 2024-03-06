@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,67 +106,67 @@
 <p>它们最主要的作用，是改变 <code>this</code> 的指向。在平时的工作中，除了在写一些基础类，或者公用库方法的时候会用到它们，其他时候应用场景并不多（ <code>React</code> 我习惯用箭头函数）。</p>
 <span id="more"></span>
 
-<h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><pre class="line-numbers language-none"><code class="language-none">func.call(thisArg, arg1, arg2, ...)
+<h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><pre><code class="hljs plaintext">func.call(thisArg, arg1, arg2, ...)
 func.apply(thisArg, [argsArray])
-func.bind(thisArg[, arg1[, arg2[, ...]]])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+func.bind(thisArg[, arg1[, arg2[, ...]]])</code></pre>
 
 <p>简单来说，他们都是改变函数执行时的上下文，参数形式都是差不多的。</p>
 <h3 id="先来看-call-和-apply"><a href="#先来看-call-和-apply" class="headerlink" title="先来看 call() 和 apply()"></a>先来看 <code>call()</code> 和 <code>apply()</code></h3><p>两个方法，乍一看没啥区别，除了参数部分，也都是于<code>JavaScript 1.3</code> 中实现。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> test <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-  color<span class="token operator">:</span> <span class="token string">'红色'</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">say</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"颜色是"</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>color<span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-test<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment">// 颜色是红色</span>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> test = &#123;
+  <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;红色&#x27;</span>,
+  <span class="hljs-attr">say</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;颜色是&quot;</span>+<span class="hljs-variable language_">this</span>.<span class="hljs-property">color</span>)
+  &#125;
+&#125;
+test.<span class="hljs-title function_">say</span>()
+<span class="hljs-comment">// 颜色是红色</span>
 
-<span class="token keyword">var</span> test2 <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-  color<span class="token operator">:</span><span class="token string">"黄色"</span>
-<span class="token punctuation">&#125;</span>
-test<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>test2<span class="token punctuation">)</span> <span class="token comment">// 颜色是黄色</span>
-test<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>test2<span class="token punctuation">)</span> <span class="token comment">// 颜色是黄色</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">var</span> test2 = &#123;
+  <span class="hljs-attr">color</span>:<span class="hljs-string">&quot;黄色&quot;</span>
+&#125;
+test.<span class="hljs-property">say</span>.<span class="hljs-title function_">call</span>(test2) <span class="hljs-comment">// 颜色是黄色</span>
+test.<span class="hljs-property">say</span>.<span class="hljs-title function_">apply</span>(test2) <span class="hljs-comment">// 颜色是黄色</span></code></pre>
 <p>这样看来确实很容易搞混，具体的区别看以下例子🌰</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> test <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-  color<span class="token operator">:</span><span class="token string">'红色'</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">say</span><span class="token operator">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">n<span class="token punctuation">,</span>graph</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>n<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">个</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span><span class="token keyword">this</span><span class="token punctuation">.</span>color<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">的</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>graph<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> test = &#123;
+  <span class="hljs-attr">color</span>:<span class="hljs-string">&#x27;红色&#x27;</span>,
+  <span class="hljs-attr">say</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">n,graph</span>)&#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;n&#125;</span>个<span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.color&#125;</span>的<span class="hljs-subst">$&#123;graph&#125;</span>`</span>)
+  &#125;
+&#125;
 
-test<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>color<span class="token operator">:</span><span class="token string">'绿色'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">'矩形'</span><span class="token punctuation">)</span> <span class="token comment">// 10个绿色的矩形</span>
-test<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>color<span class="token operator">:</span><span class="token string">'蓝色'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'三角形'</span><span class="token punctuation">)</span> <span class="token comment">// Uncaught TypeError: CreateListFromArrayLike called on non-object</span>
-test<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>color<span class="token operator">:</span><span class="token string">'蓝色'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'三角形'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 2个蓝色的三角形</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>昂，差别就是这个了，传入的参数形式不一样，因为现在有了展开符 来 传入/接受 参数，所以差异已经不大了，<br>但是在早期的环境中，如果不确定参数的话，一般都会选择用 <code>apply</code> 来一次性传入，并且使用 <code>arguments</code> 来处理。</p>
+test.<span class="hljs-property">say</span>.<span class="hljs-title function_">call</span>(&#123;<span class="hljs-attr">color</span>:<span class="hljs-string">&#x27;绿色&#x27;</span>&#125;, <span class="hljs-number">10</span>, <span class="hljs-string">&#x27;矩形&#x27;</span>) <span class="hljs-comment">// 10个绿色的矩形</span>
+test.<span class="hljs-property">say</span>.<span class="hljs-title function_">apply</span>(&#123;<span class="hljs-attr">color</span>:<span class="hljs-string">&#x27;蓝色&#x27;</span>&#125;, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;三角形&#x27;</span>) <span class="hljs-comment">// Uncaught TypeError: CreateListFromArrayLike called on non-object</span>
+test.<span class="hljs-property">say</span>.<span class="hljs-title function_">apply</span>(&#123;<span class="hljs-attr">color</span>:<span class="hljs-string">&#x27;蓝色&#x27;</span>&#125;, [<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;三角形&#x27;</span>]) <span class="hljs-comment">// 2个蓝色的三角形</span></code></pre>
+<p>昂，差别就是这个了，传入的参数形式不一样，因为现在有了展开符 来 传入&#x2F;接受 参数，所以差异已经不大了，<br>但是在早期的环境中，如果不确定参数的话，一般都会选择用 <code>apply</code> 来一次性传入，并且使用 <code>arguments</code> 来处理。</p>
 <h3 id="说完了-apply-和-call-，再来说说-bind"><a href="#说完了-apply-和-call-，再来说说-bind" class="headerlink" title="说完了 apply 和 call ，再来说说 bind"></a>说完了 <code>apply</code> 和 <code>call</code> ，再来说说 <code>bind</code></h3><p><code>bind</code> 方法与 <code>apply</code> 和 <code>call</code> 很相似，也是可以改变函数体内 <code>this</code> 的指向。</p>
 <blockquote>
 <p><code>bind()</code> 方法创建一个新的函数，在 <code>bind()</code> 被调用时，这个新函数的 <code>this</code> 被指定为 <code>bind()</code> 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。</p>
 </blockquote>
 <p>还是举个例子来说吧：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> test <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-  color<span class="token operator">:</span> <span class="token string">'红色'</span><span class="token punctuation">,</span>
-  <span class="token function-variable function">say</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"颜色是"</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>color<span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-test<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment">// 颜色是红色</span>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> test = &#123;
+  <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;红色&#x27;</span>,
+  <span class="hljs-attr">say</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;颜色是&quot;</span>+<span class="hljs-variable language_">this</span>.<span class="hljs-property">color</span>)
+  &#125;
+&#125;
+test.<span class="hljs-title function_">say</span>()
+<span class="hljs-comment">// 颜色是红色</span>
 
-<span class="token keyword">var</span> test2 <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-  color<span class="token operator">:</span><span class="token string">"黄色"</span>
-<span class="token punctuation">&#125;</span>
-test<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>test2<span class="token punctuation">)</span> <span class="token comment">// 颜色是黄色</span>
-test<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>test2<span class="token punctuation">)</span> <span class="token comment">// 颜色是黄色</span>
-test<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>test2<span class="token punctuation">)</span> <span class="token comment">// f() &#123;..&#125; </span>
+<span class="hljs-keyword">var</span> test2 = &#123;
+  <span class="hljs-attr">color</span>:<span class="hljs-string">&quot;黄色&quot;</span>
+&#125;
+test.<span class="hljs-property">say</span>.<span class="hljs-title function_">call</span>(test2) <span class="hljs-comment">// 颜色是黄色</span>
+test.<span class="hljs-property">say</span>.<span class="hljs-title function_">apply</span>(test2) <span class="hljs-comment">// 颜色是黄色</span>
+test.<span class="hljs-property">say</span>.<span class="hljs-title function_">bind</span>(test2) <span class="hljs-comment">// f() &#123;..&#125; </span>
 
-<span class="token comment">// 可以看到bind()并没有输出，需要自执行或者赋值给一个变量然后调用</span>
-test<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>test2<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 颜色是黄色</span>
-<span class="token keyword">var</span> bindTest2 <span class="token operator">=</span> test<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>test2<span class="token punctuation">)</span>
-<span class="token function">bindTest2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 颜色是黄色</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// 可以看到bind()并没有输出，需要自执行或者赋值给一个变量然后调用</span>
+test.<span class="hljs-property">say</span>.<span class="hljs-title function_">bind</span>(test2)() <span class="hljs-comment">// 颜色是黄色</span>
+<span class="hljs-keyword">var</span> bindTest2 = test.<span class="hljs-property">say</span>.<span class="hljs-title function_">bind</span>(test2)
+<span class="hljs-title function_">bindTest2</span>() <span class="hljs-comment">// 颜色是黄色</span></code></pre>
 
 <h3 id="简单总结来说"><a href="#简单总结来说" class="headerlink" title="简单总结来说"></a>简单总结来说</h3><ul>
-<li><code>call()</code>/<code>apply()</code>/<code>bind()</code> 都可以改变函数内的 <code>this</code> 指向；</li>
-<li><code>call()</code>/<code>apply()</code>会立即执行函数，而<code>bind()</code> 不会立即执行；</li>
+<li><code>call()</code>&#x2F;<code>apply()</code>&#x2F;<code>bind()</code> 都可以改变函数内的 <code>this</code> 指向；</li>
+<li><code>call()</code>&#x2F;<code>apply()</code>会立即执行函数，而<code>bind()</code> 不会立即执行；</li>
 <li><code>bind()</code> 会返回一个新得函数，并不会马上执行；</li>
 <li><code>apply()</code>，传入的参数需要数组格式；<ul>
 <li><code>fun.apply(thisArg, [arg1, arg2, ...])</code> ↔ <code>fun.call(thisArg, arg1, arg2, ...)</code></li>
@@ -176,14 +179,14 @@ test<span class="token punctuation">.</span><span class="token function">say</sp
 </ul>
 <hr>
 <h2 id="疑惑部分"><a href="#疑惑部分" class="headerlink" title="疑惑部分"></a>疑惑部分</h2><h4 id="1-bind-传入的参数部分是否可以在-bind-的时候不传入，后续使用的时候在传入？"><a href="#1-bind-传入的参数部分是否可以在-bind-的时候不传入，后续使用的时候在传入？" class="headerlink" title="1.bind() 传入的参数部分是否可以在 bind 的时候不传入，后续使用的时候在传入？"></a>1.<code>bind()</code> 传入的参数部分是否可以在 <code>bind</code> 的时候不传入，后续使用的时候在传入？</h4><p>可以</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">var</span> add1 <span class="token operator">=</span> <span class="token function">add</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add1</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 4 </span>
+<pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a, b</span>) &#123;
+  <span class="hljs-keyword">return</span> a + b;
+&#125;
+<span class="hljs-keyword">var</span> add1 = add.<span class="hljs-title function_">bind</span>(<span class="hljs-literal">null</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add1</span>(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>));  <span class="hljs-comment">// 4 </span>
 
-<span class="token keyword">var</span> add2 <span class="token operator">=</span> <span class="token function">add</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add2</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 15</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">var</span> add2 = add.<span class="hljs-title function_">bind</span>(<span class="hljs-literal">null</span>,<span class="hljs-number">10</span>)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add2</span>(<span class="hljs-number">5</span>));  <span class="hljs-comment">// 15</span></code></pre>
 
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call">Function.prototype.call() - MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">Function.prototype.apply() - MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">Function.prototype.bind() - MDN</a></p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000019970715">OBKoro1 - js 面试官想了解你有多理解 call,apply,bind?</a><br><a target="_blank" rel="noopener" href="https://juejin.im/post/5c493086f265da6115111ce4">Micherwa - 「干货」细说 call、apply 以及 bind 的区别和用法</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000002508005/a-1020000002508116">公子 - 如何理解，javascript bind</a><br><a target="_blank" rel="noopener" href="https://medium.com/schaoss-blog/%E4%B8%80%E6%AC%A1%E6%90%9E%E6%87%82%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%A9%A6%E6%9C%80%E6%84%9B%E5%95%8F%E7%9A%84-apply-bind-call-708f57518776">Schaos - 一次搞懂前端面試最愛問的 apply、bind、call</a></p>

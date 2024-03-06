@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -106,7 +109,7 @@
 <span id="more"></span>
 
 <h4 id="所以我们显示地写出关闭标签就好了："><a href="#所以我们显示地写出关闭标签就好了：" class="headerlink" title="所以我们显示地写出关闭标签就好了："></a>所以我们显示地写出关闭标签就好了：</h4><p><img src="/2023/vue-dom-template-parsing-caveats/correct_demo.jpg" alt="问题图片预览"></p>
-<p>因为我们已经习惯于使用 CLI 创建项目了，从而忽略了 Vue 模板解析器的支持。以及 <code>lint</code> 的 <a target="_blank" rel="noopener" href="https://eslint.vuejs.org/rules/html-self-closing.html">vue/html-self-closing</a> 校验规则潜移默化的让自己以为所有的元素都可以使用自闭合标签。其实并不是这样的，<code>HTML</code> 只允许<a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/syntax.html#void-elements">一小部分特殊的元素</a>省略其关闭标签。</p>
+<p>因为我们已经习惯于使用 CLI 创建项目了，从而忽略了 Vue 模板解析器的支持。以及 <code>lint</code> 的 <a target="_blank" rel="noopener" href="https://eslint.vuejs.org/rules/html-self-closing.html">vue&#x2F;html-self-closing</a> 校验规则潜移默化的让自己以为所有的元素都可以使用自闭合标签。其实并不是这样的，<code>HTML</code> 只允许<a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/syntax.html#void-elements">一小部分特殊的元素</a>省略其关闭标签。</p>
 <p>所以一开始的 HTML代码当中 <code>&lt;el-table-column prop=&quot;date&quot; label=&quot;Date&quot; width=&quot;180&quot; /&gt;</code> 写法就被解析为单个单个的 <code>&lt;tr&gt;</code> 元素从而变成单独占满一行的状态。显示地闭合标签之后，就会被正确地解析为 <code>&lt;td&gt;</code> 元素。</p>
 <hr>
 <h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/essentials/component-basics.html#dom-template-parsing-caveats">DOM 模板解析注意事项 - 组件基础 | Vue.js</a></p>

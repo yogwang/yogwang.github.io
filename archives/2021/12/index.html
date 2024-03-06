@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -81,7 +84,7 @@
 <p>目前小程序分包大小有以下限制：</p>
 <ul>
 <li>整个小程序所有分包大小不超过 20M</li>
-<li>单个分包/主包大小不能超过 2M</li>
+<li>单个分包&#x2F;主包大小不能超过 2M</li>
 </ul>
 </blockquote>
 <p>随着项目的不断迭代，小程序的主包会越来越大， 终究会有一天会超过 <code>2M</code> 的主包限制，首先考虑到的就是图片资源放到 <code>CDN</code> 或者 <code>OSS</code>，起初会很奏效，但是随着一些JS库的加入就没办法了，即使使用了 <code>.min</code> 版本，或者精简了类库代码，主包还会很大，这时候就会用到项目分包了。</p>

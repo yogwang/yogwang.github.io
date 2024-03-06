@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,20 +106,20 @@
 <p>突然发现 <code>line-clamp</code> 它可以完成以纯 CSS 的多行文本截断，<br>并且配合 <code>text-overflow: ellipsis</code> 就可以在尾部加上省略号，<br>当然 <code>overflow: hidden</code> 并不可缺少</p>
 <span id="more"></span>
 
-<h2 id="单行文字的截断"><a href="#单行文字的截断" class="headerlink" title="单行文字的截断"></a>单行文字的截断</h2><pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">text-truncate</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">word-wrap</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
-  <span class="token property">text-overflow</span><span class="token punctuation">:</span> ellipsis<span class="token punctuation">;</span>
-  <span class="token property">white-space</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
-  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="单行文字的截断"><a href="#单行文字的截断" class="headerlink" title="单行文字的截断"></a>单行文字的截断</h2><pre><code class="hljs css">text-truncate &#123;
+  <span class="hljs-attribute">word-wrap</span>: normal;
+  <span class="hljs-attribute">text-overflow</span>: ellipsis;
+  <span class="hljs-attribute">white-space</span>: nowrap;
+  <span class="hljs-attribute">overflow</span>: hidden;
+&#125;</code></pre>
 
-<h2 id="多行文字的截断"><a href="#多行文字的截断" class="headerlink" title="多行文字的截断"></a>多行文字的截断</h2><pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">text-truncate</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">text-overflow</span><span class="token punctuation">:</span> ellipsis<span class="token punctuation">;</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> -webkit-box<span class="token punctuation">;</span>
-  <span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
-  <span class="token property">-webkit-box-orient</span><span class="token punctuation">:</span> vertical<span class="token punctuation">;</span>
-  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="多行文字的截断"><a href="#多行文字的截断" class="headerlink" title="多行文字的截断"></a>多行文字的截断</h2><pre><code class="hljs css">text-truncate &#123;
+  <span class="hljs-attribute">text-overflow</span>: ellipsis;
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  -webkit-line-clamp: <span class="hljs-number">3</span>;
+  -webkit-box-orient: vertical;
+  <span class="hljs-attribute">overflow</span>: hidden;
+&#125;</code></pre>
 
 <p>在 <a target="_blank" rel="noopener" href="https://codepen.io/yogwang/pen/ExYVvYE">CodePen</a> 中查看 <em>DEMO</em></p>
 <p><a target="_blank" rel="noopener" href="https://caniuse.com/#feat=css-line-clamp">Can I use</a> 中查看 <strong>兼容性</strong></p>

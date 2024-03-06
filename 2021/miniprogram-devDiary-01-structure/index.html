@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -100,7 +103,7 @@
  
   <article class="article-content">
     <p>小程序包含一个描述整体程序的 <code>app</code> 和多个描述各自页面的 <code>page</code>。<br>刚刚接触到小程序，使用 微信开发者工具 新建完项目之后，会有一个这样的初始结构：</p>
-<pre class="line-numbers language-none"><code class="language-none">├─pages
+<pre><code class="hljs plaintext">├─pages
 │  ├─index
 │  │     index.js
 │  │     index.json
@@ -119,7 +122,7 @@
 ├─ app.json
 ├─ app.wxss
 ├─ project.config.json
-└─ sitemap.json<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+└─ sitemap.json</code></pre>
 <span id="more"></span>
 
 
@@ -201,9 +204,9 @@
 <h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>在正常使用过程中，我们还会遇到 <code>component</code> - <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/">自定义组件</a>，它和 <code>pages</code> 页面组件类似，也是由 [ <code>json</code>, <code>wxml</code>, <code>wxss</code>, <code>js</code> ] 4个文件组成，但是稍有不同。</p>
 <p>你可以单独新建一个顶级的 <code>components</code> 目录，例如：<code>/components/userInfo/...</code>，<br>也可以放到不同 <code>page</code> 对应的目录下 <code>/pages/home/components/userInfo/...</code></p>
 <h4 id="不同点："><a href="#不同点：" class="headerlink" title="不同点："></a>不同点：</h4><p>首先，<code>.json</code> 文件中需要声明 <code>component</code> 为 <code>true</code></p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-  &quot;component&quot;: true
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;component&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
 <p>然后是在 <code>.js</code> 文件中注册组件的不同， 需要使用 <code>Component()</code> 来注册组件，多了 <code>properties</code> 属性和 <code>methods</code> 属性。</p>
 <p>具体配置就不多说了，直接参看文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/component.html">Component 构造器 | 微信开放文档</a><br><br></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整体和 Vue 的遍写思路很像了，</p>

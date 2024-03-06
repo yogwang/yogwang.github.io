@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -81,21 +84,21 @@
 <p><code>v-model</code> 仅仅只是 <code>v-bind:value=&quot;value&quot;</code> 和 <code>@input=&quot;value = $event.target.value&quot;</code> 的语法糖吗？</p>
 </blockquote>
 <p>一直以来我都喜欢在Vue中声明对象变量的时候给变量赋值一个空对象，而不是把所有的属性值一起声明好。<br>比如说：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// vue2.x form demo</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// 我喜欢这样声明</span>
-      formData<span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token comment">// 而不是这样在声明时把所有的属性一起书写好 </span>
-      formData<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        username<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
-        password<span class="token operator">:</span> <span class="token string">''</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>也可以从我之前关于 <code>props</code> 属性的笔记中察觉到 👉 <a target="_blank" rel="noopener" href="http://localhost:4000/2022/vue-props-type-validation-with-Null-and-undefined/">Vue中接收没有声明的Prop属性[null/undefined]的接收问题</a></p>
+<pre><code class="hljs js"><span class="hljs-comment">// vue2.x form demo</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">return</span> &#123;
+      <span class="hljs-comment">// 我喜欢这样声明</span>
+      <span class="hljs-attr">formData</span>: &#123;&#125;,
+      <span class="hljs-comment">// 而不是这样在声明时把所有的属性一起书写好 </span>
+      <span class="hljs-attr">formData</span>: &#123;
+        <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;&#x27;</span>
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre>
+<p>也可以从我之前关于 <code>props</code> 属性的笔记中察觉到 👉 <a target="_blank" rel="noopener" href="http://localhost:4000/2022/vue-props-type-validation-with-Null-and-undefined/">Vue中接收没有声明的Prop属性[null&#x2F;undefined]的接收问题</a></p>
 <p>因为我在写业务的时候如果 <code>props</code> 的属性值不存在，传入的会是一个 <code>undefined</code> 而不是 <code>null</code> 或者 <code>&#39;&#39;</code> 这样的预设。因为我期望使用组件 <code>props</code> 中声明的<strong>默认值</strong>，而不是在外部预设的<strong>空值</strong>。<br>所以一直以来我都在和小伙伴交流的时候也是推荐直接给变量一个空对象即可，除了一些数组属性需要单独声明。</p>
 <p>但前段时间一位小伙伴向我提问：他在组件生命周期函数中给表单属性赋值了一个预设值，后续再使用 <code>v-model</code> 对表单属性修改时发现<strong>丢失了响应</strong>……</p>
   </article>

@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -107,29 +110,29 @@
 <p><code>flat()</code> 方法会按照一个<strong>可指定的深度</strong>递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回，对原数据没有影响。</p>
 </blockquote>
 <p><code>flat()</code> 默认深度为 <code>1</code>，如果想要 “拉平” 多层的嵌套数组，可以将 <code>flat()</code> 方法的参数写成一个整数，表示想要拉平的层数。<br>✨ 如果不管有多少层嵌套，都要转成一维数组，可以用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Infinity"><strong>Infinity</strong> 关键字</a>作为参数。<br>✨ 如果原数组有空位，<code>flat()</code>方法会跳过空位(过滤掉<strong>空值</strong>)</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token comment">// 展开一层数组</span>
-arr1<span class="token punctuation">.</span><span class="token function">flat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// [1, 2, 3, 4]</span>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]];
+<span class="hljs-comment">// 展开一层数组</span>
+arr1.<span class="hljs-title function_">flat</span>();
+<span class="hljs-comment">// [1, 2, 3, 4]</span>
 
-<span class="token keyword">var</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-arr2<span class="token punctuation">.</span><span class="token function">flat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// [1, 2, 3, 4, [5, 6]]</span>
+<span class="hljs-keyword">var</span> arr2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>]]];
+arr2.<span class="hljs-title function_">flat</span>();
+<span class="hljs-comment">// [1, 2, 3, 4, [5, 6]]</span>
 
-<span class="token comment">// 展开两层数组</span>
-arr2<span class="token punctuation">.</span><span class="token function">flat</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// [1, 2, 3, 4, 5, 6]</span>
+<span class="hljs-comment">// 展开两层数组</span>
+arr2.<span class="hljs-title function_">flat</span>(<span class="hljs-number">2</span>);
+<span class="hljs-comment">// [1, 2, 3, 4, 5, 6]</span>
 
-<span class="token comment">// 使用 Infinity，可展开任意深度的嵌套数组</span>
-<span class="token keyword">var</span> arr3 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-arr3<span class="token punctuation">.</span><span class="token function">flat</span><span class="token punctuation">(</span><span class="token number">Infinity</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
+<span class="hljs-comment">// 使用 Infinity，可展开任意深度的嵌套数组</span>
+<span class="hljs-keyword">var</span> arr3 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, [<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, [<span class="hljs-number">9</span>, <span class="hljs-number">10</span>]]]]];
+arr3.<span class="hljs-title function_">flat</span>(<span class="hljs-title class_">Infinity</span>);
+<span class="hljs-comment">// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
 
-<span class="token comment">// flat() 方法会移除数组中的空项</span>
-<span class="token keyword">var</span> arr4 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-arr4<span class="token punctuation">.</span><span class="token function">flat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// [1, 2, 4, 5]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-comment">// flat() 方法会移除数组中的空项</span>
+<span class="hljs-keyword">var</span> arr4 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, , <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];
+arr4.<span class="hljs-title function_">flat</span>();
+<span class="hljs-comment">// [1, 2, 4, 5]</span>
+</code></pre>
 <p>很容易理解的一个方法，就是推平数组，其实成为自己想要的一维数组。不过可以接收一个 <code>depth</code> 参数，我是再写这篇笔记的时候才知道的，所以还是要多记笔记啊。</p>
 <hr>
 <h2 id="Array-prototype-flatMap-callback-thisArg"><a href="#Array-prototype-flatMap-callback-thisArg" class="headerlink" title="Array.prototype.flatMap(callback [, thisArg]))"></a><code>Array.prototype.flatMap(callback [, thisArg]))</code></h2><blockquote>
@@ -137,16 +140,16 @@ arr4<span class="token punctuation">.</span><span class="token function">flat</s
 </blockquote>
 <p>这个方法如果在知道 <code>flat()</code> 方法之后直接看，就还挺清楚作用是什么的，但是一看MDN上的说明，瞬间就被迷糊了….<br>其实简单来说是先 <code>map()</code> 然后执行 <code>flat()</code> 的简化版（不能指定深度）。</p>
 <p>✨ <strong><code>flatMap()</code> 只能展开一层数组</strong></p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"it's Sunny in"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">"California"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-string">&quot;it&#x27;s Sunny in&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;California&quot;</span>];
 
-arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token operator">=></span> x<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// [["it's","Sunny","in"],[""],["California"]]</span>
+arr.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot; &quot;</span>));
+<span class="hljs-comment">// [[&quot;it&#x27;s&quot;,&quot;Sunny&quot;,&quot;in&quot;],[&quot;&quot;],[&quot;California&quot;]]</span>
 
-arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token operator">=></span> x<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">flat</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment">// ["it's","Sunny","in", "", "California"]</span>
+arr.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot; &quot;</span>)).<span class="hljs-title function_">flat</span>()
+<span class="hljs-comment">// [&quot;it&#x27;s&quot;,&quot;Sunny&quot;,&quot;in&quot;, &quot;&quot;, &quot;California&quot;]</span>
 
-arr<span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token operator">=></span> x<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// ["it's","Sunny","in", "", "California"]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+arr.<span class="hljs-title function_">flatMap</span>(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot; &quot;</span>));
+<span class="hljs-comment">// [&quot;it&#x27;s&quot;,&quot;Sunny&quot;,&quot;in&quot;, &quot;&quot;, &quot;California&quot;]</span></code></pre>
 
 <h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><h4 id="使用-reduce-与-concat-来替代-flat-方法就不复述了，直接去看MDN上的实现就好。"><a href="#使用-reduce-与-concat-来替代-flat-方法就不复述了，直接去看MDN上的实现就好。" class="headerlink" title="使用 reduce() 与 concat() 来替代 flat() 方法就不复述了，直接去看MDN上的实现就好。"></a>使用 <code>reduce()</code> 与 <code>concat()</code> 来替代 <code>flat()</code> 方法就不复述了，直接去看MDN上的实现就好。</h4><ul>
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat#%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88">替代方案 - flat</a></li>

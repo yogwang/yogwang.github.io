@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -99,70 +102,70 @@
       <!-- 文章内容 article body -->
  
   <article class="article-content">
-    <p><img src="/2019/CSS-striped-background/preview.jpg" alt="preview"></p>
+    <p><img src="/./CSS-striped-background/preview.jpg" alt="preview"></p>
 <p>刚刚写年会红包雨的时候用到了 <code>linear-gradient</code> 来实现条纹背景，但是突然卡壳想不起来怎么写了。<br>就去百度一下，所以现在把它记下来，方便以后查阅。</p>
 <span id="more"></span>
 
 <h3 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h3><p>使用 <code>linear-gradient</code> 实现没有渐变的色块</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.color-block</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>#c498bc 50%<span class="token punctuation">,</span> #81a2cf 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-class">.color-block</span> &#123;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">#c498bc</span> <span class="hljs-number">50%</span>, <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span>);
+&#125;</code></pre>
 
 <h3 id="横向条纹"><a href="#横向条纹" class="headerlink" title="横向条纹"></a>横向条纹</h3><p>再上一个基础之上增加 <code>background-size</code> 属性进行 repeat</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.stripe</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>#c498bc 50%<span class="token punctuation">,</span> #81a2cf 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token property">background-size</span><span class="token punctuation">:</span> 100% 30px<span class="token punctuation">;</span> // 宽度100%<span class="token punctuation">,</span> 高度30px 如果没有no-repeat的话他会一直铺满整个div
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-class">.stripe</span> &#123;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">#c498bc</span> <span class="hljs-number">50%</span>, <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span>);
+  <span class="hljs-attribute">background-size</span>: <span class="hljs-number">100%</span> <span class="hljs-number">30px</span>; // 宽度<span class="hljs-number">100%</span>, 高度<span class="hljs-number">30px</span> 如果没有no-repeat的话他会一直铺满整个<span class="hljs-selector-tag">div</span>
+&#125;</code></pre>
 
 <h3 id="竖直条纹"><a href="#竖直条纹" class="headerlink" title="竖直条纹"></a>竖直条纹</h3><p>再在上一个的基础之上增加 <code>linear-gradient</code> 的朝向，然后交换 <code>background-size</code> 的宽高</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.stripe</span> <span class="token punctuation">&#123;</span>
-  // 向右填色 如果是 <span class="token string">'to left'</span> 就是向左填色
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to right<span class="token punctuation">,</span> #c498bc 50%<span class="token punctuation">,</span> #81a2cf 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token property">background-size</span><span class="token punctuation">:</span> 30px 100%<span class="token punctuation">;</span> // 宽度30px<span class="token punctuation">,</span> 高度100%
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-class">.stripe</span> &#123;
+  // 向右填色 如果是 &#x27;<span class="hljs-selector-tag">to</span> <span class="hljs-attribute">left</span>&#x27; 就是向左填色
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(to right, <span class="hljs-number">#c498bc</span> <span class="hljs-number">50%</span>, <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span>);
+  <span class="hljs-attribute">background-size</span>: <span class="hljs-number">30px</span> <span class="hljs-number">100%</span>; // 宽度<span class="hljs-number">30px</span>, 高度<span class="hljs-number">100%</span>
+&#125;</code></pre>
 
 <h3 id="倾斜条纹"><a href="#倾斜条纹" class="headerlink" title="倾斜条纹"></a>倾斜条纹</h3><p>倾斜条纹的话就相对麻烦一点了，如果只修改 <code>linear-gradient</code> 的朝向为角度那么就会出现下边这个情况：</p>
-<p><img src="/2019/CSS-striped-background/q1.jpg" alt="q1"></p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.stripe1</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>45deg<span class="token punctuation">,</span> #c498bc 50%<span class="token punctuation">,</span> #81a2cf 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  background-size 30px 100%<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/./CSS-striped-background/q1.jpg" alt="q1"></p>
+<pre><code class="hljs css"><span class="hljs-selector-class">.stripe1</span> &#123;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">45deg</span>, <span class="hljs-number">#c498bc</span> <span class="hljs-number">50%</span>, <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span>);
+  <span class="hljs-attribute">background-size</span> <span class="hljs-number">30px</span> <span class="hljs-number">100%</span>;
+&#125;</code></pre>
 
 <p>所以要修改 <code>background-size</code> ,但是只是这样也会有问题：</p>
-<p><img src="/2019/CSS-striped-background/q2.jpg" alt="q2"></p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.stripe2</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>45deg<span class="token punctuation">,</span> #c498bc 50%<span class="token punctuation">,</span> #81a2cf 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  background-size 30px 30px
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/./CSS-striped-background/q2.jpg" alt="q2"></p>
+<pre><code class="hljs css"><span class="hljs-selector-class">.stripe2</span> &#123;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">45deg</span>, <span class="hljs-number">#c498bc</span> <span class="hljs-number">50%</span>, <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span>);
+  <span class="hljs-attribute">background-size</span> <span class="hljs-number">30px</span> <span class="hljs-number">30px</span>
+&#125;</code></pre>
 
 <p>结果是会形成一小块一小块的斜线色块，而不是整个倾斜条纹</p>
 <p>所以按照现象修改 <code>linear-gradient</code> 之后为：</p>
-<p><img src="/2019/CSS-striped-background/q3.jpg" alt="q3"></p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.stripe3</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>45deg<span class="token punctuation">,</span>
-      #c498bc 25%<span class="token punctuation">,</span>
-      #81a2cf 0<span class="token punctuation">,</span>
-      #81a2cf 50%<span class="token punctuation">,</span>
-      #c498bc 0<span class="token punctuation">,</span>
-      #c498bc 75%<span class="token punctuation">,</span>
-      #81a2cf 0
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  background-size 30px 30px
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/./CSS-striped-background/q3.jpg" alt="q3"></p>
+<pre><code class="hljs css"><span class="hljs-selector-class">.stripe3</span> &#123;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">45deg</span>,
+      <span class="hljs-number">#c498bc</span> <span class="hljs-number">25%</span>,
+      <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span>,
+      <span class="hljs-number">#81a2cf</span> <span class="hljs-number">50%</span>,
+      <span class="hljs-number">#c498bc</span> <span class="hljs-number">0</span>,
+      <span class="hljs-number">#c498bc</span> <span class="hljs-number">75%</span>,
+      <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span>
+  );
+  <span class="hljs-attribute">background-size</span> <span class="hljs-number">30px</span> <span class="hljs-number">30px</span>
+&#125;</code></pre>
 
 <p>简单的实现时没问题了，但是感觉太长了。<br>如果要简化的话，需要使用的是 <code>repeating-linear-gradient</code></p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.stripe4</span> <span class="token punctuation">&#123;</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">repeating-linear-gradient</span><span class="token punctuation">(</span>
-    45deg<span class="token punctuation">,</span>
-    #81a2cf<span class="token punctuation">,</span>
-    #81a2cf 15px<span class="token punctuation">,</span>
-    #c498bc 0<span class="token punctuation">,</span>
-    #c498bc 30px
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-class">.stripe4</span> &#123;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">repeating-linear-gradient</span>(
+    <span class="hljs-number">45deg</span>,
+    <span class="hljs-number">#81a2cf</span>,
+    <span class="hljs-number">#81a2cf</span> <span class="hljs-number">15px</span>,
+    <span class="hljs-number">#c498bc</span> <span class="hljs-number">0</span>,
+    <span class="hljs-number">#c498bc</span> <span class="hljs-number">30px</span>
+  );
+&#125;</code></pre>
 
 <p>这样的话只需要一行就可以实现 <code>.stripe3</code> 的效果了。</p>
-<p>以上<br>2019/12/21 05：00</p>
+<p>以上<br>2019&#x2F;12&#x2F;21 05：00</p>
  
   </article>
 

@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -109,29 +112,29 @@
 <h3 id="方法1-改写成-数组-对象。每次去-find-一下是否已经存在上级元素，然后插入到-child-中，但是对于层级比较深的就不是特别好使了，需要递归才行。"><a href="#方法1-改写成-数组-对象。每次去-find-一下是否已经存在上级元素，然后插入到-child-中，但是对于层级比较深的就不是特别好使了，需要递归才行。" class="headerlink" title="#方法1. 改写成 数组 对象。每次去 find 一下是否已经存在上级元素，然后插入到 child 中，但是对于层级比较深的就不是特别好使了，需要递归才行。"></a>#方法1. 改写成 数组 对象。每次去 <code>find</code> 一下是否已经存在上级元素，然后插入到 <code>child</code> 中，但是对于层级比较深的就不是特别好使了，需要递归才行。</h3><p>所以我先 <code>const list = []</code> 声明了一个数组对象，同时也 <code>const tmpMapper = new Map()</code> 声明一个 <code>Map</code> 数据对象把这些 一级祖先 <code>.set</code> 进去，因为是同一个引用所以 数组内的数据 和 <code>Map</code> 内的数是同一个，直接修改 <code>Map</code> 内的属性 数组内的元素也会变更。<br>然后开始遍历通过 <code>parentId</code> 关联的平级结构列表，因为是从前往后正序排列的，所以直接通过 <code>tmpMapper.get(item.parentId)</code> 就可以获取到父级了，然后 <code>push</code> 当前元素到父级的 <code>child</code> 当中，同时也 <code>.set</code> 到 <code>tmpMapper</code> 当中。如此往复，这样就可以把通过 <code>parentId</code> 关联的平级结构列表转成树结构了。最后再把 <code>list</code> 赋值给在 <code>data</code> 中提前声明好的数组变量就可以了。</p>
 <p>只是后续操作修改的时候都会比较麻烦。不过好在我只有初始化的时候需要这样创建一次就行了。之后通过转换成树状的数组递归渲染即可。</p>
 <h3 id="方法2-添加一个标识符，在每次操作-Map-对象的时候去给这个标识符-1，这样通过监听数字标识符的变更来触发更新。"><a href="#方法2-添加一个标识符，在每次操作-Map-对象的时候去给这个标识符-1，这样通过监听数字标识符的变更来触发更新。" class="headerlink" title="#方法2. 添加一个标识符，在每次操作 Map 对象的时候去给这个标识符 +1，这样通过监听数字标识符的变更来触发更新。"></a>#方法2. 添加一个标识符，在每次操作 <code>Map</code> 对象的时候去给这个标识符 <code>+1</code>，这样通过监听数字标识符的变更来触发更新。</h3><p>一般来说这样都是通过 <code>computed</code> 来把 <code>Map</code> 对象转为数组。因为其实最终在 <code>template</code> 中循环的时候其实也是一个可递归的变量，所以使用 <code>Array.form()</code> 直接转换成数组使用就行了。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  mySetChangeTracker<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-  mySet<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<pre><code class="hljs js"><span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;
+  <span class="hljs-attr">mySetChangeTracker</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">mySet</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>(),
+&#125;,
   
-computed<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">mySetAsList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
-    <span class="token comment">// By using `mySetChangeTracker` we tell Vue that this property depends on it,</span>
-    <span class="token comment">// so it gets re-evaluated whenever `mySetChangeTracker` changes</span>
-    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>mySetChangeTracker <span class="token operator">&amp;&amp;</span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>mySet<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="hljs-attr">computed</span>: &#123;
+  <span class="hljs-title function_">mySetAsList</span>(<span class="hljs-params"></span>) &#123; 
+    <span class="hljs-comment">// By using `mySetChangeTracker` we tell Vue that this property depends on it,</span>
+    <span class="hljs-comment">// so it gets re-evaluated whenever `mySetChangeTracker` changes</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">mySetChangeTracker</span> &amp;&amp; <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">mySet</span>);
+  &#125;,
+&#125;,
 
-methods<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-  <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">// Trigger Vue updates</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>mySetChangeTracker <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-attr">methods</span>: &#123;
+  <span class="hljs-title function_">add</span>(<span class="hljs-params">item</span>) &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">mySet</span>.<span class="hljs-title function_">add</span>(item);
+    <span class="hljs-comment">// Trigger Vue updates</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">mySetChangeTracker</span> += <span class="hljs-number">1</span>;
+  &#125;
+&#125;</code></pre>
 
 <hr>
-<h3 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h3><p><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/issues/1319#issuecomment-162742130">[Feature]: Add support of the iterator protocol (es6) for v-for directive (map, weakset, weakmap) · Issue #1319 · vuejs/vue</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/issues/5241#issuecomment-288057627">vuejs doesn’t support Sets as backing fields for binding (nor maps, weakmap, weakset reactivity) · Issue #5241 · vuejs/vue</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/issues/2410#issuecomment-318487855">Support more collection data types in v-for · Issue #2410 · vuejs/vue</a></p>
+<h3 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h3><p><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/issues/1319#issuecomment-162742130">[Feature]: Add support of the iterator protocol (es6) for v-for directive (map, weakset, weakmap) · Issue #1319 · vuejs&#x2F;vue</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/issues/5241#issuecomment-288057627">vuejs doesn’t support Sets as backing fields for binding (nor maps, weakmap, weakset reactivity) · Issue #5241 · vuejs&#x2F;vue</a><br><a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/issues/2410#issuecomment-318487855">Support more collection data types in v-for · Issue #2410 · vuejs&#x2F;vue</a></p>
  
   </article>
 

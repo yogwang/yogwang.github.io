@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -164,15 +167,15 @@
     <!-- 文章内容 article body -->
  
   <article class="article-excerpt">
-    <h2 id="安装-Electron-builder"><a href="#安装-Electron-builder" class="headerlink" title="安装 Electron-builder"></a>安装 Electron-builder</h2><pre class="line-numbers language-none"><code class="language-none">$ git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-quick-start
+    <h2 id="安装-Electron-builder"><a href="#安装-Electron-builder" class="headerlink" title="安装 Electron-builder"></a>安装 Electron-builder</h2><pre><code class="hljs plaintext">$ git clone https://github.com/electron/electron-quick-start
 
 $ cd electron-quick-start
 
-$ yarn add electron-builder --dev &#x2F;&#x2F; 官方推荐
+$ yarn add electron-builder --dev // 官方推荐
 
 or
 
-$ npm install elctron-builder --save-dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+$ npm install elctron-builder --save-dev</code></pre>
   </article>
   <div class="article-more-link">
     <a href="/2019/Electron03-Electron-builder/#more">阅读全文</a>
@@ -214,14 +217,14 @@ $ npm install elctron-builder --save-dev<span aria-hidden="true" class="line-num
     <h2 id="安装-Electron-packager"><a href="#安装-Electron-packager" class="headerlink" title="安装 Electron-packager"></a>安装 <a target="_blank" rel="noopener" href="https://github.com/electron-userland/electron-packager">Electron-packager</a></h2><blockquote>
 <p>需要 Node.js 6.0 或更高版本</p>
 </blockquote>
-<pre class="line-numbers language-none"><code class="language-none">npm install electron-packager --save-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs plaintext">npm install electron-packager --save-dev</code></pre>
 
 <p><a target="_blank" rel="noopener" href="https://github.com/electron-userland/electron-packager/blob/master/docs/api.md">electron-packager API</a></p>
-<h2 id="使用命令行打包"><a href="#使用命令行打包" class="headerlink" title="使用命令行打包"></a>使用命令行打包</h2><pre class="line-numbers language-none"><code class="language-none">electron-packager &lt;sourcedir&gt; &lt;appname&gt; --platform&#x3D;&lt;platform&gt; --arch&#x3D;&lt;arch&gt; [optional flags...]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="使用命令行打包"><a href="#使用命令行打包" class="headerlink" title="使用命令行打包"></a>使用命令行打包</h2><pre><code class="hljs plaintext">electron-packager &lt;sourcedir&gt; &lt;appname&gt; --platform=&lt;platform&gt; --arch=&lt;arch&gt; [optional flags...]</code></pre>
 
 <p>必需参数</p>
 <ul>
-<li><p>sourcedir - 应用程序源</p></li></ul>
+<li><p>sourcedir - 应用程序源</p>
   </article>
   <div class="article-more-link">
     <a href="/2019/Electron02-Electron-parkager/#more">阅读全文</a>
@@ -260,7 +263,7 @@ $ npm install elctron-builder --save-dev<span aria-hidden="true" class="line-num
     <!-- 文章内容 article body -->
  
   <article class="article-excerpt">
-    <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><pre class="line-numbers language-none"><code class="language-none">$ mkdir my-app
+    <h2 id="自己创建-Electron-应用"><a href="#自己创建-Electron-应用" class="headerlink" title="自己创建 Electron 应用"></a>自己创建 Electron 应用</h2><h3 id="1-使用-npm-初始化一个项目"><a href="#1-使用-npm-初始化一个项目" class="headerlink" title="1. 使用 npm 初始化一个项目"></a>1. 使用 <code>npm</code> 初始化一个项目</h3><pre><code class="hljs plaintext">$ mkdir my-app
 
 $ cd my-app
 
@@ -277,7 +280,7 @@ Wrote to E:\my-app\package.json:
   &quot;keywords&quot;: [],
   &quot;author&quot;: &quot;&quot;,
   &quot;license&quot;: &quot;ISC&quot;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 
 <p>修改入口文件为 <code>main.js</code> 并且添加 <code>start</code> 脚本引导 <strong>Node</strong> 来执行 Electron</p>
   </article>

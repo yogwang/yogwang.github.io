@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -104,27 +107,27 @@
 <p>所以查了一下相关的问题，发现是因为多个组件实例是共享同一个预置防抖的函数，并不是相互独立的。</p>
 <span id="more"></span>
 <p>一直以来都是直接如 Vue 文档中演示的这样来写的，加上请求接口就会是下面这样：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">import</span> debounce <span class="token keyword">from</span> <span class="token string">"lodash.debounce"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> remoteSearchAPI <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'xxxx'</span><span class="token punctuation">;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> debounce <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;lodash.debounce&quot;</span>;
+<span class="hljs-keyword">import</span> &#123; remoteSearchAPI &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;xxxx&#x27;</span>;
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
-	<span class="token comment">// ...</span>
-	methods<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-		remoteMethod<span class="token operator">:</span> <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-			<span class="token keyword">const</span> params <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-				keywords<span class="token operator">:</span> value<span class="token punctuation">,</span>
-			<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-			<span class="token keyword">this</span><span class="token punctuation">.</span>fetching <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-			<span class="token function">remoteSearchAPI</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span>
-				<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-					<span class="token comment">// ...</span>
-				<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-				<span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-					<span class="token keyword">this</span><span class="token punctuation">.</span>fetching <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-				<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">350</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> maxWait<span class="token operator">:</span> <span class="token number">1000</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-	<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-comment">// ...</span>
+  <span class="hljs-attr">methods</span>: &#123;
+    <span class="hljs-attr">remoteMethod</span>: <span class="hljs-title function_">debounce</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">value = <span class="hljs-string">&quot;&quot;</span></span>) &#123;
+      <span class="hljs-keyword">const</span> params = &#123;
+        <span class="hljs-attr">keywords</span>: value,
+      &#125;;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">fetching</span> = <span class="hljs-literal">true</span>;
+      <span class="hljs-title function_">remoteSearchAPI</span>(params)
+        .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;
+          <span class="hljs-comment">// ...</span>
+        &#125;)
+        .<span class="hljs-title function_">finally</span>(<span class="hljs-function">() =&gt;</span> &#123;
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">fetching</span> = <span class="hljs-literal">false</span>;
+        &#125;);
+    &#125;, <span class="hljs-number">350</span>, &#123; <span class="hljs-attr">maxWait</span>: <span class="hljs-number">1000</span> &#125;),
+  &#125;,
+&#125;;</code></pre>
 <p>这样写的话就会有一个问题：</p>
 <blockquote>
 <p>这种方法对于被重用的组件来说是有问题的，因为这个预置防抖的函数是 <strong>有状态的</strong>：它在运行时维护着一个内部状态。如果多个组件实例都共享这同一个预置防抖的函数，那么它们之间将会互相影响。<br><small>响应式基础 | Vue.js</small></p>
@@ -132,22 +135,22 @@
 <h2 id="那么如何解决这个问题呢？"><a href="#那么如何解决这个问题呢？" class="headerlink" title="# 那么如何解决这个问题呢？"></a># 那么如何解决这个问题呢？</h2><p>Vue的文档中也给出了相应的解决方案。</p>
 <blockquote>
 <p>要保持每个组件实例的防抖函数都彼此独立，我们可以改为在 <code>created</code> 生命周期钩子中创建这个预置防抖的函数：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
- <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-   <span class="token comment">// 每个实例都有了自己的预置防抖的处理函数</span>
-   <span class="token keyword">this</span><span class="token punctuation">.</span>debouncedClick <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">debounce</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>click<span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span>
- <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
- <span class="token function">unmounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-   <span class="token comment">// 最好是在组件卸载时</span>
-   <span class="token comment">// 清除掉防抖计时器</span>
-   <span class="token keyword">this</span><span class="token punctuation">.</span>debouncedClick<span class="token punctuation">.</span><span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
- <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
- methods<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-   <span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-     <span class="token comment">// ... 对点击的响应 ...</span>
-   <span class="token punctuation">&#125;</span>
- <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+ <span class="hljs-title function_">created</span>(<span class="hljs-params"></span>) &#123;
+   <span class="hljs-comment">// 每个实例都有了自己的预置防抖的处理函数</span>
+   <span class="hljs-variable language_">this</span>.<span class="hljs-property">debouncedClick</span> = _.<span class="hljs-title function_">debounce</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">click</span>, <span class="hljs-number">500</span>)
+ &#125;,
+ <span class="hljs-title function_">unmounted</span>(<span class="hljs-params"></span>) &#123;
+   <span class="hljs-comment">// 最好是在组件卸载时</span>
+   <span class="hljs-comment">// 清除掉防抖计时器</span>
+   <span class="hljs-variable language_">this</span>.<span class="hljs-property">debouncedClick</span>.<span class="hljs-title function_">cancel</span>()
+ &#125;,
+ <span class="hljs-attr">methods</span>: &#123;
+   <span class="hljs-title function_">click</span>(<span class="hljs-params"></span>) &#123;
+     <span class="hljs-comment">// ... 对点击的响应 ...</span>
+   &#125;
+ &#125;
+&#125;</code></pre>
 </blockquote>
 <hr>
 <h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903516788506637">vue 踩坑小记 - 如何正确的使用 debounce</a><br><a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/essentials/reactivity-fundamentals.html#stateful-methods">#有状态方法 响应式基础 | Vue.js</a></p>

@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,29 +106,29 @@
 <p>函数和对其周围状态（lexical environment，词法环境）的引用捆绑在一起构成闭包（closure）。也就是说，闭包可以让你从内部函数访问外部函数作用域。在 JavaScript 中，每当函数被创建，就会在函数生成时生成闭包。</p>
 </blockquote>
 <p>先拿 MDN 上的一个简单的 🌰 来说：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">"Mozilla"</span><span class="token punctuation">;</span> <span class="token comment">// name 是一个被 init 创建的局部变量</span>
-    <span class="token keyword">function</span> <span class="token function">displayName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// displayName() 是内部函数，一个闭包</span>
-        <span class="token function">alert</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 使用了父函数中声明的变量</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token function">displayName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;Mozilla&quot;</span>; <span class="hljs-comment">// name 是一个被 init 创建的局部变量</span>
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">displayName</span>(<span class="hljs-params"></span>) &#123; <span class="hljs-comment">// displayName() 是内部函数，一个闭包</span>
+        <span class="hljs-title function_">alert</span>(name); <span class="hljs-comment">// 使用了父函数中声明的变量</span>
+    &#125;
+    <span class="hljs-title function_">displayName</span>();
+&#125;
+<span class="hljs-title function_">init</span>();</code></pre>
 <p><code>init()</code> 创建了一个局部变量 <code>name</code> 和一个名为 <code>displayName()</code> 的函数。<br><code>displayName()</code> 是定义在 <code>init()</code> 里的内部函数（仅在 <code>init()</code> 函数体内可用），它没有自己的局部变量，<br>然而它可以访问到外部函数的变量，所以 <code>displayName()</code> 可以使用父函数 <code>init()</code> 中声明的变量 <code>name</code> 。</p>
 <span id="more"></span>
 <p>这个就是最简单的一个闭包实现。</p>
 <hr>
 <h3 id="不过要了解闭包，就得先了解-JavaScript-变量的作用域，变量的作用域分为-全局变量-和-局部变量"><a href="#不过要了解闭包，就得先了解-JavaScript-变量的作用域，变量的作用域分为-全局变量-和-局部变量" class="headerlink" title="不过要了解闭包，就得先了解 JavaScript 变量的作用域，变量的作用域分为 全局变量 和 局部变量"></a>不过要了解闭包，就得先了解 JavaScript 变量的作用域，变量的作用域分为 <code>全局变量</code> 和 <code>局部变量</code></h3><p>例如全局变量</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> a<span class="token operator">=</span><span class="token string">'test'</span>
-<span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
-<span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// test</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> a=<span class="hljs-string">&#x27;test&#x27;</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a)
+&#125;
+<span class="hljs-title function_">fn</span>() <span class="hljs-comment">// test</span></code></pre>
 <p>全局变量可以在函数内使用，函数内部的变量就不可以在函数外部被调用了</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">'test'</span>
-<span class="token punctuation">&#125;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">// Uncaught ReferenceError: a is not defined</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-keyword">var</span> a = <span class="hljs-string">&#x27;test&#x27;</span>
+&#125;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a) <span class="hljs-comment">// Uncaught ReferenceError: a is not defined</span></code></pre>
 
 <br>
 
@@ -138,82 +141,74 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>既然<code>内部函数</code>可以读取 外部函数 中的 局部变量，那么只要 内部函数 作为 <code>返回值</code>，我们不就可以在函数外部读取它的 <code>内部变量</code> 了吗！</p>
 <p>的确，大都数情况我们都是在 <strong>函数内部定义一个函数，并且把这个内部函数 <code>return</code> 出来</strong>，从而来达到目的。</p>
 <p>🌰 例如这个例子</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">makeAdder</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">y</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">makeAdder</span>(<span class="hljs-params">x</span>) &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params">y</span>) &#123;
+    <span class="hljs-keyword">return</span> x + y;
+  &#125;;
+&#125;
 
-<span class="token keyword">var</span> add5 <span class="token operator">=</span> <span class="token function">makeAdder</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> add10 <span class="token operator">=</span> <span class="token function">makeAdder</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">var</span> add5 = <span class="hljs-title function_">makeAdder</span>(<span class="hljs-number">5</span>);
+<span class="hljs-keyword">var</span> add10 = <span class="hljs-title function_">makeAdder</span>(<span class="hljs-number">10</span>);
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add5</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 7</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add10</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 12</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add5</span>(<span class="hljs-number">2</span>));  <span class="hljs-comment">// 7</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add10</span>(<span class="hljs-number">2</span>)); <span class="hljs-comment">// 12</span></code></pre>
 <p>上方的例子就可以看到在把 <code>内部函数</code> 赋值给 <code>外部变量</code> 之后，可以继续在之前的运行结果之上进行加运算。</p>
-<p>当然也可以修改被调用的外部函数变量，例如这个累加的例子：</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">makeAdder</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">var</span> x <span class="token operator">=</span> x
-  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">y</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    x <span class="token operator">+=</span> y
-    <span class="token keyword">return</span> x<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<h2 id="当然也可以修改被调用的外部函数变量，例如这个累加的例子："><a href="#当然也可以修改被调用的外部函数变量，例如这个累加的例子：" class="headerlink" title="当然也可以修改被调用的外部函数变量，例如这个累加的例子："></a>当然也可以修改被调用的外部函数变量，例如这个累加的例子：<br><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">makeAdder</span>(<span class="hljs-params">x</span>) &#123;
+  <span class="hljs-keyword">var</span> x = x
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params">y</span>) &#123;
+    x += y
+    <span class="hljs-keyword">return</span> x;
+  &#125;;
+&#125;
 
-<span class="token keyword">var</span> add5 <span class="token operator">=</span> <span class="token function">makeAdder</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> add10 <span class="token operator">=</span> <span class="token function">makeAdder</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">var</span> add5 = <span class="hljs-title function_">makeAdder</span>(<span class="hljs-number">5</span>);
+<span class="hljs-keyword">var</span> add10 = <span class="hljs-title function_">makeAdder</span>(<span class="hljs-number">10</span>);
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add5</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 10</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add5</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add5</span>(<span class="hljs-number">5</span>));  <span class="hljs-comment">// 10</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add5</span>(<span class="hljs-number">10</span>)); <span class="hljs-comment">// 20</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add10</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 15</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add10</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 25</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h2 id="一句话形容闭包"><a href="#一句话形容闭包" class="headerlink" title="一句话形容闭包"></a>一句话形容闭包</h2><blockquote>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add10</span>(<span class="hljs-number">5</span>));  <span class="hljs-comment">// 15</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add10</span>(<span class="hljs-number">10</span>)); <span class="hljs-comment">// 25</span></code></pre></h2><h2 id="一句话形容闭包"><a href="#一句话形容闭包" class="headerlink" title="一句话形容闭包"></a>一句话形容闭包</h2><blockquote>
 <p>由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。</p>
 </blockquote>
 <p>所以，在本质上，闭包就是将 <strong>函数内部</strong> 和 <strong>函数外部</strong> 连接起来的一座桥梁。</p>
 <p>闭包可以用在许多地方。它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。</p>
-<p>ES6 普及之后真的很少有使用到闭包了，<code>const</code> 和 <code>let</code> 的出现方便了太多了。</p>
-<h4 id="最后给你们看一个-阮一峰-老师文章里边的例子，乍一看-nAdd-我懵了半分钟。"><a href="#最后给你们看一个-阮一峰-老师文章里边的例子，乍一看-nAdd-我懵了半分钟。" class="headerlink" title="最后给你们看一个 阮一峰 老师文章里边的例子，乍一看 nAdd() 我懵了半分钟。"></a>最后给你们看一个 阮一峰 老师文章里边的例子，乍一看 <code>nAdd()</code> 我懵了半分钟。</h4><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> n<span class="token operator">=</span><span class="token number">999</span><span class="token punctuation">;</span>
-    <span class="token function-variable function">nAdd</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>n<span class="token operator">+=</span><span class="token number">1</span><span class="token punctuation">&#125;</span>
-    <span class="token keyword">function</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    　　<span class="token function">alert</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">return</span> f2<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<h2 id="ES6-普及之后真的很少有使用到闭包了，const-和-let-的出现方便了太多了。-最后给你们看一个-阮一峰-老师文章里边的例子，乍一看-nAdd-我懵了半分钟。"><a href="#ES6-普及之后真的很少有使用到闭包了，const-和-let-的出现方便了太多了。-最后给你们看一个-阮一峰-老师文章里边的例子，乍一看-nAdd-我懵了半分钟。" class="headerlink" title="ES6 普及之后真的很少有使用到闭包了，const 和 let 的出现方便了太多了。#### 最后给你们看一个 阮一峰 老师文章里边的例子，乍一看 nAdd() 我懵了半分钟。"></a>ES6 普及之后真的很少有使用到闭包了，<code>const</code> 和 <code>let</code> 的出现方便了太多了。<br>#### 最后给你们看一个 阮一峰 老师文章里边的例子，乍一看 <code>nAdd()</code> 我懵了半分钟。<br><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">f1</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-keyword">var</span> n=<span class="hljs-number">999</span>;
+    nAdd=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;n+=<span class="hljs-number">1</span>&#125;
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">f2</span>(<span class="hljs-params"></span>)&#123;
+    　　<span class="hljs-title function_">alert</span>(n);
+    &#125;
+    <span class="hljs-keyword">return</span> f2;
+&#125;
 
-<span class="token keyword">var</span> result<span class="token operator">=</span><span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">var</span> result=<span class="hljs-title function_">f1</span>();
 
-<span class="token function">result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 999</span>
+<span class="hljs-title function_">result</span>(); <span class="hljs-comment">// 999</span>
 
-<span class="token function">nAdd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-title function_">nAdd</span>();
 
-<span class="token function">result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h2 id="遇到的疑问"><a href="#遇到的疑问" class="headerlink" title="遇到的疑问"></a>遇到的疑问</h2><ul>
+<span class="hljs-title function_">result</span>(); <span class="hljs-comment">// 1000</span></code></pre></h2><h2 id="遇到的疑问"><a href="#遇到的疑问" class="headerlink" title="遇到的疑问"></a>遇到的疑问</h2><ul>
 <li><h3 id="闭包是否一定要被外部变量保存（保持被引用）"><a href="#闭包是否一定要被外部变量保存（保持被引用）" class="headerlink" title="闭包是否一定要被外部变量保存（保持被引用）"></a>闭包是否一定要被外部变量保存（保持被引用）</h3><p>  并不是只有被外部变量引用的子函数叫做闭包，没有内存地址没有被保持引用的函数也可以是闭包；</p>
 <blockquote>
 <p>因此可以把闭包简单理解成”定义在一个函数内部的函数”。</p>
 </blockquote>
 </li>
-</ul>
-<ul>
 <li><h3 id="引发问题：变量提升，到底会被提升到哪里？"><a href="#引发问题：变量提升，到底会被提升到哪里？" class="headerlink" title="引发问题：变量提升，到底会被提升到哪里？"></a>引发问题：变量提升，到底会被提升到哪里？</h3><p>  以前一直以为 <strong>变量提升</strong> 会把使用 <code>var</code> 声明的变量提升到全局环境下。但是这次再写demo的时候发现原来是提升当前函数的顶部，并不是到全局下的。</p>
-  <pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">var</span> str<span class="token operator">=</span><span class="token string">'test text'</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">b</span>(<span class="hljs-params"></span>)&#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str)
+    &#125;
+    <span class="hljs-keyword">var</span> str=<span class="hljs-string">&#x27;test text&#x27;</span>
+&#125;</code></pre>
 <p>  在 变量提升 下可以这样理解</p>
-  <pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> str
-    <span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-    str<span class="token operator">=</span><span class="token string">'test text'</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+  <pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-keyword">var</span> str
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">b</span>(<span class="hljs-params"></span>)&#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str)
+    &#125;
+    str=<span class="hljs-string">&#x27;test text&#x27;</span>
+&#125;</code></pre></li>
 </ul>
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures">闭包 - MDN</a></li>

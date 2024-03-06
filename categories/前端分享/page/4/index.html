@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -82,7 +85,7 @@
 <p>目前小程序分包大小有以下限制：</p>
 <ul>
 <li>整个小程序所有分包大小不超过 20M</li>
-<li>单个分包/主包大小不能超过 2M</li>
+<li>单个分包&#x2F;主包大小不能超过 2M</li>
 </ul>
 </blockquote>
 <p>随着项目的不断迭代，小程序的主包会越来越大， 终究会有一天会超过 <code>2M</code> 的主包限制，首先考虑到的就是图片资源放到 <code>CDN</code> 或者 <code>OSS</code>，起初会很奏效，但是随着一些JS库的加入就没办法了，即使使用了 <code>.min</code> 版本，或者精简了类库代码，主包还会很大，这时候就会用到项目分包了。</p>
@@ -163,9 +166,9 @@
     <!-- 文章内容 article body -->
  
   <article class="article-excerpt">
-    <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Cache-Control<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-cache, no-store, must-revalidate<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Pragma<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-cache<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Expires<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    <pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Cache-Control&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;no-cache, no-store, must-revalidate&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Pragma&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;no-cache&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Expires&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;0&quot;</span> /&gt;</span></code></pre>
 
 <p>赶巧不巧，正好在假期第一天遇到了修改接口地址的问题 —— 节前最后一个工作日后端兄弟自己修改了编译后的 Js 文件中的接口地址，但是并没有生效，只不过当时没发现，今天电话过来问应该怎么处理，奈何电脑没带在身边，只能让他修改了接口地址之后重新编辑被修改的 Js 文件名中的 <code>hash</code> 值随便改一位，同时修改一下 <code>index.html</code> 中的引入路径。<br>可是没多久又发来消息说，不行还是请求旧地址，没有被修改。我怀疑是页面被缓存了，于是让他确认了一下页面源代码中是否有 <code>no-cache</code> 的 <code>meta</code> ，他说有，但是页面还是被缓存了，看到引入 Js 文件的路径还是他修改前的旧路径。<br>于是我就纳闷了，好像浏览器跳过了设置的机制，并没有重新请求服务器获取最新的 <code>index</code> 文件。</p>
   </article>
@@ -334,7 +337,7 @@
  
   <article class="article-excerpt">
     <p>最近大屏又开始火了，群里好多人又开始捡起来了数据可视化，我也一样遇到了新得是数据可视化项目，但是这次不是说  <code>ECharts</code>，而是数据大屏上的所谓 <strong>“科技感”</strong> 容器，比如下图：</p>
-<p><img src="/2021/border-style-of-special-border-box/data_visualization.jpg#center" alt="数据大屏截图"></p>
+<p><img src="/./border-style-of-special-border-box/data_visualization.jpg" alt="数据大屏截图"></p>
 <p>可以看到很多的边框，虽然说可以直接让 UI 小姐姐 切给我们出来所有不同规格的背景图片来解决问题，但是就需要 UI 一份一份切给我们，就很麻烦，而且占用首屏加载的资源。<br>我就想是否可以用一些精灵图来完成，或者一些简单的边框可以直接使用一些 <code>CSS</code> 的奇技淫巧来完成。</p>
 <p>我从花瓣上找了一些示例，然后通过CSS复现，<strong>接下来上实例</strong></p>
   </article>

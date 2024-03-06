@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -116,33 +119,33 @@
 <h4 id="要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容"><a href="#要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容" class="headerlink" title="要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容"></a>要求一般情况下只显示文本前两行，当鼠标悬停时显示全部文本内容</h4><p><img src="/2019/Chrome-VerticalCentering/gif_1.gif" alt="场景Gif"></p>
 <h2 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h2><p>👉 <a target="_blank" rel="noopener" href="https://codepen.io/yogwang/pen/MPNGpY">CodePen</a></p>
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>在第一个 li 前创建一个与之等高的伪类就可以解决</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">ul:before</span><span class="token punctuation">&#123;</span>
-	<span class="token property">content</span> <span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">;</span>
-	<span class="token property">width</span> <span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
-	<span class="token property">height</span> <span class="token punctuation">:</span> 520px
-	<span class="token property">display</span> <span class="token punctuation">:</span> blcok<span class="token punctuation">;</span>
-	<span class="token property">position</span> <span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs css"><span class="hljs-selector-tag">ul</span><span class="hljs-selector-pseudo">:before</span>&#123;
+  <span class="hljs-attribute">content</span> : <span class="hljs-string">&quot;&quot;</span>;
+  <span class="hljs-attribute">width</span> : <span class="hljs-number">1px</span>;
+  <span class="hljs-attribute">height</span> : <span class="hljs-number">520px</span>
+  display : blcok;
+  <span class="hljs-attribute">position</span> : absolute;
+&#125;</code></pre>
 
-<p><img src="/2019/Chrome-VerticalCentering/gif_fix.gif" alt="解决GIF"></p>
+<p><img src="/Chrome-VerticalCentering/gif_fix.gif" alt="解决GIF"></p>
 <h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><ul>
 <li>CodePen - <a target="_blank" rel="noopener" href="https://codepen.io/yogwang/pen/MPNGpY">https://codepen.io/yooooge/pen/MPNGpY</a></li>
 </ul>
 <ul>
 <li><p>Chrome 版本</p>
-<p><img src="/2019/Chrome-VerticalCentering/version_chrome.png" alt="chrome"></p>
+<p><img src="/Chrome-VerticalCentering/version_chrome.png" alt="chrome"></p>
 </li>
 <li><p>Firefox 版本</p>
-<p><img src="/2019/Chrome-VerticalCentering/version_firefox.png" alt="Firefox"></p>
+<p><img src="/Chrome-VerticalCentering/version_firefox.png" alt="Firefox"></p>
 </li>
 <li><p>Edge 版本</p>
-<p><img src="/2019/Chrome-VerticalCentering/version_edge.png" alt="Edge"></p>
+<p><img src="/Chrome-VerticalCentering/version_edge.png" alt="Edge"></p>
 </li>
 <li><p>IE 版本</p>
-<p><img src="/2019/Chrome-VerticalCentering/version_ie.png" alt="ie11"></p>
+<p><img src="/Chrome-VerticalCentering/version_ie.png" alt="ie11"></p>
 </li>
 </ul>
-<p>yogWang 2019/07/03</p>
+<p>yogWang 2019&#x2F;07&#x2F;03</p>
  
   </article>
 

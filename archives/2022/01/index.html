@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -82,7 +85,7 @@
 <hr>
 <p>结果从 <strong>详情页</strong> 返回 <strong>列表页</strong> 之后，<strong>返回按钮</strong>点上去没反应了！！！页面中添加一个自定义按钮调用 <code>wx.navigateBack</code> 返回也不行。</p>
 <p>监听了 <code>wx.navigateBack</code> 的 <code>success</code>、<code>fail</code>、<code>complete</code> 三个回调之后发现，<code>success</code> 和 <code>fail</code> 都不执行，只执行了 <code>complete</code> 的回调，输出为：</p>
-<pre class="line-numbers language-log" data-language="log"><code class="language-log">complete: &#123;errMsg: &quot;fail:navigateBack intercepted&quot;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre><code class="hljs log">complete: &#123;errMsg: &quot;fail:navigateBack intercepted&quot;&#125;</code></pre>
   </article>
   <div class="article-more-link">
     <a href="/2022/miniprogram-fail-navigate-back-intercepted/#more">阅读全文</a>

@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,42 +106,42 @@
 <h3 id="首先，虽然小程序没有路由表，但是在全局配置文件-app-json-中有-pages-信息"><a href="#首先，虽然小程序没有路由表，但是在全局配置文件-app-json-中有-pages-信息" class="headerlink" title="首先，虽然小程序没有路由表，但是在全局配置文件(app.json)中有 pages 信息"></a>首先，虽然小程序没有路由表，但是在全局配置文件(<code>app.json</code>)中有 <code>pages</code> 信息</h3><p>用于指定小程序由哪些页面组成，每一项都对应一个页面的 路径（含文件名） 信息。<br>文件名不需要写文件后缀，框架会自动去寻找对应位置的文件进行处理。</p>
 <span id="more"></span>
 <p>例如默认项目中:</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-  &quot;pages&quot;: [
-    &quot;pages&#x2F;index&#x2F;index&quot;, &#x2F;&#x2F; 首页
-    &quot;pages&#x2F;logs&#x2F;logs&quot; &#x2F;&#x2F; 日志页
-  ],
-  &quot;entryPagePath&quot;: &quot;pages&#x2F;index&#x2F;index&quot; &#x2F;&#x2F; 初始页面
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-string">&quot;pages/index/index&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 首页</span>
+    <span class="hljs-string">&quot;pages/logs/logs&quot;</span> <span class="hljs-comment">// 日志页</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;entryPagePath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pages/index/index&quot;</span> <span class="hljs-comment">// 初始页面</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
 
 <p>可以通过 <code>entryPagePath</code> 指定小程序的初始页面（首页），如果未配置则默认为 <code>pages</code> 数组的第一项。</p>
 <p>📑 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#pages">pages - 全局配置 | 微信开放文档</a></p>
 <p>如果想要配置到底部的Tabs上，则需要在 <code>tabBar</code> 属性中配置<br>例如：</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
-  &quot;pages&quot;: [
-    &quot;pages&#x2F;index&#x2F;index&quot;,
-    &quot;pages&#x2F;logs&#x2F;logs&quot;
-  ],
-  &quot;entryPagePath&quot;: &quot;pages&#x2F;index&#x2F;index&quot;,
-  &quot;tabBar&quot;: &#123;
-    &quot;color&quot;: &quot;#BBBBBD&quot;, &#x2F;&#x2F; 文字默认颜色
-    &quot;selectedColor&quot;: &quot;#040104&quot;, &#x2F;&#x2F; 文字选中时的颜色
-    &quot;list&quot;: [ &#x2F;&#x2F; tab 的列表
-      &#123;
-        &quot;pagePath&quot;: &quot;pages&#x2F;index&#x2F;index&quot;, &#x2F;&#x2F; 页面路径，必须在 pages 中先定义
-        &quot;text&quot;: &quot;首页&quot;, &#x2F;&#x2F; tab 上按钮文字
-        &quot;iconPath&quot;: &quot;assets&#x2F;img&#x2F;tabbar_home.png&quot;, &#x2F;&#x2F; icon图片路径
-        &quot;selectedIconPath&quot;: &quot;assets&#x2F;img&#x2F;tabbar_home_active.png&quot; &#x2F;&#x2F; tab选中时icon图片路径
-      &#125;,
-      &#123;
-        &quot;pagePath&quot;: &quot;pages&#x2F;logs&#x2F;logs&quot;,
-        &quot;text&quot;: &quot;日志&quot;,
-        &quot;iconPath&quot;: &quot;assets&#x2F;img&#x2F;tabbar_logo.png&quot;,
-        &quot;selectedIconPath&quot;: &quot;assets&#x2F;img&#x2F;tabbar_logo_active.png&quot;
-      &#125;
-    ]
-  &#125;,
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-string">&quot;pages/index/index&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-string">&quot;pages/logs/logs&quot;</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;entryPagePath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pages/index/index&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;tabBar&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;color&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#BBBBBD&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 文字默认颜色</span>
+    <span class="hljs-attr">&quot;selectedColor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#040104&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 文字选中时的颜色</span>
+    <span class="hljs-attr">&quot;list&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span> <span class="hljs-comment">// tab 的列表</span>
+      <span class="hljs-punctuation">&#123;</span>
+        <span class="hljs-attr">&quot;pagePath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pages/index/index&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 页面路径，必须在 pages 中先定义</span>
+        <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;首页&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// tab 上按钮文字</span>
+        <span class="hljs-attr">&quot;iconPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;assets/img/tabbar_home.png&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// icon图片路径</span>
+        <span class="hljs-attr">&quot;selectedIconPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;assets/img/tabbar_home_active.png&quot;</span> <span class="hljs-comment">// tab选中时icon图片路径</span>
+      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-punctuation">&#123;</span>
+        <span class="hljs-attr">&quot;pagePath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pages/logs/logs&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;日志&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;iconPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;assets/img/tabbar_logo.png&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;selectedIconPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;assets/img/tabbar_logo_active.png&quot;</span>
+      <span class="hljs-punctuation">&#125;</span>
+    <span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
 <blockquote>
 <p><strong>注意：只能配置最少 2 个、最多 5 个 tab，tab 按数组的顺序排序，每个项都是一个对象</strong></p>
 </blockquote>
@@ -178,11 +181,11 @@
 </blockquote>
 <h2 id="最后是疑问部分："><a href="#最后是疑问部分：" class="headerlink" title="最后是疑问部分："></a>最后是疑问部分：</h2><h4 id="🎇-路由是否可以像-vue-router-一样省略-index"><a href="#🎇-路由是否可以像-vue-router-一样省略-index" class="headerlink" title="🎇 路由是否可以像 vue-router 一样省略 index"></a>🎇 路由是否可以像 <code>vue-router</code> 一样省略 <code>index</code></h4><p>不可以，需要全路径</p>
 <h4 id="🎇-如何路由传参"><a href="#🎇-如何路由传参" class="headerlink" title="🎇 如何路由传参"></a>🎇 如何路由传参</h4><p>需要跳转的应用内非 tabBar 的页面路径后可以用 <code>query</code> 的形式传递参数，如 <code>path?key=value&amp;key2=value2</code>。<br>页面中也可以在 <code>onLoad</code> 事件中接受参数</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-  <span class="token function-variable function">onLoad</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">option</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>option<span class="token punctuation">.</span>query<span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-title class_">Page</span>(&#123;
+  <span class="hljs-attr">onLoad</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">option</span>)&#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(option.<span class="hljs-property">query</span>)
+  &#125;
+&#125;)</code></pre>
 <p>具体查看文档 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html">wx.navigateTo(Object object) | 微信开放文档</a></p>
 <h4 id="🎇-清空路由历史"><a href="#🎇-清空路由历史" class="headerlink" title="🎇 清空路由历史"></a>🎇 清空路由历史</h4><p>没有单独的清空跳转历史API，可以直接使用 <code>wx.reLaunch()</code> 来跳转到目标页面，并且同时关闭所有已经打开过的页面，就不能用 <code>wx.navigateBack()</code> 返回了，左上角的按钮也会变成 🏠 <code>home</code> </p>
 <h4 id="🎇-路由文档中的-EventChannel-是什么"><a href="#🎇-路由文档中的-EventChannel-是什么" class="headerlink" title="🎇 路由文档中的 EventChannel 是什么"></a>🎇 路由文档中的 <code>EventChannel</code> 是什么</h4><blockquote>

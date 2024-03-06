@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -99,7 +102,7 @@
       <!-- 文章内容 article body -->
  
   <article class="article-content">
-    <p>一直以来，我对于 VueJS 中对于使用 <code>ref</code> 注册的组件，在使用 <code>$refs</code> 调用时，为什么有时候是一个 DOM元素/组件实例，是时候会是一个实例<strong>数组</strong>。</p>
+    <p>一直以来，我对于 VueJS 中对于使用 <code>ref</code> 注册的组件，在使用 <code>$refs</code> 调用时，为什么有时候是一个 DOM元素&#x2F;组件实例，是时候会是一个实例<strong>数组</strong>。</p>
 <p>所以在很长一段时间内我觉得 <code>ref</code> 注册的的组件在使用 <code>$refs</code> 调用时有很大的不确定性，虽然我的弹窗组件一直都是用的 <code>$refs.modal.open()</code> 来打开的。</p>
 <p>直到前一段时间，我在一个场景下想在 <code>v-for</code> 循环渲染的组件下 <code>slot</code> 模板中想使用 <code>ref</code> 注册成一个实例集合来调用时，发现怎么样重写返回的都只是一个组件实例，而不是一个组件实例集合。</p>
 <p>所以有了这样一篇笔记。</p>
@@ -123,7 +126,7 @@
 </ul>
 </blockquote>
 <hr>
-<h3 id="1、什么时候只返回一个组件-DOM实例"><a href="#1、什么时候只返回一个组件-DOM实例" class="headerlink" title="1、什么时候只返回一个组件/DOM实例"></a>1、什么时候只返回一个组件/DOM实例</h3><p>一般来说，直接在一个没有使用 <code>v-for</code> 循环的元素上使用 <code>ref</code> 注册的元素，在使用 <code>this.$refs.xxx</code> 获取时，返回的只会是一个组件实例。</p>
+<h3 id="1、什么时候只返回一个组件-DOM实例"><a href="#1、什么时候只返回一个组件-DOM实例" class="headerlink" title="1、什么时候只返回一个组件&#x2F;DOM实例"></a>1、什么时候只返回一个组件&#x2F;DOM实例</h3><p>一般来说，直接在一个没有使用 <code>v-for</code> 循环的元素上使用 <code>ref</code> 注册的元素，在使用 <code>this.$refs.xxx</code> 获取时，返回的只会是一个组件实例。</p>
 <h3 id="2、什么时候返回一个实例集合"><a href="#2、什么时候返回一个实例集合" class="headerlink" title="2、什么时候返回一个实例集合"></a>2、什么时候返回一个实例集合</h3><p>按照文档上边来看，在使用 <code>v-for</code> 循环的元素上使用 <code>ref</code> 注册的元素，在使用 <code>this.$refs.xxx</code> 获取时，会返回一个实例集合。</p>
 <p><strong>有没有其他办法？比如我不是使用 <code>v-for</code> 循环出来的实例，但是我想注册在同一个 <code>ref</code> 下。</strong></p>
 <p><strong>暂时没有办法。</strong></p>

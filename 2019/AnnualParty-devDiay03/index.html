@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -103,8 +106,8 @@
 <p>本来是想直接自己写的，但是有后来又加入了礼品活跃气氛，就要用到用户列表的展示和抽取过程中的随机效果，虽然哪些人获奖是后台返回给我的。<br>所以这些用户信息需要在多组件内共用，那我就懒得自己写了，就去找了 Vue 的组件库了。</p>
 <span id="more"></span>
 
-<h4 id="参与用户"><a href="#参与用户" class="headerlink" title="参与用户"></a>参与用户</h4><p><img src="/2019/AnnualParty-devDiay03/view01.jpg" alt="展示界面"></p>
-<h4 id="抽奖效果"><a href="#抽奖效果" class="headerlink" title="抽奖效果"></a>抽奖效果</h4><p><img src="/2019/AnnualParty-devDiay03/view02.jpg" alt="抽取过程中"></p>
+<h4 id="参与用户"><a href="#参与用户" class="headerlink" title="参与用户"></a>参与用户</h4><p><img src="/./AnnualParty-devDiay03/view01.jpg" alt="展示界面"></p>
+<h4 id="抽奖效果"><a href="#抽奖效果" class="headerlink" title="抽奖效果"></a>抽奖效果</h4><p><img src="/./AnnualParty-devDiay03/view02.jpg" alt="抽取过程中"></p>
 <p>所以在 <a target="_blank" rel="noopener" href="https://github.com/vuejs/awesome-vue">Awesome Vue</a> 中了找了一些关于 Websocket 的插件</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/MetinSeylan/Vue-Socket.io">vue-socket.io</a></li>
@@ -117,13 +120,13 @@
 <p>native websocket implementation for Vuejs 2 and Vuex</p>
 </blockquote>
 <p>安装依赖以后，简单配置一下就可以使用了。</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">import</span> VueNativeSock <span class="token keyword">from</span> <span class="token string">"vue-native-websocket"</span><span class="token punctuation">;</span>
-Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>VueNativeSock<span class="token punctuation">,</span> <span class="token string">"ws://localhost:9090"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">VueNativeSock</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-native-websocket&quot;</span>;
+<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">VueNativeSock</span>, <span class="hljs-string">&quot;ws://localhost:9090&quot;</span>);</code></pre>
 
 <p>也可以启动 Vuex</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">import</span> VueNativeSock <span class="token keyword">from</span> <span class="token string">"vue-native-websocket"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> store <span class="token keyword">from</span> <span class="token string">"./store"</span><span class="token punctuation">;</span>
-Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>VueNativeSock<span class="token punctuation">,</span> <span class="token string">"ws://localhost:9090"</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> store<span class="token operator">:</span> store <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">VueNativeSock</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-native-websocket&quot;</span>;
+<span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./store&quot;</span>;
+<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">VueNativeSock</span>, <span class="hljs-string">&quot;ws://localhost:9090&quot;</span>, &#123; <span class="hljs-attr">store</span>: store &#125;);</code></pre>
 
 <p>具体可以看作者写的<a target="_blank" rel="noopener" href="https://github.com/nathantsoi/vue-native-websocket">说明文档</a>，怎么在 Vue 实例中使用和怎么配合 Vuex 和一些基础事件函数</p>
  

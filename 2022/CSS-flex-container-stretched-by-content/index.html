@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
 
   
@@ -24,7 +27,7 @@
   
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <!-- 页头 page header -->
@@ -105,10 +108,10 @@
 <li>基础尺寸由 <code>flex-base</code> 属性或 <code>width</code> 属性，以及 <code>box-sizing</code> 盒模型共同决定；</li>
 <li>内容尺寸最指最大内容宽度，当没有设置基础尺寸是会顶替基础尺寸的角色；</li>
 <li>弹性增长指的是 <code>flex-grow</code> 属性，弹性收缩指的是 <code>flex-shrink</code> 属性；</li>
-<li>最大尺寸主要受 <code>max-width</code> 属性限制；最小尺寸则比较复杂，受最小内容宽度、<code>width</code> 属性和 <code>min-width</code> 属性共同影响。 </li>
+<li>最大尺寸主要受 <code>max-width</code> 属性限制；最小尺寸则比较复杂，受最小内容宽度、<code>width</code> 属性和 <code>min-width</code> 属性共同影响。</li>
 </ul>
 </blockquote>
-<p><img src="/2022/CSS-flex-container-stretched-by-content/problem_preview.png#center" alt="flex 容器宽度被内容撑开的问题"></p>
+<p><img src="/2022/CSS-flex-container-stretched-by-content/problem_preview.png" alt="flex 容器宽度被内容撑开的问题"></p>
 <p>很早之前就遇到过这个问题但没有整理，当时处理完问题之后就没有管了。昨天又遇到了同样的问题，因为嵌套的层次很深折腾了有2个小时，所以还是需要记录下来以免未来又忘了。</p>
 <blockquote>
 <p>其实很简单，容器使用 <code>width:0;flex:1;</code> 即可解决问题。</p>
@@ -117,12 +120,12 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="先来看一下问题复现吧"><a href="#先来看一下问题复现吧" class="headerlink" title="先来看一下问题复现吧:"></a>先来看一下问题复现吧:</h2><iframe id="cp_embed_YzErENN" src="//codepen.io/yogwang/embed/YzErENN?height=600&theme-id=dark&slug-hash=YzErENN&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<h2 id="先来看一下问题复现吧"><a href="#先来看一下问题复现吧" class="headerlink" title="先来看一下问题复现吧:"></a>先来看一下问题复现吧:</h2><iframe id="cp_embed_YzErENN" src="//codepen.io/yogwang/embed/YzErENN?height=600&theme-id=dark&slug-hash=YzErENN&default-tab=result" scrolling="no" frameborder="no" height="600" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 <p>在正常内容的时候不会出现问题（可以点击 Demo 的 <a target="_blank" rel="noopener" href="https://codepen.io/yogwang/pen/YzErENN">EDIT ON CODEPEN</a> 最大化预览正常情况），但当元素内部的文字内容增多时，或者视窗缩小时 <code>flex</code> 容器的宽度就会被内容撑开。</p>
 <p>看起来是不是十分复杂？因为我嵌套了 2 层 <code>flex</code> 容器，最内部的容器 <code>.list-item</code> 因为内容太多被撑开了，并没有如愿按照剩余空间缩小子元素 <code>.text</code> 的宽度，同时宽度变大的 <code>.list-item</code> 导致外部的 <code>.container</code> 和 <code>.wrap</code> 也被撑开了。</p>
 <p>被撑开的 <code>flex</code> 容器比较多，不好说明，那么看一下简略版的复现 Demo 👇</p>
-<iframe id="cp_embed_oNoGEqK" src="//codepen.io/yogwang/embed/oNoGEqK?height=600&theme-id=dark&slug-hash=oNoGEqK&default-tab=result" scrolling="no" frameborder="no" height="600" allowtransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
+<iframe id="cp_embed_oNoGEqK" src="//codepen.io/yogwang/embed/oNoGEqK?height=600&theme-id=dark&slug-hash=oNoGEqK&default-tab=result" scrolling="no" frameborder="no" height="600" allowTransparency="true" allowfullscreen="true" class="cp_embed_iframe" style="width: 100%; overflow: hidden;"></iframe>
 
 <p>这个就很简单明了了，因为 <code>.text</code> 的内容太多，致使 <code>.container</code> 容器被撑开了，并且 <code>.container</code> 的宽度变大使 <code>.wrap</code> 的宽度也增大了，并不是按照设想的 <code>100vw</code>。同时文本标题超出省略的样式也没有应用到。</p>
 <p><strong>其实解决问题很简单，容器使用 <code>width:0;flex:1;</code> 即可解决问题。</strong></p>
