@@ -113,9 +113,9 @@
 <span id="more"></span>
 <hr>
 <p>大部分人想到CSS权重应该会首先想到这个图</p>
-<p><img src="/./CSS-specificity-selectors-weight/simple.jpg" alt="简单计算"><br><small>图片来源: <a target="_blank" rel="noopener" href="http://www.nowamagic.net/">简明现代魔法</a></small></p>
+<p><img src="/2021/CSS-specificity-selectors-weight/simple.jpg" alt="简单计算"><br><small>图片来源: <a target="_blank" rel="noopener" href="http://www.nowamagic.net/">简明现代魔法</a></small></p>
 <p>然后简单的按照这里的权重去计算出来结果去比较</p>
-<p>例如：<br><img src="/./CSS-specificity-selectors-weight/demo.jpg" alt="计算DEMO"></p>
+<p>例如：<br><img src="/2021/CSS-specificity-selectors-weight/demo.jpg" alt="计算DEMO"></p>
 <h2 id="但是！"><a href="#但是！" class="headerlink" title="但是！"></a>但是！</h2><p>这样的计算会有一个问题，就是如果说某一项选择器超过了10个，那么是不是就会造成疑问，是否会晋级<br>例如</p>
 <pre><code class="hljs css">// <span class="hljs-number">1</span>个ID选择器
 <span class="hljs-selector-id">#demo</span> &#123; 
@@ -126,7 +126,7 @@
   <span class="hljs-attribute">color</span>:red
 &#125;</code></pre>
 <p>按照上边的计算方式，得出的结果就是 <code>100 ：110</code>，但是实际并不会被11个类选择器所覆盖。</p>
-<p><img src="/./CSS-specificity-selectors-weight/eg11class.jpg" alt="单ID和11个Class"></p>
+<p><img src="/2021/CSS-specificity-selectors-weight/eg11class.jpg" alt="单ID和11个Class"></p>
 <p>所以其实，是一个类似数组的形式，其计算结果为 <code>[0, 1, 0, 0]</code> 比上 <code>[0, 0, 11, 0]</code>，</p>
 <p>这点可以从 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/CSS2/cascade.html#specificity">W3C规范</a> 上看到，其实是分为 <code>[A, B, C, D]</code> 四类，然后去一对一去比较，并不会被 <strong>进位</strong> 所影响。</p>
 <h2 id="⭐-important"><a href="#⭐-important" class="headerlink" title="⭐ !important"></a>⭐ <code>!important</code></h2><hr>
@@ -152,7 +152,7 @@
 &#125;</code></pre>
 
 <hr>
-<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><h4 id="我所推荐的权重计算图"><a href="#我所推荐的权重计算图" class="headerlink" title="我所推荐的权重计算图"></a>我所推荐的权重计算图</h4><p><img src="/./CSS-specificity-selectors-weight/specificity-calculationbase.png" alt="新权重计算图"></p>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><h4 id="我所推荐的权重计算图"><a href="#我所推荐的权重计算图" class="headerlink" title="我所推荐的权重计算图"></a>我所推荐的权重计算图</h4><p><img src="/2021/CSS-specificity-selectors-weight/specificity-calculationbase.png" alt="新权重计算图"></p>
 <h4 id="新版本中的选择器权重修改"><a href="#新版本中的选择器权重修改" class="headerlink" title="新版本中的选择器权重修改"></a>新版本中的选择器权重修改</h4><p>在 W3C 最新版的 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/selectors/#specificity">选择器文档</a> 中，行内样式已经从权重中移出了，权重变成了三类 [<code>#ID</code>, <code>.Class</code>, <code>Element</code>]</p>
 <h4 id="在阅读-W3C-规范中，发现有中有这样一句话"><a href="#在阅读-W3C-规范中，发现有中有这样一句话" class="headerlink" title="在阅读 W3C 规范中，发现有中有这样一句话"></a>在阅读 W3C 规范中，发现有中有这样一句话</h4><blockquote>
 <p>By default, rules in author style sheets have more weight than rules in user style sheets. Precedence is reversed, however, for “!important” rules. All user and author rules have more weight than rules in the UA’s default style sheet.</p>
