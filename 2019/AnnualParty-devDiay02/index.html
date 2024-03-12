@@ -314,7 +314,7 @@ luckyMoney.<span class="hljs-property"><span class="hljs-keyword">prototype</spa
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> luckyMoney;</code></pre>
 <p>每次点开红包之后会收集金额到 <code>tempMoney</code> 和 <code>totalMoney</code>中，并且提交到后台然后清空 <code>tempMoney</code>（这边做了1秒的节流操作），这样大银幕就能展示当前轮次的 <code>Top5</code> 用户。</p>
 <p>手机端的大部分内容就是这样了，主要是下落这块比较麻烦，其它的都是一些样式的问题，稍微调试一下就行了。</p>
-<h2 id="🏮大荧幕部分"><a href="#🏮大荧幕部分" class="headerlink" title="🏮大荧幕部分"></a>🏮大荧幕部分</h2><p><img src="/./AnnualParty-devDiay02/stage.jpg" alt="大银幕截图"></p>
+<h2 id="🏮大荧幕部分"><a href="#🏮大荧幕部分" class="headerlink" title="🏮大荧幕部分"></a>🏮大荧幕部分</h2><p><img src="/2019/AnnualParty-devDiay02/stage.jpg" alt="大银幕截图"></p>
 <p>大银幕这块的话就容易很多了，本来是考虑用 <code>WebSocket</code> 来实时传输红包排名的，但是发现还不如轮询简单，所以还是我这边做了1秒间隔的轮询。<br>获取到数据之后跟新排名数据，界面就会实时刷新了，这边在展示用户排名时做了动画，每次用户新进和排名更替都会进行左右移动，并不只是简单的修改了展示的数据。</p>
 <p>用到了<code>transform</code>的偏移量来修改展示的位置，这样就可以通过修改元素次序来打到用户排名更替补间动画了</p>
 <h4 id="Stylus片段"><a href="#Stylus片段" class="headerlink" title="Stylus片段"></a>Stylus片段</h4><pre><code class="hljs stylus"><span class="hljs-selector-class">.rank-box</span>

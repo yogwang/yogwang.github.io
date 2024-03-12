@@ -228,7 +228,7 @@
   &#125;,
 &#125;</code></pre>
 
-<h2 id="一个FormItem中多个被装饰过的表单元素"><a href="#一个FormItem中多个被装饰过的表单元素" class="headerlink" title="一个FormItem中多个被装饰过的表单元素"></a>一个FormItem中多个被装饰过的表单元素</h2><p><img src="/./jeecg-boot-devDiary09/FormItemMoreChild.jpg" alt="多个子元素"><br>有时候会遇到这样的的情况，在一个FormItem中有多个Input或者Select联动。</p>
+<h2 id="一个FormItem中多个被装饰过的表单元素"><a href="#一个FormItem中多个被装饰过的表单元素" class="headerlink" title="一个FormItem中多个被装饰过的表单元素"></a>一个FormItem中多个被装饰过的表单元素</h2><p><img src="/2020/jeecg-boot-devDiary09/FormItemMoreChild.jpg" alt="多个子元素"><br>有时候会遇到这样的的情况，在一个FormItem中有多个Input或者Select联动。</p>
 <p>如果只是使用 <code>v-decorator</code> 来装饰会有警告提示：</p>
 <pre><code class="hljs plaintext">Warning: [antdv: Form.Item] Cannot generate `validateStatus` and `help` automatically, while there are more than one `getFieldDecorator` in it.`</code></pre>
 <p>反正就是 <em>一个 Form.Item 建议只放一个被 getFieldDecorator 或 v-decorator 装饰过的 child</em><br>如果存在多个就需要自己配置 <code>help</code>, <code>required</code>, <code>validateStatus</code>，这点可以在 <a target="_blank" rel="noopener" href="https://www.antdv.com/components/form-cn/#Form.Item">API文档</a> 中看到。</p>

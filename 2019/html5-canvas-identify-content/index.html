@@ -113,13 +113,13 @@
 <p>前几天，领导和我说要制作一个年会的活动页面，需要有用户签到展示、企业形象展示、抽奖小游戏。</p>
 <p>其中一个需求如下：</p>
 <h3 id="Logo-签到墙"><a href="#Logo-签到墙" class="headerlink" title="Logo 签到墙"></a>Logo 签到墙</h3><p>年会的签到墙，使用微信扫码签到，然后后台拿到微信授权之后传给我用户的头像昵称，然后我就在前台展示并且完成一些特效。</p>
-<p><img src="/html5-canvas-identify-content/demo.jpg" alt="需求图"></p>
-<p>需要用头像图片拼接组成图形以及文字内容。<br>这个图形和文字是用户上传的一个纯色内容+透明&#x2F;白色底的图片。👇<br><img src="/html5-canvas-identify-content/demo_logo.png" alt="会上传的图"></p>
+<p><img src="/2019/html5-canvas-identify-content/demo.jpg" alt="需求图"></p>
+<p>需要用头像图片拼接组成图形以及文字内容。<br>这个图形和文字是用户上传的一个纯色内容+透明&#x2F;白色底的图片。👇<br><img src="/2019/html5-canvas-identify-content/demo_logo.png" alt="会上传的图"></p>
 <hr>
 <p>我就直接想到用 canvas 来识别图片内容，</p>
 <p>前天晚上初步实现了需求，<br>直接暴力的按照设置的 size 大小<br>从左上角不断循环识别到右下角，然后保存有内容的坐标点，<br>再按照坐标来绘制矩形和图片填充。</p>
 <p>这边是我实现的效果 👇</p>
-<p>识别成栅格<br><img src="/html5-canvas-identify-content/step1.png" alt="识别后的栅格图"><br>用户头像填充<br><img src="/html5-canvas-identify-content/step2.jpg" alt="用户头像填充"></p>
+<p>识别成栅格<br><img src="/2019/html5-canvas-identify-content/step1.png" alt="识别后的栅格图"><br>用户头像填充<br><img src="/2019/html5-canvas-identify-content/step2.jpg" alt="用户头像填充"></p>
 <h4 id="识别内容"><a href="#识别内容" class="headerlink" title="识别内容:"></a>识别内容:</h4><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> maxWidth = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientWidth</span>; <span class="hljs-comment">// 获取视窗宽度</span>
 <span class="hljs-keyword">const</span> maxHeight = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientHeight</span>; <span class="hljs-comment">// 获取视窗高度</span>
 
@@ -171,7 +171,7 @@ points.<span class="hljs-title function_">forEach</span>(<span class="hljs-funct
 
 <h4 id="填充图片"><a href="#填充图片" class="headerlink" title="填充图片"></a>填充图片</h4><p>填充图片和绘制矩形的原理相似所以就不举例了。</p>
 <p>考虑到签到的人数有可能达不到坐标的数量，所以在最后可以重新循环用户头像列表来填充满整个栅格区</p>
-<p><img src="/html5-canvas-identify-content/step2.jpg" alt="用户头像填充"></p>
+<p><img src="/2019/html5-canvas-identify-content/step2.jpg" alt="用户头像填充"></p>
 <p>以上是简单的使用 <code>canvas</code> 试别图片内容，并且栅格化且使用图片填充。</p>
 <h2 id="🎈-尾声"><a href="#🎈-尾声" class="headerlink" title="🎈 尾声"></a>🎈 尾声</h2><h4 id="可能遇到的一些问题"><a href="#可能遇到的一些问题" class="headerlink" title="可能遇到的一些问题"></a>可能遇到的一些问题</h4><blockquote>
 <p><strong>打印points一直是空数组</strong></p>
@@ -195,7 +195,7 @@ points.<span class="hljs-title function_">forEach</span>(<span class="hljs-funct
 <p>感觉上每年的年底都会收到邮件来询问这篇笔记的，可能真的要抽时间来完整梳理成文章，而不只是笔记记录一下思路，并且提供一些可预览的DEMO，便于各位学习。<br><code>P.S.</code> 去年就这样和小伙伴说过了，但是还是一拖再拖，真的自己是拖延症晚期没救了 😂</p>
 <hr>
 <h2 id="📌-附"><a href="#📌-附" class="headerlink" title="📌 附"></a>📌 附</h2><ul>
-<li>特殊情况 1：如果识别超过 50% 时，笔画交汇时折角会超过 50%，但是没有处在交汇处的内容可能并没有超过 50%<br><img src="/html5-canvas-identify-content/scenes1.jpg" alt="笔画交汇"><br>调小栅格尺寸会避免大多数的这类情况</li>
+<li>特殊情况 1：如果识别超过 50% 时，笔画交汇时折角会超过 50%，但是没有处在交汇处的内容可能并没有超过 50%<br><img src="/2019/html5-canvas-identify-content/scenes1.jpg" alt="笔画交汇"><br>调小栅格尺寸会避免大多数的这类情况</li>
 </ul>
  
   </article>
