@@ -200,7 +200,7 @@ img {
 #container .article-content code[class=''] {
   line-height: 20px;
   color: #c7254e;
-  word-break: break-word;
+  word-break: keep-all;
   background: #f9f2f4;
   padding: 0 8px;
   border-radius: 2px;
@@ -554,6 +554,28 @@ img {
   margin: auto;
   display: block;
 }
+.archive-article-inner table thead,
+.article-inner table thead {
+  color: #fff;
+  background: #333;
+}
+.archive-article-inner table thead tr,
+.article-inner table thead tr {
+  height: 50px;
+}
+.archive-article-inner table thead tr th,
+.article-inner table thead tr th {
+  padding: 0 15px;
+}
+.archive-article-inner table tbody tr,
+.article-inner table tbody tr {
+  height: 50px;
+  border-bottom: 1px solid #333;
+}
+.archive-article-inner table tbody tr td,
+.article-inner table tbody tr td {
+  padding: 0 15px;
+}
 .archive-article {
   padding: 3vh 15px 5px;
   border-top: 5px solid #404040;
@@ -635,23 +657,6 @@ img {
 }
 .article-inner .article-entry #expired-tag:empty {
   display: none;
-}
-.article-inner .article-content table thead {
-  color: #fff;
-  background: #333;
-}
-.article-inner .article-content table thead tr {
-  height: 50px;
-}
-.article-inner .article-content table thead tr th {
-  padding: 0 15px;
-}
-.article-inner .article-content table tbody tr {
-  height: 50px;
-  border-bottom: 1px solid #333;
-}
-.article-inner .article-content table tbody tr td {
-  padding: 0 15px;
 }
 #about {
   width: 100%;

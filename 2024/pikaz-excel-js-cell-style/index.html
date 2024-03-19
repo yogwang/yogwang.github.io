@@ -1,0 +1,400 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>在 pikaz-excel-js 中设置单元格样式 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-pikaz-excel-js-cell-style"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/exceljs/" rel="tag">exceljs</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2024-03-19T07:12:31.000Z" itemprop="datePublished">2024-03-19</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      在 pikaz-excel-js 中设置单元格样式
+    </h1>
+  
+
+      <div class="article-updated">
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <p><a target="_blank" rel="noopener" href="https://github.com/pikaz-18/pikaz-excel-js">pikaz-excel-js</a> 是项目中已经使用的 <code>Excel</code> 导入导出库。简单的配置一下表头、表格数据就可以完成表格的导出操作了，使用起来非常简单。文档也非常的简单明了，并且有提供简单的参考示例模板：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/pikaz-18/pikaz-excel-js/blob/master/example/index.html">ver_1.x 的 JS 示例</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pikaz-18/pikaz-excel-js/tree/v0.2.16/src/example">ver_0.2.x 的 VueJS 示例</a></li>
+</ul>
+<p>但是文档中关于单元格样式（<code>cellStyle</code>）的说明就有点 “<strong>太简单</strong>” 了 👇 </p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>cellStyle</code></td>
+<td>单元格样式，每个单元格对象配置具体参数查看下方<a target="_blank" rel="noopener" href="https://github.com/pikaz-18/pikaz-excel-js?tab=readme-ov-file#cell-style">单元格样式</a></td>
+<td><code>object</code></td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><code>cell</code></td>
+<td>单元格名称，支持 excel 单元格名称与数字行列格式，如 <code>&#39;A3&#39;</code> 或 <code>&#39;3-1&#39;</code></td>
+<td><code>string</code></td>
+<td>–</td>
+<td>–</td>
+</tr>
+</tbody></table>
+<p>其他属性与<a target="_blank" rel="noopener" href="https://github.com/pikaz-18/pikaz-excel-js?tab=readme-ov-file#global-style">表格全局样式</a>设置方式一致</p>
+<p>如果没有阅读示例代码，直接跳到文档中的这部分查看配置项就会有点不知道如何书写。</p>
+<span id="more"></span>
+
+<p>所以其实示例代码中已经有说明了关于单元格样式的配置：</p>
+<pre><code class="hljs js"><span class="hljs-title function_">excelExport</span>(&#123;
+  <span class="hljs-comment">// 表格数据</span>
+  <span class="hljs-attr">sheet</span>: [
+    &#123;
+      <span class="hljs-comment">// 表名</span>
+      <span class="hljs-attr">sheetName</span>: <span class="hljs-string">&quot;水果的产量&quot;</span>,
+      <span class="hljs-comment">// 表格标题</span>
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;水果的产量&quot;</span>,
+      <span class="hljs-comment">// 表头</span>
+      <span class="hljs-attr">tHeader</span>: [<span class="hljs-string">&quot;季度&quot;</span>, <span class="hljs-string">&quot;月份&quot;</span>, <span class="hljs-string">&quot;名称&quot;</span>, <span class="hljs-string">&quot;A果园产量（万吨）&quot;</span>, <span class="hljs-string">&quot;B果园产量（万吨）&quot;</span>, <span class="hljs-string">&quot;总产量合计（万吨）&quot;</span>],
+      <span class="hljs-comment">// 数据键名</span>
+      <span class="hljs-attr">keys</span>: [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>, <span class="hljs-string">&quot;e&quot;</span>, <span class="hljs-string">&quot;f&quot;</span>],
+      <span class="hljs-comment">// 合并项</span>
+      <span class="hljs-attr">merges</span>: [ <span class="hljs-string">&quot;1-3:1-5&quot;</span>, <span class="hljs-string">&quot;1-6:1-8&quot;</span>, <span class="hljs-string">&quot;1-9:1-11&quot;</span>, <span class="hljs-string">&quot;1-12:1-14&quot;</span>, <span class="hljs-string">&quot;1-15:3-15&quot;</span>],
+      <span class="hljs-comment">// 表格数据</span>
+      <span class="hljs-attr">table</span>: [
+          &#123; <span class="hljs-attr">a</span>: <span class="hljs-string">&quot;第一季度&quot;</span>, <span class="hljs-attr">b</span>: <span class="hljs-string">&quot;一月&quot;</span>, <span class="hljs-attr">c</span>: <span class="hljs-string">&quot;番石榴&quot;</span>, <span class="hljs-attr">d</span>: <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-attr">e</span>: <span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-attr">f</span>: <span class="hljs-string">&quot;5&quot;</span> &#125;,
+          &#123; <span class="hljs-attr">a</span>: <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attr">b</span>: <span class="hljs-string">&quot;二月&quot;</span>, <span class="hljs-attr">c</span>: <span class="hljs-string">&quot;桑葚&quot;</span>, <span class="hljs-attr">d</span>: <span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-attr">e</span>: <span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-attr">f</span>: <span class="hljs-string">&quot;6&quot;</span> &#125;,
+          &#123; <span class="hljs-attr">a</span>: <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attr">b</span>: <span class="hljs-string">&quot;三月&quot;</span>, <span class="hljs-attr">c</span>: <span class="hljs-string">&quot;樱桃&quot;</span>, <span class="hljs-attr">d</span>: <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-attr">e</span>: <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-attr">f</span>: <span class="hljs-string">&quot;4&quot;</span> &#125;,
+      ],
+      <span class="hljs-comment">// 表格全局样式</span>
+      <span class="hljs-attr">globalStyle</span>: &#123; <span class="hljs-attr">font</span>: &#123; <span class="hljs-attr">sz</span>: <span class="hljs-number">16</span> &#125; &#125;,
+      <span class="hljs-comment">// 单元格样式</span>
+      <span class="hljs-attr">cellStyle</span>: [
+          &#123; <span class="hljs-attr">cell</span>: <span class="hljs-string">&quot;1-1&quot;</span>, <span class="hljs-attr">fill</span>: &#123; <span class="hljs-attr">fgColor</span>: &#123; <span class="hljs-attr">rgb</span>: <span class="hljs-string">&quot;B0C4DE&quot;</span> &#125; &#125; &#125;,
+          &#123; <span class="hljs-attr">cell</span>: <span class="hljs-string">&quot;1-3&quot;</span>, <span class="hljs-attr">fill</span>: &#123; <span class="hljs-attr">fgColor</span>: &#123; <span class="hljs-attr">rgb</span>: <span class="hljs-string">&quot;7FFFAA&quot;</span> &#125; &#125; &#125;,
+          &#123; <span class="hljs-attr">cell</span>: <span class="hljs-string">&quot;1-6&quot;</span>, <span class="hljs-attr">fill</span>: &#123; <span class="hljs-attr">fgColor</span>: &#123; <span class="hljs-attr">rgb</span>: <span class="hljs-string">&quot;FFA500&quot;</span> &#125; &#125; &#125;,
+          &#123; <span class="hljs-attr">cell</span>: <span class="hljs-string">&quot;1-9&quot;</span>, <span class="hljs-attr">fill</span>: &#123; <span class="hljs-attr">fgColor</span>: &#123; <span class="hljs-attr">rgb</span>: <span class="hljs-string">&quot;F4A460&quot;</span> &#125; &#125; &#125;,
+          &#123; <span class="hljs-attr">cell</span>: <span class="hljs-string">&quot;1-12&quot;</span>, <span class="hljs-attr">fill</span>: &#123; <span class="hljs-attr">fgColor</span>: &#123; <span class="hljs-attr">rgb</span>: <span class="hljs-string">&quot;00BFFF&quot;</span> &#125; &#125; &#125;,
+          &#123; <span class="hljs-attr">cell</span>: <span class="hljs-string">&quot;1-15&quot;</span>, <span class="hljs-attr">fill</span>: &#123; <span class="hljs-attr">fgColor</span>: &#123; <span class="hljs-attr">rgb</span>: <span class="hljs-string">&quot;C0C0C0&quot;</span> &#125; &#125; &#125;,
+      ],
+    &#125;
+  ]
+&#125;)</code></pre>
+
+<p>所以 <code>cellStyle</code> 属性就是一个对象数组，可配置的样式属性就是和全局样式是一致的。</p>
+<p>但是我在项目中配置 <code>cellStyle</code> 的时候，控制台抛出了异常：</p>
+<pre><code class="hljs plaintext">[Vue warn]: Error in v-on handler: &quot;TypeError: N[t.cell] is undefined&quot;
+found in
+---&gt; &lt;ExcelExport&gt;</code></pre>
+<pre><code class="hljs plaintext">TypeError: N[t.cell] is undefined
+    exportExcel PikazJsExcel.umd.min.js:19
+    exportExcel PikazJsExcel.umd.min.js:19
+    exportExcel PikazJsExcel.umd.min.js:19
+    exportExcel PikazJsExcel.umd.min.js:19
+    click PikazJsExcel.umd.min.js:19
+    VueJS(5)</code></pre>
+
+<p>很明显单元格取值的时候出现错误了，因为我使用的是 <code>v1.x</code> 的支持的 <code>cell</code> 的数字行列名称写法： <code>&#123; cell: &quot;1-1&quot;, fill: &#123; fgColor: &#123; rgb: &quot;B0C4DE&quot; &#125; &#125; &#125;</code>，但是项目中使用的 <code>pikaz-excel-js</code> 的版本是 <code>0.2.x</code>，并不支持 <strong>数字行列格式</strong> （如 <code>3-1</code>），仅支持 <strong>Excel单元格名称</strong> （如 <code>A3</code>）。</p>
+<p>那么就需要去转换成Excel单元格名称了，但是我又不想自己写一个函数，就去看了一下 <code>v1.x</code> 版本内部是怎么处理的。很快就找到了 <code>numToLetter</code> 这个函数 <a target="_blank" rel="noopener" href="https://github.com/pikaz-18/pikaz-excel-js/blob/master/src/excelExport/index.js#L271">👉 pikaz-excel-js&#x2F;src&#x2F;excelExport&#x2F;index.js at master · pikaz-18&#x2F;pikaz-excel-js</a></p>
+<pre><code class="hljs js"><span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 纯数字转换为excel格式行列合并项</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">*</span>&#125; <span class="hljs-variable">num</span></span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@return</span> &#123;<span class="hljs-type">*</span>&#125;</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">numToLetter</span> = (<span class="hljs-params">merge = <span class="hljs-string">&quot;1-1:2-1&quot;</span></span>) =&gt; &#123;
+  <span class="hljs-keyword">const</span> mergeArr = merge.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;:&quot;</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">const</span> [row, column] = item.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;-&quot;</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> <span class="hljs-title class_">Number</span>(s))
+    <span class="hljs-keyword">const</span> stringArray = [];
+    <span class="hljs-keyword">const</span> <span class="hljs-title function_">numToLetters</span> = (<span class="hljs-params">num</span>) =&gt; &#123;
+      <span class="hljs-keyword">const</span> result = num - <span class="hljs-number">1</span>;
+      <span class="hljs-keyword">const</span> first = <span class="hljs-built_in">parseInt</span>(result / <span class="hljs-number">26</span>);
+      <span class="hljs-keyword">const</span> second = result % <span class="hljs-number">26</span>;
+      stringArray.<span class="hljs-title function_">push</span>(<span class="hljs-title class_">String</span>.<span class="hljs-title function_">fromCharCode</span>(<span class="hljs-number">64</span> + <span class="hljs-built_in">parseInt</span>(second + <span class="hljs-number">1</span>)));
+      <span class="hljs-keyword">if</span> (first &gt; <span class="hljs-number">0</span>) &#123;
+        <span class="hljs-title function_">numToLetters</span>(first);
+      &#125;
+    &#125;
+    <span class="hljs-title function_">numToLetters</span>(row);
+    <span class="hljs-keyword">return</span> stringArray.<span class="hljs-title function_">reverse</span>().<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>) + column;
+  &#125;)
+  <span class="hljs-keyword">return</span> mergeArr.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;:&quot;</span>)
+&#125;</code></pre>
+
+
+<p>如果不想升级版本的话，直接复制过来使用就可以处理成期望的结果了。</p>
+<pre><code class="hljs js"><span class="hljs-title function_">numToLetter</span>(<span class="hljs-string">&#x27;33-1&#x27;</span>)
+<span class="hljs-comment">// =&gt; &quot;AG1&quot;</span></code></pre>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2024/i18n-vsc-extension-i18n-ally/" 
+      title="国际化开发插件 i18n-Ally" 
+      alt="国际化开发插件 i18n-Ally"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">国际化开发插件 i18n-Ally</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2024-03-19"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2024/pikaz-excel-js-cell-style/" 
+              title="在 pikaz-excel-js 中设置单元格样式" 
+              alt="在 pikaz-excel-js 中设置单元格样式"
+            >
+              在 pikaz-excel-js 中设置单元格样式
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/i18n-vsc-extension-i18n-ally/" 
+              title="国际化开发插件 i18n-Ally" 
+              alt="国际化开发插件 i18n-Ally"
+            >
+              国际化开发插件 i18n-Ally
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/summary-at-the-end-of-2023/" 
+              title="💪 2023 年，其实生活不只是编程" 
+              alt="💪 2023 年，其实生活不只是编程"
+            >
+              💪 2023 年，其实生活不只是编程
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/taobao-npm-mirror-certificate-expired/" 
+              title="淘宝镜像老域名SSL证书已过期" 
+              alt="淘宝镜像老域名SSL证书已过期"
+            >
+              淘宝镜像老域名SSL证书已过期
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/make-cpu-slower-with-chrome-devtools/" 
+              title="在 Chrome 中使用 DevTools 限制CPU性能" 
+              alt="在 Chrome 中使用 DevTools 限制CPU性能"
+            >
+              在 Chrome 中使用 DevTools 限制CPU性能
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">31</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/" rel="tag">NPM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service-Worker/" rel="tag">Service Worker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exceljs/" rel="tag">exceljs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2024 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>

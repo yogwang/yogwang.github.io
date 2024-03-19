@@ -59,7 +59,7 @@
 #container .article-content code[class=''] {
   line-height: 20px;
   color: #c7254e;
-  word-break: break-word;
+  word-break: keep-all;
   background: #f9f2f4;
   padding: 0 8px;
   border-radius: 2px;
