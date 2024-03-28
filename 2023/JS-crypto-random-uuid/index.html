@@ -116,6 +116,9 @@
 <p><strong>2<sup>46</sup></strong> 个<code>UUID</code>当中，出现重复的概率为 <strong>4x10<sup>-16</sup></strong> （<code>0.0000000004</code>）。</p>
 <p>所以使用 <code>crypto.randomUUID()</code> 不会有出现重复的情况，放心大胆用就行。<br>如果是使用 <code>Math.random()</code> 和一定规则创建的 <code>UUID</code> 可能同时创建多条 <code>UUID</code> 的时候会有问题了，特别是一些为了兼容低版本的场景下。</p>
 <h4 id="2-是否可以在生产环境使用这个API？"><a href="#2-是否可以在生产环境使用这个API？" class="headerlink" title="#2. 是否可以在生产环境使用这个API？"></a>#2. 是否可以在生产环境使用这个API？</h4><p>看情况，如果你的项目需要兼容低版本的客户端，那么就不能使用，还是需要使用 <a target="_blank" rel="noopener" href="https://github.com/uuidjs/uuid">UUID</a> 这个依赖项。<br>如果只是面向自动更新的现代浏览器用户群体，那么就可以直接使用。像我厂都是用的 <code>Chrome</code> 和 <code>Edge</code> 所以未来我多半会在项目内应用起来。</p>
+<ul>
+<li>有一些情况下浏览器更新到最新版本了，开发时没有问题。但是部署到线上环境时就会提示 <code>crypto.randomUUID is not a function</code>。多半是由于项目没有开启HTTPS导致的。</li>
+</ul>
 <h4 id="3-NodeJS-是否也有-crypto-randomUUID-这个API？"><a href="#3-NodeJS-是否也有-crypto-randomUUID-这个API？" class="headerlink" title="#3. NodeJS 是否也有 crypto.randomUUID() 这个API？"></a>#3. <code>NodeJS</code> 是否也有 <code>crypto.randomUUID()</code> 这个API？</h4><p>有，从 <code>14.17.0</code> 开始就有 <code>crypto.randomUUID()</code> 这个方法了。</p>
 <blockquote>
 <p>From version <strong>14.17.0</strong>, a similar method is available as <a target="_blank" rel="noopener" href="https://nodejs.org/docs/latest-v14.x/api/crypto.html#crypto_crypto_randomuuid_options">crypto.randomUUID()</a>.</p>
