@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2024/JS-i18n-relative-time-format/</loc>
+    <lastmod>2024-06-14</lastmod>
+  </url>
+  <url>
     <loc>https://yogwang.site/2023/JS-crypto-random-uuid/</loc>
     <lastmod>2024-03-28</lastmod>
   </url>
@@ -217,11 +221,11 @@
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2022/what-the-repaint-and-reflow/</loc>
+    <loc>https://yogwang.site/2020/what-the-export-x-as-x/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2020/what-the-export-x-as-x/</loc>
+    <loc>https://yogwang.site/2022/what-the-repaint-and-reflow/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
@@ -361,11 +365,11 @@
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary07/</loc>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary06/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary06/</loc>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary07/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
@@ -401,11 +405,11 @@
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2019/hexo-theme-development-codeblock/</loc>
+    <loc>https://yogwang.site/2021/hexo-theme-edit/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2021/hexo-theme-edit/</loc>
+    <loc>https://yogwang.site/2019/hexo-theme-development-codeblock/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
@@ -473,11 +477,11 @@
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2020/JS-whats-arguments/</loc>
+    <loc>https://yogwang.site/2021/JS-what-dose-new-operators-do/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2021/JS-what-dose-new-operators-do/</loc>
+    <loc>https://yogwang.site/2020/JS-whats-arguments/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
@@ -533,11 +537,11 @@
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2020/JS-array-find-some-every/</loc>
+    <loc>https://yogwang.site/2020/JS-array-fill/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2020/JS-array-fill/</loc>
+    <loc>https://yogwang.site/2020/JS-array-find-some-every/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
@@ -553,11 +557,11 @@
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2019/Electron03-Electron-builder/</loc>
+    <loc>https://yogwang.site/2019/Electron04-ElectronBuilder-ElectronUpdater/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2019/Electron04-ElectronBuilder-ElectronUpdater/</loc>
+    <loc>https://yogwang.site/2019/Electron03-Electron-builder/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
