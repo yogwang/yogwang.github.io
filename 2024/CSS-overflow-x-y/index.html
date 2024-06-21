@@ -1,0 +1,333 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>CSS 中 overflow 值的冲突和自动转换问题 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-CSS-overflow-x-y"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2024-06-21T00:49:34.000Z" itemprop="datePublished">2024-06-21</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      CSS 中 overflow 值的冲突和自动转换问题
+    </h1>
+  
+
+      <div class="article-updated">
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <blockquote>
+<p>如果 <code>overflow-x</code> 或 <code>overflow-y</code> 中的一个值不是 <code>visible</code> 或者 <code>clip</code> 的话，给 <code>overflow</code> 设置的 <code>visible/clip</code> 值会被自动处理成 <code>auto/hidden</code>。</p>
+</blockquote>
+<p>昨天下班之前看了一眼思否问答，发现<a target="_blank" rel="noopener" href="https://meta.segmentfault.com/questions/10010000053637986">思否的导航栏出现BUG</a>了。所以想着在官方修复前自己改CSS样式临时凑合一下。<br>但看到 <code>#sf-header</code> 元素上面的 <code>overflow-x:hidden</code> 属性时候，我突然就卡壳了。开始困惑如果我给元素设置了 <code>overflow-x: hidden</code> 之后，垂直方向上的内容溢出时展现方式应该是怎么样的？是应该是如当前看到的出现滚动条还是应该超出显示。</p>
+<p><img src="/2024/CSS-overflow-x-y/problem_snipaste.jpeg" alt="问题预览图"></p>
+<span id="more"></span>
+
+<p>也不知道是不是因为正巧前几分钟，<a target="_blank" rel="noopener" href="http://blog.meathill.com/about">Meathill</a> 在微信群里面问了一个 <code>scrollbar</code> 样式属性相关的问题。正好 <code>overflow</code> 这个样式属性表现出来的现象也正好和滚动条有关。<br>所以一下子以为是标准有变动？去MDN上面看了一下 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow">overflow</a> 的文档。发现 <strong>欸！为啥MDN的示例代码上也有 <code>overflow: hidden visible</code> 这样的示例</strong>，难道是可以这样设置的？</p>
+<p>当然也可能是唤起了自己部分的编码回忆，有些时候也会单纯的使用 <code>overflow-x:hidden</code> 来隐藏横向的滚动条。但是不记得这样设置的目的的了，然后就把思路代入了。以为自己之前这样写是为了做导航条的横向超出隐藏，然后垂直方向的超出显示。</p>
+<ul>
+<li>其实MDN文档再往下滚动就有一段描述信息：<blockquote>
+<p>设置一个轴为 <code>visible</code>（默认值），而设置另一个轴为 <em>不同的值</em> 时，<code>visible</code> 的行为会像 <code>auto</code> 一样。<br><small><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow#%E6%8F%8F%E8%BF%B0">overflow - CSS | MDN</a></small></p>
+</blockquote>
+</li>
+</ul>
+<p>但是我已经开始陷入了自己预设的方向跳脱不出去了，当然就没有找到自己想要的结果。就开始检索 <code>overflow: hidden visible</code> 相关的内容，果然就有对应的内容了：</p>
+<blockquote>
+<p>After some serious searching it seems i’ve found the answer to my question:<br>from: <a target="_blank" rel="noopener" href="http://www.brunildo.org/test/Overflowxy2.html">http://www.brunildo.org/test/Overflowxy2.html</a></p>
+<blockquote>
+<p>In Gecko, Safari, Opera, ‘visible’ becomes ‘auto’ also when combined with ‘hidden’ (in other words: ‘visible’ becomes ‘auto’ when combined with anything else different from ‘visible’). Gecko 1.8, Safari 3, Opera 9.5 are pretty consistent among them.</p>
+</blockquote>
+<p>also the <a target="_blank" rel="noopener" href="http://www.w3.org/TR/css3-box/#overflow-x">W3C spec</a> says:</p>
+<blockquote>
+<p>The computed values of ‘overflow-x’ and ‘overflow-y’ are the same as their specified values, except that some combinations with ‘visible’ are not possible: if one is specified as ‘visible’ and the other is ‘scroll’ or ‘auto’, then ‘visible’ is set to ‘auto’. The computed value of ‘overflow’ is equal to the computed value of ‘overflow-x’ if ‘overflow-y’ is the same; otherwise it is the pair of computed values of ‘overflow-x’ and ‘overflow-y’.</p>
+</blockquote>
+<p>Short Version:<br>If you are using visible for either overflow-x or overflow-y and something other than visible for the other, the visible value is interpreted as auto.<br><small><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6421966/css-overflow-x-visible-and-overflow-y-hidden-causing-scrollbar-issue">html - CSS overflow-x: visible; and overflow-y: hidden; causing scrollbar issue - Stack Overflow</a></small></p>
+</blockquote>
+<p>可以看到浏览器在实现方向上确实是有一些特殊的处理，但是回答中引用的两个链接都已经失效了，只能自己去检索对应的内容。<br>并且因为之前查看MDN文档的时候发现了示例代码中 <code>overflow: hidden visible</code> 这样的用法，所以我理所当然的认为MDN文档可能有落后，可能并没有提到这些特殊处理的内容。想要直接从 <code>W3C</code> 中去寻找答案。</p>
+<p>当然从已经跨越了将近10年的时间，标准文档早就发生了很多的演变。文档中关于 <code>overflow</code> 属性的说明也从 <code>CSS Box Model Module Level 3</code> 部分独立到了 <code>CSS Overflow Module Level 3</code> 部分中。</p>
+<p>不过还好，最终还是找到了当时的问答中中关于这部分的文档 👉 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/2007/WD-css3-box-20070809/#collapse-scroll">CSS basic box model | W3C Working Draft 9 August 2007</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其实就是说 <code>overflow</code> 的 <code>visible</code> 属性会和其他的值有冲突。不能设置 <code>visible</code> 的同时设置另外一个值为非 <code>visible</code>。可能是和外部容器的高度计算有关？<br>标准中关于这部分的说明并不是特别多，但应该能找到相关讨论的邮件。有想法的可通过文章下方的<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90">相关资源链接</a>继续探索。但我不想深究下去了，毕竟只是自己的一个理解错误造成的困扰。</p>
+<blockquote>
+<p>All values are treated the same as for ‘<strong>overflow</strong>‘, but on this property, they only affect whether or not the element is vertically clipped or has a vertical scrolling mechanism.</p>
+<ul>
+<li>The computed value is the specified value, except in the following case: combinations of ‘<strong>overflow-x</strong>‘ and ‘<strong>overflow-y</strong>‘ where one is ‘<code>visible</code>‘ and the other is ‘<code>scroll</code>‘ or ‘<code>auto</code>‘ are not possible. In that case the computed value of ‘<code>visible</code>‘ will be ‘<code>auto</code>‘.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow">overflow - CSS | MDN</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3.org/TR/2023/WD-css-overflow-3-20230329">CSS Overflow Module Level 3 | W3C Working Draft, 29 March 2023</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3.org/TR/2007/WD-css3-box-20070809/#collapse-scroll">CSS basic box model | W3C Working Draft 9 August 2007</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3.org/TR/2002/WD-css3-box-20021024/#the-overflow-x">CSS3 module: The box model | W3C Working Draft 24 October 2002</a></li>
+<li><a target="_blank" rel="noopener" href="https://css-tricks.com/popping-hidden-overflow/">Popping Out of Hidden Overflow | CSS-Tricks</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6421966/css-overflow-x-visible-and-overflow-y-hidden-causing-scrollbar-issue">html - CSS overflow-x: visible; and overflow-y: hidden; causing scrollbar issue - Stack Overflow</a></li>
+<li><a target="_blank" rel="noopener" href="https://meta.segmentfault.com/questions/10010000053637986">官网用户信息出现重大 bug - 思否社区建设</a></li>
+</ul>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2024/JS-i18n-relative-time-format/" 
+      title="VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API" 
+      alt="VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2024-06-21"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2024/CSS-overflow-x-y/" 
+              title="CSS 中 overflow 值的冲突和自动转换问题" 
+              alt="CSS 中 overflow 值的冲突和自动转换问题"
+            >
+              CSS 中 overflow 值的冲突和自动转换问题
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/JS-i18n-relative-time-format/" 
+              title="VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API" 
+              alt="VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API"
+            >
+              VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/pikaz-excel-js-cell-style/" 
+              title="在 pikaz-excel-js 中设置单元格样式" 
+              alt="在 pikaz-excel-js 中设置单元格样式"
+            >
+              在 pikaz-excel-js 中设置单元格样式
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/i18n-vsc-extension-i18n-ally/" 
+              title="国际化开发插件 i18n-Ally" 
+              alt="国际化开发插件 i18n-Ally"
+            >
+              国际化开发插件 i18n-Ally
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/summary-at-the-end-of-2023/" 
+              title="💪 2023 年，其实生活不只是编程" 
+              alt="💪 2023 年，其实生活不只是编程"
+            >
+              💪 2023 年，其实生活不只是编程
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/" rel="tag">NPM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service-Worker/" rel="tag">Service Worker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueUse/" rel="tag">VueUse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exceljs/" rel="tag">exceljs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2024 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
