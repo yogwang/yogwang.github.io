@@ -1,0 +1,483 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>使用 rrweb 录制和回放用户交互操作 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-rrweb-record-and-replay-users-interactions"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rrweb/" rel="tag">rrweb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2024-06-20T02:52:08.000Z" itemprop="datePublished">2024-06-20</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      使用 rrweb 录制和回放用户交互操作
+    </h1>
+  
+
+      <div class="article-updated">
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <p>一直以来项目的<strong>日志功能</strong>只记录了用户的登录和接口请求操作日志，用来辅助我们定位和解决反馈的异常问题。这些日志大多数情况下并不会记录用户是如进行操作的，只记录发起请求时携带的参数信息。大多数情况下这些日志已经足够帮助我们发现和解决问题了。<br>但在一些非常独特的问题反馈中，我们没有办法了解到用户是如何触发这些异常请求的。还需要去主动联系用户询问当时的操作场步骤去复现，或者按照日志中的参数去猜测用户是如何操作的。</p>
+<p>最近正在听 <a target="_blank" rel="noopener" href="https://www.xiaoyuzhoufm.com/podcast/613753ef23c82a9a1ccfdf35">Web Worker</a> 这档播客节目，有一期节目邀请到了 <a target="_blank" rel="noopener" href="https://github.com/Yuyz0112">Aryu</a> 大佬，就发现了 <a target="_blank" rel="noopener" href="https://github.com/rrweb-io/rrweb">rrweb</a> 这个项目。有兴趣的话可以从项目的主页中<strong>在线尝试录制和回放</strong>功能，预设了3个业务场景的录制体验Demo。</p>
+<p>可以看到录制效果非常不错。能录制到鼠标轨迹、滚轮操作、各种元素的聚焦、下拉和光标位置等各种各样的操作记录。</p>
+<ul>
+<li><small>但因为是DOM级别的录制，所以浏览器原生提供的功能，并不会被录制到。比如说 <code>&lt;select&gt;</code> 元素提供的下拉操作和 <code>&lt;input type=&quot;file&quot;&gt;</code> 提供的文件选择操作。</small></li>
+<li><small>从 <code>v1.0.0</code> 开始以插件的形式增加了控制台录制的功能。</small></li>
+</ul>
+<p>而且使用起来非常简单，只需要引入和执行 <code>record</code> 方法就可以启动录制了，然后按照自己的需求去存储即可。</p>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; record &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rrweb&#x27;</span>
+
+<span class="hljs-keyword">let</span> events = [];
+<span class="hljs-title function_">record</span>(&#123;
+  <span class="hljs-title function_">emit</span>(<span class="hljs-params">event</span>) &#123;
+    <span class="hljs-comment">// 将用户操作的 event 存入 events 数组中</span>
+    events.<span class="hljs-title function_">push</span>(event);
+  &#125;,
+&#125;);</code></pre>
+
+<span id="more"></span>
+<h2 id="💥-不过！"><a href="#💥-不过！" class="headerlink" title="💥 不过！"></a>💥 不过！</h2><p>我们在实际使用过程中会发现 <code>rrweb</code> 的录制量会大的超出我们的预期很多。比如我现在的项目录制简单快速的完整操作下来记录的的 <code>eventList</code> 可能就会超过 <code>3M</code> ，就有点太大了。<br>所以可以文档中关于 <a target="_blank" rel="noopener" href="https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/optimize-storage.zh_CN.md">优化存储容量</a> 的一些针对性优化。</p>
+<p>其实简单的<a target="_blank" rel="noopener" href="https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/optimize-storage.zh_CN.md#%E5%8E%8B%E7%BC%A9">开启压缩</a>之后就能将录制的 <code>eventList</code> 压缩到原本大概 <code>1/4</code> 的体积了，也非常的方便。</p>
+<p>但是我的业务比较复杂会有 <code>dialog</code> 和 <code>popup</code> ，可能会同时会有多个组件的状态变更和渲染，所以 <code>rrweb</code> 录制时可能会出现顺序错位的情况，比如说 <code>loading-mask</code> 没有被关闭或者出现多个同样的 <code>dialog</code>。导致没办法很好的回放录制内容。</p>
+<p>所以配合了 <a target="_blank" rel="noopener" href="https://github.com/rrweb-io/rrweb/blob/master/guide.zh_CN.md#%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0">blockSelector</a> 属性，配置了一些不需要被录制的元素选择器。</p>
+<blockquote>
+<p><strong>注意</strong>：在文章发布的时间节点上使用 <code>npm i rrweb</code> 安装的版本是 <code>rrweb@2.0.0-alpha.4</code>。这个版本中使用 <code>blockSelector</code> 是有BUG的，请确认安装的版本是否为 <code>2.0.0-alpha.5</code> 及以上的版本。 </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/rrweb-io/rrweb/pull/1032">Fix: isBlocked throws on invalid element by dbseel · Pull Request #1032 · rrweb-io&#x2F;rrweb</a></li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="❗-还是觉得录制结果太大了"><a href="#❗-还是觉得录制结果太大了" class="headerlink" title="❗ 还是觉得录制结果太大了"></a>❗ 还是觉得录制结果太大了</h2><p>如果你想要继续缩小录制结果。比如说我现在的业务场景，其实只需要在业务出现异常时录制前几个操作就好了，所以可以使用 <code>checkoutEveryNth</code> 或者 <code>checkoutEveryNms</code> 来定期重新制作一次全量快照。然后创建一个新的数组去存储新的 <code>eventList</code>。</p>
+<p>比如说文档中的示例：</p>
+<pre><code class="hljs js"><span class="hljs-comment">// 使用二维数组来存放多个 event 数组</span>
+<span class="hljs-keyword">const</span> eventsMatrix = [[]];
+
+rrweb.<span class="hljs-title function_">record</span>(&#123;
+  <span class="hljs-title function_">emit</span>(<span class="hljs-params">event, isCheckout</span>) &#123;
+    <span class="hljs-comment">// isCheckout 是一个标识，告诉你重新制作了快照</span>
+    <span class="hljs-keyword">if</span> (isCheckout) &#123;
+      eventsMatrix.<span class="hljs-title function_">push</span>([]);
+    &#125;
+    <span class="hljs-keyword">const</span> lastEvents = eventsMatrix[eventsMatrix.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>];
+    lastEvents.<span class="hljs-title function_">push</span>(event);
+  &#125;,
+  <span class="hljs-attr">checkoutEveryNms</span>: <span class="hljs-number">5</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>, <span class="hljs-comment">// 每5分钟重新制作快照</span>
+&#125;);
+
+<span class="hljs-comment">// 向后端传送最新的两个 event 数组</span>
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">onerror</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;
+  <span class="hljs-keyword">const</span> len = eventsMatrix.<span class="hljs-property">length</span>;
+  <span class="hljs-keyword">const</span> events = eventsMatrix[len - <span class="hljs-number">2</span>].<span class="hljs-title function_">concat</span>(eventsMatrix[len - <span class="hljs-number">1</span>]);
+  <span class="hljs-keyword">const</span> body = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(&#123; events &#125;);
+  <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;http://YOUR_BACKEND_API&#x27;</span>, &#123;
+    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
+    <span class="hljs-attr">headers</span>: &#123;
+      <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+    &#125;,
+    body,
+  &#125;);
+&#125;;</code></pre>
+
+<p>分片的时候需要注意的是不能直接截取我们记录的 <code>eventList</code> 数组，需要等 <code>isCheckout</code> 这个标识返回为 <code>true</code> 时去分片。因为我们录制的 <code>event</code> 时基于全量快照的变更产生的记录。所以如果你手动剪裁 <code>eventList</code> 数组（也就是没有记录全量快照的话），是没有办法正常回放录制的用户操作的。</p>
+<p>如果 <code>checkoutEveryNth</code> 和 <code>checkoutEveryNms</code> 不能满足你的需求，你可能会想要在某一个特殊节点上产生一个全量快照，那么简单的实现是可以终止当前的 <code>rrweb</code> 实例的录制，然后重新开启录制。</p>
+<hr>
+<h2 id="💼-实际业务场景中的使用"><a href="#💼-实际业务场景中的使用" class="headerlink" title="💼 实际业务场景中的使用"></a>💼 实际业务场景中的使用</h2><p>因为我只需要在用户进行表单编辑时开始录制，并且只需要记录用户端异常出现的前 30s 的操作即可。所以我会把 <code>rrweb</code> 的录制相关的操作放到 <code>Vuex</code> 之类状态管理库中维护。然后在通用的 <code>onDialog</code> 事件中去调用对应的 <code>action</code> 开启和结束录制。</p>
+<p>以下是一个简单的实现思路会有一些边界情况没有覆盖：</p>
+<pre><code class="hljs js"><span class="hljs-comment">// /store/modules/app.js</span>
+<span class="hljs-keyword">import</span> &#123; record, pack &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rrweb&#x27;</span>
+
+<span class="hljs-comment">// 因为不需要监听改变，所以直接在外部声明 rrweb 相关变量</span>
+<span class="hljs-comment">// rrweb 录制器</span>
+<span class="hljs-keyword">let</span> <span class="hljs-title function_">rrwebRecorder</span> = (<span class="hljs-params"></span>) =&gt; &#123;&#125;
+<span class="hljs-comment">// rrweb 事件集合</span>
+<span class="hljs-keyword">let</span> rrwebEventRecords = []
+
+<span class="hljs-keyword">const</span> state = &#123;
+  <span class="hljs-comment">// ...</span>
+&#125;
+
+<span class="hljs-keyword">const</span> mutations = &#123;
+  <span class="hljs-comment">// ...</span>
+&#125;
+
+<span class="hljs-keyword">const</span> actions = &#123;
+  <span class="hljs-comment">// 开启 RRWEB 录制</span>
+  <span class="hljs-title function_">setRRWebStart</span>(<span class="hljs-params"></span>) &#123;
+    rrwebEventRecords = []
+    rrwebRecorder = <span class="hljs-title function_">record</span>(&#123;
+      <span class="hljs-title function_">emit</span>(<span class="hljs-params">event, isCheckout</span>) &#123;
+        <span class="hljs-comment">// 如果重新制作了快照，清空 rrwebEventRecords</span>
+        <span class="hljs-keyword">if</span> (isCheckout) rrwebEventRecords = []
+        rrwebEventRecords.<span class="hljs-title function_">push</span>(event)
+      &#125;,
+      <span class="hljs-attr">packFn</span>: pack, <span class="hljs-comment">// 开启压缩</span>
+      <span class="hljs-attr">checkoutEveryNms</span>: <span class="hljs-number">30</span> * <span class="hljs-number">1000</span>, <span class="hljs-comment">// 每 30 秒重新制作一次全量快照</span>
+      <span class="hljs-attr">blockSelector</span>: <span class="hljs-string">&#x27;.navbar, .sidebar&#x27;</span>, <span class="hljs-comment">// 忽略 .navbar 和 。sidebar 元素的录制</span>
+      <span class="hljs-attr">sampling</span>: &#123;
+        <span class="hljs-attr">mousemove</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 不录制鼠标移动事件</span>
+        <span class="hljs-attr">mouseInteraction</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 不录制鼠标交互事件</span>
+        <span class="hljs-attr">scroll</span>: <span class="hljs-number">150</span>, <span class="hljs-comment">// 每 150ms 最多触发一次滚动交互</span>
+        <span class="hljs-attr">media</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 关闭媒体录制</span>
+        <span class="hljs-attr">input</span>: <span class="hljs-string">&#x27;last&#x27;</span> <span class="hljs-comment">// 连续输入时只录制最终值</span>
+      &#125;
+    &#125;)
+  &#125;,
+  <span class="hljs-comment">// 停止 RRWEB 录制</span>
+  <span class="hljs-title function_">setRRWebStop</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-title function_">rrwebRecorder</span>()
+    rrwebEventRecords = []
+  &#125;,
+  <span class="hljs-comment">// 获取屏幕录制结果</span>
+  <span class="hljs-title function_">getRRWebRecordList</span>(<span class="hljs-params">&#123; dispatch &#125;</span>) &#123;
+    <span class="hljs-keyword">const</span> recordJSON = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(&#123; <span class="hljs-attr">events</span>: rrwebEventRecords &#125;)
+    <span class="hljs-title function_">dispatch</span>(<span class="hljs-string">&#x27;setRRWebStop&#x27;</span>)
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(recordJSON)
+  &#125;
+&#125;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-attr">namespaced</span>: <span class="hljs-literal">true</span>,
+  state,
+  mutations,
+  actions
+&#125;</code></pre>
+
+<p>通用的弹窗控制函数，比如说 Vue2.x 经常会使用的 Mixins 方式</p>
+<pre><code class="hljs js"><span class="hljs-comment">// /mixins.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-comment">// ...</span>
+  <span class="hljs-attr">methods</span>: &#123;
+    <span class="hljs-comment">// 打开编辑弹窗</span>
+    <span class="hljs-title function_">onOpenEditDialog</span>(<span class="hljs-params"></span>) &#123;
+      <span class="hljs-comment">// ...</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">$store</span>.<span class="hljs-title function_">dispatch</span>(<span class="hljs-string">&#x27;app/setRRWebStart&#x27;</span>)
+    &#125;,
+    <span class="hljs-comment">// 编辑弹窗关闭时触发</span>
+    <span class="hljs-title function_">handleEditDialogClose</span>(<span class="hljs-params"></span>) &#123;
+      <span class="hljs-comment">// ...</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">$store</span>.<span class="hljs-title function_">dispatch</span>(<span class="hljs-string">&#x27;app/setRRWebStop&#x27;</span>)
+    &#125;
+  &#125;
+&#125;</code></pre>
+
+<p>封装好的请求拦截器中：</p>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span>
+<span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Message</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-ui&#x27;</span>
+<span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/store&#x27;</span>
+
+<span class="hljs-keyword">import</span> &#123; uploadClientEventRecord &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/api/system&#x27;</span>
+
+<span class="hljs-keyword">const</span> service = axios.<span class="hljs-title function_">create</span>(&#123;
+  <span class="hljs-attr">baseURL</span>: process.<span class="hljs-property">env</span>.<span class="hljs-property">VUE_APP_BASE_API</span>,
+  <span class="hljs-attr">timeout</span>: <span class="hljs-number">30000</span>
+&#125;)
+
+service.<span class="hljs-property">interceptors</span>.<span class="hljs-property">response</span>.<span class="hljs-title function_">use</span>(
+  <span class="hljs-function"><span class="hljs-params">success</span> =&gt;</span> &#123;
+    <span class="hljs-comment">// ...</span>
+  &#125;,
+  <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;err&#x27;</span> + error)
+    <span class="hljs-keyword">const</span> &#123; message &#125; = error
+    <span class="hljs-title class_">Message</span>(&#123;
+      <span class="hljs-attr">message</span>: message,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;error&#x27;</span>,
+      <span class="hljs-attr">duration</span>: <span class="hljs-number">5</span> * <span class="hljs-number">1000</span>
+    &#125;)
+    store.<span class="hljs-title function_">dispatch</span>(<span class="hljs-string">&#x27;app/getRRWebRecordList&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">events</span> =&gt;</span> &#123;
+      <span class="hljs-title function_">uploadClientEventRecord</span>(&#123; ...error, events &#125;)
+    &#125;)
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(error)
+  &#125;
+)</code></pre>
+
+<hr>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>当然如果你不嫌麻烦，还是可以看 <code>rrweb</code> 暴露出来的的一些函数，有一部分是没有在文档中体现的<br>👉 <a target="_blank" rel="noopener" href="https://github.com/rrweb-io/rrweb/blob/master/packages/rrweb/src/index.ts#L26">rrweb&#x2F;packages&#x2F;rrweb&#x2F;src&#x2F;index.ts at master · rrweb-io&#x2F;rrweb</a></p>
+<p>比如说:</p>
+<ul>
+<li><code>freezePage</code>: <a target="_blank" rel="noopener" href="https://github.com/rrweb-io/rrweb/issues/221">Throttling&#x2F;pausing of Mutation Events · Issue #221 · rrweb-io&#x2F;rrweb</a></li>
+<li><code>takeFullSnapshot</code>: <a target="_blank" rel="noopener" href="https://github.com/rrweb-io/rrweb/pull/1527">rrweb&#x2F;guide.zh_CN.md at master · rrweb-io&#x2F;rrweb</a></li>
+</ul>
+<p>都是一些非常实用的内部函数，避免自己重复造轮子。</p>
+<hr>
+<h3 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h3><p><a target="_blank" rel="noopener" href="https://github.com/rrweb-io/rrweb">rrweb-io&#x2F;rrweb: record and replay the web</a><br><a target="_blank" rel="noopener" href="https://www.xiaoyuzhoufm.com/episode/65bafe551ed6d5797f6c37c2">No.47 和 rrweb 作者 aryu 聊从开源到技术商业化、低代码和 AI、职场软技能 - Web Worker | 小宇宙</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/rrweb-io/rrweb/pull/1032">Fix: isBlocked throws on invalid element by dbseel · Pull Request #1032 · rrweb-io&#x2F;rrweb</a><br><a target="_blank" rel="noopener" href="https://github.com/rrweb-io/rrweb/issues/1153">How to rebuild snapshot based on recorded events? · Issue #1153 · rrweb-io&#x2F;rrweb</a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000041412519">前端技术分享：页面性能优化问题复盘 - 有道技术团队 - SegmentFault 思否</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a 
+      id="article-nav-newer"
+      class="article-nav-link-wrap" 
+      href="/2024/CSS-overflow-x-y/" 
+      title="CSS 中 overflow 值的冲突和自动转换问题" 
+      alt="CSS 中 overflow 值的冲突和自动转换问题"
+    >
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">CSS 中 overflow 值的冲突和自动转换问题</div>
+    </a>
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2024/JS-i18n-relative-time-format/" 
+      title="VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API" 
+      alt="VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2024-06-20"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2024/vue-setup-props-sugar/" 
+              title="Vue3 中关于 defineProps 的一些 “糖”" 
+              alt="Vue3 中关于 defineProps 的一些 “糖”"
+            >
+              Vue3 中关于 defineProps 的一些 “糖”
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/CSS-shorthand-property-all-and-css-keyword/" 
+              title="CSS中的元素样式还原属性 all:revert" 
+              alt="CSS中的元素样式还原属性 all:revert"
+            >
+              CSS中的元素样式还原属性 all:revert
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/CSS-overflow-x-y/" 
+              title="CSS 中 overflow 值的冲突和自动转换问题" 
+              alt="CSS 中 overflow 值的冲突和自动转换问题"
+            >
+              CSS 中 overflow 值的冲突和自动转换问题
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/rrweb-record-and-replay-users-interactions/" 
+              title="使用 rrweb 录制和回放用户交互操作" 
+              alt="使用 rrweb 录制和回放用户交互操作"
+            >
+              使用 rrweb 录制和回放用户交互操作
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/JS-i18n-relative-time-format/" 
+              title="VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API" 
+              alt="VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API"
+            >
+              VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/" rel="tag">NPM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service-Worker/" rel="tag">Service Worker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueUse/" rel="tag">VueUse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exceljs/" rel="tag">exceljs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rrweb/" rel="tag">rrweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2024 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
