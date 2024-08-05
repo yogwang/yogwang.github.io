@@ -53,7 +53,7 @@
 }
 .archive-article-inner table thead tr th,
 .article-inner table thead tr th {
-  padding: 0 15px;
+  padding: 0 1vw;
 }
 .archive-article-inner table tbody tr,
 .article-inner table tbody tr {
@@ -62,7 +62,7 @@
 }
 .archive-article-inner table tbody tr td,
 .article-inner table tbody tr td {
-  padding: 0 15px;
+  padding: 0 1vw;
 }
 .archive-article {
   padding: 3vh 15px 5px;
