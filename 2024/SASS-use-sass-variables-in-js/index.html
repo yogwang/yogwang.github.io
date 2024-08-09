@@ -130,7 +130,8 @@
 <li><a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/css.html#css-modules">#CSS Modules - CSS 相关 | Vue CLI</a></li>
 <li><a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/config/#css-modules">#css.modules - 配置参考 | Vue CLI</a></li>
 </ul>
-<p><code>css.modules</code> 这个属性被弃用了，现在需要改用 <code>css.requireModuleExtension</code> 属性，并设置为 <code>false</code>。</p>
+<p>修改 <code>scss</code> 文件的文件名，以 <code>.module.scss</code> 来结尾，比如说 <code>variables.scss</code> 修改为 <code>variables.module.scss</code>。</p>
+<p>如果去掉文件名中的 <code>.module</code>，那么不能用 <code>css.modules</code> 这个属性了。现在需要改用 <code>css.requireModuleExtension</code> 属性，并设置为 <code>false</code>。</p>
 <pre><code class="hljs js"><span class="hljs-comment">// vue.config.js</span>
 <span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
   <span class="hljs-attr">css</span>: &#123;
