@@ -1,0 +1,433 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>AstroJS 启动！ | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-astrojs-notes-00-start"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AstroJS/" rel="tag">AstroJS</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2024-07-10T03:30:38.000Z" itemprop="datePublished">2024-07-10</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      AstroJS 启动！
+    </h1>
+  
+
+      <div class="article-updated">
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <p>最近有一个官网开发的需求，本来是准备利用老的技术栈，快速开发、快速结束。比如说找一个 <code>PHP</code> 或者 <code>JSP</code> 技术栈的成熟 CMS 框架。前端只需要写一个主题模板，然后用插值表达式做一下循环和动态内容的渲染就行了。</p>
+<p>可团队内没有 <code>PHP</code> 技术栈。<code>Java</code> 小伙伴也忙的要死，没有时间现学一个 CMS 框架来配合我。但项目上线时间又安排的非常近，没办法一直等。<br>就想着先使用有 <strong>SSG</strong> 功能的前端全栈框架先把项目搞起来，把需求先做完。后面再看情况是做 <strong>SSR</strong> 也行。如果不做 <strong>SEO</strong> 没有很多文章发布的场景，也可以仅靠 <strong>SSG</strong> 和钩子触发自动部署即可。</p>
+<p>正巧在播客里面听到一个新的全栈框架 <a target="_blank" rel="noopener" href="https://astro.build/"><strong>Astro</strong></a>，满足了我上便提到的 <strong>SSG</strong> 和 <strong>SSR</strong> 需求。前期可以通过撰写 <code>markdown</code> 文档作为 <code>content</code> 资源来满足项目前期的文章发布需求。 </p>
+<p>而且 <strong>Astro</strong> 提出的 <a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/concepts/islands/"><strong>群岛</strong></a> 概念非常让我感兴趣！</p>
+<span id="more"></span>
+
+<p>可以在同一个项目中支持使用多个框架（如 <code>Vue</code>、<code>React</code>、<code>Preact</code>、<code>Svelte</code> 和 <code>SolidJS</code>）。</p>
+<p>现阶段我还用不上 <strong>群岛</strong> 这个功能。虽然非常吸引我，但Astro 提供的基础功能就可以完全覆盖我的需求了。其实选择 Astro 也是因为被安利到了 <strong>群岛</strong> 功能。<br>有了这次的开发经验，后面我也可以把博客迁移到 Astro，这样一些框架的学习和实践就直接可以在博客中应用上了。比如说使用新框架实现某一个小功能组件之类的。</p>
+<hr>
+<h2 id="🔨-Install-and-set-up"><a href="#🔨-Install-and-set-up" class="headerlink" title="🔨 Install and set up"></a>🔨 Install and set up</h2><p><code>Astro</code> 的安装和初始化非常的方便，就没有什么好说的了。直接 <code>npm create astro@latest</code> 之后按照引导创建项目就可以了。也可以 <a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/install-and-setup/#%E4%BD%BF%E7%94%A8%E4%B8%BB%E9%A2%98%E6%88%96%E8%B5%B7%E5%A7%8B%E6%A8%A1%E6%9D%BF">使用主题或起始模板</a> 找一个符合心理预期的模板一步到位。</p>
+<p>我的话，没有套用社区现有的主题模板，而是选择使用的官方的Blog模板。因为是当前的新项目有专门的UI设计，只能靠自己手撸主题和布局，有一个基础内容发布的目录结构即可。</p>
+<h2 id="🔧-配置-Astro"><a href="#🔧-配置-Astro" class="headerlink" title="🔧 配置 Astro"></a>🔧 配置 Astro</h2><p>配置项的部分就是直接看文档 👉 <a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/reference/configuration-reference/">配置参考 | Docs</a><br>找到一些自己需要的配置项开启就好了。因为我这边的现在需求是 <strong>SSG</strong>，那么主要就是配置 <code>output</code> 属性为 <code>static</code>，以及配置 <code>trailingSlash</code> 属性为 <code>always</code>（默认生成的URL有 <em>尾斜杠</em>）。</p>
+<p>其他的就是按照自己的需求，开启扩展集成功能，比如说我需求的 <a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/guides/integrations-guide/tailwind/">Tailwind 集成</a> 和 <a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/guides/integrations-guide/sitemap/">sitemap 集成</a>，都有很完善的说明文档，按照指引完成配置就可以了。</p>
+<p>👇我的项目的整体结构示意：</p>
+<pre><code class="hljs plaintext">│  astro.config.mjs
+│  package.json
+│  postcss.config.js
+│  tailwind.config.js
+│  tsconfig.json
+├─public/                           # 静态资源目录
+│  │  favicon.webp
+│  │  logo.webp
+│  ├─img/
+│  │   ...
+│  └─locales/
+│      ...
+└─src/                              # 项目代码目录
+    │  env.d.ts
+    ├─components/                   # 可重用组件目录
+    │      Pagination.astro
+    │      ...
+    ├─content/                      # 内容集合目录
+    │  │  config.ts
+    │  └─news/
+    │      └─news-title/
+    │              index.mdx
+    ├─layouts/                      # 布局组件目录
+    │      FooterBar.astro
+    │      HeaderBar.astro
+    │      Layout.astro
+    │      ...
+    └─pages/                        # 页面组件目录
+        │  index.astro
+        │  robots.txt.ts
+        ├─about/
+        │      index.astro
+        ├─news/
+        │      [...slug].astro
+        │      [page].astro
+        └─services/
+            └─page-title/
+                    index.astro</code></pre>
+
+<p>从目录结构中可以看到<strong>特殊单页</strong>，比如说关于我们、服务介绍之类，就可以直接在 <code>pages</code> 里面创建对应的页面组件，就和我们现在开发 <code>Vue SFC</code> 组件是一样的。<br>中间也可以使用 <code>JSX</code> 来做一些特殊处理（比如说<a target="_blank" rel="noopener" href="https://github.com/withastro/astro/blob/astro%404.12.3/examples/blog/src/pages/blog/index.astro#L93">分页列表页面</a>）。当然你想直接使用 <code>Vue SFC</code> 的方式来开发也是可以的，安装 <a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/guides/integrations-guide/vue/">@astrojs&#x2F;vue</a> 集成即可。</p>
+<p><strong>内容集合</strong>部分考虑到文章会有图片展示的需求，所以每一篇文章都是以目录形式创建的，这样图片资源在 <code>markdown</code> 内部直接用相对路径引用就行，在同一个文章目录下维护起来会方便很多。</p>
+<h2 id="🚗-运行和编译"><a href="#🚗-运行和编译" class="headerlink" title="🚗 运行和编译"></a>🚗 运行和编译</h2><p>这个没有什么好说的，就是如果项目配置没有问题，按照 <code>npm run dev</code> 和 <code>npm run build</code> 编译就行了。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/reference/cli-reference/#astro-dev">CLI 命令 | Docs</a></li>
+</ul>
+<p>开发时会有一些基于TS类型检查的提醒，稍微注意一下就好（也可以配置不开启）。</p>
+<hr>
+<h2 id="🧰-遇到的问题！"><a href="#🧰-遇到的问题！" class="headerlink" title="🧰 遇到的问题！"></a>🧰 遇到的问题！</h2><h3 id="❔-文章内容中的图片内容应该如何放置和使用"><a href="#❔-文章内容中的图片内容应该如何放置和使用" class="headerlink" title="❔ 文章内容中的图片内容应该如何放置和使用"></a>❔ 文章内容中的图片内容应该如何放置和使用</h3><p>就如同我在上面提到的这样<strong>使用目录管理</strong>的文章内容。直接就可以把文章图片放到对应的文章目录下，然后使用相对目录引用就行。Astro 会自动收集处理，我们不需要关注。</p>
+<pre><code class="hljs markdown">![<span class="hljs-string">Alt text</span>](<span class="hljs-link">./full/or/relative/path/of/image</span>)</code></pre>
+
+<p>其他部分的图片内容，比如说 <a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/basics/astro-components/#%E7%BB%84%E4%BB%B6%E8%84%9A%E6%9C%AC">代码围栏</a> 中声明的比如说封面图之类的。<br>可以查看 <a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/guides/images/#%E5%86%85%E5%AE%B9%E9%9B%86%E5%90%88%E4%B8%AD%E7%9A%84%E5%9B%BE%E5%83%8F">内容集合中的图像</a> 这部分了解具体使用和配置方法。</p>
+<p>但是可能会遇到 <code>Lint</code> 不通过情况，比如说我就没办法使用内置的 <a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/guides/images/#image--astroassets">&lt;Image /&gt;</a> 组件在分页列表中渲染文章的封面图，就会提示异常：</p>
+<pre><code class="hljs ts"><span class="hljs-comment">// 不能将类型“&#123; class: string; src: string; alt: string; &#125;”分配给类型“IntrinsicAttributes &amp; Props”。</span>
+<span class="hljs-comment">// 不能将类型“&#123; class: string; src: string; alt: string; &#125;”分配给类型“IntrinsicAttributes &amp; &#123; [x: `data-$&#123;string&#125;`]: any; title?: string; children?: unknown; class?: string; &#x27;class:list&#x27;?: string | Record&lt;string, boolean&gt; | Record&lt;any, any&gt; | Iterable&lt;...&gt; | Iterable&lt;...&gt;; ... 203 more ...; inferSize?: false; &#125;”。ts(2322)</span>
+(alias) <span class="hljs-keyword">const</span> <span class="hljs-title class_">Image</span>: <span class="hljs-function">(<span class="hljs-params">_props: Props</span>) =&gt;</span> <span class="hljs-built_in">any</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Image</span></code></pre>
+<p>因为我在代码围栏中只是声明了一下文章目录下图片资源的相对路径，并不是使用 <code>import</code> 导入的图片，所以没通过TS的类型检查。这个可以在 <a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/guides/images/#src-%E5%BF%85%E9%A1%BB">#src (必须) - 属性 - 图像 | Docs</a> 部分中查看到具体说明。</p>
+<p>如果要解决的话得调整很多内容。并且使用 <code>import</code> 导入图片资源，也不方便非技术人员后期维护 <code>markdown</code> 文档。所以我就放弃了使用内置的 <code>&lt;Image /&gt;</code> 组件，直接使用HTML原生的 <code>&lt;img /&gt;</code> 组件了。</p>
+<p>💡 但如果你提示不一样，如下方这样的警告。那么是你忘记使用 <code>import &#123; Image &#125; from &#39;astro:assets&#39;</code> 引入 Astro 内置的图片组件了。</p>
+<pre><code class="hljs ts"><span class="hljs-comment">// 不能将类型“&#123; src: string; alt: string; &#125;”分配给类型“IntrinsicAttributes &amp; number”。</span>
+<span class="hljs-comment">// 不能将类型“&#123; src: string; alt: string; &#125;”分配给类型“number”。ts(2322)</span>
+<span class="hljs-keyword">var</span> <span class="hljs-title class_">Image</span>: <span class="hljs-keyword">new</span> (width?: <span class="hljs-built_in">number</span>, height?: <span class="hljs-built_in">number</span>) =&gt; <span class="hljs-title class_">HTMLImageElement</span></code></pre>
+
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/guides/images/">图像 | Docs</a></li>
+</ul>
+<hr>
+<h3 id="❔-文章列表如何分页"><a href="#❔-文章列表如何分页" class="headerlink" title="❔ 文章列表如何分页"></a>❔ 文章列表如何分页</h3><p>导出的 <code>getStaticPaths</code> 函数有一个 <code>paginate</code> 方法，使用 <code>paginate</code> 函数并传入 <code>pageSize</code> 参数，就可以实现分页效果了。</p>
+<pre><code class="hljs js"><span class="hljs-comment">// src/news/[page].astro</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> getStaticPaths = (<span class="hljs-keyword">async</span> (&#123;paginate&#125;) =&gt; &#123;
+  <span class="hljs-keyword">const</span> posts = (<span class="hljs-keyword">await</span> <span class="hljs-title function_">getCollection</span>(<span class="hljs-string">&#x27;news&#x27;</span>)).<span class="hljs-title function_">sort</span>(
+    <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a.<span class="hljs-property">data</span>.<span class="hljs-property">publishDate</span>.<span class="hljs-title function_">valueOf</span>() - b.<span class="hljs-property">data</span>.<span class="hljs-property">publishDate</span>.<span class="hljs-title function_">valueOf</span>()
+  );
+  <span class="hljs-keyword">return</span> <span class="hljs-title function_">paginate</span>(posts, &#123; <span class="hljs-attr">pageSize</span>: <span class="hljs-number">10</span> &#125;);
+&#125;) 
+
+<span class="hljs-keyword">const</span> &#123; page &#125; = <span class="hljs-title class_">Astro</span>.<span class="hljs-property">props</span>;</code></pre>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/reference/api-reference/#getstaticpaths">#getStaticPaths() - API 参考 | Docs</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/reference/api-reference/#paginate">#paginate() - API 参考 | Docs</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/reference/api-reference/#getcollection">#getCollection() - API 参考 | Docs</a></li>
+</ul>
+<hr>
+<h3 id="❔-使用-astrojs-sitemap-动态生成-robots-txt-没有生效"><a href="#❔-使用-astrojs-sitemap-动态生成-robots-txt-没有生效" class="headerlink" title="❔ 使用 @astrojs/sitemap 动态生成 robots.txt 没有生效"></a>❔ 使用 <code>@astrojs/sitemap</code> 动态生成 <code>robots.txt</code> 没有生效</h3><p><code>@astrojs/sitemap</code> 是支持动态生成 <code>robots.txt</code> 的，创建一个 <code>robots.txt.ts</code> 的文件就可以在编译时期在构建的产物中生成 <code>robots.txt</code> 文件了，内容物就是你自己书写的内容。<br>👇 比如说文档中的示例，就是按照 <code>astro.config.mjs</code> 中配置的 <code>site</code> 作为基准URL来生成新的URL链接，</p>
+<pre><code class="hljs ts"><span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> &#123; <span class="hljs-title class_">APIRoute</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;astro&#x27;</span>;
+
+<span class="hljs-keyword">const</span> robotsTxt = <span class="hljs-string">`</span>
+<span class="hljs-string">User-agent: *</span>
+<span class="hljs-string">Allow: /</span>
+<span class="hljs-string">Sitemap: <span class="hljs-subst">$&#123;<span class="hljs-keyword">new</span> URL(<span class="hljs-string">&#x27;sitemap-index.xml&#x27;</span>, <span class="hljs-keyword">import</span>.meta.env.SITE).href&#125;</span></span>
+<span class="hljs-string">`</span>.<span class="hljs-title function_">trim</span>();
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">GET</span>: <span class="hljs-title class_">APIRoute</span> = <span class="hljs-function">() =&gt;</span> &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(robotsTxt, &#123;
+    <span class="hljs-attr">headers</span>: &#123;
+      <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;text/plain; charset=utf-8&#x27;</span>,
+    &#125;,
+  &#125;);
+&#125;;</code></pre>
+
+<p>如果没有在构建的时候生成，那么可能你的 <code>robots.txt.ts</code> 文件有问题。比如说我就很粗心的把 <code>robots.txt.ts</code> 文件放到了 <code>/src</code> 目录下，而不是 <code>/src/pages/</code> 目录下。</p>
+<hr>
+<h3 id="❔-SSG的内容如何国际化"><a href="#❔-SSG的内容如何国际化" class="headerlink" title="❔ SSG的内容如何国际化"></a>❔ SSG的内容如何国际化</h3><p>Astro 的国际化，官方是有内置的指引的 👉 <a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/recipes/i18n/">添加 i18n 功能 | Docs</a>。<br>会按照目录结构生成多语言的编译后产物。</p>
+<p>所以我们需要调整项目的目录结构，比如说 <code>content</code> 的目录，就需要调整为👇</p>
+<pre><code class="hljs plaintext">src/
+  └─content/
+      └─news/
+          ├─en/
+          │      post-1.md
+          │      post-2.md
+          └─news/
+                  post-1.md
+                  post-2.md</code></pre>
+
+<p>然后 <code>pages</code> 目录也需要同步调整增加一层 <code>[lang]</code> 目录。<br>比如详情页： <code>src/pages/news/[...slug].astro</code> 👉 <code>src/pages/[lang]/news/[...slug].astro</code></p>
+<p>不过还有一些细节部分，我还没有实际运用到。<br>比如说多语言的图片资源，语言改变之后图片也需要同步调整为对应本地化的图片内容。<br>这些需要实际项目运用到的时候再补充完整了。项目是准备上多语言，但是还没有安排开发计划。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/recipes/i18n/">添加 i18n 功能 | Docs</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/guides/internationalization/">国际化（i18n）路由 | Docs</a></li>
+</ul>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a 
+      id="article-nav-newer"
+      class="article-nav-link-wrap" 
+      href="/2024/SASS-use-sass-variables-in-js/" 
+      title="在 JS 中引入并使用 SASS 变量" 
+      alt="在 JS 中引入并使用 SASS 变量"
+    >
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">在 JS 中引入并使用 SASS 变量</div>
+    </a>
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2024/vue-setup-props-sugar/" 
+      title="Vue3 中关于 defineProps 的一些 “糖”" 
+      alt="Vue3 中关于 defineProps 的一些 “糖”"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vue3 中关于 defineProps 的一些 “糖”</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2024-07-10"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2024/SASS-use-sass-variables-in-js/" 
+              title="在 JS 中引入并使用 SASS 变量" 
+              alt="在 JS 中引入并使用 SASS 变量"
+            >
+              在 JS 中引入并使用 SASS 变量
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/astrojs-notes-00-start/" 
+              title="AstroJS 启动！" 
+              alt="AstroJS 启动！"
+            >
+              AstroJS 启动！
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/vue-setup-props-sugar/" 
+              title="Vue3 中关于 defineProps 的一些 “糖”" 
+              alt="Vue3 中关于 defineProps 的一些 “糖”"
+            >
+              Vue3 中关于 defineProps 的一些 “糖”
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/CSS-shorthand-property-all-and-css-keyword/" 
+              title="CSS中的元素样式还原属性 all:revert" 
+              alt="CSS中的元素样式还原属性 all:revert"
+            >
+              CSS中的元素样式还原属性 all:revert
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/CSS-overflow-x-y/" 
+              title="CSS 中 overflow 值的冲突和自动转换问题" 
+              alt="CSS 中 overflow 值的冲突和自动转换问题"
+            >
+              CSS 中 overflow 值的冲突和自动转换问题
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AstroJS/" rel="tag">AstroJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/" rel="tag">NPM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/" rel="tag">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service-Worker/" rel="tag">Service Worker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueCLI/" rel="tag">VueCLI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueUse/" rel="tag">VueUse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exceljs/" rel="tag">exceljs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rrweb/" rel="tag">rrweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2024 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
