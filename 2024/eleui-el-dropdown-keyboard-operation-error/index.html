@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>2024.2 | blog [ YOG WANG ]</title>
+  <title>ElementUI 的 Dropdown 组件键盘操控异常抛出 | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
@@ -50,59 +50,199 @@
 </header>
 
     <div id="wrap">
-      <!-- 文章列表页面 post list page -->
+      <!-- 文章页 post detail page -->
 <main id="container">
-  <!-- 文章分类列表 archives list -->
-<div class="archives-wrap">
-
-  <!-- 列表页文章卡片 list post item -->
-<div class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <div class="archive-article-header-meta">
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NPM/" rel="tag">NPM</a></li></ul>
-
-        
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-eleui-el-dropdown-keyboard-operation-error"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
   <div class="article-category">
     <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2024-08-26T02:10:58.000Z" itemprop="datePublished">2024-08-26</time>
+</div>
       </div>
       
   
-    <h2 class="archive-article-title" itemprop="name">
-      <a href="/2024/taobao-npm-mirror-certificate-expired/" title="淘宝镜像老域名SSL证书已过期" alt="淘宝镜像老域名SSL证书已过期">淘宝镜像老域名SSL证书已过期</a>
-    </h2>
+    <h1 class="article-title" itemprop="name">
+      ElementUI 的 Dropdown 组件键盘操控异常抛出
+    </h1>
   
 
+      <div class="article-updated">
+        
+      </div>
     </header>
-    <!-- 文章内容 article body -->
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
  
-  <article class="article-excerpt">
-    <p>最近社区和社群里面有好多小伙伴在说怎么 <code>npm</code> 用不了，安装不了依赖了。<br>一看报错信息：<code>request to https://npm.taobao.org/xxx failed, reason: certificate has expired</code></p>
-<p>😂 很明显就是 <code>npm.taobao.org</code> 的域名证书过期了，一看果然。已经在1月22日的时候过期了。</p>
-<p><img src="/2024/taobao-npm-mirror-certificate-expired/certificate_expired_chrome.jpeg" alt="域名过期-浏览器截图"></p>
-<p>所以切换到的“<strong>新</strong>”的域名上面就好了：</p>
-<pre><code class="hljs cmd">$ npm config <span class="hljs-built_in">set</span> registry https://registry.npmmirror.com</code></pre>
+  <article class="article-content">
+    <p>前段时间把项目的脚手架升级到 <code>VueCLI 5</code> 同步也升级了一些依赖项。所以这几天都是在自测，看看是不是有一些很明显的 <strong>BUG</strong>，以及解决一些依赖升级之后的 <code>WARN</code>。</p>
+<p>在测试一个下拉菜单（<code>Dropdown</code>）时，发现了一个问题：<strong>使用方向键操控</strong>会抛出一个异常：<br><code>Uncaught TypeError: ele is undefined</code></p>
+<p>查看控制台输出，对应异常抛出的位置是 <a target="_blank" rel="noopener" href="https://github.com/ElemeFE/element/blob/v2.15.14/packages/dropdown/src/dropdown.vue#L187">resetTabindex</a> 函数，在 <code>ele.setAttribute(&#39;tabindex&#39;, &#39;0&#39;)</code> 执行时 <code>ele</code> 是 <code>undefined</code>，所以抛出了这个异常。</p>
+<p>那么看函数调用链看 <code>ele</code> 是怎么来的。<br>👉 是 <code>handleItemKeyDown</code> 函数执行传入的 <code>this.menuItems[nextIndex]</code></p>
+<p>进入调试模式之后发现整个 <code>menuItems</code> 数组是<strong>空数组</strong>，并没有把我在模板中渲染的 <code>el-dropdown-item</code> 都包含进来。</p>
+<span id="more"></span>
+<hr>
+<p>捋了一下 <code>el-dropdown</code> 组件的业务逻辑，发现 <code>el-dropdown-menu</code> 组件会在完成挂载之后（<code>mounted</code>）立即执行 <code>dropdown</code> 组件的 <code>initDomOperation</code> 函数。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ElemeFE/element/blob/v2.15.14/packages/dropdown/src/dropdown-menu.vue#L51">#mounted - element&#x2F;packages&#x2F;dropdown&#x2F;src&#x2F;dropdown-menu.vue at v2.15.14</a></li>
+</ul>
+<p>其他的任意时机都不会再次执行 <code>initDomOperation</code> 方法了。所以问题就是在 <code>el-dropdown-menu</code> 组件完成挂载时，我在模板中渲染的 <code>el-dropdown-item</code> 组件都没有被 <code>querySelectorAll</code> 方法查询到。也就是说并没有被正确渲染在DOM树上。</p>
+<p>确实，业务中使用 <strong><code>v-for</code> 循环的数据是通过接口返回的</strong>。<code>el-dropdown-menu</code> 组件完成挂载时接口数据是不可能及时返回，所以 <code>querySelectorAll</code> 获取不到任何的 <code>el-dropdown-item</code> 元素。</p>
+<p>那么解决方案就很简单了：</p>
+<ol>
+<li><strong>使用 <code>v-if</code> 包裹 <code>el-dropdown</code> 或者 <code>el-dropdown-menu</code> 组件</strong>。</li>
+<li>或者在<strong>接口返回数据后手动调用 <code>el-dropdown</code> 组件的 <code>initDomOperation</code> 方法</strong>。</li>
+</ol>
+<hr>
+<p>最后再补充一个 <code>Dropdown</code> 组件使用中遇到的其他问题：</p>
+<h3 id="💥-在-el-dropdown-组件中使用-el-input-作为-el-dropdown-item-的内容物时，点击-el-input-元素或者回车都会导致-el-dropdown-menu-收起。"><a href="#💥-在-el-dropdown-组件中使用-el-input-作为-el-dropdown-item-的内容物时，点击-el-input-元素或者回车都会导致-el-dropdown-menu-收起。" class="headerlink" title="💥 在 el-dropdown 组件中使用 el-input 作为 el-dropdown-item 的内容物时，点击 el-input 元素或者回车都会导致 el-dropdown-menu 收起。"></a>💥 在 <code>el-dropdown</code> 组件中使用 <code>el-input</code> 作为 <code>el-dropdown-item</code> 的内容物时，点击 <code>el-input</code> 元素或者回车都会导致 <code>el-dropdown-menu</code> 收起。</h3><blockquote>
+<p>这个需求是为了长下拉菜单中，可以通过键入 <code>keyword</code> 过滤下拉菜单，并且可以使用回车快速选中筛选的第一项。</p>
+</blockquote>
+<p>这个问题很简单把 <code>el-dropdown</code> 组件的 <code>hide-on-click</code> 属性置为 <code>false</code> 即可。</p>
+<p>但是这样做会导致一个其他的问题：点击正常的 <code>el-dropdown-item</code> 元素（内容物不是 <code>el-input</code> 的菜单项）时，<code>el-dropdown-menu</code> 也不会收起了。</p>
+<p><strong>场景1</strong>：如果你不需要在 <code>el-input</code> 元素中回车可以选择第一项菜单这样的需求，那么只需要在 <code>el-input</code> 使用 <code>.stop</code> 修饰符拦截事件冒泡。</p>
+<blockquote>
+<p>注意： 不需要将 <code>el-dropdown</code> 组件的 <code>hide-on-click</code> 属性置为 <code>false</code> </p>
+</blockquote>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;el-dropdown-link&quot;</span>&gt;</span>
+    下拉菜单<span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;el-icon-arrow-down el-icon--right&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-menu</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">&quot;dropdown&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-item</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">el-input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;keyword&quot;</span> @<span class="hljs-attr">click.native.stop</span>=<span class="hljs-string">&quot;() =&gt; (&#123;&#125;)&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-item</span>&gt;</span>黄金糕<span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-item</span>&gt;</span>狮子头<span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-menu</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown</span>&gt;</span></code></pre>
 
-<p>也可以使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/nrm">NRM</a> 来切换。</p>
+<hr>
+<p><strong>场景2</strong>：和我的需求一样，期望在 <code>el-input</code> 中回车仍可以完成选择菜单第一项，那么就需要手动控制 <code>el-dropdown</code> 组件的 <code>visible</code> 属性。</p>
+<p>完整的示例代码 👇</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;elDropdown&quot;</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">&quot;click&quot;</span> <span class="hljs-attr">:hide-on-click</span>=<span class="hljs-string">&quot;false&quot;</span> @<span class="hljs-attr">command</span>=<span class="hljs-string">&quot;handleCommand&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;el-dropdown-link&quot;</span>&gt;</span>
+      点击展开菜单<span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;el-icon-arrow-down el-icon--right&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-menu</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">&quot;dropdown&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">el-input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;keyword&quot;</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-item</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-item</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in displayOptionList&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">:command</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>
+        &#123;&#123; item &#125;&#125;
+      <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-item</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-menu</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="language-javascript">  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;TEST&quot;</span>,</span>
+<span class="language-javascript">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">    <span class="hljs-keyword">return</span> &#123;</span>
+<span class="language-javascript">      <span class="hljs-attr">keyword</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span>
+<span class="language-javascript">      <span class="hljs-attr">optionList</span>: [<span class="hljs-string">&#x27;黄金糕&#x27;</span>, <span class="hljs-string">&#x27;狮子头&#x27;</span>, <span class="hljs-string">&#x27;螺蛳粉&#x27;</span>, <span class="hljs-string">&#x27;双皮奶&#x27;</span>, <span class="hljs-string">&#x27;蚵仔煎&#x27;</span>]</span>
+<span class="language-javascript">    &#125;;</span>
+<span class="language-javascript">  &#125;,</span>
+<span class="language-javascript">  <span class="hljs-attr">computed</span>: &#123;</span>
+<span class="language-javascript">    <span class="hljs-title function_">displayOptionList</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">      <span class="hljs-keyword">if</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">keyword</span> === <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">optionList</span></span>
+<span class="language-javascript">      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">optionList</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> str.<span class="hljs-title function_">includes</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">keyword</span>))</span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;,</span>
+<span class="language-javascript">  <span class="hljs-attr">methods</span>: &#123;</span>
+<span class="language-javascript">    <span class="hljs-title function_">handleCommand</span>(<span class="hljs-params">key</span>) &#123;</span>
+<span class="language-javascript">      <span class="hljs-keyword">if</span> (key) &#123;</span>
+<span class="language-javascript">        <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">elDropdown</span>.<span class="hljs-property">visible</span> = <span class="hljs-literal">false</span></span>
+<span class="language-javascript">        <span class="hljs-variable language_">this</span>.$nextTick(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="language-javascript">          <span class="hljs-variable language_">this</span>.<span class="hljs-property">keyword</span> = <span class="hljs-string">&#x27;&#x27;</span></span>
+<span class="language-javascript">        &#125;)</span>
+<span class="language-javascript">        <span class="hljs-title function_">alert</span>(<span class="hljs-string">`您选择的是：<span class="hljs-subst">$&#123;key&#125;</span>`</span>)</span>
+<span class="language-javascript">      &#125; <span class="hljs-keyword">else</span> &#123;</span>
+<span class="language-javascript">        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">keyword</span> !== <span class="hljs-string">&#x27;&#x27;</span>) &#123;</span>
+<span class="language-javascript">          <span class="hljs-keyword">const</span> firstOption = <span class="hljs-variable language_">this</span>.<span class="hljs-property">displayOptionList</span>[<span class="hljs-number">0</span>]</span>
+<span class="language-javascript">          <span class="hljs-keyword">if</span>(firstOption) <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">handleCommand</span>(firstOption)</span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">      &#125;</span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;</span>
+<span class="language-javascript">&#125;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://codepen.io/yogwang/pen/dyBKYzX">🔗 CodePen在线Demo</a></li>
+</ul>
+<p>记得将 <code>el-dropdown</code> 组件的 <code>hide-on-click</code> 属性置为 <code>false</code>。如果不设置为 <code>false</code>，依靠 <code>@click.native.stop=&quot;() =&gt; (&#123;&#125;)&quot;</code> 来取消 <code>el-input</code> 元素的 <code>click</code> 事件冒泡。那么在 <code>el-input</code> 中回车并不会触发 <code>el-dropdown</code> 组件的 <code>command</code> 事件。并且因为 <code>el-input</code> 没有正确抛出 <code>keydown/keyup</code> 相关的事件，想要单独处理就会非常麻烦。<code>el-dropdown</code> 会注册 <code>keydown</code> 事件监听，并直接拦截掉事件冒泡和默认行为。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ElemeFE/element/blob/v2.15.14/packages/dropdown/src/dropdown.vue#L173">#handleItemKeyDown - element&#x2F;packages&#x2F;dropdown&#x2F;src&#x2F;dropdown.vue at v2.15.14 · ElemeFE&#x2F;element</a></li>
+</ul>
+<hr>
+<h3 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ElemeFE/element/blob/v2.15.14/packages/dropdown/src/dropdown.vue#L246">#initDomOperation - element&#x2F;packages&#x2F;dropdown&#x2F;src&#x2F;dropdown.vue at v2.15.14 · ElemeFE&#x2F;element</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ElemeFE/element/blob/v2.15.14/packages/dropdown/src/dropdown-menu.vue#L51">#mounted - element&#x2F;packages&#x2F;dropdown&#x2F;src&#x2F;dropdown-menu.vue at v2.15.14 · ElemeFE&#x2F;element</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ElemeFE/element/blob/v2.15.14/packages/dropdown/src/dropdown.vue#L173">#handleItemKeyDown - element&#x2F;packages&#x2F;dropdown&#x2F;src&#x2F;dropdown.vue at v2.15.14 · ElemeFE&#x2F;element</a></li>
+</ul>
+ 
   </article>
-  <div class="article-more-link">
-    <a href="/2024/taobao-npm-mirror-certificate-expired/#more">阅读全文</a>
+
+
+    </div>
   </div>
-
-
-     
-<div class="archive-article-date">
-  <time datetime="2024-02-02T00:54:42.000Z" itemprop="datePublished">2024/02/02</time>
+   
+<nav id="article-nav">
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2024/SASS-use-sass-variables-in-js/" 
+      title="在 JS 中引入并使用 SASS 变量" 
+      alt="在 JS 中引入并使用 SASS 变量"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在 JS 中引入并使用 SASS 变量</div>
+    </a>
+  
+</nav>
+ 
 </div>
-  </div>
-</div>
 
-</div>
-<!-- 列表分页 list paginator -->
-
+<script>
+const postDate = "2024-08-26"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
 
 </main>
 <!-- 侧边栏 sidebar -->
@@ -132,7 +272,7 @@
   <!-- 快捷分类菜单 shortcut menu -->
   <section class="widget-wrap shortcut-menu">
     
-      <a href="/categories/前端分享/" class="shortcut-menu-item" >前端分享</a>
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
     
       <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
     
