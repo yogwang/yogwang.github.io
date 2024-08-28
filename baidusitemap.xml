@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2020/TypeScript-learning-00/</loc>
+    <lastmod>2024-08-28</lastmod>
+  </url>
+  <url>
     <loc>https://yogwang.site/2024/eleui-el-dropdown-keyboard-operation-error/</loc>
     <lastmod>2024-08-26</lastmod>
   </url>
@@ -389,11 +393,11 @@
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary05/</loc>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary06/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary06/</loc>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary05/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
@@ -490,10 +494,6 @@
   </url>
   <url>
     <loc>https://yogwang.site/2022/antd-aform-magic-usage/</loc>
-    <lastmod>2024-01-04</lastmod>
-  </url>
-  <url>
-    <loc>https://yogwang.site/2020/TypeScript-learning-00/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>

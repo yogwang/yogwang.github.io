@@ -94,6 +94,8 @@
 
       <div class="article-updated">
         
+        最后更新：<time datetime="2024-08-28T02:26:42.000Z" itemprop="datePublished">2024-08-28</time>
+        
       </div>
     </header>
     
@@ -109,13 +111,21 @@
 <hr>
 <p>此文是一篇引子，大概讲述一下为什么要学习 TypeScript、TypeScript 的优点等，可能要等到我全部学习完成之后才能把整篇文章整理写完，可能进度会很慢，因为要同时学习 ReactJS。<br>现在我的对 TS 的了解知之甚少，只知道 TS 是一种强类型的脚本语言， 可以让编写的代码避免一些基础的 Bug，来提高自己的开发效率，并且可以增强项目的可维护性。</p>
 <hr>
-<h3 id="现存的一些疑问"><a href="#现存的一些疑问" class="headerlink" title="现存的一些疑问"></a>现存的一些疑问</h3><ul>
-<li>为什么要学 TS</li>
-<li>TS 有什么好的，为什么 React,Vue,Ng 都是开始使用 TS</li>
-<li>为什么能避免低级 BUG</li>
-<li>三大框架哪一个更适合 TS</li>
-<li>TS 除了类型约束还和 JS 有什么区别<!-- - 另一个CoffeeScript? --></li>
+<h2 id="❓-现存的一些疑问-update-2024-08-28"><a href="#❓-现存的一些疑问-update-2024-08-28" class="headerlink" title="❓ 现存的一些疑问 [update:2024-08-28]"></a>❓ 现存的一些疑问 <sub><small>[update:2024-08-28]</small></sub></h2><h4 id="💬-为什么要学-TS"><a href="#💬-为什么要学-TS" class="headerlink" title="💬 为什么要学 TS"></a>💬 为什么要学 TS</h4><p>首先就是<strong>类型安全</strong>，有了类型检查之后我们在开发过程中会自动捕获错误并即使提示，减少运行时错误和绝大多数的低级、白痴问题。</p>
+<ul>
+<li><small>比如说经典的 <code>Uncaught TypeError: xxx is undefined</code> 和 <code>Uncaught TypeError: xxx is not a function</code> 两个异常抛出。</small></li>
 </ul>
+<p><strong>更好的开发体验</strong>，有了类型声明之后现代IDE可以提供良好的<strong>类型推导</strong>和<strong>代码提示、补全</strong>功能。在长期维护的项目中也可以<strong>提高项目代码的可读性和可维护性</strong>。团队协作时即使没有文档，相互之间也可以通过IDE的类型提示，了解各个变量的数据结构、函数入参和返回值。减少大量阅读相关代码理解代码逻辑的成本。</p>
+<p>在后期可能的<strong>业务重构中也会提高安全性</strong>。静态类型检查器可以捕获一些潜在的逻辑错误，确保所有变量、函数参数和返回值的类型保持一致。如果改变了某个函数，类型检查器会在编译时捕获所有受影响的业务。</p>
+<p>另外，如果是开源项目使用TS也会增加使用者的开发体验。可以说在开源项目中使用TS是一种负责任的体现。即使不使用TS开发，最好也需要提供类型声明文件（<code>.d.ts</code> 文件）</p>
+<h4 id="💬-为什么能避免低级-BUG"><a href="#💬-为什么能避免低级-BUG" class="headerlink" title="💬 为什么能避免低级 BUG"></a>💬 为什么能避免低级 BUG</h4><p>因为第一个问题提到的 <strong>静态类型检查</strong> 可以发现潜在的逻辑错误。在开发过程中会需要我们提供变量、函数的明确类型信息。那么如果在声明的类型中并没有对应的属性和方法。那么自然无法通过类型检查器在控制台抛出异常。</p>
+<h4 id="💬-TS-有什么好的，为什么-React-Vue-Ng-都开始使用-TS"><a href="#💬-TS-有什么好的，为什么-React-Vue-Ng-都开始使用-TS" class="headerlink" title="💬 TS 有什么好的，为什么 React,Vue,Ng 都开始使用 TS"></a>💬 TS 有什么好的，为什么 React,Vue,Ng 都开始使用 TS</h4><p>使用TS的好处已经第一个问题中回答了。在 <code>React</code> 和 <code>Vue</code> 中使用TS是可选的，而在 <code>Angular</code> 中是强制开启的。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://vsavkin.com/writing-angular-2-in-typescript-1fa77c78d8e8">Angular: Why TypeScript?. Victor Savkin is a co-founder of… | by Victor Savkin | Angular</a></li>
+</ul>
+<h4 id="💬-三大框架哪一个更适合-TS"><a href="#💬-三大框架哪一个更适合-TS" class="headerlink" title="💬 三大框架哪一个更适合 TS"></a>💬 三大框架哪一个更适合 TS</h4><p>如上一个问题的回答，<code>Angular</code> 是强制使用TS开发的，所以天生就对于TS有非常好的支持。<br><code>React</code> 也是对TS有良好的支持，TS 也有提供 <code>.tsx</code> 这样的文件后缀类型，来支持在 TS 中书写 <code>JSX</code> 语法。</p>
+<p>而 <code>Vue</code> 则需要区分 <code>Vue2</code> 和 <code>Vue3</code>。在 <code>Vue3</code> 中因为使用了 <code>TS</code> 重构了项目，所以现在也如同 <code>React</code> 一样有良好的 TS 支持。但是在 <code>Vue2</code> 中对于 TS 的支持并不友好，如果要选择使用 TS 并不建议你使用 <code>Vue2</code>（虽然可以使用，但是开发体验并不友好）。</p>
+<h4 id="💬-TS-除了类型约束还和-JS-有什么区别"><a href="#💬-TS-除了类型约束还和-JS-有什么区别" class="headerlink" title="💬 TS 除了类型约束还和 JS 有什么区别"></a>💬 TS 除了类型约束还和 JS 有什么区别</h4><p>可能在更早期的JS版本中，TS会提供比JS更多的新特性。但是现在其实JS已经吸收并实现了了很多TS中的新特性。<strong>我个人</strong>是觉得在<strong>实际工作中的业务开发</strong>上面，除了类型声明和在此之后提供的衍生功能之外（类型检查、推导功能），并没有更多的优势了。</p>
 <hr>
 <h3 id="其它的一些杂物"><a href="#其它的一些杂物" class="headerlink" title="其它的一些杂物"></a>其它的一些杂物</h3><ul>
 <li>TS -&gt; JS 的超集</li>
@@ -165,7 +175,7 @@
 </div>
 
 <script>
-const postDate = "2020-02-27"
+const postDate = "2024-08-28"
 const difference = moment().diff(postDate, 'days')
 const isExpired = difference > 300
 if (isExpired){
