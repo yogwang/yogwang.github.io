@@ -1,0 +1,503 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>单域名多服务器的本地化部署 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-L10n-localization-deployment-of-single-domain"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/L10n/" rel="tag">L10n</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2024-08-27T02:00:29.000Z" itemprop="datePublished">2024-08-27</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      单域名多服务器的本地化部署
+    </h1>
+  
+
+      <div class="article-updated">
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <p>工作中长期维护的项目提出了一个需求：</p>
+<blockquote>
+<p>现在项目分为 <strong>国内版</strong> 和 <strong>欧洲版</strong>。使用的同一个域名的两个子域名，分别指向部署在国内和欧洲的服务。<br>例如说 <code>www.domain.com</code> 和 <code>eu.domain.com</code> 这样两个应用入口。</p>
+<p>虽然我们会在应用上标注清楚是国内版还是欧洲版。但是仍然会有不少的用户会打开错误的应用。所以想要把应用入口统一为一个。项目按照访问用户的IP所在地区自动切换到国内和欧洲的应用中。并且仍然允许用户手动切换服务器，允许跨境使用。</p>
+</blockquote>
+<p>想了很多实现方案最后确定为<strong>在DNS上面按照IP归属做分流</strong>。通过访问用户的IP把在欧洲的用户定向到欧洲的服务，在国内的分流到国内的服务上。<br><strong>实质上还是一个地区部署一整套的服务</strong>。只不过说现在应用入口的统一了，域名也是统一成 <code>www.domain.com</code> 一个了。</p>
+<p>然后在对应的服务器上<strong>做 <code>Nginx</code> 的接口代理转发</strong>，保证可以正常访问其他地区的服务。避免因为访问系统的用户IP是固定的，在DNS上直接就被分流掉了，导致无法访问到另一个地区服务的情况。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="🌎-简单的方案概述"><a href="#🌎-简单的方案概述" class="headerlink" title="🌎 简单的方案概述"></a>🌎 简单的方案概述</h2><p><strong>#1.</strong> 在DNS层先按照用户IP归属分流，分别定向到部署在不同地区的服务器。<br><strong>#2.</strong> 前端项目默认请求当前地区的服务API。用户手动切换服务器地区，那么通过修改请求的API前缀，请求不同的API地址。<br><strong>#3.</strong> 通过 <code>Nginx</code> 中配置的代理转发，把API请求转发到正确的目标服务器的后端服务上。</p>
+<p>前端还是使用的被DNS分流的当地服务器上返回的前端项目，并没有随用户切换服务器而改变。所以说实质上还是一个地区部署一整套的前后端服务。只不过对后端API的请求通过 <code>Nginx</code> 转发到对应的目标服务器上了。</p>
+<hr>
+<h2 id="💻-前端部分调整"><a href="#💻-前端部分调整" class="headerlink" title="💻 前端部分调整"></a>💻 前端部分调整</h2><p>首先就是前端部分的调整。新增一个<strong>默认目标服务器</strong>的<strong>环境变量</strong>配置项。这个很简单应该不用多说了，在对应的 <code>.env.xxx</code> 文件中声明好就可以了。</p>
+<p>因为有一些系统用户会全球异动，需要在境外处理境内的事物。所以不光需要指定默认的目标服务器，还需要在应用中增加<strong>手动切换服务器</strong>的功能。要不然系统也不需要做调整了，直接在域名解析好就完成需求了。</p>
+<p>原本项目就有使用状态管理库（<code>Vuex</code>）。目标服务器的状态维护很简单，就在对应的 <code>Store</code> 模块中增加一个 <code>targetServer</code> 属性和对应的状态操作函数：</p>
+<pre><code class="hljs js"><span class="hljs-comment">// store/modules/app.js</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Cookies</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;js-cookie&#x27;</span>
+<span class="hljs-keyword">import</span> &#123; <span class="hljs-variable constant_">TARGET_SERVER</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@CONST_KEY&#x27;</span>
+
+<span class="hljs-keyword">const</span> state = &#123;
+  <span class="hljs-comment">// ... </span>
+  <span class="hljs-attr">targetServer</span>: <span class="hljs-title class_">Cookies</span>.<span class="hljs-title function_">get</span>(<span class="hljs-variable constant_">TARGET_SERVER</span>) || process.<span class="hljs-property">env</span>.<span class="hljs-property">VUE_APP_TARGET_SERVER_DEFAULT</span>
+&#125;
+
+<span class="hljs-keyword">const</span> mutations = &#123;
+  <span class="hljs-comment">// ...</span>
+  <span class="hljs-attr">SET_TARGET_SERVER</span>: <span class="hljs-function">(<span class="hljs-params">state, server</span>) =&gt;</span> &#123;
+    state.<span class="hljs-property">targetServer</span> = server
+    <span class="hljs-title class_">Cookies</span>.<span class="hljs-title function_">set</span>(<span class="hljs-variable constant_">TARGET_SERVER</span>, server)
+  &#125;
+&#125;
+
+<span class="hljs-keyword">const</span> actions = &#123;
+  <span class="hljs-comment">// ...</span>
+  <span class="hljs-title function_">setTargetServer</span>(<span class="hljs-params">&#123; commit &#125;, server</span>) &#123;
+    <span class="hljs-title function_">commit</span>(<span class="hljs-string">&#x27;SET_TARGET_SERVER&#x27;</span>, server)
+  &#125;
+&#125;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123; <span class="hljs-attr">namespaced</span>: <span class="hljs-literal">true</span>, state, mutations, actions &#125;</code></pre>
+<p>同时修改一下 <code>getters</code> 方便获取状态: </p>
+<pre><code class="hljs js"><span class="hljs-comment">// store/getters.js</span>
+<span class="hljs-keyword">const</span> getters = &#123;
+  <span class="hljs-comment">// ...</span>
+  <span class="hljs-attr">targetServer</span>: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> state.<span class="hljs-property">app</span>.<span class="hljs-property">targetServer</span>
+&#125;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> getters</code></pre>
+
+
+<p>因为还需要在应用内给用户展示当前的选择的目标服务器。我的话就是在系统顶部导航中用户头像点击后的弹出菜单中增加了切换服务器选项。<br>以下是脱敏后的示例代码：</p>
+<pre><code class="hljs html">// src/layout/components/Navbar.vue
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;navbar&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left-menu&quot;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- ... --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;target-server-switch&quot;</span>&gt;</span>
+        &#123;&#123; $t(&#x27;app.target-server-current&#x27;)&#125;&#125;: 
+        <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">&quot;click&quot;</span> @<span class="hljs-attr">command</span>=<span class="hljs-string">&quot;onChangeTargetServer&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;el-dropdown-link&quot;</span>&gt;</span>
+            &#123;&#123; currentTargetServer &#125;&#125;<span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;el-icon-arrow-down el-icon--right&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-menu</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">&quot;dropdown&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-item</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;server in targetServerList&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;server.value&quot;</span> <span class="hljs-attr">:command</span>=<span class="hljs-string">&quot;server.value&quot;</span> <span class="hljs-attr">:disabled</span>=<span class="hljs-string">&quot;server.value === targetServer&quot;</span>&gt;</span>
+              &#123;&#123;server.label&#125;&#125;
+            <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-item</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-menu</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right-menu&quot;</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- ... --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;avatar-container right-menu-item hover-effect&quot;</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">&quot;click&quot;</span> @<span class="hljs-attr">command</span>=<span class="hljs-string">&quot;onDropdownCommand&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;avatar-wrapper&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">:src</span>=<span class="hljs-string">&quot;avatar&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;user-avatar&quot;</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;el-icon-caret-bottom&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-menu</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">&quot;dropdown&quot;</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- .... --&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-item</span> <span class="hljs-attr">command</span>=<span class="hljs-string">&quot;server&quot;</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- 切换服务器 --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;block&quot;</span> <span class="hljs-attr">trigger</span>=<span class="hljs-string">&quot;click&quot;</span> @<span class="hljs-attr">command</span>=<span class="hljs-string">&quot;onChangeTargetServer&quot;</span> @<span class="hljs-attr">click.native.stop</span>=<span class="hljs-string">&quot;() =&gt; (&#123;&#125;)&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flex justify-between items-center&quot;</span>&gt;</span>
+                &#123;&#123; $t(&#x27;app.target-server-switch&#x27;)&#125;&#125; <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;el-icon-arrow-down el-icon--right&quot;</span> /&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-menu</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">&quot;dropdown&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">el-dropdown-item</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;server in targetServerList&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;server.value&quot;</span> <span class="hljs-attr">:command</span>=<span class="hljs-string">&quot;server.value&quot;</span> <span class="hljs-attr">:disabled</span>=<span class="hljs-string">&quot;server.value === targetServer&quot;</span>&gt;</span>
+                  &#123;&#123; server.label &#125;&#125;
+                <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-item</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-menu</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-item</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- ... --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown-menu</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">el-dropdown</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">import</span> &#123; mapGetters &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span></span>
+<span class="language-javascript"><span class="hljs-keyword">import</span> &#123; targetServerList, getServerLocale &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@dict/app/targetServer&#x27;</span></span>
+<span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="language-javascript">  <span class="hljs-comment">// ...</span></span>
+<span class="language-javascript">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">    <span class="hljs-keyword">return</span> &#123;</span>
+<span class="language-javascript">      <span class="hljs-comment">// ...</span></span>
+<span class="language-javascript">      targetServerList</span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;,</span>
+<span class="language-javascript">  <span class="hljs-attr">computed</span>: &#123;</span>
+<span class="language-javascript">    ...<span class="hljs-title function_">mapGetters</span>([<span class="hljs-string">&#x27;targetServer&#x27;</span>, <span class="hljs-string">&#x27;...&#x27;</span>]),</span>
+<span class="language-javascript">    <span class="hljs-comment">// 当前服务器</span></span>
+<span class="language-javascript">    <span class="hljs-title function_">currentTargetServer</span>(<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">      <span class="hljs-keyword">const</span> target = <span class="hljs-title function_">getServerLocale</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">targetServer</span>)</span>
+<span class="language-javascript">      <span class="hljs-keyword">return</span> target.<span class="hljs-property">label</span></span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;,</span>
+<span class="language-javascript">  <span class="hljs-attr">methods</span>: &#123;</span>
+<span class="language-javascript">    <span class="hljs-comment">// 切换目标服务器</span></span>
+<span class="language-javascript">    <span class="hljs-title function_">onChangeTargetServer</span>(<span class="hljs-params">serverKey</span>) &#123;</span>
+<span class="language-javascript">      <span class="hljs-variable language_">this</span>.$loading(&#123; <span class="hljs-attr">lock</span>: <span class="hljs-literal">true</span> &#125;);</span>
+<span class="language-javascript">      <span class="hljs-keyword">const</span> &#123; value &#125; = <span class="hljs-title function_">getServerLocale</span>(serverKey)</span>
+<span class="language-javascript">      <span class="hljs-variable language_">this</span>.<span class="hljs-property">$store</span>.<span class="hljs-title function_">dispatch</span>(<span class="hljs-string">&#x27;app/setTargetServer&#x27;</span>, value)</span>
+<span class="language-javascript">      <span class="hljs-comment">// 切换目标服务器，重新加载页面</span></span>
+<span class="language-javascript">      <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-title function_">reload</span>()</span>
+<span class="language-javascript">    &#125;</span>
+<span class="language-javascript">  &#125;</span>
+<span class="language-javascript">&#125;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+
+<p>因为系统有域账户自动登录功能，我在切换目标服务器之后直接使用了 <code>window.location.reload()</code> 重新载入了项目。<br>在另外一个地区的服务器上当前用户并没有登录，刷新后重新使用缓存中的 <code>token</code> 换取用户信息的请求必定会失败。就会重新尝试使用域账户免登录功能自动登录，对于用户来说是无感的。如果没有提供类似自动登录的功能，那么还需要有一个 <code>CAS</code> 服务，来处理不同服务器之间的登陆状态。</p>
+<p>所以我的项目中HTTP请求库的调整也会非常简单，只需要读取一下是否本地 <code>Cookie</code> 中是否已经有存储，如果没有就使用默认值。例如，我使用的 <code>Axios</code>，直接调整在实例化时 <code>baseURL</code> 配置项即可：</p>
+<pre><code class="hljs js"><span class="hljs-comment">// utils/request.js</span>
+<span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Cookies</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;js-cookie&#x27;</span>
+<span class="hljs-keyword">import</span> &#123; <span class="hljs-variable constant_">TARGET_SERVER</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@CONST_KEY&#x27;</span>
+
+<span class="hljs-keyword">const</span> baseUrl = process.<span class="hljs-property">env</span>.<span class="hljs-property">VUE_APP_BASE_URL</span>
+<span class="hljs-keyword">const</span> targetServer = <span class="hljs-title class_">Cookies</span>.<span class="hljs-title function_">get</span>(<span class="hljs-variable constant_">TARGET_SERVER</span>) || process.<span class="hljs-property">env</span>.<span class="hljs-property">VUE_APP_TARGET_SERVER_DEFAULT</span>
+
+<span class="hljs-comment">// 创建axios实例</span>
+<span class="hljs-keyword">const</span> service = axios.<span class="hljs-title function_">create</span>(&#123;
+  <span class="hljs-attr">baseURL</span>: <span class="hljs-string">`<span class="hljs-subst">$&#123;baseUrl&#125;</span>/<span class="hljs-subst">$&#123;targetServer&#125;</span>`</span>.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\/+/g</span>, <span class="hljs-string">&#x27;/&#x27;</span>),
+  <span class="hljs-comment">// ...</span>
+&#125;)</code></pre>
+
+<p>那么前端部分已经调整的差不多了，接下来开始调整服务器端。</p>
+<hr>
+<h2 id="📦-服务端的调整"><a href="#📦-服务端的调整" class="headerlink" title="📦 服务端的调整"></a>📦 服务端的调整</h2><p>服务端的调整并不多，只需要调整 <code>Nginx</code> 的配置做代理转发即可。</p>
+<pre><code class="hljs nginx"><span class="hljs-section">http</span> &#123;
+  <span class="hljs-comment"># ...</span>
+  <span class="hljs-section">server</span> &#123;
+    <span class="hljs-attribute">listen</span>          <span class="hljs-number">80</span>;
+    <span class="hljs-attribute">server_name</span>     example.com;
+
+    <span class="hljs-comment"># 前端项目</span>
+    <span class="hljs-section">location</span> / &#123;
+        <span class="hljs-attribute">root</span>                  /data/project_name;
+        <span class="hljs-attribute">try_files</span>             <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /index.html;
+        <span class="hljs-attribute">index</span>                 index.html  index.htm;
+
+        <span class="hljs-section">location</span> <span class="hljs-regexp">~* \.html$</span> &#123;
+          <span class="hljs-attribute">add_header</span>          Cache-Control <span class="hljs-literal">no</span>-store;
+          <span class="hljs-attribute">expires</span>             -<span class="hljs-number">1</span>;
+        &#125;
+
+        <span class="hljs-section">location</span> <span class="hljs-regexp">~* \.(jpg|jpeg|png|gif|ico|css|js)$</span> &#123;
+          <span class="hljs-attribute">expires</span>             <span class="hljs-number">72h</span>;
+        &#125;
+    &#125;
+    
+    <span class="hljs-comment"># 后端接口转发 - 默认</span>
+    <span class="hljs-section">location</span> /api/ &#123;
+      <span class="hljs-attribute">proxy_set_header</span>        Host <span class="hljs-variable">$http_host</span>;
+      <span class="hljs-attribute">proxy_set_header</span>        X-Real-IP <span class="hljs-variable">$remote_addr</span>;
+      <span class="hljs-attribute">proxy_set_header</span>        REMOTE-HOST <span class="hljs-variable">$remote_addr</span>;
+      <span class="hljs-attribute">proxy_set_header</span>        X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
+      <span class="hljs-attribute">proxy_pass</span>              http://localhost:9101/; <span class="hljs-comment"># 使用真实的 domain:port 或者 ip:port 替换</span>
+      <span class="hljs-attribute">client_max_body_size</span>    <span class="hljs-number">50m</span>;
+    &#125;
+    
+    <span class="hljs-comment"># 后端接口转发 - 中国</span>
+    <span class="hljs-section">location</span> /api/cn/ &#123;
+      <span class="hljs-attribute">proxy_set_header</span>        Host <span class="hljs-variable">$http_host</span>;
+      <span class="hljs-attribute">proxy_set_header</span>        X-Real-IP <span class="hljs-variable">$remote_addr</span>;
+      <span class="hljs-attribute">proxy_set_header</span>        REMOTE-HOST <span class="hljs-variable">$remote_addr</span>;
+      <span class="hljs-attribute">proxy_set_header</span>        X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
+      <span class="hljs-attribute">proxy_pass</span>              http://localhost:9101/; <span class="hljs-comment"># 使用真实的 domain:port 或者 ip:port 替换</span>
+      <span class="hljs-attribute">client_max_body_size</span>    <span class="hljs-number">50m</span>;
+    &#125;
+    <span class="hljs-comment"># 后端接口转发 - 欧洲</span>
+    <span class="hljs-section">location</span> /api/eu/ &#123;
+      <span class="hljs-attribute">proxy_set_header</span>        Host <span class="hljs-variable">$http_host</span>;
+      <span class="hljs-attribute">proxy_set_header</span>        X-Real-IP <span class="hljs-variable">$remote_addr</span>;
+      <span class="hljs-attribute">proxy_set_header</span>        REMOTE-HOST <span class="hljs-variable">$remote_addr</span>;
+      <span class="hljs-attribute">proxy_set_header</span>        X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
+      <span class="hljs-attribute">proxy_pass</span>              http://example2.com:9101/; <span class="hljs-comment"># 使用真实的 domain:port 或者 ip:port 替换</span>
+      <span class="hljs-attribute">client_max_body_size</span>    <span class="hljs-number">50m</span>;
+    &#125;
+  &#125;
+&#125;</code></pre>
+
+<p>配置完成后使用 <code>nginx -T</code> 测试配置文件是否正确。然后 <code>nginx -s reload</code> 重新载入配置文件就可以进行测试了。</p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+    <a 
+      id="article-nav-newer"
+      class="article-nav-link-wrap" 
+      href="/2024/uni-app-define-env-variables/" 
+      title="记录在 uni-app 中定义环境变量的方法" 
+      alt="记录在 uni-app 中定义环境变量的方法"
+    >
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">记录在 uni-app 中定义环境变量的方法</div>
+    </a>
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2024/eleui-el-dropdown-keyboard-operation-error/" 
+      title="ElementUI 的 Dropdown 组件键盘操控异常抛出" 
+      alt="ElementUI 的 Dropdown 组件键盘操控异常抛出"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ElementUI 的 Dropdown 组件键盘操控异常抛出</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2024-08-27"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2024/uni-app-define-env-variables/" 
+              title="记录在 uni-app 中定义环境变量的方法" 
+              alt="记录在 uni-app 中定义环境变量的方法"
+            >
+              记录在 uni-app 中定义环境变量的方法
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/L10n-localization-deployment-of-single-domain/" 
+              title="单域名多服务器的本地化部署" 
+              alt="单域名多服务器的本地化部署"
+            >
+              单域名多服务器的本地化部署
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/eleui-el-dropdown-keyboard-operation-error/" 
+              title="ElementUI 的 Dropdown 组件键盘操控异常抛出" 
+              alt="ElementUI 的 Dropdown 组件键盘操控异常抛出"
+            >
+              ElementUI 的 Dropdown 组件键盘操控异常抛出
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/SASS-use-sass-variables-in-js/" 
+              title="在 JS 中引入并使用 SASS 变量" 
+              alt="在 JS 中引入并使用 SASS 变量"
+            >
+              在 JS 中引入并使用 SASS 变量
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/astrojs-notes-00-start/" 
+              title="AstroJS 启动！" 
+              alt="AstroJS 启动！"
+            >
+              AstroJS 启动！
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AstroJS/" rel="tag">AstroJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L10n/" rel="tag">L10n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/" rel="tag">NPM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/" rel="tag">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service-Worker/" rel="tag">Service Worker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueCLI/" rel="tag">VueCLI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueUse/" rel="tag">VueUse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exceljs/" rel="tag">exceljs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rrweb/" rel="tag">rrweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2024 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
