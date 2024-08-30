@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2024/uni-app-define-env-variables/</loc>
+    <lastmod>2024-08-30</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2024/L10n-localization-deployment-of-single-domain/</loc>
+    <lastmod>2024-08-30</lastmod>
+  </url>
+  <url>
     <loc>https://yogwang.site/2020/TypeScript-learning-00/</loc>
-    <lastmod>2024-08-28</lastmod>
+    <lastmod>2024-08-30</lastmod>
   </url>
   <url>
     <loc>https://yogwang.site/2024/eleui-el-dropdown-keyboard-operation-error/</loc>
@@ -169,15 +177,15 @@
     <lastmod>2024-03-12</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2019/CSS-placeholder-shown/</loc>
-    <lastmod>2024-03-12</lastmod>
-  </url>
-  <url>
     <loc>https://yogwang.site/2019/CSS-position/</loc>
     <lastmod>2024-03-12</lastmod>
   </url>
   <url>
     <loc>https://yogwang.site/2019/CSS-pseudo-elements-content/</loc>
+    <lastmod>2024-03-12</lastmod>
+  </url>
+  <url>
+    <loc>https://yogwang.site/2019/CSS-placeholder-shown/</loc>
     <lastmod>2024-03-12</lastmod>
   </url>
   <url>
@@ -393,11 +401,11 @@
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary06/</loc>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary05/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2019/jeecg-boot-devDiary05/</loc>
+    <loc>https://yogwang.site/2019/jeecg-boot-devDiary06/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
@@ -585,11 +593,11 @@
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2019/Electron03-Electron-builder/</loc>
+    <loc>https://yogwang.site/2019/Electron04-ElectronBuilder-ElectronUpdater/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>
-    <loc>https://yogwang.site/2019/Electron04-ElectronBuilder-ElectronUpdater/</loc>
+    <loc>https://yogwang.site/2019/Electron03-Electron-builder/</loc>
     <lastmod>2024-01-04</lastmod>
   </url>
   <url>

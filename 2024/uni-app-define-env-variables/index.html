@@ -1,0 +1,416 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>记录在 uni-app 中定义环境变量的方法 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-uni-app-define-env-variables"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2024-08-29T06:40:51.000Z" itemprop="datePublished">2024-08-29</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      记录在 uni-app 中定义环境变量的方法
+    </h1>
+  
+
+      <div class="article-updated">
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <blockquote>
+<p><strong>注意</strong>：文章中使用的 <strong>HBuilderX</strong> 版本为 <code>4.24</code>。</p>
+</blockquote>
+<p>使用 <a target="_blank" rel="noopener" href="https://www.dcloud.io/hbuilderx.html">HBX</a> 创建的 <code>uni-app</code> 项目（非CLI创建），想要定义环境变量一直是一个让人非常困扰的事情。<br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/env.html#env">官方的文档</a> 关于环境变量的说明也非常暧昧不清。</p>
+<p>通过关键词 <code>环境变量</code> 检索会出现5篇相关文档：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/collocation/vue-config.html">#配置环境变量 - vue.config.js | uni-app官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/worktile/running-env.html#%E5%88%A4%E6%96%AD%E5%B9%B3%E5%8F%B0">#判断平台 - 开发环境和生产环境 | uni-app官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/migration-to-vue3.html#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">#环境变量 - Vue2升3指南 | uni-app官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/compiler-config.html">编辑器配置 | uni-app官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/run/run-app-faq.html#clicking-the-run-menu-not-respond">真机运行常见问题@run | uni-app官网</a></li>
+</ol>
+<p>所以我早期定义环境变量就是使用的第一个文档链接中使用 <a target="_blank" rel="noopener" href="https://webpack.js.org/plugins/define-plugin/">DefinePlugin</a> 来定义环境变量的方式</p>
+<pre><code class="hljs js"><span class="hljs-comment">// vue.config.js</span>
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
+  <span class="hljs-attr">chainWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;
+    config
+      .<span class="hljs-title function_">plugin</span>(<span class="hljs-string">&#x27;define&#x27;</span>)
+      .<span class="hljs-title function_">tap</span>(<span class="hljs-function"><span class="hljs-params">args</span> =&gt;</span> &#123;
+        args[<span class="hljs-number">0</span>][<span class="hljs-string">&#x27;process.env&#x27;</span>].<span class="hljs-property">MY_TEST</span> = <span class="hljs-string">&#x27;&quot;test&quot;&#x27;</span> <span class="hljs-comment">// 注意需要多层引号包裹</span>
+        <span class="hljs-keyword">return</span> args
+      &#125;)
+  &#125;
+&#125;</code></pre>
+
+<blockquote>
+<p><strong>注意：</strong>注意需要多层引号包裹自定义环境变量的值。</p>
+</blockquote>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> test = process.<span class="hljs-property">env</span>.<span class="hljs-property">MY_TEST</span> <span class="hljs-comment">// test</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">table</span>(process.<span class="hljs-property">env</span>)
+<span class="hljs-comment">// (索引)  值</span>
+<span class="hljs-comment">// NODE_ENV  development</span>
+<span class="hljs-comment">// VUE_APP_NAME  Test-Project</span>
+<span class="hljs-comment">// VUE_APP_PLATFORM  h5</span>
+<span class="hljs-comment">// BASE_URL  /</span>
+<span class="hljs-comment">// MY_TEST  test</span></code></pre>
+<blockquote>
+<p>我这边在声明环境变量时，不需要使用 <code>VUE_APP_</code> 这样的前缀，但是官方的示例中是有的。如果你无法在业务代码中正确获取到，可以尝试添加 <code>VUE_APP_</code> 前缀（👉 <code>VUE_APP_MY_TEST</code>）</p>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h2 id="😣-出现问题"><a href="#😣-出现问题" class="headerlink" title="😣 出现问题"></a>😣 出现问题</h2><p>在 <code>chainWebpack</code> 链中使用 <code>DefinePlugin</code> 就能定义环境变量和使用了，并且项目正常运行了2年。<br>直到现在有一个 <a target="_blank" rel="noopener" href="https://yogwang.github.io/2024/L10n-localization-deployment-of-single-domain/">比较大的需求变动</a> 需要新增一个环境变量。</p>
+<p>看起来很简单是吧，这不是只需要在原本定义环境变量的地方新增一个环境变量就行了吗？但这篇文章的出现就说明了并没有那么简单😂。</p>
+<p>我在业务代码中使用新增环境变量时出现了问题，会抛出 <code>xxx is not defined</code> 的情况。不管我是直接使用 <code>process.env.VUE_NEW_VAR</code> 还是使用 <code>console.log(process.env)</code> 查看所有环境变量都会在控制台抛出异常。<br>但是项目中之前已经声明的环境变量的使用并不会出现异常，只有我新增的环境变量后才会遇到。非常困扰 😭</p>
+<p>配置如下：</p>
+<pre><code class="hljs js"><span class="hljs-comment">// vue.config.js</span>
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
+  <span class="hljs-attr">chainWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;
+    config
+      .<span class="hljs-title function_">plugin</span>(<span class="hljs-string">&#x27;define&#x27;</span>)
+      .<span class="hljs-title function_">tap</span>(<span class="hljs-function"><span class="hljs-params">args</span> =&gt;</span> &#123;
+        args[<span class="hljs-number">0</span>][<span class="hljs-string">&#x27;process.env&#x27;</span>].<span class="hljs-property">BASE_URL</span> = <span class="hljs-string">&#x27;&quot;/&quot;&#x27;</span>;
+        args[<span class="hljs-number">0</span>][<span class="hljs-string">&#x27;process.env&#x27;</span>].<span class="hljs-property">BASE_API_PREFIX</span> = <span class="hljs-string">&#x27;&quot;/api&quot;&#x27;</span>;
+        args[<span class="hljs-number">0</span>][<span class="hljs-string">&#x27;process.env&#x27;</span>].<span class="hljs-property">BASE_APP_TITLE</span> = <span class="hljs-string">&#x27;&quot;TEST PROJECT&quot;&#x27;</span>;
+        args[<span class="hljs-number">0</span>][<span class="hljs-string">&#x27;process.env&#x27;</span>].<span class="hljs-property">DEFAULT_SERVER</span> = <span class="hljs-string">&#x27;cn&#x27;</span>;  <span class="hljs-comment">// 👈</span>
+        <span class="hljs-keyword">return</span> args
+      &#125;)
+  &#125;
+&#125;</code></pre>
+
+<h2 id="🤡-解决问题"><a href="#🤡-解决问题" class="headerlink" title="🤡 解决问题"></a>🤡 解决问题</h2><p>其实出现这个问题的原因非常简单，我相信细心的小伙伴已经发现了。<br>就是我在声明新环境变量的时候没有使用多层引号包裹 <code>&#39;&quot;cn&quot;&#39;</code>，直接用的 <code>&#39;cn&#39;</code> 才导致的这个问题。<br>所以稍作修改就可以修复这个异常了：</p>
+<pre><code class="hljs diff"><span class="hljs-deletion">- args[0][&#x27;process.env&#x27;].DEFAULT_SERVER = &#x27;cn&#x27;</span>
+<span class="hljs-addition">+ args[0][&#x27;process.env&#x27;].DEFAULT_SERVER = &#x27;&quot;cn&quot;&#x27;</span></code></pre>
+
+<p><strong>但！</strong> 其实我在准备写这篇文章的时刻并没有发现。写到一半的时候才突然发现自己这个好蠢的错误😂</p>
+<p>不过其实就算不遇到问题，其实使用 <code>DefinePlugin</code> 来设置环境变量的方式也已经满足不了我现在的业务需求了。需要改用 <a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/collocation/package.html">自定义编译平台配置</a> 的方式来定义不同的环境变量。</p>
+<hr>
+<h2 id="🤲-在自定义编译平台配置中定义环境变量"><a href="#🤲-在自定义编译平台配置中定义环境变量" class="headerlink" title="🤲 在自定义编译平台配置中定义环境变量"></a>🤲 在自定义编译平台配置中定义环境变量</h2><p>因为现在的需求是需要按照不同的服务器所在地区，做默认目标服务器的配置的。分流到国内服务的需要默认请求到国内服务上，分流到欧洲服务的需要默认请求到部署在欧洲的服务上。原本使用 <code>DefinePlugin</code> 来设置环境变量的方式，没办法在 HBX <strong>发行</strong>时定义环境变量模式。只能基于 <code>NODE_ENV</code> 的不同来区分 <code>development</code> 和 <code>production</code> 两种编译模式来做一些业务判断。</p>
+<p>改造起来也很简单，把原本在 <code>vue.config.js</code> 中定义的环境变量都迁移到 <code>package.json</code> 中就行了。</p>
+<pre><code class="hljs json"><span class="hljs-comment">// package.json</span>
+<span class="hljs-punctuation">&#123;</span>
+  ... <span class="hljs-comment">// 其他项目配置，</span>
+  <span class="hljs-attr">&quot;uni-app&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-comment">// 扩展配置</span>
+    <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+      <span class="hljs-attr">&quot;server-CN&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span> <span class="hljs-comment">//自定义编译平台配置，可通过cli方式调用</span>
+        <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;国内环境&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 在HBuilderX中会显示在 运行/发行 菜单中</span>
+        <span class="hljs-attr">&quot;env&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-comment">// 环境变量</span>
+          <span class="hljs-attr">&quot;UNI_PLATFORM&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;h5&quot;</span><span class="hljs-punctuation">,</span>  <span class="hljs-comment">// 基准平台</span>
+          <span class="hljs-comment">// 自定义环境变量，注意：需要由 `UNI_` 前缀</span>
+          <span class="hljs-attr">&quot;UNI_BASE_URL&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/&quot;</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-attr">&quot;UNI_API_PREFIX&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/api/cn&quot;</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-attr">&quot;UNI_APP_TITLE&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;TEST PROJECT&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;server-EU&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span> <span class="hljs-comment">//自定义编译平台配置，可通过cli方式调用</span>
+        <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;欧洲环境&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 在HBuilderX中会显示在 运行/发行 菜单中</span>
+        <span class="hljs-attr">&quot;env&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-comment">// 环境变量</span>
+          <span class="hljs-attr">&quot;UNI_PLATFORM&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;h5&quot;</span><span class="hljs-punctuation">,</span>  <span class="hljs-comment">// 基准平台</span>
+          <span class="hljs-comment">// 自定义环境变量，注意：需要由 `UNI_` 前缀</span>
+          <span class="hljs-attr">&quot;UNI_BASE_URL&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/&quot;</span><span class="hljs-punctuation">,</span> 
+          <span class="hljs-attr">&quot;UNI_API_PREFIX&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/api/eu&quot;</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-attr">&quot;UNI_APP_TITLE&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;TEST PROJECT&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-punctuation">&#125;</span>
+    <span class="hljs-punctuation">&#125;</span>    
+  <span class="hljs-punctuation">&#125;</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
+
+<blockquote>
+<p><strong>注意：</strong>自定义环境变量需要有 <code>UNI_</code> 前缀，这个在官方文档中并没有提到。</p>
+</blockquote>
+<p>声明好之后在 <strong>HBX</strong> 的菜单中选择 <strong>[运行 - 国内环境]</strong> 中启动对应的自定义编译配置，就可以在项目业务中获取到对应的环境变量了。</p>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> test = process.<span class="hljs-property">env</span>.<span class="hljs-property">UNI_API_PREFIX</span> <span class="hljs-comment">// /api/cn</span></code></pre>
+
+<p>但是并不会像在 <code>DefinePlugin</code> 中声明的环境变量那样，可以在 <code>process.env</code> 查看到所有定义的自定义环境变量信息。只会输出默认环境变量 👇</p>
+<pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">table</span>(process.<span class="hljs-property">env</span>)
+<span class="hljs-comment">// (索引)  值</span>
+<span class="hljs-comment">// NODE_ENV  development</span>
+<span class="hljs-comment">// VUE_APP_NAME  Test-Project</span>
+<span class="hljs-comment">// VUE_APP_PLATFORM  h5</span>
+<span class="hljs-comment">// BASE_URL  /</span></code></pre>
+<p>可以看到并没有输出我定义的 <code>UNI_BASE_URL</code>、<code>UNI_API_PREFIX</code> 和 <code>UNI_APP_TITLE</code> 这三个环境变量。</p>
+<p>这个部分没有能在文档中找到相关的说明。但是在一个 <a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/question/156510">Vue3+Vite项目使用环境变量的问题</a> 中，DCloud官方维护人员给出了一个解释：</p>
+<blockquote>
+<p>应该直接访问 <code>process.env.*</code> 的具体内容，比如 <code>process.env.NODE_ENV</code>（要么是内置好了，要么是自己 <code>define</code> 了），不支持访问 <code>process.env</code>，因为 <code>vite</code> 里边除了 <code>dev:h5</code>，<strong>其他环境是直接替换完整的字符串</strong>。可以使用标准 <code>vite</code> 项目做测试</p>
+</blockquote>
+<p>所以猜测使用<strong>自定义编译平台配置</strong>定义的环境变量，在项目运行和构建时 <strong>HBX</strong> 也是一样的方式通过 <code>env-key</code> 直接进行文本替换的。</p>
+<p>在另外的一个问答中也验证了我的这个想法 👉 <a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/question/178868">根据官方文档，在package.json定义了自定义环境变量，为什么在代码中获取不到呢，正确的获取方式是什么样的呢 - DCloud问答</a></p>
+<hr>
+<p>P.S. 如果依然没有生效，可以尝试同时声明多个不同前缀的环境变量，看看哪一个可以在你使用的环境变量定义的方式中生效。<br>比如说：</p>
+<pre><code class="hljs plaintext">&quot;UNI_API_PREFIX&quot;: &quot;/api/cn&quot;,
+&quot;VITE_API_PREFIX&quot;: &quot;/api/cn&quot;,
+&quot;VUE_APP_API_PREFIX&quot;: &quot;/api/cn&quot;,</code></pre>
+
+<p>并且直接在业务代码中使用 <code>process.env.UNI_API_PREFIX</code>，而不是输出整个 <code>process.env</code> 查看。</p>
+<hr>
+<h2 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h2><p><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/env.html">环境变量 | uni-app官网</a><br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/compiler-config.html">编辑器配置 | uni-app官网</a><br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/worktile/running-env.html">开发环境和生产环境 | uni-app官网</a><br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/collocation/package.html">package.json | uni-app官网</a><br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/collocation/vue-config.html">#配置环境变量 - vue.config.js | uni-app官网</a><br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/migration-to-vue3.html#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">#环境变量 - Vue2升3指南 | uni-app官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/question/156510">【报Bug】通过CLI创建的vue3项目微信小程序，调用process.env报错 - DCloud问答</a><br><a target="_blank" rel="noopener" href="https://ask.dcloud.net.cn/question/178868">根据官方文档，在package.json定义了自定义环境变量，为什么在代码中获取不到呢，正确的获取方式是什么样的呢 - DCloud问答</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2024/L10n-localization-deployment-of-single-domain/" 
+      title="单域名多服务器的本地化部署" 
+      alt="单域名多服务器的本地化部署"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">单域名多服务器的本地化部署</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2024-08-29"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2024/uni-app-define-env-variables/" 
+              title="记录在 uni-app 中定义环境变量的方法" 
+              alt="记录在 uni-app 中定义环境变量的方法"
+            >
+              记录在 uni-app 中定义环境变量的方法
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/L10n-localization-deployment-of-single-domain/" 
+              title="单域名多服务器的本地化部署" 
+              alt="单域名多服务器的本地化部署"
+            >
+              单域名多服务器的本地化部署
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/eleui-el-dropdown-keyboard-operation-error/" 
+              title="ElementUI 的 Dropdown 组件键盘操控异常抛出" 
+              alt="ElementUI 的 Dropdown 组件键盘操控异常抛出"
+            >
+              ElementUI 的 Dropdown 组件键盘操控异常抛出
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/SASS-use-sass-variables-in-js/" 
+              title="在 JS 中引入并使用 SASS 变量" 
+              alt="在 JS 中引入并使用 SASS 变量"
+            >
+              在 JS 中引入并使用 SASS 变量
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/astrojs-notes-00-start/" 
+              title="AstroJS 启动！" 
+              alt="AstroJS 启动！"
+            >
+              AstroJS 启动！
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AstroJS/" rel="tag">AstroJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L10n/" rel="tag">L10n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/" rel="tag">NPM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/" rel="tag">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service-Worker/" rel="tag">Service Worker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueCLI/" rel="tag">VueCLI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueUse/" rel="tag">VueUse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exceljs/" rel="tag">exceljs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rrweb/" rel="tag">rrweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2024 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
