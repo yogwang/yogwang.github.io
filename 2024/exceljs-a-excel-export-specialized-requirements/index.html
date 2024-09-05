@@ -1,0 +1,396 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>前端 Excel 导出的特殊需求 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-exceljs-a-excel-export-specialized-requirements"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ExcelJS/" rel="tag">ExcelJS</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2024-09-02T07:20:32.000Z" itemprop="datePublished">2024-09-02</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      前端 Excel 导出的特殊需求
+    </h1>
+  
+
+      <div class="article-updated">
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <p>在内部系统开发时，经常会有业务部门会要求开发<strong>Excel导入&#x2F;导出</strong>的功能。这种需求非常的常见，如果只是基础的需求开发起来也比较容易。只是有一些特殊的业务下会有对导出的工作表样式会有要求以及会有锁定的需求。</p>
+<p>一般来说这些相关的功能都会让后端同学来帮忙。后端同学忙不过来的时候我们也会使用 <a target="_blank" rel="noopener" href="https://github.com/SheetJS/sheetjs">SheetJS</a> 这个库来处理，社区也有很多基于它的各种增强。但因为<strong>社区版的样式处理非常麻烦</strong>，也经常会看到有小伙伴在社群里面吐槽自定义样式不好做。所以项目后期就切换到了 <a target="_blank" rel="noopener" href="https://github.com/exceljs/exceljs">ExcelJS</a>，开发体感更加友好且支持的功能更多。</p>
+<p>对于 <code>ExcelJS</code> 介绍的部分就不过多赘述了，社区里面有很多相关的文章可以自行检索。</p>
+<p>这篇笔记主要是解决日常业务开发中遇到的几个常见需求，比如说：</p>
+<ul>
+<li>单元格的<strong>下拉选择</strong></li>
+<li>单元格的<strong>数据校验</strong></li>
+<li>单元格和工作表的<strong>编辑保护</strong></li>
+</ul>
+<span id="more"></span>
+
+<hr>
+<h2 id="💥-单元格的数据下拉功能"><a href="#💥-单元格的数据下拉功能" class="headerlink" title="💥 单元格的数据下拉功能"></a>💥 单元格的数据下拉功能</h2><p>我们最先遇到的<strong>特殊需求</strong>肯定就是单元格数据的下拉选择功能了。下拉功能需要借助单元格的 <a target="_blank" rel="noopener" href="https://github.com/exceljs/exceljs/blob/master/README_zh.md#%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81">数据验证</a> 来实现。</p>
+<p>官方文档中的示例也非常的直截了当，很简单的就可以实现下拉功能。</p>
+<pre><code class="hljs js"><span class="hljs-comment">// 指定有效值的列表（One，Two，Three，Four）。</span>
+<span class="hljs-comment">// Excel 将提供一个包含这些值的下拉列表。</span>
+worksheet.<span class="hljs-title function_">getCell</span>(<span class="hljs-string">&#x27;A1&#x27;</span>).<span class="hljs-property">dataValidation</span> = &#123;
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;list&#x27;</span>,
+  <span class="hljs-attr">allowBlank</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">formulae</span>: [<span class="hljs-string">&#x27;&quot;One,Two,Three,Four&quot;&#x27;</span>]
+&#125;;
+
+<span class="hljs-comment">// 指定范围内的有效值列表。</span>
+<span class="hljs-comment">// Excel 将提供一个包含这些值的下拉列表。</span>
+worksheet.<span class="hljs-title function_">getCell</span>(<span class="hljs-string">&#x27;A2&#x27;</span>).<span class="hljs-property">dataValidation</span> = &#123;
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;list&#x27;</span>,
+  <span class="hljs-attr">allowBlank</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">formulae</span>: [<span class="hljs-string">&#x27;$D$5:$F$5&#x27;</span>]
+&#125;;</code></pre>
+
+<p>这就不需要多说了，属于是看一眼就能学会的功能。我们开发时遇到的问题其实时<strong>如何批量设置</strong>这个下拉功能。比如说某一列我都想设置为下拉的。</p>
+<hr>
+<h2 id="💥-批量设置下拉选择"><a href="#💥-批量设置下拉选择" class="headerlink" title="💥 批量设置下拉选择"></a>💥 批量设置下拉选择</h2><p>这个确实在 <code>ExcelJS</code> 的文档中并没有全部都提到。只是在样式的部分提到了 <strong>工作表的列</strong>、<strong>整列</strong>、<strong>整行</strong> 和 <strong>单元格</strong> 的几种设置方式。其他的一些API中，只是简单的写了两个示例。</p>
+<p>比如说上面提到的<strong>数据验证</strong>功能就只有给单元格设置的Demo，并没有提供批量设置的示例。我们自己通过<code>getRow()</code>、<code>getColumn()</code> 给整行&#x2F;整列去设置并不会生效。<br>所以很多人会自然而然的认为只能通过给单元格设置的方式。如果要批量设置就得使用 <code>for/forEach</code> 或者使用提供的 <code>eachCell</code> 方法循环单元格设置。</p>
+<p>其实我们使用 <code>addWorksheet</code> 创建的 <code>worksheet</code> 工作表中是有一个 <code>dataValidations</code> 属性的，并提供了 <code>add()</code>、<code>find()</code>、<code>remove()</code> 这三个API，但是在文档中并没有提到。<br>我们批量设置<strong>下拉选择</strong>（数据校验）功能时可以使用 <code>ws.dataValidations.add(&#39;address&#39;, validation)</code> 这样来批量设置：</p>
+<pre><code class="hljs js">worksheet.<span class="hljs-property">dataValidations</span>.<span class="hljs-title function_">add</span>(
+  <span class="hljs-string">&#x27;A2:A100&#x27;</span>, <span class="hljs-comment">// 就是&#123;列&#125;&#123;行&#125;:&#123;列&#125;&#123;行&#125; 框定作用范围</span>
+  &#123;
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;list&#x27;</span>,
+    <span class="hljs-attr">allowBlank</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">formulae</span>: [<span class="hljs-string">&#x27;&quot;One,Two,Three,Four&quot;&#x27;</span>]
+  &#125;
+)</code></pre>
+
+<hr>
+<h2 id="💥-单元格的数据校验功能"><a href="#💥-单元格的数据校验功能" class="headerlink" title="💥 单元格的数据校验功能"></a>💥 单元格的数据校验功能</h2><p>数据校验功能，除了可以给单元格设置实现下拉功能。还以对用户输入的内容做校验，并且在用户输入时和输入错误后提示用户。<br>示例Demo：</p>
+<pre><code class="hljs js"><span class="hljs-comment">// 指定单元格必须为非5的整数。</span>
+<span class="hljs-comment">// 向用户显示适当的错误消息（如果他们弄错了）</span>
+worksheet.<span class="hljs-title function_">getCell</span>(<span class="hljs-string">&#x27;A1&#x27;</span>).<span class="hljs-property">dataValidation</span> = &#123;
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;whole&#x27;</span>,
+  <span class="hljs-attr">operator</span>: <span class="hljs-string">&#x27;notEqual&#x27;</span>,
+  <span class="hljs-attr">formulae</span>: [<span class="hljs-number">5</span>],
+  <span class="hljs-attr">showErrorMessage</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">errorStyle</span>: <span class="hljs-string">&#x27;error&#x27;</span>,
+  <span class="hljs-attr">errorTitle</span>: <span class="hljs-string">&#x27;Five&#x27;</span>,
+  <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;The value must not be Five&#x27;</span>
+&#125;;
+
+<span class="hljs-comment">// 指定单元格必须为1.5到7之间的十进制数字。</span>
+<span class="hljs-comment">// 添加“工具提示”以帮助指导用户</span>
+worksheet.<span class="hljs-title function_">getCell</span>(<span class="hljs-string">&#x27;A2&#x27;</span>).<span class="hljs-property">dataValidation</span> = &#123;
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;decimal&#x27;</span>,
+  <span class="hljs-attr">operator</span>: <span class="hljs-string">&#x27;between&#x27;</span>,
+  <span class="hljs-attr">formulae</span>: [<span class="hljs-number">1.5</span>, <span class="hljs-number">7</span>],
+  <span class="hljs-attr">allowBlank</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">showInputMessage</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">promptTitle</span>: <span class="hljs-string">&#x27;Decimal&#x27;</span>,
+  <span class="hljs-attr">prompt</span>: <span class="hljs-string">&#x27;The value must between 1.5 and 7&#x27;</span>
+&#125;;
+</code></pre>
+
+<p>按照示例代码设置输入的内容错误有提示，用户在输入的的时候也会有提示。</p>
+<p>但是我自己在同时设置 <code>error</code> 和 <code>prompt</code> 相关属性后，只会在输入完成后弹出错误信息，并没有在用户输入时提示辅助信息。<br>这是因为我把 <code>showErrorMessage</code> 和 <code>showInputMessage</code> 搞混了，如果要开启输入提示（ <code>prompt</code> 相关的属性）还需要把 <code>showInputMessage</code> 属性置为 <code>true</code>。</p>
+<p>所以同时开启 <code>error</code> 和 <code>prompt</code> 的话就是下面这样：</p>
+<pre><code class="hljs js">worksheet.<span class="hljs-title function_">getCell</span>(<span class="hljs-string">&#x27;A2&#x27;</span>).<span class="hljs-property">dataValidation</span> = &#123;
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;decimal&#x27;</span>,
+  <span class="hljs-attr">operator</span>: <span class="hljs-string">&#x27;between&#x27;</span>,
+  <span class="hljs-attr">formulae</span>: [<span class="hljs-number">1.5</span>, <span class="hljs-number">7</span>],
+  <span class="hljs-attr">allowBlank</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">// 输入时显示的提示</span>
+  <span class="hljs-attr">showInputMessage</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">promptTitle</span>: <span class="hljs-string">&#x27;Decimal&#x27;</span>,
+  <span class="hljs-attr">prompt</span>: <span class="hljs-string">&#x27;The value must between 1.5 and 7&#x27;</span>,
+  <span class="hljs-comment">// 输入后弹出的错误提醒</span>
+  <span class="hljs-attr">showErrorMessage</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">errorStyle</span>: <span class="hljs-string">&#x27;error&#x27;</span>,
+  <span class="hljs-attr">errorTitle</span>: <span class="hljs-string">&#x27;Decimal&#x27;</span>,
+  <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;The value must between 1.5 and 7&#x27;</span>
+&#125;;</code></pre>
+
+<p>这块的批量设置也是一样的，通过上方提到的 <code>ws.dataValidations.add(&#39;address&#39;, validation)</code> API设置即可。</p>
+<hr>
+<h2 id="💥-编辑保护功能"><a href="#💥-编辑保护功能" class="headerlink" title="💥 编辑保护功能"></a>💥 编辑保护功能</h2><p><strong>工作表保护</strong>的设置也很简单，直接看文档就行了 👉 <a target="_blank" rel="noopener" href="https://github.com/exceljs/exceljs/blob/master/README_zh.md#%E5%B7%A5%E4%BD%9C%E8%A1%A8%E4%BF%9D%E6%8A%A4">🔗 工作表保护</a><br>但是保护开启之后会使整个 <code>worksheet</code> （工作表）用户都无法编辑了，会弹出提示：<br><code>您试图更改的单元格或图表位于受保护的工作表中。若要进行更改，请取消工作表保护。您可能需要输入密码</code></p>
+<p>一般我们只是需要做<strong>部分的单元格锁定</strong>使其不可编辑，或者<strong>只锁定单元格数据校验，用户还是可以正常编辑内容</strong>这样两个需求。那么就需要我们根据实际情况来组合使用 <strong>单元格保护</strong> 了。 👉 <a target="_blank" rel="noopener" href="https://github.com/exceljs/exceljs/blob/master/README_zh.md#%E5%8D%95%E5%85%83%E6%A0%BC%E4%BF%9D%E6%8A%A4">🔗 单元格保护</a></p>
+<p>比如说我现在的一个需求：</p>
+<blockquote>
+<p>用户可以正常<strong>编辑单元格内容</strong>，只保护单元的数据校验规则。<strong>防止用户在操作Excel时破坏掉单元格的数据校验</strong>。<br>比如说用户复制粘贴其他Excel中的数据内容，就会破坏和覆盖掉下拉选项的情况。</p>
+</blockquote>
+<p>我可以先使用 <code>worksheet.protect(&#39;the-password&#39;)</code> 锁定整个工作表，然后使用 <code>worksheet.getCell(&#39;A1&#39;).protection = &#123; locked: false &#125;</code> 给单元格设置解除锁定。这样就可以满足用户编辑时误操作也不会破坏掉我们预设的数据校验了。</p>
+<p>但又遇到<strong>不知道如何批量设置</strong>单元格保护的问题了。尝试过使用 <code>eachCell()</code> 这个API给每一个单元格设置并不生效。因为大多数情况下我们导出的空白 Excel 模板，工作表中除了表头并没有实际数据。所以在使用 <code>eachCell()</code> 循环当前列单元格时只会循环表头这一格单元格。并不能如预想一般循环当前列的所有单元（即使设置了 <code>eachCell(&#123; includeEmpty: true &#125;, fn(cell, rowNum))</code>）。</p>
+<p>我们可以在使用 <code>worksheet.getColumn()</code> 获取到整列之后，直接给返回的整列对象设置单元格保护属性。比如说：</p>
+<pre><code class="hljs js">worksheet.<span class="hljs-title function_">getColumn</span>(<span class="hljs-string">&#x27;id&#x27;</span>).<span class="hljs-property">protection</span> = &#123; <span class="hljs-attr">locked</span>: <span class="hljs-literal">false</span> &#125;
+<span class="hljs-keyword">await</span> worksheet.<span class="hljs-title function_">protect</span>(<span class="hljs-string">&#x27;the-password&#x27;</span>)
+
+worksheet.<span class="hljs-property">xlsx</span>.<span class="hljs-title function_">writeBuffer</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">buffer</span>) =&gt;</span> ....)</code></pre>
+
+<p>同理的，也可以使用 <code>getRow()</code> 获取到整行之后，给整行设置单元格保护。</p>
+<p>暂时我能回想起来会在实际开发中就遇到那么多问题。如果后期又遇到新的问题了再单独补充。<br>预计未来应该会补充一个我自己抽象封装好的导出和导入的utils。只需要和一些UI库的Table组件一样传入表头配置和表格数据就行了。</p>
+<hr>
+<h2 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h2><p><a target="_blank" rel="noopener" href="https://github.com/exceljs/exceljs">exceljs&#x2F;exceljs: Excel Workbook Manager</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000042028092">这一定是前端导出Excel界的天花板~</a></p>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2024/uni-app-define-env-variables/" 
+      title="记录在 uni-app 中定义环境变量的方法" 
+      alt="记录在 uni-app 中定义环境变量的方法"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">记录在 uni-app 中定义环境变量的方法</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2024-09-02"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2024/exceljs-a-excel-export-specialized-requirements/" 
+              title="前端 Excel 导出的特殊需求" 
+              alt="前端 Excel 导出的特殊需求"
+            >
+              前端 Excel 导出的特殊需求
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/uni-app-define-env-variables/" 
+              title="记录在 uni-app 中定义环境变量的方法" 
+              alt="记录在 uni-app 中定义环境变量的方法"
+            >
+              记录在 uni-app 中定义环境变量的方法
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/L10n-localization-deployment-of-single-domain/" 
+              title="单域名多服务器的本地化部署" 
+              alt="单域名多服务器的本地化部署"
+            >
+              单域名多服务器的本地化部署
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/eleui-el-dropdown-keyboard-operation-error/" 
+              title="ElementUI 的 Dropdown 组件键盘操控异常抛出" 
+              alt="ElementUI 的 Dropdown 组件键盘操控异常抛出"
+            >
+              ElementUI 的 Dropdown 组件键盘操控异常抛出
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/SASS-use-sass-variables-in-js/" 
+              title="在 JS 中引入并使用 SASS 变量" 
+              alt="在 JS 中引入并使用 SASS 变量"
+            >
+              在 JS 中引入并使用 SASS 变量
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AstroJS/" rel="tag">AstroJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ExcelJS/" rel="tag">ExcelJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L10n/" rel="tag">L10n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/" rel="tag">NPM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/" rel="tag">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service-Worker/" rel="tag">Service Worker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueCLI/" rel="tag">VueCLI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueUse/" rel="tag">VueUse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exceljs/" rel="tag">exceljs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rrweb/" rel="tag">rrweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2024 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
