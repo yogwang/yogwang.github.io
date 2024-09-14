@@ -94,6 +94,8 @@
 
       <div class="article-updated">
         
+        最后更新：<time datetime="2024-09-13T09:24:07.000Z" itemprop="datePublished">2024-09-13</time>
+        
       </div>
     </header>
     
@@ -128,14 +130,14 @@
 <p><img src="/2019/CSS-striped-background/q1.jpg" alt="q1"></p>
 <pre><code class="hljs css"><span class="hljs-selector-class">.stripe1</span> &#123;
   <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">45deg</span>, <span class="hljs-number">#c498bc</span> <span class="hljs-number">50%</span>, <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span>);
-  <span class="hljs-attribute">background-size</span> <span class="hljs-number">30px</span> <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">background-size</span>: <span class="hljs-number">30px</span> <span class="hljs-number">100%</span>;
 &#125;</code></pre>
 
 <p>所以要修改 <code>background-size</code> ,但是只是这样也会有问题：</p>
 <p><img src="/2019/CSS-striped-background/q2.jpg" alt="q2"></p>
 <pre><code class="hljs css"><span class="hljs-selector-class">.stripe2</span> &#123;
   <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">45deg</span>, <span class="hljs-number">#c498bc</span> <span class="hljs-number">50%</span>, <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span>);
-  <span class="hljs-attribute">background-size</span> <span class="hljs-number">30px</span> <span class="hljs-number">30px</span>
+  <span class="hljs-attribute">background-size</span>: <span class="hljs-number">30px</span> <span class="hljs-number">30px</span>;
 &#125;</code></pre>
 
 <p>结果是会形成一小块一小块的斜线色块，而不是整个倾斜条纹</p>
@@ -150,7 +152,7 @@
       <span class="hljs-number">#c498bc</span> <span class="hljs-number">75%</span>,
       <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span>
   );
-  <span class="hljs-attribute">background-size</span> <span class="hljs-number">30px</span> <span class="hljs-number">30px</span>
+  <span class="hljs-attribute">background-size</span>: <span class="hljs-number">30px</span> <span class="hljs-number">30px</span>;
 &#125;</code></pre>
 
 <p>简单的实现时没问题了，但是感觉太长了。<br>如果要简化的话，需要使用的是 <code>repeating-linear-gradient</code></p>
@@ -165,7 +167,60 @@
 &#125;</code></pre>
 
 <p>这样的话只需要一行就可以实现 <code>.stripe3</code> 的效果了。</p>
-<p>以上<br>2019&#x2F;12&#x2F;21 05：00</p>
+<p>以上<br>2019&#x2F;12&#x2F;21 05:00</p>
+<hr>
+<h2 id="Update-2024-09-13"><a href="#Update-2024-09-13" class="headerlink" title="Update 2024&#x2F;09&#x2F;13"></a>Update 2024&#x2F;09&#x2F;13</h2><p>时隔将近2000天，我又来更新了。主要是正对于 <strong>倾斜条纹</strong> 部分的补充。<br>之前对于 <code>linear-gradient</code> 属性的理解还是太粗糙了。</p>
+<pre><code class="hljs css"><span class="hljs-selector-class">.stripe-new-1</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">130px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">130px</span>;
+  <span class="hljs-attribute">background</span>:<span class="hljs-built_in">linear-gradient</span>(
+    <span class="hljs-number">45deg</span>, // 旋转角度
+    <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span> <span class="hljs-number">50%</span>,  // 颜色<span class="hljs-number">1</span> 起始位置 结束位置
+    <span class="hljs-number">#c498bc</span> <span class="hljs-number">50%</span> <span class="hljs-number">100%</span>  // 颜色<span class="hljs-number">2</span>  起始位置 结束位置
+  )
+&#125;</code></pre>
+<p><img src="/2019/CSS-striped-background/qnew1.jpeg" alt="snipaste_new_1"></p>
+<p>所以在这个理解的基础上，使用 <code>repeating-linear-gradient</code> 就可以实现倾斜的斑马条纹了。<br>其实实现起来是非常简单 👇</p>
+<pre><code class="hljs css"><span class="hljs-selector-class">.stripe-new-2</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">130px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">130px</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">repeating-linear-gradient</span>(<span class="hljs-number">45deg</span>, <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span> <span class="hljs-number">15px</span>, <span class="hljs-number">#c498bc</span> <span class="hljs-number">15px</span> <span class="hljs-number">30px</span>);
+&#125;</code></pre>
+<p><img src="/2019/CSS-striped-background/qnew2.jpeg" alt="snipaste_new_2"></p>
+<hr>
+<p>实现多个颜色的条纹效果，就是在多添加几个颜色：</p>
+<pre><code class="hljs css"><span class="hljs-selector-class">.stripe-new-3</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">130px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">130px</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">repeating-linear-gradient</span>(
+    <span class="hljs-number">45deg</span>, 
+    <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span> <span class="hljs-number">15px</span>, 
+    <span class="hljs-number">#c498bc</span> <span class="hljs-number">15px</span> <span class="hljs-number">30px</span>, 
+    <span class="hljs-number">#9d69d6</span> <span class="hljs-number">30px</span> <span class="hljs-number">45px</span>, 
+    <span class="hljs-number">#f56e8d</span> <span class="hljs-number">45px</span> <span class="hljs-number">60px</span>
+  );
+&#125;</code></pre>
+<p><img src="/2019/CSS-striped-background/qnew3.jpeg" alt="snipaste_new_3"></p>
+<hr>
+<p>当然其中某一块条纹的颜色也可以设置为透明：</p>
+<pre><code class="hljs css"><span class="hljs-selector-class">.stripe-new-4</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">130px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">130px</span>;
+  <span class="hljs-attribute">background</span>: 
+    // 斑马条纹
+    <span class="hljs-built_in">repeating-linear-gradient</span>(
+      <span class="hljs-number">45deg</span>, 
+      <span class="hljs-number">#81a2cf</span> <span class="hljs-number">0</span> <span class="hljs-number">15px</span>, 
+      <span class="hljs-number">#c498bc</span> <span class="hljs-number">15px</span> <span class="hljs-number">30px</span>, 
+      transparent <span class="hljs-number">30px</span> <span class="hljs-number">45px</span>, 
+      <span class="hljs-number">#f56e8d</span> <span class="hljs-number">45px</span> <span class="hljs-number">60px</span>
+    ),
+    // 叠加渐变底色
+    <span class="hljs-built_in">linear-gradient</span>(to right, red, blue);
+&#125;</code></pre>
+<p><img src="/2019/CSS-striped-background/qnew4.jpeg" alt="snipaste_new_4"></p>
+<hr>
+<h2 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h2><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/gradient/linear-gradient">linear-gradient() - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/gradient/repeating-linear-gradient">repeating-linear-gradient() - CSS | MDN</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000045260711">CSS3如何实现这样的渐变背景? - SegmentFault 思否</a></p>
  
   </article>
 
@@ -203,7 +258,7 @@
 </div>
 
 <script>
-const postDate = "2019-12-21"
+const postDate = "2024-09-13"
 const difference = moment().diff(postDate, 'days')
 const isExpired = difference > 300
 if (isExpired){

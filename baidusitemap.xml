@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://yogwang.site/2019/CSS-striped-background/</loc>
+    <lastmod>2024-09-14</lastmod>
+  </url>
+  <url>
     <loc>https://yogwang.site/2024/exceljs-a-excel-export-specialized-requirements/</loc>
     <lastmod>2024-09-05</lastmod>
   </url>
@@ -174,10 +178,6 @@
   </url>
   <url>
     <loc>https://yogwang.site/2021/CSS-specificity-selectors-weight/</loc>
-    <lastmod>2024-03-12</lastmod>
-  </url>
-  <url>
-    <loc>https://yogwang.site/2019/CSS-striped-background/</loc>
     <lastmod>2024-03-12</lastmod>
   </url>
   <url>
