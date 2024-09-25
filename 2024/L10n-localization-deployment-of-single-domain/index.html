@@ -94,6 +94,8 @@
 
       <div class="article-updated">
         
+        最后更新：<time datetime="2024-09-25T03:54:22.000Z" itemprop="datePublished">2024-09-25</time>
+        
       </div>
     </header>
     
@@ -278,37 +280,122 @@
     
     <span class="hljs-comment"># 后端接口转发 - 默认</span>
     <span class="hljs-section">location</span> /api/ &#123;
+      <span class="hljs-attribute">proxy_pass</span>              http://localhost:9101/; <span class="hljs-comment"># 使用真实的 domain:port 或者 ip:port 替换</span>
       <span class="hljs-attribute">proxy_set_header</span>        Host <span class="hljs-variable">$http_host</span>;
       <span class="hljs-attribute">proxy_set_header</span>        X-Real-IP <span class="hljs-variable">$remote_addr</span>;
       <span class="hljs-attribute">proxy_set_header</span>        REMOTE-HOST <span class="hljs-variable">$remote_addr</span>;
       <span class="hljs-attribute">proxy_set_header</span>        X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
-      <span class="hljs-attribute">proxy_pass</span>              http://localhost:9101/; <span class="hljs-comment"># 使用真实的 domain:port 或者 ip:port 替换</span>
       <span class="hljs-attribute">client_max_body_size</span>    <span class="hljs-number">50m</span>;
     &#125;
     
     <span class="hljs-comment"># 后端接口转发 - 中国</span>
     <span class="hljs-section">location</span> /api/cn/ &#123;
+      <span class="hljs-attribute">proxy_pass</span>              http://localhost:9101/; <span class="hljs-comment"># 使用真实的 domain:port 或者 ip:port 替换</span>
       <span class="hljs-attribute">proxy_set_header</span>        Host <span class="hljs-variable">$http_host</span>;
       <span class="hljs-attribute">proxy_set_header</span>        X-Real-IP <span class="hljs-variable">$remote_addr</span>;
       <span class="hljs-attribute">proxy_set_header</span>        REMOTE-HOST <span class="hljs-variable">$remote_addr</span>;
       <span class="hljs-attribute">proxy_set_header</span>        X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
-      <span class="hljs-attribute">proxy_pass</span>              http://localhost:9101/; <span class="hljs-comment"># 使用真实的 domain:port 或者 ip:port 替换</span>
       <span class="hljs-attribute">client_max_body_size</span>    <span class="hljs-number">50m</span>;
     &#125;
     <span class="hljs-comment"># 后端接口转发 - 欧洲</span>
     <span class="hljs-section">location</span> /api/eu/ &#123;
+      <span class="hljs-attribute">proxy_pass</span>              http://example2.com:9101/; <span class="hljs-comment"># 使用真实的 domain:port 或者 ip:port 替换</span>
       <span class="hljs-attribute">proxy_set_header</span>        Host <span class="hljs-variable">$http_host</span>;
       <span class="hljs-attribute">proxy_set_header</span>        X-Real-IP <span class="hljs-variable">$remote_addr</span>;
       <span class="hljs-attribute">proxy_set_header</span>        REMOTE-HOST <span class="hljs-variable">$remote_addr</span>;
       <span class="hljs-attribute">proxy_set_header</span>        X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
-      <span class="hljs-attribute">proxy_pass</span>              http://example2.com:9101/; <span class="hljs-comment"># 使用真实的 domain:port 或者 ip:port 替换</span>
       <span class="hljs-attribute">client_max_body_size</span>    <span class="hljs-number">50m</span>;
     &#125;
   &#125;
 &#125;</code></pre>
 
-<p>配置完成后使用 <code>nginx -T</code> 测试配置文件是否正确。然后 <code>nginx -s reload</code> 重新载入配置文件就可以进行测试了。</p>
- 
+<p>配置完成后使用 <code>nginx -t</code> 测试配置文件是否正确。然后 <code>nginx -s reload</code> 重新载入配置文件就可以进行测试了。</p>
+<hr>
+<h2 id="💢-UPDATE"><a href="#💢-UPDATE" class="headerlink" title="💢 UPDATE"></a>💢 UPDATE</h2><p>当我做完了全部调整开始测试之后，发现实际业务中有大量各种没有通过封装好的HTTP请求库发起的请求。比如说一些历史的上转下载功能。得同步调整大量的历史业务代码，工作量会变的巨大无比。所以我想这是否可以有其他更便利的处理方案。</p>
+<p>确实，其实可以通过把 <code>TARGET_SERVER</code> 放到请求头中，或者随 <code>Cookies</code> 传递给服务器。</p>
+<blockquote>
+<p>因为会有图片请求之类的操作，所以我建议是放到 <code>Cookies</code> 中，让浏览器处理随着请求一起发送。<br>而不是通过修改请求路径的方式，并且 Nginx 的代理转发也可以简化处理一下：</p>
+</blockquote>
+<pre><code class="hljs nginx"><span class="hljs-section">http</span> &#123;
+  <span class="hljs-comment"># ...</span>
+  <span class="hljs-section">server</span> &#123;
+    <span class="hljs-attribute">listen</span>          <span class="hljs-number">80</span>;
+    <span class="hljs-attribute">server_name</span>     example.com;
+
+    <span class="hljs-section">upstream</span> server_cn &#123;
+        <span class="hljs-attribute">server</span>      example1.com:<span class="hljs-number">9101</span>; <span class="hljs-comment"># 使用真实的 domain:port 或者 ip:port 替换</span>
+    &#125;
+
+    <span class="hljs-section">upstream</span> server_eu &#123;
+        <span class="hljs-attribute">server</span>      example2.com:<span class="hljs-number">9101</span>; <span class="hljs-comment"># 使用真实的 domain:port 或者 ip:port 替换</span>
+    &#125;
+    
+    <span class="hljs-attribute">map</span> <span class="hljs-variable">$cookie_target_server</span> <span class="hljs-variable">$backend</span> &#123; <span class="hljs-comment"># 从 Cookies 中获取</span>
+    <span class="hljs-comment"># map $http_target_server $backend &#123; # 从 headers 中获取</span>
+        &quot;cn&quot; server_cn;
+        &quot;eu&quot; server_eu;
+        <span class="hljs-attribute">default</span> server_cn;
+    &#125;
+
+    <span class="hljs-comment"># 前端项目</span>
+    <span class="hljs-section">location</span> / &#123;
+        <span class="hljs-attribute">root</span>                  /data/project_name;
+        <span class="hljs-attribute">try_files</span>             <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /index.html;
+        <span class="hljs-attribute">index</span>                 index.html  index.htm;
+
+        <span class="hljs-section">location</span> <span class="hljs-regexp">~* \.html$</span> &#123;
+          <span class="hljs-attribute">add_header</span>          Cache-Control <span class="hljs-literal">no</span>-store;
+          <span class="hljs-attribute">expires</span>             -<span class="hljs-number">1</span>;
+        &#125;
+
+        <span class="hljs-section">location</span> <span class="hljs-regexp">~* \.(jpg|jpeg|png|gif|ico|css|js)$</span> &#123;
+          <span class="hljs-attribute">expires</span>             <span class="hljs-number">72h</span>;
+        &#125;
+    &#125;
+    
+    <span class="hljs-comment"># 后端接口转发</span>
+    <span class="hljs-section">location</span> /api/ &#123;
+      <span class="hljs-attribute">proxy_pass</span>              http://<span class="hljs-variable">$backend</span>; <span class="hljs-comment"># 注意后面不能有 / 结尾，不然会丢失 path 信息</span>
+      <span class="hljs-attribute">proxy_set_header</span>        Host <span class="hljs-variable">$http_host</span>;
+      <span class="hljs-attribute">proxy_set_header</span>        X-Real-IP <span class="hljs-variable">$remote_addr</span>;
+      <span class="hljs-attribute">proxy_set_header</span>        REMOTE-HOST <span class="hljs-variable">$remote_addr</span>;
+      <span class="hljs-attribute">proxy_set_header</span>        X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
+      <span class="hljs-attribute">client_max_body_size</span>    <span class="hljs-number">50m</span>;
+    &#125;
+
+  &#125;
+&#125;</code></pre>
+
+<p>这样处理的话，其实<strong>HTTP请求的修改也不需要了</strong>，接口还是原本的那个 <code>/api</code>，而不是改造后的 <code>/api/[targetServer]</code>。工作量就减少了非常多了。</p>
+<h3 id="💥-额外的一些细节"><a href="#💥-额外的一些细节" class="headerlink" title="💥 额外的一些细节"></a>💥 额外的一些细节</h3><p>在Nginx中使用 <a target="_blank" rel="noopener" href="http://nginx.org/en/docs/http/ngx_http_core_module.html#var_cookie_">$cookie_</a> 获取 <code>Cookie</code> 信息时需要注意对应的 Key 键名称。</p>
+<ul>
+<li>比如使用 <strong>短横线</strong> 的 CookieName，得在 <a target="_blank" rel="noopener" href="https://nginx.org/en/docs/http/ngx_http_map_module.html">map 映射</a> 时单独匹配处理。</li>
+</ul>
+<p>而使用 <a href="nginx.org/en/docs/http/ngx_http_core_module.html#var_http_">$http_</a> 获取 <code>header</code> 信息时，Nginx会帮你处理成全小写，并且短横线替换成下划线。</p>
+<blockquote>
+<p><code>$cookie_name</code><br>the <code>name</code> cookie</p>
+</blockquote>
+<blockquote>
+<p><code>$http_name</code><br> arbitrary request header field; the last part of a variable name is the field name converted to lower case with dashes replaced by underscores</p>
+</blockquote>
+<hr>
+<p>所以如果有一些特殊的 Cookie 键名，比如说 <code>Target-Server</code> 这样的，你可以这样匹配：</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">map</span> <span class="hljs-variable">$http_cookie</span> <span class="hljs-variable">$target_server</span> &#123;
+    &quot;~*Target-Server=([^;]+)&quot; $1;
+&#125;
+
+<span class="hljs-attribute">map</span> <span class="hljs-variable">$target_server</span> <span class="hljs-variable">$backend</span> &#123;
+    &quot;cn&quot; server_cn;
+    &quot;eu&quot; server_eu;
+    <span class="hljs-attribute">default</span> server_cn;
+&#125;</code></pre>
+
+<p>当然也可以合并起来，但其实也差不多</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">map</span> <span class="hljs-variable">$http_cookie</span> <span class="hljs-variable">$backend</span> &#123;
+    &quot;~*Target-Server=cn&quot; server_cn;
+    &quot;~*Target-Server=eu&quot; server_eu;
+    <span class="hljs-attribute">default</span> server_cn;
+&#125;</code></pre> 
   </article>
 
 
@@ -345,7 +432,7 @@
 </div>
 
 <script>
-const postDate = "2024-08-27"
+const postDate = "2024-09-25"
 const difference = moment().diff(postDate, 'days')
 const isExpired = difference > 300
 if (isExpired){
