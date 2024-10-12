@@ -1,0 +1,347 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>解决 VSCode 调试面板中隐藏调试配置选择器后没法重新显示的问题 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章页 post detail page -->
+<main id="container">
+  <!--
+ * @Description: 
+ * @Author: wang.weiyang
+ * @Date: 2022-07-22 08:25:45
+ * @LastEditors: wang.weiyang
+ * @LastEditTime: 2022-07-25 10:08:50
+-->
+<!-- 文章详情 Post Detail -->
+<div
+  id="post-vscode-debugger-configuration-dropdown-cannot-show-again"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+      <div class="article-meta">
+        <div>
+          
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
+  </div>
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debug/" rel="tag">Debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li></ul>
+
+        </div>
+         
+<div class="article-date">
+  <time datetime="2024-10-12T05:31:55.000Z" itemprop="datePublished">2024-10-12</time>
+</div>
+      </div>
+      
+  
+    <h1 class="article-title" itemprop="name">
+      解决 VSCode 调试面板中隐藏调试配置选择器后没法重新显示的问题
+    </h1>
+  
+
+      <div class="article-updated">
+        
+      </div>
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      <div id="expired-tag"></div>
+      <!-- 文章内容 article body -->
+ 
+  <article class="article-content">
+    <blockquote>
+<p><strong>解决方式</strong><br>在【<strong>运行和调试</strong>】面板右侧的 <strong>齿轮</strong>（<code>⚙</code>） 或者 <strong>更多</strong>（<code>···</code>） 按钮上右键，勾选【<strong>开始调试</strong>】即可。</p>
+</blockquote>
+<p><img src="/2024/vscode-debugger-configuration-dropdown-cannot-show-again/dropdown_recovery_steps.jpeg" alt="恢复显示操作示意图"></p>
+<p>昨天在思否遇到一个问题 👉 <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000045355093">VSCode启动调试控件被不小心隐藏了，如何恢复显示？</a><br>开始以为是一个很初级的问题，就是问题主把【<strong>活动面板</strong>】中的【<strong>调式面板</strong>】隐藏了，不知道如何恢复显示了。</p>
+<p>那么直接在【<strong>活动面板</strong>】中右键然后在弹出的菜单中勾选【<strong>运行和调试</strong>】就行了。</p>
+<span id="more"></span>
+<p>按照这个理解下，会以为OP可能会把【<strong>活动面板</strong>】也给隐藏了，所以也贴了如何显示【<strong>活动面板</strong>】的操作。<br><img src="/2024/vscode-debugger-configuration-dropdown-cannot-show-again/vscode_show_actions_bar.jpeg" alt="vscode_show_actions_bar"></p>
+<p>但其实并不是这个问题，而是OP在【<strong>配置下拉菜单</strong>】上边右键后点选了【<strong>隐藏“开始调试”</strong>】选项，隐藏掉了【<strong>配置下拉菜单</strong>】。<br>等OP隐藏掉了下拉菜单之后，发现不知道怎么切换调试配置，也不知道应该如何恢复显示了……<br><img src="/2024/vscode-debugger-configuration-dropdown-cannot-show-again/hidden_configuration_dropdown.jpeg" alt="hidden_configuration_dropdown"></p>
+<hr>
+<p>确实，我隐藏之后也不知道如何恢复显示下拉菜单了😂。<br>翻遍了所有配置项，都没有找到对应可以直接修改的配置项，所以只能去 VSCode 的仓库中寻找解决办法……</p>
+<p>很快找到了两个相关的 Issues：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode/issues/167254">Launch Program in Debug Panel VSCode Insiders is missing · Issue #167254 · microsoft&#x2F;vscode</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode/issues/187873">Debugger dropdown can be hidden and cannot be shown again · Issue #187873 · microsoft&#x2F;vscode</a></li>
+</ul>
+<p><strong>但是！</strong> 第一个 Issue 中的解决方案，看似非常简单直接的解决了问题。<br>可是这个操作需要你右键在齿轮（<code>⚙</code>）或者更多（<code>···</code>）按钮上才行，其他位置右键并不会打开对应的菜单。</p>
+<p><img src="/2024/vscode-debugger-configuration-dropdown-cannot-show-again/dropdown_recovery_steps.gif" alt="恢复显示操作示意"></p>
+<p>😭 所以我第一次尝试打开菜单发现并没有对应的选项，并且第二个 Issue 中也有人说没有找到对应的选项。<br>就以为是错误的回答，就开始顺着第二个 Issue 中提供的操作解决 <code>state.vscdb</code> 方式来尝试了。</p>
+<hr>
+<blockquote>
+<p>❗ <strong>注意：以下内容可以忽略不进行阅读，后续内容只是对我自己的尝试进行描述，正确的解决方案在上方！</strong></p>
+</blockquote>
+<p>第二个 Issue 提供了2个解决方式：</p>
+<ul>
+<li>一个是操作 VSCode 的状态数据DB文件 <code>state.vscdb</code>；</li>
+<li>第二个唤起【<strong>命令面板</strong>】之后选择【<strong>查看：重置所有菜单</strong>】重置所有菜单配置。</li>
+</ul>
+<p>使用【<strong>查看：重置所有菜单</strong>】肯定是没问题的，但是我觉得可能会影响到我在VSCode中配置的其他规则，所以即使第一种解决办法会更麻烦我还是愿意尝试的。</p>
+<p>其实也很简单，在 <code>globalStorage</code> 目录中找到 <code>state.vscdb</code> 文件，使用DB编辑器操作数据即可。<br>因为只是临时修改，所以选择在 VSCode 中安装一个 <code>SQLite</code> 扩展来操作 <code>.vscdb</code> 文件。</p>
+<ul>
+<li>我安装的 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor">SQLite3 Editor - Visual Studio Marketplace</a> 这个扩展，它可以直接编辑 <code>BD</code> 文件。</li>
+<li>如果提示 <code>此文件是二进制文件或使用了不受支持的文本编码，所以无法在文本编辑器中显示。</code> 在 VSCode 的【<strong>资源管理器</strong>】中右键 <code>state.vscdb</code> 文件选择【<strong>打开方式…</strong>】，再选择使用【<code>SQLite3 Editor</code>】打开。</li>
+</ul>
+<blockquote>
+<p><code>state.vscdb</code> 文件的位置：</p>
+<ul>
+<li>Mac 系统中位于 <code>~/Library/Application Support/Code/User/globalStorage</code> 目录下;</li>
+<li>Win 系统中位于 <code>%appdata%\Code\User\globalStorage</code> 目录下；</li>
+</ul>
+</blockquote>
+<p>找到 <code>key</code> 为 <code>menu.hiddenCommands</code> 的项目（可以在 <code>key</code> 列中右键菜单中筛选 <code>menu</code>）双击编辑，修改右侧 <code>value</code> 中的值，把 <code>ViewContainerTitle</code> 这一项的 <code>key</code> 和 <code>value</code> 全部删除。<br>比如说我打开之后对应的 <code>value</code> 值是 <code>&#123;&quot;CommandCenter&quot;:[&quot;workbench.action.quickOpenWithModes&quot;],&quot;ViewContainerTitle&quot;:[&quot;workbench.action.debug.start&quot;]&#125;</code>，删除后就是 <code>&#123;&quot;CommandCenter&quot;:[&quot;workbench.action.quickOpenWithModes&quot;]&#125;</code> 然后提交修改（<code>Ctrl + Enter</code>）。然后重新打开 VSCode 调试模式下的配置选择器就会恢复显示了（如果打开了多个 VSCode 需要全部关闭）。</p>
+<p>😫 等我这一系列的操作全部操作完，确实也恢复了下拉菜单的显示。但是总觉得应该那么蠢，都那么多年过去了这个问题还是没解决。</p>
+<p>就又仔细阅读了一下其他的回复内容，发现是我自己快速阅读的时候配合上下文理解错了：</p>
+<blockquote>
+<p>Sorry for the confusion. You can right click on either other button in the menu (the gear or the <code>...</code>) to get it back or run the command “Reset All Menus”<br><small>- <strong>roblourens</strong> on Jul 19, 2023</small></p>
+</blockquote>
+<blockquote>
+<p>When I right click on the gear or the <code>...</code>, I don’t see an item for “Reset All Menus”. I only see Hide (grayed out), Start Debugging, and Open ‘launch.json’. The solution @Hauntec provided worked though.<br><small>- <strong>StarkillerX42</strong> on Jul 21, 2023</small></p>
+</blockquote>
+<p>跳着读的时候粗心的以为后续回复中的 [ <strong>I don’t see an item for “Reset All Menus”</strong> ] 是和我一样的情况，其实并不是。回复中提到的选项是和我不一样的，所以我按照 <code>roblourens</code> 的回答，又尝试了右键在齿轮（<code>⚙</code>）和 <code>···</code> 按钮上之后整个人都不好了……</p>
+<p>以上</p>
+<hr>
+<h3 id="相关阅读"><a href="#相关阅读" class="headerlink" title="相关阅读"></a>相关阅读</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode/issues/167254">Launch Program in Debug Panel VSCode Insiders is missing · Issue #167254 · microsoft&#x2F;vscode</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode/issues/187873">Debugger dropdown can be hidden and cannot be shown again · Issue #187873 · microsoft&#x2F;vscode</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/editor/debugging">Debugging in Visual Studio Code | VSCode Docs</a></p>
+</li>
+</ul>
+ 
+  </article>
+
+
+    </div>
+  </div>
+   
+<nav id="article-nav">
+  
+  
+    <a 
+      id="article-nav-older"
+      class="article-nav-link-wrap" 
+      href="/2024/exceljs-a-excel-export-specialized-requirements/" 
+      title="前端 Excel 导出的特殊需求" 
+      alt="前端 Excel 导出的特殊需求"
+    >
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端 Excel 导出的特殊需求</div>
+    </a>
+  
+</nav>
+ 
+</div>
+
+<script>
+const postDate = "2024-10-12"
+const difference = moment().diff(postDate, 'days')
+const isExpired = difference > 300
+if (isExpired){
+  const el = document.querySelector("#expired-tag")
+  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
+  el.innerHTML = expiredText
+} 
+</script>
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/前端分享/" class="shortcut-menu-item active" >前端分享</a>
+    
+      <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
+    
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
+    
+      <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2024/vscode-debugger-configuration-dropdown-cannot-show-again/" 
+              title="解决 VSCode 调试面板中隐藏调试配置选择器后没法重新显示的问题" 
+              alt="解决 VSCode 调试面板中隐藏调试配置选择器后没法重新显示的问题"
+            >
+              解决 VSCode 调试面板中隐藏调试配置选择器后没法重新显示的问题
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/exceljs-a-excel-export-specialized-requirements/" 
+              title="前端 Excel 导出的特殊需求" 
+              alt="前端 Excel 导出的特殊需求"
+            >
+              前端 Excel 导出的特殊需求
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/uni-app-define-env-variables/" 
+              title="记录在 uni-app 中定义环境变量的方法" 
+              alt="记录在 uni-app 中定义环境变量的方法"
+            >
+              记录在 uni-app 中定义环境变量的方法
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/L10n-localization-deployment-of-single-domain/" 
+              title="单域名多服务器的本地化部署" 
+              alt="单域名多服务器的本地化部署"
+            >
+              单域名多服务器的本地化部署
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2024/eleui-el-dropdown-keyboard-operation-error/" 
+              title="ElementUI 的 Dropdown 组件键盘操控异常抛出" 
+              alt="ElementUI 的 Dropdown 组件键盘操控异常抛出"
+            >
+              ElementUI 的 Dropdown 组件键盘操控异常抛出
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AstroJS/" rel="tag">AstroJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">25</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debug/" rel="tag">Debug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ExcelJS/" rel="tag">ExcelJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L10n/" rel="tag">L10n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/" rel="tag">NPM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/" rel="tag">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service-Worker/" rel="tag">Service Worker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueCLI/" rel="tag">VueCLI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueUse/" rel="tag">VueUse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exceljs/" rel="tag">exceljs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rrweb/" rel="tag">rrweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2024 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
