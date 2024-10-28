@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Jeecg-boot 开发挖坑日记03 动态路由传参 | blog [ YOG WANG ]</title>
+  <title>ExcelJS | blog [ YOG WANG ]</title>
   <meta name="keywords" content="YogWang,blog,web-frontend" />
   <meta name="description" content="Here is my blog, my notes and some thoughts" />
   <meta name="author" content="YogWang" />
@@ -50,146 +50,62 @@
 </header>
 
     <div id="wrap">
-      <!-- 文章页 post detail page -->
+      <!-- 标签页 tags page -->
+<!-- 文章列表页面 post list page -->
 <main id="container">
-  <!--
- * @Description: 
- * @Author: wang.weiyang
- * @Date: 2022-07-22 08:25:45
- * @LastEditors: wang.weiyang
- * @LastEditTime: 2022-07-25 10:08:50
--->
-<!-- 文章详情 Post Detail -->
-<div
-  id="post-jeecg-boot-devDiary03"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-      <div class="article-meta">
-        <div>
-          
+  <!-- 文章分类列表 archives list -->
+<div class="archives-wrap">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ExcelJS/" rel="tag">ExcelJS</a></li></ul>
+
+        
   <div class="article-category">
-    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/">踩坑日记</a></li></ul>
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%88%86%E4%BA%AB/">前端分享</a></li></ul>
   </div>
 
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li></ul>
-
-        </div>
-         
-<div class="article-date">
-  <time datetime="2019-10-24T05:39:50.000Z" itemprop="datePublished">2019-10-24</time>
-</div>
       </div>
       
   
-    <h1 class="article-title" itemprop="name">
-      Jeecg-boot 开发挖坑日记03 动态路由传参
-    </h1>
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/exceljs-a-excel-export-specialized-requirements/" title="前端 Excel 导出的特殊需求" alt="前端 Excel 导出的特殊需求">前端 Excel 导出的特殊需求</a>
+    </h2>
   
 
-      <div class="article-updated">
-        
-        最后更新：<time datetime="2019-10-26T16:00:00.000Z" itemprop="datePublished">2019-10-27</time>
-        
-      </div>
     </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      <div id="expired-tag"></div>
-      <!-- 文章内容 article body -->
+    <!-- 文章内容 article body -->
  
-  <article class="article-content">
-    <blockquote>
-<p>坑！ @YogWang #2019&#x2F;10&#x2F;24</p>
-</blockquote>
-<blockquote>
-<p>jeecgboot 针对路由组件的名字做了规则处理，所以默认不是 UserInfo</p>
+  <article class="article-excerpt">
+    <p>在内部系统开发时，经常会有业务部门会要求开发<strong>Excel导入&#x2F;导出</strong>的功能。这种需求非常的常见，如果只是基础的需求开发起来也比较容易。只是有一些特殊的业务下会有对导出的工作表样式会有要求以及会有锁定的需求。</p>
+<p>一般来说这些相关的功能都会让后端同学来帮忙。后端同学忙不过来的时候我们也会使用 <a target="_blank" rel="noopener" href="https://github.com/SheetJS/sheetjs">SheetJS</a> 这个库来处理，社区也有很多基于它的各种增强。但因为<strong>社区版的样式处理非常麻烦</strong>，也经常会看到有小伙伴在社群里面吐槽自定义样式不好做。所以项目后期就切换到了 <a target="_blank" rel="noopener" href="https://github.com/exceljs/exceljs">ExcelJS</a>，开发体感更加友好且支持的功能更多。</p>
+<p>对于 <code>ExcelJS</code> 介绍的部分就不过多赘述了，社区里面有很多相关的文章可以自行检索。</p>
+<p>这篇笔记主要是解决日常业务开发中遇到的几个常见需求，比如说：</p>
 <ul>
-<li>如果自定义了路由组件名，则采用自定义名；</li>
-<li>未定义路由 name (通过 URL 生成路由 name,路由 name 供前端开发，页面跳转使用)</li>
+<li>单元格的<strong>下拉选择</strong></li>
+<li>单元格的<strong>数据校验</strong></li>
+<li>单元格和工作表的<strong>编辑保护</strong></li>
 </ul>
-<p>@zhangdaiscott #2019&#x2F;10&#x2F;27 Reply</p>
-</blockquote>
-<p>今天写一个带参数页面的时候，怎么样都是</p>
-<ul>
-<li><code>404</code> 然后跳转到 <code>localhost:8080/#/</code>;</li>
-<li>显示空白;</li>
-</ul>
-<p>看了 Jeecg-Boot 的技术手册完全按照上边来的写也是不行，还是跳转到 <code>/</code>，在 Vue DevTools 中检查又没有问题。<br>就又折腾了好久，又是查文档又是看官方的教学视频。<br>最后真的是烦了，就偷懒了一把，结果成了….原因是啥呢???</p>
-<span id="more"></span>
-
-<h3 id="WHY"><a href="#WHY" class="headerlink" title="WHY?"></a>WHY?</h3><p>先来看官方文档：<br><img src="/2019/jeecg-boot-devDiary03/1.jpg" alt="文档截图"></p>
-<p>在菜单管理中如技术文档里边所说，填写 <code>/UserInfo/:id</code> ，<br>并在页面中使用 <code>&lt;router-link :to=&quot;&#123;name:&#39;UserInfo&#39;, params: &#123;id:id&#125;&#125;&quot;&gt;查看&lt;/router-link&gt;</code></p>
-<p>点击按钮跳转会到 <code>/</code> ，不会跳转到 <code>/UserInfo/123456</code> ，<br>并提示 <code>[vue-router] Route with name &#39;UserInfo&#39; does not exist</code> 。</p>
-<p><img src="/2019/jeecg-boot-devDiary03/3.jpg" alt="截图1:使用name路由"></p>
-<p>使用 <code>&lt;router-link :to=&quot;&#39;UserInfo/&#39;+id&quot; /&gt;查看&lt;/router-link&gt;</code> 就可以。<br>在 Vue DevTools 中检查发现，<code>UserInfo</code> 对应的是 Name 是 <code>UserInfo-@id</code></p>
-<p><img src="/2019/jeecg-boot-devDiary03/4.jpg" alt="截图2:使用path路由"></p>
-<p>今天提交了一个 Issues 👉 <a target="_blank" rel="noopener" href="https://github.com/zhangdaiscott/jeecg-boot/issues/669">动态路由的带参 #669</a>，看官方怎么说吧。</p>
-<p>先使用偷懒的方法吧</p>
-<p>↓ 2019 年 10 月 25 日已更新<br>↓ 2019 年 10 月 27 日已更新</p>
-<h5 id="附"><a href="#附" class="headerlink" title="附"></a>附</h5><p><a href="mailto:&#x4a;&#101;&#101;&#x63;&#x67;&#x2d;&#x62;&#x6f;&#x6f;&#x74;&#64;&#x32;&#x2e;&#x31;&#x2e;&#x30;">&#x4a;&#101;&#101;&#x63;&#x67;&#x2d;&#x62;&#x6f;&#x6f;&#x74;&#64;&#x32;&#x2e;&#x31;&#x2e;&#x30;</a>（发布日期：20190826）<br>vue@^2.6.10<br>@vue&#x2F;cli@^3.8.0<br>vue-router@^3.0.1</p>
-<h3 id="2019-年-10-月-25-日更新"><a href="#2019-年-10-月-25-日更新" class="headerlink" title="2019 年 10 月 25 日更新"></a>2019 年 10 月 25 日更新</h3><p>使用 <code>:to=&quot;&#39;UserInfo/&#39;+id&quot;</code> 点击多个查看用户后，会创建多个用户资料标签，并且没有激活的方法，来重新获取用户 ID。</p>
-<p>👉 修改 : 菜单管理中，最后不添加 <code>/:id</code> ,<br>使用 <code>:to=&quot;&#123;name:&#39;UserInfo&#39;, params: &#123;id:id&#125;&#125;&quot;</code> 直接传参，打开的新标签页可以获得 userID，<br>之后再点击其他用户信息也不会再创建一个新标签，而是直接使用已创建的标签页。</p>
-<p>最后 Issues 还没被回复。</p>
-<h3 id="2019-年-10-月-27-日更新"><a href="#2019-年-10-月-27-日更新" class="headerlink" title="2019 年 10 月 27 日更新"></a>2019 年 10 月 27 日更新</h3><blockquote>
-<p>zhangdaiscott：jeecgboot 针对路由组件的名字做了规则处理，所以默认不是 UserInfo</p>
-<ul>
-<li>如果自定义了路由组件名，则采用自定义名；</li>
-<li>未定义路由 name (通过 URL 生成路由 name,路由 name 供前端开发，页面跳转使用)</li>
-</ul>
-</blockquote>
-<p><img src="/2019/jeecg-boot-devDiary03/re.png" alt="截图3:GitReply"></p>
- 
   </article>
-
-
-    </div>
+  <div class="article-more-link">
+    <a href="/2024/exceljs-a-excel-export-specialized-requirements/#more">阅读全文</a>
   </div>
-   
-<nav id="article-nav">
-  
-    <a 
-      id="article-nav-newer"
-      class="article-nav-link-wrap" 
-      href="/2019/CSS-pseudo-elements-content/" 
-      title="记一个 CSS 伪类的 content 用法" 
-      alt="记一个 CSS 伪类的 content 用法"
-    >
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">记一个 CSS 伪类的 content 用法</div>
-    </a>
-  
-  
-    <a 
-      id="article-nav-older"
-      class="article-nav-link-wrap" 
-      href="/2019/hexo-theme-development-codeblock/" 
-      title="Hexo 主题开发 -- 代码块颜色高亮" 
-      alt="Hexo 主题开发 -- 代码块颜色高亮"
-    >
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo 主题开发 -- 代码块颜色高亮</div>
-    </a>
-  
-</nav>
- 
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-09-02T07:20:32.000Z" itemprop="datePublished">2024/09/02</time>
+</div>
+  </div>
 </div>
 
-<script>
-const postDate = "2019-10-27"
-const difference = moment().diff(postDate, 'days')
-const isExpired = difference > 300
-if (isExpired){
-  const el = document.querySelector("#expired-tag")
-  let expiredText = `此文章更新于 ${difference} 天前，其中的信息可能已经有所发展或是发生改变，请自行斟酌确认。`
-  el.innerHTML = expiredText
-} 
-</script>
+</div>
+<!-- 列表分页 list paginator -->
+
 
 </main>
 <!-- 侧边栏 sidebar -->
@@ -223,7 +139,7 @@ if (isExpired){
     
       <a href="/categories/工作延伸/" class="shortcut-menu-item" >工作延伸</a>
     
-      <a href="/categories/踩坑日记/" class="shortcut-menu-item active" >踩坑日记</a>
+      <a href="/categories/踩坑日记/" class="shortcut-menu-item" >踩坑日记</a>
     
       <a href="/categories/生活杂谈/" class="shortcut-menu-item" >生活杂谈</a>
     
