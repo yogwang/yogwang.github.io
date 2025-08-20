@@ -201,7 +201,7 @@
     &#125;
   &#125;
 &#125;</code></pre>
-<p>也可以从我之前关于 <code>props</code> 属性的笔记中察觉到 👉 <a target="_blank" rel="noopener" href="http://localhost:4000/2022/vue-props-type-validation-with-Null-and-undefined/">Vue中接收没有声明的Prop属性[null&#x2F;undefined]的接收问题</a></p>
+<p>也可以从我之前关于 <code>props</code> 属性的笔记中察觉到 👉 <a href="/2022/vue-props-type-validation-with-Null-and-undefined/">Vue中接收没有声明的Prop属性[null&#x2F;undefined]的接收问题</a></p>
 <p>因为我在写业务的时候如果 <code>props</code> 的属性值不存在，传入的会是一个 <code>undefined</code> 而不是 <code>null</code> 或者 <code>&#39;&#39;</code> 这样的预设。因为我期望使用组件 <code>props</code> 中声明的<strong>默认值</strong>，而不是在外部预设的<strong>空值</strong>。<br>所以一直以来我都在和小伙伴交流的时候也是推荐直接给变量一个空对象即可，除了一些数组属性需要单独声明。</p>
 <p>但前段时间一位小伙伴向我提问：他在组件生命周期函数中给表单属性赋值了一个预设值，后续再使用 <code>v-model</code> 对表单属性修改时发现<strong>丢失了响应</strong>……</p>
   </article>
