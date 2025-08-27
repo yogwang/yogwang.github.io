@@ -118,7 +118,7 @@
 <p>tips：在小程序中使用npm包前，需先构建 npm</p>
 </blockquote>
 <h4 id="❓-尺寸单位-rpx-应该怎么去理解"><a href="#❓-尺寸单位-rpx-应该怎么去理解" class="headerlink" title="❓ 尺寸单位 rpx 应该怎么去理解"></a>❓ 尺寸单位 <code>rpx</code> 应该怎么去理解</h4><p>正常来说，在网页端我们基本都是使用 <code>px</code>&#x2F;<code>em</code>&#x2F;<code>rem</code> 这类的常规单位，然后按照不同的设备尺寸去适配，但是小程序有一个 <code>rpx</code> 单位，可以根据屏幕宽度进行自适应，怎么去理解呢？<br>其实就是<strong>看设计稿</strong>，因为 <code>rpx</code> 默认屏幕宽为 <code>750rpx</code> ，所以如果UI给的设计稿为 <code>750px</code> 则 <code>1rpx</code> 趋近于 <code>0.5px</code> 或者 <code>1pt</code> 因为大部分设备 <code>DPR = 2</code>，如果设计稿是 <code>375px</code> 宽度的则 <strong>1：1</strong> 转换就可。一句话形容就是<strong>按照设计稿的宽度除以 <code>750</code> 再乘以 2 来计算</strong>。</p>
-<h4 id="❓-小程序是否支持CSS预处理器"><a href="#❓-小程序是否支持CSS预处理器" class="headerlink" title="❓ 小程序是否支持CSS预处理器"></a>❓ 小程序是否支持CSS预处理器</h4><p>不支持，但是你可以自己处理成 <code>.wxss</code>，具体可以查看这篇文章： 📍<a target="_blank" rel="noopener" href="http://localhost:4000/2021/use-stylus-with-gulp-in-miniprogram/">在小程序中使用CSS预处理器</a></p>
+<h4 id="❓-小程序是否支持CSS预处理器"><a href="#❓-小程序是否支持CSS预处理器" class="headerlink" title="❓ 小程序是否支持CSS预处理器"></a>❓ 小程序是否支持CSS预处理器</h4><p>不支持，但是你可以自己处理成 <code>.wxss</code>，具体可以查看这篇文章： 📍<a href="/2021/use-stylus-with-gulp-in-miniprogram/">在小程序中使用CSS预处理器</a></p>
 <h4 id="❓-Component-如何使用-properties-中的-observer"><a href="#❓-Component-如何使用-properties-中的-observer" class="headerlink" title="❓ Component 如何使用 properties 中的 observer"></a>❓ <code>Component</code> 如何使用 <code>properties</code> 中的 <code>observer</code></h4><p>很简单就是在 <code>properties</code> 声明对外属性的时候增加一个 <code>observer</code> ，然后就和 <code>VueJs</code> 当中的 <code>watch</code> 一样使用了。</p>
 <pre><code class="hljs js"><span class="hljs-title class_">Component</span>(&#123;
   <span class="hljs-attr">properties</span>: &#123;
