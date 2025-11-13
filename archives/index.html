@@ -81,7 +81,7 @@
  
   <article class="article-excerpt">
     <p>去年2月份的时候在思否刷到一个问题 👉 <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000044656148">span的display为inline-block 和inline的时候对父级元素高度的影响?</a><br>当时就觉得很奇怪，以为是一些其他的CSS属性影响导致的，但是问题后面提到了参考链接里面具体说了原因，只不过OP没有很好的理解，我也没有很好的理解。<br>因为就算是IFC的问题，<code>inline-block</code> 和 <code>inline</code> 元素的表现应该是差不多的。但是实际情况并不是这样，只有 <code>inline-block</code> 是特殊的情况。</p>
-<p>一年多的时光中有几次想捋清楚这个问题，但是又因为各种接口搁置了，今天终于逮起劲来准备解决掉这个疑惑。</p>
+<p>一年多的时光中有几次想捋清楚这个问题，但是又因为各种借口搁置了，今天终于逮起劲来准备解决掉这个疑惑。</p>
 <p>以下是当时写的一个复现Demo，只会显示子元素是 <code>inline-block</code> 的 <code>.container</code> 会有高度（显示红色）。而子元素的 <code>inline</code> 和 <code>block</code> 的 <code>.container</code> 并没有高度，所以不会显示（蓝色和绿色）。</p>
 <p><img src="/2025/CSS-empty-inline-block-create-height-but-inline-and-block-not/empty_div_preview_page.png" alt="不同display类型的预览图"></p>
 <p>很奇怪是不是？
