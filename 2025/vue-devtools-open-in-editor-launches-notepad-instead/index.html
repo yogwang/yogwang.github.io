@@ -107,10 +107,10 @@
 <span id="more"></span>
 
 <hr>
-<p>一开始想着直接看 <strong>Vue DevTools</strong> 的文档，但是看到的都是安装一些依赖来实现，但其实我这个状况并不是缺少了插件导致的。所以应该是环境变量方面的问题，就想着从环境变量中入手。但是我在各个终端中检查 <code>code</code> 和 <code>cursor</code> 都正常执行的，所以并不是缺少了 <code>PATH</code> 信息。那么就需要从 <code>Vue DevTools</code> 中找答案了。</p>
+<p>一开始想着直接看 <strong>Vue DevTools</strong> 的文档，但是看到的都是安装一些依赖来实现，但其实我这个状况并不是缺少了插件导致的。所以应该是环境变量方面的问题，就想着从环境变量中入手。但是我在各个终端中检查 <code>code</code> 和 <code>cursor</code> 都正常执行的，所以并不是缺少了 <code>PATH</code> 信息。那么就需要从 <strong>Vue DevTools</strong> 中找答案了。</p>
 <p>找了一圈 <strong>Issue</strong> 只有一个强相关的<a target="_blank" rel="noopener" href="https://github.com/vuejs/devtools/issues/766">帖子</a>，但是他是使用的 <code>vite</code> 插件，并不是浏览器插件。但是跟帖中发现了一个非常重要的信息。</p>
 <blockquote>
-<p>我检查了一下  devtools 对于浏览器插件api的实现是进行了 <code>fetch</code> 请求 <code>&#39;__open_in_enditor&#39;</code>，该功能实际由 vite 实现的，所以可能在这里无法得到答案<br><small>qq326943819 on Apr 11</small></p>
+<p>我检查了一下  devtools 对于浏览器插件 api 的实现是进行了 <code>fetch</code> 请求 <code>&#39;__open_in_enditor&#39;</code>，该功能实际由 vite 实现的，所以可能在这里无法得到答案<br><small>qq326943819 on Apr 11</small></p>
 </blockquote>
 <p>正好，<code>Open in Editor</code> 这部分的文档中也提到了 <code>/__open-in-editor</code>。就可以从这部分提到的 <a target="_blank" rel="noopener" href="https://github.com/yyx990803/launch-editor">launch-editor</a> 这个包入手。<br>打开项目阅读README还没几行就看到了这一段话：</p>
 <blockquote>
@@ -125,8 +125,13 @@
 <li>如果是 <strong>CMD</strong> 可以通过 <code>echo %EDITOR%</code> 来查看是否设置成功;</li>
 <li>如果是 <strong>Powershell</strong>，可以用 <code>echo $env:EDITOR</code> 来查看。</li>
 </ul>
-<p>如果没有输出你设置的值，那么就说明你没有关闭全部的终端。一般会在 <code>Powershell</code> 中遇到。那么就需要关闭所有已经打开的终端，再重新尝试。<strong>如果你的编辑器有打开终端也需要关闭</strong>。</p>
+<p>如果没有输出你设置的值，那么就说明你没有关闭全部的终端。一般会在 <strong>Powershell</strong> 中遇到。那么就需要关闭所有已经打开的终端，再重新尝试。<strong>如果你的编辑器有打开终端也需要关闭</strong>。</p>
 <p>如果可以正常看到输出了，那么重启项目再点击 <strong>Vue DevTools</strong> 中的 <code>Open in Editor</code> 就可以正常在你设置的编辑器中打开了。</p>
+<hr>
+<h2 id="🧐-进一步"><a href="#🧐-进一步" class="headerlink" title="🧐 进一步"></a>🧐 进一步</h2><p>为什么 <code>launch-editor</code> 的 <a target="_blank" rel="noopener" href="https://github.com/yyx990803/launch-editor/blob/v2.11.1/packages/launch-editor/guess.js">guessEditor 函数</a> 没有正确返回编辑器名称，而需要使用兜底的环境变量呢？<br>因为它是通过获取系统当前所有正在执行进程，去匹配对应的进程名是否在 <strong>预设好的编辑器列表</strong> 中。而 <strong>Cursor</strong> 是在  <code>v2.10.0</code> 才被添加到列表中的 👉 <a target="_blank" rel="noopener" href="https://github.com/yyx990803/launch-editor/commit/3bac35b8808f1bc2db7bc9092ae2b72383e39438">feat: add Cursor support for Windows · yyx990803&#x2F;launch-editor@3bac35b</a></p>
+<p>我的项目使用的 <code>vite@5.3.3</code> 内置的 <code>launch-editor-middleware</code> 版本是 <code>v2.8.0</code>，这个时候 <strong>Cursor</strong> 并没有被添加到支持的列表中，自然就匹配失败了。</p>
+<p>所以如果有<strong>定期迭代更新项目依赖</strong>的话，<code>guessEditor</code> 函数才会正确命中当前使用中的 <strong>Cursor</strong> 编辑器。</p>
+<p>那么在我的案例中操作更新一下项目的依赖也可以解决这个问题，但是为了预防出现不必要的问题减少工作量，还是通过增加环境变量的方式更简单实用一些。</p>
 <hr>
 <h2 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://devtools.vuejs.org/getting-started/open-in-editor">Open component in editor | Vue DevTools</a></li>
