@@ -1,0 +1,709 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>技术分享 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章分类页 categories page -->
+<!-- 文章列表页面 post list page -->
+<main id="container">
+  <!-- 文章分类列表 archives list -->
+<div class="archives-wrap">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/CSS-shorthand-property-all-and-css-keyword/" title="CSS中的元素样式还原属性 all:revert" alt="CSS中的元素样式还原属性 all:revert">CSS中的元素样式还原属性 all:revert</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>现在CSS写的是越来越少了，以至于刷到这样一个问题 👉 <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000044996210">前端文章页的内容获取自后台编辑器，如何让他不受全局样式影响？</a>。<br>思维惯性下就开始考虑各种样式隔离方案，而完全忽略掉了还有一种使用CSS的样式还原方式（<code>all: revert</code>） 来避免全局样式对于富文本内容的样式污染问题。</p>
+<p>相比于各种前端的CSS样式隔离方案的高成本，使用 <code>all: revert</code> 方式来<strong>简易实现</strong>局部区域的样式还原，仅仅需要配置一条这样的样式规则：</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;test&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-html</span>=<span class="hljs-string">&quot;html&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span>
+<span class="language-css"><span class="hljs-selector-id">#test</span> * &#123;</span>
+<span class="language-css">  <span class="hljs-attribute">all</span>: revert;</span>
+<span class="language-css">&#125;</span>
+<span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></code></pre>
+
+<p>但因为CSS样式的权重问题，你看到了我是使用的 <strong>ID选择器</strong>，而不是 <strong>Class选择器</strong>。<br>所以如果说全局样式有使用 <code>#app</code> 来匹配的话，就没办法使用 <code>all: revert</code> 的方式来还原浏览器默认样式了。这也是这个方案的短板，不过大部分情况下的样式都是可以被重置的。</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/CSS-shorthand-property-all-and-css-keyword/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-06-27T05:33:01.000Z" itemprop="datePublished">2024/06/27</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/CSS-overflow-x-y/" title="CSS 中 overflow 值的冲突和自动转换问题" alt="CSS 中 overflow 值的冲突和自动转换问题">CSS 中 overflow 值的冲突和自动转换问题</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <blockquote>
+<p>如果 <code>overflow-x</code> 或 <code>overflow-y</code> 中的一个值不是 <code>visible</code> 或者 <code>clip</code> 的话，给 <code>overflow</code> 设置的 <code>visible/clip</code> 值会被自动处理成 <code>auto/hidden</code>。</p>
+</blockquote>
+<p>昨天下班之前看了一眼思否问答，发现<a target="_blank" rel="noopener" href="https://meta.segmentfault.com/questions/10010000053637986">思否的导航栏出现BUG</a>了。所以想着在官方修复前自己改CSS样式临时凑合一下。<br>但看到 <code>#sf-header</code> 元素上面的 <code>overflow-x:hidden</code> 属性时候，我突然就卡壳了。开始困惑如果我给元素设置了 <code>overflow-x: hidden</code> 之后，垂直方向上的内容溢出时展现方式应该是怎么样的？是应该是如当前看到的出现滚动条还是应该超出显示。</p>
+<p><img src="/2024/CSS-overflow-x-y/problem_snipaste.jpeg" alt="问题预览图"></p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/CSS-overflow-x-y/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-06-21T00:49:34.000Z" itemprop="datePublished">2024/06/21</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rrweb/" rel="tag">rrweb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/rrweb-record-and-replay-users-interactions/" title="使用 rrweb 录制和回放用户交互操作" alt="使用 rrweb 录制和回放用户交互操作">使用 rrweb 录制和回放用户交互操作</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>一直以来项目的<strong>日志功能</strong>只记录了用户的登录和接口请求操作日志，用来辅助我们定位和解决反馈的异常问题。这些日志大多数情况下并不会记录用户是如进行操作的，只记录发起请求时携带的参数信息。大多数情况下这些日志已经足够帮助我们发现和解决问题了。<br>但在一些非常独特的问题反馈中，我们没有办法了解到用户是如何触发这些异常请求的。还需要去主动联系用户询问当时的操作场步骤去复现，或者按照日志中的参数去猜测用户是如何操作的。</p>
+<p>最近正在听 <a target="_blank" rel="noopener" href="https://www.xiaoyuzhoufm.com/podcast/613753ef23c82a9a1ccfdf35">Web Worker</a> 这档播客节目，有一期节目邀请到了 <a target="_blank" rel="noopener" href="https://github.com/Yuyz0112">Aryu</a> 大佬，就发现了 <a target="_blank" rel="noopener" href="https://github.com/rrweb-io/rrweb">rrweb</a> 这个项目。有兴趣的话可以从项目的主页中<strong>在线尝试录制和回放</strong>功能，预设了3个业务场景的录制体验Demo。</p>
+<p>可以看到录制效果非常不错。能录制到鼠标轨迹、滚轮操作、各种元素的聚焦、下拉和光标位置等各种各样的操作记录。</p>
+<ul>
+<li><small>但因为是DOM级别的录制，所以浏览器原生提供的功能，并不会被录制到。比如说 <code>&lt;select&gt;</code> 元素提供的下拉操作和 <code>&lt;input type=&quot;file&quot;&gt;</code> 提供的文件选择操作。</small></li>
+<li><small>从 <code>v1.0.0</code> 开始以插件的形式增加了控制台录制的功能。</small></li>
+</ul>
+<p>而且使用起来非常简单，只需要引入和执行 <code>record</code> 方法就可以启动录制了，然后按照自己的需求去存储即可。</p>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; record &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rrweb&#x27;</span>
+
+<span class="hljs-keyword">let</span> events = [];
+<span class="hljs-title function_">record</span>(&#123;
+  <span class="hljs-title function_">emit</span>(<span class="hljs-params">event</span>) &#123;
+    <span class="hljs-comment">// 将用户操作的 event 存入 events 数组中</span>
+    events.<span class="hljs-title function_">push</span>(event);
+  &#125;,
+&#125;);</code></pre>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/rrweb-record-and-replay-users-interactions/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-06-20T02:52:08.000Z" itemprop="datePublished">2024/06/20</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueUse/" rel="tag">VueUse</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/JS-i18n-relative-time-format/" title="VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API" alt="VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API">VueUse 中的 useTimeAgo 函数的国际化和浏览器内置国际化API</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>看到一个帖子提到了 <strong>VueUse</strong> 中的一个函数 <a target="_blank" rel="noopener" href="https://vueuse.org/core/useTimeAgo/">useTimeAgo</a>，比较好奇这个函数是干什么的就点开了帖子看了一下。<br>其实就是一个相对时间对比的函数，输入一个目标时间（允许时间戳或者格式化日期字符串），返回目标距离现在的文本内容。</p>
+<p>举个例子：</p>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; useTimeAgo &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@vueuse/core&#x27;</span>
+
+<span class="hljs-title function_">useTimeAgo</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>()) <span class="hljs-comment">// just now</span>
+<span class="hljs-title function_">useTimeAgo</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&#x27;2024-06-01&#x27;</span>)) <span class="hljs-comment">// 2 weeks ago</span></code></pre>
+
+<p>但是 <code>useTimeAgo</code> 函数返回的文本内容是固定的英文字符串。所以，如果在中文环境下使用就可能会被挑战说需要展示中文的相对时间文本。<br><small><a target="_blank" rel="noopener" href="https://github.com/vueuse/vueuse/blob/main/packages/core/useTimeAgo/index.ts#L92">🔗 vueuse&#x2F;packages&#x2F;core&#x2F;useTimeAgo&#x2F;index.ts at main · vueuse&#x2F;vueuse</a></small></p>
+<p>看了一下 <code>useTimeAgo</code> 的实现，是支持自己做一份国际化配置，然后传入给 <code>useTimeAgo</code> 方法来使用的。</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/JS-i18n-relative-time-format/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-06-14T05:46:55.000Z" itemprop="datePublished">2024/06/14</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/exceljs/" rel="tag">exceljs</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/pikaz-excel-js-cell-style/" title="在 pikaz-excel-js 中设置单元格样式" alt="在 pikaz-excel-js 中设置单元格样式">在 pikaz-excel-js 中设置单元格样式</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p><a target="_blank" rel="noopener" href="https://github.com/pikaz-18/pikaz-excel-js">pikaz-excel-js</a> 是项目中已经使用的 <code>Excel</code> 导入导出库。简单的配置一下表头、表格数据就可以完成表格的导出操作了，使用起来非常简单。文档也非常的简单明了，并且有提供简单的参考示例模板：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/pikaz-18/pikaz-excel-js/blob/master/example/index.html">ver_1.x 的 JS 示例</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pikaz-18/pikaz-excel-js/tree/v0.2.16/src/example">ver_0.2.x 的 VueJS 示例</a></li>
+</ul>
+<p>但是文档中关于单元格样式（<code>cellStyle</code>）的说明就有点 “<strong>太简单</strong>” 了 👇 </p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>cellStyle</code></td>
+<td>单元格样式，每个单元格对象配置具体参数查看下方<a target="_blank" rel="noopener" href="https://github.com/pikaz-18/pikaz-excel-js?tab=readme-ov-file#cell-style">单元格样式</a></td>
+<td><code>object</code></td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><code>cell</code></td>
+<td>单元格名称，支持 excel 单元格名称与数字行列格式，如 <code>&#39;A3&#39;</code> 或 <code>&#39;3-1&#39;</code></td>
+<td><code>string</code></td>
+<td>–</td>
+<td>–</td>
+</tr>
+</tbody></table>
+<p>其他属性与<a target="_blank" rel="noopener" href="https://github.com/pikaz-18/pikaz-excel-js?tab=readme-ov-file#global-style">表格全局样式</a>设置方式一致</p>
+<p>如果没有阅读示例代码，直接跳到文档中的这部分查看配置项就会有点不知道如何书写。</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/pikaz-excel-js-cell-style/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-03-19T07:12:31.000Z" itemprop="datePublished">2024/03/19</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coding/" rel="tag">Coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/i18n/" rel="tag">i18n</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/i18n-vsc-extension-i18n-ally/" title="国际化开发插件 i18n-Ally" alt="国际化开发插件 i18n-Ally">国际化开发插件 i18n-Ally</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p><img src="/2024/i18n-vsc-extension-i18n-ally/annotation-animated.gif" alt="i18n Ally"></p>
+<p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally">i18n Ally</a> 这个插件，很早之前就从各种的 <code>VS Code</code> 插件分享贴中了解到，但是一直都没有好好利用起来。特别是我当前开发的项目是我自己魔改的一个国际化维护方式 <code>i18n Ally</code> 并不能很好的支持。<br>而我的一些个人项目，并不会使用到国际化。所以即使安装了这个插件已经有将近一年了，也没有使用起来。</p>
+<p>这几天正巧要新增加一个语言到项目中，所以趁着这次机会就决定把插件使用起来。也可以做一次内部分享，方便一下同事。现在新增了很多国际化的需求，应该可以提供一些便利。</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/i18n-vsc-extension-i18n-ally/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-03-15T02:19:12.000Z" itemprop="datePublished">2024/03/15</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NPM/" rel="tag">NPM</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/taobao-npm-mirror-certificate-expired/" title="淘宝镜像老域名SSL证书已过期" alt="淘宝镜像老域名SSL证书已过期">淘宝镜像老域名SSL证书已过期</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>最近社区和社群里面有好多小伙伴在说怎么 <code>npm</code> 用不了，安装不了依赖了。<br>一看报错信息：<code>request to https://npm.taobao.org/xxx failed, reason: certificate has expired</code></p>
+<p>😂 很明显就是 <code>npm.taobao.org</code> 的域名证书过期了，一看果然。已经在1月22日的时候过期了。</p>
+<p><img src="/2024/taobao-npm-mirror-certificate-expired/certificate_expired_chrome.jpeg" alt="域名过期-浏览器截图"></p>
+<p>所以切换到的“<strong>新</strong>”的域名上面就好了：</p>
+<pre><code class="hljs cmd">$ npm config <span class="hljs-built_in">set</span> registry https://registry.npmmirror.com</code></pre>
+
+<p>也可以使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/nrm">NRM</a> 来切换。</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/taobao-npm-mirror-certificate-expired/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-02-02T00:54:42.000Z" itemprop="datePublished">2024/02/02</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/make-cpu-slower-with-chrome-devtools/" title="在 Chrome 中使用 DevTools 限制CPU性能" alt="在 Chrome 中使用 DevTools 限制CPU性能">在 Chrome 中使用 DevTools 限制CPU性能</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>昨天刷到在思否遇到一个<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000044521029">想要限制CPU性能的问题</a>。在我的认知里对于 <code>DevTools</code> 的使用是没办法限制CPU性能的，认为只能够限制网络条件（也就是在 <code>Network</code> 面板中通过修改 <code>throttling</code> 设置来限制网络条件，也错误的把OP的截图当成了调整网络条件的设置了）。<br>所以会想着通过系统自带的”节电模式”之类的来实现性能限制，或者借助外部的软件来调整CPU、GPU、内存相关的功率来实现性能限制。</p>
+<p>但是OP在傍晚自己找到了<a target="_blank" rel="noopener" href="https://dev.to/kaziusan/i-wanna-make-cpu-slower-than-default-setting-in-chrome-devtool--3bb">解决办法</a>，我才知道原来 <code>DevTools</code> 也可以限制CPU的。</p>
+<p><img src="/2024/make-cpu-slower-with-chrome-devtools/settings.jpeg" alt="设置截图"></p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/make-cpu-slower-with-chrome-devtools/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-01-04T00:52:36.000Z" itemprop="datePublished">2024/01/04</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cache/" rel="tag">Cache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Service-Worker/" rel="tag">Service Worker</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2023/http-cache-limit-and-service-worker-cache/" title="HTTP缓存限制 和 Service Worker" alt="HTTP缓存限制 和 Service Worker">HTTP缓存限制 和 Service Worker</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <blockquote>
+<p>一直以来只知道 <code>HTTP Cache</code> 是有缓存总量上限的，但是不知道对于<strong>单个文件的体积大小</strong>也是有限制的。</p>
+</blockquote>
+<p>在这次接盘的3D可视化项目中就遇到了这个问题。因为模型文件体积比较大，在实际使用中经常会反馈说载入时间过长。所以在拿到服务器权限之后就改了一下 <code>Nginx</code> 的配置文件开启了静态资源的 <code>HTTP cache</code>，以为完事大吉就和一线说载入时间慢的问题解决好了。现在进入项目会使用本地缓存，在第一次载入的时候会慢一些，后面再次进入就会快很多了。</p>
+<p>但是实际使用中反馈过来的时依旧会有很长的载入时间。以为是 <code>Nginx</code> 的配置项写错了，就又去确认了一下。确实是开启了缓存的，首页的各种静态资源也是会被缓存，但是等我进入到模型展示页的时候就发现问题了！<br>最外层展示的模型是可以被缓存的，但是操作数据下钻之后开始展示内部模型从 <code>Network</code> 面板中看到的 <code>glb</code> 模型文件不是每一个都会从 <code>disk cache</code> 读取，有一些模型依旧会发起请求。</p>
+<p><img src="/2023/http-cache-limit-and-service-worker-cache/network_snipaste.jpeg" alt="面板截图"></p>
+<p>所以就想着浏览器是不是可以有配置项可以修改，但是并没有（可以通过给快捷方式添加启动命令来修改，但不可能要求所有设备都这样做）。所以只能想其他法子来解决这个问题，自然就找到了 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers">Service Worker</a></p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2023/http-cache-limit-and-service-worker-cache/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2023-12-28T03:21:43.000Z" itemprop="datePublished">2023/12/28</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2023/bind-value-and-dom-value-is-difference-in-vue-react/" title="绑定的 value 值和元素的 value 值" alt="绑定的 value 值和元素的 value 值">绑定的 value 值和元素的 value 值</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>今天在刷思否的时候遇到这样的一个问题：</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;inputValue&quot;</span> @<span class="hljs-attr">input</span>=<span class="hljs-string">&quot;handleInput&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span>
+<span class="language-javascript"><span class="hljs-keyword">const</span> inputValue = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)</span>
+<span class="language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleInput</span> = (<span class="hljs-params">e</span>) =&gt; &#123;</span>
+<span class="language-javascript">  <span class="hljs-keyword">const</span> val = e.<span class="hljs-property">target</span>.<span class="hljs-property">value</span></span>
+<span class="language-javascript">  <span class="hljs-keyword">const</span> reg = <span class="hljs-regexp">/^\d*$/</span></span>
+<span class="language-javascript">  <span class="hljs-keyword">if</span> (reg.<span class="hljs-title function_">test</span>(val)) &#123;</span>
+<span class="language-javascript">    inputValue.<span class="hljs-property">value</span> = val</span>
+<span class="language-javascript">  &#125; <span class="hljs-keyword">else</span> &#123;</span>
+<span class="language-javascript">    inputValue.<span class="hljs-property">value</span> = <span class="hljs-string">&#x27;&#x27;</span></span>
+<span class="language-javascript">  &#125;</span>
+<span class="language-javascript">&#125;</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>题主希望通过正则校验去限制输入框只能输入数字类型的值，但是只有在<strong>先输入数字</strong>再输入非数字的情况下才会被正确置空。如果一开始就是输入非数字的内容，后续即使继续输入非数字内容，输入框中的内容并不会清空。</p>
+<p>我们可以在 <a target="_blank" rel="noopener" href="https://play.vuejs.org/#eNp9kU9rwzAMxb+KMYMkoySH3kpa9oceusM2trGTGYRUSdM5trHlrqP0u092SNvDKASC3u9FeZIO/N6YfOeBz3iJ0BtZISyEYqzslPHI8NfAXHCEPQrOZrtK+lBH+BkKUu9iReqmUmsJq1CRXFCfsrhoSqWrbWeQOUBvSOl6oy2yA7PQsCNrrO5ZQmkSoWqtHLLzf9g8mNIkyUZ28TeCKWRsvmCHkH3glJV0yLGyLWAeo5+phZZo8SXE+vamCHrXsJTUHMFhSu4sG7oROaUYutCH9A7syEA6uOJLaBSyCUVPWQzjL/iEo6MYTdfmW6cVLT92ELzWvekk2BeDHcUUfDb2FrySUv88RQ2th8mo1xuov//Rt24fNMFfLTiwOzrViQ07GfDy/Tle9wR7vfaS3FfgGzgtfcg42B58uIW98MW0q3jfTrUfbrlHUG4cKgSNi4l+wenmj1dGP8ed5tNxofz4B7M06Sw=">Vue SFC Playground</a> 中体验这个现象。</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2023/bind-value-and-dom-value-is-difference-in-vue-react/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2023-12-04T04:35:25.000Z" itemprop="datePublished">2023/12/04</time>
+</div>
+  </div>
+</div>
+
+</div>
+<!-- 列表分页 list paginator -->
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/page/2/">&lt;&lt; Prev</a><a class="page-number" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">1</a><a class="page-number" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/page/4/">4</a><a class="page-number" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/page/17/">17</a><a class="extend next" rel="next" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/page/4/">Next &gt;&gt;</a>
+  </nav>
+
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/技术分享/" class="shortcut-menu-item active" >技术分享</a>
+    
+      <a href="/categories/代码之外/" class="shortcut-menu-item" >代码之外</a>
+    
+      <a href="/about/" class="shortcut-menu-item" >About</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2025/html-event-handler-properties/" 
+              title="HTML中的事件处理器和处理器属性" 
+              alt="HTML中的事件处理器和处理器属性"
+            >
+              HTML中的事件处理器和处理器属性
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2025/vue-devtools-open-in-editor-launches-notepad-instead/" 
+              title="解决 Vue DevTools 中的 Open in Editor 错误唤起 Notepad 的问题" 
+              alt="解决 Vue DevTools 中的 Open in Editor 错误唤起 Notepad 的问题"
+            >
+              解决 Vue DevTools 中的 Open in Editor 错误唤起 Notepad 的问题
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2025/CSS-not-ff-fault-custom-scrollbars/" 
+              title="FireFox 真的不支持自定义滚动条样式吗？" 
+              alt="FireFox 真的不支持自定义滚动条样式吗？"
+            >
+              FireFox 真的不支持自定义滚动条样式吗？
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2025/about-ba-gu-interview/" 
+              title="关于八股文面试题" 
+              alt="关于八股文面试题"
+            >
+              关于八股文面试题
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2025/CSS-empty-inline-block-create-height-but-inline-and-block-not/" 
+              title="为什么空白的 inline-block 元素会创建高度，而空白的 inline 和 block 元素不会？" 
+              alt="为什么空白的 inline-block 元素会创建高度，而空白的 inline 和 block 元素不会？"
+            >
+              为什么空白的 inline-block 元素会创建高度，而空白的 inline 和 block 元素不会？
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AstroJS/" rel="tag">AstroJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cursor/" rel="tag">Cursor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Day-js/" rel="tag">Day.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debug/" rel="tag">Debug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevTools/" rel="tag">DevTools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ExcelJS/" rel="tag">ExcelJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">33</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L10n/" rel="tag">L10n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/" rel="tag">NPM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/" rel="tag">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service-Worker/" rel="tag">Service Worker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/V2EX/" rel="tag">V2EX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VibeCoding/" rel="tag">VibeCoding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueCLI/" rel="tag">VueCLI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueUse/" rel="tag">VueUse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exceljs/" rel="tag">exceljs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rrweb/" rel="tag">rrweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%92%AD%E5%AE%A2/" rel="tag">播客</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">6</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">November 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">October 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2025 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>

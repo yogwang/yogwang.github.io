@@ -1,0 +1,713 @@
+<!-- layout page -->
+<!DOCTYPE html>
+<html lang="zh-hans">
+  <!-- 头部信息 head&meta -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>技术分享 | blog [ YOG WANG ]</title>
+  <meta name="keywords" content="YogWang,blog,web-frontend" />
+  <meta name="description" content="Here is my blog, my notes and some thoughts" />
+  <meta name="author" content="YogWang" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/atelier-sulphurpool-light.css">
+
+  
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <!-- 页头 page header -->
+<header id="header">
+  <!-- 左侧图标 left logo -->
+  <a class="header-sign" href="/">
+    <img src="/favicon.png" alt="logo" />
+    <span>YOG<br />WANG</span>
+  </a>
+  <!-- 头部菜单 header menu -->
+  <nav class="header-navbar">
+    
+    <a class="nav-link" href="/archives">文章</a>
+    
+    <a class="nav-link" href="/about">我</a>
+    
+    <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/yogwang">GitHub</a>
+    
+  </nav>
+</header>
+
+    <div id="wrap">
+      <!-- 文章分类页 categories page -->
+<!-- 文章列表页面 post list page -->
+<main id="container">
+  <!-- 文章分类列表 archives list -->
+<div class="archives-wrap">
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cursor/" rel="tag">Cursor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2025/cursor-vscode-gitlens-rebase-editor/" title="记使用 VSCode 作为 Git 编辑器在 Rebase 时没有打开 GitLens Rebase Editor 的问题" alt="记使用 VSCode 作为 Git 编辑器在 Rebase 时没有打开 GitLens Rebase Editor 的问题">记使用 VSCode 作为 Git 编辑器在 Rebase 时没有打开 GitLens Rebase Editor 的问题</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <blockquote>
+<p>设置默认Git编辑器 <code>core.editor</code>（ <code>commit message</code> 编辑时） 和 序列编辑器 <code>sequence.editor</code>（比如 <code>rebase</code> 时）</p>
+<pre><code class="hljs plaintext">git config --global core.editor &quot;code --wait&quot;
+git config --global sequence.editor &quot;code --wait&quot;</code></pre>
+</blockquote>
+<p><img src="/2025/cursor-vscode-gitlens-rebase-editor/rebase.gif" alt="GitLens Interactive Rebase Editor"></p>
+<p>长久以来，我一直都是用的 <a target="_blank" rel="noopener" href="https://marketplace.cursorapi.com/items?itemName=eamodio.gitlens">GitLens</a> 来操作的 Git，特别是在 <code>rebase</code> 的时候，可视化的界面真的比原本的文本编辑好用太多。</p>
+<p>最近因为 <a target="_blank" rel="noopener" href="https://docs.github.com/en/copilot/managing-copilot/monitoring-usage-and-entitlements/about-premium-requests"><code>Github Copilot</code> 高级请求限制的调整</a>，计算了一下高级请求的用量，其实改版后的 <code>Copilot</code> 价格和 <code>Cursor</code> 已经持平。所以准备迁移到 <a target="_blank" rel="noopener" href="https://www.cursor.com/">Cursor</a> 开发一段时间（<code>Cursor</code> 的辅助编程体验要好太多了）。</p>
+<p>但由于太久没有调整过 <code>VS Code</code> 的配置项了，在同步配置项到 <code>Cursor</code> 之后发现 <code>git rebase</code> 时，没有按照预期打开 <code>GitLens Interactive Rebase Editor</code> 就是上边的动图中的交互编辑器。一直都是在 <code>Cursor</code> 里面以文本编辑的形式打开了 <code>git-rebase-todo</code> 的内容。</p>
+<p>所以记录一下如何调整和启用。</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2025/cursor-vscode-gitlens-rebase-editor/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2025-05-13T09:34:34.000Z" itemprop="datePublished">2025/05/13</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/eleui-el-form-used-with-el-row-layout-will-be-unaligned/" title="Element UI 中表单使用栅格实现多行多列布局会错位的问题" alt="Element UI 中表单使用栅格实现多行多列布局会错位的问题">Element UI 中表单使用栅格实现多行多列布局会错位的问题</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>业务中经常会遇到多行多列展示的表单需求，所以我们会搭配着栅格组件来实现。利用栅格化布局 <code>span</code> 超过 <code>24</code> 会自动折行的功能。</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">el-form</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;form&quot;</span> <span class="hljs-attr">:model</span>=<span class="hljs-string">&quot;form&quot;</span> <span class="hljs-attr">label-width</span>=<span class="hljs-string">&quot;auto&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">el-row</span> <span class="hljs-attr">:gutter</span>=<span class="hljs-string">&quot;10&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-col</span> <span class="hljs-attr">:span</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">el-form-item</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;字段A&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">el-input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;form.a&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;请输入&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">el-input</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">el-form-item</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">el-col</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-col</span> <span class="hljs-attr">:span</span>=<span class="hljs-string">&#x27;12&#x27;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">el-form-item</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;字段B&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">el-input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;form.b&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;请输入&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">el-input</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">el-form-item</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">el-col</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">el-row</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">el-form</span>&gt;</span></code></pre>
+
+<p>如果这样组合使用的同学，肯定会遇到过表单项错位的问题。因为 <code>Element UI</code> 是栅格组件默认是使用的 <code>float</code> 布局的，<strong>所以如果你的 <code>&lt;el-form-item&gt;</code> 元素高度不一致的话</strong>，就会出现下边截图中布局错位的问题。</p>
+<p><img src="/2024/eleui-el-form-used-with-el-row-layout-will-be-unaligned/layout_preview.jpeg" alt="表单错位预览"></p>
+<p><strong>字段C</strong>项并没有正确出现在<strong>字段A</strong>项的正下方，而是错开一列出现在了<strong>字段B</strong>的下方。</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/eleui-el-form-used-with-el-row-layout-will-be-unaligned/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-10-16T08:07:03.000Z" itemprop="datePublished">2024/10/16</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debug/" rel="tag">Debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/vscode-debugger-configuration-dropdown-cannot-show-again/" title="解决 VSCode 调试面板中隐藏调试配置选择器后没法重新显示的问题" alt="解决 VSCode 调试面板中隐藏调试配置选择器后没法重新显示的问题">解决 VSCode 调试面板中隐藏调试配置选择器后没法重新显示的问题</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <blockquote>
+<p><strong>解决方式</strong><br>在【<strong>运行和调试</strong>】面板右侧的 <strong>齿轮</strong>（<code>⚙</code>） 或者 <strong>更多</strong>（<code>···</code>） 按钮上右键，勾选【<strong>开始调试</strong>】即可。</p>
+</blockquote>
+<p><img src="/2024/vscode-debugger-configuration-dropdown-cannot-show-again/dropdown_recovery_steps.jpeg" alt="恢复显示操作示意图"></p>
+<p>昨天在思否遇到一个问题 👉 <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000045355093">VSCode启动调试控件被不小心隐藏了，如何恢复显示？</a><br>开始以为是一个很初级的问题，就是问题主把【<strong>活动面板</strong>】中的【<strong>调式面板</strong>】隐藏了，不知道如何恢复显示了。</p>
+<p>那么直接在【<strong>活动面板</strong>】中右键然后在弹出的菜单中勾选【<strong>运行和调试</strong>】就行了。</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/vscode-debugger-configuration-dropdown-cannot-show-again/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-10-12T05:31:55.000Z" itemprop="datePublished">2024/10/12</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ExcelJS/" rel="tag">ExcelJS</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/exceljs-a-excel-export-specialized-requirements/" title="前端 Excel 导出的特殊需求" alt="前端 Excel 导出的特殊需求">前端 Excel 导出的特殊需求</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>在内部系统开发时，经常会有业务部门会要求开发<strong>Excel导入&#x2F;导出</strong>的功能。这种需求非常的常见，如果只是基础的需求开发起来也比较容易。只是有一些特殊的业务下会有对导出的工作表样式会有要求以及会有锁定的需求。</p>
+<p>一般来说这些相关的功能都会让后端同学来帮忙。后端同学忙不过来的时候我们也会使用 <a target="_blank" rel="noopener" href="https://github.com/SheetJS/sheetjs">SheetJS</a> 这个库来处理，社区也有很多基于它的各种增强。但因为<strong>社区版的样式处理非常麻烦</strong>，也经常会看到有小伙伴在社群里面吐槽自定义样式不好做。所以项目后期就切换到了 <a target="_blank" rel="noopener" href="https://github.com/exceljs/exceljs">ExcelJS</a>，开发体感更加友好且支持的功能更多。</p>
+<p>对于 <code>ExcelJS</code> 介绍的部分就不过多赘述了，社区里面有很多相关的文章可以自行检索。</p>
+<p>这篇笔记主要是解决日常业务开发中遇到的几个常见需求，比如说：</p>
+<ul>
+<li>单元格的<strong>下拉选择</strong></li>
+<li>单元格的<strong>数据校验</strong></li>
+<li>单元格和工作表的<strong>编辑保护</strong></li>
+</ul>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/exceljs-a-excel-export-specialized-requirements/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-09-02T07:20:32.000Z" itemprop="datePublished">2024/09/02</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/uni-app-define-env-variables/" title="记录在 uni-app 中定义环境变量的方法" alt="记录在 uni-app 中定义环境变量的方法">记录在 uni-app 中定义环境变量的方法</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <blockquote>
+<p><strong>注意</strong>：文章中使用的 <strong>HBuilderX</strong> 版本为 <code>4.24</code>。</p>
+</blockquote>
+<p>使用 <a target="_blank" rel="noopener" href="https://www.dcloud.io/hbuilderx.html">HBX</a> 创建的 <code>uni-app</code> 项目（非CLI创建），想要定义环境变量一直是一个让人非常困扰的事情。<br><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/env.html#env">官方的文档</a> 关于环境变量的说明也非常暧昧不清。</p>
+<p>通过关键词 <code>环境变量</code> 检索会出现5篇相关文档：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/collocation/vue-config.html">#配置环境变量 - vue.config.js | uni-app官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/worktile/running-env.html#%E5%88%A4%E6%96%AD%E5%B9%B3%E5%8F%B0">#判断平台 - 开发环境和生产环境 | uni-app官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/migration-to-vue3.html#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">#环境变量 - Vue2升3指南 | uni-app官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/compiler-config.html">编辑器配置 | uni-app官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/tutorial/run/run-app-faq.html#clicking-the-run-menu-not-respond">真机运行常见问题@run | uni-app官网</a></li>
+</ol>
+<p>所以我早期定义环境变量就是使用的第一个文档链接中使用 <a target="_blank" rel="noopener" href="https://webpack.js.org/plugins/define-plugin/">DefinePlugin</a> 来定义环境变量的方式</p>
+<pre><code class="hljs js"><span class="hljs-comment">// vue.config.js</span>
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
+  <span class="hljs-attr">chainWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;
+    config
+      .<span class="hljs-title function_">plugin</span>(<span class="hljs-string">&#x27;define&#x27;</span>)
+      .<span class="hljs-title function_">tap</span>(<span class="hljs-function"><span class="hljs-params">args</span> =&gt;</span> &#123;
+        args[<span class="hljs-number">0</span>][<span class="hljs-string">&#x27;process.env&#x27;</span>].<span class="hljs-property">MY_TEST</span> = <span class="hljs-string">&#x27;&quot;test&quot;&#x27;</span> <span class="hljs-comment">// 注意需要多层引号包裹</span>
+        <span class="hljs-keyword">return</span> args
+      &#125;)
+  &#125;
+&#125;</code></pre>
+
+<blockquote>
+<p><strong>注意：</strong>注意需要多层引号包裹自定义环境变量的值。</p>
+</blockquote>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> test = process.<span class="hljs-property">env</span>.<span class="hljs-property">MY_TEST</span> <span class="hljs-comment">// test</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">table</span>(process.<span class="hljs-property">env</span>)
+<span class="hljs-comment">// (索引)  值</span>
+<span class="hljs-comment">// NODE_ENV  development</span>
+<span class="hljs-comment">// VUE_APP_NAME  Test-Project</span>
+<span class="hljs-comment">// VUE_APP_PLATFORM  h5</span>
+<span class="hljs-comment">// BASE_URL  /</span>
+<span class="hljs-comment">// MY_TEST  test</span></code></pre>
+<blockquote>
+<p>我这边在声明环境变量时，不需要使用 <code>VUE_APP_</code> 这样的前缀，但是官方的示例中是有的。如果你无法在业务代码中正确获取到，可以尝试添加 <code>VUE_APP_</code> 前缀（👉 <code>VUE_APP_MY_TEST</code>）</p>
+</blockquote>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/uni-app-define-env-variables/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-08-29T06:40:51.000Z" itemprop="datePublished">2024/08/29</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/L10n/" rel="tag">L10n</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/L10n-localization-deployment-of-single-domain/" title="单域名多服务器的本地化部署" alt="单域名多服务器的本地化部署">单域名多服务器的本地化部署</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>工作中长期维护的项目提出了一个需求：</p>
+<blockquote>
+<p>现在项目分为 <strong>国内版</strong> 和 <strong>欧洲版</strong>。使用的同一个域名的两个子域名，分别指向部署在国内和欧洲的服务。<br>例如说 <code>www.domain.com</code> 和 <code>eu.domain.com</code> 这样两个应用入口。</p>
+<p>虽然我们会在应用上标注清楚是国内版还是欧洲版。但是仍然会有不少的用户会打开错误的应用。所以想要把应用入口统一为一个。项目按照访问用户的IP所在地区自动切换到国内和欧洲的应用中。并且仍然允许用户手动切换服务器，允许跨境使用。</p>
+</blockquote>
+<p>想了很多实现方案最后确定为<strong>在DNS上面按照IP归属做分流</strong>。通过访问用户的IP把在欧洲的用户定向到欧洲的服务，在国内的分流到国内的服务上。<br><strong>实质上还是一个地区部署一整套的服务</strong>。只不过说现在应用入口的统一了，域名也是统一成 <code>www.domain.com</code> 一个了。</p>
+<p>然后在对应的服务器上<strong>做 <code>Nginx</code> 的接口代理转发</strong>，保证可以正常访问其他地区的服务。避免因为访问系统的用户IP是固定的，在DNS上直接就被分流掉了，导致无法访问到另一个地区服务的情况。</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/L10n-localization-deployment-of-single-domain/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-08-27T02:00:29.000Z" itemprop="datePublished">2024/08/27</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/eleui-el-dropdown-keyboard-operation-error/" title="ElementUI 的 Dropdown 组件键盘操控异常抛出" alt="ElementUI 的 Dropdown 组件键盘操控异常抛出">ElementUI 的 Dropdown 组件键盘操控异常抛出</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>前段时间把项目的脚手架升级到 <code>VueCLI 5</code> 同步也升级了一些依赖项。所以这几天都是在自测，看看是不是有一些很明显的 <strong>BUG</strong>，以及解决一些依赖升级之后的 <code>WARN</code>。</p>
+<p>在测试一个下拉菜单（<code>Dropdown</code>）时，发现了一个问题：<strong>使用方向键操控</strong>会抛出一个异常：<br><code>Uncaught TypeError: ele is undefined</code></p>
+<p>查看控制台输出，对应异常抛出的位置是 <a target="_blank" rel="noopener" href="https://github.com/ElemeFE/element/blob/v2.15.14/packages/dropdown/src/dropdown.vue#L187">resetTabindex</a> 函数，在 <code>ele.setAttribute(&#39;tabindex&#39;, &#39;0&#39;)</code> 执行时 <code>ele</code> 是 <code>undefined</code>，所以抛出了这个异常。</p>
+<p>那么看函数调用链看 <code>ele</code> 是怎么来的。<br>👉 是 <code>handleItemKeyDown</code> 函数执行传入的 <code>this.menuItems[nextIndex]</code></p>
+<p>进入调试模式之后发现整个 <code>menuItems</code> 数组是<strong>空数组</strong>，并没有把我在模板中渲染的 <code>el-dropdown-item</code> 都包含进来。</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/eleui-el-dropdown-keyboard-operation-error/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-08-26T02:10:58.000Z" itemprop="datePublished">2024/08/26</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SCSS/" rel="tag">SCSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueCLI/" rel="tag">VueCLI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/SASS-use-sass-variables-in-js/" title="在 JS 中引入并使用 SASS 变量" alt="在 JS 中引入并使用 SASS 变量">在 JS 中引入并使用 SASS 变量</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>当前项目使用的后台管理模板的 <code>layout</code> 的部分是有直接引用 <code>sass</code> 文件暴露出来的变量在业务代码中使用的。<br>比如说:</p>
+<ul>
+<li>导出 👉 <a target="_blank" rel="noopener" href="https://github.com/PanJiaChen/vue-element-admin/blob/v4.0.0/src/styles/variables.scss#L26">&#x2F;src&#x2F;styles&#x2F;variables.scss at v4.0.0 · PanJiaChen&#x2F;vue-element-admin</a></li>
+<li>使用 👉 <a target="_blank" rel="noopener" href="https://github.com/PanJiaChen/vue-element-admin/blob/v4.0.0/src/layout/components/Sidebar/index.vue#L25">&#x2F;src&#x2F;layout&#x2F;components&#x2F;Sidebar&#x2F;index.vue at v4.0.0 · PanJiaChen&#x2F;vue-element-admin</a></li>
+</ul>
+<p>也没有怎么了解过看这个魔法使用的<a target="_blank" rel="noopener" href="https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass">来源文章</a> 中也只说是 <code>webpack</code> 支持了 <code>CSS Modules</code> 的功能，可以直接使用 <a target="_blank" rel="noopener" href="https://github.com/css-modules/icss?tab=readme-ov-file#export">:export</a> 功能。</p>
+<p>只需要在 <code>.scss</code> 中使用 <code>:export &#123; &#125;</code> 把需要暴露的变量暴露出来就可以在 JS 中使用 <code>import</code> 导入了</p>
+<pre><code class="hljs scss">:export &#123;
+  menuText: <span class="hljs-variable">$menuText</span>;
+  menuActiveText: <span class="hljs-variable">$menuActiveText</span>;
+  subMenuActiveText: <span class="hljs-variable">$subMenuActiveText</span>;
+  menuBg: <span class="hljs-variable">$menuBg</span>;
+  menuHover: <span class="hljs-variable">$menuHover</span>;
+  subMenuBg: <span class="hljs-variable">$subMenuBg</span>;
+  subMenuHover: <span class="hljs-variable">$subMenuHover</span>;
+  sideBarWidth: <span class="hljs-variable">$sideBarWidth</span>;
+&#125;</code></pre>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/SASS-use-sass-variables-in-js/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-08-08T03:36:28.000Z" itemprop="datePublished">2024/08/08</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AstroJS/" rel="tag">AstroJS</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/astrojs-notes-00-start/" title="AstroJS 启动！" alt="AstroJS 启动！">AstroJS 启动！</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <p>最近有一个官网开发的需求，本来是准备利用老的技术栈，快速开发、快速结束。比如说找一个 <code>PHP</code> 或者 <code>JSP</code> 技术栈的成熟 CMS 框架。前端只需要写一个主题模板，然后用插值表达式做一下循环和动态内容的渲染就行了。</p>
+<p>可团队内没有 <code>PHP</code> 技术栈。<code>Java</code> 小伙伴也忙的要死，没有时间现学一个 CMS 框架来配合我。但项目上线时间又安排的非常近，没办法一直等。<br>就想着先使用有 <strong>SSG</strong> 功能的前端全栈框架先把项目搞起来，把需求先做完。后面再看情况是做 <strong>SSR</strong> 也行。如果不做 <strong>SEO</strong> 没有很多文章发布的场景，也可以仅靠 <strong>SSG</strong> 和钩子触发自动部署即可。</p>
+<p>正巧在播客里面听到一个新的全栈框架 <a target="_blank" rel="noopener" href="https://astro.build/"><strong>Astro</strong></a>，满足了我上便提到的 <strong>SSG</strong> 和 <strong>SSR</strong> 需求。前期可以通过撰写 <code>markdown</code> 文档作为 <code>content</code> 资源来满足项目前期的文章发布需求。 </p>
+<p>而且 <strong>Astro</strong> 提出的 <a target="_blank" rel="noopener" href="https://docs.astro.build/zh-cn/concepts/islands/"><strong>群岛</strong></a> 概念非常让我感兴趣！</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/astrojs-notes-00-start/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-07-10T03:30:38.000Z" itemprop="datePublished">2024/07/10</time>
+</div>
+  </div>
+</div>
+
+  <!-- 列表页文章卡片 list post item -->
+<div class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="archive-article-header-meta">
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a></li></ul>
+
+        
+  <div class="article-category">
+    <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li></ul>
+  </div>
+
+      </div>
+      
+  
+    <h2 class="archive-article-title" itemprop="name">
+      <a href="/2024/vue-setup-props-sugar/" title="Vue3 中关于 defineProps 的一些 “糖”" alt="Vue3 中关于 defineProps 的一些 “糖”">Vue3 中关于 defineProps 的一些 “糖”</a>
+    </h2>
+  
+
+    </header>
+    <!-- 文章内容 article body -->
+ 
+  <article class="article-excerpt">
+    <pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; foo, bar &#125; = <span class="hljs-title function_">defineProps</span>([<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-string">&#x27;bar&#x27;</span>])</code></pre>
+
+<p>在思否刷到一个问题 <a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000045026909">🔗 Vue3: 响应式 props 解构得到的变量将不是响应式？也不会更新？</a> 按照问题中引用的文档描述来说确实是不能够解构返回值的。但是问题主提供的两个例子又说明了实际情况下，<code>defineProps()</code> 的返回值是能够被解构的。</p>
+<p>VueJS 的 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/api/sfc-script-setup.html#defineprops-defineemits">&lt;script setup&gt; 文档</a> 中关于 <code>defineProps()</code> 的部分也没有针对其返回值是否能够解构做出说明。<br>我在Vue3项目的开发过程中并没有考虑到过这个问题，一直都是通过 <code>props.xx</code> 的形式来使用的。一下子就命中了我的知识盲区，还是 Vue3 写的少了啊。</p>
+<p>不过在问题主引用的文档开头有一个响应性语法糖被 <strong>移除</strong> 的提示，所以去看了一下提示中链接的 <a target="_blank" rel="noopener" href="https://github.com/vuejs/rfcs/discussions/369">废弃原因</a>。</p>
+  </article>
+  <div class="article-more-link">
+    <a href="/2024/vue-setup-props-sugar/#more">阅读全文</a>
+  </div>
+
+
+     
+<div class="archive-article-date">
+  <time datetime="2024-07-03T02:15:03.000Z" itemprop="datePublished">2024/07/03</time>
+</div>
+  </div>
+</div>
+
+</div>
+<!-- 列表分页 list paginator -->
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">&lt;&lt; Prev</a><a class="page-number" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">1</a><span class="page-number current">2</span><a class="page-number" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/page/3/">3</a><a class="page-number" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/page/17/">17</a><a class="extend next" rel="next" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/page/3/">Next &gt;&gt;</a>
+  </nav>
+
+
+</main>
+<!-- 侧边栏 sidebar -->
+<aside id="sidebar">
+  
+    
+<!-- 个人信息 author -->
+<section class="widget-wrap author-info">
+    <img class="author-info-avatar" src="https://yogwang.site/img/userimg.jpg" alt="陟上晴明">
+    <h2 class="author-info-nickname">陟上晴明</h2>
+    <span class="author-info-bio">久之须自见得</span>
+    <p class="author-info-txt">MINTH GROUP</p>
+    <p class="author-info-txt">Jiaxing,China</p>
+    <div class="author-info-follow">
+      
+      <a class="fa fa-github author-info-follow-item" href="https://github.com/yogwang" target="_blank"></a>
+      
+      <a class="fa fa-weibo author-info-follow-item" href="http://weibo.com/yooooooge" target="_blank"></a>
+      
+      <a class="fa fa-envelope author-info-follow-item" href="mailto:yogwang@foxmail.com" target="_blank"></a>
+      
+    </div>
+</section>
+
+  
+    
+  <!-- 快捷分类菜单 shortcut menu -->
+  <section class="widget-wrap shortcut-menu">
+    
+      <a href="/categories/技术分享/" class="shortcut-menu-item active" >技术分享</a>
+    
+      <a href="/categories/代码之外/" class="shortcut-menu-item" >代码之外</a>
+    
+      <a href="/about/" class="shortcut-menu-item" >About</a>
+    
+  </section>
+
+
+  
+    
+<!-- 最近发布 recent posts -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Recent posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a 
+              href="/2025/html-event-handler-properties/" 
+              title="HTML中的事件处理器和处理器属性" 
+              alt="HTML中的事件处理器和处理器属性"
+            >
+              HTML中的事件处理器和处理器属性
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2025/vue-devtools-open-in-editor-launches-notepad-instead/" 
+              title="解决 Vue DevTools 中的 Open in Editor 错误唤起 Notepad 的问题" 
+              alt="解决 Vue DevTools 中的 Open in Editor 错误唤起 Notepad 的问题"
+            >
+              解决 Vue DevTools 中的 Open in Editor 错误唤起 Notepad 的问题
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2025/CSS-not-ff-fault-custom-scrollbars/" 
+              title="FireFox 真的不支持自定义滚动条样式吗？" 
+              alt="FireFox 真的不支持自定义滚动条样式吗？"
+            >
+              FireFox 真的不支持自定义滚动条样式吗？
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2025/about-ba-gu-interview/" 
+              title="关于八股文面试题" 
+              alt="关于八股文面试题"
+            >
+              关于八股文面试题
+            </a>
+          </li>
+        
+          <li>
+            <a 
+              href="/2025/CSS-empty-inline-block-create-height-but-inline-and-block-not/" 
+              title="为什么空白的 inline-block 元素会创建高度，而空白的 inline 和 block 元素不会？" 
+              alt="为什么空白的 inline-block 元素会创建高度，而空白的 inline 和 block 元素不会？"
+            >
+              为什么空白的 inline-block 元素会创建高度，而空白的 inline 和 block 元素不会？
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </section>
+
+  
+    
+  <!-- 标签列表 tags list -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant-Design-Vue/" rel="tag">Ant-Design-Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AstroJS/" rel="tag">AstroJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Axios/" rel="tag">Axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BetterScrol-js/" rel="tag">BetterScrol.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caddy/" rel="tag">Caddy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/" rel="tag">Canvas</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chrome/" rel="tag">Chrome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Coding/" rel="tag">Coding</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cursor/" rel="tag">Cursor</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Day-js/" rel="tag">Day.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debug/" rel="tag">Debug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DevTools/" rel="tag">DevTools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DigitalOcean/" rel="tag">DigitalOcean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-6/" rel="tag">ECMAScript 6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript-8/" rel="tag">ECMAScript 8</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESlint/" rel="tag">ESlint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ExcelJS/" rel="tag">ExcelJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gulp/" rel="tag">Gulp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">33</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jeecg-boot/" rel="tag">Jeecg-boot</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/L10n/" rel="tag">L10n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSEdge/" rel="tag">MSEdge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/" rel="tag">NPM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVM/" rel="tag">NVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NVS/" rel="tag">NVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/" rel="tag">Node.js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHPOK/" rel="tag">PHPOK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RaspberryPi/" rel="tag">RaspberryPi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/" rel="tag">ReactJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCSS/" rel="tag">SCSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SEO/" rel="tag">SEO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Service-Worker/" rel="tag">Service Worker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/V2EX/" rel="tag">V2EX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VibeCoding/" rel="tag">VibeCoding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-Router/" rel="tag">Vue-Router</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueCLI/" rel="tag">VueCLI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/" rel="tag">VueJS</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueUse/" rel="tag">VueUse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/" rel="tag">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exceljs/" rel="tag">exceljs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/i18n/" rel="tag">i18n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rrweb/" rel="tag">rrweb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tinyMCE/" rel="tag">tinyMCE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uViewUI/" rel="tag">uViewUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E4%BC%9A%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/" rel="tag">年会开发日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%83%85%E6%84%9F/" rel="tag">情感</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%96%E5%9D%91/" rel="tag">挖坑</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%92%AD%E5%AE%A2/" rel="tag">播客</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E7%BE%A4%E5%88%86%E4%BA%AB/" rel="tag">社群分享</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">6</span></li></ul>
+    </div>
+  </section>
+
+  
+    
+<!-- 文章归档 posts archives -->
+  <section class="widget-wrap shadow">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">November 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">October 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li></ul>
+    </div>
+  </section>
+
+
+  
+</aside>
+    </div>
+    <!-- 页尾 page foot -->
+<footer id="footer">
+  <!-- licensed -->
+  <p>
+    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a> 许可协议，转载请注明出处！
+  </p>
+  <!-- copyright -->
+  <p>
+    &copy;2025 YogWang
+    Powered By <a href="http://hexo.io/" target="_blank">Hexo</a>
+    
+  </p>
+  <br />
+  <!-- go top -->
+  <a id="gotop" class="fa fa-level-up"></a>
+</footer>
+
+<script src="/js/common.js"></script>
+
+  </body>
+</html>
